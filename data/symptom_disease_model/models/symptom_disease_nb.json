@@ -1,0 +1,101 @@
+{
+  "model_type": "multinomial_naive_bayes_for_symptom_tags",
+  "alpha": 1.0,
+  "classes": [
+    "allergic_rhinitis",
+    "common_cold",
+    "gastritis",
+    "influenza",
+    "migraine"
+  ],
+  "class_counts": {
+    "influenza": 2,
+    "gastritis": 2,
+    "common_cold": 2,
+    "allergic_rhinitis": 2,
+    "migraine": 2
+  },
+  "vocabulary": [
+    "acid_reflux",
+    "belching",
+    "bloating",
+    "chills",
+    "dry_cough",
+    "fatigue",
+    "headache",
+    "high_fever",
+    "itchy_eyes",
+    "light_sensitivity",
+    "loss_of_appetite",
+    "low_fever",
+    "mild_cough",
+    "muscle_ache",
+    "nasal_congestion",
+    "nausea",
+    "one_sided_headache",
+    "postnasal_drip",
+    "runny_nose",
+    "sneezing",
+    "sore_throat",
+    "sound_sensitivity",
+    "upper_abdominal_pain",
+    "vomiting",
+    "worse_with_activity"
+  ],
+  "symptom_counts": {
+    "influenza": {
+      "dry_cough": 2,
+      "fatigue": 2,
+      "headache": 1,
+      "high_fever": 2,
+      "muscle_ache": 1,
+      "chills": 1,
+      "sore_throat": 1
+    },
+    "gastritis": {
+      "acid_reflux": 2,
+      "bloating": 1,
+      "loss_of_appetite": 1,
+      "nausea": 2,
+      "upper_abdominal_pain": 2,
+      "belching": 1
+    },
+    "common_cold": {
+      "fatigue": 1,
+      "runny_nose": 2,
+      "sneezing": 2,
+      "sore_throat": 2,
+      "low_fever": 1,
+      "mild_cough": 1
+    },
+    "allergic_rhinitis": {
+      "itchy_eyes": 2,
+      "nasal_congestion": 2,
+      "runny_nose": 1,
+      "sneezing": 2,
+      "postnasal_drip": 1
+    },
+    "migraine": {
+      "light_sensitivity": 2,
+      "nausea": 1,
+      "one_sided_headache": 1,
+      "sound_sensitivity": 1,
+      "headache": 1,
+      "vomiting": 1,
+      "worse_with_activity": 1
+    }
+  },
+  "total_symptom_counts": {
+    "influenza": 10,
+    "gastritis": 9,
+    "common_cold": 9,
+    "allergic_rhinitis": 8,
+    "migraine": 8
+  },
+  "training_rows": 10,
+  "metrics": {
+    "test_rows": 5,
+    "accuracy": 0.6,
+    "top3_accuracy": 1.0
+  }
+}

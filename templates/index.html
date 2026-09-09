@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>常州市智能医疗推荐系统</title>
+<link rel="stylesheet" href="/static/css/leaflet.css" />
+<link rel="stylesheet" href="/static/css/style.css?v=88">
+</head>
+<body>
+
+<!-- 登录门面 -->
+<section class="login-screen" id="loginScreen">
+  <div class="login-shell">
+    <header class="login-nav">
+      <div class="login-brand">
+        <span class="login-logo-mark">CZ</span>
+        <span>Medical Intelligence</span>
+      </div>
+      <nav class="login-links">
+        <span>智能分诊</span>
+        <span>医院资源</span>
+        <span>医生画像</span>
+        <span>数据看板</span>
+      </nav>
+      <button class="login-consult-btn" onclick="fillLoginDemo()">演示账号</button>
+    </header>
+
+    <div class="login-hero">
+      <div class="login-copy">
+        <p class="login-eyebrow">常州市医疗推荐管理台</p>
+        <h1>Quality medical matching, meet intelligent care</h1>
+        <p class="login-subtitle">整合医院层级、专科实力、医生履历、患者位置和病情轻重，生成可解释的就医推荐。</p>
+      </div>
+
+      <div class="login-card">
+        <div class="login-card-title">登录系统</div>
+        <p class="login-card-subtitle">请选择身份并输入账号信息</p>
+        <div class="login-role-grid" id="loginRoleGrid">
+          <button class="login-role active" data-role="管理员" onclick="selectLoginRole(this)">管理员</button>
+          <button class="login-role" data-role="调度员" onclick="selectLoginRole(this)">调度员</button>
+          <button class="login-role" data-role="医生" onclick="selectLoginRole(this)">医生</button>
+          <button class="login-role" data-role="数据员" onclick="selectLoginRole(this)">数据员</button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">账号</label>
+          <input class="form-input" id="loginHeroUser" value="admin" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">密码</label>
+          <input class="form-input" id="loginHeroPass" type="password" value="123456" autocomplete="current-password" onkeydown="if(event.key==='Enter') loginApp('hero')">
+        </div>
+        <button class="btn btn-primary login-submit" onclick="loginApp('hero')">进入管理台</button>
+        <div class="login-note">演示环境：任意非空账号密码均可进入。</div>
+      </div>
+    </div>
+
+    <div class="login-action-grid">
+      <button onclick="quickLoginRole('智能分诊')">智能分诊</button>
+      <button onclick="quickLoginRole('医生推荐')">医生推荐</button>
+      <button onclick="quickLoginRole('医院管理')">医院管理</button>
+      <button onclick="quickLoginRole('数据接口')">数据接口</button>
+    </div>
+
+    <div class="login-metrics">
+      <div><strong>21 家</strong><span>常州重点医院接入</span></div>
+      <div><strong>1892 位</strong><span>真实医生数据</span></div>
+      <div><strong>4 类</strong><span>就诊场景动态权重</span></div>
+    </div>
+
+    <div class="login-proof">
+      <div class="login-quote">
+        <p>“将病情轻重、科室匹配和距离判定统一到一个工作台，推荐结果更容易解释，也更适合前台反复使用。”</p>
+        <span>常州市智能医疗助手 · 内部演示</span>
+      </div>
+      <div class="login-score">
+        <span>推荐覆盖率</span>
+        <strong>+93</strong>
+        <p>覆盖医院、医生、科室、距离和分诊风险五类核心信号。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 用户登录弹窗 -->
+<div class="login-dialog" id="loginDialog" onclick="if(event.target===this) closeLoginModal()">
+  <div class="login-dialog-card" role="dialog" aria-modal="true" aria-labelledby="loginDialogTitle">
+    <button class="login-dialog-close" onclick="closeLoginModal()" aria-label="关闭">&times;</button>
+    <div class="login-dialog-brand">
+      <span class="login-logo-mark">CZ</span>
+      <span>常州医疗</span>
+    </div>
+    <h2 id="loginDialogTitle">用户登录</h2>
+    <p>登录后可保存本次优推医生和定位偏好。</p>
+    <div class="form-group">
+      <label class="form-label">用户账号</label>
+      <input class="form-input" id="loginDialogUser" value="user" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label class="form-label">密码</label>
+      <input class="form-input" id="loginDialogPass" type="password" value="123456" autocomplete="current-password" onkeydown="if(event.key==='Enter') loginApp('dialog')">
+    </div>
+    <button class="btn btn-primary login-submit" onclick="loginApp('dialog')">登录</button>
+    <div class="login-note">演示环境：任意非空账号密码均可登录。</div>
+  </div>
+</div>
+
+<!-- 顶部导航 -->
+<header class="top-bar">
+  <div class="top-context">
+    <span class="top-context-icon"><span class="icon-symbol icon-dashboard"></span></span>
+    <span>医疗推荐管理台</span>
+  </div>
+  <div class="top-actions">
+    <span class="badge badge-demo">演示版</span>
+    <span class="time" id="currentTime">--</span>
+    <button class="top-user-chip" id="topLoginBtn" onclick="handleTopAuthClick()" title="用户中心">
+      <span class="top-user-avatar">未</span>
+      <span class="top-user-name">未登录</span>
+    </button>
+  </div>
+</header>
+
+<!-- 主体布局 -->
+<div class="main-layout">
+
+  <!-- 侧边栏 -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-icon"></span>
+      <div>
+        <h1>常州医疗</h1>
+        <small>Recommendation Admin</small>
+      </div>
+    </div>
+    <a class="nav-item active" data-page="dashboard">
+      <span class="nav-icon"><span class="icon-symbol icon-dashboard"></span></span> 系统首页
+    </a>
+    <a class="nav-item" data-page="recommend">
+      <span class="nav-icon"><span class="icon-symbol icon-target"></span></span> 智能推荐
+    </a>
+    <a class="nav-item" data-page="hospitals">
+      <span class="nav-icon"><span class="icon-symbol icon-hospital"></span></span> 医院列表
+    </a>
+    <a class="nav-item" data-page="doctors">
+      <span class="nav-icon"><span class="icon-symbol icon-doctor"></span></span> 医生列表
+    </a>
+    <a class="nav-item" data-page="mine">
+      <span class="nav-icon"><span class="icon-symbol icon-users"></span></span> 我的
+    </a>
+    <a class="nav-item" data-page="api-docs">
+      <span class="nav-icon"><span class="icon-symbol icon-api"></span></span> 数据接口
+    </a>
+    <div class="sidebar-footer">
+      <span class="status-dot"></span>
+      <span>数据服务在线</span>
+    </div>
+  </nav>
+
+  <!-- 内容区域 -->
+  <main class="content" id="mainContent">
+    <div class="loading"><div class="spinner"></div><p style="margin-top:12px">系统加载中...</p></div>
+  </main>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="/static/js/leaflet.js" defer></script>
+<script src="/static/js/app.js?v=118" defer></script>
+</body>
+</html>

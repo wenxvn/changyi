@@ -1,0 +1,929 @@
+{
+  "hospital": "常州市第二人民医院",
+  "hospital_id": 2,
+  "hospital_level": "三级甲等",
+  "last_updated": "2026-06-03",
+  "total_doctors": 52,
+  "doctors": [
+    {
+      "name": "成金罗",
+      "department": "内分泌科",
+      "title": "主任医师、教授、硕导",
+      "academic_title": "教授、硕导",
+      "keywords": [
+        "糖尿病规范化治疗",
+        "早期胰岛功能恢复及并发症防治"
+      ],
+      "specialty": "糖尿病规范化治疗、早期胰岛功能恢复及并发症防治",
+      "achievements": [
+        "江苏省有突出贡献中青年专家",
+        "糖尿病研究所所长"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": "江苏省有突出贡献中青年专家，糖尿病研究所所长"
+    },
+    {
+      "name": "张允平",
+      "department": "内分泌科",
+      "title": "主任医师、副教授",
+      "academic_title": "教授",
+      "keywords": [
+        "糖尿病",
+        "甲状腺疾病",
+        "肥胖症",
+        "骨质疏松",
+        "肾上腺疾病",
+        "甲亢突眼治疗"
+      ],
+      "specialty": "糖尿病、甲状腺疾病、肥胖症、骨质疏松、肾上腺疾病、甲亢突眼治疗",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "叶新华",
+      "department": "内分泌科",
+      "title": "学科带头人",
+      "academic_title": "",
+      "keywords": [
+        "骨质疏松等代谢性骨病诊治"
+      ],
+      "specialty": "骨质疏松等代谢性骨病诊治",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "薛云",
+      "department": "内分泌科",
+      "title": "主任医师、医学硕士",
+      "academic_title": "",
+      "keywords": [
+        "糖尿病",
+        "甲状腺疾病",
+        "代谢综合征",
+        "下丘脑疾病",
+        "性腺肾上腺疾病"
+      ],
+      "specialty": "糖尿病、甲状腺疾病、代谢综合征、下丘脑疾病、性腺肾上腺疾病",
+      "achievements": [
+        "内分泌代谢科副主任"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": "内分泌代谢科副主任"
+    },
+    {
+      "name": "薄亚文",
+      "department": "骨质疏松与骨病科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "骨质疏松与骨病"
+      ],
+      "specialty": "骨质疏松与骨病",
+      "achievements": [
+        "江苏省医师协会骨质疏松分会委员"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "高剑波",
+      "department": "内分泌科",
+      "title": "主任医师、博士、副教授",
+      "academic_title": "教授",
+      "keywords": [
+        "垂体",
+        "性腺",
+        "甲状腺",
+        "肾上腺疾病",
+        "糖尿病",
+        "肥胖症",
+        "痛风",
+        "骨质疏松"
+      ],
+      "specialty": "垂体、性腺、甲状腺、肾上腺疾病、糖尿病、肥胖症、痛风、骨质疏松",
+      "achievements": [
+        "中国健康管理协会糖尿病防治委员",
+        "省新技术引进一等奖"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "张毅",
+      "department": "骨质疏松与骨病科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "骨质疏松"
+      ],
+      "specialty": "骨质疏松",
+      "achievements": [
+        "江苏省医师协会骨质疏松分会委员"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "陆曙炎",
+      "department": "泌尿外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "疑难复杂泌尿疾病",
+        "血尿",
+        "结石",
+        "膀胱癌",
+        "肾上腺疾病",
+        "前列腺疾病"
+      ],
+      "specialty": "疑难复杂泌尿疾病、血尿、结石、膀胱癌、肾上腺疾病、前列腺疾病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "陈建国",
+      "department": "泌尿外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "泌尿系恶性肿瘤",
+        "肾上腺疾病",
+        "经尿道前列腺电切等微创手术"
+      ],
+      "specialty": "泌尿系恶性肿瘤、肾上腺疾病、经尿道前列腺电切等微创手术",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "邹建纲",
+      "department": "泌尿外科",
+      "title": "副主任医师、科主任",
+      "academic_title": "",
+      "keywords": [
+        "泌尿外科结石",
+        "肿瘤",
+        "畸形及炎症"
+      ],
+      "specialty": "泌尿外科结石、肿瘤、畸形及炎症",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "周忠兴",
+      "department": "泌尿外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "肾上腺",
+        "输尿管",
+        "膀胱",
+        "前列腺疾病"
+      ],
+      "specialty": "肾上腺、输尿管、膀胱、前列腺疾病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "张焕兴",
+      "department": "泌尿外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "泌尿系感染",
+        "结石",
+        "梗阻",
+        "肿瘤",
+        "前列腺",
+        "男性生殖疾病"
+      ],
+      "specialty": "泌尿系感染、结石、梗阻、肿瘤、前列腺、男性生殖疾病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "高泉",
+      "department": "风湿免疫科",
+      "title": "主任医师、教授",
+      "academic_title": "教授",
+      "keywords": [
+        "系统性红斑狼疮",
+        "重症狼疮性肾炎",
+        "血管炎",
+        "干燥综合征",
+        "类风湿关节炎"
+      ],
+      "specialty": "系统性红斑狼疮、重症狼疮性肾炎、血管炎、干燥综合征、类风湿关节炎",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "张正宇",
+      "department": "风湿免疫科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "类风湿关节炎",
+        "系统性红斑狼疮",
+        "干燥综合征",
+        "强直性脊柱炎"
+      ],
+      "specialty": "类风湿关节炎、系统性红斑狼疮、干燥综合征、强直性脊柱炎",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "孙国民",
+      "department": "风湿免疫科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "中西医结合治疗风湿",
+        "类风湿关节炎",
+        "骨关节炎",
+        "痛风",
+        "骨质疏松"
+      ],
+      "specialty": "中西医结合治疗风湿、类风湿关节炎、骨关节炎、痛风、骨质疏松",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "周磊",
+      "department": "风湿免疫科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "血管炎",
+        "多发性肌炎",
+        "干燥综合征",
+        "系统性红斑狼疮",
+        "生物制剂治疗"
+      ],
+      "specialty": "血管炎、多发性肌炎、干燥综合征、系统性红斑狼疮、生物制剂治疗",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "王新",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "心血管疾病介入治疗（冠脉造影",
+        "PTCA",
+        "支架",
+        "起搏器植入）"
+      ],
+      "specialty": "心血管疾病介入治疗（冠脉造影、PTCA、支架、起搏器植入）",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "丁志坚",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "各种心血管疾病诊治"
+      ],
+      "specialty": "各种心血管疾病诊治",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "颜紫宁",
+      "department": "心血管内科",
+      "title": "主任医师、副教授、硕导",
+      "academic_title": "教授、硕导",
+      "keywords": [
+        "高血压",
+        "冠心病",
+        "瓣膜病",
+        "先心病",
+        "心脏超声诊断"
+      ],
+      "specialty": "高血压、冠心病、瓣膜病、先心病、心脏超声诊断",
+      "achievements": [
+        "在《中华超声影像学》等发表论文多篇"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "徐南伟",
+      "department": "骨科",
+      "title": "主任医师、副教授、硕导",
+      "academic_title": "教授、硕导",
+      "keywords": [
+        "脊柱微创",
+        "关节外科"
+      ],
+      "specialty": "脊柱微创、关节外科",
+      "achievements": [
+        "省333工程中青年科技带头人"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "王禹基",
+      "department": "骨科",
+      "title": "主任医师、博士、博士后",
+      "academic_title": "",
+      "keywords": [
+        "关节外科",
+        "关节镜外科"
+      ],
+      "specialty": "关节外科、关节镜外科",
+      "achievements": [
+        "骨科临床研究室主任"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": "骨科临床研究室主任"
+    },
+    {
+      "name": "郑栋",
+      "department": "骨科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "人工关节置换",
+        "运动创伤诊治"
+      ],
+      "specialty": "人工关节置换、运动创伤诊治",
+      "achievements": [
+        "曾在德国柏林大学Charite医院研修"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "蒋巍",
+      "department": "骨科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "骨外科"
+      ],
+      "specialty": "骨外科",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "庄超",
+      "department": "骨科",
+      "title": "副主任医师、副教授、博士、博士后",
+      "academic_title": "教授",
+      "keywords": [
+        "骨科疾病"
+      ],
+      "specialty": "骨科疾病",
+      "achievements": [
+        "主持常州市科技局项目",
+        "发表SCI论文10篇（总IF=42）"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": 10,
+      "position": ""
+    },
+    {
+      "name": "蒋羽清",
+      "department": "脊柱外科",
+      "title": "副主任医师、博士、副教授、硕导",
+      "academic_title": "教授、硕导",
+      "keywords": [
+        "脊柱微创"
+      ],
+      "specialty": "脊柱微创",
+      "achievements": [
+        "江苏省333高层次人才",
+        "SCI/核心论文10余篇"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "孙苏平",
+      "department": "肿瘤科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "常见恶性肿瘤放化疗及综合治疗"
+      ],
+      "specialty": "常见恶性肿瘤放化疗及综合治疗",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "倪昕晔",
+      "department": "肿瘤科/放疗科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "恶性肿瘤"
+      ],
+      "specialty": "恶性肿瘤",
+      "achievements": [
+        "副院长",
+        "省医学物理工程研究中心主任",
+        "SCI论文140余篇"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": 140,
+      "position": "副院长，省医学物理工程研究中心主任，SCI论文140余篇"
+    },
+    {
+      "name": "倪新初",
+      "department": "放疗科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "食管癌",
+        "肺癌",
+        "鼻咽癌",
+        "乳腺癌",
+        "直肠癌等放射治疗"
+      ],
+      "specialty": "食管癌、肺癌、鼻咽癌、乳腺癌、直肠癌等放射治疗",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "于静萍",
+      "department": "放疗科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "常见恶性肿瘤放射治疗及综合治疗"
+      ],
+      "specialty": "常见恶性肿瘤放射治疗及综合治疗",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "蒲骁麟",
+      "department": "肿瘤内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "肿瘤内科治疗"
+      ],
+      "specialty": "肿瘤内科治疗",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "罗居东",
+      "department": "放疗科",
+      "title": "研究员、副主任医师、博士、博士后",
+      "academic_title": "",
+      "keywords": [
+        "肿瘤放射治疗"
+      ],
+      "specialty": "肿瘤放射治疗",
+      "achievements": [
+        "主持国家自然基金3项",
+        "SCI一区论文20余篇",
+        "省科技进步奖2项"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "冯曦",
+      "department": "肾脏内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "急慢性肾衰",
+        "肾病综合征",
+        "狼疮性肾炎"
+      ],
+      "specialty": "急慢性肾衰、肾病综合征、狼疮性肾炎",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "冯丽萍",
+      "department": "肾脏内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "急慢性肾小球肾炎",
+        "尿毒症",
+        "糖尿病肾病"
+      ],
+      "specialty": "急慢性肾小球肾炎、尿毒症、糖尿病肾病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "俞小卫",
+      "department": "呼吸内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "支气管哮喘",
+        "COPD",
+        "慢性咳嗽",
+        "呼吸道肿瘤介入治疗"
+      ],
+      "specialty": "支气管哮喘、COPD、慢性咳嗽、呼吸道肿瘤介入治疗",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "殷小伟",
+      "department": "呼吸内科",
+      "title": "主任医师、硕导",
+      "academic_title": "硕导",
+      "keywords": [
+        "肺癌诊治",
+        "纤维支气管镜介入治疗"
+      ],
+      "specialty": "肺癌诊治、纤维支气管镜介入治疗",
+      "achievements": [
+        "省卫生厅新技术引进一等奖1项",
+        "二等奖2项",
+        "市科技进步奖2项"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "郭盛华",
+      "department": "皮肤科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "疑难杂症",
+        "性病",
+        "结缔组织病",
+        "血管炎"
+      ],
+      "specialty": "疑难杂症、性病、结缔组织病、血管炎",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "张炯",
+      "department": "皮肤科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "红斑狼疮",
+        "皮肌炎",
+        "皮肤癌",
+        "重症药疹"
+      ],
+      "specialty": "红斑狼疮、皮肌炎、皮肤癌、重症药疹",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "沈祖法",
+      "department": "中医科",
+      "title": "主任中医师（省名中医）",
+      "academic_title": "",
+      "keywords": [
+        "食管炎",
+        "慢性胃炎",
+        "哮喘",
+        "冠心病",
+        "痛风",
+        "系统性红斑狼疮"
+      ],
+      "specialty": "食管炎、慢性胃炎、哮喘、冠心病、痛风、系统性红斑狼疮",
+      "achievements": [
+        "江苏省名中医"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "蒋浩清",
+      "department": "中医科",
+      "title": "主任中医师（市名中医）",
+      "academic_title": "",
+      "keywords": [
+        "代谢综合征",
+        "高血压",
+        "脑卒中",
+        "慢性胃炎"
+      ],
+      "specialty": "代谢综合征、高血压、脑卒中、慢性胃炎",
+      "achievements": [
+        "常州市名中医"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "方建安",
+      "department": "中医科",
+      "title": "主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "急慢性胃炎",
+        "溃疡性结肠炎",
+        "风湿性关节炎"
+      ],
+      "specialty": "急慢性胃炎、溃疡性结肠炎、风湿性关节炎",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "薛盘金",
+      "department": "中医科",
+      "title": "主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "痛风",
+        "瘘管",
+        "丹毒",
+        "慢性溃疡"
+      ],
+      "specialty": "痛风、瘘管、丹毒、慢性溃疡",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "董贯忠",
+      "department": "神经内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "神经内科疾病"
+      ],
+      "specialty": "神经内科疾病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "韩文敏",
+      "department": "血液科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "血液病"
+      ],
+      "specialty": "血液病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "王宏",
+      "department": "口腔科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "口腔颌面外科",
+        "口腔内科",
+        "口腔修复"
+      ],
+      "specialty": "口腔颌面外科、口腔内科、口腔修复",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "郑亚峰",
+      "department": "妇产科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "妇产科疾病"
+      ],
+      "specialty": "妇产科疾病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "钟阿红",
+      "department": "妇产科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "妇产科疾病"
+      ],
+      "specialty": "妇产科疾病",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "毛由军",
+      "department": "普通外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "普通外科"
+      ],
+      "specialty": "普通外科",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "李圆",
+      "department": "普通外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "普通外科"
+      ],
+      "specialty": "普通外科",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "颜晓毅",
+      "department": "普通外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "普通外科"
+      ],
+      "specialty": "普通外科",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "杨敏",
+      "department": "超声医学",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "超声诊断"
+      ],
+      "specialty": "超声诊断",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "朱玉华",
+      "department": "骨外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "骨外科"
+      ],
+      "specialty": "骨外科",
+      "achievements": [],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    },
+    {
+      "name": "芮逸飞",
+      "department": "心血管内科",
+      "title": "研究员",
+      "academic_title": "",
+      "keywords": [
+        "超声心动图",
+        "斑点追踪",
+        "心血管系统疾病"
+      ],
+      "specialty": "超声心动图、斑点追踪、心血管系统疾病",
+      "achievements": [
+        "总发文49篇",
+        "H指数7",
+        "主持江苏省自然科学基金"
+      ],
+      "national_funding": false,
+      "patents": null,
+      "sci_papers": null,
+      "position": ""
+    }
+  ]
+}

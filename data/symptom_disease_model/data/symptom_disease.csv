@@ -1,0 +1,16 @@
+disease,symptoms
+common_cold,runny_nose;sneezing;sore_throat;mild_cough;low_fever
+common_cold,runny_nose;nasal_congestion;sneezing;headache;mild_cough
+common_cold,sore_throat;runny_nose;fatigue;sneezing
+influenza,high_fever;muscle_ache;fatigue;dry_cough;headache
+influenza,high_fever;chills;fatigue;sore_throat;dry_cough
+influenza,muscle_ache;high_fever;headache;loss_of_appetite;fatigue
+gastritis,upper_abdominal_pain;nausea;acid_reflux;bloating;loss_of_appetite
+gastritis,nausea;vomiting;upper_abdominal_pain;bloating
+gastritis,acid_reflux;belching;upper_abdominal_pain;nausea
+migraine,one_sided_headache;nausea;light_sensitivity;sound_sensitivity
+migraine,throbbing_headache;visual_aura;nausea;light_sensitivity
+migraine,headache;vomiting;light_sensitivity;worse_with_activity
+allergic_rhinitis,sneezing;runny_nose;itchy_eyes;nasal_congestion
+allergic_rhinitis,itchy_nose;sneezing;watery_eyes;runny_nose
+allergic_rhinitis,nasal_congestion;sneezing;itchy_eyes;postnasal_drip

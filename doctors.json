@@ -1,0 +1,1246 @@
+{
+  "hospital": "常州市第一人民医院",
+  "hospital_level": "三级甲等",
+  "last_updated": "2026-06-03",
+  "total_doctors": 123,
+  "doctors": [
+    {
+      "name": "孙建辉",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "教授",
+      "keywords": [
+        "冠脉造影",
+        "支架置入",
+        "起搏器置入",
+        "冠心病",
+        "高血压"
+      ]
+    },
+    {
+      "name": "周瑞珏",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "教授",
+      "keywords": [
+        "心律失常",
+        "心绞痛",
+        "动脉粥样硬化",
+        "心肌梗死"
+      ]
+    },
+    {
+      "name": "许国锋",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "教授",
+      "keywords": [
+        "心脏起搏治疗",
+        "冠心病",
+        "高血压",
+        "心力衰竭"
+      ]
+    },
+    {
+      "name": "杨玲",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "副教授/博士",
+      "keywords": [
+        "心律失常射频消融",
+        "房颤",
+        "起搏器植入",
+        "介入治疗"
+      ]
+    },
+    {
+      "name": "邵山",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "keywords": [
+        "心律失常",
+        "射频消融",
+        "起搏技术"
+      ]
+    },
+    {
+      "name": "成益",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "keywords": [
+        "冠心病",
+        "高血压",
+        "心衰",
+        "心律失常射频消融"
+      ]
+    },
+    {
+      "name": "白江涛",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "博士",
+      "keywords": [
+        "高血压",
+        "冠心病",
+        "心肌病",
+        "心功能不全"
+      ]
+    },
+    {
+      "name": "王卫明",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "keywords": [
+        "房颤射频消融",
+        "左心耳封堵"
+      ]
+    },
+    {
+      "name": "万鹏",
+      "department": "心血管内科",
+      "title": "主治医师"
+    },
+    {
+      "name": "张胜",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "keywords": [
+        "心电诊断"
+      ]
+    },
+    {
+      "name": "施春燕",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "keywords": [
+        "心电诊断"
+      ]
+    },
+    {
+      "name": "韦晓琴",
+      "department": "心血管内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "张晓膺",
+      "department": "心脏大血管外科",
+      "title": "主任医师",
+      "academic_title": "教授/博导",
+      "position": "心胸外科主任",
+      "surgery_count": 5000,
+      "surgery_count_note": "数千例心脏手术",
+      "sci_papers": 30,
+      "national_funding": true,
+      "awards": [
+        "江苏省科技进步二等奖",
+        "省卫生厅新技术引进一等奖",
+        "常州市科技进步一等奖"
+      ],
+      "honors": [
+        "国务院政府特殊津贴",
+        "省333工程培养对象"
+      ],
+      "keywords": [
+        "心脏移植",
+        "瓣膜成形术",
+        "冠脉搭桥",
+        "肺移植",
+        "微创心脏手术"
+      ]
+    },
+    {
+      "name": "狄冬梅",
+      "department": "心脏大血管外科",
+      "title": "主任医师",
+      "academic_title": "教授/博导",
+      "surgery_count_note": "达芬奇机器人手术",
+      "sci_papers": 10,
+      "total_papers": 20,
+      "awards": [
+        "江苏省科技进步二等奖",
+        "江苏省医学新技术引进一等奖2项"
+      ],
+      "honors": [
+        "省333工程",
+        "省卫生拔尖人才",
+        "全国巾帼建功标兵"
+      ],
+      "keywords": [
+        "心脏瓣膜病",
+        "冠心病手术",
+        "房颤消融",
+        "达芬奇机器人",
+        "胸腔镜肺癌",
+        "食管癌根治术"
+      ]
+    },
+    {
+      "name": "王志刚",
+      "department": "心脏大血管外科",
+      "title": "主任医师",
+      "academic_title": "博士",
+      "sci_papers": 5,
+      "awards": [
+        "省科学技术进步二等奖"
+      ],
+      "keywords": [
+        "机器人辅助肺癌",
+        "食管癌手术",
+        "纵隔肿瘤微创"
+      ]
+    },
+    {
+      "name": "蒋南青",
+      "department": "心脏大血管外科",
+      "title": "主任医师",
+      "keywords": [
+        "肺癌",
+        "肺结节",
+        "纵隔肿瘤",
+        "手汗症微创"
+      ]
+    },
+    {
+      "name": "钱永祥",
+      "department": "心脏大血管外科",
+      "title": "主任医师",
+      "keywords": [
+        "食管癌",
+        "肺癌",
+        "贲门癌",
+        "纵隔肿瘤",
+        "先天性心脏病"
+      ]
+    },
+    {
+      "name": "史君涛",
+      "department": "心脏大血管外科",
+      "title": "主任医师",
+      "keywords": [
+        "胸心外科"
+      ]
+    },
+    {
+      "name": "陈炳芳",
+      "department": "消化内科",
+      "title": "主任医师",
+      "total_papers": 9,
+      "awards": [
+        "省卫生厅新技术引进奖一等奖",
+        "二等奖"
+      ],
+      "keywords": [
+        "超声内镜",
+        "EUS",
+        "内镜下息肉摘除",
+        "食管静脉曲张硬化治疗",
+        "早癌筛查"
+      ]
+    },
+    {
+      "name": "杨璟",
+      "department": "消化内科",
+      "title": "主任医师"
+    },
+    {
+      "name": "王庆娥",
+      "department": "消化内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "刘文辉",
+      "department": "消化内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "戴娟",
+      "department": "消化内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "朱琴琴",
+      "department": "消化内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "左学勇",
+      "department": "消化内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "练学淦",
+      "department": "神经内科",
+      "title": "主任医师",
+      "academic_title": "副教授/硕博导/博士",
+      "surgery_count": 7000,
+      "surgery_count_note": "近7000例脑血管病神经介入",
+      "sci_papers": 13,
+      "total_papers": 30,
+      "awards": [
+        "常州市科技进步奖二等奖"
+      ],
+      "keywords": [
+        "脑血管介入",
+        "颅内外血管支架",
+        "经桡动脉脑血管造影"
+      ]
+    },
+    {
+      "name": "毛可适",
+      "department": "神经内科",
+      "title": "主任医师"
+    },
+    {
+      "name": "沙洛林",
+      "department": "神经内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "张浩",
+      "department": "神经内科",
+      "title": "副主任医师",
+      "keywords": [
+        "脑电诊断"
+      ]
+    },
+    {
+      "name": "魏宁",
+      "department": "神经内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "曹立平",
+      "department": "神经内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "彭亚",
+      "department": "神经外科",
+      "title": "主任医师",
+      "academic_title": "教授",
+      "total_papers": 30,
+      "sci_papers": 2,
+      "awards": [
+        "省卫生厅新技术引进一等奖",
+        "市科技进步一等奖"
+      ],
+      "keywords": [
+        "颅内动脉瘤栓塞",
+        "脑血管畸形栓塞",
+        "机械取栓",
+        "脑血管介入"
+      ]
+    },
+    {
+      "name": "陈学敏",
+      "department": "肝胆胰外科",
+      "title": "主任医师",
+      "academic_title": "博导/博士",
+      "position": "大外科主任",
+      "surgery_count": 6000,
+      "surgery_count_note": "6000余例手术无严重并发症",
+      "sci_papers": 50,
+      "total_papers": 60,
+      "patents": 4,
+      "awards": [
+        "省市级新技术引进奖8项"
+      ],
+      "keywords": [
+        "达芬奇机器人",
+        "腹腔镜胰十二指肠切除术",
+        "肝胆胰微创手术"
+      ]
+    },
+    {
+      "name": "陈卫波",
+      "department": "肝胆胰外科",
+      "title": "副主任医师",
+      "academic_title": "硕导/博士",
+      "sci_papers": 10,
+      "total_papers": 20,
+      "national_funding": true,
+      "awards": [
+        "省新技术引进二等奖",
+        "市新技术引进一等奖2项"
+      ],
+      "keywords": [
+        "腹腔镜肝胆胰",
+        "机器人手术",
+        "肝胆胰肿瘤"
+      ]
+    },
+    {
+      "name": "吴宝强",
+      "department": "肝胆胰外科",
+      "title": "主任医师",
+      "academic_title": "博士",
+      "sci_papers": 3,
+      "total_papers": 20,
+      "awards": [
+        "省新技术引进二等奖",
+        "市科技进步二等奖"
+      ],
+      "keywords": [
+        "腹腔镜手术",
+        "肝胆胰脾",
+        "甲状腺",
+        "疝气"
+      ]
+    },
+    {
+      "name": "吴昌平",
+      "department": "肿瘤科",
+      "title": "主任医师",
+      "academic_title": "教授/博导/博士",
+      "position": "副院长/肿瘤科主任",
+      "sci_papers": 100,
+      "total_papers": 150,
+      "patents": 6,
+      "national_funding": true,
+      "awards": [
+        "中华医学科技奖",
+        "教育部科技进步奖",
+        "江苏省科技进步奖3项",
+        "江苏医学科技奖3项"
+      ],
+      "honors": [
+        "国务院政府特殊津贴",
+        "省有突出贡献中青年专家",
+        "省科技领军人才"
+      ],
+      "keywords": [
+        "肿瘤免疫治疗",
+        "生物治疗",
+        "个体化治疗",
+        "时辰化疗",
+        "微创治疗",
+        "介入治疗"
+      ]
+    },
+    {
+      "name": "周军",
+      "department": "呼吸与危重症医学科",
+      "title": "主任医师",
+      "academic_title": "副教授/硕博导",
+      "position": "院长/学科带头人",
+      "sci_papers": 14,
+      "total_papers": 27,
+      "patents": 1,
+      "awards": [
+        "省医学新技术引进奖二等奖",
+        "市科技进步奖三等奖",
+        "市医学新技术引进奖一等奖"
+      ],
+      "keywords": [
+        "呼吸内镜介入",
+        "间质性肺疾病",
+        "呼吸衰竭",
+        "肺部感染"
+      ]
+    },
+    {
+      "name": "李翀",
+      "department": "呼吸与危重症医学科",
+      "title": "主任医师",
+      "academic_title": "副教授/硕博导/博士",
+      "position": "科室主任",
+      "sci_papers": 14,
+      "national_funding": true,
+      "awards": [
+        "省新技术引进二等奖",
+        "市科技进步三等奖"
+      ],
+      "honors": [
+        "2022年常州市突出贡献人才"
+      ],
+      "keywords": [
+        "肺癌早期诊断",
+        "精准治疗",
+        "睡眠呼吸暂停",
+        "靶向治疗"
+      ]
+    },
+    {
+      "name": "王智刚",
+      "department": "呼吸与危重症医学科",
+      "title": "主任医师",
+      "academic_title": "教授",
+      "keywords": [
+        "中西医整合",
+        "间质性肺炎",
+        "肺纤维化"
+      ]
+    },
+    {
+      "name": "张素娟",
+      "department": "呼吸与危重症医学科",
+      "title": "主任医师",
+      "academic_title": "副教授",
+      "keywords": [
+        "肺栓塞",
+        "胸膜疾病",
+        "支气管哮喘",
+        "呼吸衰竭"
+      ]
+    },
+    {
+      "name": "刘皓",
+      "department": "呼吸与危重症医学科",
+      "title": "主任医师",
+      "academic_title": "副教授"
+    },
+    {
+      "name": "邱慧",
+      "department": "呼吸与危重症医学科",
+      "title": "主任医师",
+      "academic_title": "副教授",
+      "keywords": [
+        "肺间质性疾病",
+        "肺结节",
+        "慢阻肺",
+        "支气管哮喘"
+      ]
+    },
+    {
+      "name": "冯春来",
+      "department": "呼吸与危重症医学科",
+      "title": "主任医师"
+    },
+    {
+      "name": "杨敏",
+      "department": "肾内科",
+      "title": "主任医师",
+      "academic_title": "博导/副教授/博士后",
+      "position": "肾内科及血液净化中心主任",
+      "honors": [
+        "省333工程培养对象"
+      ],
+      "keywords": [
+        "慢性肾炎",
+        "慢性肾衰竭",
+        "腹膜透析"
+      ]
+    },
+    {
+      "name": "潘家荣",
+      "department": "肾内科",
+      "title": "主任医师",
+      "position": "原肾内科主任",
+      "keywords": [
+        "血液透析",
+        "腹膜透析",
+        "肾小球肾炎",
+        "肾衰竭"
+      ]
+    },
+    {
+      "name": "向莉",
+      "department": "肾内科",
+      "title": "主任医师",
+      "patient_rating": 9.5,
+      "keywords": [
+        "动静脉瘘术",
+        "腹透置管术",
+        "肾活检",
+        "肾囊肿穿刺"
+      ]
+    },
+    {
+      "name": "蒋亚平",
+      "department": "肾内科",
+      "title": "主任医师",
+      "keywords": [
+        "肾小球疾病",
+        "继发性肾病",
+        "尿路感染",
+        "慢性肾衰竭"
+      ]
+    },
+    {
+      "name": "高小夏",
+      "department": "肾内科",
+      "title": "主任医师"
+    },
+    {
+      "name": "李秀荣",
+      "department": "肾内科",
+      "title": "主任医师",
+      "keywords": [
+        "动静脉内瘘手术",
+        "深静脉置管",
+        "尿毒症"
+      ]
+    },
+    {
+      "name": "狄佳",
+      "department": "肾内科",
+      "title": "主任医师",
+      "academic_title": "博士",
+      "sci_papers": 20,
+      "patents": 1,
+      "keywords": [
+        "急慢性肾脏病",
+        "肾衰竭",
+        "肾病综合征"
+      ]
+    },
+    {
+      "name": "周华",
+      "department": "肾内科",
+      "title": "副主任医师",
+      "academic_title": "博士",
+      "keywords": [
+        "糖尿病肾病",
+        "血管通路"
+      ]
+    },
+    {
+      "name": "诸葛亚",
+      "department": "肾内科",
+      "title": "副主任医师",
+      "keywords": [
+        "难治性肾小球肾病",
+        "腹膜透析并发症"
+      ]
+    },
+    {
+      "name": "刘华",
+      "department": "肾内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "邹芸",
+      "department": "肾内科",
+      "title": "副主任医师",
+      "keywords": [
+        "腹膜透析"
+      ]
+    },
+    {
+      "name": "孙妍蓓",
+      "department": "肾内科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "吴敏",
+      "department": "风湿免疫科",
+      "title": "主任医师",
+      "academic_title": "博导/博士",
+      "position": "免疫风湿科主任",
+      "sci_papers": 5,
+      "total_papers": 40,
+      "keywords": [
+        "系统性红斑狼疮",
+        "类风湿关节炎",
+        "干燥综合征",
+        "血管炎",
+        "不明原因发热"
+      ]
+    },
+    {
+      "name": "陆亚华",
+      "department": "风湿免疫科",
+      "title": "主任医师",
+      "academic_title": "教授/硕导",
+      "total_papers": 30,
+      "honors": [
+        "常州市831工程"
+      ],
+      "keywords": [
+        "系统性红斑狼疮",
+        "类风湿关节炎",
+        "强直性脊柱炎",
+        "痛风"
+      ]
+    },
+    {
+      "name": "梁小红",
+      "department": "风湿免疫科",
+      "title": "主任医师",
+      "keywords": [
+        "系统性红斑狼疮",
+        "皮肌炎",
+        "痛风"
+      ]
+    },
+    {
+      "name": "潘解萍",
+      "department": "风湿免疫科",
+      "title": "主任医师",
+      "keywords": [
+        "不明原因发热",
+        "红斑狼疮",
+        "痛风性关节炎"
+      ]
+    },
+    {
+      "name": "何小舟",
+      "department": "泌尿外科",
+      "title": "主任医师",
+      "academic_title": "教授"
+    },
+    {
+      "name": "曹赟杰",
+      "department": "泌尿外科",
+      "title": "主任医师",
+      "academic_title": "副教授/博士",
+      "sci_papers": 3,
+      "total_papers": 10,
+      "awards": [
+        "江苏省医学科技奖",
+        "常州市科技进步奖"
+      ],
+      "keywords": [
+        "达芬奇机器人",
+        "前列腺癌根治术",
+        "肾部分切除术",
+        "经皮肾镜碎石",
+        "钬激光剜除"
+      ]
+    },
+    {
+      "name": "张波",
+      "department": "泌尿外科",
+      "title": "主任医师"
+    },
+    {
+      "name": "吴亮",
+      "department": "骨科",
+      "title": "主任医师",
+      "academic_title": "硕导/博士",
+      "sci_papers": 3,
+      "total_papers": 20,
+      "keywords": [
+        "脊柱侧凸矫形",
+        "颈椎前路手术",
+        "椎间孔镜",
+        "腰椎内固定"
+      ]
+    },
+    {
+      "name": "刘志伟",
+      "department": "骨科",
+      "title": "主任医师",
+      "keywords": [
+        "脊柱外科"
+      ]
+    },
+    {
+      "name": "王昆",
+      "department": "骨科",
+      "title": "主任医师",
+      "keywords": [
+        "中医骨伤科"
+      ]
+    },
+    {
+      "name": "徐鹏",
+      "department": "骨科",
+      "title": "主任医师"
+    },
+    {
+      "name": "孙煜",
+      "department": "骨科",
+      "title": "主任医师"
+    },
+    {
+      "name": "周鹏",
+      "department": "骨科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "邹红军",
+      "department": "骨科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "刘杰",
+      "department": "骨科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "王永清",
+      "department": "儿科",
+      "title": "主任医师",
+      "academic_title": "副教授/硕导/博士",
+      "keywords": [
+        "儿科危重症",
+        "川崎病",
+        "过敏性疾病",
+        "哮喘"
+      ]
+    },
+    {
+      "name": "倪慧萍",
+      "department": "儿科",
+      "title": "主任医师",
+      "academic_title": "硕导/博士",
+      "position": "儿科/新生儿科主任",
+      "keywords": [
+        "支气管哮喘",
+        "慢性咳嗽"
+      ]
+    },
+    {
+      "name": "严宝才",
+      "department": "儿科",
+      "title": "主任医师",
+      "keywords": [
+        "小儿肾脏病",
+        "儿童遗尿症"
+      ]
+    },
+    {
+      "name": "顾燕明",
+      "department": "儿科",
+      "title": "主任医师",
+      "keywords": [
+        "小儿呼吸系统疾病",
+        "慢性咳嗽"
+      ]
+    },
+    {
+      "name": "朱红",
+      "department": "儿科",
+      "title": "主任医师",
+      "keywords": [
+        "儿童内分泌",
+        "身材矮小",
+        "性早熟",
+        "甲状腺疾病"
+      ]
+    },
+    {
+      "name": "王劲波",
+      "department": "儿科",
+      "title": "主任医师",
+      "keywords": [
+        "呼吸系统疾病"
+      ]
+    },
+    {
+      "name": "吴爱勤",
+      "department": "儿科",
+      "title": "主任医师",
+      "keywords": [
+        "小儿血液系统疾病",
+        "白血病",
+        "贫血"
+      ]
+    },
+    {
+      "name": "杨文",
+      "department": "儿科",
+      "title": "主任医师",
+      "keywords": [
+        "小儿神经系统疾病",
+        "癫痫"
+      ]
+    },
+    {
+      "name": "庞高峰",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "脑炎",
+        "热性惊厥",
+        "癫痫",
+        "抽动症"
+      ]
+    },
+    {
+      "name": "李燕林",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "性早熟",
+        "肥胖",
+        "身材矮小"
+      ]
+    },
+    {
+      "name": "冯勤妹",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "呼吸道感染",
+        "自身免疫性疾病",
+        "川崎病"
+      ]
+    },
+    {
+      "name": "石筱蕾",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "儿童哮喘"
+      ]
+    },
+    {
+      "name": "朱迪卿",
+      "department": "儿科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "陈小奕",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "儿童胃肠疾病",
+        "新生儿疾病"
+      ]
+    },
+    {
+      "name": "范勤",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "消化系统疾病"
+      ]
+    },
+    {
+      "name": "李志梅",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "支气管哮喘",
+        "慢性咳嗽"
+      ]
+    },
+    {
+      "name": "曹晓军",
+      "department": "儿科",
+      "title": "副主任医师",
+      "keywords": [
+        "小儿危重症",
+        "小儿心脏疾病"
+      ]
+    },
+    {
+      "name": "庄一波",
+      "department": "儿科",
+      "title": "主治医师",
+      "keywords": [
+        "儿童常见病",
+        "多动症",
+        "抽动症",
+        "遗尿"
+      ]
+    },
+    {
+      "name": "郭彩霞",
+      "department": "妇产科",
+      "title": "主任医师",
+      "academic_title": "教授",
+      "position": "妇科主任",
+      "keywords": [
+        "妇科肿瘤",
+        "妇科内分泌",
+        "腔镜技术"
+      ]
+    },
+    {
+      "name": "黄亚青",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "妇科肿瘤",
+        "妇科炎症",
+        "月经失调"
+      ]
+    },
+    {
+      "name": "江希萍",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "妇科肿瘤",
+        "妇科内分泌"
+      ]
+    },
+    {
+      "name": "刘霞",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "妇科良恶性肿瘤",
+        "不孕症",
+        "内窥镜"
+      ]
+    },
+    {
+      "name": "杨淑兰",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "妇科肿瘤",
+        "宫腔镜",
+        "腹腔镜"
+      ]
+    },
+    {
+      "name": "蒋国华",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "妇科肿瘤",
+        "不孕症",
+        "妇科腔镜"
+      ]
+    },
+    {
+      "name": "徐云",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "妇科腔镜手术",
+        "肿瘤治疗"
+      ]
+    },
+    {
+      "name": "高红艳",
+      "department": "妇产科",
+      "title": "副主任医师",
+      "keywords": [
+        "不孕不育",
+        "妇科肿瘤",
+        "妇科腔镜"
+      ]
+    },
+    {
+      "name": "黄钧",
+      "department": "妇产科",
+      "title": "主任医师",
+      "position": "产科副主任",
+      "keywords": [
+        "高危妊娠",
+        "妊高症",
+        "妊娠期糖尿病",
+        "前置胎盘"
+      ]
+    },
+    {
+      "name": "叶文凤",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "妇科肿瘤",
+        "盆底功能障碍"
+      ]
+    },
+    {
+      "name": "陈丽云",
+      "department": "妇产科",
+      "title": "主任医师",
+      "keywords": [
+        "产科"
+      ]
+    },
+    {
+      "name": "顾乔",
+      "department": "妇产科",
+      "title": "副主任医师",
+      "keywords": [
+        "产检",
+        "三维排畸",
+        "镇痛分娩"
+      ]
+    },
+    {
+      "name": "朱丽娟",
+      "department": "妇产科",
+      "title": "副主任医师",
+      "keywords": [
+        "宫腹腔镜手术",
+        "妇科恶性肿瘤"
+      ]
+    },
+    {
+      "name": "徐天舒",
+      "department": "口腔科",
+      "title": "主任医师",
+      "academic_title": "硕导",
+      "keywords": [
+        "颌面部肿瘤",
+        "颌面部损伤",
+        "颌面部畸形"
+      ]
+    },
+    {
+      "name": "路和平",
+      "department": "口腔科",
+      "title": "主任医师",
+      "keywords": [
+        "颌面部肿瘤手术",
+        "创伤救治",
+        "畸形整复"
+      ]
+    },
+    {
+      "name": "承翼南",
+      "department": "口腔科",
+      "title": "主任医师",
+      "keywords": [
+        "颌面部肿瘤手术",
+        "牙槽外科"
+      ]
+    },
+    {
+      "name": "王立强",
+      "department": "口腔科",
+      "title": "主任医师",
+      "keywords": [
+        "颌面部肿瘤",
+        "创伤救治"
+      ]
+    },
+    {
+      "name": "刘华联",
+      "department": "口腔科",
+      "title": "副主任医师",
+      "academic_title": "硕导",
+      "keywords": [
+        "颌面部头颈肿瘤",
+        "种植牙"
+      ]
+    },
+    {
+      "name": "羊一飞",
+      "department": "口腔科",
+      "title": "副主任医师",
+      "keywords": [
+        "颌面部肿瘤手术"
+      ]
+    },
+    {
+      "name": "胡蓉",
+      "department": "口腔科",
+      "title": "主任医师",
+      "keywords": [
+        "口腔内科"
+      ]
+    },
+    {
+      "name": "戈杰",
+      "department": "口腔科",
+      "title": "副主任医师",
+      "keywords": [
+        "口腔颌面外科"
+      ]
+    },
+    {
+      "name": "王国云",
+      "department": "口腔科",
+      "title": "副主任医师",
+      "keywords": [
+        "种植牙修复"
+      ]
+    },
+    {
+      "name": "薛海翔",
+      "department": "耳鼻咽喉科",
+      "title": "主任医师",
+      "academic_title": "硕导/博士",
+      "keywords": [
+        "中耳炎手术",
+        "耳显微外科",
+        "眩晕",
+        "耳鸣耳聋",
+        "鼻窦炎",
+        "鼻息肉"
+      ]
+    },
+    {
+      "name": "王晓晔",
+      "department": "耳鼻咽喉科",
+      "title": "主任医师"
+    },
+    {
+      "name": "李文静",
+      "department": "耳鼻咽喉科",
+      "title": "副主任医师"
+    },
+    {
+      "name": "刘瑶",
+      "department": "眼科",
+      "title": "主任医师",
+      "academic_title": "教授"
+    },
+    {
+      "name": "吕旭菁",
+      "department": "眼科",
+      "title": "主任医师"
+    },
+    {
+      "name": "蒋丽萍",
+      "department": "眼科",
+      "title": "主任医师"
+    },
+    {
+      "name": "王祁",
+      "department": "介入放射科",
+      "title": "主任医师",
+      "academic_title": "硕导",
+      "position": "科室主任",
+      "sci_papers": 17,
+      "total_papers": 30,
+      "awards": [
+        "省卫健委新技术引进一等奖2项",
+        "省卫健委新技术引进二等奖2项"
+      ],
+      "keywords": [
+        "肝癌介入",
+        "肿瘤介入",
+        "靶向治疗",
+        "免疫治疗"
+      ]
+    },
+    {
+      "name": "蒋晓红",
+      "department": "内分泌代谢科",
+      "title": "主任医师",
+      "keywords": [
+        "内分泌代谢疾病"
+      ]
+    },
+    {
+      "name": "刘震宇",
+      "department": "内分泌代谢科",
+      "title": "主任医师"
+    },
+    {
+      "name": "石欢",
+      "department": "内分泌代谢科",
+      "title": "副主任医师",
+      "position": "健康管理中心负责人"
+    },
+    {
+      "name": "张汝芝",
+      "department": "皮肤科",
+      "title": "主任医师",
+      "academic_title": "博导"
+    },
+    {
+      "name": "狄佳",
+      "department": "感染性疾病科",
+      "title": "主任医师",
+      "academic_title": "硕导/博士",
+      "sci_papers": 20,
+      "patents": 1,
+      "keywords": [
+        "感染性疾病",
+        "肾脏病",
+        "抗生素管理"
+      ]
+    },
+    {
+      "name": "沈江",
+      "department": "麻醉科",
+      "title": "主任医师",
+      "keywords": [
+        "临床麻醉",
+        "急救复苏"
+      ]
+    }
+  ]
+}

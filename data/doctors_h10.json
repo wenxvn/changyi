@@ -1,0 +1,305 @@
+{
+  "hospital_id": 10,
+  "hospital": "溧阳市人民医院",
+  "source": "溧阳市人民医院_医生信息汇总表.csv",
+  "doctors": [
+    {
+      "name": "王俊宏",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "博士、硕导、教授",
+      "keywords": [
+        "各种复杂冠心病的介入诊治",
+        "心血管内科"
+      ],
+      "specialty": "各种复杂冠心病的介入诊治",
+      "detail": "各种复杂冠心病的介入诊治；江苏省医学重点人才、省333高层次人才、省六大高峰人才；主持国自然3项，SCI论文20余篇，国家发明专利1项",
+      "outpatient_time": "溧阳分院：周三上午；省人民医院：周五上午",
+      "position": "博士、教授、主任医师、党委书记、硕导",
+      "awards": [
+        "江苏省医学重点人才、省333高层次人才、省六大高峰人才"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": 20,
+      "total_papers": 20,
+      "national_funding": true,
+      "patents": 1,
+      "photo_url": "/static/images/doctors/liyang_people/001_%E7%8E%8B%E4%BF%8A%E5%AE%8F_1108872.png",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "吕珊",
+      "department": "老年医学科",
+      "title": "副主任医师",
+      "academic_title": "硕导、副教授",
+      "keywords": [
+        "II型糖尿病",
+        "甲状腺疾病",
+        "痛风",
+        "骨质疏松",
+        "高血压等老年性疾病",
+        "老年医学科"
+      ],
+      "specialty": "II型糖尿病、甲状腺疾病、痛风、骨质疏松、高血压等老年性疾病",
+      "detail": "II型糖尿病、甲状腺疾病、痛风、骨质疏松、高血压等老年性疾病；江苏省老年医学学会急危重症青委；主持国自然2项，SCI及核心期刊论文多篇，省医学科技奖二等奖1项",
+      "outpatient_time": "溧阳分院：周三上午；省人民医院：周一上午",
+      "position": "副主任医师、副教授、副院长、老年医学科主任、硕导",
+      "awards": [
+        "江苏省老年医学学会急危重症青委"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": null,
+      "total_papers": null,
+      "national_funding": true,
+      "patents": null,
+      "photo_url": "/static/images/doctors/liyang_people/002_%E5%90%95%E7%8F%8A_1108335.jpg",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "孙彬",
+      "department": "肾脏科",
+      "title": "主任医师",
+      "academic_title": "博士、研究生导师、副教授",
+      "keywords": [
+        "原发/继发性肾小球疾病",
+        "肾活检",
+        "血管通路手术",
+        "肾脏科"
+      ],
+      "specialty": "原发/继发性肾小球疾病、肾活检、血管通路手术",
+      "detail": "原发/继发性肾小球疾病、肾活检、血管通路手术；华东肾脏病学会委员；主持省级课题1项，SCI及中华级论文10余篇，省科技进步二等奖1项",
+      "outpatient_time": "溧阳分院：每月第2周周二上午；省人民医院：周一下午/周三上午",
+      "position": "博士、主任医师、副教授、研究生导师",
+      "awards": [
+        "华东肾脏病学会委员"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": 10,
+      "total_papers": 10,
+      "national_funding": false,
+      "patents": null,
+      "photo_url": "/static/images/doctors/liyang_people/003_%E5%AD%99%E5%BD%AC_1109059.png",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "崔岱",
+      "department": "内分泌科",
+      "title": "主任医师",
+      "academic_title": "硕导、副教授",
+      "keywords": [
+        "糖尿病及并发症",
+        "甲亢甲减",
+        "甲状腺结节",
+        "内分泌科"
+      ],
+      "specialty": "糖尿病及并发症、甲亢甲减、甲状腺结节",
+      "detail": "糖尿病及并发症、甲亢甲减、甲状腺结节；省六大人才高峰培养对象、中华内分泌学会高尿酸学组委员；主持国自然1项、省市级课题4项，SCI论文10余篇",
+      "outpatient_time": "溧阳分院：每月第三周周五上午；省人民医院：周一/二/四上午",
+      "position": "主任医师、副教授、硕导、省人民医院内分泌科副主任",
+      "awards": [
+        "省六大人才高峰培养对象、中华内分泌学会高尿酸学组委员"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": 10,
+      "total_papers": 10,
+      "national_funding": true,
+      "patents": null,
+      "photo_url": "/static/images/doctors/liyang_people/004_%E5%B4%94%E5%B2%B1_1108350.jpg",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "许雪强",
+      "department": "肾内科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "肾小球疾病",
+        "慢性肾病",
+        "血液净化",
+        "动静脉内瘘等血管通路手术",
+        "肾内科"
+      ],
+      "specialty": "肾小球疾病、慢性肾病、血液净化、动静脉内瘘等血管通路手术",
+      "detail": "肾小球疾病、慢性肾病、血液净化、动静脉内瘘等血管通路手术；省医院协会血液净化中心分会血管通路管理学组副组长；SCI等专业文章10余篇",
+      "outpatient_time": "溧阳分院：每月第4周周五上午；省人民医院：周二下午/周四上午",
+      "position": "副主任医师",
+      "awards": [
+        "省医院协会血液净化中心分会血管通路管理学组副组长"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": 10,
+      "total_papers": 10,
+      "national_funding": false,
+      "patents": null,
+      "photo_url": "/static/images/doctors/liyang_people/005_%E8%AE%B8%E9%9B%AA%E5%BC%BA_1109058.jpg",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "申跃云",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "高血压",
+        "心律失常",
+        "心衰",
+        "冠心病",
+        "冠脉造影",
+        "射频消融",
+        "起搏器植入",
+        "心血管内科"
+      ],
+      "specialty": "高血压、心律失常、心衰、冠心病、冠脉造影、射频消融、起搏器植入",
+      "detail": "高血压、心律失常、心衰、冠心病、冠脉造影、射频消融、起搏器植入；溧阳市五一劳动勋章、常州市科普讲师团成员；溧阳市卫生局新技术引进奖",
+      "outpatient_time": "周二上午",
+      "position": "主任医师、大内科主任、党支部书记",
+      "awards": [
+        "溧阳市五一劳动勋章、常州市科普讲师团成员"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": null,
+      "total_papers": null,
+      "national_funding": false,
+      "patents": null,
+      "photo_url": "",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "周锡昌",
+      "department": "心血管内科",
+      "title": "主任医师",
+      "academic_title": "教授",
+      "keywords": [
+        "高血压病",
+        "冠心病",
+        "心律失常",
+        "心肌病",
+        "心力衰竭",
+        "心脏瓣膜病",
+        "心血管内科"
+      ],
+      "specialty": "高血压病、冠心病、心律失常、心肌病、心力衰竭、心脏瓣膜病",
+      "detail": "高血压病、冠心病、心律失常、心肌病、心力衰竭、心脏瓣膜病；常州市心血管内科重点专科学科带头人、省卫生高级职称评审专家；常州市政府科技成果三/四等奖各1项，发表论文40余篇",
+      "outpatient_time": "周一全天",
+      "position": "主任医师、教授、原业务院长",
+      "awards": [
+        "常州市心血管内科重点专科学科带头人、省卫生高级职称评审专家"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": null,
+      "total_papers": 40,
+      "national_funding": false,
+      "patents": null,
+      "photo_url": "",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "吴醒",
+      "department": "普外科（甲乳外科）",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "普外科常见病及疑难病",
+        "普外科（甲乳外科）"
+      ],
+      "specialty": "普外科常见病及疑难病",
+      "detail": "普外科常见病及疑难病；省抗癌协会委员、常州市医学会外科学组委员；国家级/省级医学期刊论文20余篇，多次获省卫生厅新技术引进奖",
+      "outpatient_time": "周一上午、周二上午",
+      "position": "主任医师、原普外科主任（返聘）",
+      "awards": [
+        "省抗癌协会委员、常州市医学会外科学组委员"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": null,
+      "total_papers": 20,
+      "national_funding": false,
+      "patents": null,
+      "photo_url": "",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "王樱",
+      "department": "麻醉科/疼痛科",
+      "title": "副主任医师",
+      "academic_title": "医学硕士",
+      "keywords": [
+        "软组织疼痛",
+        "神经病理性疼痛",
+        "癌痛",
+        "三氧治疗",
+        "射频治疗",
+        "麻醉科/疼痛科"
+      ],
+      "specialty": "软组织疼痛、神经病理性疼痛、癌痛、三氧治疗、射频治疗",
+      "detail": "软组织疼痛、神经病理性疼痛、癌痛、三氧治疗、射频治疗；常州市疼痛医学分会委员、常州市党代表；溧阳市新技术引进二/三等奖各1次，发表学术论文多篇",
+      "outpatient_time": "周一/二/四全天",
+      "position": "副主任医师、医学硕士、麻醉科副主任",
+      "awards": [
+        "常州市疼痛医学分会委员、常州市党代表"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": null,
+      "total_papers": null,
+      "national_funding": false,
+      "patents": null,
+      "photo_url": "",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    },
+    {
+      "name": "邵强",
+      "department": "麻醉科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "老年病人麻醉",
+        "脊柱手术麻醉",
+        "危重症病人麻醉",
+        "麻醉科"
+      ],
+      "specialty": "老年病人麻醉、脊柱手术麻醉、危重症病人麻醉",
+      "detail": "老年病人麻醉、脊柱手术麻醉、危重症病人麻醉；溧阳市抗疫先进个人；省级以上论文5篇、实用新型专利2个、副主编书籍1部",
+      "outpatient_time": "按排班",
+      "position": "副主任医师、麻醉科副主任",
+      "awards": [
+        "溧阳市抗疫先进个人"
+      ],
+      "honors": [],
+      "surgery_count": null,
+      "surgery_count_note": "",
+      "sci_papers": null,
+      "total_papers": 5,
+      "national_funding": false,
+      "patents": 1,
+      "photo_url": "",
+      "source_type": "用户提供CSV导入",
+      "crawl_time": "2026-06-19"
+    }
+  ]
+}

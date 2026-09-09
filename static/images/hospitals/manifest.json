@@ -1,0 +1,212 @@
+{
+  "1": {
+    "id": 1,
+    "name": "常州市第一人民医院",
+    "file": "hospital_1.png",
+    "url": "/static/images/hospitals/hospital_1.png?v=logo5",
+    "source": "user-desktop:01_changzhou_first_peoples.png",
+    "icon_file": "icons/hospital_1.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_1.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "2": {
+    "id": 2,
+    "name": "常州市第二人民医院",
+    "file": "hospital_2.png",
+    "url": "/static/images/hospitals/hospital_2.png?v=logo5",
+    "source": "user-desktop:02_changzhou_second_peoples.png",
+    "icon_file": "icons/hospital_2.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_2.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "3": {
+    "id": 3,
+    "name": "常州市中医医院",
+    "file": "hospital_3.png",
+    "url": "/static/images/hospitals/hospital_3.png?v=logo5",
+    "source": "user-desktop:03_changzhou_tcm.png",
+    "icon_file": "icons/hospital_3.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_3.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "4": {
+    "id": 4,
+    "name": "常州市第三人民医院",
+    "file": "hospital_4.png",
+    "url": "/static/images/hospitals/hospital_4.png?v=logo5",
+    "source": "user-desktop:08_changzhou_third_peoples.png",
+    "icon_file": "icons/hospital_4.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_4.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "5": {
+    "id": 5,
+    "name": "常州市肿瘤医院",
+    "file": "hospital_5.png",
+    "url": "/static/images/hospitals/hospital_5.png?v=logo5",
+    "source": "user-desktop:09_changzhou_cancer_fourth.png",
+    "icon_file": "icons/hospital_5.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_5.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "6": {
+    "id": 6,
+    "name": "常州市儿童医院",
+    "file": "hospital_6.jpg",
+    "url": "/static/images/hospitals/hospital_6.jpg?v=logo5",
+    "source": "user-desktop:05_changzhou_childrens.jpg",
+    "icon_file": "icons/hospital_6.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_6.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "7": {
+    "id": 7,
+    "name": "常州市妇幼保健院",
+    "file": "hospital_7.png",
+    "url": "/static/images/hospitals/hospital_7.png?v=logo5",
+    "source": "user-desktop:04_changzhou_maternal_child.png",
+    "icon_file": "icons/hospital_7.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_7.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "8": {
+    "id": 8,
+    "name": "武进人民医院",
+    "file": "hospital_8.png",
+    "url": "/static/images/hospitals/hospital_8.png?v=logo5",
+    "source": "user-desktop:06_wujin_peoples.png",
+    "icon_file": "icons/hospital_8.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_8.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "9": {
+    "id": 9,
+    "name": "金坛第一人民医院",
+    "file": "hospital_9.png",
+    "url": "/static/images/hospitals/hospital_9.png?v=logo5",
+    "source": "user-desktop:13_jintan_first_peoples.png",
+    "icon_file": "icons/hospital_9.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_9.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "10": {
+    "id": 10,
+    "name": "溧阳市人民医院",
+    "file": "hospital_10.png",
+    "url": "/static/images/hospitals/hospital_10.png?v=logo5",
+    "source": "user-wechat:remaining_logos",
+    "icon_file": "icons/hospital_10.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_10.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "11": {
+    "id": 11,
+    "name": "常州市老年病医院",
+    "file": "hospital_11.png",
+    "url": "/static/images/hospitals/hospital_11.png?v=logo5",
+    "source": "user-desktop:10_changzhou_geriatric.png",
+    "icon_file": "icons/hospital_11.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_11.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "12": {
+    "id": 12,
+    "name": "武进中医医院",
+    "file": "hospital_12.png",
+    "url": "/static/images/hospitals/hospital_12.png?v=logo5",
+    "source": "user-desktop:11_wujin_tcm.png",
+    "icon_file": "icons/hospital_12.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_12.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "13": {
+    "id": 13,
+    "name": "溧阳市中医医院",
+    "file": "hospital_13.png",
+    "url": "/static/images/hospitals/hospital_13.png?v=logo5",
+    "source": "user-wechat:remaining_logos",
+    "icon_file": "icons/hospital_13.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_13.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "14": {
+    "id": 14,
+    "name": "常州市德安医院",
+    "file": "hospital_14.png",
+    "url": "/static/images/hospitals/hospital_14.png?v=logo5",
+    "source": "user-desktop:14_changzhou_dean.png",
+    "icon_file": "icons/hospital_14.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_14.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "15": {
+    "id": 15,
+    "name": "常州市第七人民医院",
+    "file": "hospital_15.png",
+    "url": "/static/images/hospitals/hospital_15.png?v=logo5",
+    "source": "user-desktop:15_changzhou_seventh_qishuyan.png",
+    "icon_file": "icons/hospital_15.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_15.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "16": {
+    "id": 16,
+    "name": "常州市口腔医院",
+    "file": "hospital_16.png",
+    "url": "/static/images/hospitals/hospital_16.png?v=logo5",
+    "source": "user-wechat:remaining_logos",
+    "icon_file": "icons/hospital_16.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_16.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "17": {
+    "id": 17,
+    "name": "常州市中西医结合医院",
+    "file": "hospital_17.png",
+    "url": "/static/images/hospitals/hospital_17.png?v=logo5",
+    "source": "user-desktop:17_changzhou_integrated_guanghua.png",
+    "icon_file": "icons/hospital_17.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_17.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "18": {
+    "id": 18,
+    "name": "金坛区中医医院",
+    "file": "hospital_18.png",
+    "url": "/static/images/hospitals/hospital_18.png?v=logo5",
+    "source": "user-wechat:remaining_logos",
+    "icon_file": "icons/hospital_18.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_18.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "19": {
+    "id": 19,
+    "name": "金坛区第二人民医院",
+    "file": "hospital_19.png",
+    "url": "/static/images/hospitals/hospital_19.png?v=logo5",
+    "source": "user-wechat:remaining_logos",
+    "icon_file": "icons/hospital_19.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_19.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "20": {
+    "id": 20,
+    "name": "溧阳市妇幼保健院",
+    "file": "hospital_20.png",
+    "url": "/static/images/hospitals/hospital_20.png?v=logo5",
+    "source": "user-wechat:remaining_logos",
+    "icon_file": "icons/hospital_20.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_20.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  },
+  "21": {
+    "id": 21,
+    "name": "新北区三井人民医院",
+    "file": "hospital_21.png",
+    "url": "/static/images/hospitals/hospital_21.png?v=logo5",
+    "source": "user-wechat:remaining_logos",
+    "icon_file": "icons/hospital_21.png",
+    "icon_url": "/static/images/hospitals/icons/hospital_21.png?v=logo5",
+    "icon_source": "user-provided-logo"
+  }
+}

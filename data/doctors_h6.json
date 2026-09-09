@@ -1,0 +1,1311 @@
+{
+  "hospital": "常州市儿童医院",
+  "hospital_id": 6,
+  "hospital_level": "三级甲等",
+  "last_updated": "2026-06-03",
+  "total_doctors": 82,
+  "doctors": [
+    {
+      "name": "钱金强",
+      "department": "呼吸科",
+      "title": "主任医师、教授",
+      "academic_title": "教授",
+      "keywords": [
+        "儿科危重症的抢救",
+        "小儿呼吸系统疾病",
+        "疑难病症的诊治"
+      ],
+      "specialty": "儿科危重症的抢救，小儿呼吸系统疾病、疑难病症的诊治",
+      "achievements": [
+        "毕业于苏州医学院，从事儿科专业临床工作超过30年",
+        "南通大学附属常州市儿童医院教授",
+        "在《临床儿科杂志》（北大核心）等核心期刊发表多篇论文",
+        "参与江苏省科技专项（BL2014037）等省级科研项目",
+        "呼吸科学科带头人之一，所在科室为常州市市级重点专科"
+      ],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "涂国华",
+      "department": "呼吸科",
+      "title": "主任医师、副教授",
+      "academic_title": "教授",
+      "keywords": [
+        "儿童呼吸道感染性疾病",
+        "喘息性疾病",
+        "慢性咳嗽",
+        "过敏性疾病",
+        "睡眠呼吸障碍"
+      ],
+      "specialty": "儿童呼吸道感染性疾病、喘息性疾病、慢性咳嗽、过敏性疾病、睡眠呼吸障碍",
+      "achievements": [
+        "从事儿科临床工作二十余年，对儿童免疫机制有深入研究",
+        "完成地市级课题多项",
+        "曾获市医学新技术引进二等奖、市优秀科技论文三等奖",
+        "常州市第八批援疆干部人才",
+        "在《中国小儿急救医学》等核心期刊发表论文多篇"
+      ],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "王涉洋",
+      "department": "呼吸科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童呼吸系统疾病",
+        "慢性咳嗽",
+        "哮喘的规范化治疗",
+        "尤其是儿童支气管镜检查及治疗"
+      ],
+      "specialty": "儿童呼吸系统疾病，慢性咳嗽、哮喘的规范化治疗，尤其是儿童支气管镜检查及治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "易阳",
+      "department": "呼吸科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿科呼吸道疾病",
+        "儿童慢性咳嗽",
+        "反复呼吸道感染",
+        "喘息性疾病",
+        "睡眠障碍",
+        "鼻窦炎等"
+      ],
+      "specialty": "儿科呼吸道疾病，儿童慢性咳嗽，反复呼吸道感染，喘息性疾病，睡眠障碍，鼻窦炎等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "解鹏",
+      "department": "呼吸科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "各种儿科",
+        "新生儿科常见病",
+        "疑难病的诊治",
+        "各类呼吸道疾病",
+        "危重症抢救"
+      ],
+      "specialty": "各种儿科、新生儿科常见病、疑难病的诊治，各类呼吸道疾病，危重症抢救",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "上官秋苓",
+      "department": "呼吸科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童呼吸系统疾病",
+        "哮喘规范化诊疗",
+        "慢性咳嗽",
+        "变态反应性疾病的诊治"
+      ],
+      "specialty": "儿童呼吸系统疾病、哮喘规范化诊疗、慢性咳嗽、变态反应性疾病的诊治",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "朱琳",
+      "department": "呼吸科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "反复呼吸道感染",
+        "难治性肺炎",
+        "慢性咳嗽",
+        "哮喘的规范化诊治",
+        "尤其是儿童支气管镜检查及治疗"
+      ],
+      "specialty": "反复呼吸道感染、难治性肺炎、慢性咳嗽、哮喘的规范化诊治，尤其是儿童支气管镜检查及治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "邹卫东",
+      "department": "呼吸科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童呼吸系统疾病",
+        "急慢性咳嗽",
+        "变态反应性疾病及哮喘规范化治疗"
+      ],
+      "specialty": "儿童呼吸系统疾病，急慢性咳嗽、变态反应性疾病及哮喘规范化治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "高九明",
+      "department": "呼吸科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿科呼吸道疾病",
+        "睡眠疾病",
+        "儿童慢性咳嗽",
+        "反复呼吸道感染",
+        "喘息性疾病",
+        "鼻窦炎",
+        "鼻炎",
+        "睡眠障碍等"
+      ],
+      "specialty": "儿科呼吸道疾病、睡眠疾病，儿童慢性咳嗽，反复呼吸道感染，喘息性疾病，鼻窦炎、鼻炎、睡眠障碍等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "屠文娟",
+      "department": "新生儿科",
+      "title": "主任医师、副院长、兼职教授、硕士生导师",
+      "academic_title": "教授",
+      "keywords": [
+        "婴儿食物过敏",
+        "黄疸",
+        "婴幼儿腹泻病",
+        "新生儿危重症及复杂病症",
+        "儿科疑难杂症",
+        "婴幼儿养育照护咨询"
+      ],
+      "specialty": "婴儿食物过敏、黄疸，婴幼儿腹泻病，新生儿危重症及复杂病症，儿科疑难杂症，婴幼儿养育照护咨询",
+      "achievements": [
+        "江苏省临床重点专科、常州市医学重点学科学科带头人",
+        "江苏省医师协会围产医学专业委员会主任委员",
+        "中国医师协会新生儿科医师分会感染专业委员会委员",
+        "江苏省医学会围产分会副主任委员",
+        "江苏省新生儿科医疗质量控制中心委员"
+      ],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "李红新",
+      "department": "新生儿科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "早产儿危重症抢救",
+        "新生儿脑损伤救治和后期随访",
+        "高危儿随访和早期干预"
+      ],
+      "specialty": "早产儿危重症抢救，新生儿脑损伤救治和后期随访，高危儿随访和早期干预",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "张琴芬",
+      "department": "新生儿科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "新生儿及婴幼儿疾病",
+        "新生儿感染",
+        "新生儿脑损伤",
+        "儿童学习困难等问题"
+      ],
+      "specialty": "新生儿及婴幼儿疾病，新生儿感染、新生儿脑损伤；儿童学习困难等问题",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "郭惠梅",
+      "department": "新生儿科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "新生儿常见病多发病",
+        "产房抢救",
+        "早产儿营养指导及消化道疾病"
+      ],
+      "specialty": "新生儿常见病多发病，产房抢救，早产儿营养指导及消化道疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "华国伟",
+      "department": "新生儿科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "新生儿及婴幼儿疾病",
+        "新生儿感染",
+        "脑损伤",
+        "婴幼儿肺炎",
+        "腹泻病等"
+      ],
+      "specialty": "新生儿及婴幼儿疾病，新生儿感染、脑损伤、婴幼儿肺炎、腹泻病等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "吴薇",
+      "department": "新生儿科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "新生儿及婴幼儿疾病",
+        "新生儿感染",
+        "黄疸",
+        "呼吸系统疾病"
+      ],
+      "specialty": "新生儿及婴幼儿疾病，新生儿感染、黄疸、呼吸系统疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "陆琴",
+      "department": "新生儿科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "早产儿的规范化管理",
+        "新生儿感染",
+        "黄疸",
+        "呼吸系统疾病"
+      ],
+      "specialty": "早产儿的规范化管理、新生儿感染、黄疸、呼吸系统疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "史伟新",
+      "department": "消化营养科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿消化系统疾病",
+        "厌食",
+        "呕吐",
+        "消化不良",
+        "食物过敏",
+        "急慢性腹泻",
+        "便秘",
+        "便血",
+        "胃炎",
+        "胃食管反流病",
+        "消化性溃疡",
+        "婴儿黄疸",
+        "肝功能异常",
+        "营养不良",
+        "生长迟缓"
+      ],
+      "specialty": "小儿消化系统疾病，厌食、呕吐、消化不良、食物过敏、急慢性腹泻、便秘、便血、胃炎、胃食管反流病、消化性溃疡、婴儿黄疸、肝功能异常、营养不良、生长迟缓、喂养困难等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "刘晖",
+      "department": "消化营养科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿消化系统常见病",
+        "多发病及疑难重症",
+        "消化不良",
+        "腹泻",
+        "便秘",
+        "牛奶蛋白过敏",
+        "胃食管反流",
+        "腹痛",
+        "消化道出血",
+        "消化性溃疡",
+        "婴儿黄疸",
+        "肝功能异常等"
+      ],
+      "specialty": "小儿消化系统常见病、多发病及疑难重症，消化不良、腹泻、便秘、牛奶蛋白过敏、胃食管反流、腹痛、消化道出血、消化性溃疡、婴儿黄疸、肝功能异常等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "张永超",
+      "department": "消化营养科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿消化营养性疾病",
+        "厌食",
+        "呕吐",
+        "胃肠炎",
+        "消化道溃疡",
+        "便秘等",
+        "小儿消化内镜检查及治疗"
+      ],
+      "specialty": "小儿消化营养性疾病，厌食、呕吐、胃肠炎、消化道溃疡、便秘等，小儿消化内镜检查及治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "吴婷",
+      "department": "神经内科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿科常见疾病",
+        "小儿神经系统疾病：脑炎",
+        "癫痫",
+        "热性惊厥",
+        "抽动障碍",
+        "认知障碍及各种神经系统遗传代谢病"
+      ],
+      "specialty": "儿科常见疾病，小儿神经系统疾病：脑炎、癫痫、热性惊厥、抽动障碍、认知障碍及各种神经系统遗传代谢病",
+      "achievements": [
+        "神经内科科主任，医学硕士，南通大学兼职教授",
+        "市级重点专科学科带头人",
+        "江苏省医学会儿科分会神经学组委员",
+        "江苏省抗癫痫协会理事",
+        "从事儿科临床工作20余年"
+      ],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "姜晓萍",
+      "department": "神经内科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "热性惊厥",
+        "脑炎",
+        "癫痫",
+        "神经系统罕见病的诊治",
+        "尤其是DMD及SMA的临床诊治及管理"
+      ],
+      "specialty": "热性惊厥、脑炎、癫痫、神经系统罕见病的诊治，尤其是DMD及SMA的临床诊治及管理",
+      "achievements": [
+        "江苏省医学会罕见病学分会青年学组委员",
+        "江苏省抗癫痫协会病友工委会委员",
+        "常州市医学会儿科分会神经学组副组长",
+        "江苏省SMA单病种质控专家组成员"
+      ],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "郭宁",
+      "department": "神经内科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "诊治各种儿科疾病",
+        "小儿神经系统疾病"
+      ],
+      "specialty": "诊治各种儿科疾病，小儿神经系统疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "郭迎春",
+      "department": "血液肿瘤内分泌科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿内分泌疾病",
+        "性早熟",
+        "矮小症",
+        "儿童糖尿病",
+        "肥胖症",
+        "甲亢",
+        "甲状腺功能减低症等"
+      ],
+      "specialty": "小儿内分泌疾病，性早熟、矮小症、儿童糖尿病、肥胖症、甲亢、甲状腺功能减低症等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "林雪峰",
+      "department": "血液肿瘤内分泌科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿白血病",
+        "再生障碍性贫血",
+        "恶性实体肿瘤及儿童肿瘤术后化疗",
+        "各种儿童肾脏和风湿性疾病"
+      ],
+      "specialty": "小儿白血病、再生障碍性贫血、恶性实体肿瘤及儿童肿瘤术后化疗、各种儿童肾脏和风湿性疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "周华",
+      "department": "血液肿瘤内分泌科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿血液疾病",
+        "各种贫血",
+        "白血病",
+        "淋巴瘤",
+        "恶性实体肿瘤",
+        "再生障碍性贫血",
+        "血小板减少等"
+      ],
+      "specialty": "小儿血液疾病，各种贫血、白血病、淋巴瘤、恶性实体肿瘤、再生障碍性贫血、血小板减少等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "王忠",
+      "department": "感染科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "慢性咳嗽",
+        "反复感冒",
+        "免疫力低下",
+        "过敏性疾病",
+        "各种病原体感染性疾病",
+        "贫血",
+        "血小板减少等血液系统疾病",
+        "特殊健康儿童预防接种咨询"
+      ],
+      "specialty": "慢性咳嗽、反复感冒、免疫力低下、过敏性疾病，各种病原体感染性疾病；贫血、血小板减少等血液系统疾病；特殊健康儿童预防接种咨询",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "史海燕",
+      "department": "感染科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "多系统综合性疾病",
+        "儿童常见病多发病",
+        "感染",
+        "出疹性疾病",
+        "不明原因发热等疑难疾病"
+      ],
+      "specialty": "多系统综合性疾病、儿童常见病多发病、感染、出疹性疾病、不明原因发热等疑难疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "杨玲",
+      "department": "感染科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "感染性疾病",
+        "呼吸系统疾病",
+        "预防接种咨询"
+      ],
+      "specialty": "感染性疾病，呼吸系统疾病，预防接种咨询",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "曾昭烨",
+      "department": "感染科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "感染性疾病诊治",
+        "免疫缺陷甄别",
+        "预防接种安全评估"
+      ],
+      "specialty": "感染性疾病诊治，免疫缺陷甄别，预防接种安全评估",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "丁立",
+      "department": "肾脏风湿免疫科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "难治性肾病综合征",
+        "过敏性紫癜",
+        "紫癜性肾炎",
+        "系统性红斑狼疮",
+        "狼疮性肾炎",
+        "IgA肾病",
+        "急慢性肾功能衰竭",
+        "川崎病",
+        "幼年特发性关节炎",
+        "遗尿症等"
+      ],
+      "specialty": "难治性肾病综合征、过敏性紫癜、紫癜性肾炎、系统性红斑狼疮、狼疮性肾炎、IgA肾病、急慢性肾功能衰竭、川崎病、幼年特发性关节炎、遗尿症等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "张俊",
+      "department": "肾脏风湿免疫科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "过敏性紫癜",
+        "系统性红斑狼疮",
+        "幼年特发性关节炎",
+        "川崎病",
+        "免疫缺陷",
+        "罕见病",
+        "遗传代谢性疾病"
+      ],
+      "specialty": "过敏性紫癜、系统性红斑狼疮、幼年特发性关节炎、川崎病、免疫缺陷、罕见病、遗传代谢性疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "钱毅",
+      "department": "肾脏风湿免疫科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "肾病综合症",
+        "过敏性紫癜",
+        "紫癜性肾炎",
+        "系统性红斑狼疮",
+        "泌尿道感染",
+        "血尿",
+        "蛋白尿",
+        "遗尿"
+      ],
+      "specialty": "肾病综合症、过敏性紫癜、紫癜性肾炎、系统性红斑狼疮、泌尿道感染、血尿、蛋白尿、遗尿",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "李亚民",
+      "department": "重症医学科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童呼吸道及消化道感染性疾病",
+        "各种危重症早期识别和抢救治疗",
+        "先天性心脏病术后监护等"
+      ],
+      "specialty": "儿童呼吸道及消化道感染性疾病，各种危重症早期识别和抢救治疗、先天性心脏病术后监护等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "邹国锦",
+      "department": "重症医学科",
+      "title": "主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "各类儿科急重症救治",
+        "PICU监护技术",
+        "先心病围术期监护",
+        "小儿呼吸",
+        "心脏内科",
+        "感染性疾病"
+      ],
+      "specialty": "各类儿科急重症救治，PICU监护技术，先心病围术期监护，小儿呼吸、心脏内科、感染性疾病",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "顾燕萍",
+      "department": "重症医学科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿科呼吸道疾病",
+        "慢性咳嗽",
+        "反复呼吸道感染",
+        "喘息性疾病",
+        "危重症早期识别和抢救"
+      ],
+      "specialty": "儿科呼吸道疾病，慢性咳嗽，反复呼吸道感染，喘息性疾病，危重症早期识别和抢救",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "倪永成",
+      "department": "重症医学科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童危重症抢救治疗",
+        "呼吸机",
+        "血液净化"
+      ],
+      "specialty": "儿童危重症抢救治疗，呼吸机、血液净化",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "姚圣连",
+      "department": "急诊科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童慢性咳嗽",
+        "反复呼吸道感染",
+        "喘息性疾病",
+        "肺炎",
+        "鼻窦炎等"
+      ],
+      "specialty": "儿童慢性咳嗽，反复呼吸道感染，喘息性疾病，肺炎，鼻窦炎等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "陈玲",
+      "department": "急诊科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿科常见病",
+        "呼吸道疾病及急危重症",
+        "重症肺炎",
+        "休克",
+        "甲流",
+        "重症手足口病等"
+      ],
+      "specialty": "儿科常见病、呼吸道疾病及急危重症，重症肺炎、休克、甲流、重症手足口病等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "李林",
+      "department": "特需病房",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童呼吸系统疾病",
+        "新生儿及儿童危重症的急救"
+      ],
+      "specialty": "儿童呼吸系统疾病，新生儿及儿童危重症的急救",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "张芝艳",
+      "department": "特需病房",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿科常见病",
+        "多发病的诊治",
+        "各种危重症的早期识别和抢救治疗"
+      ],
+      "specialty": "儿科常见病、多发病的诊治，各种危重症的早期识别和抢救治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "凌云志",
+      "department": "特需病房",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "呼吸系统常见病",
+        "小儿消化系统疾病",
+        "急慢性腹泻",
+        "胃炎",
+        "胃溃疡",
+        "幽门螺杆菌感染",
+        "消化不良",
+        "便秘等"
+      ],
+      "specialty": "呼吸系统常见病；小儿消化系统疾病，急慢性腹泻、胃炎、胃溃疡、幽门螺杆菌感染、消化不良、便秘等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "壮文军",
+      "department": "儿外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "各类小儿普外科疾病",
+        "新生儿先天性畸形的诊治及手术",
+        "小儿腹腔镜手术治疗"
+      ],
+      "specialty": "各类小儿普外科疾病、新生儿先天性畸形的诊治及手术，小儿腹腔镜手术治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "施峥嵘",
+      "department": "儿外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿普通外科",
+        "新生儿外科疾病的诊断治疗"
+      ],
+      "specialty": "小儿普通外科、新生儿外科疾病的诊断治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "袁捷",
+      "department": "儿外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "普外科",
+        "新生儿外科",
+        "胸外科疑难杂症",
+        "尤其擅长腹腔镜微创外科手术"
+      ],
+      "specialty": "普外科、新生儿外科、胸外科疑难杂症，尤其擅长腹腔镜微创外科手术",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "包景峰",
+      "department": "儿外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿普外科常见病",
+        "多发病",
+        "新生儿外科特别是新生儿消化道畸形的诊断及治疗",
+        "小儿腹腔镜手术"
+      ],
+      "specialty": "小儿普外科常见病、多发病、新生儿外科特别是新生儿消化道畸形的诊断及治疗，小儿腹腔镜手术",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "孙海亮",
+      "department": "儿外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "微创腹腔镜手术治疗小儿疝气",
+        "阑尾炎",
+        "肠套叠",
+        "先天性消化道畸形",
+        "先天性胆管扩张症等"
+      ],
+      "specialty": "微创腹腔镜手术治疗小儿疝气、阑尾炎、肠套叠、先天性消化道畸形、先天性胆管扩张症等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "董武",
+      "department": "儿外科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿泌尿外科",
+        "小儿普外科",
+        "新生儿外科的诊断及手术治疗"
+      ],
+      "specialty": "小儿泌尿外科、小儿普外科、新生儿外科的诊断及手术治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "梅毅",
+      "department": "儿外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童实体肿瘤诊治",
+        "腹部肿瘤微创手术",
+        "包茎",
+        "鞘膜积液",
+        "隐睾等小儿泌尿外科手术"
+      ],
+      "specialty": "儿童实体肿瘤诊治，腹部肿瘤微创手术；包茎、鞘膜积液、隐睾等小儿泌尿外科手术",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "陆叶",
+      "department": "儿外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿泌尿外科疾病",
+        "隐睾",
+        "鞘膜积液",
+        "隐匿性阴茎",
+        "尿道下裂",
+        "肾积水",
+        "膀胱输尿管反流等"
+      ],
+      "specialty": "小儿泌尿外科疾病，隐睾、鞘膜积液、隐匿性阴茎、尿道下裂、肾积水、膀胱输尿管反流等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "徐惠民",
+      "department": "儿外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿头颅外伤的早期诊断和治疗",
+        "小儿疝气",
+        "鞘膜积液",
+        "隐睾",
+        "隐匿阴茎等"
+      ],
+      "specialty": "小儿头颅外伤的早期诊断和治疗，小儿疝气、鞘膜积液、隐睾、隐匿阴茎等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "翟光地",
+      "department": "心脏中心（心胸外科、心脏科）",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "各类先天性心脏病手术（主刀手术500余例）",
+        "儿童普胸外科手术（漏斗胸NUSS手术",
+        "鸡胸矫治",
+        "膈疝手术等）",
+        "重症胸外伤"
+      ],
+      "specialty": "各类先天性心脏病手术（主刀手术500余例），儿童普胸外科手术（漏斗胸NUSS手术、鸡胸矫治、膈疝手术等），重症胸外伤",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "冯亚斌",
+      "department": "心脏中心（心胸外科、心脏科）",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "心肌炎",
+        "心肌病",
+        "心律失常",
+        "心力衰竭等心脏病诊治",
+        "先天性心脏病术前诊断和术后监护"
+      ],
+      "specialty": "心肌炎、心肌病、心律失常、心力衰竭等心脏病诊治，先天性心脏病术前诊断和术后监护",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "张伟",
+      "department": "心脏中心（心胸外科、心脏科）",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿先天性心脏病（房间隔缺损",
+        "室间隔缺损",
+        "法洛四联症等）",
+        "小儿胸外科疾病（漏斗胸",
+        "鸡胸",
+        "膈疝",
+        "肺囊性变等）"
+      ],
+      "specialty": "小儿先天性心脏病（房间隔缺损、室间隔缺损、法洛四联症等），小儿胸外科疾病（漏斗胸、鸡胸、膈疝、肺囊性变等）",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "钮建宏",
+      "department": "心脏中心（心胸外科、心脏科）",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿心胸外科常见病",
+        "多发病",
+        "先天性心脏病体外循环转流技术",
+        "尤其擅长新生儿",
+        "低体重婴幼儿体外循环"
+      ],
+      "specialty": "小儿心胸外科常见病、多发病，先天性心脏病体外循环转流技术，尤其擅长新生儿、低体重婴幼儿体外循环",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "郭海滨",
+      "department": "骨科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童骨折微创治疗",
+        "骨关节发育畸形",
+        "骨肿瘤",
+        "儿童脑性瘫痪",
+        "脑发育异常",
+        "全面性发育迟缓",
+        "周围神经损伤"
+      ],
+      "specialty": "儿童骨折微创治疗、骨关节发育畸形、骨肿瘤；儿童脑性瘫痪、脑发育异常、全面性发育迟缓、周围神经损伤",
+      "achievements": [
+        "医务科科长，骨科及康复中心主任",
+        "江苏省医学会骨科学分会小儿骨科学组委员",
+        "江苏省康复医学会儿童康复专委会常务委员",
+        "小儿外科硕士生导师"
+      ],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "许丽玲",
+      "department": "骨科",
+      "title": "副主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "骨科常见病多发病",
+        "四肢骨折切开复位内固定",
+        "骨折脱位手法复位",
+        "儿童常见先天性畸形治疗"
+      ],
+      "specialty": "骨科常见病多发病，四肢骨折切开复位内固定，骨折脱位手法复位，儿童常见先天性畸形治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "郭海滨（兼）",
+      "department": "康复科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童脑性瘫痪",
+        "脑发育异常",
+        "运动发育落后",
+        "周围神经损伤等诊断及治疗"
+      ],
+      "specialty": "儿童脑性瘫痪、脑发育异常、运动发育落后、周围神经损伤等诊断及治疗",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "沈惠娟",
+      "department": "儿童保健与心理健康中心",
+      "title": "主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "多动症",
+        "抽动症",
+        "孤独症",
+        "语言发育迟缓",
+        "学习困难",
+        "饮食行为与睡眠",
+        "情绪问题",
+        "高危儿早期干预",
+        "儿童心理健康及家庭教育促进指导"
+      ],
+      "specialty": "多动症、抽动症、孤独症、语言发育迟缓、学习困难、饮食行为与睡眠、情绪问题；高危儿早期干预；儿童心理健康及家庭教育促进指导",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "屈小艳",
+      "department": "儿童保健与心理健康中心",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童心理发育行为性疾病",
+        "生长发育监测及营养指导",
+        "多动抽动症",
+        "学习困难",
+        "智力低下",
+        "孤独症筛查",
+        "睡眠障碍等"
+      ],
+      "specialty": "儿童心理发育行为性疾病，生长发育监测及营养指导，多动抽动症、学习困难、智力低下、孤独症筛查，睡眠障碍等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "丁丽",
+      "department": "儿童保健与心理健康中心",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童生长发育监测及营养指导",
+        "母乳喂养咨询",
+        "生长发育迟缓",
+        "睡眠障碍等"
+      ],
+      "specialty": "儿童生长发育监测及营养指导、母乳喂养咨询、生长发育迟缓、睡眠障碍等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "田琛妍",
+      "department": "儿童保健与心理健康中心",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "抑郁障碍",
+        "焦虑障碍",
+        "双相情感障碍",
+        "强迫障碍",
+        "睡眠障碍",
+        "精神分裂症等"
+      ],
+      "specialty": "抑郁障碍、焦虑障碍、双相情感障碍、强迫障碍、睡眠障碍、精神分裂症等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "赵方乔",
+      "department": "儿童保健与心理健康中心",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "儿童孤独症",
+        "青少年精神心理障碍",
+        "抑郁障碍",
+        "注意缺陷多动障碍",
+        "抽动障碍",
+        "双相障碍"
+      ],
+      "specialty": "儿童孤独症、青少年精神心理障碍，抑郁障碍、注意缺陷多动障碍、抽动障碍、双相障碍",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "何君玲",
+      "department": "耳鼻咽喉头颈外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "小儿鼾症微创等离子手术",
+        "无创耳廓畸形矫正",
+        "耳内镜手术",
+        "耳显微手术",
+        "睡眠呼吸暂停综合症",
+        "鼻窦炎",
+        "中耳炎",
+        "气管异物等"
+      ],
+      "specialty": "小儿鼾症微创等离子手术、无创耳廓畸形矫正、耳内镜手术、耳显微手术、睡眠呼吸暂停综合症、鼻窦炎、中耳炎、气管异物等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "法明",
+      "department": "耳鼻咽喉头颈外科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "腺样体肥大和扁桃体肥大的微创等离子手术",
+        "耳内镜手术",
+        "鼻窦炎",
+        "过敏性鼻炎",
+        "气管异物等"
+      ],
+      "specialty": "腺样体肥大和扁桃体肥大的微创等离子手术、耳内镜手术、鼻窦炎、过敏性鼻炎、气管异物等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "谢业伟",
+      "department": "麻醉科",
+      "title": "主任医师",
+      "academic_title": "",
+      "keywords": [
+        "急救复苏及重症处理",
+        "新生儿麻醉",
+        "可视技术和超声技术镇静镇痛麻醉"
+      ],
+      "specialty": "急救复苏及重症处理，新生儿麻醉，可视技术和超声技术镇静镇痛麻醉",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "匡荣",
+      "department": "麻醉科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "各类小儿手术麻醉",
+        "小儿先心手术",
+        "危重疑难手术",
+        "早产儿新生儿手术麻醉"
+      ],
+      "specialty": "各类小儿手术麻醉，小儿先心手术、危重疑难手术、早产儿新生儿手术麻醉",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "姜胜奇",
+      "department": "麻醉科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "各种小儿麻醉技术",
+        "小儿心血管麻醉",
+        "新生儿麻醉",
+        "心血管体外循环技术"
+      ],
+      "specialty": "各种小儿麻醉技术，小儿心血管麻醉，新生儿麻醉，心血管体外循环技术",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "袁亚庆",
+      "department": "麻醉科",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "心胸麻醉",
+        "新生儿围术期管理",
+        "危重患者救治",
+        "超声引导下神经阻滞"
+      ],
+      "specialty": "心胸麻醉、新生儿围术期管理、危重患者救治、超声引导下神经阻滞",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "杭东辉",
+      "department": "中医科及特色门诊",
+      "title": "副主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "中西医结合治疗内科疾病",
+        "慢性支气管炎",
+        "支气管哮喘",
+        "慢性肺源性心脏病",
+        "高血压",
+        "冠心病",
+        "糖尿病等"
+      ],
+      "specialty": "中西医结合治疗内科疾病，慢性支气管炎、支气管哮喘、慢性肺源性心脏病，高血压、冠心病、糖尿病等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "葛亚文",
+      "department": "中医科及特色门诊",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "眩晕",
+        "盗汗",
+        "失眠",
+        "头痛",
+        "痛风",
+        "胃炎",
+        "肾炎",
+        "高血压病",
+        "糖尿病",
+        "更年期综合症",
+        "月经失调",
+        "不孕不育等"
+      ],
+      "specialty": "眩晕、盗汗、失眠、头痛、痛风、胃炎、肾炎、高血压病、糖尿病、更年期综合症、月经失调、不孕不育等",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "张琴",
+      "department": "中医科及特色门诊",
+      "title": "主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "中医科疾病的诊治"
+      ],
+      "specialty": "中医科疾病的诊治",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "徐云频",
+      "department": "中医科及特色门诊",
+      "title": "副主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "中医科疾病的诊治"
+      ],
+      "specialty": "中医科疾病的诊治",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "徐江英",
+      "department": "中医科及特色门诊",
+      "title": "副主任中医师",
+      "academic_title": "",
+      "keywords": [
+        "中医科疾病的诊治"
+      ],
+      "specialty": "中医科疾病的诊治",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    },
+    {
+      "name": "杜袁芸",
+      "department": "中医科及特色门诊",
+      "title": "副主任医师",
+      "academic_title": "",
+      "keywords": [
+        "特色门诊疾病的诊治"
+      ],
+      "specialty": "特色门诊疾病的诊治",
+      "achievements": [],
+      "sci_papers": null,
+      "national_funding": false
+    }
+  ]
+}

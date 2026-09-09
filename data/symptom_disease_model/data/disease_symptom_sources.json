@@ -1,0 +1,12 @@
+{
+  "shanover_disease_symptoms_prec_full": {
+    "url": "https://huggingface.co/datasets/shanover/disease_symptoms_prec_full",
+    "license": "MIT (per Hugging Face dataset tags)",
+    "file": "shanover_disease_sympts_prec_full.csv"
+  },
+  "fhai50032_symptoms_to_disease_7k": {
+    "url": "https://huggingface.co/datasets/fhai50032/Symptoms_to_disease_7k",
+    "license": "Apache-2.0 (per Hugging Face dataset tags)",
+    "file": "fhai_symptoms_to_disease_7k.json"
+  }
+}

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+.env
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Local backups
+*.bak*
+
+# Generated presentation/build artifacts
+ppt_build_tmp/
+
+# Logs and local databases
+*.log
+*.sqlite
+*.sqlite3
