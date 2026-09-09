@@ -64,4 +64,4 @@
 
 ## 当前切片
 
-当前正在执行 Phase 0 的治理部分。下一切片应先建立 API 与纯函数行为基线，不应直接开始拆分目录或更换框架。
+竞赛迁移细化计划见 [`docs/competition/2026-ai-medical/MIGRATION_PLAN.md`](../competition/2026-ai-medical/MIGRATION_PLAN.md)。当前已完成治理文档、稳定字段 snapshot、数据质量报告、配置/Region/loader/repository 基础和 v1 外壳；下一切片应扩展安全反例与运行态 UI 基线，不应直接更换框架或修改医学规则。

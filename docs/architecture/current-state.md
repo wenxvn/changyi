@@ -8,10 +8,20 @@
 浏览器
   └─ templates/index.html
       └─ static/js/app.js ── fetch /api/* ── app.py
-                                              ├─ 内置医院/旧版医生数据
+                                              ├─ 内置医院/兼容目录（pending provenance）
                                               ├─ data/doctors_h*.json
                                               ├─ data/*transit*.json
                                               └─ data/symptom_disease_model/*
+
+当前已增加一层可回滚的基础设施，但尚未删除单体路径：
+
+```text
+app.py（legacy shell + adapters）
+  ├─ backend.app.create_app（配置、CORS、v1 blueprint）
+  ├─ backend.app.infrastructure.data.JsonDataLoader
+  ├─ backend.app.infrastructure.regions.RegionRegistry
+  └─ backend.app.infrastructure.repositories（医生/交通；医院 pending adapter）
+```
 ```
 
 前端脚本同时承担路由导航、登录演示、状态缓存、表单采集、推荐请求、卡片渲染、地图、交通图层、助手对话和测试反馈。后端文件同时包含常量、数据加载、模型适配、症状规则、分诊、推荐评分、交通可达性和 HTTP 路由。
@@ -23,6 +33,7 @@
 - **推荐**：科室匹配、医院/医生资源评分、距离、交通可达性、公平性和推荐解释。
 - **接口层**：医院、医生、推荐、分诊、追问、反馈、统计、交通和助手接口。
 - **演示启动**：`app.run(... port=5002)`。
+- **版本化接口**：全部 `/api/v1` 外壳由 blueprint 提供；triage、followups、recommendations、医院/医生暂通过延迟 legacy adapter 复用组合逻辑，完整 legacy route factory parity 尚未完成。
 
 ## 前端职责现状
 
@@ -61,6 +72,7 @@ frontend shell
 ## 首轮重构观察项
 
 - `app.py` 中存在硬编码常量和动态加载混合，适合先做“只搬运不改行为”的分层。
-- 当前无自动化测试，先补接口和纯函数表征测试比直接拆文件更安全。
+- 当前已有基础测试和稳定字段快照，先扩展接口/纯函数表征与模型不可用样例，比直接拆文件更安全。
+- 当前已有 9 个基础/数据边界测试、稳定快照和临时依赖环境 API smoke；CI 和模型 smoke 尚未完成。
 - 前端全局状态较多，先抽 API client 和页面级状态边界，不宜立即引入大型框架。
 - 交通数据参与可达性展示和部分评分，拆分时必须验证“展示数据”和“推荐排序数据”的边界。

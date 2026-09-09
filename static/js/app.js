@@ -1005,10 +1005,9 @@ function buildDashboardCarousel(stats) {
   '</section>';
 }
 
-var dashboardCarouselTimer = null;
 var dashboardCarouselIndex = 0;
 
-function setDashboardCarouselSlide(index, fromTimer) {
+function setDashboardCarouselSlide(index) {
   var carousel = document.querySelector(".dashboard-carousel");
   if (!carousel) return;
   var slides = carousel.querySelectorAll(".carousel-slide");
@@ -1023,22 +1022,6 @@ function setDashboardCarouselSlide(index, fromTimer) {
   dots.forEach(function(dot, i) {
     dot.classList.toggle("active", i === activeIndex);
   });
-  if (!fromTimer) restartDashboardCarousel();
-}
-
-function restartDashboardCarousel() {
-  if (dashboardCarouselTimer) clearInterval(dashboardCarouselTimer);
-  dashboardCarouselTimer = setInterval(function() {
-    var carousel = document.querySelector(".dashboard-carousel");
-    if (!carousel) {
-      clearInterval(dashboardCarouselTimer);
-      dashboardCarouselTimer = null;
-      return;
-    }
-    var count = carousel.querySelectorAll(".carousel-slide").length;
-    if (!count) return;
-    setDashboardCarouselSlide((dashboardCarouselIndex + 1) % count, true);
-  }, 4000);
 }
 
 function moveDashboardCarousel(delta) {
@@ -1056,8 +1039,7 @@ function initDashboardCarousel() {
   var startY = 0;
   var isPointerDown = false;
   dashboardCarouselIndex = 0;
-  setDashboardCarouselSlide(0, true);
-  restartDashboardCarousel();
+  setDashboardCarouselSlide(0);
 
   carousel.addEventListener("pointerdown", function(e) {
     isPointerDown = true;

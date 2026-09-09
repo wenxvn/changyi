@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ModuleNotFoundError:  # keep --help and static inspection available without optional tooling
+    Image = ImageDraw = ImageFont = None
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,17 +15,12 @@ ICON_DIR = LOGO_DIR / "icons"
 BAD_SOURCES = ("dayi.org.cn/_nuxt/img/logo",)
 
 
-def load_font(size):
-    candidates = [
-        "C:/Windows/Fonts/msyh.ttc",
-        "C:/Windows/Fonts/simhei.ttf",
-        "C:/Windows/Fonts/simsun.ttc",
-    ]
-    for path in candidates:
+def load_font(size, font_path=None):
+    if font_path:
         try:
-            return ImageFont.truetype(path, size)
+            return ImageFont.truetype(str(font_path), size)
         except Exception:
-            pass
+            print(f"font unavailable, using Pillow default: {font_path}")
     return ImageFont.load_default()
 
 
@@ -39,14 +37,14 @@ def short_name(name):
     return cleaned[:2] or "医"
 
 
-def fallback_icon(name):
+def fallback_icon(name, font_path=None):
     color = color_for(name)
     img = Image.new("RGBA", (96, 96), color)
     draw = ImageDraw.Draw(img)
     draw.rounded_rectangle((26, 18, 70, 70), radius=9, fill="white")
     draw.rounded_rectangle((42, 28, 54, 58), radius=2, fill=color)
     draw.rounded_rectangle((34, 38, 62, 50), radius=2, fill=color)
-    font = load_font(18)
+    font = load_font(18, font_path)
     text = short_name(name)
     bbox = draw.textbbox((0, 0), text, font=font)
     draw.text(((96 - (bbox[2] - bbox[0])) / 2, 73), text, fill="white", font=font)
@@ -92,6 +90,13 @@ def make_tile(src):
 
 
 def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Build deterministic hospital icon tiles")
+    parser.add_argument("--font-path", type=Path, help="可选字体文件；不提供时使用 Pillow 默认字体")
+    args = parser.parse_args()
+    if Image is None:
+        parser.error("构建图标需要可选依赖 Pillow；请按 requirements-data.txt 安装")
     ICON_DIR.mkdir(parents=True, exist_ok=True)
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     for key, item in manifest.items():
@@ -101,9 +106,9 @@ def main():
         src = LOGO_DIR / file_name
         use_fallback = source == "generated" or any(token in source for token in BAD_SOURCES) or not src.exists()
         try:
-            tile = fallback_icon(name) if use_fallback else make_tile(src)
+            tile = fallback_icon(name, args.font_path) if use_fallback else make_tile(src)
         except Exception:
-            tile = fallback_icon(name)
+            tile = fallback_icon(name, args.font_path)
             use_fallback = True
         out = ICON_DIR / f"hospital_{key}.png"
         tile.save(out)

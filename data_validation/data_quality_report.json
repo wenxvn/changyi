@@ -1,0 +1,1510 @@
+{
+  "schema_version": "data-quality-report/v1",
+  "data_root": "data",
+  "region_code": "320400",
+  "dataset_count": 27,
+  "issue_count": 187,
+  "datasets": [
+    {
+      "path": "bike_stations.json",
+      "sha256": "bc03dfae8936ad4d7eb310164b40639cfa5a0ff600dc46f84828740c78b1e316",
+      "format": "json",
+      "top_level_keys": [
+        "privacy_note",
+        "source_file",
+        "source_table",
+        "stations",
+        "summary"
+      ],
+      "collections": {
+        "stations": 50
+      }
+    },
+    {
+      "path": "bike_vehicles.json",
+      "sha256": "816ed8c1305985146938bf940bdbc027489f7120be54530e5be217a135de73ff",
+      "format": "json",
+      "top_level_keys": [
+        "privacy_note",
+        "source_file",
+        "source_table",
+        "summary",
+        "vehicles"
+      ],
+      "collections": {
+        "vehicles": 50
+      }
+    },
+    {
+      "path": "bus_routes.json",
+      "sha256": "0135aed277d7c054901621fb62a924ba5e8ca692f6367d3fd8788ea39dbfd115",
+      "format": "json",
+      "top_level_keys": [
+        "routes",
+        "summary"
+      ],
+      "collections": {
+        "routes": 50
+      }
+    },
+    {
+      "path": "bus_stations.json",
+      "sha256": "eabd6f6743996efdbbd5908502b39f21d9f6908049524198081e15aa273e80aa",
+      "format": "json",
+      "top_level_keys": [
+        "stations",
+        "summary"
+      ],
+      "collections": {
+        "stations": 50
+      }
+    },
+    {
+      "path": "doctors_h1.json",
+      "sha256": "22e4793257349fbec194132299d8090811e474362e4140463227850749a4ba63",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "hospital_level",
+        "last_updated",
+        "total_doctors"
+      ],
+      "collections": {
+        "doctors": 498
+      }
+    },
+    {
+      "path": "doctors_h10.json",
+      "sha256": "06455b80cef8a8b7ea3bc40dde63aa91349d5259e66110dd9adeca521ab13ad5",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "source"
+      ],
+      "collections": {
+        "doctors": 10
+      }
+    },
+    {
+      "path": "doctors_h11.json",
+      "sha256": "e895b1a30ac967256a61adb88b83dc3e19d86c3dfa1999d0c9ca3b120015454f",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "source"
+      ],
+      "collections": {
+        "doctors": 201
+      }
+    },
+    {
+      "path": "doctors_h14.json",
+      "sha256": "12c87bbc12bd6b8b70a41742f5fc77719155a0f4cc7ae20269ffce49c09cd842",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "source"
+      ],
+      "collections": {
+        "doctors": 42
+      }
+    },
+    {
+      "path": "doctors_h2.json",
+      "sha256": "4aabf998a0a3f88961710841daadbcde636d5e0bca7ff9e2c43ec4d7d5d60233",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "hospital_level",
+        "last_updated",
+        "total_doctors"
+      ],
+      "collections": {
+        "doctors": 52
+      }
+    },
+    {
+      "path": "doctors_h3.json",
+      "sha256": "75f9ecdcd41da635fc4ae9792d056eb658f301cc05b2c85602d8f1bc9b2fa171",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "hospital_level",
+        "last_updated",
+        "total_doctors"
+      ],
+      "collections": {
+        "doctors": 264
+      }
+    },
+    {
+      "path": "doctors_h4.json",
+      "sha256": "843d9226117328efa0e279ca915a2d91d6a9d394f57f95317db28d47a8dfa53d",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "hospital_level",
+        "last_updated",
+        "total_doctors"
+      ],
+      "collections": {
+        "doctors": 147
+      }
+    },
+    {
+      "path": "doctors_h5.json",
+      "sha256": "3e0aa4c39ad98ba2d0fa0d13820bef021cd630b024e79b0578a1d685aefb02ad",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "source"
+      ],
+      "collections": {
+        "doctors": 133
+      }
+    },
+    {
+      "path": "doctors_h6.json",
+      "sha256": "97a1c2b6a41b0473ec13fa7d0c8c2549c43d86ff8f92e69d2b59f89d75434b4e",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "hospital_level",
+        "last_updated",
+        "total_doctors"
+      ],
+      "collections": {
+        "doctors": 74
+      }
+    },
+    {
+      "path": "doctors_h7.json",
+      "sha256": "2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "source"
+      ],
+      "collections": {
+        "doctors": 164
+      }
+    },
+    {
+      "path": "doctors_h8.json",
+      "sha256": "a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288",
+      "format": "json",
+      "top_level_keys": [
+        "doctors",
+        "hospital",
+        "hospital_id",
+        "hospital_level",
+        "last_updated",
+        "total_doctors"
+      ],
+      "collections": {
+        "doctors": 515
+      }
+    },
+    {
+      "path": "regions/320400/manifest.json",
+      "sha256": "b6c79b22540639a6cc15cff9b0191c82fc503e9d8ea20353d96622940c088fad",
+      "format": "json",
+      "top_level_keys": [
+        "activation_gate",
+        "datasets",
+        "description",
+        "districts",
+        "future_regions",
+        "name",
+        "region_code",
+        "region_pack_version",
+        "release_scope",
+        "schema_version",
+        "status"
+      ],
+      "collections": {
+        "activation_gate": 6,
+        "districts": 7,
+        "future_regions": 3
+      }
+    },
+    {
+      "path": "symptom_disease_model/data/disease_symptom_sources.json",
+      "sha256": "d361d97140b68706324933e4a086f714a0b74c8fe79a4b320b45297b3e6d4d8e",
+      "format": "json",
+      "top_level_keys": [
+        "fhai50032_symptoms_to_disease_7k",
+        "shanover_disease_symptoms_prec_full"
+      ]
+    },
+    {
+      "path": "symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
+      "sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
+      "format": "csv",
+      "record_count": 304
+    },
+    {
+      "path": "symptom_disease_model/data/disease_symptom_training_long.csv",
+      "sha256": "8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497",
+      "format": "csv",
+      "record_count": 2726
+    },
+    {
+      "path": "symptom_disease_model/data/symptom_disease.csv",
+      "sha256": "aa5cdc80afa02caf09fb137d6e216ff9a7387218f2b233c18c30d63a6ad3fcd0",
+      "format": "csv",
+      "record_count": 15
+    },
+    {
+      "path": "symptom_disease_model/disease_name_zh.json",
+      "sha256": "c64794f415f03535ee51a726fd5a710bb16246dc65a0ce7210d7117585ea5a76",
+      "format": "json",
+      "top_level_keys": [
+        "(vertigo) Paroymsal Positional Vertigo",
+        "AIDS",
+        "Acne",
+        "Alcoholic hepatitis",
+        "Allergy",
+        "Arthritis",
+        "Bronchial Asthma",
+        "Cervical spondylosis",
+        "Chicken pox",
+        "Chronic cholestasis",
+        "Common Cold",
+        "Dengue",
+        "Diabetes",
+        "Dimorphic hemmorhoids(piles)",
+        "Drug Reaction",
+        "Fungal infection",
+        "GERD",
+        "Gastroenteritis",
+        "Heart attack",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hypertension",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Impetigo",
+        "Jaundice",
+        "Malaria",
+        "Migraine",
+        "Osteoarthristis",
+        "Paralysis (brain hemorrhage)",
+        "Peptic ulcer diseae",
+        "Pneumonia",
+        "Psoriasis",
+        "Tuberculosis",
+        "Typhoid",
+        "Urinary tract infection",
+        "Varicose veins",
+        "hepatitis A"
+      ]
+    },
+    {
+      "path": "symptom_disease_model/models/symptom_disease_41_nb.json",
+      "sha256": "a84c74f8927fe4fd7df33ee9f07177b70739bb8176b39b9745b39904794f1ba7",
+      "format": "json",
+      "top_level_keys": [
+        "alpha",
+        "class_counts",
+        "classes",
+        "data_path",
+        "metrics",
+        "min_symptom_df",
+        "model_type",
+        "symptom_counts",
+        "test_size",
+        "total_rows_after_filtering",
+        "total_symptom_counts",
+        "training_rows",
+        "vocabulary"
+      ],
+      "collections": {
+        "classes": 41,
+        "vocabulary": 131
+      }
+    },
+    {
+      "path": "symptom_disease_model/models/symptom_disease_full_nb.json",
+      "sha256": "34e9eae542f1648046d6d9679b2936dc67cf2ce387599d0b9b6c49699fd2f10c",
+      "format": "json",
+      "top_level_keys": [
+        "alpha",
+        "class_counts",
+        "classes",
+        "data_path",
+        "metrics",
+        "min_symptom_df",
+        "model_type",
+        "symptom_counts",
+        "test_size",
+        "total_rows_after_filtering",
+        "total_symptom_counts",
+        "training_rows",
+        "vocabulary"
+      ],
+      "collections": {
+        "classes": 58,
+        "vocabulary": 237
+      }
+    },
+    {
+      "path": "symptom_disease_model/models/symptom_disease_nb.json",
+      "sha256": "fbef5f9e46764b7b85349fb3da3fa90b897321d39efbe29aa4a32493659614a5",
+      "format": "json",
+      "top_level_keys": [
+        "alpha",
+        "class_counts",
+        "classes",
+        "metrics",
+        "model_type",
+        "symptom_counts",
+        "total_symptom_counts",
+        "training_rows",
+        "vocabulary"
+      ],
+      "collections": {
+        "classes": 5,
+        "vocabulary": 25
+      }
+    },
+    {
+      "path": "symptom_disease_model/symptom_alias_zh.json",
+      "sha256": "0a655ce71dc7c46e0ea5e0b0c87aa50c9454d51470fe6a2be175fe89ec3f7f18",
+      "format": "json",
+      "top_level_keys": [
+        "一直打喷嚏",
+        "乏力",
+        "低烧",
+        "低热",
+        "体重下降",
+        "便秘",
+        "全身不适",
+        "关节疼",
+        "关节痛",
+        "出汗",
+        "反酸",
+        "发冷",
+        "发烧",
+        "发热",
+        "口渴",
+        "吐了",
+        "呕吐",
+        "呼吸困难",
+        "咳嗽",
+        "咳痰",
+        "咽喉不适",
+        "咽痛",
+        "喉咙痛",
+        "喘不上气",
+        "喷嚏",
+        "嗅觉减退",
+        "嗓子疼",
+        "天旋地转",
+        "头晕",
+        "头疼",
+        "头痛",
+        "寒战",
+        "小便疼",
+        "尿多",
+        "尿急",
+        "尿痛",
+        "尿频",
+        "尿黄",
+        "干咳",
+        "心慌",
+        "心跳快",
+        "恶心",
+        "想吐",
+        "意识模糊",
+        "打喷嚏",
+        "抽搐",
+        "拉肚子",
+        "无力",
+        "有痰",
+        "气短",
+        "没力气",
+        "没胃口",
+        "流涕",
+        "流鼻涕",
+        "消化不良",
+        "消瘦",
+        "烧心",
+        "特别渴",
+        "疲劳",
+        "痰多",
+        "瘙痒",
+        "皮疹",
+        "皮肤发黄",
+        "皮肤痒",
+        "盗汗",
+        "看不清",
+        "眩晕",
+        "眼睛发黄",
+        "眼睛红",
+        "眼红",
+        "肌肉疼",
+        "肌肉痛",
+        "肚子疼",
+        "肚子痛",
+        "胃痛",
+        "胃酸",
+        "背痛",
+        "胸口痛",
+        "胸痛",
+        "胸闷",
+        "脖子疼",
+        "腰痛",
+        "腹泻",
+        "腹痛",
+        "血压高",
+        "视物模糊",
+        "起疹子",
+        "连续打喷嚏",
+        "闻不到味",
+        "颈痛",
+        "食欲差",
+        "高烧",
+        "高热",
+        "黄疸",
+        "鼻塞",
+        "鼻子堵",
+        "鼻窦痛",
+        "鼻窦胀"
+      ]
+    },
+    {
+      "path": "symptom_disease_model/symptom_name_zh.json",
+      "sha256": "398fc2502b190ccde39f94782c771e6751c43718bd0714c243cf1cfe2235ed70",
+      "format": "json",
+      "top_level_keys": [
+        "abdominal_pain",
+        "acidity",
+        "altered_sensorium",
+        "back_pain",
+        "blurred_and_distorted_vision",
+        "breathlessness",
+        "burning_micturition",
+        "chest_pain",
+        "chills",
+        "congestion",
+        "constipation",
+        "continuous_sneezing",
+        "cough",
+        "dark_urine",
+        "diarrhoea",
+        "dizziness",
+        "excessive_thirst",
+        "fast_heart_rate",
+        "fatigue",
+        "headache",
+        "high_blood_pressure",
+        "high_fever",
+        "indigestion",
+        "itching",
+        "joint_pain",
+        "loss_of_appetite",
+        "loss_of_balance",
+        "loss_of_smell",
+        "malaise",
+        "mild_fever",
+        "muscle_pain",
+        "nausea",
+        "neck_pain",
+        "palpitations",
+        "phlegm",
+        "polyuria",
+        "redness_of_eyes",
+        "runny_nose",
+        "sinus_pressure",
+        "skin_rash",
+        "spinning_movements",
+        "stomach_pain",
+        "sweating",
+        "swelled_lymph_nodes",
+        "throat_irritation",
+        "unsteadiness",
+        "vomiting",
+        "weight_loss",
+        "yellowing_of_eyes",
+        "yellowish_skin"
+      ]
+    },
+    {
+      "path": "taxi_operations.json",
+      "sha256": "154ff257a6674186594af10014a449915439d77956d1dada6a743895232dc06b",
+      "format": "json",
+      "top_level_keys": [
+        "operations",
+        "privacy_note",
+        "source_file",
+        "source_table",
+        "summary"
+      ],
+      "collections": {
+        "operations": 50
+      }
+    }
+  ],
+  "issues": [
+    {
+      "dataset": "bus_routes.json",
+      "code": "TIME_ORDER",
+      "message": "row 1: morning_peak_end 早于 morning_peak_start"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 2: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 2: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 2: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 2: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 3: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 3: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 3: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 3: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 4: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 4: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 4: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 4: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 5: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 5: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 5: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 5: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 6: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 6: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 6: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 6: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 7: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 7: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 7: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 7: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 8: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 8: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 8: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 8: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 9: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 9: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 9: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 9: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 10: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 10: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 10: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 10: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 11: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 11: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 11: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 11: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 12: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 12: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 12: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 12: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 13: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 13: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 13: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 13: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 14: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 14: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 14: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 14: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 15: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 15: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 15: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 15: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 16: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 16: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 16: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 16: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 17: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 17: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 17: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 17: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 18: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 18: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 18: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 18: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "TIME_ORDER",
+      "message": "row 19: morning_peak_end 早于 morning_peak_start"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 20: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 20: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 20: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 20: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 21: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 21: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 21: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 21: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 22: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 22: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 22: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 22: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 23: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 23: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 23: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 23: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 24: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 24: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 24: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 24: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 25: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 25: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 25: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 25: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "TIME_ORDER",
+      "message": "row 26: morning_peak_end 早于 morning_peak_start"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 26: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 26: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 26: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 26: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "TIME_ORDER",
+      "message": "row 27: morning_peak_end 早于 morning_peak_start"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 28: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 28: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 28: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 28: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 29: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 29: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 29: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 29: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 30: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 30: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 30: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 30: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 31: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 31: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 31: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 31: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 32: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 32: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 32: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 32: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 33: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 33: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 33: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 33: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 34: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 34: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 34: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 34: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 35: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 35: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 35: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 35: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 36: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 36: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 36: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 36: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 37: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 37: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 37: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 37: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 38: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 38: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 38: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 38: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 39: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 39: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 39: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 39: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 40: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 40: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 40: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 40: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 41: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 41: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 41: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 41: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 42: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 42: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 42: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 42: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 43: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 43: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 43: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 43: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "TIME_ORDER",
+      "message": "row 44: morning_peak_end 早于 morning_peak_start"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 45: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 45: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 45: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 45: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 46: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 46: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 46: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 46: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 47: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 47: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 47: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 47: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "TIME_ORDER",
+      "message": "row 48: morning_peak_end 早于 morning_peak_start"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 49: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 49: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 49: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 49: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 50: morning_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 50: morning_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 50: evening_peak_start 使用疑似占位年份"
+    },
+    {
+      "dataset": "bus_routes.json",
+      "code": "PLACEHOLDER_TIMESTAMP",
+      "message": "row 50: evening_peak_end 使用疑似占位年份"
+    },
+    {
+      "dataset": "doctors_h6.json",
+      "code": "COUNT_MISMATCH",
+      "message": "total_doctors=82，实际 doctors=74"
+    }
+  ],
+  "policy": "只记录异常，不自动修复；报告不包含原始症状文本、身份信息或整行数据。"
+}

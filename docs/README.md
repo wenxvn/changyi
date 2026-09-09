@@ -44,3 +44,4 @@
 - [重构路线图](plans/refactor-roadmap.md)
 - [质量门禁](quality/quality-gates.md)
 - [风险登记](risks/register.md)
+- [2026 AI+医学竞赛工作区](competition/2026-ai-medical/README.md)

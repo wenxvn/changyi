@@ -1,0 +1,38 @@
+{
+  "schema_version": "characterization-cases/v1",
+  "purpose": "记录旧系统在拆分前必须保持的安全分流与症状标准化事实；不把推荐结果当作医学真值。",
+  "cases": [
+    {
+      "id": "ordinary-skin",
+      "input": {"condition": "皮肤瘙痒", "scenario": "common"},
+      "expected": {"department": "皮肤科", "triage_status": "routine"}
+    },
+    {
+      "id": "expression-alias",
+      "input": {"condition": "喘不上来", "scenario": "common"},
+      "expected": {
+        "normalized_contains": ["呼吸困难"],
+        "observed_triage_status": "routine",
+        "safety_review_required": "口语归一化后出现红旗标签，但当前 legacy level 未升级；后续 L3 Safety Gate 必须补反例和医学审核。"
+      }
+    },
+    {
+      "id": "insufficient-input",
+      "input": {"condition": "不舒服", "scenario": "common"},
+      "expected": {
+        "observed_triage_status": "routine",
+        "target_gap": "目标枚举包含 INSUFFICIENT_INFORMATION；legacy common 场景当前未将此输入降级。"
+      }
+    },
+    {
+      "id": "red-flag-chest",
+      "input": {"condition": "突发胸痛伴呼吸困难", "scenario": "common"},
+      "expected": {"triage_status": "emergency", "red_flag": true}
+    },
+    {
+      "id": "scenario-does-not-diagnose",
+      "input": {"condition": "膝关节疼痛", "scenario": "surgery"},
+      "expected": {"department": "骨科", "must_show_disclaimer": true}
+    }
+  ]
+}

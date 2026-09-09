@@ -1,0 +1,53 @@
+{
+  "schema_version": "region-pack/v1",
+  "region_pack_version": "320400-2026.09-draft",
+  "region_code": "320400",
+  "name": "常州市",
+  "status": "active",
+  "release_scope": "competition_demo",
+  "description": "常州首个高可信医疗资源示范区；数据激活前必须通过来源、许可、schema、脱敏和质量门。",
+  "districts": [
+    {"code": "320402", "name": "天宁区", "lat": 31.776, "lng": 119.96, "source": "legacy_user_locations"},
+    {"code": "320404", "name": "钟楼区", "lat": 31.785, "lng": 119.945, "source": "legacy_user_locations"},
+    {"code": "320412", "name": "武进区", "lat": 31.73, "lng": 119.95, "source": "legacy_user_locations"},
+    {"code": "320411", "name": "新北区", "lat": 31.82, "lng": 119.97, "source": "legacy_user_locations"},
+    {"code": "320413", "name": "金坛区", "lat": 31.72, "lng": 119.58, "source": "legacy_user_locations"},
+    {"code": "320481", "name": "溧阳市", "lat": 31.41, "lng": 119.48, "source": "legacy_user_locations"},
+    {"code": "320452", "name": "经开区", "lat": 31.724, "lng": 120.058, "source": "legacy_hospital_address"}
+  ],
+  "datasets": {
+    "hospitals": {
+      "dataset_id": "changzhou-hospital-catalog-legacy",
+      "status": "migration_pending",
+      "source": "app.py:HOSPITALS",
+      "record_count": 21,
+      "notes": "兼容适配器暂时使用；需完成逐字段 provenance 后迁移为 hospitals/catalog.json。"
+    },
+    "doctors": [
+      {"dataset_id": "doctors-h1", "hospital_id": 1, "path": "../../doctors_h1.json", "record_key": "doctors", "record_count": 498, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h2", "hospital_id": 2, "path": "../../doctors_h2.json", "record_key": "doctors", "record_count": 52, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h3", "hospital_id": 3, "path": "../../doctors_h3.json", "record_key": "doctors", "record_count": 264, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h4", "hospital_id": 4, "path": "../../doctors_h4.json", "record_key": "doctors", "record_count": 147, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h5", "hospital_id": 5, "path": "../../doctors_h5.json", "record_key": "doctors", "record_count": 133, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h6", "hospital_id": 6, "path": "../../doctors_h6.json", "record_key": "doctors", "record_count": 74, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h7", "hospital_id": 7, "path": "../../doctors_h7.json", "record_key": "doctors", "record_count": 164, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h8", "hospital_id": 8, "path": "../../doctors_h8.json", "record_key": "doctors", "record_count": 515, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h10", "hospital_id": 10, "path": "../../doctors_h10.json", "record_key": "doctors", "record_count": 10, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h11", "hospital_id": 11, "path": "../../doctors_h11.json", "record_key": "doctors", "record_count": 201, "source_class": "public_source_mixed"},
+      {"dataset_id": "doctors-h14", "hospital_id": 14, "path": "../../doctors_h14.json", "record_key": "doctors", "record_count": 42, "source_class": "public_source_mixed"}
+    ],
+    "transit": {
+      "bus_routes": {"path": "../../bus_routes.json", "record_key": "routes", "record_count": 50, "source_class": "public_secondary_masked"},
+      "bus_stations": {"path": "../../bus_stations.json", "record_key": "stations", "record_count": 50, "source_class": "public_secondary_masked"},
+      "taxi_operations": {"path": "../../taxi_operations.json", "record_key": "operations", "record_count": 50, "source_class": "derived_masked_sample"},
+      "bike_stations": {"path": "../../bike_stations.json", "record_key": "stations", "record_count": 50, "source_class": "derived_masked_sample"},
+      "bike_vehicles": {"path": "../../bike_vehicles.json", "record_key": "vehicles", "record_count": 50, "source_class": "derived_masked_sample"}
+    }
+  },
+  "future_regions": [
+    {"region_code": "320100", "name": "南京市", "status": "future_city_pack_not_connected"},
+    {"region_code": "320500", "name": "苏州市", "status": "future_city_pack_not_connected"},
+    {"region_code": "310000", "name": "上海市", "status": "future_city_pack_not_connected"}
+  ],
+  "activation_gate": ["source_known", "license_known", "timestamp_known", "schema_valid", "deidentified", "quality_check_passed"]
+}

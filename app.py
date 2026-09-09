@@ -2,18 +2,25 @@
 常州市智能医疗推荐系统 - 演示版
 Smart Medical Recommendation System for Changzhou City
 """
-from flask import Flask, render_template, jsonify, request
-from flask_cors import CORS
+from flask import render_template, jsonify, request
 import math
 import json
 import os
 import sys
 from datetime import datetime
+from pathlib import Path
 
-app = Flask(__name__)
-CORS(app)
+from backend.app import create_app
+from backend.app.api.v1.response import failure, success
+from backend.app.api.v1.schemas.recommendation import RecommendationRequest, RequestValidationError
+from backend.app.infrastructure.data.loaders import DataLoadError, JsonDataLoader
+from backend.app.infrastructure.regions.registry import RegionRegistry
+
+app = create_app()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_LOADER = JsonDataLoader(Path(BASE_DIR))
+REGION_REGISTRY = RegionRegistry.from_root(Path(BASE_DIR) / "data" / "regions")
 TEST_FEEDBACK_PATH = os.path.join(BASE_DIR, "data", "test_feedback.jsonl")
 SYMPTOM_DISEASE_MODEL_DIR = os.path.join(BASE_DIR, "data", "symptom_disease_model")
 SYMPTOM_DISEASE_MODEL_PATH = os.path.join(
@@ -23,6 +30,15 @@ SYMPTOM_DISEASE_MODEL_PATH = os.path.join(
 )
 _SYMPTOM_DISEASE_RUNTIME = None
 _SYMPTOM_DISEASE_RUNTIME_ERROR = None
+
+
+def _read_json_data(path):
+    """Read a repository-owned JSON dataset through the shared data boundary."""
+    try:
+        return DATA_LOADER.load(path).value
+    except DataLoadError as exc:
+        print(f"[数据] 加载 {path} 失败: {exc}")
+        return None
 
 
 def _load_symptom_disease_runtime():
@@ -760,8 +776,9 @@ def _load_real_doctors():
                 continue
             filepath = os.path.join(data_dir, filename)
             try:
-                with open(filepath, "r", encoding="utf-8") as f:
-                    data = json.load(f)
+                data = _read_json_data(filepath)
+                if not isinstance(data, dict):
+                    continue
                 hid = data.get("hospital_id", 1)
                 hname = data.get("hospital") or hospital_names.get(hid, "未知医院")
 
@@ -806,8 +823,9 @@ def _load_real_doctors():
     if len(all_doctors) == 0:
         json_path = os.path.join(os.path.dirname(__file__), "doctors.json")
         try:
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            data = _read_json_data(json_path)
+            if not isinstance(data, dict):
+                data = {}
             for i, d in enumerate(data.get("doctors", [])):
                 rd = {
                     "id": 1000 + i,
@@ -856,8 +874,9 @@ def _load_bus_routes():
         print("[数据] 未找到公交线路数据 data/bus_routes.json")
         return {"summary": {}, "routes": []}
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = _read_json_data(path)
+        if not isinstance(data, dict):
+            return {"summary": {}, "routes": []}
         routes = data.get("routes", [])
         print(f"[数据] 加载公交线路 {len(routes)} 条")
         return {"summary": data.get("summary", {}), "routes": routes}
@@ -874,8 +893,9 @@ def _load_bus_stations():
         print("[数据] 未找到公交站点数据 data/bus_stations.json")
         return {"summary": {}, "stations": []}
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = _read_json_data(path)
+        if not isinstance(data, dict):
+            return {"summary": {}, "stations": []}
         stations = data.get("stations", [])
         print(f"[数据] 加载公交站点 {len(stations)} 个")
         return {"summary": data.get("summary", {}), "stations": stations}
@@ -892,8 +912,9 @@ def _load_taxi_operations():
         print("[数据] 未找到出租车运营数据 data/taxi_operations.json")
         return {"summary": {}, "operations": []}
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = _read_json_data(path)
+        if not isinstance(data, dict):
+            return {"summary": {}, "operations": []}
         operations = data.get("operations", [])
         print(f"[数据] 加载出租车运营样本 {len(operations)} 条")
         return {"summary": data.get("summary", {}), "operations": operations}
@@ -910,8 +931,9 @@ def _load_bike_stations():
         print("[数据] 未找到公共自行车站点数据 data/bike_stations.json")
         return {"summary": {}, "stations": []}
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = _read_json_data(path)
+        if not isinstance(data, dict):
+            return {"summary": {}, "stations": []}
         stations = data.get("stations", [])
         print(f"[数据] 加载公共自行车站点 {len(stations)} 个")
         return {"summary": data.get("summary", {}), "stations": stations}
@@ -928,8 +950,9 @@ def _load_bike_vehicles():
         print("[数据] 未找到共享车辆状态数据 data/bike_vehicles.json")
         return {"summary": {}, "vehicles": []}
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = _read_json_data(path)
+        if not isinstance(data, dict):
+            return {"summary": {}, "vehicles": []}
         vehicles = data.get("vehicles", [])
         print(f"[数据] 加载共享车辆状态 {len(vehicles)} 条")
         return {"summary": data.get("summary", {}), "vehicles": vehicles}
@@ -2807,69 +2830,91 @@ def api_test_record():
     })
 
 
+def _resolve_recommendation_location(district, lat=None, lng=None):
+    """Resolve coordinates through the active Region Pack before legacy fallbacks."""
+    if lat is not None and lng is not None:
+        return float(lat), float(lng)
+    region = REGION_REGISTRY.get(app.config.get("REGION_CODE", "320400"))
+    location = region.resolve_location(district) if region else None
+    if location and location.get("lat") is not None and location.get("lng") is not None:
+        return float(location["lat"]), float(location["lng"])
+    if district in USER_LOCATIONS:
+        return USER_LOCATIONS[district]
+    return 31.7760, 119.9600
+
+
+def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=False):
+    """Single composition point for legacy and versioned recommendation APIs."""
+    if strict:
+        parsed = RecommendationRequest.parse(data, region_code=app.config.get("REGION_CODE", "320400"))
+        condition = parsed.condition
+        scenario = parsed.scenario
+        district = parsed.district
+        expert_preference = parsed.expert_preference
+        lat, lng = _resolve_recommendation_location(district, parsed.lat, parsed.lng)
+    else:
+        if not isinstance(data, dict):
+            raise RequestValidationError("INVALID_JSON", "请求体必须是 JSON 对象")
+        condition = data.get("condition", "")
+        if not isinstance(condition, str) or not condition.strip():
+            raise RequestValidationError("INVALID_CONDITION", "请输入病情或症状")
+        scenario = data.get("scenario", "common")
+        district = data.get("district", "天宁区")
+        expert_preference = data.get("expert_preference", "system")
+        lat, lng = _resolve_recommendation_location(district, data.get("lat"), data.get("lng"))
+
+    triage = analyze_medical_triage(condition, scenario)
+    effective_scenario = triage.get("recommended_scenario") or scenario
+    resource_strategy = _resource_strategy(triage, expert_preference)
+    hospitals = recommend(condition, lat, lng, triage=triage)
+    if enhanced or REAL_DOCTORS:
+        doctors = enhanced_recommend_doctors(
+            condition,
+            effective_scenario,
+            top_n=doctor_top_n,
+            user_lat=lat,
+            user_lng=lng,
+            triage=triage,
+            expert_preference=expert_preference,
+        )
+    else:
+        doctors = recommend_doctors(condition)
+    matched_dept = triage.get("matched_department") or match_department(condition)
+
+    result = {
+        "condition": condition,
+        "scenario": scenario,
+        "effective_scenario": effective_scenario,
+        "expert_preference": expert_preference,
+        "resource_strategy": resource_strategy,
+        "triage": triage,
+        "htriage_analysis": _htriage_public_payload(triage),
+        "disease_prediction": predict_disease_name(condition, details=True),
+        "matched_department": matched_dept,
+        "user_location": {"district": district, "lat": lat, "lng": lng},
+        "recommended_hospitals": hospitals,
+        "recommended_doctors": doctors,
+        "weights_used": ENHANCED_WEIGHTS.get(effective_scenario, ENHANCED_WEIGHTS["surgery"]),
+        "hospital_weights_used": HOSPITAL_RANKING_WEIGHTS.get(triage.get("level", "routine"), HOSPITAL_RANKING_WEIGHTS["routine"]),
+        "ranking_model": RANKING_MODEL_VERSION,
+        "data_source": "real_data" if enhanced else ("real" if REAL_DOCTORS else "mock"),
+    }
+    if not enhanced:
+        result["total_real_doctors"] = len(REAL_DOCTORS)
+    return result
+
+
 @app.route("/api/recommend", methods=["POST"])
 def api_recommend():
     """
     智能推荐接口 [已接入真实数据 + 动态权重]
     请求参数: { condition, scenario: surgery|common|complex|first_visit, district, lat?, lng? }
     """
-    data = request.get_json() or {}
-    condition = data.get("condition", "")
-    scenario = data.get("scenario", "common")
-    district = data.get("district", "天宁区")
-    expert_preference = data.get("expert_preference", "system")
-    lat = data.get("lat")
-    lng = data.get("lng")
-
-    if not condition:
-        return jsonify({"code": 400, "message": "请输入病情或症状"}), 400
-
-    if lat is None or lng is None:
-        if district in USER_LOCATIONS:
-            lat, lng = USER_LOCATIONS[district]
-        else:
-            lat, lng = 31.7760, 119.9600
-
-    triage = analyze_medical_triage(condition, scenario)
-    effective_scenario = triage.get("recommended_scenario") or scenario
-    resource_strategy = _resource_strategy(triage, expert_preference)
-
-    hospitals = recommend(condition, lat, lng, triage=triage)
-    # 优先使用真实医生数据 + 动态权重
-    doctors = enhanced_recommend_doctors(
-        condition,
-        effective_scenario,
-        top_n=8,
-        user_lat=lat,
-        user_lng=lng,
-        triage=triage,
-        expert_preference=expert_preference
-    ) if REAL_DOCTORS else recommend_doctors(condition)
-
-    matched_dept = triage.get("matched_department") or match_department(condition)
-
-    return jsonify({
-        "code": 200,
-        "data": {
-            "condition": condition,
-            "scenario": scenario,
-            "effective_scenario": effective_scenario,
-            "expert_preference": expert_preference,
-            "resource_strategy": resource_strategy,
-            "triage": triage,
-            "htriage_analysis": _htriage_public_payload(triage),
-            "disease_prediction": predict_disease_name(condition, details=True),
-            "matched_department": matched_dept,
-            "user_location": {"district": district, "lat": lat, "lng": lng},
-            "recommended_hospitals": hospitals,
-            "recommended_doctors": doctors,
-            "weights_used": ENHANCED_WEIGHTS.get(effective_scenario, ENHANCED_WEIGHTS["surgery"]),
-            "hospital_weights_used": HOSPITAL_RANKING_WEIGHTS.get(triage.get("level", "routine"), HOSPITAL_RANKING_WEIGHTS["routine"]),
-            "ranking_model": RANKING_MODEL_VERSION,
-            "data_source": "real" if REAL_DOCTORS else "mock",
-            "total_real_doctors": len(REAL_DOCTORS),
-        }
-    })
+    try:
+        payload = _build_recommendation_data(request.get_json(silent=True) or {})
+    except RequestValidationError as exc:
+        return jsonify({"code": 400, "message": exc.message}), 400
+    return jsonify({"code": 200, "data": payload})
 
 
 @app.route("/api/hospitals/<int:hid>/doctors")
@@ -2912,62 +2957,113 @@ def api_enhanced_recommend():
     增强版推荐接口 [已接入爬取的真实医生数据 + 动态权重]
     请求参数: { condition, scenario: surgery|common|complex|first_visit, district }
     """
-    data = request.get_json() or {}
-    condition = data.get("condition", "")
-    scenario = data.get("scenario", "common")
-    district = data.get("district", "天宁区")
-    expert_preference = data.get("expert_preference", "system")
-    lat = data.get("lat")
-    lng = data.get("lng")
+    try:
+        payload = _build_recommendation_data(request.get_json(silent=True) or {}, enhanced=True, doctor_top_n=5)
+    except RequestValidationError as exc:
+        return jsonify({"code": 400, "message": exc.message}), 400
+    return jsonify({"code": 200, "data": payload})
 
-    if not condition:
-        return jsonify({"code": 400, "message": "请输入病情或症状"}), 400
 
-    if lat is None or lng is None:
-        if district in USER_LOCATIONS:
-            lat, lng = USER_LOCATIONS[district]
-        else:
-            lat, lng = 31.7760, 119.9600
+def _v1_triage_status(triage):
+    if (triage or {}).get("severity_bucket") == "信息不足":
+        return "INSUFFICIENT_INFORMATION"
+    return {
+        "emergency": "EMERGENCY",
+        "urgent": "URGENT",
+        "routine": "ROUTINE",
+    }.get((triage or {}).get("level"), "INSUFFICIENT_INFORMATION")
 
+
+def _v1_triage_payload(condition, scenario):
     triage = analyze_medical_triage(condition, scenario)
-    effective_scenario = triage.get("recommended_scenario") or scenario
-    resource_strategy = _resource_strategy(triage, expert_preference)
+    return {
+        "condition": condition,
+        "matched_department": triage.get("matched_department") or match_department(condition),
+        "triage_status": _v1_triage_status(triage),
+        "disease_prediction": predict_disease_name(condition, details=True),
+        "triage": triage,
+        "htriage_analysis": _htriage_public_payload(triage),
+    }
 
-    # 医院推荐
-    hospitals = recommend(condition, lat, lng, triage=triage)
-    # 增强医生推荐 (使用真实数据)
-    doctors = enhanced_recommend_doctors(
-        condition,
-        effective_scenario,
-        user_lat=lat,
-        user_lng=lng,
-        triage=triage,
-        expert_preference=expert_preference
-    )
 
-    matched_dept = triage.get("matched_department") or match_department(condition)
+def _v1_success(data):
+    return jsonify(success(
+        data,
+        region_code=app.config.get("REGION_CODE", "320400"),
+        model_version=app.config.get("MODEL_VERSION", RANKING_MODEL_VERSION),
+        app_version=app.config.get("APP_VERSION", "unknown"),
+        ranking_version=app.config.get("RANKING_VERSION", RANKING_MODEL_VERSION),
+        triage_rules_version=app.config.get("TRIAGE_RULES_VERSION", "unknown"),
+        dataset_version=app.config.get("DATASET_VERSION", "unknown"),
+    ))
 
-    return jsonify({
-        "code": 200,
-        "data": {
-            "condition": condition,
-            "scenario": scenario,
-            "effective_scenario": effective_scenario,
-            "expert_preference": expert_preference,
-            "resource_strategy": resource_strategy,
-            "triage": triage,
-            "htriage_analysis": _htriage_public_payload(triage),
-            "disease_prediction": predict_disease_name(condition, details=True),
-            "matched_department": matched_dept,
-            "user_location": {"district": district, "lat": lat, "lng": lng},
-            "recommended_hospitals": hospitals,
-            "recommended_doctors": doctors,
-            "weights_used": ENHANCED_WEIGHTS.get(effective_scenario, ENHANCED_WEIGHTS["surgery"]),
-            "hospital_weights_used": HOSPITAL_RANKING_WEIGHTS.get(triage.get("level", "routine"), HOSPITAL_RANKING_WEIGHTS["routine"]),
-            "ranking_model": RANKING_MODEL_VERSION,
-            "data_source": "real_data",  # 标明数据来自爬取
-        }
-    })
+
+def _v1_validation_error(exc):
+    return jsonify(failure(
+        exc.code,
+        exc.message,
+        region_code=app.config.get("REGION_CODE", "320400"),
+        model_version=app.config.get("MODEL_VERSION", RANKING_MODEL_VERSION),
+        details=exc.details,
+    )), 400
+
+
+def api_v1_triage():
+    """Versioned triage envelope; medical output remains assistive only."""
+    try:
+        parsed = RecommendationRequest.parse(
+            request.get_json(silent=True),
+            region_code=app.config.get("REGION_CODE", "320400"),
+        )
+    except RequestValidationError as exc:
+        return _v1_validation_error(exc)
+    return _v1_success(_v1_triage_payload(parsed.condition, parsed.scenario))
+
+
+def api_v1_followups():
+    """Versioned follow-up questions for insufficient context."""
+    try:
+        parsed = RecommendationRequest.parse(
+            request.get_json(silent=True),
+            region_code=app.config.get("REGION_CODE", "320400"),
+        )
+    except RequestValidationError as exc:
+        return _v1_validation_error(exc)
+    payload = _v1_triage_payload(parsed.condition, parsed.scenario)
+    payload = {
+        "condition": payload["condition"],
+        "matched_department": payload["matched_department"],
+        "triage_status": payload["triage_status"],
+        "triage_label": payload["triage"].get("label"),
+        "followup": payload["triage"].get("followup", {}),
+        "known_disease": payload["triage"].get("known_disease", {}),
+        "htriage_analysis": payload["htriage_analysis"],
+    }
+    return _v1_success(payload)
+
+
+def api_v1_recommendations():
+    """Versioned multi-objective recommendation endpoint."""
+    try:
+        payload = _build_recommendation_data(
+            request.get_json(silent=True),
+            enhanced=True,
+            doctor_top_n=8,
+            strict=True,
+        )
+    except RequestValidationError as exc:
+        return _v1_validation_error(exc)
+    return _v1_success(payload)
+
+
+def api_v1_hospitals():
+    return _v1_success({"items": HOSPITALS, "count": len(HOSPITALS), "source": "legacy_catalog_pending_provenance"})
+
+
+def api_v1_doctors():
+    hospital_id = request.args.get("hospital_id", type=int)
+    rows = REAL_DOCTORS if hospital_id is None else [row for row in REAL_DOCTORS if row.get("hospital_id") == hospital_id]
+    return _v1_success({"items": rows, "count": len(rows), "source": "public_source_mixed"})
 
 
 @app.route("/api/recommend/rerank", methods=["POST"])
@@ -3167,6 +3263,6 @@ if __name__ == "__main__":
     print("=" * 60)
     print("  常州市智能医疗推荐系统 - 演示版")
     print("  Smart Medical Recommendation System")
-    print("  http://127.0.0.1:5000")
+    print("  http://127.0.0.1:5002")
     print("=" * 60)
     app.run(debug=False, host="0.0.0.0", port=5002)

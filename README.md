@@ -10,13 +10,16 @@
 4. [当前架构](docs/architecture/current-state.md)
 5. [重构路线图](docs/plans/refactor-roadmap.md)
 6. [风险登记表](docs/risks/register.md)
+7. [2026 AI+医学竞赛工作区](docs/competition/2026-ai-medical/README.md)
 
 ## 当前实现
 
 - 后端：Flask，主要入口为 `app.py`。
+- API：旧 `/api/*` 兼容入口与 `/api/v1/*` 版本化外壳并存；v1 当前通过 legacy adapter 复用业务逻辑。
 - 前端：服务端模板 `templates/index.html`、单体脚本 `static/js/app.js`、样式 `static/css/style.css`。
-- 数据：`data/`、`doctors.json` 以及 `static/images/` 中的本地数据和资源。
+- 数据：`data/` 中 11 份医生 JSON、交通样本、模型和 `static/images/` 本地资源；当前 active Region Pack 仅为 `320400 · 常州市`。
 - 模型：`data/symptom_disease_model/` 中的症状到疾病类别模型。
+- 质量：运行 `python3 -m data_validation.validate_datasets --data-root data --output-dir data_validation` 可生成数据质量 JSON/Markdown 报告；异常只报告，不自动修复。
 - 辅助 skills：`skills/architect`、`skills/imprint`、`skills/recover`、`skills/remember`、`skills/review`。
 
 ## 本地运行

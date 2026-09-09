@@ -32,16 +32,44 @@
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --font-primary: Inter, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  /* Confirmed 2026-09-09 baseline tokens; legacy aliases remain intact. */
+  --surface-base: var(--bg);
+  --surface-raised: var(--card-bg);
+  --surface-subtle: #f8fafc;
+  --text-primary: #0f172a;
+  --text-muted: #94a3b8;
+  --border-subtle: var(--border);
+  --border-strong: #bfdbfe;
+  --accent-primary: var(--primary);
+  --accent-soft: var(--primary-light);
+  --state-success: var(--success);
+  --state-warning: var(--warning);
+  --state-danger: var(--danger);
+  --radius-md: var(--radius);
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
+
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent-primary) 36%, transparent);
+  outline-offset: 2px;
+}
 
 body {
   font-family: var(--font-primary), "PingFang SC", "Microsoft YaHei", sans-serif;
   background:
     linear-gradient(180deg, rgba(248, 250, 252, 0.46), rgba(248, 250, 252, 0.58)),
     url("/static/images/backgrounds/system-foundation-bg.jpg") center center / cover fixed no-repeat,
-    var(--bg);
+    var(--surface-base);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -785,9 +813,9 @@ body.auth-ready .login-screen,
   height: min(560px, calc((100vw - 296px) / 2));
   margin-bottom: 24px;
   overflow: hidden;
-  border-radius: 16px;
-  background: #fff;
-  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-lg);
   touch-action: pan-y;
 }
@@ -6156,13 +6184,13 @@ body::before {
 }
 
 .feature-card {
-  background: #fff;
-  border-color: var(--border);
-  border-radius: 10px;
+  background: var(--surface-raised);
+  border-color: var(--border-subtle);
+  border-radius: var(--radius-md);
 }
 
 .btn {
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   box-shadow: none;
 }
 
@@ -6189,9 +6217,9 @@ body::before {
 .form-input,
 .form-select,
 .chat-text-input {
-  background: #fff;
-  border-color: var(--border);
-  border-radius: 8px;
+  background: var(--surface-raised);
+  border-color: var(--border-subtle);
+  border-radius: var(--radius-sm);
 }
 
 .form-input:focus,
@@ -6216,7 +6244,7 @@ tbody tr:hover {
 }
 
 .tag {
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   letter-spacing: 0;
 }
 
