@@ -78,6 +78,34 @@ def hospitals():
     return call_legacy_handler("api_v1_hospitals")
 
 
+@api_v1.get("/hospitals/<int:hid>")
+def hospital_detail(hid: int):
+    return call_legacy_handler("api_v1_hospital_detail", hid)
+
+
 @api_v1.get("/doctors")
 def doctors():
     return call_legacy_handler("api_v1_doctors")
+
+
+@api_v1.get("/doctors/<int:did>")
+def doctor_detail(did: int):
+    return call_legacy_handler("api_v1_doctor_detail", did)
+
+
+@api_v1.get("/summary")
+def summary():
+    """Serve the small, read-only resource summary used by the new frontend."""
+    return call_legacy_handler("api_v1_summary")
+
+
+@api_v1.get("/evidence")
+def evidence():
+    """Serve read-only evaluation, provenance, and version evidence."""
+    return call_legacy_handler("api_v1_evidence")
+
+
+@api_v1.get("/map")
+def map_view():
+    """Serve coordinate-backed public resources for the map view."""
+    return call_legacy_handler("api_v1_map")

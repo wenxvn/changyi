@@ -11,6 +11,9 @@ from datetime import datetime
 from pathlib import Path
 
 from backend.app import create_app
+from backend.app.application.evidence import build_evidence_payload
+from backend.app.application.map_view import MapLocationError, build_map_payload, parse_coordinate
+from backend.app.application.resources import build_doctor_detail, build_hospital_detail
 from backend.app.api.v1.response import failure, success
 from backend.app.api.v1.schemas.recommendation import RecommendationRequest, RequestValidationError
 from backend.app.infrastructure.data.loaders import DataLoadError, JsonDataLoader
@@ -2405,6 +2408,127 @@ def api_v1_doctors():
     hospital_id = request.args.get("hospital_id", type=int)
     rows = REAL_DOCTORS if hospital_id is None else [row for row in REAL_DOCTORS if row.get("hospital_id") == hospital_id]
     return _v1_success({"items": rows, "count": len(rows), "source": "public_source_mixed"})
+
+
+def _v1_resource_not_found(resource_label: str, resource_id: int):
+    return jsonify(failure(
+        "RESOURCE_NOT_FOUND",
+        f"{resource_label} {resource_id} 不存在",
+        region_code=app.config.get("REGION_CODE", "320400"),
+        model_version=app.config.get("MODEL_VERSION", RANKING_MODEL_VERSION),
+    )), 404
+
+
+def api_v1_hospital_detail(hid: int):
+    """Return a safe public hospital detail view without internal ranking fields."""
+    hospital = next((item for item in HOSPITALS if item.get("id") == hid), None)
+    if hospital is None:
+        return _v1_resource_not_found("医院", hid)
+    doctor_count = sum(1 for doctor in REAL_DOCTORS if doctor.get("hospital_id") == hid)
+    return _v1_success(build_hospital_detail(hospital, doctor_count=doctor_count))
+
+
+def api_v1_doctor_detail(did: int):
+    """Return a safe public doctor detail view with a minimal hospital relation."""
+    doctor = next((item for item in REAL_DOCTORS if item.get("id") == did), None)
+    source_class = "public_source_mixed"
+    if doctor is None:
+        doctor = next((item for item in DOCTORS if item.get("id") == did), None)
+        source_class = "legacy_mock_catalog"
+    if doctor is None:
+        return _v1_resource_not_found("医生", did)
+    hospital = next((item for item in HOSPITALS if item.get("id") == doctor.get("hospital_id")), None)
+    return _v1_success(build_doctor_detail(
+        doctor,
+        hospital=hospital,
+        source_class=source_class,
+    ))
+
+
+def api_v1_summary():
+    """Return API-backed summary metrics without loading full resource collections."""
+    region = REGION_REGISTRY.get(app.config.get("REGION_CODE", "320400"))
+    districts = list(region.manifest.get("districts") or []) if region else []
+    hospital_dataset = (region.datasets.get("hospitals") or {}) if region else {}
+    transit_dataset = (region.datasets.get("transit") or {}) if region else {}
+    metrics = {
+        "hospitals": {
+            "value": len(HOSPITALS),
+            "label": "医疗机构",
+            "source_class": hospital_dataset.get("source", "legacy_catalog_pending_provenance"),
+            "status": hospital_dataset.get("status", "migration_pending"),
+        },
+        "doctors": {
+            "value": len(REAL_DOCTORS) if REAL_DOCTORS else len(DOCTORS),
+            "label": "医生公开资料",
+            "source_class": "public_source_mixed" if REAL_DOCTORS else "legacy_mock_catalog",
+            "status": "available" if REAL_DOCTORS else "fallback",
+        },
+        "bus_routes": {
+            "value": len(BUS_ROUTE_DATA.get("routes", [])),
+            "label": "公交线路",
+            "source_class": (transit_dataset.get("bus_routes") or {}).get("source_class", "unknown"),
+            "status": "available",
+        },
+        "districts": {
+            "value": len(districts),
+            "label": "城市区域",
+            "source_class": "region_manifest",
+            "status": "available" if region else "not_ready",
+        },
+    }
+    return _v1_success({
+        "region": {
+            "code": region.code if region else app.config.get("REGION_CODE", "320400"),
+            "name": region.name if region else "常州市",
+            "status": region.status if region else "not_ready",
+            "region_pack_version": region.version if region else "unknown",
+        },
+        "metrics": metrics,
+        "generated_from": {
+            "region_pack_version": region.version if region else "unknown",
+            "dataset_status": "runtime_summary",
+        },
+    })
+
+
+def api_v1_evidence():
+    """Return committed evaluation and provenance facts for the Trust Center."""
+    return _v1_success(build_evidence_payload(
+        Path(BASE_DIR),
+        app_version=app.config.get("APP_VERSION", "unknown"),
+        ranking_version=app.config.get("RANKING_VERSION", RANKING_MODEL_VERSION),
+        triage_rules_version=app.config.get("TRIAGE_RULES_VERSION", "unknown"),
+        model_version=app.config.get("MODEL_VERSION", "unknown"),
+        dataset_version=app.config.get("DATASET_VERSION", "unknown"),
+        region_pack_version=app.config.get("REGION_PACK_VERSION", "unknown"),
+        region_code=app.config.get("REGION_CODE", "320400"),
+        triage_fn=analyze_medical_triage,
+    ))
+
+
+def api_v1_map():
+    """Return coordinate-backed public resources for the parallel map page."""
+    try:
+        user_lat = parse_coordinate(request.args.get("lat"), "lat", -90, 90)
+        user_lng = parse_coordinate(request.args.get("lng"), "lng", -180, 180)
+        region = REGION_REGISTRY.get(app.config.get("REGION_CODE", "320400"))
+        payload = build_map_payload(
+            HOSPITALS,
+            region_code=app.config.get("REGION_CODE", "320400"),
+            region_name=region.name if region else "常州市",
+            region_pack_version=region.version if region else app.config.get("REGION_PACK_VERSION", "unknown"),
+            user_lat=user_lat,
+            user_lng=user_lng,
+        )
+    except MapLocationError as exc:
+        return jsonify(failure(
+            "INVALID_LOCATION",
+            str(exc),
+            region_code=app.config.get("REGION_CODE", "320400"),
+            model_version=app.config.get("MODEL_VERSION", RANKING_MODEL_VERSION),
+        )), 400
+    return _v1_success(payload)
 
 
 @app.route("/api/recommend/rerank", methods=["POST"])

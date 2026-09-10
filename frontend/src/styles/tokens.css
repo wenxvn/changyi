@@ -1,0 +1,65 @@
+:root {
+  color-scheme: light;
+
+  --surface-base: #f7f7f2;
+  --surface-raised: #fffefa;
+  --surface-elevated: #ffffff;
+  --surface-subtle: #eef1eb;
+  --surface-tinted: #e8eeea;
+  --surface-sage: #d9e3dc;
+  --surface-sage-soft: #dde7dc;
+  --surface-sage-wash: #e2eadf;
+
+  --text-primary: #12232d;
+  --text-secondary: #53636a;
+  --text-muted: #849196;
+  --text-inverse: #f7f7f2;
+
+  --border-subtle: #dfe5e1;
+  --border-default: #cbd7d1;
+  --border-strong: #9db4a8;
+
+  --accent-primary: #176b68;
+  --accent-secondary: #3154a2;
+  --accent-soft: #dcece7;
+  --accent-ink: #0c4848;
+
+  --state-success: #2f7a5c;
+  --state-warning: #aa691c;
+  --state-danger: #b04442;
+  --state-success-soft: #e4f0e8;
+  --state-warning-soft: #f7ebd8;
+  --state-danger-soft: #f6e2df;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 18px 48px color-mix(in srgb, var(--text-primary) 8%, transparent);
+  --shadow-float: 0 28px 72px color-mix(in srgb, var(--text-primary) 14%, transparent);
+  --shadow-inset: inset 0 1px 0 color-mix(in srgb, white 72%, transparent);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 120px;
+
+  --duration-fast: 180ms;
+  --duration-normal: 280ms;
+  --duration-slow: 560ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-sans: Inter, "SF Pro Display", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-serif: "Iowan Old Style", "Songti SC", "Noto Serif SC", serif;
+}

@@ -16,7 +16,7 @@
 
 - 后端：Flask，主要入口为 `app.py`。
 - API：旧 `/api/*` 兼容入口与 `/api/v1/*` 版本化外壳并存；v1 当前通过 legacy adapter 复用业务逻辑。
-- 前端：服务端模板 `templates/index.html`、单体脚本 `static/js/app.js`、样式 `static/css/style.css`。
+- 前端：legacy 默认入口仍为服务端模板 `templates/index.html`、单体脚本 `static/js/app.js`、样式 `static/css/style.css`；竞赛版并行前端位于 `frontend/`，使用 React/TypeScript/Vite，尚未切换默认入口。
 - 数据：`data/` 中 11 份医生 JSON、交通样本、模型和 `static/images/` 本地资源；当前 active Region Pack 仅为 `320400 · 常州市`。
 - 模型：`data/symptom_disease_model/` 中的症状到疾病类别模型。
 - 质量：运行 `python3 -m data_validation.validate_datasets --data-root data --output-dir data_validation` 可生成数据质量 JSON/Markdown 报告；异常只报告，不自动修复。
@@ -42,7 +42,14 @@ python -m pytest
 node --check static/js/app.js
 python -m data_validation.validate_datasets --data-root data --output-dir data_validation
 python -m evaluation.safety.evaluate_safety
+
+# 竞赛版并行前端（另开终端运行 Flask 后）
+cd frontend
+npm install
+npm run dev -- --port 5174
 ```
+
+Vite 默认把 `/api` 和 `/static` 代理到 `http://127.0.0.1:5002`；若 Flask 使用其他端口，可设置 `VITE_BACKEND_URL`。
 
 GitHub Actions 质量门禁位于 `.github/workflows/quality.yml`，会复核 Python、pytest、模型 smoke、Safety Evaluation baseline、数据报告、稳定快照和浏览器脚本语法。
 

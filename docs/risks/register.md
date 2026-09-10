@@ -7,7 +7,7 @@
 | R-001 | 用户把模型/分诊结果误解为诊断；Safety Evaluation 暴露 1 个红旗漏检和模糊输入未降级 | 严重 | 高 | 开放 | 已建立四态状态契约、v1 safety-first abstain 和 16-case Safety Set；当前 Red Flag Recall 0.9231、Under-triage Rate 0.0769 仅为 legacy 基线；保留免责声明、红旗优先、低置信度降级、医学文案 review，任何规则修复按 `L3` 处理 |
 | R-002 | 医院/医生/模型数据来源或许可证不完整 | 高 | 中 | 开放 | 建立数据清单和 provenance 元数据；没有来源和权限说明的数据不得升级为正式事实 |
 | R-003 | 测试反馈、日志或未来接入带入真实患者信息 | 严重 | 中 | 开放 | 只收集最小必要字段，默认脱敏；禁止秘密和 PHI 进入 Git、快照、日志和 memory |
-| R-004 | 自动化覆盖不足导致单体拆分引入静默回归 | 高 | 高 | 开放 | 已建立 83 个 pytest、稳定快照、Safety Evaluation、推荐/Safety-first publication/API contract/cache 纯函数测试和 CI workflow；继续补 API/纯函数边界，远端 workflow 首次运行后再评估风险 |
+| R-004 | 自动化覆盖不足导致单体拆分引入静默回归 | 高 | 高 | 开放 | 已建立 89 个 pytest、稳定快照、Safety Evaluation、推荐/Safety-first publication/API contract/cache/资源详情纯函数与接口测试、frontend boundary tests 和 CI workflow；继续补 E2E/视觉/无障碍边界，远端 workflow 首次运行后再评估风险 |
 | R-005 | 推荐排序、交通可达性与展示数据边界混淆 | 高 | 中 | 开放 | 已先抽取 scoring、医院 feature/单候选组合、医院候选遍历、医院 rerank、医生 resource policy、candidate 过滤/医院命中/急症资格/急症医生遍历、医院/急症评分/result builder 和 traffic feature/index/计算、cache seam 纯函数；交通数据加载与刷新策略、急症整体排序仍需服务化，记录输入输出；分别测试“展示”和“参与排序”的数据 |
 | R-006 | 静态资源体量大、更新和发布成本高 | 中 | 中 | 观察 | 盘点资源、重复文件和许可证；评估 LFS/CDN/压缩前先记录需求，不能在重构中随意删除资源 |
 | R-007 | 演示登录和 CORS 被误认为生产安全措施 | 严重 | 中 | 开放 | 在文档和 UI 中保持演示标识；生产化需单独 `L4` 认证/授权/部署计划 |

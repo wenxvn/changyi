@@ -22,3 +22,7 @@ ppt_build_tmp/
 *.log
 *.sqlite
 *.sqlite3
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/

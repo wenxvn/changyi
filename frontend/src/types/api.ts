@@ -1,0 +1,320 @@
+export type TriageStatus =
+  | "EMERGENCY"
+  | "URGENT"
+  | "ROUTINE"
+  | "INSUFFICIENT_INFORMATION";
+
+export interface ApiMeta {
+  request_id: string;
+  model_version: string;
+  region_code: string;
+  app_version?: string;
+  ranking_version?: string;
+  triage_rules_version?: string;
+  dataset_version?: string;
+}
+
+export interface ApiErrorPayload {
+  code: string;
+  message: string;
+  details?: unknown;
+}
+
+export interface ApiEnvelope<T> {
+  data: T | null;
+  meta: ApiMeta;
+  error: ApiErrorPayload | null;
+}
+
+export interface FollowupQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  reason?: string;
+}
+
+export interface FollowupPayload {
+  needed: boolean;
+  confidence: string;
+  missing_slots: string[];
+  questions: FollowupQuestion[];
+  topk_comparison?: {
+    need_compare?: boolean;
+    focus?: string[];
+    distinguish_questions?: FollowupQuestion[];
+  };
+}
+
+export interface TriagePayload {
+  condition: string;
+  matched_department?: string | null;
+  triage_status: TriageStatus;
+  triage?: {
+    label?: string;
+    level?: string;
+    followup?: FollowupPayload;
+    red_flag_tags?: string[];
+    reasons?: string[];
+    disclaimer?: string;
+    [key: string]: unknown;
+  };
+  htriage_analysis?: Record<string, unknown>;
+  disease_prediction?: unknown;
+}
+
+export interface FollowupResponse {
+  condition: string;
+  matched_department?: string | null;
+  triage_status: TriageStatus;
+  triage_label?: string | null;
+  followup: FollowupPayload;
+  known_disease?: Record<string, unknown>;
+  htriage_analysis?: Record<string, unknown>;
+}
+
+export interface HospitalRecord {
+  id?: number;
+  name?: string;
+  alias?: string;
+  level?: string;
+  type?: string;
+  address?: string;
+  phone?: string;
+  description?: string;
+  lat?: number;
+  lng?: number;
+  emergency?: boolean;
+  departments?: string[];
+  strengths?: string[];
+  [key: string]: unknown;
+}
+
+export interface RecommendedHospital {
+  hospital: HospitalRecord;
+  matched_department?: string | null;
+  distance?: number | null;
+  explanations?: string[];
+  traffic_access?: { summary?: string; used_in_ranking?: boolean; [key: string]: unknown };
+  composite_score?: number;
+  ranking_model?: string;
+  [key: string]: unknown;
+}
+
+export interface DoctorRecord {
+  id?: number;
+  name?: string;
+  title?: string;
+  position?: string;
+  department?: string;
+  hospital_name?: string;
+  specialties?: string[];
+  specialty?: string;
+  outpatient_time?: string;
+  photo_url?: string;
+  [key: string]: unknown;
+}
+
+export interface RecommendedDoctor {
+  doctor: DoctorRecord;
+  matched_dept?: string | null;
+  reasons?: string[];
+  hospital_distance_km?: number | null;
+  visit_path?: string;
+  match_score?: number;
+  [key: string]: unknown;
+}
+
+export interface ResourceStrategy {
+  code?: string;
+  title?: string;
+  visit_path?: string;
+  notice?: string;
+  expert_enabled?: boolean;
+  [key: string]: unknown;
+}
+
+export interface RecommendationPayload {
+  condition: string;
+  matched_department?: string | null;
+  triage?: TriagePayload["triage"];
+  recommended_hospitals: RecommendedHospital[];
+  recommended_doctors: RecommendedDoctor[];
+  resource_strategy?: ResourceStrategy;
+  data_source?: string;
+  effective_scenario?: string;
+  [key: string]: unknown;
+}
+
+export interface HospitalListPayload {
+  items: HospitalRecord[];
+  count: number;
+  source: string;
+}
+
+export interface DoctorListPayload {
+  items: DoctorRecord[];
+  count: number;
+  source: string;
+}
+
+export interface ResourceProvenance {
+  source_class: string;
+  status: string;
+  last_updated: string | null;
+  license_status: string;
+  field_level_status: string;
+  notice: string;
+}
+
+export interface HospitalDetailPayload {
+  resource_type: "hospital";
+  resource: HospitalRecord;
+  source: string;
+  provenance: ResourceProvenance;
+  related: { doctor_count: number };
+}
+
+export interface DoctorDetailPayload {
+  resource_type: "doctor";
+  resource: DoctorRecord;
+  source: string;
+  provenance: ResourceProvenance;
+  related: { hospital: HospitalRecord | null };
+}
+
+export type ResourceDetailPayload = HospitalDetailPayload | DoctorDetailPayload;
+
+export interface MetricSummary {
+  value: number;
+  label: string;
+  source_class: string;
+  status: string;
+}
+
+export interface CitySummary {
+  region: {
+    code: string;
+    name: string;
+    status: string;
+    region_pack_version: string;
+  };
+  metrics: {
+    hospitals: MetricSummary;
+    doctors: MetricSummary;
+    bus_routes: MetricSummary;
+    districts: MetricSummary;
+  };
+  generated_from: {
+    region_pack_version: string;
+    dataset_status: string;
+  };
+}
+
+export interface RegionSummary {
+  region_code: string;
+  name: string;
+  status: string;
+  region_pack_version: string;
+  districts: Array<{ code: string; name: string; lat?: number; lng?: number }>;
+}
+
+export interface EvidenceDataset {
+  path: string;
+  sha256: string;
+  format: string;
+  record_count: number | null;
+  collections: Record<string, unknown>;
+}
+
+export interface SafetyEvidence {
+  available: boolean;
+  schema_version: string;
+  case_count: number;
+  red_flag_count: number;
+  red_flag_recall: number | null;
+  under_triage_rate: number | null;
+  over_triage_rate: number | null;
+  emergency_false_negative: number | null;
+  insufficient_information_count: number;
+  insufficient_information_matches: number;
+  review_required: string[];
+  report_source: string;
+  label: string;
+}
+
+export interface ModelEvidence {
+  available: boolean;
+  label: string;
+  model_type: string;
+  training_rows: number | null;
+  test_rows: number | null;
+  class_count: number;
+  vocabulary_size: number;
+  top1_accuracy: number | null;
+  top3_accuracy: number | null;
+  evaluation_scope: string;
+  model_source: EvidenceDataset | null;
+  training_data_source: EvidenceDataset | null;
+}
+
+export interface DataQualityEvidence {
+  available: boolean;
+  report_source: string;
+  schema_version: string;
+  dataset_count: number;
+  issue_count: number;
+  status: string;
+}
+
+export interface EvidencePayload {
+  disclaimer: string;
+  status: string;
+  region: {
+    code: string;
+    pack_version: string;
+    source: EvidenceDataset | null;
+  };
+  versions: {
+    app: string;
+    ranking: string;
+    triage_rules: string;
+    model: string;
+    dataset: string;
+  };
+  safety: SafetyEvidence;
+  model: ModelEvidence;
+  data_quality: DataQualityEvidence;
+  dataset_manifest: EvidenceDataset[];
+  limitations: string[];
+}
+
+export type MapMarkerType = "EMERGENCY_CAPABLE" | "NORMAL";
+
+export interface MapHospitalRecord {
+  id?: number;
+  name?: string;
+  alias?: string;
+  level?: string;
+  type?: string;
+  address?: string;
+  lat: number;
+  lng: number;
+  emergency: boolean;
+  marker_type: MapMarkerType;
+  map_reason: string;
+  distance_km: number | null;
+  map_point: { x: number; y: number };
+}
+
+export interface MapPayload {
+  region: {
+    code: string;
+    name: string;
+    region_pack_version: string;
+  };
+  items: MapHospitalRecord[];
+  count: number;
+  source: string;
+  distance_method: string | null;
+  notice: string;
+}
