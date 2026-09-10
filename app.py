@@ -15,6 +15,69 @@ from backend.app.api.v1.response import failure, success
 from backend.app.api.v1.schemas.recommendation import RecommendationRequest, RequestValidationError
 from backend.app.infrastructure.data.loaders import DataLoadError, JsonDataLoader
 from backend.app.infrastructure.regions.registry import RegionRegistry
+from backend.app.infrastructure.repositories.transit_repository import LazyTrafficAccessCache
+from backend.app.domain.medical_input import (
+    COLLOQUIAL_SYMPTOM_ALIASES,
+    KNOWN_DISEASE_PATTERNS,
+    contains_positive as _contains_positive,
+    normalize_patient_expression,
+)
+from backend.app.domain.triage.safety_gate import (
+    TriageStatus,
+    evaluate_safety_gate,
+    triage_status_from_legacy,
+)
+from backend.app.domain.triage.publication import (
+    publish_safety_first as _publish_safety_first,
+    safety_first_htriage_payload as _safety_first_htriage_payload,
+    safety_first_prediction as _safety_first_prediction,
+    safety_first_triage as _safety_first_triage,
+)
+from backend.app.domain.recommendation.scoring import (
+    as_text as _as_text,
+    clamp as _clamp,
+    departments_related as _departments_related,
+    doctor_resource_tier as _doctor_resource_tier,
+    doctor_title_score as _doctor_title_score,
+    score_doctor_candidate as _score_doctor_candidate,
+)
+from backend.app.domain.recommendation.features import (
+    continuity_score as _continuity_score,
+    fairness_score as _fairness_score,
+    hospital_availability_score as _hospital_availability_score,
+    hospital_quality_score as _hospital_quality_score,
+    hospital_strength_for_department as _hospital_strength_for_dept,
+    level_score_norm as _level_score_norm,
+    special_population_fit as _special_population_fit,
+)
+from backend.app.domain.recommendation.pipeline import rerank_hospital_candidates as _rerank_hospital_candidates
+from backend.app.domain.recommendation.resource_policy import (
+    apply_resource_fit as _apply_resource_fit,
+    doctor_resource_mismatch_penalty as _doctor_resource_mismatch_penalty,
+    resource_strategy as _resource_strategy,
+)
+from backend.app.domain.recommendation.candidate import (
+    build_emergency_doctor_fallback_candidates as _build_emergency_doctor_fallback_candidates,
+    build_hospital_candidates as _build_hospital_candidates,
+    compose_hospital_candidate as _compose_hospital_candidate,
+    build_doctor_recommendation_result as _build_doctor_recommendation_result,
+    build_emergency_doctor_fallback_result as _build_emergency_doctor_fallback_result,
+    score_emergency_doctor_fallback as _score_emergency_doctor_fallback,
+)
+from backend.app.domain.recommendation.candidates import (
+    build_doctor_query_terms as _build_doctor_query_terms,
+    doctor_matches_candidate as _doctor_matches_candidate,
+)
+from backend.app.domain.recommendation.traffic import (
+    accessibility_score_from_context as _accessibility_score_from_context,
+    build_traffic_access as _build_traffic_access,
+    default_traffic_access as _default_traffic_access,
+    hospital_bike_access as _hospital_bike_access_rows,
+    hospital_bike_vehicle_distribution as _hospital_bike_vehicle_distribution_rows,
+    hospital_station_access as _hospital_station_access_rows,
+    hospital_taxi_access as _hospital_taxi_access_rows,
+    index_traffic_rows as _index_traffic_rows,
+)
 
 app = create_app()
 
@@ -153,50 +216,6 @@ def _is_model_symptom_red_flag(code, label):
     text = f"{code} {label}"
     red_terms = ("chest_pain", "breathlessness", "altered_sensorium", "high_fever", "胸痛", "呼吸困难", "意识", "高烧")
     return any(term in text for term in red_terms)
-
-
-COLLOQUIAL_SYMPTOM_ALIASES = {
-    "喘不上来": "呼吸困难",
-    "上不来气": "呼吸困难",
-    "透不过气": "呼吸困难",
-    "胸口堵": "胸闷",
-    "胸口压着": "胸闷",
-    "心口疼": "胸痛",
-    "心脏疼": "胸痛",
-    "嗓子不舒服": "咽痛",
-    "喉咙疼": "咽痛",
-    "拉肚子": "腹泻",
-    "肚子疼": "腹痛",
-    "胃不舒服": "胃痛",
-    "想吐": "恶心",
-    "头昏": "头晕",
-    "天旋地转": "眩晕",
-    "半边身子没劲": "一侧无力",
-    "嘴歪": "口角歪斜",
-    "说不清话": "说话不清",
-    "身上起疙瘩": "皮疹",
-    "皮肤痒": "皮肤瘙痒",
-    "眼睛看不清": "视力下降",
-    "小便疼": "尿痛",
-    "尿里有血": "血尿",
-    "血糖高": "糖尿病",
-}
-
-KNOWN_DISEASE_PATTERNS = [
-    "已确诊", "确诊", "医生说", "诊断为", "检查说", "查出来", "复诊", "术后复查",
-    "患有", "得了", "我是", "病史", "既往", "报告提示", "考虑",
-]
-
-
-def normalize_patient_expression(condition):
-    text = condition or ""
-    normalized = text
-    replacements = []
-    for raw, standard in COLLOQUIAL_SYMPTOM_ALIASES.items():
-        if raw in text and standard not in normalized:
-            normalized += f" {standard}"
-            replacements.append({"raw": raw, "standard": standard})
-    return normalized, replacements
 
 
 def detect_known_disease(condition):
@@ -972,150 +991,32 @@ def _distance_km(lat1, lng1, lat2, lng2):
     return r * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 def _hospital_station_access():
-    stations = BUS_STATION_DATA.get("stations", [])
-    results = []
-    for h in HOSPITALS:
-        distances = []
-        for s in stations:
-            lat = s.get("latitude")
-            lng = s.get("longitude")
-            if lat is None or lng is None:
-                continue
-            d = _distance_km(h["lat"], h["lng"], lat, lng)
-            distances.append((d, s))
-        distances.sort(key=lambda item: item[0])
-        nearest = distances[0] if distances else (None, {})
-        nearby_2km = [item for item in distances if item[0] <= 2]
-        nearby_3km = [item for item in distances if item[0] <= 3]
-        score = 35
-        if len(nearby_2km) >= 5:
-            score = 95
-        elif len(nearby_2km) >= 3:
-            score = 85
-        elif len(nearby_2km) >= 1:
-            score = 70
-        elif nearest[0] is not None and nearest[0] <= 5:
-            score = 55
-        results.append({
-            "hospital_id": h["id"],
-            "hospital_name": h["name"],
-            "nearest_station_name": nearest[1].get("station_name", "") if nearest[1] else "",
-            "nearest_station_distance_km": round(nearest[0], 2) if nearest[0] is not None else None,
-            "nearby_station_count_2km": len(nearby_2km),
-            "nearby_station_count_3km": len(nearby_3km),
-            "transit_station_score": score,
-        })
-    return sorted(results, key=lambda item: (item["nearest_station_distance_km"] is None, item["nearest_station_distance_km"] or 999))
+    return _hospital_station_access_rows(
+        HOSPITALS,
+        BUS_STATION_DATA.get("stations", []),
+        _distance_km,
+    )
 
 def _hospital_taxi_access():
-    operations = TAXI_OPERATION_DATA.get("operations", [])
-    results = []
-    for h in HOSPITALS:
-        destination_hits = []
-        nearest = None
-        for op in operations:
-            lat = op.get("dest_latitude")
-            lng = op.get("dest_longitude")
-            if lat is None or lng is None:
-                continue
-            d = _distance_km(h["lat"], h["lng"], lat, lng)
-            if nearest is None or d < nearest[0]:
-                nearest = (d, op)
-            if d <= 5:
-                destination_hits.append((d, op))
-
-        within_3km = [item for item in destination_hits if item[0] <= 3]
-        fares = [item[1].get("fact_price") for item in destination_hits if item[1].get("fact_price") is not None]
-        miles = [item[1].get("drive_mile") for item in destination_hits if item[1].get("drive_mile") is not None]
-        score = 40
-        if len(within_3km) >= 5:
-            score = 92
-        elif len(within_3km) >= 3:
-            score = 82
-        elif len(within_3km) >= 1:
-            score = 68
-        elif nearest and nearest[0] <= 8:
-            score = 55
-
-        results.append({
-            "hospital_id": h["id"],
-            "hospital_name": h["name"],
-            "nearby_taxi_destination_count_3km": len(within_3km),
-            "nearby_taxi_destination_count_5km": len(destination_hits),
-            "nearest_taxi_destination_distance_km": round(nearest[0], 2) if nearest else None,
-            "avg_nearby_taxi_fare": round(sum(fares) / len(fares), 2) if fares else 0,
-            "avg_nearby_taxi_mile": round(sum(miles) / len(miles), 2) if miles else 0,
-            "taxi_access_score": score,
-        })
-    return sorted(results, key=lambda item: (-item["nearby_taxi_destination_count_3km"], item["nearest_taxi_destination_distance_km"] or 999))
+    return _hospital_taxi_access_rows(
+        HOSPITALS,
+        TAXI_OPERATION_DATA.get("operations", []),
+        _distance_km,
+    )
 
 def _hospital_bike_access():
-    stations = BIKE_STATION_DATA.get("stations", [])
-    results = []
-    for h in HOSPITALS:
-        distances = []
-        for s in stations:
-            lat = s.get("latitude")
-            lng = s.get("longitude")
-            if lat is None or lng is None:
-                continue
-            d = _distance_km(h["lat"], h["lng"], lat, lng)
-            distances.append((d, s))
-        distances.sort(key=lambda item: item[0])
-        nearest = distances[0] if distances else (None, {})
-        nearby_1km = [item for item in distances if item[0] <= 1]
-        nearby_2km = [item for item in distances if item[0] <= 2]
-        bike_supply_2km = sum(int(item[1].get("bike_num") or 0) for item in nearby_2km)
-        e_bike_supply_2km = sum(int(item[1].get("e_bike_num") or 0) for item in nearby_2km)
-        lock_supply_2km = sum(int(item[1].get("lock_num") or 0) for item in nearby_2km)
-        service_level = 35
-        if len(nearby_1km) >= 4 or bike_supply_2km >= 120:
-            service_level = 92
-        elif len(nearby_1km) >= 2 or bike_supply_2km >= 60:
-            service_level = 82
-        elif len(nearby_2km) >= 1:
-            service_level = 68
-        elif nearest[0] is not None and nearest[0] <= 4:
-            service_level = 55
-        results.append({
-            "hospital_id": h["id"],
-            "hospital_name": h["name"],
-            "nearest_bike_station_name": nearest[1].get("station_name", "") if nearest[1] else "",
-            "nearest_bike_station_distance_km": round(nearest[0], 2) if nearest[0] is not None else None,
-            "nearby_bike_station_count_1km": len(nearby_1km),
-            "nearby_bike_station_count_2km": len(nearby_2km),
-            "bike_supply_2km": bike_supply_2km,
-            "e_bike_supply_2km": e_bike_supply_2km,
-            "lock_supply_2km": lock_supply_2km,
-            "bike_service_level": service_level,
-        })
-    return sorted(results, key=lambda item: (-item["bike_supply_2km"], item["nearest_bike_station_distance_km"] or 999))
+    return _hospital_bike_access_rows(
+        HOSPITALS,
+        BIKE_STATION_DATA.get("stations", []),
+        _distance_km,
+    )
 
 def _hospital_bike_vehicle_distribution():
-    vehicles = BIKE_VEHICLE_DATA.get("vehicles", [])
-    results = []
-    for h in HOSPITALS:
-        nearby_1km = []
-        nearby_2km = []
-        for v in vehicles:
-            lat = v.get("latitude")
-            lng = v.get("longitude")
-            if lat is None or lng is None:
-                continue
-            d = _distance_km(h["lat"], h["lng"], lat, lng)
-            if d <= 1:
-                nearby_1km.append(v)
-            if d <= 2:
-                nearby_2km.append(v)
-        normal_2km = [v for v in nearby_2km if v.get("bike_state") == "正常"]
-        results.append({
-            "hospital_id": h["id"],
-            "hospital_name": h["name"],
-            "nearby_vehicle_count_1km": len(nearby_1km),
-            "nearby_vehicle_count_2km": len(nearby_2km),
-            "normal_vehicle_count_2km": len(normal_2km),
-        })
-    return sorted(results, key=lambda item: -item["normal_vehicle_count_2km"])
+    return _hospital_bike_vehicle_distribution_rows(
+        HOSPITALS,
+        BIKE_VEHICLE_DATA.get("vehicles", []),
+        _distance_km,
+    )
 
 def _bus_route_stats():
     routes = BUS_ROUTE_DATA.get("routes", [])
@@ -1192,298 +1093,33 @@ DOCTOR_EXTRA_WEIGHTS = {
     "first_visit": {"availability": 0.06, "continuity": 0.04, "fairness": 0.05},
 }
 
-def _clamp(value, low=0.0, high=1.0):
-    return max(low, min(high, value))
-
-def _as_text(value):
-    if not value:
-        return ""
-    if isinstance(value, (list, tuple, set)):
-        return " ".join(str(v) for v in value if v)
-    return str(value)
-
 def _hospital_for_doctor(doc):
     hid = doc.get("hospital_id")
     return next((h for h in HOSPITALS if h["id"] == hid), None)
-
-def _doctor_title_score(doc):
-    title = doc.get("title", "") or ""
-    if "主任医师" in title and "副主任" not in title:
-        return 1.0
-    if "副主任医师" in title:
-        return 0.72
-    if "主治医师" in title:
-        return 0.42
-    return 0.25
-
-def _doctor_resource_tier(doc, hospital, specialty_score, academic_score, surgery_score):
-    """内部资源分层，不直接向用户展示医生等级。"""
-    hospital_text = (hospital or {}).get("level", "")
-    title_score = _doctor_title_score(doc)
-    strong_platform = "三级甲等" in hospital_text or "三甲" in hospital_text
-    high_academic = academic_score >= 0.58 or doc.get("national_funding") or (doc.get("sci_papers") or 0) >= 20
-    high_experience = surgery_score >= 0.62 or (doc.get("surgery_count") or 0) >= 800
-    if strong_platform and specialty_score >= 0.78 and title_score >= 0.72 and (high_academic or high_experience):
-        return "top_expert"
-    if specialty_score >= 0.72 and (title_score >= 0.72 or high_experience or high_academic):
-        return "expert"
-    if specialty_score >= 0.58 or title_score >= 0.42:
-        return "specialist"
-    return "general"
-
-def _resource_strategy(triage, expert_preference):
-    triage = triage or {}
-    level = triage.get("level", "routine")
-    preference = expert_preference or "system"
-    if level == "emergency":
-        return {
-            "code": "emergency_fast_track",
-            "title": "急症优先",
-            "visit_path": "急诊优先",
-            "expert_preference": preference,
-            "expert_enabled": False,
-            "top_expert_allowed": True,
-            "notice": "当前命中急症红旗，系统不按专家号偏好排序，优先推荐最近急诊能力与120处置。",
-        }
-    if level == "urgent":
-        is_specialty_followup = triage.get("severity_bucket") == "专科病情/需评估" or triage.get("matched_rule") in ("心血管专科病情", "慢病专科随访")
-        return {
-            "code": "specialty_followup" if is_specialty_followup else "specialty_priority",
-            "title": "专科病情 · 专科门诊优先" if is_specialty_followup else "中重症专科优先",
-            "visit_path": "专科门诊/必要时专家号" if is_specialty_followup else "专科门诊/专家号",
-            "expert_preference": preference,
-            "expert_enabled": preference not in ("no_expert",),
-            "top_expert_allowed": preference in ("must_expert", "named_followup"),
-            "notice": "当前属于明确专科病情，系统提高专科匹配、医院专科能力和连续照护权重；若出现急症红旗请优先急诊。" if is_specialty_followup else "当前病情建议尽快就医，系统提高专科匹配和医院专科能力权重。",
-        }
-    if preference == "must_expert":
-        return {
-            "code": "routine_must_expert",
-            "title": "普通病症 · 专家号优先",
-            "visit_path": "专家号",
-            "expert_preference": preference,
-            "expert_enabled": True,
-            "top_expert_allowed": True,
-            "notice": "当前病情倾向普通病症，系统尊重专家号选择，但不建议优先占用顶级专家资源。",
-        }
-    if preference in ("wish_expert", "named_followup"):
-        return {
-            "code": "routine_soft_expert",
-            "title": "普通病症 · 专家号适度加权",
-            "visit_path": "专科门诊/专家号",
-            "expert_preference": preference,
-            "expert_enabled": True,
-            "top_expert_allowed": False,
-            "notice": "当前病情倾向普通病症，系统优先推荐科室匹配、距离合适的门诊资源，专家号仅适度加权。",
-        }
-    return {
-        "code": "routine_outpatient",
-        "title": "普通病症 · 普通门诊优先",
-        "visit_path": "普通门诊",
-        "expert_preference": preference,
-        "expert_enabled": False,
-        "top_expert_allowed": False,
-        "notice": "当前病情未触发重症/急症信号，系统降低顶级专家资源占用权重，优先考虑科室匹配、距离和可及门诊资源。",
-    }
-
-def _apply_resource_fit(score, tier, triage_level, expert_preference, strategy, access_score):
-    adjusted = score
-    notes = []
-    cap = 1.0
-    preference = expert_preference or "system"
-
-    if triage_level == "routine":
-        if tier == "top_expert" and not strategy.get("top_expert_allowed"):
-            cap = 0.68 if preference in ("system", "no_expert") else 0.76
-            adjusted -= 0.16
-            notes.append("普通病症降低顶级专家资源占用")
-        elif tier == "expert" and preference in ("wish_expert", "must_expert", "named_followup"):
-            adjusted += 0.05
-            notes.append("已按专家号意图适度加权")
-        elif tier in ("general", "specialist") and preference in ("system", "no_expert"):
-            adjusted += 0.08 * access_score
-            notes.append("普通病症优先匹配可及门诊资源")
-        if preference == "must_expert" and tier == "top_expert":
-            cap = 0.88
-            adjusted -= 0.04
-            notes.append("尊重必须专家号选择并保留资源节约提醒")
-    elif triage_level == "urgent":
-        if tier in ("expert", "top_expert"):
-            adjusted += 0.06
-            notes.append("中重症提高专科专家适配")
-        if tier == "top_expert" and not strategy.get("top_expert_allowed"):
-            cap = 0.90
-    elif triage_level == "emergency":
-        notes.append("急症按急诊能力与距离优先")
-
-    return _clamp(min(adjusted, cap)), notes, cap
-
-
-def _doctor_resource_mismatch_penalty(doc, hospital, tier, triage_level, expert_preference,
-                                      specialty_score, hospital_score, access_score, target_dept):
-    """H-TriageRank 医疗资源错配惩罚项。"""
-    preference = expert_preference or "system"
-    details = []
-    total = 0.0
-
-    def add(code, label, value):
-        nonlocal total
-        if value <= 0:
-            return
-        value = round(value, 4)
-        total += value
-        details.append({"code": code, "label": label, "value": value})
-
-    if triage_level == "routine":
-        if tier == "top_expert" and preference in ("system", "no_expert", "wish_expert"):
-            add("overuse", "普通病症占用顶级专家资源", 0.10 if preference in ("system", "no_expert") else 0.06)
-        if access_score < 0.45:
-            add("access", "普通病症距离/可达性不优", 0.04)
-    elif triage_level == "urgent":
-        if tier == "general":
-            add("underuse", "较重病情匹配到低层级医生资源", 0.08)
-        if hospital_score < 0.58:
-            add("underuse", "较重病情对应医院专科能力不足", 0.10)
-        if access_score < 0.40:
-            add("access", "较重病情到院距离不优", 0.05)
-    elif triage_level == "emergency":
-        if hospital and not hospital.get("emergency"):
-            add("emergency", "急症路径未匹配急诊能力", 0.18)
-        if access_score < 0.55:
-            add("access", "急症场景到院可达性不足", 0.10)
-
-    if target_dept and specialty_score < 0.55:
-        add("specialty", "病症与医生专科方向匹配不足", 0.06)
-    if preference == "must_expert" and triage_level == "routine" and tier == "top_expert":
-        add("preference", "尊重专家号选择但保留资源分流提醒", 0.03)
-    if preference == "no_expert" and triage_level in ("urgent", "emergency") and tier in ("general", "specialist"):
-        add("preference", "较重病情下不建议过度降低医生层级", 0.04)
-
-    return _clamp(total, 0.0, 0.30), details
-
-def _departments_related(target_dept, doc_dept):
-    if not target_dept or not doc_dept:
-        return False
-    if target_dept == doc_dept or target_dept in doc_dept or doc_dept in target_dept:
-        return True
-    families = [
-        ("肿瘤",),
-        ("消化", "脾胃", "胃肠"),
-        ("呼吸", "肺"),
-        ("心血管", "心脏"),
-        ("神经", "脑"),
-        ("骨", "脊柱", "关节"),
-        ("妇", "产", "生殖"),
-        ("儿", "儿童", "新生儿"),
-        ("肾", "泌尿"),
-        ("中医", "针灸", "推拿", "康复"),
-    ]
-    for family in families:
-        if any(token in target_dept for token in family) and any(token in doc_dept for token in family):
-            return True
-    return False
-
-def _hospital_strength_for_dept(hospital, target_dept):
-    if not hospital:
-        return 0.5
-    if not target_dept:
-        return 0.6
-    scores = hospital.get("strength_scores", {})
-    departments = hospital.get("departments", [])
-    if target_dept in scores:
-        return min(1.0, scores[target_dept] / 100.0)
-    if target_dept in departments:
-        return 0.75
-    for dept, score in scores.items():
-        if target_dept in dept or dept in target_dept:
-            return min(1.0, score / 100.0)
-    for dept in departments:
-        if target_dept in dept or dept in target_dept:
-            return 0.65
-    return 0.5
-
-_TRANSIT_ACCESS_CACHE = None
-
+_TRANSIT_ACCESS_CACHE = LazyTrafficAccessCache(
+    lambda: _index_traffic_rows(
+        _hospital_station_access(),
+        _hospital_taxi_access(),
+        _hospital_bike_access(),
+    )
+)
 def _transit_access_maps():
-    global _TRANSIT_ACCESS_CACHE
-    if _TRANSIT_ACCESS_CACHE is None:
-        station_rows = _hospital_station_access()
-        taxi_rows = _hospital_taxi_access()
-        bike_rows = _hospital_bike_access()
-        _TRANSIT_ACCESS_CACHE = {
-            "station": {row["hospital_id"]: row for row in station_rows},
-            "taxi": {row["hospital_id"]: row for row in taxi_rows},
-            "bike": {row["hospital_id"]: row for row in bike_rows},
-        }
-    return _TRANSIT_ACCESS_CACHE
-
+    return _TRANSIT_ACCESS_CACHE.get()
 def _hospital_traffic_access(hospital):
     if not hospital:
-        return {
-            "station_score": 0.60,
-            "taxi_score": 0.60,
-            "public_transport_score": 0.60,
-            "bike_display_score": 0.0,
-            "summary": "暂无交通融合数据",
-        }
+        return _default_traffic_access()
     maps = _transit_access_maps()
     station = maps["station"].get(hospital["id"], {})
     taxi = maps["taxi"].get(hospital["id"], {})
     bike = maps["bike"].get(hospital["id"], {})
-    station_score = _clamp((station.get("transit_station_score") or 60) / 100.0)
-    taxi_score = _clamp((taxi.get("taxi_access_score") or 60) / 100.0)
-    public_transport_score = _clamp(station_score * 0.55 + taxi_score * 0.45)
-    parts = []
-    if station.get("nearest_station_name"):
-        parts.append(f"最近公交站{station.get('nearest_station_name')}约{station.get('nearest_station_distance_km')}km")
-    if station.get("nearby_station_count_2km"):
-        parts.append(f"2km内公交站{station.get('nearby_station_count_2km')}个")
-    if taxi.get("nearby_taxi_destination_count_3km"):
-        parts.append(f"3km内出租车到达样本{taxi.get('nearby_taxi_destination_count_3km')}条")
-    return {
-        "station_score": round(station_score, 4),
-        "taxi_score": round(taxi_score, 4),
-        "public_transport_score": round(public_transport_score, 4),
-        "nearest_station_name": station.get("nearest_station_name", ""),
-        "nearest_station_distance_km": station.get("nearest_station_distance_km"),
-        "nearby_station_count_2km": station.get("nearby_station_count_2km", 0),
-        "nearby_station_count_3km": station.get("nearby_station_count_3km", 0),
-        "nearby_taxi_destination_count_3km": taxi.get("nearby_taxi_destination_count_3km", 0),
-        "avg_nearby_taxi_fare": taxi.get("avg_nearby_taxi_fare", 0),
-        "avg_nearby_taxi_mile": taxi.get("avg_nearby_taxi_mile", 0),
-        "bike_display_score": bike.get("bike_service_level", 0),
-        "bike_display_note": "共享骑行仅用于绿色出行展示，不参与医疗推荐排序",
-        "summary": "；".join(parts) if parts else "交通样本较少，主要按距离估算可达性",
-    }
+    return _build_traffic_access(station, taxi, bike)
 
 def _access_score(hospital, user_lat=None, user_lng=None, triage_level="routine"):
     traffic = _hospital_traffic_access(hospital)
-    if not hospital or user_lat is None or user_lng is None:
-        return traffic["public_transport_score"] * 0.45 + 0.55 * 0.60
-    distance = haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"])
-    if distance <= 5:
-        distance_score = 1.0
-    elif distance >= 50:
-        distance_score = 0.1
-    else:
-        distance_score = max(0.1, 1.0 - (distance - 5) * 0.02)
-    if triage_level in ("emergency", "urgent"):
-        return _clamp(distance_score)
-    if triage_level == "first_visit":
-        return _clamp(distance_score * 0.56 + traffic["station_score"] * 0.28 + traffic["taxi_score"] * 0.16)
-    return _clamp(distance_score * 0.50 + traffic["station_score"] * 0.32 + traffic["taxi_score"] * 0.18)
-
-def _level_score_norm(hospital):
-    level = hospital.get("level", "") if hospital else ""
-    if level == "三级甲等":
-        return 1.0
-    if "三级" in level:
-        return 0.82
-    if "二级甲等" in level:
-        return 0.68
-    if "二级" in level:
-        return 0.58
-    return 0.5
+    distance = None
+    if hospital and user_lat is not None and user_lng is not None:
+        distance = haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"])
+    return _accessibility_score_from_context(distance, traffic, triage_level)
 
 def _hospital_district(hospital):
     text = ((hospital or {}).get("address") or "") + " " + ((hospital or {}).get("name") or "")
@@ -1491,107 +1127,6 @@ def _hospital_district(hospital):
         if district in text:
             return "经开区" if district == "戚墅堰区" else district
     return "常州市"
-
-def _hospital_availability_score(hospital, triage_level="routine"):
-    beds = (hospital or {}).get("beds", 0) or 0
-    daily = (hospital or {}).get("daily_outpatients", 0) or 0
-    capacity = _clamp(beds / 1800.0)
-    if beds and daily:
-        crowding = daily / max(1, beds)
-        waiting_relief = _clamp(1.15 - crowding / 6.0)
-    else:
-        waiting_relief = 0.55
-    emergency_bonus = 0.12 if hospital and hospital.get("emergency") else 0.0
-    if triage_level == "emergency":
-        return _clamp(capacity * 0.45 + waiting_relief * 0.30 + emergency_bonus + 0.10)
-    return _clamp(capacity * 0.35 + waiting_relief * 0.50 + emergency_bonus)
-
-def _hospital_quality_score(hospital):
-    rating = (hospital or {}).get("rating", 4.0) or 4.0
-    rating_norm = _clamp(rating / 5.0)
-    level_norm = _level_score_norm(hospital)
-    return _clamp(rating_norm * 0.58 + level_norm * 0.42)
-
-def _continuity_score(condition, target_dept, hospital):
-    text = condition or ""
-    continuity_words = ("复诊", "随访", "慢病", "长期", "配药", "术后", "半年", "一年", "老病号")
-    if not any(w in text for w in continuity_words):
-        return 0.55
-    strength = _hospital_strength_for_dept(hospital, target_dept)
-    if any(w in text for w in ("慢病", "长期", "配药", "随访")) and hospital and "综合" in hospital.get("type", ""):
-        strength = max(strength, 0.70)
-    if any(w in text for w in ("康复", "术后")) and hospital and any("康复" in d for d in hospital.get("departments", [])):
-        strength = max(strength, 0.78)
-    return _clamp(strength)
-
-def _special_population_fit(condition, hospital):
-    text = condition or ""
-    name = (hospital or {}).get("name", "")
-    htype = (hospital or {}).get("type", "")
-    score = 0.55
-    if any(w in text for w in ("儿童", "小儿", "婴儿", "新生儿")):
-        score = 1.0 if "儿童" in name else 0.48
-    elif any(w in text for w in ("孕", "产检", "分娩", "胎动", "产后", "妇科", "月经")):
-        score = 1.0 if ("妇幼" in name or "妇" in htype or "妇" in name) else 0.55
-    elif any(w in text for w in ("肿瘤", "癌", "放疗", "化疗")):
-        score = 1.0 if "肿瘤" in name else 0.62
-    elif any(w in text for w in ("口腔", "牙", "正畸", "牙周")):
-        score = 1.0 if "口腔" in name else 0.45
-    elif any(w in text for w in ("中医", "针灸", "推拿", "骨伤", "脾胃")):
-        score = 1.0 if "中医" in name or "中医" in htype else 0.65
-    elif any(w in text for w in ("老人", "老年", "慢病", "康复")):
-        score = 0.95 if ("老年" in name or any("康复" in d for d in hospital.get("departments", []))) else 0.65
-    return score
-
-def _fairness_score(condition, hospital, distance, triage_level="routine"):
-    level_norm = _level_score_norm(hospital)
-    local_bonus = 0.18 if distance <= 8 else (0.10 if distance <= 15 else 0.0)
-    level_text = hospital.get("level", "") if hospital else ""
-    primary_bonus = 0.0
-    if triage_level in ("routine", "first_visit"):
-        if "二级" in level_text:
-            primary_bonus = 0.18
-        elif "三级乙等" in level_text:
-            primary_bonus = 0.08
-    elif triage_level == "urgent" and "三级" in level_text:
-        primary_bonus = 0.06
-    fairness = 0.50 + local_bonus + primary_bonus - (0.08 if triage_level in ("routine", "first_visit") and level_norm >= 1.0 else 0)
-    return _clamp(fairness)
-
-def _hospital_risk_penalty(condition, target_dept, hospital, triage):
-    triage_level = (triage or {}).get("level", "routine")
-    penalty = 0.0
-    if triage_level == "emergency" and not hospital.get("emergency"):
-        penalty += 0.35
-    if target_dept:
-        matched = _hospital_strength_for_dept(hospital, target_dept)
-        if matched < 0.58:
-            penalty += 0.10
-    population_fit = _special_population_fit(condition, hospital)
-    if population_fit < 0.50:
-        penalty += 0.12
-    return _clamp(penalty, 0.0, 0.45)
-
-def _hospital_recommend_reasons(hospital, feature_scores, distance, matched_dept, triage_level):
-    reasons = []
-    if matched_dept:
-        reasons.append(f"{matched_dept}匹配度{int(feature_scores['clinical'] * 100)}%")
-    if distance <= 8:
-        reasons.append(f"距离近，约{distance}km")
-    elif feature_scores["quality"] >= 0.85:
-        reasons.append("医院等级和综合质量较高")
-    if feature_scores["availability"] >= 0.72:
-        reasons.append("承载能力/就诊可用性较好")
-    if triage_level == "emergency" and hospital.get("emergency"):
-        reasons.append("具备急诊能力")
-    if feature_scores["fairness"] >= 0.70:
-        reasons.append("符合分级诊疗与就近可及原则")
-    traffic = feature_scores.get("traffic_access") or {}
-    if traffic.get("public_transport_score", 0) >= 0.75 and triage_level != "emergency":
-        reasons.append("公交/出租车到院可达性较好")
-    if not reasons:
-        reasons.append("按临床匹配、距离和医院质量综合排序")
-    return reasons[:4]
 
 def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=None, user_lng=None, triage=None, expert_preference="system"):
     """
@@ -1604,36 +1139,12 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
     triage_level = (triage or {}).get("level", "routine")
     strategy = _resource_strategy(triage, expert_preference)
 
-    # 关键词匹配
-    query_words = set()
-    for word in condition.replace("，", ",").replace("、", ",").split(","):
-        query_words.add(word.strip())
-    # 症状关键词映射
-    for symptom, dept in DISEASE_DEPT_MAP.items():
-        if symptom in condition:
-            query_words.add(symptom)
-    for item in htriage.get("symptom_tags", []):
-        query_words.add(item.get("tag", ""))
-        for term in item.get("matched_terms", []):
-            query_words.add(term)
-    for item in htriage.get("disease_candidates", []):
-        query_words.add(item.get("name", ""))
-        query_words.add(item.get("primary_category", ""))
-        query_words.add(item.get("secondary_category", ""))
+    query_words = _build_doctor_query_terms(condition, DISEASE_DEPT_MAP, htriage)
 
     results = []
     for doc in REAL_DOCTORS:
-        if target_dept:
-            # 精确匹配或模糊匹配（如"呼吸内科"包含于"呼吸与危重症医学科"）
-            doc_dept = doc["department"]
-            if not _departments_related(target_dept, doc_dept):
-                continue
-        # 无科室匹配时，检查关键词是否命中医生keywords或科室名
-        if not target_dept:
-            kw_text = _as_text(doc.get("keywords", [])) + " " + doc["department"]
-            has_match = any(word in kw_text for word in query_words)
-            if not has_match:
-                continue
+        if not _doctor_matches_candidate(doc, target_dept, query_words):
+            continue
 
         # (1) 手术经验
         sc = doc.get("surgery_count")
@@ -1677,15 +1188,6 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
         if user_lat is not None and user_lng is not None and hospital:
             hospital_distance = haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"])
 
-        base_score = (
-            w["surgery"] * surgery_score +
-            w["specialty"] * specialty_score +
-            w["academic"] * academic_score +
-            w["title"] * title_score +
-            w["hospital"] * hospital_score +
-            w["access"] * access_score
-        )
-
         extra_w = DOCTOR_EXTRA_WEIGHTS.get(scenario, DOCTOR_EXTRA_WEIGHTS["common"])
         availability_score = _hospital_availability_score(hospital, "urgent" if scenario in ("surgery", "complex") else "routine")
         continuity_score = _continuity_score(condition, target_dept, hospital)
@@ -1697,17 +1199,20 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
         if population_fit < 0.50:
             risk_penalty += 0.08
 
-        total_score = (
-            base_score * (1 - sum(extra_w.values())) +
-            extra_w["availability"] * availability_score +
-            extra_w["continuity"] * continuity_score +
-            extra_w["fairness"] * fairness_score -
-            risk_penalty
+        total_score = _score_doctor_candidate(
+            surgery_score=surgery_score,
+            specialty_score=specialty_score,
+            academic_score=academic_score,
+            title_score=title_score,
+            hospital_score=hospital_score,
+            access_score=access_score,
+            availability_score=availability_score,
+            continuity_score=continuity_score,
+            fairness_score=fairness_score,
+            risk_penalty=risk_penalty,
+            weights=w,
+            extra_weights=extra_w,
         )
-
-        if specialty_score > 0.5:
-            total_score *= 1.08
-        total_score = _clamp(total_score)
         resource_tier = _doctor_resource_tier(doc, hospital, specialty_score, academic_score, surgery_score)
         mismatch_penalty, penalty_details = _doctor_resource_mismatch_penalty(
             doc, hospital, resource_tier, triage_level, expert_preference,
@@ -1719,109 +1224,43 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
         )
         emergency_priority_score = _clamp(total_score * 0.66 + access_score * 0.34)
 
-        explanations = []
-        if specialty_score >= 0.85:
-            explanations.append("科室/专长匹配")
-        if surgery_score >= 0.55:
-            explanations.append("临床经验较强")
-        if academic_score >= 0.55:
-            explanations.append("科研与学术能力较强")
-        if access_score >= 0.8:
-            explanations.append("距离可及性较好")
-        if availability_score >= 0.7:
-            explanations.append("医院承载能力较好")
-        if penalty_details:
-            explanations.append("已应用资源错配惩罚")
-        explanations.extend(resource_notes)
-
-        results.append({
-            "doctor": doc,
-            "match_score": round(total_score, 4),
-            "scores": {
-                "surgery": round(surgery_score, 4),
-                "specialty": round(specialty_score, 4),
-                "academic": round(academic_score, 4),
-                "title": round(title_score, 4),
-                "hospital": round(hospital_score, 4),
-                "access": round(access_score, 4),
-                "availability": round(availability_score, 4),
-                "continuity": round(continuity_score, 4),
-                "fairness": round(fairness_score, 4),
-                "risk_penalty": round(risk_penalty + mismatch_penalty, 4),
-                "mismatch_penalty": round(mismatch_penalty, 4),
-            },
-            "capability_indices": {
-                "DCI": round(specialty_score, 4),
-                "CEI": round(surgery_score, 4),
-                "ACI": round(academic_score, 4),
-                "HCI": round(hospital_score, 4),
-                "AAI": round(access_score, 4),
-            },
-            "penalty_breakdown": penalty_details,
-            "matched_dept": target_dept,
-            "reasons": explanations[:4] or ["按专科匹配、医生履历和可及性综合排序"],
-            "ranking_model": RANKING_MODEL_VERSION,
-            "hospital_distance_km": hospital_distance,
-            "emergency_priority_score": round(emergency_priority_score, 4),
-            "resource_tier": resource_tier,
-            "visit_path": strategy.get("visit_path"),
-            "resource_cap": round(resource_cap, 4),
-        })
-
+        results.append(_build_doctor_recommendation_result(
+            doctor=doc,
+            total_score=total_score,
+            surgery_score=surgery_score,
+            specialty_score=specialty_score,
+            academic_score=academic_score,
+            title_score=title_score,
+            hospital_score=hospital_score,
+            access_score=access_score,
+            availability_score=availability_score,
+            continuity_score=continuity_score,
+            fairness_score=fairness_score,
+            risk_penalty=risk_penalty,
+            mismatch_penalty=mismatch_penalty,
+            penalty_details=penalty_details,
+            matched_dept=target_dept,
+            ranking_model=RANKING_MODEL_VERSION,
+            hospital_distance=hospital_distance,
+            emergency_priority_score=emergency_priority_score,
+            resource_tier=resource_tier,
+            visit_path=strategy.get("visit_path"),
+            resource_cap=resource_cap,
+            resource_notes=resource_notes,
+        ))
     if not results and scenario == "surgery":
-        for doc in REAL_DOCTORS:
-            hospital = _hospital_for_doctor(doc)
-            if not hospital or not hospital.get("emergency"):
-                continue
-            sc = doc.get("surgery_count")
-            if sc:
-                surgery_score = min(1.0, math.log(sc + 1) / math.log(7000))
-            elif doc.get("surgery_count_note"):
-                surgery_score = 0.35
-            else:
-                surgery_score = 0.18
-            title = doc.get("title", "") or ""
-            if "主任医师" in title and "副主任" not in title:
-                title_score = 1.0
-            elif "副主任医师" in title:
-                title_score = 0.78
-            elif "主治医师" in title:
-                title_score = 0.50
-            else:
-                title_score = 0.34
-            access_score = _access_score(hospital, user_lat, user_lng, "urgent")
-            quality_score = _hospital_quality_score(hospital)
-            availability_score = _hospital_availability_score(hospital, "urgent")
-            hospital_distance = None
-            if user_lat is not None and user_lng is not None:
-                hospital_distance = haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"])
-            emergency_priority_score = _clamp(
-                access_score * 0.38 +
-                title_score * 0.22 +
-                quality_score * 0.24 +
-                surgery_score * 0.16
-            )
-            results.append({
-                "doctor": doc,
-                "match_score": round(emergency_priority_score, 4),
-                "scores": {
-                    "surgery": round(surgery_score, 4),
-                    "specialty": 0.35,
-                    "academic": 0.0,
-                    "title": round(title_score, 4),
-                    "hospital": round(quality_score, 4),
-                    "access": round(access_score, 4),
-                    "availability": round(availability_score, 4),
-                    "continuity": 0.0,
-                    "fairness": 0.0,
-                    "risk_penalty": 0.0,
-                },
-                "matched_dept": target_dept,
-                "reasons": ["急症兜底召回", "优先支持急诊医院", "综合医生资历与到院距离"],
-                "ranking_model": RANKING_MODEL_VERSION,
-                "hospital_distance_km": hospital_distance,
-                "emergency_priority_score": round(emergency_priority_score, 4),
-            })
+        results.extend(_build_emergency_doctor_fallback_candidates(
+            doctors=REAL_DOCTORS,
+            matched_dept=target_dept,
+            ranking_model=RANKING_MODEL_VERSION,
+            user_lat=user_lat,
+            user_lng=user_lng,
+            hospital_for_doctor=_hospital_for_doctor,
+            access_score_fn=_access_score,
+            distance_fn=haversine,
+            score_fn=_score_emergency_doctor_fallback,
+            result_fn=_build_emergency_doctor_fallback_result,
+        ))
 
     if scenario == "surgery":
         results.sort(key=lambda r: -r.get("emergency_priority_score", r["match_score"]))
@@ -2072,36 +1511,6 @@ TRIAGE_MILD_KEYWORDS = [
 def _contains_any(text, words):
     return any(w and w in text for w in words)
 
-
-def _contains_positive(text, words):
-    neg_prefixes = ("无", "没有", "没", "未", "否认", "不伴", "未见")
-    neg_breakers = ("但", "但是", "不过", "然而", "却", "仍", "仍然", "伴", "伴有", "出现")
-    hard_boundaries = "。！？；;\n\r"
-
-    def is_negated(start):
-        window_start = max(0, start - 16)
-        prefix = text[window_start:start]
-        for mark in hard_boundaries:
-            idx = prefix.rfind(mark)
-            if idx != -1:
-                prefix = prefix[idx + 1:]
-        neg_pos = max(prefix.rfind(neg) for neg in neg_prefixes)
-        if neg_pos == -1:
-            return False
-        tail = prefix[neg_pos:]
-        if any(br in tail for br in neg_breakers):
-            return False
-        return len(tail) <= 14
-
-    for word in words:
-        if not word:
-            continue
-        start = text.find(word)
-        while start != -1:
-            if not is_negated(start):
-                return True
-            start = text.find(word, start + len(word))
-    return False
 
 HTRIAGE_NOTICE = "疾病候选与病类判断仅用于就医推荐参考，不作为诊断结果。"
 
@@ -2529,98 +1938,25 @@ def recommend(condition, user_lat, user_lng, top_n=5, triage=None):
     weight_key = "first_visit" if (triage or {}).get("recommended_scenario") == "first_visit" else triage_level
     weights = HOSPITAL_RANKING_WEIGHTS.get(weight_key, HOSPITAL_RANKING_WEIGHTS["routine"])
 
-    results = []
-    for h in HOSPITALS:
-        distance = haversine(user_lat, user_lng, h["lat"], h["lng"])
+    access_context = "first_visit" if weight_key == "first_visit" else triage_level
+    results = _build_hospital_candidates(
+        hospitals=HOSPITALS,
+        condition=condition,
+        target_dept=target_dept,
+        triage=triage,
+        triage_level=triage_level,
+        access_context=access_context,
+        user_lat=user_lat,
+        user_lng=user_lng,
+        distance_fn=haversine,
+        access_score_fn=_access_score,
+        traffic_access_fn=_hospital_traffic_access,
+        compose_fn=_compose_hospital_candidate,
+        ranking_weights=weights,
+        ranking_model=RANKING_MODEL_VERSION,
+    )
 
-        access_context = "first_visit" if weight_key == "first_visit" else triage_level
-        accessibility = _access_score(h, user_lat, user_lng, access_context)
-        traffic_access = _hospital_traffic_access(h)
-        traffic_access["used_in_ranking"] = access_context not in ("emergency", "urgent")
-        traffic_access["ranking_policy"] = "急症/较重病情不使用公交/出租车权重" if not traffic_access["used_in_ranking"] else "普通/初诊场景使用公交站点和出租车样本辅助可达性测算"
-        clinical = _hospital_strength_for_dept(h, target_dept)
-        population_fit = _special_population_fit(condition, h)
-        clinical = _clamp(clinical * 0.82 + population_fit * 0.18)
-        availability = _hospital_availability_score(h, triage_level)
-        quality = _hospital_quality_score(h)
-        continuity = _continuity_score(condition, target_dept, h)
-        fairness = _fairness_score(condition, h, distance, "first_visit" if weight_key == "first_visit" else triage_level)
-        emergency = 1.0 if h.get("emergency") else 0.55
-        risk_penalty = _hospital_risk_penalty(condition, target_dept, h, triage or {})
-
-        matched_dept = target_dept
-        if target_dept and target_dept in h.get("strength_scores", {}):
-            strength_score = h["strength_scores"][target_dept]
-        elif target_dept and target_dept in h.get("departments", []):
-            strength_score = 75  # 有该科室但非强项
-        else:
-            strength_score = 50
-            for d in h.get("departments", []):
-                if target_dept and _departments_related(target_dept, d):
-                    strength_score = 70
-                    matched_dept = d
-                    break
-
-        raw_score = (
-            weights["clinical"] * clinical +
-            weights["availability"] * availability +
-            weights["accessibility"] * accessibility +
-            weights["continuity"] * continuity +
-            weights["quality"] * quality +
-            weights["fairness"] * fairness +
-            weights["emergency"] * emergency -
-            risk_penalty
-        )
-        composite = round(_clamp(raw_score) * 100, 1)
-        feature_scores = {
-            "clinical": round(clinical, 4),
-            "availability": round(availability, 4),
-            "accessibility": round(accessibility, 4),
-            "continuity": round(continuity, 4),
-            "quality": round(quality, 4),
-            "fairness": round(fairness, 4),
-            "emergency": round(emergency, 4),
-            "risk_penalty": round(risk_penalty, 4),
-            "traffic_access": traffic_access,
-        }
-
-        results.append({
-            "hospital": h,
-            "distance": distance,
-            "dist_score": round(accessibility * 100, 1),
-            "strength_score": strength_score,
-            "composite_score": composite,
-            "matched_department": matched_dept or target_dept,
-            "feature_scores": feature_scores,
-            "traffic_access": traffic_access,
-            "ranking_weights": weights,
-            "ranking_model": RANKING_MODEL_VERSION,
-            "explanations": _hospital_recommend_reasons(h, feature_scores, distance, matched_dept or target_dept, triage_level),
-        })
-
-    results.sort(key=lambda x: x["composite_score"], reverse=True)
-    selected = []
-    district_count = {}
-    tertiary_count = 0
-    for item in results:
-        h = item["hospital"]
-        adjusted = item["composite_score"]
-        district = _hospital_district(h)
-        if triage_level in ("routine", "urgent") and district_count.get(district, 0) >= 2:
-            adjusted -= 1.5
-        if triage_level == "routine" and h.get("level") == "三级甲等" and tertiary_count >= 2:
-            adjusted -= 2.0
-        item["rerank_adjustment"] = round(adjusted - item["composite_score"], 1)
-        item["composite_score"] = round(_clamp(adjusted / 100.0) * 100, 1)
-        selected.append(item)
-        district_count[district] = district_count.get(district, 0) + 1
-        if h.get("level") == "三级甲等":
-            tertiary_count += 1
-        if len(selected) >= top_n:
-            break
-    selected.sort(key=lambda x: x["composite_score"], reverse=True)
-    return selected
-
+    return _rerank_hospital_candidates(results, triage_level, top_n, _hospital_district)
 
 def recommend_doctors(condition, top_n=5):
     """根据病情推荐最合适的医生"""
@@ -2843,7 +2179,7 @@ def _resolve_recommendation_location(district, lat=None, lng=None):
     return 31.7760, 119.9600
 
 
-def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=False):
+def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=False, safety_first=False):
     """Single composition point for legacy and versioned recommendation APIs."""
     if strict:
         parsed = RecommendationRequest.parse(data, region_code=app.config.get("REGION_CODE", "320400"))
@@ -2901,7 +2237,7 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
     }
     if not enhanced:
         result["total_real_doctors"] = len(REAL_DOCTORS)
-    return result
+    return _safety_first_publication(result, triage) if safety_first else result
 
 
 @app.route("/api/recommend", methods=["POST"])
@@ -2965,24 +2301,28 @@ def api_enhanced_recommend():
 
 
 def _v1_triage_status(triage):
-    if (triage or {}).get("severity_bucket") == "信息不足":
-        return "INSUFFICIENT_INFORMATION"
-    return {
-        "emergency": "EMERGENCY",
-        "urgent": "URGENT",
-        "routine": "ROUTINE",
-    }.get((triage or {}).get("level"), "INSUFFICIENT_INFORMATION")
+    return triage_status_from_legacy(triage).value
+
+
+def _safety_first_publication(payload, triage):
+    return _publish_safety_first(payload, triage, _htriage_public_payload)
 
 
 def _v1_triage_payload(condition, scenario):
     triage = analyze_medical_triage(condition, scenario)
+    decision = evaluate_safety_gate(triage)
+    public_triage = _safety_first_triage(triage, decision)
     return {
         "condition": condition,
-        "matched_department": triage.get("matched_department") or match_department(condition),
-        "triage_status": _v1_triage_status(triage),
-        "disease_prediction": predict_disease_name(condition, details=True),
-        "triage": triage,
-        "htriage_analysis": _htriage_public_payload(triage),
+        "matched_department": public_triage.get("matched_department") or match_department(condition),
+        "triage_status": decision.status.value,
+        "disease_prediction": (
+            _safety_first_prediction(predict_disease_name(condition, details=True))
+            if decision.status in (TriageStatus.EMERGENCY, TriageStatus.INSUFFICIENT_INFORMATION)
+            else predict_disease_name(condition, details=True)
+        ),
+        "triage": public_triage,
+        "htriage_analysis": _safety_first_htriage_payload(_htriage_public_payload(public_triage), decision),
     }
 
 
@@ -3050,6 +2390,7 @@ def api_v1_recommendations():
             enhanced=True,
             doctor_top_n=8,
             strict=True,
+            safety_first=True,
         )
     except RequestValidationError as exc:
         return _v1_validation_error(exc)

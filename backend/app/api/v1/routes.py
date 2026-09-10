@@ -6,6 +6,7 @@ from pathlib import Path
 
 from flask import Blueprint, current_app, jsonify
 
+from .legacy_adapter import call_legacy_handler
 from .response import failure, success
 from ...infrastructure.regions.registry import RegionRegistry
 
@@ -57,34 +58,26 @@ def regions():
     ))
 
 
-def _legacy_handler(name: str):
-    """Import legacy composition lazily to keep the foundation dependency-light."""
-    import importlib
-
-    legacy_module = importlib.import_module("app")
-    return getattr(legacy_module, name)
-
-
 @api_v1.post("/triage")
 def triage():
-    return _legacy_handler("api_v1_triage")()
+    return call_legacy_handler("api_v1_triage")
 
 
 @api_v1.post("/triage/followups")
 def followups():
-    return _legacy_handler("api_v1_followups")()
+    return call_legacy_handler("api_v1_followups")
 
 
 @api_v1.post("/recommendations")
 def recommendations():
-    return _legacy_handler("api_v1_recommendations")()
+    return call_legacy_handler("api_v1_recommendations")
 
 
 @api_v1.get("/hospitals")
 def hospitals():
-    return _legacy_handler("api_v1_hospitals")()
+    return call_legacy_handler("api_v1_hospitals")
 
 
 @api_v1.get("/doctors")
 def doctors():
-    return _legacy_handler("api_v1_doctors")()
+    return call_legacy_handler("api_v1_doctors")

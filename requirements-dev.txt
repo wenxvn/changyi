@@ -1,0 +1,4 @@
+-r requirements.txt
+
+# Test-only dependency. Keep runtime installs small and auditable.
+pytest>=8.0,<9.0

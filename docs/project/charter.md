@@ -33,7 +33,7 @@
 
 - 当前后端主要集中在 `app.py`，前端主要集中在 `static/js/app.js` 和 `static/css/style.css`。
 - 数据直接从本地 JSON/CSV 和静态资源目录加载，尚无数据库或正式数据管线。
-- `requirements.txt` 只有 Flask 和 Flask-CORS，尚无正式测试依赖和 CI 配置。
+- 运行时依赖在 `requirements.txt`，开发测试依赖在 `requirements-dev.txt`，数据工具依赖在 `requirements-data.txt`；CI 已由 `.github/workflows/quality.yml` 建立，远端首次运行仍需在推送后确认。
 - 当前存在演示登录和本地 CORS 行为，不能视作生产级认证或访问控制。
 - 静态资源体量较大，数据源、许可证、版本和更新策略需要进一步制度化。
 

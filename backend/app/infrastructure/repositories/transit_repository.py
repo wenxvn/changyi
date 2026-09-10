@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from typing import Any
 
 from ..data.loaders import JsonDataLoader
@@ -22,3 +23,19 @@ class TransitRepository:
             source.get("record_key", dataset_id),
         )
         return rows
+
+
+class LazyTrafficAccessCache:
+    """Small process-local cache for computed traffic access maps."""
+
+    def __init__(self, builder: Callable[[], dict[str, dict[Any, Any]]]):
+        self._builder = builder
+        self._value: dict[str, dict[Any, Any]] | None = None
+
+    def get(self) -> dict[str, dict[Any, Any]]:
+        if self._value is None:
+            self._value = self._builder()
+        return self._value
+
+    def clear(self) -> None:
+        self._value = None

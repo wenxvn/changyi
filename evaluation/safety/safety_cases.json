@@ -1,0 +1,171 @@
+{
+  "schema_version": "safety-evaluation/v1",
+  "status_enum": [
+    "EMERGENCY",
+    "URGENT",
+    "ROUTINE",
+    "INSUFFICIENT_INFORMATION"
+  ],
+  "cases": [
+    {
+      "id": "cardiovascular-respiratory-emergency",
+      "category": "cardiovascular_emergency",
+      "condition": "胸痛并且呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确胸痛与呼吸困难组合。"
+    },
+    {
+      "id": "stroke-signal",
+      "category": "stroke",
+      "condition": "突然一侧无力并说话不清",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确卒中强信号。"
+    },
+    {
+      "id": "breathlessness",
+      "category": "breathlessness",
+      "condition": "喘不上气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "当前规则的明确呼吸困难表达。"
+    },
+    {
+      "id": "acute-abdomen",
+      "category": "acute_abdomen",
+      "condition": "右下腹痛且剧烈",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "急腹症关键词叠加严重程度。"
+    },
+    {
+      "id": "severe-trauma-bleeding",
+      "category": "severe_trauma",
+      "condition": "大量出血，止不住血",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确严重出血。"
+    },
+    {
+      "id": "altered-consciousness",
+      "category": "altered_consciousness",
+      "condition": "意识不清",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确意识障碍。"
+    },
+    {
+      "id": "severe-allergy",
+      "category": "allergy",
+      "condition": "全身风团伴呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "过敏表达同时包含呼吸风险。"
+    },
+    {
+      "id": "obstetric-emergency",
+      "category": "obstetric",
+      "condition": "孕期出血",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确孕产急症关键词。"
+    },
+    {
+      "id": "critical-child",
+      "category": "critical_child",
+      "condition": "儿童高热伴精神萎靡",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确儿童危重信号。"
+    },
+    {
+      "id": "eye-emergency",
+      "category": "eye_emergency",
+      "condition": "突发失明",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确突发视力急症关键词。"
+    },
+    {
+      "id": "mental-health-crisis",
+      "category": "mental_crisis",
+      "condition": "我想死并且准备伤害自己",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "baseline_rule_verified",
+      "source_type": "legacy_rule_characterization",
+      "notes": "明确自伤/心理危机表达。"
+    },
+    {
+      "id": "negation-only",
+      "category": "negation",
+      "condition": "没有胸痛，也没有呼吸困难",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "review_required",
+      "source_type": "legacy_rule_characterization",
+      "notes": "否定表达不应仅因关键词命中而升级急症，仍需医学审核其余信息不足路径。"
+    },
+    {
+      "id": "negation-then-positive",
+      "category": "negation",
+      "condition": "没有胸痛，但出现呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "review_required",
+      "source_type": "legacy_rule_characterization",
+      "notes": "否定胸痛不能覆盖转折后的呼吸困难。"
+    },
+    {
+      "id": "colloquial-breathlessness",
+      "category": "colloquial",
+      "condition": "喘不上来",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "review_required",
+      "source_type": "characterization_gap",
+      "notes": "已知 alias under-triage 反例；本切片只记录，不修复规则。"
+    },
+    {
+      "id": "vague-discomfort",
+      "category": "insufficient_information",
+      "condition": "不舒服",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "red_flag": false,
+      "review_status": "review_required",
+      "source_type": "characterization_gap",
+      "notes": "已知模糊输入降级缺口；本切片只记录，不修复规则。"
+    },
+    {
+      "id": "ordinary-cough",
+      "category": "routine_negative",
+      "condition": "轻微咳嗽两天",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "review_required",
+      "source_type": "legacy_rule_characterization",
+      "notes": "普通症状样例，用于检查不被误升级为急症。"
+    }
+  ]
+}

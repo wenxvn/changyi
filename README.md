@@ -33,6 +33,19 @@ python app.py
 
 默认服务地址为 `http://127.0.0.1:5002`。当前登录页是演示登录，不代表已经实现了生产级身份认证。
 
+开发测试和数据工具依赖分开安装：
+
+```bash
+pip install -r requirements-dev.txt    # pytest + runtime
+pip install -r requirements-data.txt   # Pillow + runtime，构建数据图标时使用
+python -m pytest
+node --check static/js/app.js
+python -m data_validation.validate_datasets --data-root data --output-dir data_validation
+python -m evaluation.safety.evaluate_safety
+```
+
+GitHub Actions 质量门禁位于 `.github/workflows/quality.yml`，会复核 Python、pytest、模型 smoke、Safety Evaluation baseline、数据报告、稳定快照和浏览器脚本语法。
+
 ## 重要提醒
 
 重构从“保留现有行为、建立基线、逐步拆分”开始，不进行没有记录的整体重写。任何涉及分诊、疾病预测、推荐排序、真实数据来源、患者隐私或安全控制的变化，都必须先更新相应计划、决策和风险记录，并通过质量门禁。

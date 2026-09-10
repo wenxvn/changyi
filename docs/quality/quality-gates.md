@@ -8,6 +8,7 @@
 - [ ] 未覆盖用户已有改动，未提交秘密或真实敏感信息。
 - [ ] 相关文档、ADR、风险和进度已同步。
 - [ ] `git diff` 和 `git status` 已检查，生成物和缓存符合 `.gitignore`。
+- [ ] runtime/dev/data-tools 依赖分层明确；CI workflow 与本地门禁命令保持一致。
 
 ## 后端门禁
 
@@ -37,3 +38,12 @@
 - [ ] `data_validation` JSON/Markdown 报告已生成；异常已登记，未被自动修复或当作放行结论。
 - [ ] 数据来源、更新时间、许可证/权限、脱敏状态和生成命令已记录。
 - [ ] 不会静默覆盖原始数据；生成物和正式数据有明确边界。
+
+## CI 门禁
+
+- [ ] `.github/workflows/quality.yml` 在 push/pull request 上运行 Python 编译、pytest、模型 smoke、Safety Evaluation baseline、数据质量和稳定快照检查。
+- [ ] 质量报告允许已登记异常在非 strict 模式下被记录，但生成报告或表征快照发生未解释漂移时 CI 失败。
+
+## 2026-09-10 重构切片验证记录
+
+当前本地基线为 83 个 pytest；最近切片已运行 API 13/13、Safety Evaluation、Python/Node 检查、数据质量扫描和稳定快照。数据扫描的 187 个异常仍为登记项，不作为放行结论；远端 GitHub Actions 首次运行待推送后确认。

@@ -37,6 +37,7 @@
 - 医生资产以当前工作树实际文件为准：11 份 `doctors_h*.json`、2,100 条记录；其中 `doctors_h6.json` 的声明总数 82 与实际 74 不一致，已由质量报告保留为异常，未改数据。
 - `parse_hospitals.py` 已改为显式 `--input-dir/--output-dir/--region` CLI；医院源文件缺失时不会自动覆盖 `data/`。
 - 图标构建脚本已移除 Windows 字体绝对路径，字体改为可选 `--font-path`，缺省使用 Pillow fallback。
+- 依赖已拆为 runtime/dev/data-tools 三层，并新增 pytest、模型 smoke 和 GitHub Actions workflow；远端首次运行待推送后确认。
 - 质量报告当前扫描 27 个数据文件、记录 187 个异常；主要是公交时间字段的疑似占位年份和 6 条时间先后异常。该报告是数据债务证据，不是放行结论。
 
 ## 审计证据与下一步

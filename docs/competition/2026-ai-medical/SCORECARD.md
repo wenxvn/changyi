@@ -2,10 +2,10 @@
 
 | 评分项 | 当前证据 | 当前问题 | 计划改进 | 对应代码 | 对应实验 | 完成状态 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 安全分诊 | 旧版含红旗规则和急症分支 | 状态枚举不统一，缺独立 Safety Set | Safety Gate 服务、反例集、Recall/under-triage | `app.py` → `backend/app/domain/triage` | `evaluation/safety` | 进行中 |
+| 安全分诊 | 已有四态 `TriageStatus`、`SafetyGateDecision`、Safety-first publication 和 16-case Safety Evaluation Set；v1 急症输出已 abstain 疾病候选；基线 Red Flag Recall 0.9231 | 红旗规则仍在 legacy；1 个 Emergency False Negative；信息不足缺口未修复，case 尚待医学审核 | 独立 Safety Gate/triage/follow-up、医学审核、修复后重新跑 Recall/under-triage；完整 legacy adapter parity | `backend/app/domain/triage/safety_gate.py`、`backend/app/domain/triage/publication.py`、`backend/app/api/v1/legacy_adapter.py`、`app.py` | `evaluation/safety` | 进行中 |
 | 模型可信度 | 41 类 NB 模型文件与训练报告 | 小数据、单次切分、存在潜在重复泄漏 | fingerprint split、abstain、校准、baseline 对比 | `data/symptom_disease_model` | `evaluation/model` | 进行中 |
-| 推荐质量 | 已有多目标医院/医生排序 | 逻辑在单体内，权重和事实语义混杂 | candidate/scoring/rerank/explain 分层与消融 | `app.py` → `backend/app/domain/recommendation` | `evaluation/recommendation` | 进行中 |
+| 推荐质量 | 已有多目标医院/医生排序；医院/医生 scoring、医院 feature、医院单候选组合、医院候选遍历、医院 rerank、医生 resource policy、candidate 过滤/医院命中/急症资格、急症医生兜底候选遍历、医院/急症兜底评分与结果 builder 和 traffic feature/index/计算纯函数已抽取并通过快照；cache 生命周期已形成 infrastructure seam | 交通数据加载与 cache 刷新策略/急症整体排序、部分资源组合与事实语义仍混杂；`fairness` 语义未完成审查 | candidate/feature/score/rerank/explain 分层与消融 | `app.py`、`backend/app/domain/recommendation/scoring.py`、`backend/app/domain/recommendation/features.py`、`backend/app/domain/recommendation/pipeline.py`、`backend/app/domain/recommendation/resource_policy.py`、`backend/app/domain/recommendation/candidate.py`、`backend/app/domain/recommendation/candidates.py`、`backend/app/domain/recommendation/traffic.py`、`backend/app/infrastructure/repositories/transit_repository.py` | `evaluation/recommendation` | 进行中 |
 | 数据可信度 | 交通数据有部分来源/隐私说明 | 医院常量无统一 manifest，医生 schema 不一 | Region Pack、manifest、质量报告 | `data/regions/320400`、`data_validation` | `tests/data_quality` | 进行中 |
 | 产品体验 | 现有流程可演示 | 登录门面像管理台，首页密度高，急症 salience 不足 | 新 shell、渐进式问诊、Trust Center、响应式 QA | `templates`、`static` → `frontend` | UI audit/E2E | 待开始 |
 | 城市迁移性 | 代码中已有区域点位 | 常州逻辑散落，暂无 RegionContext | registry/repository 契约和 future pack 文档 | `backend/app/infrastructure/regions` | region contract | 进行中 |
-| 工程交付 | 有协作规则和路线图 | 无正式测试/CI，依赖仅 2 行 | characterization、schema、CI、release freeze | `tests`、`.github/workflows` | CI | 进行中 |
+| 工程交付 | 有协作规则、83 个 pytest 测试、稳定快照、Safety Evaluation 和 CI workflow | GitHub Actions 远端首次运行待确认；尚未接入分支保护 | 保持本地/远端门禁一致，完成 schema/model smoke 与 release freeze | `tests`、`evaluation/safety`、`pyproject.toml`、`.github/workflows/quality.yml`、`requirements*.txt` | CI | 进行中 |
