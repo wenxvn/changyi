@@ -23,6 +23,19 @@ def as_text(value: Any) -> str:
     return str(value)
 
 
+def rebalance_weights(weights: Mapping[str, float], unavailable: set[str]) -> dict[str, float]:
+    """Remove unavailable features and normalize the remaining weights."""
+
+    available = {key: float(value) for key, value in weights.items() if key not in unavailable}
+    total = sum(available.values())
+    if total <= 0:
+        return {key: 0.0 for key in weights}
+    return {
+        key: round((available.get(key, 0.0) / total) if key in available else 0.0, 6)
+        for key in weights
+    }
+
+
 def doctor_title_score(doc: dict[str, Any]) -> float:
     title = doc.get("title", "") or ""
     if "主任医师" in title and "副主任" not in title:
@@ -143,13 +156,13 @@ def score_doctor_candidate(
         + weights["academic"] * academic_score
         + weights["title"] * title_score
         + weights["hospital"] * hospital_score
-        + weights["access"] * access_score
+        + weights.get("access", 0.0) * access_score
     )
     total_score = (
         base_score * (1 - sum(extra_weights.values()))
-        + extra_weights["availability"] * availability_score
-        + extra_weights["continuity"] * continuity_score
-        + extra_weights["fairness"] * fairness_score
+        + extra_weights.get("availability", 0.0) * availability_score
+        + extra_weights.get("continuity", 0.0) * continuity_score
+        + extra_weights.get("fairness", 0.0) * fairness_score
         - risk_penalty
     )
     if specialty_score > 0.5:

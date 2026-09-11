@@ -47,6 +47,9 @@ jobs:
       - name: Run provisional Safety Evaluation Set
         run: python -m evaluation.safety.evaluate_safety
 
+      - name: Run grouped model evaluation
+        run: python -m evaluation.model.evaluate_grouped --write
+
       - name: Check canonical frontend source syntax
         run: node --check frontend/test/frontend-boundaries.test.mjs
 
@@ -61,6 +64,8 @@ jobs:
           git diff --exit-code -- \
             data_validation/data_quality_report.json \
             data_validation/data_quality_report.md \
+            evaluation/model/split_manifest.json \
+            evaluation/model/grouped_split_report.json \
             tests/characterization/canonical_snapshot.json
 
   frontend:

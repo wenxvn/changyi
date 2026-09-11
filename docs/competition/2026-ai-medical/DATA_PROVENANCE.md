@@ -8,14 +8,14 @@
 
 | 数据集 | 当前记录 | 当前状态 | 主要问题 |
 | --- | ---: | --- | --- |
-| 医院目录（`backend/app/composition.py` 常量） | 21 | `migration_pending` | 仍是代码常量，逐字段 provenance 未完成 |
+| 医院目录（`data/regions/320400/hospitals/catalog.json`） | 21 | `provisional` | 已从组合根外置；公开事实、派生能力和未支持字段分开，逐字段外部 provenance 仍未完成 |
 | 医生 JSON（11 个文件） | 2,100 | `public_source_mixed` | 文件结构和来源字段不统一，且 h6 声明总数与实际记录不一致，需按医院拆入 Region Pack |
 | 公交线路 | 50 | `public_secondary_masked` | 已有来源描述；时间字段存在异常样本待报告 |
 | 公交站点 | 50 | `public_secondary_masked` | 已有来源描述；坐标范围和有效状态需自动检查 |
 | 出租车运营样本 | 50 | `derived_masked_sample` | 仅用于统计/可达性原型，不代表实时服务 |
 | 骑行站点/车辆 | 50/50 | `derived_masked_sample` | 仅作绿色出行展示，不进入急症排序 |
 | 症状疾病 41 类训练集 | 304 行 | `weak_or_synthetic` | 来源与许可有记录，但医学质量和泄漏风险未充分验证 |
-| 测试反馈 JSONL | 现有本地记录 | `demo_only` | 含历史网络元数据和健康描述，不能扩展到真实用户场景 |
+| 测试反馈 JSONL | 已移除运行时入口 | `demo_only` | 不再提供写入端点；历史文件若存在也不能扩展到真实用户场景 |
 
 ## 质量门
 

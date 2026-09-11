@@ -16,6 +16,7 @@ import { MapPage } from "../pages/MapPage";
 import { ProfilePage } from "../pages/ProfilePage";
 import { BrandMark } from "../components/ui/BrandMark";
 import { Button } from "../components/ui/Button";
+import { LocationProvider } from "../state/locationContext";
 
 type AppRoute = "home" | "triage" | "resources" | "map" | "trust" | "profile";
 
@@ -164,5 +165,5 @@ export function App() {
     <ProfilePage onNavigate={navigate} />
   ) : null;
 
-  return <AppShell route={route} onNavigate={navigate}>{content}</AppShell>;
+  return <LocationProvider><AppShell route={route} onNavigate={navigate}>{content}</AppShell></LocationProvider>;
 }

@@ -48,8 +48,12 @@ test("home and core resource pages render with actionable navigation", async ({ 
   assert.match(href ?? "", /^https:\/\/(uri\.amap\.com\/navigation|www\.amap\.com\/search)/);
 
   await page.goto("/map");
-  await page.getByRole("region", { name: "常州医院位置分布图" }).waitFor();
+  await page.getByRole("region", { name: "常州医院真实地理位置地图" }).waitFor();
   await page.screenshot({ path: testInfo.outputPath("map-desktop.png"), fullPage: true });
+  await page.getByText("未使用用户定位", { exact: true }).waitFor();
+  await page.getByRole("combobox", { name: "选择所在区域" }).selectOption("武进区");
+  await page.getByText("按区域参考点估算", { exact: true }).waitFor();
+  await page.getByText("区域参考点", { exact: true }).waitFor();
   await page.locator(".map-resource-row").first().click();
   await page.getByRole("link", { name: /高德导航/ }).waitFor();
 
@@ -67,7 +71,9 @@ test("routine triage can continue to a sourced hospital path", async ({ page }, 
   await page.screenshot({ path: testInfo.outputPath("followup-desktop.png"), fullPage: true });
   await page.getByRole("button", { name: "查看当前资源路径" }).click();
   await page.getByRole("link", { name: /高德导航/ }).first().waitFor();
-  await page.getByText("推荐分只用于资源排序", { exact: false }).waitFor();
+  await page.getByRole("button", { name: /公开资料详情/ }).first().click();
+  await page.waitForURL("**/resources?hospital=*");
+  await page.getByText("关联医生", { exact: true }).waitFor();
 });
 
 test("insufficient triage asks for one more piece of information", async ({ page }) => {

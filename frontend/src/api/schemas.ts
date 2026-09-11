@@ -2,12 +2,15 @@ import type {
   CitySummary,
   DataQualityEvidence,
   EvidenceDataset,
+  FollowupAnswer,
   EvidencePayload,
   DoctorDetailPayload,
   MapHospitalRecord,
   MapMarkerType,
   MapPayload,
+  ModelSplitMetrics,
   FollowupPayload,
+  FollowupOption,
   FollowupQuestion,
   FollowupResponse,
   DoctorListPayload,
@@ -60,14 +63,33 @@ function parseQuestion(value: unknown): FollowupQuestion | null {
   if (!isRecord(value) || typeof value.id !== "string" || typeof value.question !== "string") {
     return null;
   }
+  const options: FollowupOption[] = Array.isArray(value.options)
+    ? value.options
+        .map((option): FollowupOption | null => {
+          if (typeof option === "string") return { label: option, value: option };
+          if (!isRecord(option) || typeof option.label !== "string" || typeof option.value !== "string") return null;
+          return { label: option.label, value: option.value };
+        })
+        .filter((option): option is FollowupOption => option !== null)
+    : [];
   return {
     id: value.id,
     question: value.question,
-    options: Array.isArray(value.options)
-      ? value.options.filter((option): option is string => typeof option === "string")
-      : [],
+    options,
     reason: optionalString(value.reason),
   };
+}
+
+function parseFollowupAnswers(value: unknown): FollowupAnswer[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  return value
+    .filter(isRecord)
+    .filter((answer) => typeof answer.question_id === "string")
+    .map((answer) => ({
+      question_id: answer.question_id as string,
+      ...(typeof answer.value === "string" ? { value: answer.value } : {}),
+      ...(typeof answer.text_answer === "string" ? { text_answer: answer.text_answer } : {}),
+    }));
 }
 
 export function parseFollowup(value: unknown, field = "followup"): FollowupPayload {
@@ -110,6 +132,8 @@ export function parseTriagePayload(value: unknown): TriagePayload {
   }
   return {
     condition: requiredString(value.condition, "condition"),
+    original_condition: optionalString(value.original_condition),
+    followup_answers: parseFollowupAnswers(value.followup_answers),
     matched_department:
       typeof value.matched_department === "string" ? value.matched_department : null,
     triage_status: status as TriageStatus,
@@ -144,6 +168,8 @@ export function parseFollowupResponse(value: unknown): FollowupResponse {
   }
   return {
     condition: requiredString(value.condition, "condition"),
+    original_condition: optionalString(value.original_condition),
+    followup_answers: parseFollowupAnswers(value.followup_answers),
     matched_department: typeof value.matched_department === "string" ? value.matched_department : null,
     triage_status: status as TriageStatus,
     triage_label: optionalString(value.triage_label),
@@ -172,6 +198,16 @@ function parseHospital(value: unknown): HospitalRecord {
       : undefined,
     strengths: Array.isArray(value.strengths)
       ? value.strengths.filter((item): item is string => typeof item === "string")
+      : undefined,
+    derived_capability_areas: Array.isArray(value.derived_capability_areas)
+      ? value.derived_capability_areas.filter((item): item is string => typeof item === "string")
+      : undefined,
+    derived_capability_scores: isRecord(value.derived_capability_scores)
+      ? Object.fromEntries(
+          Object.entries(value.derived_capability_scores)
+            .filter(([, score]) => typeof score === "number")
+            .map(([key, score]) => [key, score as number]),
+        )
       : undefined,
   };
 }
@@ -235,6 +271,10 @@ function parseResourceProvenance(value: unknown): ResourceProvenance {
     license_status: requiredString(value.license_status, "provenance.license_status"),
     field_level_status: requiredString(value.field_level_status, "provenance.field_level_status"),
     notice: requiredString(value.notice, "provenance.notice"),
+    catalog_status: optionalString(value.catalog_status),
+    unsupported_fields: Array.isArray(value.unsupported_fields)
+      ? value.unsupported_fields.filter((item): item is string => typeof item === "string")
+      : undefined,
   };
 }
 
@@ -258,7 +298,27 @@ export function parseHospitalDetail(value: unknown): HospitalDetailPayload {
     resource: parseHospital(value.resource),
     related: {
       doctor_count: optionalNumber(value.related.doctor_count) ?? 0,
+      doctors: Array.isArray(value.related.doctors)
+        ? value.related.doctors.map(parseDoctorRecord)
+        : undefined,
     },
+    derived_capability: isRecord(value.derived_capability)
+      ? {
+          areas: Array.isArray(value.derived_capability.areas)
+            ? value.derived_capability.areas.filter((item): item is string => typeof item === "string")
+            : [],
+          scores: isRecord(value.derived_capability.scores)
+            ? Object.fromEntries(
+                Object.entries(value.derived_capability.scores)
+                  .filter(([, score]) => typeof score === "number")
+                  .map(([key, score]) => [key, score as number]),
+              )
+            : {},
+          status: optionalString(value.derived_capability.status) ?? "unknown",
+          formula_version: optionalString(value.derived_capability.formula_version) ?? "unknown",
+          notice: optionalString(value.derived_capability.notice) ?? "派生字段仅供参考。",
+        }
+      : undefined,
   } as HospitalDetailPayload;
 }
 
@@ -290,7 +350,7 @@ function parseRecommendedHospital(value: unknown): RecommendedHospital {
     ...value,
     hospital: parseHospital(value.hospital),
     matched_department: optionalString(value.matched_department),
-    distance: optionalNumber(value.distance),
+    distance: nullableNumber(value.distance),
     explanations: Array.isArray(value.explanations)
       ? value.explanations.filter((item): item is string => typeof item === "string")
       : [],
@@ -312,7 +372,7 @@ function parseDoctor(value: unknown): RecommendedDoctor {
     reasons: Array.isArray(value.reasons)
       ? value.reasons.filter((item): item is string => typeof item === "string")
       : [],
-    hospital_distance_km: optionalNumber(value.hospital_distance_km),
+    hospital_distance_km: nullableNumber(value.hospital_distance_km),
     visit_path: optionalString(value.visit_path),
     match_score: optionalNumber(value.match_score),
   };
@@ -338,6 +398,23 @@ export function parseRecommendations(value: unknown): RecommendationPayload {
     resource_strategy: strategy,
     data_source: optionalString(value.data_source),
     effective_scenario: optionalString(value.effective_scenario),
+    user_location: isRecord(value.user_location)
+      ? {
+          district: typeof value.user_location.district === "string" ? value.user_location.district : null,
+          lat: nullableNumber(value.user_location.lat),
+          lng: nullableNumber(value.user_location.lng),
+          source: optionalString(value.user_location.source) ?? "unknown",
+        }
+      : undefined,
+    feature_availability: isRecord(value.feature_availability)
+      ? {
+          location: value.feature_availability.location === true,
+          distance: value.feature_availability.distance === true,
+          transit: value.feature_availability.transit === true,
+        }
+      : undefined,
+    ranking_notice: optionalString(value.ranking_notice),
+    followup_answers: parseFollowupAnswers(value.followup_answers),
   };
 }
 
@@ -409,6 +486,31 @@ function parseOptionalEvidenceDataset(value: unknown, field: string): EvidenceDa
   return value === null || value === undefined ? null : parseEvidenceDataset(value, field);
 }
 
+function parseModelSplit(value: unknown): ModelSplitMetrics | undefined {
+  if (!isRecord(value)) return undefined;
+  return {
+    test_rows: optionalNumber(value.test_rows) ?? 0,
+    accuracy: nullableNumber(value.accuracy),
+    covered_accuracy: nullableNumber(value.covered_accuracy),
+    top3_accuracy: nullableNumber(value.top3_accuracy),
+    macro_precision: nullableNumber(value.macro_precision),
+    macro_recall: nullableNumber(value.macro_recall),
+    macro_f1: nullableNumber(value.macro_f1),
+    coverage: nullableNumber(value.coverage),
+    abstention_rate: nullableNumber(value.abstention_rate),
+    per_class_recall: isRecord(value.per_class_recall)
+      ? Object.fromEntries(
+          Object.entries(value.per_class_recall)
+            .filter(([, score]) => typeof score === "number")
+            .map(([label, score]) => [label, score as number]),
+        )
+      : undefined,
+    confusion_matrix: isRecord(value.confusion_matrix)
+      ? value.confusion_matrix as Record<string, Record<string, number>>
+      : undefined,
+  };
+}
+
 export function parseEvidence(value: unknown): EvidencePayload {
   if (
     !isRecord(value) ||
@@ -473,6 +575,17 @@ export function parseEvidence(value: unknown): EvidencePayload {
         model.training_data_source,
         "model.training_data_source",
       ),
+      random_baseline: parseModelSplit(model.random_baseline),
+      grouped_fingerprint: parseModelSplit(model.grouped_fingerprint),
+      near_duplicate_audit: isRecord(model.near_duplicate_audit)
+        ? {
+            jaccard_threshold: optionalNumber(model.near_duplicate_audit.jaccard_threshold) ?? 0,
+            pair_count: optionalNumber(model.near_duplicate_audit.pair_count) ?? 0,
+            cross_label_pair_count: optionalNumber(model.near_duplicate_audit.cross_label_pair_count) ?? 0,
+            note: optionalString(model.near_duplicate_audit.note) ?? "",
+          }
+        : undefined,
+      split_manifest: optionalString(model.split_manifest),
     },
     data_quality: {
       available: quality.available === true,
@@ -488,6 +601,36 @@ export function parseEvidence(value: unknown): EvidencePayload {
     limitations: Array.isArray(value.limitations)
       ? value.limitations.filter((item): item is string => typeof item === "string")
       : [],
+    hospital_data: isRecord(value.hospital_data)
+      ? {
+          available: value.hospital_data.available === true,
+          dataset_id: optionalString(value.hospital_data.dataset_id) ?? "unknown",
+          status: optionalString(value.hospital_data.status) ?? "unknown",
+          source_class: optionalString(value.hospital_data.source_class) ?? "unknown",
+          source_url: typeof value.hospital_data.source_url === "string" ? value.hospital_data.source_url : null,
+          last_verified_at: typeof value.hospital_data.last_verified_at === "string" ? value.hospital_data.last_verified_at : null,
+          license_status: optionalString(value.hospital_data.license_status) ?? "unknown",
+          deidentified: value.hospital_data.deidentified === true,
+          record_count: optionalNumber(value.hospital_data.record_count) ?? 0,
+          public_fact_fields: Array.isArray(value.hospital_data.public_fact_fields)
+            ? value.hospital_data.public_fact_fields.filter((item): item is string => typeof item === "string")
+            : [],
+          derived_fields: isRecord(value.hospital_data.derived_fields)
+            ? Object.fromEntries(
+                Object.entries(value.hospital_data.derived_fields)
+                  .filter(([, item]) => isRecord(item))
+                  .map(([key, item]) => [key, {
+                    status: optionalString((item as Record<string, unknown>).status) ?? "unknown",
+                    formula_version: optionalString((item as Record<string, unknown>).formula_version) ?? "unknown",
+                  }]),
+              )
+            : {},
+          unsupported_fields: Array.isArray(value.hospital_data.unsupported_fields)
+            ? value.hospital_data.unsupported_fields.filter((item): item is string => typeof item === "string")
+            : [],
+          notice: optionalString(value.hospital_data.notice) ?? "医院资料状态待核验。",
+        }
+      : undefined,
   };
 }
 
@@ -541,5 +684,20 @@ export function parseMap(value: unknown): MapPayload {
     source: optionalString(value.source) ?? "unknown",
     distance_method: value.distance_method === null ? null : optionalString(value.distance_method) ?? null,
     notice: requiredString(value.notice, "map.notice"),
+    provenance: isRecord(value.provenance)
+      ? {
+          status: optionalString(value.provenance.status) ?? "unknown",
+          source_class: optionalString(value.provenance.source_class) ?? "unknown",
+          last_updated: typeof value.provenance.last_updated === "string" ? value.provenance.last_updated : null,
+          license_status: optionalString(value.provenance.license_status) ?? "unknown",
+        }
+      : undefined,
+    user_location: isRecord(value.user_location)
+      ? {
+          lat: nullableNumber(value.user_location.lat),
+          lng: nullableNumber(value.user_location.lng),
+          source: optionalString(value.user_location.source) ?? "unknown",
+        }
+      : undefined,
   };
 }

@@ -1,0 +1,1005 @@
+{
+  "schema_version": "hospital-catalog/v2",
+  "dataset_id": "changzhou-hospital-catalog-2026.09-provisional",
+  "region_code": "320400",
+  "status": "provisional",
+  "source_class": "legacy_catalog_import",
+  "source_url": null,
+  "last_verified_at": null,
+  "license_status": "not_recorded",
+  "deidentified": true,
+  "record_count": 21,
+  "field_policy": {
+    "public_facts": [
+      "id",
+      "name",
+      "alias",
+      "level",
+      "type",
+      "address",
+      "phone",
+      "lat",
+      "lng",
+      "departments",
+      "emergency"
+    ],
+    "derived_features": {
+      "derived_capability_areas": {
+        "status": "provisional",
+        "formula_version": "legacy-strength-labels-v1",
+        "note": "旧目录标签，仅供内部匹配解释，不代表官方评级"
+      },
+      "derived_capability_scores": {
+        "status": "provisional",
+        "formula_version": "legacy-strength-score-v1",
+        "formula": "迁移旧目录强度字段；数值未完成外部核验，不作为官方评分"
+      }
+    },
+    "unsupported_null": [
+      "beds",
+      "daily_outpatients",
+      "rating",
+      "description"
+    ]
+  },
+  "records": [
+    {
+      "id": 1,
+      "name": "常州市第一人民医院",
+      "alias": "常州一院",
+      "level": "三级甲等",
+      "type": "综合医院",
+      "address": "天宁区局前街185号",
+      "lat": 31.7768,
+      "lng": 119.958,
+      "phone": "0519-68870000",
+      "departments": [
+        "心血管内科",
+        "心脏大血管外科",
+        "消化内科",
+        "神经内科",
+        "神经外科",
+        "肝胆胰外科",
+        "血液科",
+        "肿瘤科",
+        "呼吸与危重症医学科",
+        "肾内科",
+        "风湿免疫科",
+        "泌尿外科",
+        "骨科",
+        "儿科",
+        "妇产科",
+        "口腔科",
+        "耳鼻咽喉科",
+        "眼科",
+        "介入放射科",
+        "内分泌代谢科",
+        "皮肤科",
+        "感染性疾病科",
+        "麻醉科",
+        "重症医学科",
+        "急诊医学科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "心血管内科",
+        "心脏大血管外科",
+        "肿瘤科",
+        "肝胆胰外科",
+        "血液科",
+        "神经内科",
+        "神经外科"
+      ],
+      "derived_capability_scores": {
+        "心血管内科": 96,
+        "心脏大血管外科": 98,
+        "肿瘤科": 97,
+        "肝胆胰外科": 96,
+        "血液科": 95,
+        "神经内科": 95,
+        "神经外科": 94,
+        "消化内科": 91,
+        "呼吸与危重症医学科": 90,
+        "肾内科": 88,
+        "风湿免疫科": 87,
+        "泌尿外科": 91,
+        "骨科": 90,
+        "儿科": 89,
+        "妇产科": 88,
+        "介入放射科": 87
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 2,
+      "name": "常州市第二人民医院",
+      "alias": "常州二院",
+      "level": "三级甲等",
+      "type": "综合医院",
+      "address": "天宁区兴隆巷29号",
+      "lat": 31.77,
+      "lng": 119.965,
+      "phone": "0519-88104930",
+      "departments": [
+        "心血管内科",
+        "消化内科",
+        "内分泌科",
+        "泌尿外科",
+        "普外科",
+        "骨科",
+        "神经外科",
+        "妇产科",
+        "儿科",
+        "急诊科",
+        "呼吸内科",
+        "肿瘤科",
+        "神经内科",
+        "麻醉科",
+        "医学影像科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "消化内科",
+        "普外科",
+        "神经外科",
+        "心血管内科",
+        "泌尿外科"
+      ],
+      "derived_capability_scores": {
+        "消化内科": 95,
+        "普外科": 94,
+        "神经外科": 93,
+        "心血管内科": 91,
+        "骨科": 87,
+        "内分泌科": 86,
+        "泌尿外科": 88
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 3,
+      "name": "常州市中医医院",
+      "alias": "常州中医院",
+      "level": "三级甲等",
+      "type": "中医医院",
+      "address": "天宁区和平北路25号",
+      "lat": 31.78,
+      "lng": 119.962,
+      "phone": "0519-89896990",
+      "departments": [
+        "心血管科",
+        "骨伤科",
+        "妇科",
+        "肾内科",
+        "脾胃病科",
+        "肛肠科",
+        "肿瘤科",
+        "血液肿瘤科",
+        "中医内科",
+        "针灸推拿科",
+        "中医妇科",
+        "中医儿科",
+        "康复医学科",
+        "治未病中心",
+        "正骨科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "中医骨伤科",
+        "针灸推拿科",
+        "中医内科",
+        "康复医学科",
+        "肾病科"
+      ],
+      "derived_capability_scores": {
+        "中医骨伤科": 97,
+        "针灸推拿科": 96,
+        "中医内科": 93,
+        "康复医学科": 92,
+        "中医妇科": 88,
+        "肾病科": 90,
+        "心血管科": 91
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 4,
+      "name": "常州市第三人民医院",
+      "alias": "常州三院",
+      "level": "三级乙等",
+      "type": "综合医院",
+      "address": "天宁区兰陵北路300号",
+      "lat": 31.76,
+      "lng": 119.955,
+      "phone": "0519-86666060",
+      "departments": [
+        "传染病科",
+        "肝病科",
+        "呼吸内科",
+        "消化内科",
+        "普外科",
+        "妇产科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "传染病科",
+        "肝病科",
+        "呼吸内科"
+      ],
+      "derived_capability_scores": {
+        "传染病科": 95,
+        "肝病科": 94,
+        "呼吸内科": 88,
+        "消化内科": 82
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 5,
+      "name": "常州市肿瘤医院",
+      "alias": "常州四院/肿瘤医院",
+      "level": "三级乙等",
+      "type": "专科医院",
+      "address": "钟楼区怀德北路1号",
+      "lat": 31.785,
+      "lng": 119.948,
+      "phone": "0519-86867890",
+      "departments": [
+        "中医科",
+        "乳腺外科",
+        "介入科",
+        "儿科",
+        "内分泌科",
+        "口腔科",
+        "呼吸内科",
+        "妇产科",
+        "心血管内科",
+        "放疗科",
+        "泌尿外科",
+        "消化内科",
+        "疼痛科",
+        "皮肤性病科",
+        "眼科",
+        "神经内科",
+        "神经外科",
+        "耳鼻咽喉头颈外科",
+        "肝胆外科",
+        "肾内科",
+        "肿瘤内科",
+        "胃肠外科",
+        "胸外科",
+        "风湿免疫科",
+        "骨科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "肿瘤外科",
+        "放疗科",
+        "肿瘤内科"
+      ],
+      "derived_capability_scores": {
+        "肿瘤科": 96,
+        "肿瘤外科": 96,
+        "放疗科": 94,
+        "肿瘤内科": 93,
+        "肿瘤妇科": 89
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 6,
+      "name": "常州市儿童医院",
+      "alias": "常州儿童医院",
+      "level": "三级甲等",
+      "type": "专科医院",
+      "address": "天宁区中吴大道958号",
+      "lat": 31.752,
+      "lng": 119.955,
+      "phone": "0519-69808328",
+      "departments": [
+        "呼吸科",
+        "新生儿科",
+        "消化营养科",
+        "神经内科",
+        "儿内科",
+        "儿外科",
+        "儿童保健科",
+        "儿童康复科",
+        "小儿呼吸科",
+        "小儿消化科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "儿内科",
+        "新生儿科",
+        "小儿呼吸科",
+        "神经内科"
+      ],
+      "derived_capability_scores": {
+        "儿科": 94,
+        "新生儿科": 93,
+        "小儿呼吸科": 91,
+        "儿外科": 88,
+        "神经内科": 89
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 7,
+      "name": "常州市妇幼保健院",
+      "alias": "常州妇幼保健院",
+      "level": "三级甲等",
+      "type": "专科医院",
+      "address": "钟楼区丁香路16号",
+      "lat": 31.79,
+      "lng": 119.935,
+      "phone": "0519-88581111",
+      "departments": [
+        "中医科",
+        "乳腺病科",
+        "产前诊断",
+        "产科",
+        "儿保科",
+        "儿科",
+        "妇保科",
+        "妇瘤一科",
+        "妇瘤二科",
+        "婚前孕前保健科",
+        "宫颈疾病诊治中心",
+        "心内科",
+        "放射科",
+        "普妇科",
+        "泌尿外科",
+        "消化内科",
+        "生殖健康科",
+        "生殖医学中心",
+        "生育技术科",
+        "男性科",
+        "疼痛科",
+        "皮肤科",
+        "眼科",
+        "神经内科",
+        "肝胆外科",
+        "胃肠外科",
+        "计划生育科",
+        "超声科",
+        "骨科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "产科",
+        "生殖医学科",
+        "妇科"
+      ],
+      "derived_capability_scores": {
+        "产科": 97,
+        "生殖医学科": 95,
+        "妇科": 93,
+        "产前诊断": 90
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 8,
+      "name": "武进人民医院",
+      "alias": "武进医院",
+      "level": "三级乙等",
+      "type": "综合医院",
+      "address": "武进区永宁北路2号",
+      "lat": 31.74,
+      "lng": 119.95,
+      "phone": "0519-86312345",
+      "departments": [
+        "心血管内科",
+        "骨科",
+        "普外科",
+        "妇产科",
+        "儿科",
+        "神经内科",
+        "泌尿外科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "骨科",
+        "心血管内科",
+        "泌尿外科"
+      ],
+      "derived_capability_scores": {
+        "骨科": 91,
+        "心血管内科": 89,
+        "泌尿外科": 88,
+        "普外科": 85
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 9,
+      "name": "金坛第一人民医院",
+      "alias": "金坛医院",
+      "level": "三级乙等",
+      "type": "综合医院",
+      "address": "金坛区金武路88号",
+      "lat": 31.72,
+      "lng": 119.58,
+      "phone": "0519-82821234",
+      "departments": [
+        "内科",
+        "外科",
+        "妇产科",
+        "儿科",
+        "骨科",
+        "眼科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "骨科",
+        "内科"
+      ],
+      "derived_capability_scores": {
+        "骨科": 84,
+        "内科": 82,
+        "普外科": 80
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 10,
+      "name": "溧阳市人民医院",
+      "alias": "溧阳医院",
+      "level": "三级乙等",
+      "type": "综合医院",
+      "address": "溧阳市昆仑北路68号",
+      "lat": 31.41,
+      "lng": 119.48,
+      "phone": "0519-87012345",
+      "departments": [
+        "内科",
+        "外科",
+        "妇产科",
+        "儿科",
+        "骨科",
+        "神经内科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "神经内科",
+        "骨科"
+      ],
+      "derived_capability_scores": {
+        "神经内科": 85,
+        "骨科": 83,
+        "内科": 81
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 11,
+      "name": "常州市老年病医院",
+      "alias": "常州老年病医院",
+      "level": "三级乙等",
+      "type": "综合医院",
+      "address": "江苏省常州市延陵东路288号",
+      "lat": 31.787,
+      "lng": 119.934,
+      "phone": "0519-67890099 / 69800509",
+      "departments": [
+        "呼吸与重症医学科",
+        "烧伤科",
+        "精神心理科",
+        "肛肠科",
+        "神经外科",
+        "骨科",
+        "皮肤科",
+        "妇产科",
+        "康复医学科",
+        "老年综合科",
+        "泌尿外科",
+        "乳腺外科",
+        "肾内风湿免疫科",
+        "胃肠肝胆外科",
+        "消化内科",
+        "心血管内科",
+        "血液肿瘤科",
+        "眼科",
+        "儿科",
+        "神经内科",
+        "内分泌代谢科",
+        "急诊科",
+        "ICU",
+        "口腔科",
+        "耳鼻咽喉科",
+        "放射科",
+        "麻醉科",
+        "检验科",
+        "功能科",
+        "针灸推拿科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "老年综合科",
+        "康复医学科",
+        "呼吸与重症医学科",
+        "心血管内科",
+        "神经内科",
+        "骨科"
+      ],
+      "derived_capability_scores": {
+        "老年综合科": 90,
+        "康复医学科": 88,
+        "呼吸与重症医学科": 87,
+        "心血管内科": 86,
+        "神经内科": 84,
+        "骨科": 83,
+        "消化内科": 82,
+        "儿科": 80
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 12,
+      "name": "武进中医医院",
+      "alias": "武进区中医医院",
+      "level": "三级乙等",
+      "type": "中医医院",
+      "address": "武进区湖塘镇",
+      "lat": 31.718,
+      "lng": 119.944,
+      "phone": "暂无",
+      "departments": [
+        "中医内科",
+        "骨伤科",
+        "针灸推拿科",
+        "脾胃病科",
+        "康复医学科",
+        "妇科",
+        "儿科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "中医内科",
+        "骨伤科",
+        "针灸推拿科",
+        "康复医学科"
+      ],
+      "derived_capability_scores": {
+        "中医内科": 88,
+        "骨伤科": 87,
+        "针灸推拿科": 86,
+        "康复医学科": 84
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 13,
+      "name": "溧阳市中医医院",
+      "alias": "溧阳中医院",
+      "level": "三级乙等",
+      "type": "中医医院",
+      "address": "溧阳市",
+      "lat": 31.425,
+      "lng": 119.487,
+      "phone": "暂无",
+      "departments": [
+        "中医内科",
+        "骨伤科",
+        "针灸推拿科",
+        "脾胃病科",
+        "康复医学科",
+        "肾病科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "中医内科",
+        "骨伤科",
+        "针灸推拿科"
+      ],
+      "derived_capability_scores": {
+        "中医内科": 86,
+        "骨伤科": 85,
+        "针灸推拿科": 84,
+        "康复医学科": 82
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 14,
+      "name": "常州市德安医院",
+      "alias": "常州德安医院",
+      "level": "三级甲等",
+      "type": "专科医院",
+      "address": "常州市天宁区",
+      "lat": 31.76,
+      "lng": 119.975,
+      "phone": "暂无",
+      "departments": [
+        "司法鉴定",
+        "康复中心",
+        "心理卫生中心",
+        "皮肤科",
+        "精神科",
+        "综合内科",
+        "综合外科",
+        "老年科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "精神科",
+        "心理科",
+        "老年精神科"
+      ],
+      "derived_capability_scores": {
+        "精神科": 94,
+        "心理科": 90,
+        "老年精神科": 88,
+        "康复医学科": 82
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 15,
+      "name": "常州市第七人民医院",
+      "alias": "戚墅堰区人民医院",
+      "level": "二级甲等",
+      "type": "综合医院",
+      "address": "经开区/原戚墅堰区",
+      "lat": 31.724,
+      "lng": 120.058,
+      "phone": "暂无",
+      "departments": [
+        "内科",
+        "外科",
+        "妇产科",
+        "儿科",
+        "骨科",
+        "急诊科",
+        "康复医学科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "内科",
+        "骨科",
+        "康复医学科"
+      ],
+      "derived_capability_scores": {
+        "内科": 78,
+        "骨科": 76,
+        "康复医学科": 75
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 16,
+      "name": "常州市口腔医院",
+      "alias": "钟楼医院",
+      "level": "二级甲等",
+      "type": "专科医院",
+      "address": "常州市钟楼区",
+      "lat": 31.779,
+      "lng": 119.944,
+      "phone": "暂无",
+      "departments": [
+        "口腔科",
+        "口腔颌面外科",
+        "牙体牙髓科",
+        "牙周科",
+        "正畸科",
+        "修复科"
+      ],
+      "emergency": false,
+      "derived_capability_areas": [
+        "口腔科",
+        "口腔颌面外科",
+        "正畸科"
+      ],
+      "derived_capability_scores": {
+        "口腔科": 88,
+        "口腔颌面外科": 84,
+        "正畸科": 82,
+        "修复科": 80
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 17,
+      "name": "常州市中西医结合医院",
+      "alias": "广化医院",
+      "level": "二级甲等",
+      "type": "中医医院",
+      "address": "常州市钟楼区",
+      "lat": 31.772,
+      "lng": 119.944,
+      "phone": "暂无",
+      "departments": [
+        "中西医结合科",
+        "内科",
+        "外科",
+        "康复医学科",
+        "针灸推拿科",
+        "妇科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "中西医结合科",
+        "康复医学科",
+        "针灸推拿科"
+      ],
+      "derived_capability_scores": {
+        "中西医结合科": 82,
+        "康复医学科": 80,
+        "针灸推拿科": 78
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 18,
+      "name": "金坛区中医医院",
+      "alias": "金坛中医院",
+      "level": "二级甲等",
+      "type": "中医医院",
+      "address": "金坛区",
+      "lat": 31.741,
+      "lng": 119.575,
+      "phone": "暂无",
+      "departments": [
+        "中医内科",
+        "骨伤科",
+        "针灸推拿科",
+        "康复医学科",
+        "脾胃病科",
+        "妇科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "中医内科",
+        "骨伤科",
+        "针灸推拿科"
+      ],
+      "derived_capability_scores": {
+        "中医内科": 82,
+        "骨伤科": 80,
+        "针灸推拿科": 78
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 19,
+      "name": "金坛区第二人民医院",
+      "alias": "金坛二院",
+      "level": "二级医院",
+      "type": "综合医院",
+      "address": "金坛区",
+      "lat": 31.727,
+      "lng": 119.59,
+      "phone": "暂无",
+      "departments": [
+        "内科",
+        "外科",
+        "妇产科",
+        "儿科",
+        "骨科",
+        "急诊科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "内科",
+        "外科",
+        "骨科"
+      ],
+      "derived_capability_scores": {
+        "内科": 75,
+        "外科": 74,
+        "骨科": 72
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 20,
+      "name": "溧阳市妇幼保健院",
+      "alias": "溧阳妇幼保健院",
+      "level": "二级甲等",
+      "type": "专科医院",
+      "address": "溧阳市",
+      "lat": 31.418,
+      "lng": 119.492,
+      "phone": "暂无",
+      "departments": [
+        "产科",
+        "妇科",
+        "儿科",
+        "儿童保健科",
+        "妇女保健科",
+        "生殖健康科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "产科",
+        "妇科",
+        "儿童保健科"
+      ],
+      "derived_capability_scores": {
+        "产科": 80,
+        "妇科": 78,
+        "儿童保健科": 76
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    },
+    {
+      "id": 21,
+      "name": "新北区三井人民医院",
+      "alias": "三井人民医院",
+      "level": "二级医院",
+      "type": "综合医院",
+      "address": "新北区三井街道",
+      "lat": 31.818,
+      "lng": 119.97,
+      "phone": "暂无",
+      "departments": [
+        "内科",
+        "外科",
+        "妇产科",
+        "儿科",
+        "全科医学科",
+        "康复医学科"
+      ],
+      "emergency": true,
+      "derived_capability_areas": [
+        "全科医学科",
+        "内科",
+        "康复医学科"
+      ],
+      "derived_capability_scores": {
+        "全科医学科": 74,
+        "内科": 72,
+        "康复医学科": 70
+      },
+      "_provenance": {
+        "source_class": "legacy_catalog_import",
+        "status": "provisional",
+        "source_url": null,
+        "last_verified_at": null,
+        "license_status": "not_recorded",
+        "deidentified": true
+      }
+    }
+  ]
+}

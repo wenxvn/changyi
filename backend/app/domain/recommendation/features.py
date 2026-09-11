@@ -17,7 +17,7 @@ def hospital_strength_for_department(hospital: dict[str, Any] | None, target_dep
         return 0.5
     if not target_dept:
         return 0.6
-    scores = hospital.get("strength_scores", {})
+    scores = hospital.get("derived_capability_scores") or hospital.get("strength_scores", {})
     departments = hospital.get("departments", [])
     if target_dept in scores:
         return min(1.0, scores[target_dept] / 100.0)
@@ -46,24 +46,38 @@ def level_score_norm(hospital: dict[str, Any] | None) -> float:
 
 
 def hospital_availability_score(hospital: dict[str, Any] | None, triage_level: str = "routine") -> float:
-    beds = (hospital or {}).get("beds", 0) or 0
-    daily = (hospital or {}).get("daily_outpatients", 0) or 0
-    capacity = clamp(beds / 1800.0)
-    if beds and daily:
-        crowding = daily / max(1, beds)
-        waiting_relief = clamp(1.15 - crowding / 6.0)
-    else:
-        waiting_relief = 0.55
+    beds = (hospital or {}).get("beds")
+    daily = (hospital or {}).get("daily_outpatients")
+    if not hospital_availability_data_available(hospital):
+        return 0.0
+    capacity = clamp(float(beds) / 1800.0)
+    crowding = float(daily) / max(1.0, float(beds))
+    waiting_relief = clamp(1.15 - crowding / 6.0)
     emergency_bonus = 0.12 if hospital and hospital.get("emergency") else 0.0
     if triage_level == "emergency":
         return clamp(capacity * 0.45 + waiting_relief * 0.30 + emergency_bonus + 0.10)
     return clamp(capacity * 0.35 + waiting_relief * 0.50 + emergency_bonus)
 
 
+def hospital_availability_data_available(hospital: dict[str, Any] | None) -> bool:
+    """Return whether capacity inputs are complete enough to rank on."""
+
+    if not hospital:
+        return False
+    beds = hospital.get("beds")
+    daily = hospital.get("daily_outpatients")
+    return all(
+        isinstance(value, (int, float)) and not isinstance(value, bool) and float(value) >= 0
+        for value in (beds, daily)
+    )
+
+
 def hospital_quality_score(hospital: dict[str, Any] | None) -> float:
-    rating = (hospital or {}).get("rating", 4.0) or 4.0
-    rating_norm = clamp(rating / 5.0)
     level_norm = level_score_norm(hospital)
+    rating = (hospital or {}).get("rating")
+    if not isinstance(rating, (int, float)):
+        return level_norm
+    rating_norm = clamp(float(rating) / 5.0)
     return clamp(rating_norm * 0.58 + level_norm * 0.42)
 
 
@@ -100,9 +114,9 @@ def special_population_fit(condition: str, hospital: dict[str, Any] | None) -> f
     return score
 
 
-def fairness_score(condition: str, hospital: dict[str, Any] | None, distance: float, triage_level: str = "routine") -> float:
+def fairness_score(condition: str, hospital: dict[str, Any] | None, distance: float | None, triage_level: str = "routine") -> float:
     level_norm = level_score_norm(hospital)
-    local_bonus = 0.18 if distance <= 8 else (0.10 if distance <= 15 else 0.0)
+    local_bonus = 0.0 if distance is None else (0.18 if distance <= 8 else (0.10 if distance <= 15 else 0.0))
     level_text = hospital.get("level", "") if hospital else ""
     primary_bonus = 0.0
     if triage_level in ("routine", "first_visit"):
@@ -139,26 +153,26 @@ def hospital_risk_penalty(
 def hospital_recommend_reasons(
     hospital: dict[str, Any],
     feature_scores: dict[str, Any],
-    distance: float,
+    distance: float | None,
     matched_dept: str | None,
     triage_level: str,
 ) -> list[str]:
     reasons = []
     if matched_dept:
         reasons.append(f"{matched_dept}匹配度{int(feature_scores['clinical'] * 100)}%")
-    if distance <= 8:
+    if distance is not None and distance <= 8:
         reasons.append(f"距离近，约{distance}km")
     elif feature_scores["quality"] >= 0.85:
         reasons.append("医院等级和综合质量较高")
-    if feature_scores["availability"] >= 0.72:
+    if feature_scores["availability"] >= 0.72 and (hospital.get("beds") is not None or hospital.get("daily_outpatients") is not None):
         reasons.append("承载能力/就诊可用性较好")
     if triage_level == "emergency" and hospital.get("emergency"):
         reasons.append("具备急诊能力")
     if feature_scores["fairness"] >= 0.70:
         reasons.append("符合分级诊疗与就近可及原则")
     traffic = feature_scores.get("traffic_access") or {}
-    if traffic.get("public_transport_score", 0) >= 0.75 and triage_level != "emergency":
+    if distance is not None and traffic.get("used_in_ranking") and traffic.get("public_transport_score", 0) >= 0.75 and triage_level != "emergency":
         reasons.append("公交/出租车到院可达性较好")
     if not reasons:
-        reasons.append("按临床匹配、距离和医院质量综合排序")
+        reasons.append("按临床匹配、医院等级和安全能力综合排序")
     return reasons[:4]

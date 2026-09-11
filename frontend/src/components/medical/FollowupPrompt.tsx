@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, CircleHelp } from "lucide-react";
 import { Button } from "../ui/Button";
-import type { FollowupPayload, FollowupQuestion } from "../../types/api";
+import type { FollowupAnswer, FollowupPayload, FollowupQuestion } from "../../types/api";
 
 interface FollowupPromptProps {
   followup: FollowupPayload;
   stepNumber: number;
-  onAnswer: (question: FollowupQuestion, answer: string) => void;
+  onAnswer: (question: FollowupQuestion, answer: FollowupAnswer) => void;
   onSkip: () => void;
   disabled?: boolean;
 }
@@ -28,7 +28,7 @@ export function FollowupPrompt({
   if (!followup.needed || !question) return null;
 
   const submitFreeText = () => {
-    if (freeText.trim() && !disabled) onAnswer(question, freeText.trim());
+    if (freeText.trim() && !disabled) onAnswer(question, { question_id: question.id, text_answer: freeText.trim() });
   };
 
   return (
@@ -46,11 +46,11 @@ export function FollowupPrompt({
             <button
               className="followup-option"
               type="button"
-              key={option}
+              key={option.value}
               disabled={disabled}
-              onClick={() => onAnswer(question, option)}
+              onClick={() => onAnswer(question, { question_id: question.id, value: option.value })}
             >
-              <span>{option}</span>
+              <span>{option.label}</span>
               <ArrowRight size={15} aria-hidden="true" />
             </button>
           ))}

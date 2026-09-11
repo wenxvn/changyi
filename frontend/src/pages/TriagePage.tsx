@@ -8,8 +8,11 @@ import { StatusPill } from "../components/ui/StatusPill";
 import { CurrentUnderstanding } from "../components/medical/CurrentUnderstanding";
 import { FollowupPrompt } from "../components/medical/FollowupPrompt";
 import { TriageResults } from "../components/medical/TriageResults";
+import { LocationSelector } from "../components/ui/LocationSelector";
 import { recordAnalysis } from "../state/demoProfile";
+import { useLocationContext } from "../state/locationContext";
 import type {
+  FollowupAnswer,
   FollowupPayload,
   FollowupQuestion,
   RecommendationPayload,
@@ -26,11 +29,6 @@ function followupFrom(result: TriagePayload): FollowupPayload | null {
   return followup?.needed ? followup : null;
 }
 
-function appendAnswer(condition: string, question: FollowupQuestion, answer: string): string {
-  const supplement = `\n补充信息：${question.question}\n${answer}`;
-  return `${condition.slice(0, Math.max(0, 2000 - supplement.length))}${supplement}`;
-}
-
 export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void }) {
   const initialCondition = new URLSearchParams(window.location.search).get("condition") ?? "";
   const [condition, setCondition] = useState(initialCondition);
@@ -44,6 +42,8 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const [recommendationsLoading, setRecommendationsLoading] = useState(false);
   const [error, setError] = useState<ApiError | null>(null);
   const [recommendationsError, setRecommendationsError] = useState<ApiError | null>(null);
+  const [followupAnswers, setFollowupAnswers] = useState<FollowupAnswer[]>([]);
+  const { location } = useLocationContext();
   const triageController = useRef<AbortController | null>(null);
   const recommendationController = useRef<AbortController | null>(null);
 
@@ -57,9 +57,26 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function submitCondition(value: string, options: { preserveFollowupStep?: boolean } = {}) {
+  const locationRequest = () => ({
+    ...(location.source === "district" && location.district ? { district: location.district } : {}),
+    ...(location.source === "geolocation" && location.lat !== null && location.lng !== null
+      ? { lat: location.lat, lng: location.lng }
+      : {}),
+    location_source: location.source,
+  } as const);
+
+  useEffect(() => {
+    setRecommendations(null);
+    setRecommendationsError(null);
+  }, [location.source, location.district, location.lat, location.lng]);
+
+  async function submitCondition(
+    value: string,
+    options: { preserveFollowupStep?: boolean; followupAnswers?: FollowupAnswer[] } = {},
+  ) {
     const nextCondition = value.trim();
     if (!nextCondition || loading) return;
+    const nextAnswers = options.followupAnswers ?? [];
     triageController.current?.abort();
     recommendationController.current?.abort();
     const controller = new AbortController();
@@ -69,9 +86,16 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     setRecommendationsError(null);
     setRecommendations(null);
     setFollowup(null);
+    setFollowupAnswers(nextAnswers);
     if (!options.preserveFollowupStep) setFollowupStep(1);
     try {
-      const nextResult = await startTriage({ condition: nextCondition, scenario: "common" }, controller.signal);
+      const request = {
+        condition: nextCondition,
+        scenario: "common" as const,
+        ...locationRequest(),
+        followup_answers: nextAnswers,
+      };
+      const nextResult = await startTriage(request, controller.signal);
       if (controller.signal.aborted) return;
       setCondition(nextCondition);
       setSubmittedCondition(nextCondition);
@@ -86,7 +110,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
         // dedicated endpoint is queried to keep the UI on the published contract.
         try {
           const followupResponse = await getFollowups(
-            { condition: nextCondition, scenario: "common" },
+            request,
             controller.signal,
           );
           if (!controller.signal.aborted) setFollowup(followupResponse.followup);
@@ -113,7 +137,12 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     setRecommendationsError(null);
     try {
       const payload = await getRecommendations(
-        { condition: submittedCondition, scenario: "common" },
+        {
+          condition: submittedCondition,
+          scenario: "common",
+          ...locationRequest(),
+          followup_answers: followupAnswers,
+        },
         controller.signal,
       );
       if (!controller.signal.aborted) setRecommendations(payload);
@@ -126,11 +155,11 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     }
   }
 
-  function handleAnswer(question: FollowupQuestion, answer: string) {
+  function handleAnswer(_question: FollowupQuestion, answer: FollowupAnswer) {
     if (loading) return;
-    const enrichedCondition = appendAnswer(submittedCondition, question, answer);
+    const nextAnswers = [...followupAnswers, answer];
     setFollowupStep((value) => value + 1);
-    void submitCondition(enrichedCondition, { preserveFollowupStep: true });
+    void submitCondition(submittedCondition, { preserveFollowupStep: true, followupAnswers: nextAnswers });
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -184,6 +213,8 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
               </div>
             </form>
           )}
+
+          <LocationSelector />
 
           {error ? (
             <div className="inline-error" role="alert">

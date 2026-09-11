@@ -29,8 +29,19 @@ export interface ApiEnvelope<T> {
 export interface FollowupQuestion {
   id: string;
   question: string;
-  options: string[];
+  options: FollowupOption[];
   reason?: string;
+}
+
+export interface FollowupOption {
+  label: string;
+  value: string;
+}
+
+export interface FollowupAnswer {
+  question_id: string;
+  value?: string;
+  text_answer?: string;
 }
 
 export interface FollowupPayload {
@@ -47,6 +58,8 @@ export interface FollowupPayload {
 
 export interface TriagePayload {
   condition: string;
+  original_condition?: string;
+  followup_answers?: FollowupAnswer[];
   matched_department?: string | null;
   triage_status: TriageStatus;
   triage?: {
@@ -64,6 +77,8 @@ export interface TriagePayload {
 
 export interface FollowupResponse {
   condition: string;
+  original_condition?: string;
+  followup_answers?: FollowupAnswer[];
   matched_department?: string | null;
   triage_status: TriageStatus;
   triage_label?: string | null;
@@ -86,6 +101,8 @@ export interface HospitalRecord {
   emergency?: boolean;
   departments?: string[];
   strengths?: string[];
+  derived_capability_areas?: string[];
+  derived_capability_scores?: Record<string, number>;
   [key: string]: unknown;
 }
 
@@ -142,6 +159,18 @@ export interface RecommendationPayload {
   resource_strategy?: ResourceStrategy;
   data_source?: string;
   effective_scenario?: string;
+  user_location?: {
+    district: string | null;
+    lat: number | null;
+    lng: number | null;
+    source: "unknown" | "geolocation" | "district" | string;
+  };
+  feature_availability?: {
+    location?: boolean;
+    distance?: boolean;
+    transit?: boolean;
+  };
+  ranking_notice?: string;
   [key: string]: unknown;
 }
 
@@ -164,6 +193,8 @@ export interface ResourceProvenance {
   license_status: string;
   field_level_status: string;
   notice: string;
+  catalog_status?: string;
+  unsupported_fields?: string[];
 }
 
 export interface HospitalDetailPayload {
@@ -171,7 +202,14 @@ export interface HospitalDetailPayload {
   resource: HospitalRecord;
   source: string;
   provenance: ResourceProvenance;
-  related: { doctor_count: number };
+  derived_capability?: {
+    areas: string[];
+    scores: Record<string, number>;
+    status: string;
+    formula_version: string;
+    notice: string;
+  };
+  related: { doctor_count: number; doctors?: DoctorRecord[] };
 }
 
 export interface DoctorDetailPayload {
@@ -255,6 +293,29 @@ export interface ModelEvidence {
   evaluation_scope: string;
   model_source: EvidenceDataset | null;
   training_data_source: EvidenceDataset | null;
+  random_baseline?: ModelSplitMetrics;
+  grouped_fingerprint?: ModelSplitMetrics;
+  near_duplicate_audit?: {
+    jaccard_threshold: number;
+    pair_count: number;
+    cross_label_pair_count: number;
+    note: string;
+  };
+  split_manifest?: string;
+}
+
+export interface ModelSplitMetrics {
+  test_rows: number;
+  accuracy: number | null;
+  covered_accuracy?: number | null;
+  top3_accuracy: number | null;
+  macro_precision: number | null;
+  macro_recall: number | null;
+  macro_f1: number | null;
+  coverage: number | null;
+  abstention_rate: number | null;
+  per_class_recall?: Record<string, number>;
+  confusion_matrix?: Record<string, Record<string, number>>;
 }
 
 export interface DataQualityEvidence {
@@ -286,6 +347,21 @@ export interface EvidencePayload {
   data_quality: DataQualityEvidence;
   dataset_manifest: EvidenceDataset[];
   limitations: string[];
+  hospital_data?: {
+    available: boolean;
+    dataset_id: string;
+    status: string;
+    source_class: string;
+    source_url: string | null;
+    last_verified_at: string | null;
+    license_status: string;
+    deidentified: boolean;
+    record_count: number;
+    public_fact_fields: string[];
+    derived_fields: Record<string, { status: string; formula_version: string }>;
+    unsupported_fields: string[];
+    notice: string;
+  };
 }
 
 export type MapMarkerType = "EMERGENCY_CAPABLE" | "NORMAL";
@@ -317,4 +393,6 @@ export interface MapPayload {
   source: string;
   distance_method: string | null;
   notice: string;
+  provenance?: { status: string; source_class: string; last_updated: string | null; license_status: string };
+  user_location?: { lat: number | null; lng: number | null; source: string };
 }

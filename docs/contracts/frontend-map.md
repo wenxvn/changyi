@@ -7,10 +7,11 @@
 
 ```text
 GET /api/v1/map
-GET /api/v1/map?lat=<latitude>&lng=<longitude>
+GET /api/v1/map?location_source=geolocation&lat=<latitude>&lng=<longitude>
+GET /api/v1/map?location_source=district&district=<district>
 ```
 
-请求经过 `frontend/src/api/client.ts`，返回统一 `{ data, meta, error }` envelope。默认不请求浏览器定位；只有调用方明确同时提供合法 `lat/lng` 时，后端才返回 `distance_km` 和 `haversine_straight_line_km`。
+请求经过 `frontend/src/api/client.ts`，返回统一 `{ data, meta, error }` envelope。默认位置来源为 `unknown`，不请求浏览器定位；只有用户主动授权的合法 `lat/lng` 或明确选择区域参考点时，后端才返回距离。区域距离使用 `haversine_reference_point_km`，精确定位使用 `haversine_straight_line_km`。
 
 ## 数据
 
@@ -33,12 +34,14 @@ GET /api/v1/map?lat=<latitude>&lng=<longitude>
   }],
   "count": 21,
   "source": "legacy_catalog_pending_provenance",
+  "provenance": {"status": "provisional", "source_class": "legacy_catalog_import"},
+  "user_location": {"lat": null, "lng": null, "source": "unknown"},
   "distance_method": null,
-  "notice": "地图为资源位置示意，不是导航地图；医院来源逐字段 provenance 仍在迁移中。"
+  "notice": "地图用于辅助查看资源分布；距离仅供参考，实际路线请以高德导航结果为准。医院资料仍在核验。"
 }
 ```
 
-`map_point` 是服务端根据当前资源坐标生成的轻量视图投影，仅用于 SVG/CSS 位置分布。页面的医院资料预览可通过共享导航 utility 生成高德导航 URI；这只是外部地图跳转，不是系统计算的路线或急救指令。`distance_km` 是 Haversine 直线距离，不是驾车、公交或急救到院时间。`EMERGENCY_CAPABLE` 仅复述接口的急诊字段，不代表实时可用性；没有推荐上下文时不生成推荐 marker。
+`map_point` 仍是服务端坐标投影的兼容字段；正式页面使用 OpenStreetMap 数据的 CARTO light 地理底图、拖动和缩放，并保留底图署名。页面的医院资料预览可通过共享导航 utility 生成高德导航 URI；这只是外部地图跳转，不是系统计算的路线或急救指令。`distance_km` 是 Haversine 直线/区域参考点距离，不是驾车、公交或急救到院时间。`EMERGENCY_CAPABLE` 仅复述接口的急诊字段，不代表实时可用性；没有推荐上下文时不生成推荐 marker。底图加载失败时仍保留坐标 marker 和资料入口，并显示降级提示。
 
 ## 错误与展示安全边界
 

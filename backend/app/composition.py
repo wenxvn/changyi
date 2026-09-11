@@ -23,10 +23,12 @@ from backend.app.infrastructure.data.loaders import DataLoadError, JsonDataLoade
 from backend.app.infrastructure.models.symptom_disease import SymptomDiseaseModelAdapter
 from backend.app.infrastructure.regions.registry import RegionRegistry
 from backend.app.infrastructure.repositories.transit_repository import LazyTrafficAccessCache
+from backend.app.infrastructure.repositories.hospital_repository import HospitalRepository
 from backend.app.domain.medical_input import (
     COLLOQUIAL_SYMPTOM_ALIASES,
     KNOWN_DISEASE_PATTERNS,
     contains_positive as _contains_positive,
+    followup_answer_map,
     normalize_patient_expression,
 )
 from backend.app.domain.triage.safety_gate import (
@@ -44,12 +46,14 @@ from backend.app.domain.recommendation.scoring import (
     departments_related as _departments_related,
     doctor_resource_tier as _doctor_resource_tier,
     doctor_title_score as _doctor_title_score,
+    rebalance_weights as _rebalance_weights,
     score_doctor_candidate as _score_doctor_candidate,
 )
 from backend.app.domain.recommendation.features import (
     continuity_score as _continuity_score,
     fairness_score as _fairness_score,
     hospital_availability_score as _hospital_availability_score,
+    hospital_availability_data_available as _hospital_availability_data_available,
     hospital_quality_score as _hospital_quality_score,
     hospital_strength_for_department as _hospital_strength_for_dept,
     level_score_norm as _level_score_norm,
@@ -242,18 +246,48 @@ def build_candidate_comparison(disease_candidates):
     return {"need_compare": True, "focus": names, "distinguish_questions": questions}
 
 
-def build_followup_questions(condition, analysis, triage=None):
+_FOLLOWUP_OPTION_VALUES = {
+    "red_flag_check": {"没有": "none", "有其中一种": "present", "不确定": "unknown"},
+    "duration": {"1天内": "lt_1_day", "1周以内": "lt_1_week", "1-4周": "1_4_weeks", "1个月以上": "gte_1_month"},
+    "severity": {"轻微": "mild", "中等": "moderate", "明显影响": "significant", "非常严重": "severe"},
+}
+
+
+def _serialize_followup_options(question_id, options):
+    value_map = _FOLLOWUP_OPTION_VALUES.get(question_id, {})
+    serialized = []
+    for index, option in enumerate(options or []):
+        if isinstance(option, dict):
+            label = str(option.get("label") or option.get("value") or "").strip()
+            value = str(option.get("value") or label).strip()
+        else:
+            label = str(option).strip()
+            value = value_map.get(label, f"option_{index + 1}")
+        if label:
+            serialized.append({"label": label, "value": value})
+    return serialized
+
+
+def build_followup_questions(condition, analysis, triage=None, followup_answers=None):
     text = condition or ""
     symptom_tags = analysis.get("symptom_tags", [])
     disease_candidates = analysis.get("disease_candidates", [])
     known_disease = analysis.get("known_disease", {})
+    answered_ids = set(followup_answer_map(followup_answers))
     questions = []
     missing = []
 
     def add(qid, question, options=None, reason=""):
+        if qid in answered_ids:
+            return
         if any(q["id"] == qid for q in questions):
             return
-        questions.append({"id": qid, "question": question, "options": options or [], "reason": reason})
+        questions.append({
+            "id": qid,
+            "question": question,
+            "options": _serialize_followup_options(qid, options),
+            "reason": reason,
+        })
 
     if known_disease.get("has_known_disease"):
         add("known_disease_status", f"您提到可能是“{known_disease.get('disease')}”，这是已确诊、复诊，还是自己判断？", ["已确诊/复诊", "报告提示但未确诊", "自己怀疑"], "用户已提供疾病名，需要确认置信来源")
@@ -282,7 +316,8 @@ def build_followup_questions(condition, analysis, triage=None):
             add("visit_goal", "这次主要想解决什么问题？", ["首次就诊", "复诊开药", "看检查报告", "想确认挂什么科"], "明确就诊目的")
 
     red_flag_negative = any(k in text for k in ("没有危险信号", "无危险信号", "没有胸痛", "无胸痛", "没有呼吸困难", "无呼吸困难", "没有一侧无力", "无一侧无力", "没有意识异常", "无意识异常"))
-    if not red_flag_negative and not _contains_positive(text, TRIAGE_CRITICAL_SINGLE_KEYWORDS):
+    structured_red_flag = followup_answer_map(followup_answers).get("red_flag_check")
+    if not red_flag_negative and structured_red_flag not in {"none", "present", "unknown"} and not _contains_positive(text, TRIAGE_CRITICAL_SINGLE_KEYWORDS):
         add("red_flag_check", "是否伴有胸痛、呼吸困难、意识异常、大出血、一侧肢体无力等危险信号？", ["没有", "有其中一种", "不确定"], "补充急诊红旗规则")
 
     compare = build_candidate_comparison(disease_candidates)
@@ -297,6 +332,16 @@ def build_followup_questions(condition, analysis, triage=None):
     if known_disease.get("has_known_disease"):
         confidence = "medium" if not any(q["id"] == "known_disease_evidence" for q in questions) else "high"
 
+    compare = {
+        **compare,
+        "distinguish_questions": [
+            {
+                **question,
+                "options": _serialize_followup_options(question["id"], question.get("options", [])),
+            }
+            for question in compare.get("distinguish_questions", [])
+        ],
+    }
     return {
         "needed": bool(questions),
         "confidence": confidence,
@@ -310,340 +355,13 @@ def build_followup_questions(condition, analysis, triage=None):
 # 模拟数据（后期替换为数据库接口）
 # ============================================================
 
-HOSPITALS = [
-    {
-        "id": 1, "name": "常州市第一人民医院", "alias": "常州一院",
-        "level": "三级甲等", "type": "综合医院",
-        "address": "天宁区局前街185号",
-        "lat": 31.7768, "lng": 119.9580,
-        "phone": "0519-68870000",
-        "beds": 2800,
-        "daily_outpatients": 8000,
-        "departments": ["心血管内科","心脏大血管外科","消化内科","神经内科","神经外科",
-            "肝胆胰外科","血液科","肿瘤科","呼吸与危重症医学科","肾内科",
-            "风湿免疫科","泌尿外科","骨科","儿科","妇产科","口腔科",
-            "耳鼻咽喉科","眼科","介入放射科","内分泌代谢科","皮肤科",
-            "感染性疾病科","麻醉科","重症医学科","急诊医学科"],
-        "strengths": ["心血管内科","心脏大血管外科","肿瘤科","肝胆胰外科","血液科","神经内科","神经外科"],
-        "strength_scores": {"心血管内科": 96, "心脏大血管外科": 98, "肿瘤科": 97, "肝胆胰外科": 96, "血液科": 95, "神经内科": 95, "神经外科": 94, "消化内科": 91, "呼吸与危重症医学科": 90, "肾内科": 88, "风湿免疫科": 87, "泌尿外科": 91, "骨科": 90, "儿科": 89, "妇产科": 88, "介入放射科": 87},
-        "rating": 4.7,
-        "emergency": True,
-        "description": "常州地区规模最大、综合实力最强的三级甲等综合医院，承担着全市及周边地区的医疗、教学、科研任务，已接入498位官网公开医生数据。"
-    },
-    {
-        "id": 2, "name": "常州市第二人民医院", "alias": "常州二院",
-        "level": "三级甲等", "type": "综合医院",
-        "address": "天宁区兴隆巷29号",
-        "lat": 31.7700, "lng": 119.9650,
-        "phone": "0519-88104930",
-        "beds": 2200,
-        "daily_outpatients": 6500,
-        "departments": ["心血管内科","消化内科","内分泌科","泌尿外科","普外科","骨科","神经外科",
-            "妇产科","儿科","急诊科","呼吸内科","肿瘤科","神经内科","麻醉科","医学影像科"],
-        "strengths": ["消化内科","普外科","神经外科","心血管内科","泌尿外科"],
-        "strength_scores": {"消化内科": 95, "普外科": 94, "神经外科": 93, "心血管内科": 91, "骨科": 87, "内分泌科": 86, "泌尿外科": 88},
-        "rating": 4.5,
-        "emergency": True,
-        "description": "集医疗、教学、科研为一体的三级甲等综合医院，拥有多个省级重点专科，已接入52位真实医生数据。"
-    },
-    {
-        "id": 3, "name": "常州市中医医院", "alias": "常州中医院",
-        "level": "三级甲等", "type": "中医医院",
-        "address": "天宁区和平北路25号",
-        "lat": 31.7800, "lng": 119.9620,
-        "phone": "0519-89896990",
-        "beds": 1500,
-        "daily_outpatients": 5000,
-        "departments": ["心血管科","骨伤科","妇科","肾内科","脾胃病科","肛肠科","肿瘤科","血液肿瘤科",
-            "中医内科","针灸推拿科","中医妇科","中医儿科","康复医学科","治未病中心","正骨科"],
-        "strengths": ["中医骨伤科","针灸推拿科","中医内科","康复医学科","肾病科"],
-        "strength_scores": {"中医骨伤科": 97, "针灸推拿科": 96, "中医内科": 93, "康复医学科": 92, "中医妇科": 88, "肾病科": 90, "心血管科": 91},
-        "rating": 4.6,
-        "emergency": True,
-        "description": "江苏省内规模最大的地市级中医医院，孟河医派传承基地，中医药特色优势突出，已接入264位官网公开医生数据。"
-    },
-    {
-        "id": 4, "name": "常州市第三人民医院", "alias": "常州三院",
-        "level": "三级乙等", "type": "综合医院",
-        "address": "天宁区兰陵北路300号",
-        "lat": 31.7600, "lng": 119.9550,
-        "phone": "0519-86666060",
-        "beds": 1200,
-        "daily_outpatients": 4000,
-        "departments": ["传染病科","肝病科","呼吸内科","消化内科","普外科","妇产科"],
-        "strengths": ["传染病科","肝病科","呼吸内科"],
-        "strength_scores": {"传染病科": 95, "肝病科": 94, "呼吸内科": 88, "消化内科": 82},
-        "rating": 4.3,
-        "emergency": True,
-        "description": "以传染病防治为特色的综合性医院，肝病诊疗中心在省内有较高声誉，已接入147位官网公开医生数据。"
-    },
-    {
-        "id": 5, "name": "常州市肿瘤医院", "alias": "常州四院/肿瘤医院",
-        "level": "三级乙等", "type": "专科医院",
-        "address": "钟楼区怀德北路1号",
-        "lat": 31.7850, "lng": 119.9480,
-        "phone": "0519-86867890",
-        "beds": 1000,
-        "daily_outpatients": 3000,
-        "departments": ["中医科","乳腺外科","介入科","儿科","内分泌科","口腔科","呼吸内科","妇产科",
-            "心血管内科","放疗科","泌尿外科","消化内科","疼痛科","皮肤性病科","眼科","神经内科",
-            "神经外科","耳鼻咽喉头颈外科","肝胆外科","肾内科","肿瘤内科","胃肠外科","胸外科",
-            "风湿免疫科","骨科"],
-        "strengths": ["肿瘤外科","放疗科","肿瘤内科"],
-        "strength_scores": {"肿瘤科": 96, "肿瘤外科": 96, "放疗科": 94, "肿瘤内科": 93, "肿瘤妇科": 89},
-        "rating": 4.4,
-        "emergency": True,
-        "description": "常州地区重要的肿瘤专科与综合诊疗机构，承担全市肿瘤防治任务，已接入133位官网公开医生数据和照片。"
-    },
-    {
-        "id": 6, "name": "常州市儿童医院", "alias": "常州儿童医院",
-        "level": "三级甲等", "type": "专科医院",
-        "address": "天宁区中吴大道958号",
-        "lat": 31.7520, "lng": 119.9550,
-        "phone": "0519-69808328",
-        "beds": 600,
-        "daily_outpatients": 3500,
-        "departments": ["呼吸科","新生儿科","消化营养科","神经内科","儿内科","儿外科",
-            "儿童保健科","儿童康复科","小儿呼吸科","小儿消化科"],
-        "strengths": ["儿内科","新生儿科","小儿呼吸科","神经内科"],
-        "strength_scores": {"儿科": 94, "新生儿科": 93, "小儿呼吸科": 91, "儿外科": 88, "神经内科": 89},
-        "rating": 4.5,
-        "emergency": True,
-        "description": "常州及周边地区唯一的儿童专科医院，已接入74位带真人照片的真实医生数据，覆盖呼吸、新生儿、消化、神经等多个专科。"
-    },
-    {
-        "id": 7, "name": "常州市妇幼保健院", "alias": "常州妇幼保健院",
-        "level": "三级甲等", "type": "专科医院",
-        "address": "钟楼区丁香路16号",
-        "lat": 31.7900, "lng": 119.9350,
-        "phone": "0519-88581111",
-        "beds": 800,
-        "daily_outpatients": 4500,
-        "departments": ["中医科","乳腺病科","产前诊断","产科","儿保科","儿科","妇保科","妇瘤一科",
-            "妇瘤二科","婚前孕前保健科","宫颈疾病诊治中心","心内科","放射科","普妇科","泌尿外科",
-            "消化内科","生殖健康科","生殖医学中心","生育技术科","男性科","疼痛科","皮肤科",
-            "眼科","神经内科","肝胆外科","胃肠外科","计划生育科","超声科","骨科"],
-        "strengths": ["产科","生殖医学科","妇科"],
-        "strength_scores": {"产科": 97, "生殖医学科": 95, "妇科": 93, "产前诊断": 90},
-        "rating": 4.6,
-        "emergency": True,
-        "description": "集医疗、保健、教学、科研为一体的三级甲等妇幼保健院，分娩量居全市首位，已接入164位官网公开医生数据和照片。"
-    },
-    {
-        "id": 8, "name": "武进人民医院", "alias": "武进医院",
-        "level": "三级乙等", "type": "综合医院",
-        "address": "武进区永宁北路2号",
-        "lat": 31.7400, "lng": 119.9500,
-        "phone": "0519-86312345",
-        "beds": 1500,
-        "daily_outpatients": 5500,
-        "departments": ["心血管内科","骨科","普外科","妇产科","儿科","神经内科","泌尿外科"],
-        "strengths": ["骨科","心血管内科","泌尿外科"],
-        "strength_scores": {"骨科": 91, "心血管内科": 89, "泌尿外科": 88, "普外科": 85},
-        "rating": 4.3,
-        "emergency": True,
-        "description": "武进区最大的综合性医院，骨科和心血管内科为市级重点专科，已接入515位官网公开医生数据。"
-    },
-    {
-        "id": 9, "name": "金坛第一人民医院", "alias": "金坛医院",
-        "level": "三级乙等", "type": "综合医院",
-        "address": "金坛区金武路88号",
-        "lat": 31.7200, "lng": 119.5800,
-        "phone": "0519-82821234",
-        "beds": 1000,
-        "daily_outpatients": 3500,
-        "departments": ["内科","外科","妇产科","儿科","骨科","眼科"],
-        "strengths": ["骨科","内科"],
-        "strength_scores": {"骨科": 84, "内科": 82, "普外科": 80},
-        "rating": 4.1,
-        "emergency": True,
-        "description": "金坛区最大的综合性医院，承担区域内主要医疗任务。"
-    },
-    {
-        "id": 10, "name": "溧阳市人民医院", "alias": "溧阳医院",
-        "level": "三级乙等", "type": "综合医院",
-        "address": "溧阳市昆仑北路68号",
-        "lat": 31.4100, "lng": 119.4800,
-        "phone": "0519-87012345",
-        "beds": 1100,
-        "daily_outpatients": 3800,
-        "departments": ["内科","外科","妇产科","儿科","骨科","神经内科"],
-        "strengths": ["神经内科","骨科"],
-        "strength_scores": {"神经内科": 85, "骨科": 83, "内科": 81},
-        "rating": 4.2,
-        "emergency": True,
-        "description": "溧阳市最大的综合性医院，神经内科为区域重点学科。"
-    },
-    {
-        "id": 11, "name": "常州市老年病医院", "alias": "常州老年病医院",
-        "level": "三级乙等", "type": "综合医院",
-        "address": "江苏省常州市延陵东路288号",
-        "lat": 31.7870, "lng": 119.9340,
-        "phone": "0519-67890099 / 69800509",
-        "beds": 600,
-        "daily_outpatients": 1800,
-        "departments": ["呼吸与重症医学科","烧伤科","精神心理科","肛肠科","神经外科","骨科","皮肤科",
-            "妇产科","康复医学科","老年综合科","泌尿外科","乳腺外科","肾内风湿免疫科",
-            "胃肠肝胆外科","消化内科","心血管内科","血液肿瘤科","眼科","儿科","神经内科",
-            "内分泌代谢科","急诊科","ICU","口腔科","耳鼻咽喉科","放射科","麻醉科",
-            "检验科","功能科","针灸推拿科"],
-        "strengths": ["老年综合科","康复医学科","呼吸与重症医学科","心血管内科","神经内科","骨科"],
-        "strength_scores": {"老年综合科": 90, "康复医学科": 88, "呼吸与重症医学科": 87, "心血管内科": 86, "神经内科": 84, "骨科": 83, "消化内科": 82, "儿科": 80},
-        "rating": 4.1,
-        "emergency": True,
-        "description": "常州市第七人民医院（常州市老年病医院），以老年医学、慢病管理、康复诊疗和综合专科服务为特色，已接入201位官网公开专家数据。"
-    },
-    {
-        "id": 12, "name": "武进中医医院", "alias": "武进区中医医院",
-        "level": "三级乙等", "type": "中医医院",
-        "address": "武进区湖塘镇",
-        "lat": 31.7180, "lng": 119.9440,
-        "phone": "暂无",
-        "beds": 800,
-        "daily_outpatients": 2800,
-        "departments": ["中医内科","骨伤科","针灸推拿科","脾胃病科","康复医学科","妇科","儿科"],
-        "strengths": ["中医内科","骨伤科","针灸推拿科","康复医学科"],
-        "strength_scores": {"中医内科": 88, "骨伤科": 87, "针灸推拿科": 86, "康复医学科": 84},
-        "rating": 4.2,
-        "emergency": True,
-        "description": "武进区域重要的中医医疗机构，提供中医特色诊疗与康复服务。"
-    },
-    {
-        "id": 13, "name": "溧阳市中医医院", "alias": "溧阳中医院",
-        "level": "三级乙等", "type": "中医医院",
-        "address": "溧阳市",
-        "lat": 31.4250, "lng": 119.4870,
-        "phone": "暂无",
-        "beds": 700,
-        "daily_outpatients": 2200,
-        "departments": ["中医内科","骨伤科","针灸推拿科","脾胃病科","康复医学科","肾病科"],
-        "strengths": ["中医内科","骨伤科","针灸推拿科"],
-        "strength_scores": {"中医内科": 86, "骨伤科": 85, "针灸推拿科": 84, "康复医学科": 82},
-        "rating": 4.1,
-        "emergency": True,
-        "description": "溧阳市中医医疗服务核心机构，覆盖中医内科、骨伤、针灸推拿等专科。"
-    },
-    {
-        "id": 14, "name": "常州市德安医院", "alias": "常州德安医院",
-        "level": "三级甲等", "type": "专科医院",
-        "address": "常州市天宁区",
-        "lat": 31.7600, "lng": 119.9750,
-        "phone": "暂无",
-        "beds": 900,
-        "daily_outpatients": 1600,
-        "departments": ["司法鉴定","康复中心","心理卫生中心","皮肤科","精神科","综合内科","综合外科","老年科"],
-        "strengths": ["精神科","心理科","老年精神科"],
-        "strength_scores": {"精神科": 94, "心理科": 90, "老年精神科": 88, "康复医学科": 82},
-        "rating": 4.2,
-        "emergency": True,
-        "description": "以精神卫生、心理诊疗、康复服务和司法鉴定为特色的三级甲等专科医院，已接入42位官网公开医生数据和照片。"
-    },
-    {
-        "id": 15, "name": "常州市第七人民医院", "alias": "戚墅堰区人民医院",
-        "level": "二级甲等", "type": "综合医院",
-        "address": "经开区/原戚墅堰区",
-        "lat": 31.7240, "lng": 120.0580,
-        "phone": "暂无",
-        "beds": 500,
-        "daily_outpatients": 1800,
-        "departments": ["内科","外科","妇产科","儿科","骨科","急诊科","康复医学科"],
-        "strengths": ["内科","骨科","康复医学科"],
-        "strength_scores": {"内科": 78, "骨科": 76, "康复医学科": 75},
-        "rating": 4.0,
-        "emergency": True,
-        "description": "服务经开区及周边居民的二级甲等综合医院。"
-    },
-    {
-        "id": 16, "name": "常州市口腔医院", "alias": "钟楼医院",
-        "level": "二级甲等", "type": "专科医院",
-        "address": "常州市钟楼区",
-        "lat": 31.7790, "lng": 119.9440,
-        "phone": "暂无",
-        "beds": 300,
-        "daily_outpatients": 1800,
-        "departments": ["口腔科","口腔颌面外科","牙体牙髓科","牙周科","正畸科","修复科"],
-        "strengths": ["口腔科","口腔颌面外科","正畸科"],
-        "strength_scores": {"口腔科": 88, "口腔颌面外科": 84, "正畸科": 82, "修复科": 80},
-        "rating": 4.2,
-        "emergency": False,
-        "description": "常州地区口腔专科医疗机构，兼具钟楼医院综合医疗服务。"
-    },
-    {
-        "id": 17, "name": "常州市中西医结合医院", "alias": "广化医院",
-        "level": "二级甲等", "type": "中医医院",
-        "address": "常州市钟楼区",
-        "lat": 31.7720, "lng": 119.9440,
-        "phone": "暂无",
-        "beds": 450,
-        "daily_outpatients": 1700,
-        "departments": ["中西医结合科","内科","外科","康复医学科","针灸推拿科","妇科"],
-        "strengths": ["中西医结合科","康复医学科","针灸推拿科"],
-        "strength_scores": {"中西医结合科": 82, "康复医学科": 80, "针灸推拿科": 78},
-        "rating": 4.0,
-        "emergency": True,
-        "description": "以中西医结合诊疗和社区综合医疗服务为特色的二级甲等医院。"
-    },
-    {
-        "id": 18, "name": "金坛区中医医院", "alias": "金坛中医院",
-        "level": "二级甲等", "type": "中医医院",
-        "address": "金坛区",
-        "lat": 31.7410, "lng": 119.5750,
-        "phone": "暂无",
-        "beds": 450,
-        "daily_outpatients": 1700,
-        "departments": ["中医内科","骨伤科","针灸推拿科","康复医学科","脾胃病科","妇科"],
-        "strengths": ["中医内科","骨伤科","针灸推拿科"],
-        "strength_scores": {"中医内科": 82, "骨伤科": 80, "针灸推拿科": 78},
-        "rating": 4.0,
-        "emergency": True,
-        "description": "金坛区中医药服务主要医疗机构。"
-    },
-    {
-        "id": 19, "name": "金坛区第二人民医院", "alias": "金坛二院",
-        "level": "二级医院", "type": "综合医院",
-        "address": "金坛区",
-        "lat": 31.7270, "lng": 119.5900,
-        "phone": "暂无",
-        "beds": 350,
-        "daily_outpatients": 1300,
-        "departments": ["内科","外科","妇产科","儿科","骨科","急诊科"],
-        "strengths": ["内科","外科","骨科"],
-        "strength_scores": {"内科": 75, "外科": 74, "骨科": 72},
-        "rating": 3.9,
-        "emergency": True,
-        "description": "金坛区区域综合医疗服务机构。"
-    },
-    {
-        "id": 20, "name": "溧阳市妇幼保健院", "alias": "溧阳妇幼保健院",
-        "level": "二级甲等", "type": "专科医院",
-        "address": "溧阳市",
-        "lat": 31.4180, "lng": 119.4920,
-        "phone": "暂无",
-        "beds": 300,
-        "daily_outpatients": 1400,
-        "departments": ["产科","妇科","儿科","儿童保健科","妇女保健科","生殖健康科"],
-        "strengths": ["产科","妇科","儿童保健科"],
-        "strength_scores": {"产科": 80, "妇科": 78, "儿童保健科": 76},
-        "rating": 4.0,
-        "emergency": True,
-        "description": "溧阳市妇女儿童医疗保健服务机构。"
-    },
-    {
-        "id": 21, "name": "新北区三井人民医院", "alias": "三井人民医院",
-        "level": "二级医院", "type": "综合医院",
-        "address": "新北区三井街道",
-        "lat": 31.8180, "lng": 119.9700,
-        "phone": "暂无",
-        "beds": 250,
-        "daily_outpatients": 1200,
-        "departments": ["内科","外科","妇产科","儿科","全科医学科","康复医学科"],
-        "strengths": ["全科医学科","内科","康复医学科"],
-        "strength_scores": {"全科医学科": 74, "内科": 72, "康复医学科": 70},
-        "rating": 3.9,
-        "emergency": True,
-        "description": "新北区基层综合医疗服务机构，服务三井及周边居民。"
-    },
-]
+HOSPITAL_CATALOG_PATH = Path(BASE_DIR) / "data" / "regions" / "320400" / "hospitals" / "catalog.json"
+HOSPITAL_REPOSITORY = HospitalRepository.from_json(
+    REGION_REGISTRY.get("320400"),
+    HOSPITAL_CATALOG_PATH,
+)
+HOSPITALS = HOSPITAL_REPOSITORY.list()
+
 
 DOCTORS = [
     {"id": 1, "name": "张文华", "title": "主任医师/教授", "hospital_id": 1, "hospital_name": "常州市第一人民医院",
@@ -990,6 +708,12 @@ def _access_score(hospital, user_lat=None, user_lng=None, triage_level="routine"
         distance = haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"])
     return _accessibility_score_from_context(distance, traffic, triage_level)
 
+
+def _hospital_capacity_is_rankable():
+    """Only enable capacity weighting when the active catalog supports it."""
+
+    return any(_hospital_availability_data_available(hospital) for hospital in HOSPITALS)
+
 def _hospital_district(hospital):
     text = ((hospital or {}).get("address") or "") + " " + ((hospital or {}).get("name") or "")
     for district in ("天宁区", "钟楼区", "武进区", "新北区", "金坛区", "溧阳市", "经开区", "戚墅堰区"):
@@ -1004,6 +728,9 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
     target_dept = (triage or {}).get("matched_department") or match_department(condition)
     htriage = triage or build_htriage_analysis(condition)
     w = ENHANCED_WEIGHTS.get(scenario, ENHANCED_WEIGHTS["surgery"])
+    has_location = user_lat is not None and user_lng is not None
+    if not has_location:
+        w = _rebalance_weights(w, {"access"})
     access_context = "urgent" if scenario == "surgery" else ("first_visit" if scenario == "first_visit" else "routine")
     triage_level = (triage or {}).get("level", "routine")
     strategy = _resource_strategy(triage, expert_preference)
@@ -1053,14 +780,26 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
 
         # (6) 可及性：普通病和初诊更看重距离，重症仅作为低权重辅助项
         access_score = _access_score(hospital, user_lat, user_lng, access_context)
-        hospital_distance = None
-        if user_lat is not None and user_lng is not None and hospital:
-            hospital_distance = haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"])
 
         extra_w = DOCTOR_EXTRA_WEIGHTS.get(scenario, DOCTOR_EXTRA_WEIGHTS["common"])
+        unavailable_extra = set()
+        if not has_location:
+            unavailable_extra.add("fairness")
+        if not _hospital_capacity_is_rankable():
+            unavailable_extra.add("availability")
+        if unavailable_extra:
+            extra_w = {key: value for key, value in extra_w.items() if key not in unavailable_extra}
         availability_score = _hospital_availability_score(hospital, "urgent" if scenario in ("surgery", "complex") else "routine")
         continuity_score = _continuity_score(condition, target_dept, hospital)
-        fairness_score = _fairness_score(condition, hospital, 999 if user_lat is None or user_lng is None or not hospital else haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"]), "routine" if scenario in ("common", "first_visit") else "urgent")
+        hospital_distance = None
+        if has_location and hospital:
+            hospital_distance = haversine(float(user_lat), float(user_lng), hospital["lat"], hospital["lng"])
+        fairness_score = _fairness_score(
+            condition,
+            hospital,
+            hospital_distance,
+            "routine" if scenario in ("common", "first_visit") else "urgent",
+        )
         population_fit = _special_population_fit(condition, hospital)
         risk_penalty = 0.0
         if target_dept and hospital_score < 0.58:
@@ -1091,7 +830,9 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
         total_score, resource_notes, resource_cap = _apply_resource_fit(
             total_score, resource_tier, triage_level, expert_preference, strategy, access_score
         )
-        emergency_priority_score = _clamp(total_score * 0.66 + access_score * 0.34)
+        emergency_priority_score = _clamp(
+            total_score * 0.66 + access_score * 0.34 if has_location else total_score
+        )
 
         results.append(_build_doctor_recommendation_result(
             doctor=doc,
@@ -1487,9 +1228,10 @@ def _model_disease_meta(disease):
     return {"primary": "模型预测疾病", "secondary": "待门诊评估", "dept": "全科医学科"}
 
 
-def build_htriage_analysis(condition):
+def build_htriage_analysis(condition, followup_answers=None):
     raw_text = condition or ""
     text, colloquial_replacements = normalize_patient_expression(raw_text)
+    structured_facts = followup_answer_map(followup_answers)
     # Keep rule matching on the user's original wording. Appending canonical
     # aliases is useful for model features, but would turn a negated phrase
     # such as "没有喘不过气" into a false positive if reused for safety rules.
@@ -1589,7 +1331,10 @@ def build_htriage_analysis(condition):
         "model": RANKING_MODEL_VERSION,
         "notice": HTRIAGE_NOTICE,
         "raw_condition": raw_text,
+        "original_condition": raw_text,
         "normalized_condition": text,
+        "followup_answers": list(followup_answers or ()),
+        "structured_facts": structured_facts,
         "colloquial_replacements": colloquial_replacements,
         "known_disease": known_disease,
         "symptom_tags": symptom_tags,
@@ -1600,12 +1345,15 @@ def build_htriage_analysis(condition):
         "model_disease_prediction": model_prediction,
         "red_flag_tags": red_flags,
     }
-    analysis["followup"] = build_followup_questions(raw_text, analysis)
+    analysis["followup"] = build_followup_questions(raw_text, analysis, followup_answers=followup_answers)
     return analysis
 
 
 def _attach_htriage_fields(payload, analysis):
     payload["normalized_condition"] = analysis.get("normalized_condition", "")
+    payload["original_condition"] = analysis.get("original_condition", analysis.get("raw_condition", ""))
+    payload["followup_answers"] = analysis.get("followup_answers", [])
+    payload["structured_facts"] = analysis.get("structured_facts", {})
     payload["colloquial_replacements"] = analysis.get("colloquial_replacements", [])
     payload["known_disease"] = analysis.get("known_disease", {})
     payload["symptom_tags"] = analysis.get("symptom_tags", [])
@@ -1628,6 +1376,9 @@ def _htriage_public_payload(triage):
         "model": triage.get("htriage_model", RANKING_MODEL_VERSION),
         "notice": triage.get("disease_prediction_notice", HTRIAGE_NOTICE),
         "normalized_condition": triage.get("normalized_condition", ""),
+        "original_condition": triage.get("original_condition", ""),
+        "followup_answers": triage.get("followup_answers", []),
+        "structured_facts": triage.get("structured_facts", {}),
         "colloquial_replacements": triage.get("colloquial_replacements", []),
         "known_disease": triage.get("known_disease", {}),
         "symptom_tags": triage.get("symptom_tags", []),
@@ -1641,13 +1392,43 @@ def _htriage_public_payload(triage):
     }
 
 
-def analyze_medical_triage(condition, scenario="common"):
+def analyze_medical_triage(condition, scenario="common", followup_answers=None):
     """返回可解释的病情轻重判定，不替代医生诊断。"""
     text = (condition or "").strip()
-    htriage = build_htriage_analysis(text)
+    structured_facts = followup_answer_map(followup_answers)
+    htriage = build_htriage_analysis(text, followup_answers)
     matched_dept = match_department(text)
     if htriage.get("department_candidates"):
         matched_dept = htriage["department_candidates"][0]["department"]
+
+    red_flag_answer = structured_facts.get("red_flag_check")
+    if red_flag_answer == "present":
+        return _attach_htriage_fields({
+            "level": "emergency",
+            "label": "疑似急症",
+            "severity_bucket": "大病/重症风险",
+            "severity_score": 96,
+            "care_level": "建议立即急诊/急救评估",
+            "recommended_scenario": "surgery",
+            "matched_rule": "结构化红旗回答为 present",
+            "matched_department": matched_dept or "急诊医学科",
+            "red_flag_tags": ["结构化回答：存在危险信号"],
+            "reasons": ["您在补充信息中标记了危险信号，请优先拨打 120 或前往就近急诊。"],
+            "disclaimer": "本系统仅做分诊辅助；如症状明显、持续加重或出现意识/呼吸/胸痛等风险，请及时拨打 120 或前往急诊。",
+        }, htriage)
+    if red_flag_answer == "unknown":
+        return _attach_htriage_fields({
+            "level": "routine",
+            "label": "需要人工/专业复核",
+            "severity_bucket": "信息不足",
+            "severity_score": 50,
+            "care_level": "无法确认危险信号，请尽快由专业人员复核",
+            "recommended_scenario": "first_visit",
+            "matched_rule": "结构化红旗回答为 unknown",
+            "matched_department": matched_dept,
+            "reasons": ["危险信号回答为不确定，不能按“没有危险信号”处理；如有明显不适请优先线下评估。"],
+            "disclaimer": "本系统仅做分诊辅助；信息不足时不会排除急症，请结合专业医疗意见。",
+        }, htriage)
 
     critical_hits = [w for w in TRIAGE_CRITICAL_SINGLE_KEYWORDS if _contains_positive(text, [w])]
     if critical_hits:
@@ -1767,17 +1548,6 @@ def analyze_medical_triage(condition, scenario="common"):
         "disclaimer": "本系统不提供诊断结论，仅辅助选择就诊方向。",
     }, htriage)
 
-# 用户位置（模拟）
-USER_LOCATIONS = {
-    "天宁区": (31.7760, 119.9600),
-    "钟楼区": (31.7850, 119.9450),
-    "武进区": (31.7300, 119.9500),
-    "新北区": (31.8200, 119.9700),
-    "金坛区": (31.7200, 119.5800),
-    "溧阳市": (31.4100, 119.4800),
-}
-
-
 # ============================================================
 # 工具函数
 # ============================================================
@@ -1825,6 +1595,13 @@ def recommend(condition, user_lat, user_lng, top_n=5, triage=None):
     triage_level = (triage or {}).get("level", "routine")
     weight_key = "first_visit" if (triage or {}).get("recommended_scenario") == "first_visit" else triage_level
     weights = HOSPITAL_RANKING_WEIGHTS.get(weight_key, HOSPITAL_RANKING_WEIGHTS["routine"])
+    unavailable = set()
+    if user_lat is None or user_lng is None:
+        unavailable.update({"accessibility", "fairness"})
+    if not _hospital_capacity_is_rankable():
+        unavailable.add("availability")
+    if unavailable:
+        weights = _rebalance_weights(weights, unavailable)
 
     access_context = "first_visit" if weight_key == "first_visit" else triage_level
     results = _build_hospital_candidates(
@@ -1887,16 +1664,14 @@ def index(path):
 
 
 def _resolve_recommendation_location(district, lat=None, lng=None):
-    """Resolve coordinates through the active Region Pack before safe fallbacks."""
+    """Resolve a selected district to its explicit reference point only."""
     if lat is not None and lng is not None:
         return float(lat), float(lng)
     region = REGION_REGISTRY.get(app.config.get("REGION_CODE", "320400"))
     location = region.resolve_location(district) if region else None
     if location and location.get("lat") is not None and location.get("lng") is not None:
         return float(location["lat"]), float(location["lng"])
-    if district in USER_LOCATIONS:
-        return USER_LOCATIONS[district]
-    return 31.7760, 119.9600
+    return None, None
 
 
 def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=False, safety_first=False):
@@ -1907,7 +1682,15 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         scenario = parsed.scenario
         district = parsed.district
         expert_preference = parsed.expert_preference
-        lat, lng = _resolve_recommendation_location(district, parsed.lat, parsed.lng)
+        lat, lng = _resolve_recommendation_location(
+            district if parsed.location_source == "district" else None,
+            parsed.lat,
+            parsed.lng,
+        )
+        if parsed.location_source == "district" and (lat is None or lng is None):
+            raise RequestValidationError("INVALID_DISTRICT", "district 不在当前 Region Pack")
+        location_source = parsed.location_source
+        followup_answers = parsed.followup_answers
     else:
         if not isinstance(data, dict):
             raise RequestValidationError("INVALID_JSON", "请求体必须是 JSON 对象")
@@ -1915,9 +1698,19 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         if not isinstance(condition, str) or not condition.strip():
             raise RequestValidationError("INVALID_CONDITION", "请输入病情或症状")
         scenario = data.get("scenario", "common")
-        district = data.get("district", "天宁区")
+        district = data.get("district")
         expert_preference = data.get("expert_preference", "system")
-        lat, lng = _resolve_recommendation_location(district, data.get("lat"), data.get("lng"))
+        raw_lat, raw_lng = data.get("lat"), data.get("lng")
+        location_source = (
+            "geolocation" if raw_lat is not None and raw_lng is not None
+            else ("district" if district else "unknown")
+        )
+        lat, lng = _resolve_recommendation_location(
+            district if location_source == "district" else None,
+            raw_lat,
+            raw_lng,
+        )
+        followup_answers = tuple(data.get("followup_answers") or ())
 
     context = RecommendationContext(
         condition=condition,
@@ -1926,6 +1719,8 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         expert_preference=expert_preference,
         user_lat=lat,
         user_lng=lng,
+        location_source=location_source,
+        followup_answers=followup_answers,
     )
     return RECOMMENDATION_APPLICATION_SERVICE.build(
         context,
@@ -1997,8 +1792,8 @@ MAP_VIEW_APPLICATION_SERVICE = MapViewApplicationService(
 )
 
 
-def _v1_triage_payload(condition, scenario):
-    return TRIAGE_APPLICATION_SERVICE.build_payload(condition, scenario)
+def _v1_triage_payload(condition, scenario, followup_answers=()):
+    return TRIAGE_APPLICATION_SERVICE.build_payload(condition, scenario, followup_answers)
 
 
 def _v1_followup_payload(payload):
@@ -2036,7 +1831,7 @@ def api_v1_triage():
         )
     except RequestValidationError as exc:
         return _v1_validation_error(exc)
-    return _v1_success(_v1_triage_payload(parsed.condition, parsed.scenario))
+    return _v1_success(_v1_triage_payload(parsed.condition, parsed.scenario, parsed.followup_answers))
 
 
 def api_v1_followups():
@@ -2048,7 +1843,7 @@ def api_v1_followups():
         )
     except RequestValidationError as exc:
         return _v1_validation_error(exc)
-    payload = _v1_triage_payload(parsed.condition, parsed.scenario)
+    payload = _v1_triage_payload(parsed.condition, parsed.scenario, parsed.followup_answers)
     payload = _v1_followup_payload(payload)
     return _v1_success(payload)
 
@@ -2127,10 +1922,33 @@ def api_v1_map():
     try:
         user_lat = parse_coordinate(request.args.get("lat"), "lat", -90, 90)
         user_lng = parse_coordinate(request.args.get("lng"), "lng", -180, 180)
+        raw_source = request.args.get("location_source")
+        district = request.args.get("district")
+        if raw_source not in (None, "", "unknown", "geolocation", "district"):
+            raise MapLocationError("location_source 无效")
+        location_source = raw_source or (
+            "geolocation" if user_lat is not None else ("district" if district else "unknown")
+        )
+        if location_source == "geolocation" and user_lat is None:
+            raise MapLocationError("geolocation 必须同时提供 lat/lng")
+        if location_source == "unknown" and (user_lat is not None or district):
+            raise MapLocationError("unknown 位置来源不能携带坐标或 district")
+        if location_source == "geolocation" and district:
+            raise MapLocationError("精确定位不能同时声明 district")
+        if location_source == "district":
+            if not district:
+                raise MapLocationError("district 来源必须提供 district")
+            if user_lat is not None or user_lng is not None:
+                raise MapLocationError("区域估算不能同时携带精确坐标")
+            if user_lat is None:
+                user_lat, user_lng = _resolve_recommendation_location(district)
+            if user_lat is None or user_lng is None:
+                raise MapLocationError("district 不在当前 Region Pack")
         payload = MAP_VIEW_APPLICATION_SERVICE.build(
             region_code=app.config.get("REGION_CODE", "320400"),
             user_lat=user_lat,
             user_lng=user_lng,
+            location_source=location_source,
         )
     except MapLocationError as exc:
         return jsonify(failure(

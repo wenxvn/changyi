@@ -111,8 +111,10 @@
       "data_keys": [
         "condition",
         "disease_prediction",
+        "followup_answers",
         "htriage_analysis",
         "matched_department",
+        "original_condition",
         "triage",
         "triage_status"
       ],
@@ -131,6 +133,8 @@
         "disease_prediction",
         "effective_scenario",
         "expert_preference",
+        "feature_availability",
+        "followup_answers",
         "hospital_weights_used",
         "htriage_analysis",
         "matched_department",

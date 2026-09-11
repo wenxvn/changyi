@@ -14,7 +14,7 @@ import { ApiError } from "../api/client";
 import { getEvidence } from "../api/evidence";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
-import type { EvidenceDataset, EvidencePayload } from "../types/api";
+import type { EvidenceDataset, EvidencePayload, ModelSplitMetrics } from "../types/api";
 
 function errorFor(reason: unknown): ApiError {
   return reason instanceof ApiError
@@ -45,6 +45,10 @@ function humanizeLimitation(value: string): string {
   return value.replace("prototype/offline evaluation", "当前离线研究与演示评估");
 }
 
+function splitMetricValue(value: number | null | undefined): string {
+  return value === null || value === undefined ? "未提供" : formatPercent(value);
+}
+
 function EvidenceMetric({ label, value, note }: { label: string; value: string; note?: string }) {
   return (
     <div className="evidence-metric">
@@ -71,6 +75,10 @@ function SourceRow({ source, label }: { source: EvidenceDataset | null; label: s
 
 function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onNavigate: (path: string) => void }) {
   const visibleManifest = evidence.dataset_manifest.slice(0, 8);
+  const modelSplits: Array<{ label: string; metrics: ModelSplitMetrics | undefined }> = [
+    { label: "随机基线", metrics: evidence.model.random_baseline },
+    { label: "严格 fingerprint 分组", metrics: evidence.model.grouped_fingerprint },
+  ];
   return (
     <>
       <div className="trust-page__hero">
@@ -140,8 +148,29 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
           <article className="evidence-panel">
             <div className="evidence-panel__topline"><Database size={19} aria-hidden="true" /><span>数据范围与来源</span></div>
             <p className="evidence-panel__plain-copy">评估使用已接入的常州公开医疗与交通资源。医院和医生资料会显示来源状态与更新时间，具体使用前请以机构公开信息为准。</p>
+            {evidence.hospital_data ? (
+              <div className="evidence-panel__footnote">
+                医院目录：{evidence.hospital_data.status} · {evidence.hospital_data.record_count} 条 · 派生能力字段 {Object.keys(evidence.hospital_data.derived_fields).length} 项 · 未支持字段 {evidence.hospital_data.unsupported_fields.join("、") || "无"}。
+              </div>
+            ) : null}
           </article>
         </div>
+        {evidence.model.random_baseline || evidence.model.grouped_fingerprint ? (
+          <div className="trust-model-comparison">
+            {modelSplits.map(({ label, metrics }) => metrics ? (
+              <article className="evidence-panel" key={label}>
+                <div className="evidence-panel__topline"><GitBranch size={17} aria-hidden="true" /><span>{label}</span></div>
+                <div className="evidence-metric-grid">
+                  <EvidenceMetric label="Macro-F1" value={splitMetricValue(metrics.macro_f1)} />
+                  <EvidenceMetric label="Macro-Recall" value={splitMetricValue(metrics.macro_recall)} />
+                  <EvidenceMetric label="覆盖率" value={splitMetricValue(metrics.coverage)} />
+                  <EvidenceMetric label="测试样本" value={formatCount(metrics.test_rows)} />
+                </div>
+                <p className="evidence-panel__footnote">Top-1 {splitMetricValue(metrics.accuracy)} · Top-3 {splitMetricValue(metrics.top3_accuracy)}。分组结果用于检查完全相同症状集合是否跨训练/测试集。</p>
+              </article>
+            ) : null)}
+          </div>
+        ) : null}
       </section>
 
       <section className="trust-evidence-section" aria-labelledby="quality-evidence-title">

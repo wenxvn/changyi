@@ -2,7 +2,7 @@
 
 - Schema: `data-quality-report/v1`
 - Region: `320400`
-- Datasets scanned: `27`
+- Datasets scanned: `28`
 - Issues: `187`
 
 ## Issues
@@ -214,7 +214,8 @@
 | `doctors_h6.json` | json | `97a1c2b6a41b0473ec13fa7d0c8c2549c43d86ff8f92e69d2b59f89d75434b4e` | `{'doctors': 74}` |
 | `doctors_h7.json` | json | `2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00` | `{'doctors': 164}` |
 | `doctors_h8.json` | json | `a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288` | `{'doctors': 515}` |
-| `regions/320400/manifest.json` | json | `b6c79b22540639a6cc15cff9b0191c82fc503e9d8ea20353d96622940c088fad` | `{'activation_gate': 6, 'districts': 7, 'future_regions': 3}` |
+| `regions/320400/hospitals/catalog.json` | json | `df2f57a7fb15f84002ade590db9bc0fb0e0e2987eee13a839a59722d55b2a6a7` | `{'records': 21}` |
+| `regions/320400/manifest.json` | json | `09af12e958783afd04bfd4e243cc58260b9f29aebbd0bf04c89af100ecd5ab5a` | `{'activation_gate': 6, 'districts': 7, 'future_regions': 3}` |
 | `symptom_disease_model/data/disease_symptom_sources.json` | json | `d361d97140b68706324933e4a086f714a0b74c8fe79a4b320b45297b3e6d4d8e` | `-` |
 | `symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv` | csv | `86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb` | `304` |
 | `symptom_disease_model/data/disease_symptom_training_long.csv` | csv | `8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497` | `2726` |

@@ -15,12 +15,11 @@ HOSPITAL_PUBLIC_FIELDS = (
     "type",
     "address",
     "phone",
-    "description",
     "lat",
     "lng",
     "emergency",
     "departments",
-    "strengths",
+    "derived_capability_areas",
 )
 
 HOSPITAL_BRIEF_FIELDS = (
@@ -157,8 +156,16 @@ class ResourceCatalogApplicationService:
             "total_doctors": len(real_doctors) if real_doctors else len(fallback_doctors),
             "total_real_doctors": len(real_doctors),
             "total_mock_doctors": len(fallback_doctors),
-            "total_beds": sum(hospital["beds"] for hospital in hospitals),
-            "daily_outpatients_total": sum(hospital["daily_outpatients"] for hospital in hospitals),
+            "total_beds": (
+                sum(hospital["beds"] for hospital in hospitals)
+                if hospitals and all(isinstance(hospital.get("beds"), (int, float)) for hospital in hospitals)
+                else None
+            ),
+            "daily_outpatients_total": (
+                sum(hospital["daily_outpatients"] for hospital in hospitals)
+                if hospitals and all(isinstance(hospital.get("daily_outpatients"), (int, float)) for hospital in hospitals)
+                else None
+            ),
             "top_departments": list(LEGACY_TOP_DEPARTMENTS),
         }
 
@@ -180,6 +187,12 @@ class ResourceCatalogApplicationService:
             "items": items,
             "count": len(items),
             "source": "legacy_catalog_pending_provenance",
+            "provenance": {
+                "status": "provisional",
+                "source_class": "legacy_catalog_import",
+                "last_updated": None,
+                "license_status": "not_recorded",
+            },
         }
 
     def list_doctors(self, *, hospital_id: int | None = None) -> dict[str, Any]:
@@ -196,8 +209,10 @@ class ResourceCatalogApplicationService:
         hospital = next((item for item in self.hospitals() if item.get("id") == hospital_id), None)
         if hospital is None:
             return None
-        doctor_count = sum(1 for doctor in self.real_doctors() if doctor.get("hospital_id") == hospital_id)
-        return build_hospital_detail(hospital, doctor_count=doctor_count)
+        doctors = [doctor for doctor in self.real_doctors() if doctor.get("hospital_id") == hospital_id]
+        if not doctors:
+            doctors = [doctor for doctor in self.fallback_doctors() if doctor.get("hospital_id") == hospital_id]
+        return build_hospital_detail(hospital, doctors=doctors)
 
     def doctor_detail(self, doctor_id: int) -> dict[str, Any] | None:
         doctor = next((item for item in self.real_doctors() if item.get("id") == doctor_id), None)
@@ -215,20 +230,38 @@ def _public_record(source: Mapping[str, Any], fields: tuple[str, ...]) -> dict[s
     return {field: source[field] for field in fields if field in source}
 
 
-def _provenance(source_class: str, status: str, notice: str) -> dict[str, Any]:
+def _provenance(
+    source_class: str,
+    status: str,
+    notice: str,
+    *,
+    catalog_status: str | None = None,
+    field_level_status: str = "not_available",
+) -> dict[str, Any]:
     return {
         "source_class": source_class,
         "status": status,
+        "catalog_status": catalog_status or status,
         "last_updated": None,
         "license_status": "not_recorded",
-        "field_level_status": "not_available",
+        "field_level_status": field_level_status,
+        "unsupported_fields": ["beds", "daily_outpatients", "rating", "description"],
         "notice": notice,
     }
 
 
-def build_hospital_detail(hospital: Mapping[str, Any], *, doctor_count: int) -> dict[str, Any]:
+def build_hospital_detail(
+    hospital: Mapping[str, Any],
+    *,
+    doctor_count: int | None = None,
+    doctors: Sequence[Mapping[str, Any]] | None = None,
+) -> dict[str, Any]:
     """Return only fields approved for the public hospital detail boundary."""
 
+    related_doctors = list(doctors or ())
+    if doctor_count is None:
+        doctor_count = len(related_doctors)
+    derived_scores = hospital.get("derived_capability_scores") or {}
     return {
         "resource_type": "hospital",
         "resource": _public_record(hospital, HOSPITAL_PUBLIC_FIELDS),
@@ -236,9 +269,21 @@ def build_hospital_detail(hospital: Mapping[str, Any], *, doctor_count: int) -> 
         "provenance": _provenance(
             "legacy_catalog_pending_provenance",
             "migration_pending",
-            "医院目录逐字段来源、许可和更新时间尚未完成登记；资料仅用于演示展示。",
+            "医院目录已从应用代码迁移到 Region Pack，但逐字段来源、许可和更新时间尚未完成登记；资料仅用于演示展示。",
+            catalog_status="provisional",
+            field_level_status="public_facts_and_derived_features",
         ),
-        "related": {"doctor_count": doctor_count},
+        "derived_capability": {
+            "areas": list(hospital.get("derived_capability_areas") or []),
+            "scores": dict(derived_scores),
+            "status": "provisional",
+            "formula_version": "legacy-strength-score-v1",
+            "notice": "派生能力线索仅供匹配解释，不代表官方评级、疗效或临床质量结论。",
+        },
+        "related": {
+            "doctor_count": doctor_count,
+            "doctors": [_public_record(doctor, DOCTOR_PUBLIC_FIELDS) for doctor in related_doctors],
+        },
     }
 
 

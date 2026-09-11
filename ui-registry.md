@@ -212,7 +212,7 @@ File: `frontend/src/pages/ResourcesPage.tsx`, `frontend/src/api/resources.ts`, `
 | Shadow | `var(--shadow-soft)` on selected/preview surfaces; inset shadow on cards |
 | Accent usage | teal marks search focus, selected tab and resource action; source warning stays amber |
 
-**Pattern notes:** The page is a read-only resource index, not a recommendation ranking. Hospitals load first; doctors load only after the tab is selected. Cards show public fields only, while the source pill states `legacy_catalog_pending_provenance` or `public_source_mixed`. Missing fields remain explicit. Selecting a card loads its v1 detail by id; loading/error/retry remain visible, and the detail provenance note does not imply official validation. Map is a separate route and is not impersonated by the index.
+**Pattern notes:** The page is a read-only resource index, not a recommendation ranking. Hospitals load first; doctors load only after the tab is selected. Cards show public fields only, while the source pill states the provisional catalog/public mixed-source boundary. Derived capability areas are labelled as provisional and unsupported fields remain explicit. Selecting a card loads its v1 detail by id; loading/error/retry remain visible, and the detail provenance note does not imply official validation. Map is a separate route and is not impersonated by the index.
 
 ### Trust Center / evidence panels
 
@@ -292,7 +292,7 @@ File: `frontend/src/pages/MapPage.tsx`, `frontend/src/api/map.ts`, `frontend/src
 | Shadow | `var(--shadow-soft)` canvas and preview; no map auto-animation |
 | Accent usage | teal marks normal resource points; danger marks the server-provided emergency field; no recommendation color without recommendation context |
 
-**Pattern notes:** Map list and marker use the same `/api/v1/map` items. The view is a lightweight hospital-location distribution view; it does not request location, fabricate distances, or imply real-time emergency availability. Each resource may expose a source-aware AMap navigation/search action, while the source pill keeps `legacy_catalog_pending_provenance` visible.
+**Pattern notes:** Map list and marker use the same `/api/v1/map` items. The view uses the real OSM geographic base map; it does not request location without a user action, fabricate distances, or imply real-time emergency availability. Unknown location keeps distance null; a selected district is visibly a reference-point estimate, and precise coordinates are session-only. Each resource may expose a source-aware AMap navigation/search action, while the source pill keeps the provisional catalog boundary visible.
 
 ### Flask-served React release shell
 

@@ -11,15 +11,19 @@ from collections.abc import Callable, Mapping
 from dataclasses import dataclass
 from typing import Any
 
+from backend.app.domain.recommendation.scoring import rebalance_weights
+
 
 @dataclass(frozen=True)
 class RecommendationContext:
     condition: str
     scenario: str
-    district: str
+    district: str | None
     expert_preference: str
-    user_lat: float
-    user_lng: float
+    user_lat: float | None
+    user_lng: float | None
+    location_source: str = "unknown"
+    followup_answers: tuple[dict[str, Any], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -47,7 +51,10 @@ class RecommendationApplicationService:
         enhanced: bool = False,
         safety_first: bool = False,
     ) -> dict[str, Any]:
-        triage = dict(self.analyze_triage(context.condition, context.scenario))
+        if context.followup_answers:
+            triage = dict(self.analyze_triage(context.condition, context.scenario, context.followup_answers))
+        else:
+            triage = dict(self.analyze_triage(context.condition, context.scenario))
         effective_scenario = triage.get("recommended_scenario") or context.scenario
         resource_strategy = self.resource_strategy(triage, context.expert_preference)
         hospitals = self.recommend_hospitals(
@@ -69,6 +76,14 @@ class RecommendationApplicationService:
         else:
             doctors = self.legacy_recommend_doctors(context.condition)
         matched_department = triage.get("matched_department") or self.match_department(context.condition)
+        doctor_weights = self.enhanced_weights.get(effective_scenario, self.enhanced_weights["surgery"])
+        if context.user_lat is None or context.user_lng is None:
+            doctor_weights = rebalance_weights(doctor_weights, {"access"})
+        hospital_weights = (
+            hospitals[0].get("ranking_weights")
+            if hospitals and isinstance(hospitals[0].get("ranking_weights"), Mapping)
+            else self.hospital_weights.get(triage.get("level", "routine"), self.hospital_weights["routine"])
+        )
         result: dict[str, Any] = {
             "condition": context.condition,
             "scenario": context.scenario,
@@ -83,14 +98,23 @@ class RecommendationApplicationService:
                 "district": context.district,
                 "lat": context.user_lat,
                 "lng": context.user_lng,
+                "source": context.location_source,
             },
+            "feature_availability": {
+                "location": context.user_lat is not None and context.user_lng is not None,
+                "distance": context.user_lat is not None and context.user_lng is not None,
+                "transit": context.user_lat is not None and context.user_lng is not None,
+            },
+            "followup_answers": list(context.followup_answers),
             "recommended_hospitals": hospitals,
             "recommended_doctors": doctors,
-            "weights_used": self.enhanced_weights.get(effective_scenario, self.enhanced_weights["surgery"]),
-            "hospital_weights_used": self.hospital_weights.get(triage.get("level", "routine"), self.hospital_weights["routine"]),
+            "weights_used": doctor_weights,
+            "hospital_weights_used": hospital_weights,
             "ranking_model": self.ranking_model,
             "data_source": "real_data" if enhanced else ("real" if self.has_real_doctors else "mock"),
         }
+        if context.user_lat is None or context.user_lng is None:
+            result["ranking_notice"] = "未提供精确位置，本次排序未使用距离和交通可达性；如需比较到院距离，请主动提供定位或选择区域。"
         if not enhanced:
             result["total_real_doctors"] = self.real_doctor_count
         if safety_first:

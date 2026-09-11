@@ -123,7 +123,7 @@ def build_doctor_recommendation_result(
 def build_hospital_recommendation_result(
     *,
     hospital: dict[str, Any],
-    distance: float,
+    distance: float | None,
     accessibility: float,
     strength_score: float,
     composite_score: float,
@@ -158,7 +158,7 @@ def compose_hospital_candidate(
     target_dept: str | None,
     triage: Mapping[str, Any] | None,
     triage_level: str,
-    distance: float,
+    distance: float | None,
     accessibility: float,
     traffic_access: dict[str, Any],
     ranking_weights: Mapping[str, float],
@@ -218,8 +218,8 @@ def build_hospital_candidates(
     triage: Mapping[str, Any] | None,
     triage_level: str,
     access_context: str,
-    user_lat: float,
-    user_lng: float,
+    user_lat: float | None,
+    user_lng: float | None,
     distance_fn: Callable[[float, float, float, float], float],
     access_score_fn: Callable[..., float],
     traffic_access_fn: Callable[[Mapping[str, Any]], dict[str, Any]],
@@ -237,10 +237,12 @@ def build_hospital_candidates(
         else "急症/较重病情不使用公交/出租车权重"
     )
     for hospital in hospitals:
-        distance = distance_fn(user_lat, user_lng, hospital["lat"], hospital["lng"])
+        distance = None
+        if user_lat is not None and user_lng is not None:
+            distance = distance_fn(user_lat, user_lng, hospital["lat"], hospital["lng"])
         accessibility = access_score_fn(hospital, user_lat, user_lng, access_context)
         traffic_access = traffic_access_fn(hospital)
-        traffic_access["used_in_ranking"] = uses_traffic_in_ranking
+        traffic_access["used_in_ranking"] = uses_traffic_in_ranking and distance is not None
         traffic_access["ranking_policy"] = ranking_policy
         results.append(
             compose_fn(

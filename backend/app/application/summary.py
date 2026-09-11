@@ -39,8 +39,8 @@ class SummaryApplicationService:
             "hospitals": {
                 "value": len(hospitals),
                 "label": "医疗机构",
-                "source_class": hospital_dataset.get("source", "legacy_catalog_pending_provenance"),
-                "status": hospital_dataset.get("status", "migration_pending"),
+                "source_class": hospital_dataset.get("source_class", hospital_dataset.get("source", "legacy_catalog_import")),
+                "status": hospital_dataset.get("status", "provisional"),
             },
             "doctors": {
                 "value": len(real_doctors) if real_doctors else len(fallback_doctors),

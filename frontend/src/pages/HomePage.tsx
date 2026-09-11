@@ -255,7 +255,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
                   <div className="metric" key={metric.label}>
                     <strong>{formatMetric(metric.value)}</strong>
                     <span>{metric.label}</span>
-                    <small>{metric.status === "migration_pending" ? "资料核验中" : "公开来源"}</small>
+                    <small>{metric.status === "migration_pending" || metric.status === "provisional" ? "资料核验中" : "公开来源"}</small>
                   </div>
                 ))
               ) : (

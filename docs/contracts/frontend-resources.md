@@ -21,7 +21,7 @@ GET /api/v1/doctors/<id>
 
 ```json
 {
-  "items": [{"id": 1, "name": "...", "level": "...", "type": "...", "address": "...", "departments": [], "strengths": [], "emergency": true}],
+  "items": [{"id": 1, "name": "...", "level": "...", "type": "...", "address": "...", "departments": [], "derived_capability_areas": [], "emergency": true}],
   "count": 21,
   "source": "legacy_catalog_pending_provenance"
 }
@@ -44,17 +44,20 @@ GET /api/v1/doctors/<id>
 ```json
 {
   "resource_type": "hospital",
-  "resource": {"id": 1, "name": "...", "address": "...", "departments": [], "strengths": []},
+  "resource": {"id": 1, "name": "...", "address": "...", "departments": [], "derived_capability_areas": []},
   "source": "legacy_catalog_pending_provenance",
   "provenance": {
     "source_class": "legacy_catalog_pending_provenance",
     "status": "migration_pending",
     "last_updated": null,
     "license_status": "not_recorded",
-    "field_level_status": "not_available",
+    "catalog_status": "provisional",
+    "field_level_status": "public_facts_and_derived_features",
+    "unsupported_fields": ["beds", "daily_outpatients", "rating", "description"],
     "notice": "..."
   },
-  "related": {"doctor_count": 0}
+  "derived_capability": {"status": "provisional", "formula_version": "legacy-strength-score-v1"},
+  "related": {"doctor_count": 0, "doctors": []}
 }
 ```
 
@@ -63,7 +66,7 @@ GET /api/v1/doctors/<id>
 ## 展示安全边界
 
 - “公开资料”是数据来源描述，不代表临床验证、官方推荐或诊断结论。
-- 医院的等级、地址、科室、急诊字段只作为接口资料展示；缺失字段显示“公开资料未提供”。
+- 医院的等级、地址、科室、急诊字段只作为接口资料展示；派生能力区域会标记为 provisional，不代表官方评级；beds、daily_outpatients、rating、description 等未支持字段不进入公开医院事实。
 - 医生卡片只展示姓名、职称、所属医院、科室、公开专长和门诊字段（若存在）；学术字段不作为默认排序或疗效暗示。
 - 详情加载中的索引对象不能被当作完整资料；详情请求失败时显示错误和重试，并保留继续浏览索引的能力。
 - 资源列表不能替代 Emergency 路径；急症用户应留在安全结果页，地图/附近急诊另立契约。

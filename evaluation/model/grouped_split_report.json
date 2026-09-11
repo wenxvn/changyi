@@ -1,0 +1,398 @@
+{
+  "schema_version": "model-evaluation/v1",
+  "dataset": {
+    "path": "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
+    "sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
+    "row_count": 304,
+    "class_count": 41
+  },
+  "model": {
+    "path": "data/symptom_disease_model/models/symptom_disease_41_nb.json",
+    "sha256": "a84c74f8927fe4fd7df33ee9f07177b70739bb8176b39b9745b39904794f1ba7",
+    "model_type": "multinomial_naive_bayes_for_symptom_tags"
+  },
+  "configuration": {
+    "seed": 42,
+    "test_size": 0.25,
+    "alpha": 1.0,
+    "min_symptom_df": 2
+  },
+  "random_baseline": {
+    "test_rows": 74,
+    "accuracy": 0.972973,
+    "covered_accuracy": 0.972222,
+    "top3_accuracy": 1.0,
+    "macro_precision": 0.910569,
+    "macro_recall": 0.914634,
+    "macro_f1": 0.908943,
+    "per_class_recall": {
+      "(vertigo) Paroymsal Positional Vertigo": 1.0,
+      "AIDS": 1.0,
+      "Acne": 1.0,
+      "Alcoholic hepatitis": 1.0,
+      "Allergy": 1.0,
+      "Arthritis": 1.0,
+      "Bronchial Asthma": 1.0,
+      "Cervical spondylosis": 1.0,
+      "Chicken pox": 1.0,
+      "Chronic cholestasis": 1.0,
+      "Common Cold": 1.0,
+      "Dengue": 1.0,
+      "Diabetes": 1.0,
+      "Dimorphic hemmorhoids(piles)": 1.0,
+      "Drug Reaction": 1.0,
+      "Fungal infection": 1.0,
+      "GERD": 1.0,
+      "Gastroenteritis": 0.0,
+      "Heart attack": 0.0,
+      "Hepatitis B": 1.0,
+      "Hepatitis C": 0.5,
+      "Hepatitis D": 1.0,
+      "Hepatitis E": 1.0,
+      "Hypertension": 1.0,
+      "Hyperthyroidism": 1.0,
+      "Hypoglycemia": 1.0,
+      "Hypothyroidism": 1.0,
+      "Impetigo": 1.0,
+      "Jaundice": 1.0,
+      "Malaria": 1.0,
+      "Migraine": 1.0,
+      "Osteoarthristis": 1.0,
+      "Paralysis (brain hemorrhage)": 0.0,
+      "Peptic ulcer diseae": 1.0,
+      "Pneumonia": 1.0,
+      "Psoriasis": 1.0,
+      "Tuberculosis": 1.0,
+      "Typhoid": 1.0,
+      "Urinary tract infection": 1.0,
+      "Varicose veins": 1.0,
+      "hepatitis A": 1.0
+    },
+    "confusion_matrix": {
+      "(vertigo) Paroymsal Positional Vertigo": {
+        "(vertigo) Paroymsal Positional Vertigo": 2
+      },
+      "AIDS": {
+        "AIDS": 1
+      },
+      "Acne": {
+        "Acne": 1
+      },
+      "Alcoholic hepatitis": {
+        "Alcoholic hepatitis": 2
+      },
+      "Allergy": {
+        "Allergy": 1
+      },
+      "Arthritis": {
+        "Arthritis": 2
+      },
+      "Bronchial Asthma": {
+        "Bronchial Asthma": 2
+      },
+      "Cervical spondylosis": {
+        "Cervical spondylosis": 2
+      },
+      "Chicken pox": {
+        "Chicken pox": 2
+      },
+      "Chronic cholestasis": {
+        "Chronic cholestasis": 2
+      },
+      "Common Cold": {
+        "Common Cold": 2
+      },
+      "Dengue": {
+        "Dengue": 2
+      },
+      "Diabetes": {
+        "Diabetes": 2
+      },
+      "Dimorphic hemmorhoids(piles)": {
+        "Dimorphic hemmorhoids(piles)": 2
+      },
+      "Drug Reaction": {
+        "Drug Reaction": 2
+      },
+      "Fungal infection": {
+        "Fungal infection": 1
+      },
+      "GERD": {
+        "GERD": 2
+      },
+      "Gastroenteritis": {
+        "ABSTAIN": 1
+      },
+      "Heart attack": {
+        "Pneumonia": 1
+      },
+      "Hepatitis B": {
+        "Hepatitis B": 2
+      },
+      "Hepatitis C": {
+        "Hepatitis C": 1,
+        "Hepatitis D": 1
+      },
+      "Hepatitis D": {
+        "Hepatitis D": 2
+      },
+      "Hepatitis E": {
+        "Hepatitis E": 2
+      },
+      "Hypertension": {
+        "Hypertension": 2
+      },
+      "Hyperthyroidism": {
+        "Hyperthyroidism": 2
+      },
+      "Hypoglycemia": {
+        "Hypoglycemia": 2
+      },
+      "Hypothyroidism": {
+        "Hypothyroidism": 2
+      },
+      "Impetigo": {
+        "Impetigo": 2
+      },
+      "Jaundice": {
+        "Jaundice": 2
+      },
+      "Malaria": {
+        "Malaria": 2
+      },
+      "Migraine": {
+        "Migraine": 2
+      },
+      "Osteoarthristis": {
+        "Osteoarthristis": 2
+      },
+      "Paralysis (brain hemorrhage)": {
+        "ABSTAIN": 1
+      },
+      "Peptic ulcer diseae": {
+        "Peptic ulcer diseae": 2
+      },
+      "Pneumonia": {
+        "Pneumonia": 2
+      },
+      "Psoriasis": {
+        "Psoriasis": 2
+      },
+      "Tuberculosis": {
+        "Tuberculosis": 2
+      },
+      "Typhoid": {
+        "Typhoid": 2
+      },
+      "Urinary tract infection": {
+        "Urinary tract infection": 1
+      },
+      "Varicose veins": {
+        "Varicose veins": 2
+      },
+      "hepatitis A": {
+        "hepatitis A": 2
+      }
+    },
+    "coverage": 0.972973,
+    "abstention_rate": 0.027027,
+    "abstention_policy": {
+      "confidence_threshold": 0.35,
+      "description": "top-1 probability below threshold is withheld from the assistive disease display"
+    }
+  },
+  "grouped_fingerprint": {
+    "test_rows": 74,
+    "accuracy": 0.986486,
+    "covered_accuracy": 0.986486,
+    "top3_accuracy": 1.0,
+    "macro_precision": 0.96748,
+    "macro_recall": 0.97561,
+    "macro_f1": 0.970732,
+    "per_class_recall": {
+      "(vertigo) Paroymsal Positional Vertigo": 1.0,
+      "AIDS": 1.0,
+      "Acne": 1.0,
+      "Alcoholic hepatitis": 1.0,
+      "Allergy": 1.0,
+      "Arthritis": 1.0,
+      "Bronchial Asthma": 1.0,
+      "Cervical spondylosis": 1.0,
+      "Chicken pox": 1.0,
+      "Chronic cholestasis": 1.0,
+      "Common Cold": 1.0,
+      "Dengue": 1.0,
+      "Diabetes": 1.0,
+      "Dimorphic hemmorhoids(piles)": 1.0,
+      "Drug Reaction": 1.0,
+      "Fungal infection": 1.0,
+      "GERD": 1.0,
+      "Gastroenteritis": 1.0,
+      "Heart attack": 0.0,
+      "Hepatitis B": 1.0,
+      "Hepatitis C": 1.0,
+      "Hepatitis D": 1.0,
+      "Hepatitis E": 1.0,
+      "Hypertension": 1.0,
+      "Hyperthyroidism": 1.0,
+      "Hypoglycemia": 1.0,
+      "Hypothyroidism": 1.0,
+      "Impetigo": 1.0,
+      "Jaundice": 1.0,
+      "Malaria": 1.0,
+      "Migraine": 1.0,
+      "Osteoarthristis": 1.0,
+      "Paralysis (brain hemorrhage)": 1.0,
+      "Peptic ulcer diseae": 1.0,
+      "Pneumonia": 1.0,
+      "Psoriasis": 1.0,
+      "Tuberculosis": 1.0,
+      "Typhoid": 1.0,
+      "Urinary tract infection": 1.0,
+      "Varicose veins": 1.0,
+      "hepatitis A": 1.0
+    },
+    "confusion_matrix": {
+      "(vertigo) Paroymsal Positional Vertigo": {
+        "(vertigo) Paroymsal Positional Vertigo": 2
+      },
+      "AIDS": {
+        "AIDS": 1
+      },
+      "Acne": {
+        "Acne": 1
+      },
+      "Alcoholic hepatitis": {
+        "Alcoholic hepatitis": 2
+      },
+      "Allergy": {
+        "Allergy": 1
+      },
+      "Arthritis": {
+        "Arthritis": 2
+      },
+      "Bronchial Asthma": {
+        "Bronchial Asthma": 2
+      },
+      "Cervical spondylosis": {
+        "Cervical spondylosis": 2
+      },
+      "Chicken pox": {
+        "Chicken pox": 2
+      },
+      "Chronic cholestasis": {
+        "Chronic cholestasis": 2
+      },
+      "Common Cold": {
+        "Common Cold": 2
+      },
+      "Dengue": {
+        "Dengue": 2
+      },
+      "Diabetes": {
+        "Diabetes": 2
+      },
+      "Dimorphic hemmorhoids(piles)": {
+        "Dimorphic hemmorhoids(piles)": 2
+      },
+      "Drug Reaction": {
+        "Drug Reaction": 2
+      },
+      "Fungal infection": {
+        "Fungal infection": 1
+      },
+      "GERD": {
+        "GERD": 2
+      },
+      "Gastroenteritis": {
+        "Gastroenteritis": 1
+      },
+      "Heart attack": {
+        "Tuberculosis": 1
+      },
+      "Hepatitis B": {
+        "Hepatitis B": 2
+      },
+      "Hepatitis C": {
+        "Hepatitis C": 2
+      },
+      "Hepatitis D": {
+        "Hepatitis D": 2
+      },
+      "Hepatitis E": {
+        "Hepatitis E": 2
+      },
+      "Hypertension": {
+        "Hypertension": 2
+      },
+      "Hyperthyroidism": {
+        "Hyperthyroidism": 2
+      },
+      "Hypoglycemia": {
+        "Hypoglycemia": 2
+      },
+      "Hypothyroidism": {
+        "Hypothyroidism": 2
+      },
+      "Impetigo": {
+        "Impetigo": 2
+      },
+      "Jaundice": {
+        "Jaundice": 2
+      },
+      "Malaria": {
+        "Malaria": 2
+      },
+      "Migraine": {
+        "Migraine": 2
+      },
+      "Osteoarthristis": {
+        "Osteoarthristis": 2
+      },
+      "Paralysis (brain hemorrhage)": {
+        "Paralysis (brain hemorrhage)": 1
+      },
+      "Peptic ulcer diseae": {
+        "Peptic ulcer diseae": 2
+      },
+      "Pneumonia": {
+        "Pneumonia": 2
+      },
+      "Psoriasis": {
+        "Psoriasis": 2
+      },
+      "Tuberculosis": {
+        "Tuberculosis": 2
+      },
+      "Typhoid": {
+        "Typhoid": 2
+      },
+      "Urinary tract infection": {
+        "Urinary tract infection": 1
+      },
+      "Varicose veins": {
+        "Varicose veins": 2
+      },
+      "hepatitis A": {
+        "hepatitis A": 2
+      }
+    },
+    "coverage": 1.0,
+    "abstention_rate": 0.0,
+    "abstention_policy": {
+      "confidence_threshold": 0.35,
+      "description": "top-1 probability below threshold is withheld from the assistive disease display"
+    }
+  },
+  "near_duplicate_audit": {
+    "jaccard_threshold": 0.8,
+    "pair_count": 605,
+    "cross_label_pair_count": 1,
+    "note": "近重复审计不改变训练模型；exact fingerprint 分组保证完全相同症状集合不跨 split。"
+  },
+  "limitations": [
+    "数据集只有 304 条记录，指标是离线原型评估，不代表临床表现。",
+    "exact fingerprint 分组无法识别所有语义近重复；近重复审计仅作为风险提示。",
+    "grouped split 与当前数据的随机 split 行数相同并不意味着不存在近重复风险。"
+  ]
+}

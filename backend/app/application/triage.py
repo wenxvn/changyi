@@ -14,7 +14,7 @@ from typing import Any
 from ..domain.triage.safety_gate import SafetyGateDecision, TriageStatus
 
 
-AnalyzeTriage = Callable[[str, str], Mapping[str, Any]]
+AnalyzeTriage = Callable[..., Mapping[str, Any]]
 EvaluateSafety = Callable[[Mapping[str, Any]], SafetyGateDecision]
 PublishTriage = Callable[[Mapping[str, Any], SafetyGateDecision], Mapping[str, Any]]
 PredictDisease = Callable[..., Mapping[str, Any]]
@@ -35,6 +35,18 @@ class TriageApplicationService:
     build_public_htriage: BuildPublicHtriage
     publish_htriage: PublishHtriage
     match_department: Callable[[str], str | None]
+
+    def _analyze(
+        self,
+        condition: str,
+        scenario: str,
+        followup_answers: tuple[dict[str, Any], ...] = (),
+    ) -> Mapping[str, Any]:
+        """Pass structured answers only when present for compatibility adapters."""
+
+        if followup_answers:
+            return self.analyze_triage(condition, scenario, followup_answers)
+        return self.analyze_triage(condition, scenario)
 
     def build_legacy_triage_payload(self, condition: str, scenario: str) -> dict[str, Any]:
         """Compose the original triage response without Safety-first projection."""
@@ -90,8 +102,13 @@ class TriageApplicationService:
             "htriage_analysis": dict(self.build_public_htriage(triage)),
         }
 
-    def build_payload(self, condition: str, scenario: str) -> dict[str, Any]:
-        triage = self.analyze_triage(condition, scenario)
+    def build_payload(
+        self,
+        condition: str,
+        scenario: str,
+        followup_answers: tuple[dict[str, Any], ...] = (),
+    ) -> dict[str, Any]:
+        triage = self._analyze(condition, scenario, followup_answers)
         decision = self.evaluate_safety(triage)
         public_triage = dict(self.publish_triage(triage, decision))
         prediction = self.predict_disease(condition, details=True)
@@ -101,6 +118,8 @@ class TriageApplicationService:
             public_prediction = prediction
         return {
             "condition": condition,
+            "original_condition": condition,
+            "followup_answers": list(followup_answers),
             "matched_department": public_triage.get("matched_department") or self.match_department(condition),
             "triage_status": decision.status.value,
             "disease_prediction": dict(public_prediction),
@@ -111,7 +130,7 @@ class TriageApplicationService:
     @staticmethod
     def build_followup_payload(payload: Mapping[str, Any]) -> dict[str, Any]:
         triage = payload.get("triage") or {}
-        return {
+        result = {
             "condition": payload.get("condition", ""),
             "matched_department": payload.get("matched_department"),
             "triage_status": payload.get("triage_status"),
@@ -120,3 +139,8 @@ class TriageApplicationService:
             "known_disease": triage.get("known_disease", {}),
             "htriage_analysis": payload.get("htriage_analysis", {}),
         }
+        if "original_condition" in payload:
+            result["original_condition"] = payload.get("original_condition")
+        if "followup_answers" in payload:
+            result["followup_answers"] = payload.get("followup_answers", [])
+        return result

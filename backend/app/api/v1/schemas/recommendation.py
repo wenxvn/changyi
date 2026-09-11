@@ -18,18 +18,23 @@ class RequestValidationError(ValueError):
 class RecommendationRequest:
     condition: str
     scenario: str
-    district: str
+    district: str | None
     expert_preference: str
     region_code: str
     lat: float | None = None
     lng: float | None = None
+    location_source: str = "unknown"
+    followup_answers: tuple[dict[str, Any], ...] = ()
 
     @classmethod
     def parse(cls, payload: Any, *, region_code: str = "320400") -> "RecommendationRequest":
         if not isinstance(payload, dict):
             raise RequestValidationError("INVALID_JSON", "请求体必须是 JSON 对象")
 
-        allowed = {"condition", "scenario", "district", "expert_preference", "region_code", "lat", "lng"}
+        allowed = {
+            "condition", "scenario", "district", "expert_preference", "region_code",
+            "lat", "lng", "location_source", "followup_answers",
+        }
         unexpected = sorted(set(payload) - allowed)
         if unexpected:
             raise RequestValidationError("UNEXPECTED_FIELD", "请求包含未声明字段", unexpected)
@@ -53,12 +58,28 @@ class RecommendationRequest:
         if expert_preference not in {"system", "no_expert", "wish_expert", "must_expert", "named_followup"}:
             raise RequestValidationError("INVALID_EXPERT_PREFERENCE", "expert_preference 无效")
 
-        district = payload.get("district") or "天宁区"
-        if not isinstance(district, str) or not district.strip():
-            raise RequestValidationError("INVALID_DISTRICT", "district 必须是非空字符串")
+        raw_district = payload.get("district")
+        if raw_district is None or raw_district == "":
+            district = None
+        elif not isinstance(raw_district, str) or not raw_district.strip():
+            raise RequestValidationError("INVALID_DISTRICT", "district 必须是字符串或省略")
+        else:
+            district = raw_district.strip()
 
         lat, lng = _parse_coordinates(payload.get("lat"), payload.get("lng"))
-        return cls(condition, scenario, district.strip(), expert_preference, requested_region, lat, lng)
+        location_source = _parse_location_source(payload.get("location_source"), district, lat, lng)
+        followup_answers = _parse_followup_answers(payload.get("followup_answers"))
+        return cls(
+            condition=condition,
+            scenario=scenario,
+            district=district,
+            expert_preference=expert_preference,
+            region_code=requested_region,
+            lat=lat,
+            lng=lng,
+            location_source=location_source,
+            followup_answers=followup_answers,
+        )
 
 
 def _parse_coordinates(raw_lat: Any, raw_lng: Any) -> tuple[float | None, float | None]:
@@ -70,6 +91,68 @@ def _parse_coordinates(raw_lat: Any, raw_lng: Any) -> tuple[float | None, float 
         lat, lng = float(raw_lat), float(raw_lng)
     except (TypeError, ValueError) as exc:
         raise RequestValidationError("INVALID_LOCATION", "lat/lng 必须是数字") from exc
-    if not -90 <= lat <= 90 or not -180 <= lng <= 180:
+    if not (-90 <= lat <= 90 and -180 <= lng <= 180):
         raise RequestValidationError("INVALID_LOCATION", "lat/lng 超出地理坐标范围")
     return lat, lng
+
+
+def _parse_location_source(
+    raw_source: Any,
+    district: str | None,
+    lat: float | None,
+    lng: float | None,
+) -> str:
+    if raw_source is None or raw_source == "":
+        if lat is not None:
+            return "geolocation"
+        if district:
+            return "district"
+        return "unknown"
+    if raw_source not in {"unknown", "geolocation", "district"}:
+        raise RequestValidationError("INVALID_LOCATION_SOURCE", "location_source 无效")
+    if raw_source == "geolocation" and lat is None:
+        raise RequestValidationError("INVALID_LOCATION", "geolocation 必须同时提供 lat/lng")
+    if raw_source == "district" and district is None:
+        raise RequestValidationError("INVALID_DISTRICT", "district 来源必须提供 district")
+    if raw_source == "unknown" and (district is not None or lat is not None):
+        raise RequestValidationError("INVALID_LOCATION_SOURCE", "unknown 位置来源不能携带 district 或坐标")
+    if raw_source == "geolocation" and district is not None:
+        raise RequestValidationError("INVALID_LOCATION_SOURCE", "精确定位请求不能同时声明 district")
+    if raw_source == "district" and lat is not None:
+        raise RequestValidationError("INVALID_LOCATION_SOURCE", "区域估算请求不能同时声明精确坐标")
+    return str(raw_source)
+
+
+def _parse_followup_answers(raw_answers: Any) -> tuple[dict[str, Any], ...]:
+    if raw_answers is None:
+        return ()
+    if not isinstance(raw_answers, list) or len(raw_answers) > 32:
+        raise RequestValidationError("INVALID_FOLLOWUP_ANSWERS", "followup_answers 必须是不超过 32 项的数组")
+
+    parsed: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for answer in raw_answers:
+        if not isinstance(answer, dict):
+            raise RequestValidationError("INVALID_FOLLOWUP_ANSWERS", "每个 followup answer 必须是 JSON 对象")
+        if set(answer) - {"question_id", "value", "text_answer"}:
+            raise RequestValidationError("INVALID_FOLLOWUP_ANSWERS", "followup answer 包含未声明字段")
+        question_id = answer.get("question_id")
+        if not isinstance(question_id, str) or not question_id.strip() or len(question_id) > 100:
+            raise RequestValidationError("INVALID_FOLLOWUP_ANSWERS", "question_id 必须是非空字符串")
+        question_id = question_id.strip()
+        if question_id in seen_ids:
+            raise RequestValidationError("INVALID_FOLLOWUP_ANSWERS", "question_id 不能重复")
+        seen_ids.add(question_id)
+        value = answer.get("value")
+        text_answer = answer.get("text_answer")
+        if (value is None) == (text_answer is None):
+            raise RequestValidationError("INVALID_FOLLOWUP_ANSWERS", "value 与 text_answer 必须二选一")
+        selected = value if value is not None else text_answer
+        if not isinstance(selected, str) or not selected.strip() or len(selected) > 500:
+            raise RequestValidationError("INVALID_FOLLOWUP_ANSWERS", "followup answer 内容无效")
+        parsed.append({
+            "question_id": question_id,
+            "value": value.strip() if isinstance(value, str) else None,
+            "text_answer": text_answer.strip() if isinstance(text_answer, str) else None,
+        })
+    return tuple(parsed)

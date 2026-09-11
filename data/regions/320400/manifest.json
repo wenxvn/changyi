@@ -17,11 +17,16 @@
   ],
   "datasets": {
     "hospitals": {
-      "dataset_id": "changzhou-hospital-catalog-legacy",
-      "status": "migration_pending",
-      "source": "app.py:HOSPITALS",
+      "dataset_id": "changzhou-hospital-catalog-2026.09-provisional",
+      "path": "hospitals/catalog.json",
+      "status": "provisional",
+      "source_class": "legacy_catalog_import",
+      "source_url": null,
+      "last_verified_at": null,
+      "license_status": "not_recorded",
+      "deidentified": true,
       "record_count": 21,
-      "notes": "兼容适配器暂时使用；需完成逐字段 provenance 后迁移为 hospitals/catalog.json。"
+      "notes": "旧目录已移入 Region Pack；公开事实、内部派生能力字段和未支持字段分开标注，外部来源核验仍未完成。"
     },
     "doctors": [
       {"dataset_id": "doctors-h1", "hospital_id": 1, "path": "../../doctors_h1.json", "record_key": "doctors", "record_count": 498, "source_class": "public_source_mixed"},

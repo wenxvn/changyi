@@ -7,6 +7,9 @@ Safety Gate a single, testable input boundary.
 
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
+from dataclasses import dataclass
+from typing import Any
 
 COLLOQUIAL_SYMPTOM_ALIASES = {
     "喘不上来": "呼吸困难",
@@ -45,6 +48,56 @@ KNOWN_DISEASE_PATTERNS = [
     "已确诊", "确诊", "医生说", "诊断为", "检查说", "查出来", "复诊", "术后复查",
     "患有", "得了", "我是", "病史", "既往", "报告提示", "考虑",
 ]
+
+
+@dataclass(frozen=True)
+class FollowupAnswer:
+    """One answer kept separate from the patient's original free-text input."""
+
+    question_id: str
+    value: str | None = None
+    text_answer: str | None = None
+
+
+@dataclass(frozen=True)
+class TriageInput:
+    """Canonical triage input; follow-up prompts never become symptom text."""
+
+    original_condition: str
+    scenario: str = "common"
+    followup_answers: tuple[FollowupAnswer, ...] = ()
+
+
+def normalize_followup_answers(raw_answers: Sequence[Mapping[str, Any]] | None) -> tuple[FollowupAnswer, ...]:
+    """Normalize already-validated structured answers for rule evaluation."""
+
+    normalized: list[FollowupAnswer] = []
+    for answer in raw_answers or ():
+        question_id = str(answer.get("question_id") or "").strip()
+        value = answer.get("value")
+        text_answer = answer.get("text_answer")
+        normalized.append(FollowupAnswer(
+            question_id=question_id,
+            value=value.strip() if isinstance(value, str) else None,
+            text_answer=text_answer.strip() if isinstance(text_answer, str) else None,
+        ))
+    return tuple(normalized)
+
+
+def followup_answer_map(raw_answers: Sequence[Mapping[str, Any]] | Sequence[FollowupAnswer] | None) -> dict[str, str]:
+    """Return a stable question-id to answer-value map for safety rules."""
+
+    result: dict[str, str] = {}
+    for answer in raw_answers or ():
+        if isinstance(answer, FollowupAnswer):
+            value = answer.value or answer.text_answer
+            question_id = answer.question_id
+        else:
+            value = answer.get("value") or answer.get("text_answer")
+            question_id = str(answer.get("question_id") or "")
+        if question_id and isinstance(value, str) and value.strip():
+            result[question_id] = value.strip()
+    return result
 
 
 def normalize_patient_expression(condition):

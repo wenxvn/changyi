@@ -28,6 +28,7 @@ function errorFor(reason: unknown, fallback: string): ApiError {
 }
 
 function sourceLabel(source: string): string {
+  if (source.includes("provisional")) return "医院目录 · 暂待核验";
   if (source.includes("pending")) return "医院目录 · 资料核验中";
   if (source.includes("public")) return "公开资料 · 来源混合";
   return "资料来源待补齐";
@@ -131,6 +132,7 @@ function ResourceDetail({
   error,
   onRetry,
   onClose,
+  onNavigate,
 }: {
   selection: Selection;
   detail: ResourceDetailPayload | null;
@@ -138,6 +140,7 @@ function ResourceDetail({
   error: ApiError | null;
   onRetry: () => void;
   onClose: () => void;
+  onNavigate: (path: string) => void;
 }) {
   return (
     <aside className="resource-detail" aria-labelledby="resource-detail-title">
@@ -149,7 +152,7 @@ function ResourceDetail({
         return (
           <>
             <h2 id="resource-detail-title">{hospital.name ?? "未命名医院"}</h2>
-            <p className="resource-detail__lede">{hospital.description ?? "当前接口未提供医院概览；请以机构公开信息为准。"}</p>
+            <p className="resource-detail__lede">当前展示公开机构字段与派生能力线索；不构成官方排名、疗效或临床质量结论。</p>
             <dl className="resource-detail__facts">
               <div><dt>机构类型</dt><dd>{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "未提供"}</dd></div>
               <div><dt>地址</dt><dd>{hospital.address ?? "未提供"}</dd></div>
@@ -157,7 +160,8 @@ function ResourceDetail({
               <div><dt>急诊字段</dt><dd>{hospital.emergency === true ? "接口标记为可用" : "接口未标记"}</dd></div>
               <div><dt>关联医生</dt><dd>{detail.related.doctor_count} 条公开索引</dd></div>
             </dl>
-            {hospital.strengths?.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">重点方向字段</span><p>{hospital.strengths.slice(0, 6).join(" · ")}</p></div> : null}
+            {detail.derived_capability?.areas.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">派生能力线索 · {detail.derived_capability.status}</span><p>{detail.derived_capability.areas.slice(0, 8).join(" · ")}</p><small>{detail.derived_capability.notice} 公式版本：{detail.derived_capability.formula_version}</small></div> : null}
+            {detail.related.doctors?.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">关联公开医生</span><div className="resource-detail__related-list">{detail.related.doctors.slice(0, 8).map((doctor) => <button type="button" key={String(doctor.id ?? doctor.name)} onClick={() => typeof doctor.id === "number" && onNavigate("/resources?doctor=" + doctor.id)}><strong>{doctor.name ?? "公开医生资料"}</strong><span>{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "公开资料"}</span></button>)}</div></div> : null}
             <AmapNavigationLink target={hospital} className="resource-detail__navigation" />
             <ResourceProvenanceNote detail={detail} />
           </>
@@ -238,6 +242,30 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   }, [activeTab]);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const hospitalId = Number(params.get("hospital"));
+    if (Number.isInteger(hospitalId) && hospitalId > 0 && hospitals.length > 0) {
+      const hospital = hospitals.find((item) => item.id === hospitalId);
+      if (hospital) {
+        setActiveTab("hospitals");
+        setSelection({ kind: "hospital", item: hospital });
+        return;
+      }
+    }
+    const doctorId = Number(params.get("doctor"));
+    if (!Number.isInteger(doctorId) || doctorId <= 0) return;
+    if (doctors.length === 0) {
+      setActiveTab("doctors");
+      return;
+    }
+    const doctor = doctors.find((item) => item.id === doctorId);
+    if (doctor) {
+      setActiveTab("doctors");
+      setSelection({ kind: "doctor", item: doctor });
+    }
+  }, [hospitals, doctors]);
+
+  useEffect(() => {
     if (!selection) {
       setDetail(null);
       setDetailError(null);
@@ -277,6 +305,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       hospital.address,
       ...(hospital.departments ?? []),
       ...(hospital.strengths ?? []),
+      ...(hospital.derived_capability_areas ?? []),
     ], normalizedQuery)),
     [hospitals, normalizedQuery],
   );
@@ -356,19 +385,19 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         {!doctorLoading && showingDoctors && !doctorError && filteredDoctors.length === 0 ? <div className="resources-empty"><Stethoscope size={22} aria-hidden="true" /><strong>没有匹配的医生资料</strong><span>可以换一个姓名、医院、科室或公开专长关键词。</span></div> : null}
 
         {showingHospitals && !hospitalLoading && !hospitalError && filteredHospitals.length > 0 ? (
-          <div className="resource-index-layout">
+          <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
             <div className="resource-index-grid">{filteredHospitals.map((hospital) => <HospitalCard key={String(hospital.id ?? hospital.name)} hospital={hospital} selected={selection?.kind === "hospital" && selection.item.id === hospital.id} onSelect={() => setSelection({ kind: "hospital", item: hospital })} />)}</div>
-            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} /> : null}
+            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} /> : null}
           </div>
         ) : null}
 
         {showingDoctors && !doctorLoading && !doctorError && visibleDoctors.length > 0 ? (
-          <div className="resource-index-layout">
+          <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
             <div>
               <div className="resource-index-grid">{visibleDoctors.map((doctor, index) => <DoctorCard key={String(doctor.id ?? `${doctor.name}-${index}`)} doctor={doctor} selected={selection?.kind === "doctor" && selection.item.id === doctor.id} onSelect={() => setSelection({ kind: "doctor", item: doctor })} />)}</div>
               {filteredDoctors.length > visibleDoctors.length ? <p className="resource-index-cap">当前展示前 {visibleDoctors.length} 条匹配资料；继续缩小关键词以定位更多结果。</p> : null}
             </div>
-            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} /> : null}
+            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} /> : null}
           </div>
         ) : null}
       </div>

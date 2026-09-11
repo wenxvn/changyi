@@ -50,7 +50,7 @@ function RecommendationError({ message, onRetry }: { message: string; onRetry: (
   );
 }
 
-function HospitalCard({ item, index }: { item: RecommendedHospital; index: number }) {
+function HospitalCard({ item, index, onNavigate }: { item: RecommendedHospital; index: number; onNavigate: (path: string) => void }) {
   const name = hospitalName(item);
   const hospital = item.hospital;
   const distance = formatDistance(item.distance);
@@ -72,7 +72,12 @@ function HospitalCard({ item, index }: { item: RecommendedHospital; index: numbe
       ) : null}
       <div className="resource-card__actions">
         <AmapNavigationLink target={hospital} className="resource-card__link" />
-        <button className="resource-card__link" type="button" disabled>
+        <button
+          className="resource-card__link"
+          type="button"
+          onClick={() => typeof hospital.id === "number" && onNavigate(`/resources?hospital=${hospital.id}`)}
+          disabled={typeof hospital.id !== "number"}
+        >
           公开资料详情 <ExternalLink size={14} aria-hidden="true" />
         </button>
       </div>
@@ -80,16 +85,21 @@ function HospitalCard({ item, index }: { item: RecommendedHospital; index: numbe
   );
 }
 
-function DoctorRow({ item }: { item: RecommendedDoctor }) {
+function DoctorRow({ item, onNavigate }: { item: RecommendedDoctor; onNavigate: (path: string) => void }) {
   const doctor = item.doctor;
   return (
-    <div className="doctor-row">
+    <button
+      className="doctor-row"
+      type="button"
+      onClick={() => typeof doctor.id === "number" && onNavigate(`/resources?doctor=${doctor.id}`)}
+      disabled={typeof doctor.id !== "number"}
+    >
       <div className="doctor-row__avatar" aria-hidden="true">{doctor.name?.slice(0, 1) || "医"}</div>
       <div>
         <strong>{doctorName(item)}</strong>
         <span>{[doctor.title, doctor.department, doctor.hospital_name].filter((value): value is string => Boolean(value)).join(" · ") || "公开医生资料"}</span>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -124,7 +134,8 @@ function RoutineOrUrgentResult({
   recommendationsLoading,
   recommendationsError,
   onLoadRecommendations,
-}: Omit<TriageResultsProps, "onNavigate">) {
+  onNavigate,
+}: Omit<TriageResultsProps, "onNavigate"> & Pick<TriageResultsProps, "onNavigate">) {
   const insufficient = result.triage_status === "INSUFFICIENT_INFORMATION";
   const urgent = result.triage_status === "URGENT";
   const title = insufficient ? "还需要一点信息，才能继续" : urgent ? "建议尽快进行医疗评估" : "可以继续了解合适的就医路径";
@@ -155,13 +166,13 @@ function RoutineOrUrgentResult({
             <div className="recommendation-content__meta">{recommendations.resource_strategy?.visit_path ?? "门诊路径"} · {resourceSourceLabel(recommendations.data_source)}</div>
             {recommendations.recommended_hospitals.length > 0 ? (
               <div className="hospital-results">
-                {recommendations.recommended_hospitals.slice(0, 3).map((item, index) => <HospitalCard item={item} index={index} key={`${hospitalName(item)}-${index}`} />)}
+                {recommendations.recommended_hospitals.slice(0, 3).map((item, index) => <HospitalCard item={item} index={index} onNavigate={onNavigate} key={`${hospitalName(item)}-${index}`} />)}
               </div>
             ) : <p className="result-empty">当前没有可展示的医院路径，请稍后重试或浏览医疗资源。</p>}
             {recommendations.recommended_doctors.length > 0 ? (
               <div className="doctor-preview">
                 <div className="doctor-preview__heading"><span className="eyebrow eyebrow--muted">公开医生资料预览</span><span>医院路径优先</span></div>
-                {recommendations.recommended_doctors.slice(0, 3).map((item, index) => <DoctorRow item={item} key={`${doctorName(item)}-${index}`} />)}
+                {recommendations.recommended_doctors.slice(0, 3).map((item, index) => <DoctorRow item={item} onNavigate={onNavigate} key={`${doctorName(item)}-${index}`} />)}
               </div>
             ) : null}
             <p className="recommendation-notice">推荐分只用于资源排序，不代表诊断概率或治疗效果概率。来源和更新时间以资源详情为准。</p>
@@ -188,6 +199,7 @@ export function TriageResults({
       recommendationsLoading={recommendationsLoading}
       recommendationsError={recommendationsError}
       onLoadRecommendations={onLoadRecommendations}
+      onNavigate={onNavigate}
     />
   );
 }

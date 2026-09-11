@@ -59,6 +59,7 @@ def build_map_payload(
     region_pack_version: str,
     user_lat: float | None = None,
     user_lng: float | None = None,
+    location_source: str = "unknown",
 ) -> dict[str, Any]:
     if (user_lat is None) != (user_lng is None):
         raise MapLocationError("lat 和 lng 必须同时提供")
@@ -96,6 +97,13 @@ def build_map_payload(
     if user_lat is not None:
         items.sort(key=lambda item: (item["distance_km"], str(item.get("name") or "")))
 
+    distance_method = None
+    if user_lat is not None:
+        distance_method = (
+            "haversine_reference_point_km"
+            if location_source == "district"
+            else "haversine_straight_line_km"
+        )
     return {
         "region": {
             "code": region_code,
@@ -105,8 +113,24 @@ def build_map_payload(
         "items": items,
         "count": len(items),
         "source": "legacy_catalog_pending_provenance",
-        "distance_method": "haversine_straight_line_km" if user_lat is not None else None,
-        "notice": "医院位置用于辅助查看资源分布；距离为直线距离，仅供参考，实际路线请以高德地图导航结果为准。部分资料仍在核验。",
+        "provenance": {
+            "status": "provisional",
+            "source_class": "legacy_catalog_import",
+            "last_updated": None,
+            "license_status": "not_recorded",
+        },
+        "user_location": {
+            "lat": user_lat,
+            "lng": user_lng,
+            "source": location_source,
+        },
+        "distance_method": distance_method,
+        "notice": (
+            "医院位置用于辅助查看资源分布；当前使用区域参考点估算距离，仅供参考，"
+            "实际路线请以导航结果为准。"
+            if location_source == "district"
+            else "医院位置用于辅助查看资源分布；距离为直线距离，仅供参考，实际路线请以导航结果为准。"
+        ) + " 部分资料仍在核验。",
     }
 
 
@@ -123,6 +147,7 @@ class MapViewApplicationService:
         region_code: str,
         user_lat: float | None = None,
         user_lng: float | None = None,
+        location_source: str = "unknown",
     ) -> dict[str, Any]:
         region = self._region(region_code)
         return build_map_payload(
@@ -132,4 +157,5 @@ class MapViewApplicationService:
             region_pack_version=region.version if region else "unknown",
             user_lat=user_lat,
             user_lng=user_lng,
+            location_source=location_source,
         )

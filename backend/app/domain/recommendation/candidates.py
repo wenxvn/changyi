@@ -51,8 +51,9 @@ def resolve_hospital_candidate_match(
 ) -> tuple[float, str | None]:
     """Resolve the legacy hospital department match and strength fallback."""
 
-    if target_dept and target_dept in hospital.get("strength_scores", {}):
-        return hospital["strength_scores"][target_dept], target_dept
+    scores = hospital.get("derived_capability_scores") or hospital.get("strength_scores", {})
+    if target_dept and target_dept in scores:
+        return scores[target_dept], target_dept
     if target_dept and target_dept in hospital.get("departments", []):
         return 75, target_dept
 

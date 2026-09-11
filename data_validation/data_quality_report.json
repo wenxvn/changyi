@@ -2,7 +2,7 @@
   "schema_version": "data-quality-report/v1",
   "data_root": "data",
   "region_code": "320400",
-  "dataset_count": 27,
+  "dataset_count": 28,
   "issue_count": 187,
   "datasets": [
     {
@@ -226,8 +226,30 @@
       }
     },
     {
+      "path": "regions/320400/hospitals/catalog.json",
+      "sha256": "df2f57a7fb15f84002ade590db9bc0fb0e0e2987eee13a839a59722d55b2a6a7",
+      "format": "json",
+      "top_level_keys": [
+        "dataset_id",
+        "deidentified",
+        "field_policy",
+        "last_verified_at",
+        "license_status",
+        "record_count",
+        "records",
+        "region_code",
+        "schema_version",
+        "source_class",
+        "source_url",
+        "status"
+      ],
+      "collections": {
+        "records": 21
+      }
+    },
+    {
       "path": "regions/320400/manifest.json",
-      "sha256": "b6c79b22540639a6cc15cff9b0191c82fc503e9d8ea20353d96622940c088fad",
+      "sha256": "09af12e958783afd04bfd4e243cc58260b9f29aebbd0bf04c89af100ecd5ab5a",
       "format": "json",
       "top_level_keys": [
         "activation_gate",

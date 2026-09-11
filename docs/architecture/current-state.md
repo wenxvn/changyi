@@ -33,6 +33,8 @@ Browser
 - `backend/app/application/`：`TriageApplicationService`、`RecommendationApplicationService`、`ResourceCatalogApplicationService`、`SummaryApplicationService`、`EvidenceApplicationService`、`MapViewApplicationService` 和 `RegionReadApplicationService`。
 - `backend/app/domain/`：医学输入、安全状态/发布、推荐 score/features/candidate/pipeline/resource policy/traffic 等可测试逻辑；本轮不改变其业务语义。
 - `backend/app/infrastructure/`：数据加载、区域注册、医生/交通仓库和症状疾病模型 adapter。
+- `data/regions/320400/hospitals/catalog.json`：医院 Region Pack 目录；公开事实、派生能力线索与未支持字段使用独立元数据描述，组合根通过 `HospitalRepository` 加载。
+- `evaluation/model/`：可重复的模型切分 manifest、random baseline、exact symptom fingerprint grouped split 和近重复审计报告；不是临床验证服务。
 - `frontend/src/`：React 页面、组件、API client、类型、状态和 token；不复制医学规则、疾病模型或推荐排序。
 
 ## 正式 API
@@ -41,11 +43,11 @@ Browser
 
 `health`、`ready`、`regions`、`triage`、`triage/followups`、`recommendations`、`hospitals`、`hospitals/<id>`、`doctors`、`doctors/<id>`、`summary`、`evidence`、`map`。
 
-Emergency 和信息不足由后端 Safety-first publication 脱敏发布；前端不请求或展示普通推荐作为急症替代。地图是坐标位置示意，直线距离不是导航、到院时间或实时急诊可用性。
+Emergency 和信息不足由后端 Safety-first publication 脱敏发布；前端不请求或展示普通推荐作为急症替代。位置来源有 `unknown`、`district`（区域参考点）和 `geolocation`（用户主动授权的本次会话坐标）三态；没有位置时距离、交通和相关排序权重关闭。地图是坐标位置示意，直线距离/区域参考点距离不是导航、到院时间或实时急诊可用性。
 
 ## 数据与回滚
 
-- active Region Pack：`320400`；医院目录仍显式标记 `migration_pending`。
+- active Region Pack：`320400`；医院目录在 `hospitals/catalog.json`，状态为 `provisional`，逐字段来源和许可待核验。
 - 医生公开资料来自 `data/doctors_h*.json`；交通是脱敏样本，不代表实时路况。
 - 模型和排序版本由配置字段公开；模型不可用必须走现有降级契约。
 - React cutover 通过 Flask-served build 完成；若 build 缺失，根路由返回明确 `503`，不会回退到旧前端。
@@ -53,4 +55,4 @@ Emergency 和信息不足由后端 Safety-first publication 脱敏发布；前�
 
 ## 明确不在本基线
 
-正式附近急诊导航、实时可用性、结构化 follow-up answer API、逐字段正式 provenance、医学规则修复、账号/数据库/生产认证和新产品能力统一记录在 `docs/POST_REFACTOR_BACKLOG.md`。
+正式附近急诊导航、实时可用性、逐字段正式 provenance、医学规则修复、账号/数据库/生产认证和新产品能力统一记录在 `docs/POST_REFACTOR_BACKLOG.md`。本轮已建立 v1 结构化 follow-up answer 请求字段，但其医学含义和规则扩展仍需单独评审。

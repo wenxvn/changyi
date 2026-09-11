@@ -61,6 +61,35 @@ def _safe_safety_report(triage_fn: Callable[[str], Mapping[str, Any]]) -> dict[s
         }
 
 
+def _hospital_catalog_evidence(project_root: Path) -> dict[str, Any]:
+    catalog = _read_json(project_root / "data" / "regions" / "320400" / "hospitals" / "catalog.json") or {}
+    records = catalog.get("records") if isinstance(catalog.get("records"), list) else []
+    field_policy = catalog.get("field_policy") if isinstance(catalog.get("field_policy"), Mapping) else {}
+    derived = field_policy.get("derived_features") if isinstance(field_policy.get("derived_features"), Mapping) else {}
+    return {
+        "available": bool(catalog),
+        "dataset_id": catalog.get("dataset_id", "unknown"),
+        "status": catalog.get("status", "unknown"),
+        "source_class": catalog.get("source_class", "unknown"),
+        "source_url": catalog.get("source_url"),
+        "last_verified_at": catalog.get("last_verified_at"),
+        "license_status": catalog.get("license_status", "unknown"),
+        "deidentified": catalog.get("deidentified") is True,
+        "record_count": len(records),
+        "public_fact_fields": list(field_policy.get("public_facts") or []),
+        "derived_fields": {
+            str(name): {
+                "status": item.get("status", "unknown"),
+                "formula_version": item.get("formula_version", "unknown"),
+            }
+            for name, item in derived.items()
+            if isinstance(item, Mapping)
+        },
+        "unsupported_fields": list(field_policy.get("unsupported_null") or []),
+        "notice": "医院公开事实、派生能力线索和不支持字段分开登记；目录仍需外部来源、许可和更新时间核验。",
+    }
+
+
 def build_evidence_payload(
     project_root: Path,
     *,
@@ -83,10 +112,11 @@ def build_evidence_payload(
     model_entry = _dataset_entry(quality_report, lambda path: path.endswith("symptom_disease_41_nb.json"))
     training_entry = _dataset_entry(
         quality_report,
-        lambda path: path.endswith("disease_symptom_structured_41diseases_long.csv"),
+        lambda path: path.endswith("symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv"),
     )
     region_entry = _dataset_entry(quality_report, lambda path: path == "regions/320400/manifest.json")
     safety = _safe_safety_report(triage_fn)
+    grouped_report = _read_json(project_root / "evaluation" / "model" / "grouped_split_report.json") or {}
 
     return {
         "disclaimer": "当前为原型阶段离线评估与数据来源摘要，不代表临床验证、官方推荐或诊断结论。",
@@ -118,10 +148,15 @@ def build_evidence_payload(
             "vocabulary_size": len(model.get("vocabulary") or []),
             "top1_accuracy": model_metrics.get("accuracy"),
             "top3_accuracy": model_metrics.get("top3_accuracy"),
-            "evaluation_scope": "单次按疾病类别分层切分；仅作为 prototype/offline evaluation",
+            "evaluation_scope": "随机基线 + exact symptom fingerprint grouped split；仅作为 prototype/offline evaluation",
+            "random_baseline": grouped_report.get("random_baseline"),
+            "grouped_fingerprint": grouped_report.get("grouped_fingerprint"),
+            "near_duplicate_audit": grouped_report.get("near_duplicate_audit"),
+            "split_manifest": "evaluation/model/split_manifest.json",
             "model_source": model_entry,
             "training_data_source": training_entry,
         },
+        "hospital_data": _hospital_catalog_evidence(project_root),
         "data_quality": {
             "available": bool(quality_report),
             "report_source": "data_validation/data_quality_report.json",
@@ -143,9 +178,9 @@ def build_evidence_payload(
         ] if isinstance(quality_report.get("datasets", []), list) else [],
         "limitations": [
             "安全评估中的 review_required case 不视为发布放行。",
-            "当前医院目录仍处于 migration_pending，逐字段来源、许可和更新时间未齐备。",
+            "医院目录已迁移到 Region Pack，但逐字段来源、许可和更新时间仍未齐备；派生能力线索不代表官方评级。",
             "医生资料为 public_source_mixed，公开资料不等于临床适配或疗效证明。",
-            "模型指标来自小数据单次切分，不能代表真实临床表现。",
+            "模型指标来自 304 条小数据的单次随机基线与 exact fingerprint 分组切分，不能代表真实临床表现；近重复风险仍需关注。",
         ],
     }
 

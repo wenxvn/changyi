@@ -62,10 +62,29 @@ test("map view keeps list and markers on one read-only endpoint", async () => {
   const api = await source("api/map.ts");
   assert.doesNotMatch(page, /fetch\(/);
   assert.match(api, /\/api\/v1\/map/);
-  assert.match(page, /aria-label=\{`查看/);
-  assert.match(page, /医院位置分布/);
-  assert.match(page, /高德导航/);
-  assert.doesNotMatch(page, /geolocation/);
+  assert.match(page, /aria-label=\{"查看/);
+  assert.match(page, /真实地理地图/);
+  assert.match(page, /AmapNavigationLink/);
+  assert.doesNotMatch(page, /navigator\.geolocation/);
+  const location = await source("state/locationContext.tsx");
+  assert.match(location, /getCurrentPosition/);
+  assert.match(location, /不会保存到本地/);
+});
+
+test("location and follow-up state remain explicit and session-only", async () => {
+  const location = await source("state/locationContext.tsx");
+  const selector = await source("components/ui/LocationSelector.tsx");
+  const triage = await source("pages/TriagePage.tsx");
+  const followup = await source("components/medical/FollowupPrompt.tsx");
+  assert.match(location, /source: LocationSource/);
+  assert.match(location, /source: "unknown"/);
+  assert.doesNotMatch(location, /localStorage|sessionStorage/);
+  assert.match(selector, /区域参考点/);
+  assert.match(triage, /followup_answers: followupAnswers/);
+  assert.match(triage, /submittedCondition/);
+  assert.doesNotMatch(triage, /appendAnswer/);
+  assert.match(followup, /question_id/);
+  assert.match(followup, /option\.label/);
 });
 
 test("triage result boundary short-circuits ordinary recommendations for emergency", async () => {
