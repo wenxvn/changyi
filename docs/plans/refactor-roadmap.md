@@ -1,67 +1,22 @@
-# 常医渐进式重构路线图
+# 常医重构路线图
 
-- 状态：进行中
-- 建立日期：2026-09-09
-- 原则：先保行为，再拆边界；先测量，再优化；先安全，再扩展。
+状态：已完成（2026-09-11）
 
-## Phase 0 — 治理和行为基线
+本路线图的目标是从 Flask 单体 + legacy 浏览器界面渐进收敛到可验证的分层后端和 React 正式前端。实施原则始终是：先建立 characterization，再移动单一边界；保持医学、安全、模型、排序和数据行为；每个切片可回滚。
 
-目标：让后续重构可以判断“改了什么”。
+## 已完成结果
 
-- 建立 API 清单：方法、URL、请求字段、响应字段、状态码和错误路径。
-- 为 `normalize_patient_expression`、`match_department`、`analyze_medical_triage`、`recommend`、模型适配建立最小纯函数样例。
-- 为医院/医生/交通数据加载建立可解析、数量和必需字段检查。
-- 建立 Flask smoke test 入口和 JavaScript 语法检查入口。
+- 建立 `backend/app/api/v1`、application、domain、infrastructure、Region Pack、repositories、model adapter 和质量门禁。
+- 抽取 triage、Safety-first publication、recommendation、resource catalog、summary、evidence、map 和 region read 边界。
+- React/TypeScript/Vite 前端覆盖首页、分诊/追问/结果、资源/详情、地图、Trust、Profile/History、键盘和 reduced-motion 语义。
+- Flask 现在提供 `frontend/dist`；正式前端只调用 `/api/v1/*`，SPA 路由支持刷新。
+- 删除旧 `/api/*` 路由、legacy adapter、旧模板/JS/CSS、无用 wrapper、测试反馈写入、备份图片、根 fallback 数据和无用二进制。
+- 保留并验证既有 Safety baseline、数据质量登记和推荐/分诊 characterization；没有修改医学行为。
 
-退出条件：关键路径有可重复验证；失败时能区分代码回归、数据变化和环境问题。
+## 长期规则
 
-## Phase 1 — 数据和配置边界
+新需求先读 `AGENTS.md`、`docs/status/current.md`、`docs/architecture/current-state.md` 和风险登记。重大架构变化写 ADR；医学/安全行为变化必须追加 L3 风险、评估和领域审核；生产化变化必须追加 L4 评审。
 
-目标：把本地文件读取从业务逻辑和路由中分离。
+## 后续入口
 
-- 抽取 `data_access`/repository 层，统一缺失文件、解析失败和字段默认值策略。
-- 为每类数据记录来源、更新时间、许可证/权限和脱敏状态。
-- 保持现有全局数据结构或提供兼容适配器，先不改变排序结果。
-
-退出条件：路由不直接读取 JSON；数据加载器可独立测试；旧接口结果在基线样例上保持一致。
-
-## Phase 2 — 医学辅助与推荐服务边界
-
-目标：将症状/分诊/模型适配与资源推荐拆成可验证服务。
-
-- 分离文本归一化、已知疾病识别、模型调用、红旗检测和追问建议。
-- 分离医院/医生评分、距离/交通特征、解释生成和结果排序。
-- 为低置信度、模型不可用、输入不足和红旗场景建立明确的降级契约。
-- 用 ADR 记录任何权重、阈值、医学文案或风险等级变化。
-
-退出条件：医学辅助服务和推荐服务可以在不启动 Web server 的情况下测试；API 只负责适配和错误映射。
-
-## Phase 3 — API 与前端边界
-
-目标：减少路由、全局状态和 DOM 渲染之间的耦合。
-
-- 建立前端 API client，集中处理错误、超时和响应契约。
-- 按页面抽取状态控制器和渲染器，先保持现有导航和 URL 行为。
-- 建立 UI 组件类型和 `ui-registry.md`；每次 UI 变化运行 imprint 流程。
-- 统一空态、加载态、错误态、红旗提示和模型不可用提示。
-
-退出条件：页面关键流程有手工验收清单；API 请求和 DOM 渲染可分别定位问题。
-
-## Phase 4 — 数据/模型质量与安全硬化
-
-目标：让数据和模型更新可追踪、可比较、可回滚。
-
-- 建立模型版本、训练数据版本、评估集和指标记录。
-- 补充类别不平衡、低置信度、分布外输入和偏差检查。
-- 对医生/医院数据做来源、许可、更新、脱敏和异常值检查。
-- 重新评估演示认证、CORS、日志、反馈存储和部署安全。
-
-退出条件：每个默认模型和数据集都有版本与回滚指针；高风险变更有领域审核记录。
-
-## Phase 5 — 生产化评估（不自动承诺）
-
-只有前面阶段完成并明确需求后，才评估数据库、认证授权、部署、监控、审计和外部服务。生产化不是重构的默认终点，需要单独的 `L4` 计划、成本/合规评估和上线回滚方案。
-
-## 当前切片
-
-竞赛迁移细化计划见 [`docs/competition/2026-ai-medical/MIGRATION_PLAN.md`](../competition/2026-ai-medical/MIGRATION_PLAN.md)。当前已完成治理文档、稳定字段 snapshot、数据质量报告、配置/Region/loader/repository 基础和 v1 外壳；下一切片应扩展安全反例与运行态 UI 基线，不应直接更换框架或修改医学规则。
+未在重构中实现的产品和安全事项统一见 [`docs/POST_REFACTOR_BACKLOG.md`](../POST_REFACTOR_BACKLOG.md)。

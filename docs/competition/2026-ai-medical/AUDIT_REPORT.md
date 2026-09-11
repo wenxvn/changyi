@@ -1,4 +1,6 @@
-# 首轮竞赛准备度审计
+# 首轮竞赛准备度审计（历史基线）
+
+> 本文件记录 cutover 前的审计快照，不描述当前正式入口；当前事实以 `docs/status/current.md` 和 `docs/architecture/current-state.md` 为准。
 
 日期：2026-09-09  
 基线：`main`，HEAD `838d4db`
@@ -42,4 +44,4 @@
 
 ## 审计证据与下一步
 
-迁移蓝图见 [MIGRATION_PLAN.md](MIGRATION_PLAN.md)，目标边界见 [ARCHITECTURE_TARGET.md](ARCHITECTURE_TARGET.md)。下一步运行 characterization、schema/data quality、Python compile 和 v1 smoke；UI 需依赖完整运行环境后按 imprint audit 建立基线。
+迁移结论见 [MIGRATION_PLAN.md](MIGRATION_PLAN.md)，当前边界见 [`docs/architecture/current-state.md`](../../architecture/current-state.md)。本文件只作为 cutover 前的审计证据保留。

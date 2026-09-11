@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from unittest import TestCase
 
-import app as legacy_app
+import app as application_entry
 from backend.app.domain.triage.publication import (
     publish_safety_first,
     safety_first_htriage_payload,
@@ -14,7 +14,7 @@ from backend.app.domain.triage.safety_gate import evaluate_safety_gate
 
 class SafetyFirstPublicationTests(TestCase):
     def setUp(self):
-        self.client = legacy_app.app.test_client()
+        self.client = application_entry.app.test_client()
 
     def test_v1_emergency_triage_abstains_before_public_disease_candidates(self):
         response = self.client.post(

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from flask import Blueprint, current_app, jsonify
 
-from .legacy_adapter import call_legacy_handler
 from .response import failure, success
 
 
@@ -13,6 +12,19 @@ api_v1 = Blueprint("api_v1", __name__, url_prefix="/api/v1")
 
 def _region_service():
     return current_app.extensions["changyi.region_read_service"]
+
+
+def _handler(name: str, *args):
+    """Resolve a canonical v1 handler from the single runtime composition."""
+    handler = current_app.extensions.get("changyi.v1_handlers", {}).get(name)
+    if handler is None:
+        return jsonify(failure(
+            "SERVICE_NOT_READY",
+            "v1 handler registry is not configured",
+            region_code=current_app.config["REGION_CODE"],
+            model_version=current_app.config["MODEL_VERSION"],
+        )), 503
+    return handler(*args)
 
 
 @api_v1.get("/health")
@@ -54,52 +66,52 @@ def regions():
 
 @api_v1.post("/triage")
 def triage():
-    return call_legacy_handler("api_v1_triage")
+    return _handler("api_v1_triage")
 
 
 @api_v1.post("/triage/followups")
 def followups():
-    return call_legacy_handler("api_v1_followups")
+    return _handler("api_v1_followups")
 
 
 @api_v1.post("/recommendations")
 def recommendations():
-    return call_legacy_handler("api_v1_recommendations")
+    return _handler("api_v1_recommendations")
 
 
 @api_v1.get("/hospitals")
 def hospitals():
-    return call_legacy_handler("api_v1_hospitals")
+    return _handler("api_v1_hospitals")
 
 
 @api_v1.get("/hospitals/<int:hid>")
 def hospital_detail(hid: int):
-    return call_legacy_handler("api_v1_hospital_detail", hid)
+    return _handler("api_v1_hospital_detail", hid)
 
 
 @api_v1.get("/doctors")
 def doctors():
-    return call_legacy_handler("api_v1_doctors")
+    return _handler("api_v1_doctors")
 
 
 @api_v1.get("/doctors/<int:did>")
 def doctor_detail(did: int):
-    return call_legacy_handler("api_v1_doctor_detail", did)
+    return _handler("api_v1_doctor_detail", did)
 
 
 @api_v1.get("/summary")
 def summary():
     """Serve the small, read-only resource summary used by the new frontend."""
-    return call_legacy_handler("api_v1_summary")
+    return _handler("api_v1_summary")
 
 
 @api_v1.get("/evidence")
 def evidence():
     """Serve read-only evaluation, provenance, and version evidence."""
-    return call_legacy_handler("api_v1_evidence")
+    return _handler("api_v1_evidence")
 
 
 @api_v1.get("/map")
 def map_view():
     """Serve coordinate-backed public resources for the map view."""
-    return call_legacy_handler("api_v1_map")
+    return _handler("api_v1_map")

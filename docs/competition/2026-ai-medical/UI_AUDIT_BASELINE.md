@@ -1,4 +1,6 @@
-# Legacy UI 一致性审计（imprint audit）
+# Legacy UI 一致性审计（历史基线）
+
+> 历史记录：本审计描述 2026-09-09 的旧模板/静态 UI，旧运行时文件已在最终重构中删除。当前 UI 事实以 `ui-registry.md`、`frontend/` 和 `docs/status/current.md` 为准。
 
 日期：2026-09-09  
 范围：`templates/index.html`、`static/js/app.js`、`static/css/style.css`  

@@ -1,58 +1,51 @@
-# 常州市智能医疗推荐系统
+# 常医智导
 
-这是一个面向常州市医疗资源的演示型智能推荐与分诊辅助系统。系统整合医院、医生、科室、交通可达性、症状模型和前端可视化，用于产品演示、数据建模和分诊辅助研究，不能替代医生诊断或临床决策。
+常医智导是面向常州市医疗资源检索、分诊辅助和可解释推荐的演示型 Web 系统。它不能替代医生诊断、处方、急救人员或临床决策。
 
-## 先读什么
+## 当前结构
 
-1. [协作与变更规则](AGENTS.md)
-2. [工作流入口](docs/README.md)
-3. [当前状态](docs/status/current.md)
-4. [当前架构](docs/architecture/current-state.md)
-5. [重构路线图](docs/plans/refactor-roadmap.md)
-6. [风险登记表](docs/risks/register.md)
-7. [2026 AI+医学竞赛工作区](docs/competition/2026-ai-medical/README.md)
+- `frontend/`：React + TypeScript + Vite 正式前端；构建产物由 Flask 从 `frontend/dist/` 提供。
+- `backend/app/api/v1/`：唯一正式业务 API，统一返回 `{ data, meta, error }` envelope。
+- `backend/app/application/`：分诊、推荐、资源目录和只读投影服务。
+- `backend/app/domain/`：输入、Safety Gate、推荐、交通等可测试纯逻辑。
+- `backend/app/infrastructure/`：本地 JSON/CSV、Region Pack、仓库和模型 adapter。
+- `backend/app/composition.py`：Flask 组合根；根目录 `app.py` 仅保留启动和导入兼容。
+- `data/`、`evaluation/`、`data_validation/`、`tests/`、`scripts/`：数据、评估、质量、测试和维护脚本。
 
-## 当前实现
+正式前端只调用 `/api/v1/*`；旧模板、旧单体 JavaScript/CSS、旧 `/api/*` 路由和本地测试反馈写入端点已经移除。
 
-- 后端：Flask，主要入口为 `app.py`。
-- API：旧 `/api/*` 兼容入口与 `/api/v1/*` 版本化外壳并存；v1 当前通过 legacy adapter 复用业务逻辑。
-- 前端：legacy 默认入口仍为服务端模板 `templates/index.html`、单体脚本 `static/js/app.js`、样式 `static/css/style.css`；竞赛版并行前端位于 `frontend/`，使用 React/TypeScript/Vite，尚未切换默认入口。
-- 数据：`data/` 中 11 份医生 JSON、交通样本、模型和 `static/images/` 本地资源；当前 active Region Pack 仅为 `320400 · 常州市`。
-- 模型：`data/symptom_disease_model/` 中的症状到疾病类别模型。
-- 质量：运行 `python3 -m data_validation.validate_datasets --data-root data --output-dir data_validation` 可生成数据质量 JSON/Markdown 报告；异常只报告，不自动修复。
-- 辅助 skills：`skills/architect`、`skills/imprint`、`skills/recover`、`skills/remember`、`skills/review`。
-
-## 本地运行
+## 启动
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
+cd frontend && npm ci && npm run build && cd ..
 python app.py
 ```
 
-默认服务地址为 `http://127.0.0.1:5002`。当前登录页是演示登录，不代表已经实现了生产级身份认证。
+打开 `http://127.0.0.1:5002`。构建后的 React shell 支持 `/`、`/triage`、`/resources`、`/map`、`/trust` 和 `/profile` 刷新。
 
-开发测试和数据工具依赖分开安装：
+## 验证
 
 ```bash
-pip install -r requirements-dev.txt    # pytest + runtime
-pip install -r requirements-data.txt   # Pillow + runtime，构建数据图标时使用
-python -m pytest
-node --check static/js/app.js
-python -m data_validation.validate_datasets --data-root data --output-dir data_validation
-python -m evaluation.safety.evaluate_safety
-
-# 竞赛版并行前端（另开终端运行 Flask 后）
+.venv/bin/python -m pytest
+.venv/bin/python -m evaluation.safety.evaluate_safety
+.venv/bin/python -m data_validation.validate_datasets --data-root data --output-dir data_validation
 cd frontend
-npm install
-npm run dev -- --port 5174
+npm run typecheck
+npm run test
+npm run build
 ```
 
-Vite 默认把 `/api` 和 `/static` 代理到 `http://127.0.0.1:5002`；若 Flask 使用其他端口，可设置 `VITE_BACKEND_URL`。
+质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 187 个已知异常；Safety Evaluation 当前基线为 16 cases、Red Flag Recall `0.9231`、Under-triage `0.0769`、Over-triage `0.0`、Emergency False Negative `1`，这些不是临床发布结论。
 
-GitHub Actions 质量门禁位于 `.github/workflows/quality.yml`，会复核 Python、pytest、模型 smoke、Safety Evaluation baseline、数据报告、稳定快照和浏览器脚本语法。
+## 入口文档
 
-## 重要提醒
-
-重构从“保留现有行为、建立基线、逐步拆分”开始，不进行没有记录的整体重写。任何涉及分诊、疾病预测、推荐排序、真实数据来源、患者隐私或安全控制的变化，都必须先更新相应计划、决策和风险记录，并通过质量门禁。
+- [协作规则](AGENTS.md)
+- [当前状态](docs/status/current.md)
+- [当前架构](docs/architecture/current-state.md)
+- [风险登记](docs/risks/register.md)
+- [质量门禁](docs/quality/quality-gates.md)
+- [重构变更记录](docs/REFACTOR_CHANGELOG.md)
+- [后续 backlog](docs/POST_REFACTOR_BACKLOG.md)

@@ -3,7 +3,6 @@ from __future__ import annotations
 from unittest import TestCase
 
 from backend.app.application.recommendation import (
-    DistanceRerankApplicationService,
     RecommendationApplicationService,
     RecommendationContext,
 )
@@ -70,21 +69,3 @@ class RecommendationApplicationServiceTests(TestCase):
         self.assertEqual(payload["data_source"], "real_data")
         self.assertEqual(payload["recommended_doctors"], [{"doctor": {"id": 1001}}])
         self.assertEqual(calls, ["analyze:示例描述:complex", "hospitals:31.7:119.9", "enhanced-doctors:common:8"])
-
-    def test_distance_rerank_prefers_real_doctor_and_sorts_by_distance(self):
-        service = DistanceRerankApplicationService(
-            real_doctors=lambda: [{"id": 1001, "hospital_id": 2, "name": "真实医生"}],
-            fallback_doctors=lambda: [{"id": 1, "hospital_id": 1, "name": "兼容医生"}],
-            hospitals=lambda: [
-                {"id": 1, "name": "近医院", "level": "二级", "address": "近处", "lat": 0, "lng": 0},
-                {"id": 2, "name": "远医院", "level": "三级", "address": "远处", "lat": 10, "lng": 10},
-            ],
-            distance=lambda user_lat, user_lng, lat, lng: abs(lat - user_lat) + abs(lng - user_lng),
-        )
-
-        result = service.rerank([1001, 1, 999], district="天宁区", user_lat=0, user_lng=0)
-
-        self.assertEqual(result["count"], 2)
-        self.assertEqual(result["ranked_doctors"][0]["doctor"]["id"], 1)
-        self.assertEqual(result["ranked_doctors"][1]["doctor"]["id"], 1001)
-        self.assertEqual(result["ranked_doctors"][0]["hospital"]["name"], "近医院")

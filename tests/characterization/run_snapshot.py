@@ -1,4 +1,4 @@
-"""Generate a stable, privacy-safe snapshot of legacy medical helpers and APIs."""
+"""Generate a stable, privacy-safe snapshot of canonical medical helpers and APIs."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 CASES_PATH = Path(__file__).with_name("cases.json")
-OUTPUT_PATH = Path(__file__).with_name("legacy_snapshot.json")
+OUTPUT_PATH = Path(__file__).with_name("canonical_snapshot.json")
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -61,13 +61,12 @@ def build_snapshot() -> dict:
         pure.append({"id": case["id"], **_triage_snapshot(case["input"]["condition"], case["input"].get("scenario", "common"))})
     client = app.app.test_client()
     routes = {
-        "triage": _route_snapshot(client, "/api/triage", {"condition": "突发胸痛伴呼吸困难"}),
-        "recommend": _route_snapshot(client, "/api/recommend", {"condition": "皮肤瘙痒", "district": "天宁区"}),
-        "recommend_invalid": _route_snapshot(client, "/api/recommend", {}),
-        "v1_recommend": _route_snapshot(client, "/api/v1/recommendations", {"condition": "皮肤瘙痒", "district": "天宁区"}),
+        "triage": _route_snapshot(client, "/api/v1/triage", {"condition": "突发胸痛伴呼吸困难"}),
+        "recommend": _route_snapshot(client, "/api/v1/recommendations", {"condition": "皮肤瘙痒", "district": "天宁区"}),
+        "recommend_invalid": _route_snapshot(client, "/api/v1/recommendations", {}),
     }
     return {
-        "schema_version": "legacy-characterization/v1",
+        "schema_version": "canonical-characterization/v2",
         "purpose": "稳定字段快照，仅用于重构回归；不代表医学真值或模型准确率。",
         "pure_functions": pure,
         "routes": routes,

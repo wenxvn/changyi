@@ -47,8 +47,8 @@ jobs:
       - name: Run provisional Safety Evaluation Set
         run: python -m evaluation.safety.evaluate_safety
 
-      - name: Check browser JavaScript syntax
-        run: node --check static/js/app.js
+      - name: Check canonical frontend source syntax
+        run: node --check frontend/test/frontend-boundaries.test.mjs
 
       - name: Regenerate data quality report
         run: python -m data_validation.validate_datasets --data-root data --output-dir data_validation
@@ -61,7 +61,7 @@ jobs:
           git diff --exit-code -- \
             data_validation/data_quality_report.json \
             data_validation/data_quality_report.md \
-            tests/characterization/legacy_snapshot.json
+            tests/characterization/canonical_snapshot.json
 
   frontend:
     name: Frontend typecheck, boundary tests, and build

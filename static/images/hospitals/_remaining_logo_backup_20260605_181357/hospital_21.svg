@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-<rect width="96" height="96" rx="22" fill="#1e40af"/>
-<rect x="28" y="20" width="40" height="56" rx="8" fill="white" opacity=".96"/>
-<rect x="42" y="30" width="12" height="28" rx="2" fill="#1e40af"/>
-<rect x="34" y="38" width="28" height="12" rx="2" fill="#1e40af"/>
-<text x="48" y="86" text-anchor="middle" font-size="18" font-family="Microsoft YaHei,Arial" font-weight="700" fill="white">新北</text>
-</svg>

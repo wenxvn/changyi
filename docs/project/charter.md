@@ -13,7 +13,7 @@
 - 让用户能够从症状或病情描述进入医院、科室和医生推荐流程。
 - 让推荐结果展示可理解的匹配依据、风险提示、距离和资源信息。
 - 让数据、模型和前端交互可以独立验证、更新和回滚。
-- 在重构过程中保持现有演示能力和 API 兼容性，减少大范围回归风险。
+- 在重构过程中保持 canonical v1 演示能力和 API 行为，减少大范围回归风险。
 
 ## 非目标
 
@@ -31,9 +31,9 @@
 
 ## 已知约束
 
-- 当前后端主要集中在 `app.py`，前端主要集中在 `static/js/app.js` 和 `static/css/style.css`。
+- 当前 Flask 组合根为 `backend/app/composition.py`，根 `app.py` 只保留启动兼容；正式前端为 Flask 提供的 `frontend/dist` React build。
 - 数据直接从本地 JSON/CSV 和静态资源目录加载，尚无数据库或正式数据管线。
-- 运行时依赖在 `requirements.txt`，开发测试依赖在 `requirements-dev.txt`，数据工具依赖在 `requirements-data.txt`；CI 已由 `.github/workflows/quality.yml` 建立，远端首次运行仍需在推送后确认。
+- 运行时依赖在 `requirements.txt`，开发测试依赖在 `requirements-dev.txt`，数据工具依赖在 `requirements-data.txt`；CI 位于 `.github/workflows/quality.yml`。
 - 当前存在演示登录和本地 CORS 行为，不能视作生产级认证或访问控制。
 - 静态资源体量较大，数据源、许可证、版本和更新策略需要进一步制度化。
 

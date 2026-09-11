@@ -1,31 +1,28 @@
 # Frontend Architecture — 常医智导
 
-状态：进行中  
-已完成切片：2026-09-10 Foundation / App Shell / Homepage / Triage / Follow-up / Result / Resources / Map / Trust 首版；2026-09-11 Profile / History / F12 accessibility polish / keyboard semantics 首版
+状态：已完成（正式 React cutover）
+已完成切片：Foundation / App Shell / Homepage / Triage / Follow-up / Result / Resources / Map / Trust / Profile / History / accessibility / keyboard semantics
 
 ## 目标
 
 新前端是 AI-native、可信、面向用户的就医导航产品界面。它负责采集输入、呈现 API 返回的分诊/推荐/资源事实和解释，不拥有医学判断、红旗检测、疾病预测或排序权重。
 
-## 迁移边界
+## 正式边界
 
 ```text
-legacy default `/`
-  └─ templates/index.html + static/js/app.js + static/css/style.css
-
-parallel frontend
-  └─ frontend/index.html
+Flask `/` and SPA refresh fallback
+  └─ frontend/dist/index.html
       └─ React routes / page state
           ├─ api/client.ts
-          ├─ api/triage.ts / resources.ts / evidence.ts
-          ├─ features/*
+          ├─ api/triage.ts / resources.ts / evidence.ts / map.ts
+          ├─ state/*
           ├─ components/*
           └─ styles/*
                   ↓
               `/api/v1/*`
 ```
 
-开发时 Vite 代理 `/api` 和 `/static` 到本地 Flask；本切片不改变 legacy 默认路由。未来 cutover 前，需要先建立构建产物托管方式、route parity 和回滚入口 `/legacy`。
+开发时 Vite 仍代理 `/api` 和 `/static` 到本地 Flask；正式 demo 由 Flask 直接提供 `frontend/dist`，不需要第二个开发服务器。旧 legacy UI 和 `/legacy` 回滚入口已删除，回滚依赖 Git 中上一个已验证提交。
 
 ## 页面与路由
 
@@ -96,4 +93,4 @@ Editorial 内容优先使用 grid、分隔线、排版和留白；Card 只用于
 
 ## 迁移与回滚
 
-每个 Slice 依次完成 read → design → implement → run → screenshot → compare → improve → test → review → document。新前端在 `core flow parity`、Safety parity、E2E、mobile、visual QA 全部通过前，不成为默认入口；legacy 作为 `/legacy` 的目标回滚路径保留。
+每个 Slice 依次完成 read → design → implement → run → test → review → document。正式 build、v1 contract、Safety baseline、核心 route refresh、desktop/mobile smoke 通过后，React 成为默认入口；完整 Playwright、视觉 baseline 和远端 CI 首次结果仍记录在 backlog，不改变当前正式边界。

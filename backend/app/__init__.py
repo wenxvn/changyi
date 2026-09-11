@@ -1,4 +1,4 @@
-"""Application factory used by the legacy entry point and API v1."""
+"""Flask application factory for the canonical v1 API and React shell."""
 
 from pathlib import Path
 
@@ -6,14 +6,13 @@ from .config import AppSettings
 
 
 def create_app(config=None):
-    """Create the configured Flask shell without removing legacy routes."""
+    """Create the configured Flask shell and register the versioned API."""
     from flask import Flask
     from flask_cors import CORS
 
     settings = AppSettings.from_env()
     application = Flask(
         __name__,
-        template_folder=str(settings.project_root / "templates"),
         static_folder=str(settings.project_root / "static"),
         static_url_path="/static",
     )

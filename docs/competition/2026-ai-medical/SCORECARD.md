@@ -1,11 +1,20 @@
-# 竞赛评分卡
+# 竞赛评分卡（重构收口基线）
 
-| 评分项 | 当前证据 | 当前问题 | 计划改进 | 对应代码 | 对应实验 | 完成状态 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 安全分诊 | 已有四态 `TriageStatus`、`SafetyGateDecision`、Safety-first publication 和 16-case Safety Evaluation Set；v1 急症输出已 abstain 疾病候选；基线 Red Flag Recall 0.9231 | 红旗规则仍在 legacy；1 个 Emergency False Negative；信息不足缺口未修复，case 尚待医学审核 | 独立 Safety Gate/triage/follow-up、医学审核、修复后重新跑 Recall/under-triage；完整 legacy adapter parity | `backend/app/domain/triage/safety_gate.py`、`backend/app/domain/triage/publication.py`、`backend/app/api/v1/legacy_adapter.py`、`app.py` | `evaluation/safety` | 进行中 |
-| 模型可信度 | 41 类 NB 模型文件与训练报告 | 小数据、单次切分、存在潜在重复泄漏 | fingerprint split、abstain、校准、baseline 对比 | `data/symptom_disease_model` | `evaluation/model` | 进行中 |
-| 推荐质量 | 已有多目标医院/医生排序；医院/医生 scoring、医院 feature、医院单候选组合、医院候选遍历、医院 rerank、医生 resource policy、candidate 过滤/医院命中/急症资格、急症医生兜底候选遍历、医院/急症兜底评分与 result builder、traffic feature/index/计算纯函数已抽取并通过快照；cache 生命周期和医生距离重排已形成 application/infrastructure seam | 交通数据加载与 cache 刷新策略/急症整体排序、部分资源组合与事实语义仍混杂；`fairness` 语义未完成审查 | candidate/feature/score/rerank/explain 分层与消融 | `app.py`、`backend/app/domain/recommendation/scoring.py`、`backend/app/domain/recommendation/features.py`、`backend/app/domain/recommendation/pipeline.py`、`backend/app/domain/recommendation/resource_policy.py`、`backend/app/domain/recommendation/candidate.py`、`backend/app/domain/recommendation/candidates.py`、`backend/app/domain/recommendation/traffic.py`、`backend/app/application/recommendation.py`、`backend/app/infrastructure/repositories/transit_repository.py` | `evaluation/recommendation` | 进行中 |
-| 数据可信度 | 交通数据有部分来源/隐私说明 | 医院常量无统一 manifest，医生 schema 不一 | Region Pack、manifest、质量报告 | `data/regions/320400`、`data_validation` | `tests/data_quality` | 进行中 |
-| 产品体验 | 新 shell、渐进式问诊、Triage/Follow-up/Result、Resources、Map、Trust、Profile/History 首版已可运行；Journey/资源/地图键盘语义已收口；legacy favicon/layers 静态缺口已修复；legacy `/` 保持兼容 | 正式急诊地图路径、逐字段 provenance、完整 route parity、E2E/视觉/无障碍门禁尚未完成 | 完成正式地图/资源 provenance、Playwright smoke、截图 baseline、keyboard/contrast/reduced-motion QA，再评估 cutover | `frontend`、`templates`、`static` | UI audit/E2E | 进行中 |
-| 城市迁移性 | 代码中已有区域点位 | 常州逻辑散落，暂无 RegionContext | registry/repository 契约和 future pack 文档 | `backend/app/infrastructure/regions` | region contract | 进行中 |
-| 工程交付 | 有协作规则、116 个 pytest 测试、稳定快照、Safety Evaluation、Python 质量矩阵和独立 frontend CI job | GitHub Actions 远端首次运行待确认；尚未接入 Playwright/视觉/无障碍门禁和分支保护 | 保持本地/远端门禁一致，完成 E2E/视觉/无障碍门禁与 release freeze | `tests`、`evaluation/safety`、`pyproject.toml`、`.github/workflows/quality.yml`、`requirements*.txt` | CI | 进行中 |
+更新时间：2026-09-11
+
+本文件只记录本次重构后的工程基线；医学规则、模型文件、推荐权重和数据口径没有在本轮改变。后续产品或医学改进见 [`docs/POST_REFACTOR_BACKLOG.md`](../../POST_REFACTOR_BACKLOG.md)。
+
+| 评分项 | 当前证据 | 当前边界 | 状态 |
+| --- | --- | --- | --- |
+| 安全分诊 | 四态 `TriageStatus`、`SafetyGateDecision`、Safety-first publication、16-case Safety Evaluation；急症 v1 输出 abstain 疾病候选 | 基线 Red Flag Recall `0.9231`，Emergency False Negative `1`；待医学审核的反例保持登记 | 基线冻结 |
+| 模型可信度 | 既有模型适配器和训练报告保留在数据层 | 小数据和单次切分限制仍存在，不作临床准确率承诺 | 延后 |
+| 推荐质量 | 推荐 application/domain/infrastructure 边界和 canonical v1 输出已建立 | 排序质量、交通新鲜度和逐字段 provenance 仍需独立产品/数据切片 | 工程收口 |
+| 数据可信度 | 数据加载、来源字段、质量扫描和 Trust evidence 接口可复现 | 数据质量扫描仍报告 27 个文件、187 个已知问题，不在重构中静默修复 | 基线冻结 |
+| 产品体验 | React/Vite 已成为 Flask 默认前端；Triage、Resources、Map、Trust、Profile/History 页面可运行 | 完整 viewport、E2E、视觉和无障碍门禁仍是后续工作 | 工程收口 |
+| 工程交付 | 107 个 pytest、frontend typecheck/9 个 boundary tests/build、Safety、数据扫描和 canonical snapshot 均可本地运行 | 远端 workflow 首次运行和分支保护不属于本地重构收口 | 基线冻结 |
+
+## 当前入口
+
+- 前端：Flask 托管 `frontend/dist/`，SPA 路由回退到 `index.html`。
+- API：正式前端只使用 `/api/v1/*`；旧 `/api/*` 路径已删除并返回 404。
+- 后端：`app.py` 是兼容启动器，`backend/app/composition.py` 是 Flask 组合根。

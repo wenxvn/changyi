@@ -1,6 +1,6 @@
 # 常医智导 · 2026 AI+医学竞赛工作区
 
-本目录是参加 2026 全球校园人工智能算法精英大赛「AI+医学」赛道的单一竞赛证据入口。它记录产品边界、目标架构、数据来源、模型限制、安全机制、实验计划、演示路径和发布门禁。
+本目录是参加 2026 全球校园人工智能算法精英大赛「AI+医学」赛道的竞赛证据入口。它记录产品边界、当前架构、数据来源、模型限制、安全机制、实验计划、演示路径和发布门禁。
 
 ## 当前定位
 
@@ -12,7 +12,7 @@
 
 - [竞赛简报](COMPETITION_BRIEF.md)
 - [产品规格](PRODUCT_SPEC.md)
-- [目标架构](ARCHITECTURE_TARGET.md)
+- [当前架构](../../architecture/current-state.md)
 - [设计系统](DESIGN_SYSTEM.md)
 - [数据溯源](DATA_PROVENANCE.md)
 - [模型卡](MODEL_CARD.md)
@@ -22,6 +22,7 @@
 - [演示脚本](DEMO_SCRIPT.md)
 - [发布清单](RELEASE_CHECKLIST.md)
 - [迁移计划](MIGRATION_PLAN.md)
+- [重构后 backlog](../../POST_REFACTOR_BACKLOG.md)
 - [首轮审计报告](AUDIT_REPORT.md)
 - [Legacy UI imprint 审计](UI_AUDIT_BASELINE.md)
 

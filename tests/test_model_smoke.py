@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from pathlib import Path
 from unittest import TestCase
-import app as legacy_app
+import app as application_entry
 from backend.app.infrastructure.models.symptom_disease import SymptomDiseaseModelAdapter
 
 
 class ModelSmokeTests(TestCase):
     def setUp(self):
-        self._adapter = legacy_app.SYMPTOM_DISEASE_MODEL_ADAPTER
+        self._adapter = application_entry.SYMPTOM_DISEASE_MODEL_ADAPTER
         self._runtime = self._adapter._runtime
         self._runtime_error = self._adapter._runtime_error
         self._runtime_loader_called = self._adapter._runtime_loader_called
@@ -26,7 +26,7 @@ class ModelSmokeTests(TestCase):
     def test_local_model_loads_and_marks_prediction_as_assistive(self):
         self._reset_runtime()
 
-        result = legacy_app.predict_disease_name("发热 咳嗽", details=True)
+        result = application_entry.predict_disease_name("发热 咳嗽", details=True)
 
         self.assertTrue(result["available"])
         self.assertIn("need_more_info", result)
@@ -36,17 +36,17 @@ class ModelSmokeTests(TestCase):
     def test_insufficient_model_input_requests_more_information(self):
         self._reset_runtime()
 
-        result = legacy_app.predict_disease_name("不舒服", details=True)
+        result = application_entry.predict_disease_name("不舒服", details=True)
 
         self.assertTrue(result["available"])
         self.assertTrue(result["need_more_info"])
 
     def test_missing_model_degrades_without_disease_claim(self):
-        missing_path = Path(legacy_app.SYMPTOM_DISEASE_MODEL_PATH).with_name("missing-model.json")
+        missing_path = Path(application_entry.SYMPTOM_DISEASE_MODEL_PATH).with_name("missing-model.json")
         adapter = SymptomDiseaseModelAdapter(
-            model_dir=Path(legacy_app.SYMPTOM_DISEASE_MODEL_DIR),
+            model_dir=Path(application_entry.SYMPTOM_DISEASE_MODEL_DIR),
             model_path=missing_path,
-            normalize=legacy_app.normalize_patient_expression,
+            normalize=application_entry.normalize_patient_expression,
         )
 
         result = adapter.predict("咳嗽", details=True)

@@ -1,8 +1,10 @@
 # ADR-0003：采用渐进式单体拆分
 
-- 状态：已接受
+- 状态：已完成（2026-09-11 收口）
 - 日期：2026-09-09
 - 范围：`app.py`、`static/js/app.js`、`static/css/style.css` 和数据加载边界
+
+> 本 ADR 记录渐进拆分阶段的约束；当前正式边界以 `docs/architecture/current-state.md` 和 `docs/plans/FINAL_REFACTOR.md` 为准。
 
 ## 背景
 

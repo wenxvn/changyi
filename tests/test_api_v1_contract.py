@@ -2,13 +2,12 @@ from __future__ import annotations
 
 from unittest import TestCase
 
-import app as legacy_app
-from backend.app.api.v1.legacy_adapter import resolve_legacy_handler
+import app as application_entry
 
 
 class ApiV1ContractTests(TestCase):
     def setUp(self):
-        self.client = legacy_app.app.test_client()
+        self.client = application_entry.app.test_client()
 
     def test_invalid_json_uses_stable_error_envelope(self):
         response = self.client.post(
@@ -48,15 +47,6 @@ class ApiV1ContractTests(TestCase):
         self.assertEqual(location.get_json()["error"]["code"], "INVALID_LOCATION")
         self.assertEqual(region.status_code, 400)
         self.assertEqual(region.get_json()["error"]["code"], "REGION_NOT_ACTIVE")
-
-    def test_v1_and_legacy_triage_keep_emergency_status(self):
-        payload = {"condition": "突发胸痛伴呼吸困难"}
-        v1 = self.client.post("/api/v1/triage", json=payload)
-        legacy = self.client.post("/api/triage", json=payload)
-        self.assertEqual(v1.status_code, 200)
-        self.assertEqual(legacy.status_code, 200)
-        self.assertEqual(v1.get_json()["data"]["triage_status"], "EMERGENCY")
-        self.assertEqual(legacy.get_json()["data"]["triage"]["level"], "emergency")
 
     def test_catalog_adapter_preserves_public_source_markers(self):
         hospitals = self.client.get("/api/v1/hospitals").get_json()["data"]
@@ -120,12 +110,7 @@ class ApiV1ContractTests(TestCase):
         self.assertEqual(invalid.status_code, 400)
         self.assertEqual(invalid.get_json()["error"]["code"], "INVALID_LOCATION")
 
-    def test_legacy_adapter_resolves_handlers_lazily(self):
-        handler = resolve_legacy_handler("api_v1_triage")
-        self.assertTrue(callable(handler))
-
-    def test_legacy_adapter_prefers_registered_factory_handlers(self):
-        with legacy_app.app.app_context():
-            handler = resolve_legacy_handler("api_v1_triage")
-        self.assertIs(handler, legacy_app.api_v1_triage)
-        self.assertIn("api_v1_map", legacy_app.app.extensions["changyi.v1_legacy_handlers"])
+    def test_removed_legacy_api_does_not_fall_through_to_the_spa(self):
+        for path in ("/api/triage", "/api/hospitals", "/api/test-feedback"):
+            response = self.client.get(path)
+            self.assertEqual(response.status_code, 404, path)

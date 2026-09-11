@@ -1,8 +1,8 @@
 # ADR-0005：新前端采用 React/TypeScript/Vite 并行迁移
 
-- 状态：已接受
+- 状态：已完成（2026-09-11 正式 cutover）
 - 日期：2026-09-10
-- 关联计划：`docs/plans/2026-09-10-frontend-migration-foundation-home.md`
+- 收口计划：`docs/plans/FINAL_REFACTOR.md`
 - 范围：`frontend/`、前端构建、页面状态和 API 边界
 
 ## 背景
@@ -19,6 +19,8 @@
 
 选择选项 C。新前端使用 React、TypeScript strict 和 Vite，开发入口与 Flask API 通过 Vite proxy 连接；默认 `/` 仍由 legacy 提供，直到新前端完成 parity 和发布门禁。新组件只从 API 返回值呈现医学状态，不在浏览器复制红旗、疾病或推荐规则。
 
+> 收口记录：并行阶段已结束；当前 `/` 和 SPA 刷新路径由 Flask 提供 `frontend/dist`，正式前端只调用 `/api/v1/*`。上句关于 legacy 默认入口的描述属于迁移阶段历史事实。
+
 ## 理由
 
 - 符合 ADR-0003 的渐进式拆分和可回滚原则。
@@ -34,7 +36,7 @@
 
 ## 回滚与替代路径
 
-回退 `frontend/` 和摘要契约即可恢复 legacy 默认入口；不需要回退数据、模型或后端推荐代码。若 React 迁移无法满足发布门禁，可以继续使用 legacy，同时保留已建立的 API client/契约文档作为边界资产。
+当前回滚依赖回退到上一个已验证提交；不需要回退数据、模型或后端推荐代码。若后续正式前端变更无法满足发布门禁，应先停止发布并回到该提交，不在当前工作树恢复第二套 legacy 入口。
 
 ## 验证
 

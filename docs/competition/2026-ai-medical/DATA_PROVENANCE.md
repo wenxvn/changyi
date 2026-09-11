@@ -8,7 +8,7 @@
 
 | 数据集 | 当前记录 | 当前状态 | 主要问题 |
 | --- | ---: | --- | --- |
-| 医院目录（`app.py` 常量） | 21 | `migration_pending` | 仍是代码常量，逐字段 provenance 未完成 |
+| 医院目录（`backend/app/composition.py` 常量） | 21 | `migration_pending` | 仍是代码常量，逐字段 provenance 未完成 |
 | 医生 JSON（11 个文件） | 2,100 | `public_source_mixed` | 文件结构和来源字段不统一，且 h6 声明总数与实际记录不一致，需按医院拆入 Region Pack |
 | 公交线路 | 50 | `public_secondary_masked` | 已有来源描述；时间字段存在异常样本待报告 |
 | 公交站点 | 50 | `public_secondary_masked` | 已有来源描述；坐标范围和有效状态需自动检查 |

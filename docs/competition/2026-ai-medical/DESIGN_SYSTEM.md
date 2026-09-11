@@ -18,7 +18,9 @@ Warm Precision：温暖瓷白背景、深墨蓝文字、克制的医疗青/靛�
 --duration-fast / --duration-normal / --duration-slow
 ```
 
-## 首轮 UI 审计基线
+## 首轮 UI 审计基线（历史记录）
+
+以下数据记录旧模板/静态 UI 的审计结果；旧运行时已经删除，当前组件基线以根目录 `ui-registry.md` 和 `frontend/` 为准。
 
 旧版已有 CSS variables，但仍有 572 个 hex 色值、185 处 rgb/rgba、104 处 inline style，且 `app.js` 用脚本直接写图表颜色。已确认的 legacy 基线见 [UI_AUDIT_BASELINE.md](UI_AUDIT_BASELINE.md)，并已写入根目录 [ui-registry.md](../../../ui-registry.md)。后续只按可回滚的小切片迁移视觉债务；新组件不得新增绕过 token 的视觉值。
 

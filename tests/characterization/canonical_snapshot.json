@@ -1,0 +1,159 @@
+{
+  "schema_version": "canonical-characterization/v2",
+  "purpose": "稳定字段快照，仅用于重构回归；不代表医学真值或模型准确率。",
+  "pure_functions": [
+    {
+      "id": "ordinary-skin",
+      "normalized_condition": "皮肤瘙痒",
+      "colloquial_replacements": [],
+      "department": "皮肤科",
+      "triage": {
+        "level": "routine",
+        "label": "普通/常见病倾向",
+        "severity_bucket": "小病/常见病倾向",
+        "severity_score": 35,
+        "recommended_scenario": "common",
+        "matched_department": "皮肤科",
+        "red_flag_tags": [],
+        "has_disclaimer": true,
+        "followup_count": 8
+      }
+    },
+    {
+      "id": "expression-alias",
+      "normalized_condition": "喘不上来 呼吸困难",
+      "colloquial_replacements": [
+        {
+          "raw": "喘不上来",
+          "standard": "呼吸困难"
+        }
+      ],
+      "department": "呼吸与危重症医学科",
+      "triage": {
+        "level": "routine",
+        "label": "普通/常见病倾向",
+        "severity_bucket": "小病/常见病倾向",
+        "severity_score": 35,
+        "recommended_scenario": "common",
+        "matched_department": "呼吸与危重症医学科",
+        "red_flag_tags": [
+          "呼吸困难",
+          "呼吸困难"
+        ],
+        "has_disclaimer": true,
+        "followup_count": 8
+      }
+    },
+    {
+      "id": "insufficient-input",
+      "normalized_condition": "不舒服",
+      "colloquial_replacements": [],
+      "department": "全科医学科",
+      "triage": {
+        "level": "routine",
+        "label": "普通/常见病倾向",
+        "severity_bucket": "小病/常见病倾向",
+        "severity_score": 35,
+        "recommended_scenario": "common",
+        "matched_department": "全科医学科",
+        "red_flag_tags": [],
+        "has_disclaimer": true,
+        "followup_count": 8
+      }
+    },
+    {
+      "id": "red-flag-chest",
+      "normalized_condition": "突发胸痛伴呼吸困难",
+      "colloquial_replacements": [],
+      "department": "心血管内科",
+      "triage": {
+        "level": "emergency",
+        "label": "疑似急症",
+        "severity_bucket": "大病/重症风险",
+        "severity_score": 96,
+        "recommended_scenario": "surgery",
+        "matched_department": "心血管内科",
+        "red_flag_tags": [
+          "呼吸困难",
+          "胸痛",
+          "胸痛/胸闷",
+          "呼吸困难"
+        ],
+        "has_disclaimer": true,
+        "followup_count": 8
+      }
+    },
+    {
+      "id": "scenario-does-not-diagnose",
+      "normalized_condition": "膝关节疼痛",
+      "colloquial_replacements": [],
+      "department": "骨科",
+      "triage": {
+        "level": "urgent",
+        "label": "较重/需尽快就医",
+        "severity_bucket": "较重病情",
+        "severity_score": 72,
+        "recommended_scenario": "surgery",
+        "matched_department": "骨科",
+        "red_flag_tags": [],
+        "has_disclaimer": true,
+        "followup_count": 5
+      }
+    }
+  ],
+  "routes": {
+    "triage": {
+      "status_code": 200,
+      "top_level_keys": [
+        "data",
+        "error",
+        "meta"
+      ],
+      "data_keys": [
+        "condition",
+        "disease_prediction",
+        "htriage_analysis",
+        "matched_department",
+        "triage",
+        "triage_status"
+      ],
+      "triage_level": "emergency"
+    },
+    "recommend": {
+      "status_code": 200,
+      "top_level_keys": [
+        "data",
+        "error",
+        "meta"
+      ],
+      "data_keys": [
+        "condition",
+        "data_source",
+        "disease_prediction",
+        "effective_scenario",
+        "expert_preference",
+        "hospital_weights_used",
+        "htriage_analysis",
+        "matched_department",
+        "ranking_model",
+        "recommended_doctors",
+        "recommended_hospitals",
+        "resource_strategy",
+        "scenario",
+        "triage",
+        "user_location",
+        "weights_used"
+      ],
+      "triage_level": "routine"
+    },
+    "recommend_invalid": {
+      "status_code": 400,
+      "top_level_keys": [
+        "data",
+        "error",
+        "meta"
+      ],
+      "error_code": "INVALID_CONDITION"
+    }
+  }
+}

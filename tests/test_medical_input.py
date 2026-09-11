@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from unittest import TestCase
 
-import app as legacy_app
+import app as application_entry
 from backend.app.domain.medical_input import contains_positive, normalize_patient_expression
 
 
 class MedicalInputBoundaryTests(TestCase):
     def test_legacy_exports_use_the_domain_normalizer(self):
-        self.assertIs(legacy_app.normalize_patient_expression, normalize_patient_expression)
-        self.assertIs(legacy_app._contains_positive, contains_positive)
+        self.assertIs(application_entry.normalize_patient_expression, normalize_patient_expression)
+        self.assertIs(application_entry._contains_positive, contains_positive)
 
     def test_colloquial_red_flag_alias_is_preserved(self):
         normalized, replacements = normalize_patient_expression("喘不上来")

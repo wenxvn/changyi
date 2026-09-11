@@ -15,7 +15,7 @@
 | Accessibility | 3 | 语义 HTML、label、skip link、main landmark、活动路由语义、focus-visible、reduced motion、Journey/资源/地图 tab/panel 关系和部分键盘导航已接入；运行态 AX 树可读 | 需补完整键盘路径与对比度审查 |
 | Performance | 4 | 首页只加载摘要 API，SVG/CSS 为主；资源页按 tab 读取医生索引，详情按选择读取；Map/Trust 各单次读取 API；最新构建 gzip 约 JS 87.4 kB、CSS 13.1 kB | 需记录真实网络 waterfall |
 | Evidence | 4 | 城市指标来自 `/api/v1/summary`；Triage/Follow-up/Recommendation/Resources/Resource Detail/Trust 使用 v1 契约，Trust 展示真实评测、数据质量、SHA-256、版本和限制；Profile 明确本地摘要不是病历 | 医院逐字段来源、正式发布时间和更完整的评测治理待实现 |
-| Demo reliability | 3 | legacy 默认入口未改变；新入口有错误/空态，summary/triage/resource/detail/map/evidence smoke 通过；Profile 本地存储异常静默降级；App Shell 低动效路径已声明 | 需补 E2E、模型不可用演示和 CI job |
+| Demo reliability | 3 | Flask 默认入口已切换为 React build；新入口有错误/空态，summary/triage/resource/detail/map/evidence smoke 通过；Profile 本地存储异常静默降级；App Shell 低动效路径已声明 | 需补 E2E、模型不可用演示和 CI job |
 
 当前平均：`3.5 / 5`（未达到 competition-ready 门槛；正式地图/急诊路径、完整 E2E、视觉和无障碍门禁仍未完成）。
 

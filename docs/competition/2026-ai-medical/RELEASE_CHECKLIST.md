@@ -1,5 +1,7 @@
 # 竞赛发布清单
 
+状态：重构收口已通过；以下未勾选项是完整竞赛发布前的独立门禁，不等同于本轮重构未完成。
+
 ## 产品与安全
 
 - [ ] 首屏定位为可信智能就医决策辅助，不是 AI 医生或诊断系统。
@@ -16,7 +18,7 @@
 
 ## 工程与 UI
 
-- [ ] app factory、API v1、schemas、repositories 和旧入口兼容。
+- [ ] app factory、API v1、schemas、repositories 和 `app.py` 薄启动兼容层完成审查。
 - [ ] Python/JS 检查、pytest、契约、数据质量和构建通过。
 - [ ] 1440/1280/768/390 四种尺寸完成视觉检查。
 - [ ] 键盘焦点、对比度、reduced motion、网络错误和控制台错误已检查。

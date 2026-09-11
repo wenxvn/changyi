@@ -27,7 +27,7 @@
 
 ## 前端门禁
 
-- [ ] `node --check static/js/app.js` 通过（如果修改了 JS）。
+- [ ] `npm run typecheck`、`npm run test`、`npm run build` 通过；修改测试脚本时运行 `node --check frontend/test/frontend-boundaries.test.mjs`。
 - [ ] 加载态、空态、错误态、移动端/窄屏和红旗提示已检查。
 - [ ] API 错误不会被静默吞掉或渲染成成功结果。
 - [ ] UI 变化按 `imprint` skill 更新一致性记录；第一次建立基线先 audit、再确认。
@@ -45,6 +45,6 @@
 - [ ] `.github/workflows/quality.yml` 在 push/pull request 上运行 frontend `npm ci`、typecheck、boundary tests 和 build。
 - [ ] 质量报告允许已登记异常在非 strict 模式下被记录，但生成报告或表征快照发生未解释漂移时 CI 失败。
 
-## 2026-09-10 重构切片验证记录
+## 当前重构基线
 
-当前本地基线为 89 个 pytest；最近切片已运行 API、Safety Evaluation、Python/Node 检查、frontend typecheck/boundary tests/build、数据质量扫描和稳定快照。数据扫描的 187 个异常仍为登记项，不作为放行结论；远端 GitHub Actions 首次运行待推送后确认。
+当前本地基线为 107 个 pytest；已运行 canonical v1 API、Safety Evaluation、Python 编译、frontend typecheck/boundary tests/build、数据质量扫描和稳定快照。数据扫描的 187 个异常仍为登记项，不作为放行结论；远端 CI 仍需在获得推送后确认。
