@@ -1,5 +1,5 @@
 {
-  "schema_version": "model-evaluation/v1",
+  "schema_version": "model-evaluation/v2",
   "dataset": {
     "path": "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
     "sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
@@ -15,10 +15,12 @@
     "seed": 42,
     "test_size": 0.25,
     "alpha": 1.0,
-    "min_symptom_df": 2
+    "min_symptom_df": 2,
+    "near_duplicate_threshold": 0.8
   },
   "random_baseline": {
     "test_rows": 74,
+    "present_class_count": 41,
     "accuracy": 0.972973,
     "covered_accuracy": 0.972222,
     "top3_accuracy": 1.0,
@@ -199,10 +201,16 @@
     "abstention_policy": {
       "confidence_threshold": 0.35,
       "description": "top-1 probability below threshold is withheld from the assistive disease display"
+    },
+    "metric_scope": "macro metrics average only classes present in this test split",
+    "cross_split_near_duplicates": {
+      "pair_count": 244,
+      "cross_label_pair_count": 1
     }
   },
   "grouped_fingerprint": {
     "test_rows": 74,
+    "present_class_count": 41,
     "accuracy": 0.986486,
     "covered_accuracy": 0.986486,
     "top3_accuracy": 1.0,
@@ -382,6 +390,150 @@
     "abstention_policy": {
       "confidence_threshold": 0.35,
       "description": "top-1 probability below threshold is withheld from the assistive disease display"
+    },
+    "metric_scope": "macro metrics average only classes present in this test split",
+    "cross_split_near_duplicates": {
+      "pair_count": 236,
+      "cross_label_pair_count": 1
+    }
+  },
+  "near_duplicate_same_label": {
+    "test_rows": 24,
+    "present_class_count": 8,
+    "accuracy": 0.208333,
+    "covered_accuracy": 0.0,
+    "top3_accuracy": 0.333333,
+    "macro_precision": 0.0,
+    "macro_recall": 0.0,
+    "macro_f1": 0.0,
+    "per_class_recall": {
+      "AIDS": 0.0,
+      "Acne": 0.0,
+      "Allergy": 0.0,
+      "Fungal infection": 0.0,
+      "Gastroenteritis": 0.0,
+      "Heart attack": 0.0,
+      "Paralysis (brain hemorrhage)": 0.0,
+      "Urinary tract infection": 0.0
+    },
+    "confusion_matrix": {
+      "AIDS": {
+        "ABSTAIN": 3
+      },
+      "Acne": {
+        "ABSTAIN": 3
+      },
+      "Allergy": {
+        "ABSTAIN": 2,
+        "Common Cold": 1
+      },
+      "Fungal infection": {
+        "ABSTAIN": 3
+      },
+      "Gastroenteritis": {
+        "ABSTAIN": 3
+      },
+      "Heart attack": {
+        "Pneumonia": 1,
+        "Tuberculosis": 2
+      },
+      "Paralysis (brain hemorrhage)": {
+        "ABSTAIN": 3
+      },
+      "Urinary tract infection": {
+        "ABSTAIN": 3
+      }
+    },
+    "coverage": 0.166667,
+    "abstention_rate": 0.833333,
+    "abstention_policy": {
+      "confidence_threshold": 0.35,
+      "description": "top-1 probability below threshold is withheld from the assistive disease display"
+    },
+    "metric_scope": "macro metrics average only classes present in this test split",
+    "cross_split_near_duplicates": {
+      "pair_count": 0,
+      "cross_label_pair_count": 0
+    }
+  },
+  "near_duplicate_global": {
+    "test_rows": 24,
+    "present_class_count": 8,
+    "accuracy": 0.208333,
+    "covered_accuracy": 0.0,
+    "top3_accuracy": 0.416667,
+    "macro_precision": 0.0,
+    "macro_recall": 0.0,
+    "macro_f1": 0.0,
+    "per_class_recall": {
+      "AIDS": 0.0,
+      "Acne": 0.0,
+      "Allergy": 0.0,
+      "Fungal infection": 0.0,
+      "Gastroenteritis": 0.0,
+      "Heart attack": 0.0,
+      "Paralysis (brain hemorrhage)": 0.0,
+      "Urinary tract infection": 0.0
+    },
+    "confusion_matrix": {
+      "AIDS": {
+        "ABSTAIN": 3
+      },
+      "Acne": {
+        "ABSTAIN": 3
+      },
+      "Allergy": {
+        "ABSTAIN": 3
+      },
+      "Fungal infection": {
+        "ABSTAIN": 3
+      },
+      "Gastroenteritis": {
+        "ABSTAIN": 3
+      },
+      "Heart attack": {
+        "Pneumonia": 1,
+        "Tuberculosis": 2
+      },
+      "Paralysis (brain hemorrhage)": {
+        "ABSTAIN": 3
+      },
+      "Urinary tract infection": {
+        "ABSTAIN": 3
+      }
+    },
+    "coverage": 0.125,
+    "abstention_rate": 0.875,
+    "abstention_policy": {
+      "confidence_threshold": 0.35,
+      "description": "top-1 probability below threshold is withheld from the assistive disease display"
+    },
+    "metric_scope": "macro metrics average only classes present in this test split",
+    "cross_split_near_duplicates": {
+      "pair_count": 0,
+      "cross_label_pair_count": 0
+    }
+  },
+  "near_duplicate_components": {
+    "same_label": {
+      "mode": "same_label",
+      "jaccard_threshold": 0.8,
+      "sample_count": 304,
+      "component_count": 73,
+      "largest_component_size": 10,
+      "edge_count": 604,
+      "cross_label_edge_count": 0,
+      "singleton_count": 40
+    },
+    "global": {
+      "mode": "global",
+      "jaccard_threshold": 0.8,
+      "sample_count": 304,
+      "component_count": 72,
+      "largest_component_size": 19,
+      "edge_count": 605,
+      "cross_label_edge_count": 1,
+      "singleton_count": 40
     }
   },
   "near_duplicate_audit": {
@@ -390,9 +542,11 @@
     "cross_label_pair_count": 1,
     "note": "近重复审计不改变训练模型；exact fingerprint 分组保证完全相同症状集合不跨 split。"
   },
+  "primary_split": "near_duplicate_same_label",
   "limitations": [
     "数据集只有 304 条记录，指标是离线原型评估，不代表临床表现。",
-    "exact fingerprint 分组无法识别所有语义近重复；近重复审计仅作为风险提示。",
-    "grouped split 与当前数据的随机 split 行数相同并不意味着不存在近重复风险。"
+    "exact fingerprint 分组无法识别所有语义近重复；Near-duplicate Group Split 用于降低跨 split 近重复泄漏。",
+    "same-label 分组避免跨疾病样本被机械合并成超大 component；global 分组仅作对照。",
+    "更严格切分可能降低表面指标，但更贴近真实泛化风险。"
   ]
 }

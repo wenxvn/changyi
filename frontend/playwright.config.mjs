@@ -30,6 +30,16 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 900 } },
     },
     {
+      name: "desktop-1280",
+      testMatch: /product-smoke\.spec\.mjs/,
+      use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 800 } },
+    },
+    {
+      name: "tablet-chromium",
+      testMatch: /mobile\.spec\.mjs/,
+      use: { ...devices["Desktop Chrome"], viewport: { width: 768, height: 1024 } },
+    },
+    {
       name: "mobile-chromium",
       use: { ...devices["Desktop Chrome"], viewport: { width: 390, height: 844 } },
       testMatch: /mobile\.spec\.mjs/,

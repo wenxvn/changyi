@@ -105,10 +105,11 @@ def evaluate_metrics(model: dict[str, Any], rows: list[dict[str, Any]]) -> dict[
             confusion[row["disease"]]["ABSTAIN"] += 1
         top3_correct += row["disease"] in ranked_labels
 
+    present_labels = sorted(label for label in labels if per_class_total[label] > 0)
     per_class_recall = {}
     per_class_precision = {}
     per_class_f1 = {}
-    for label in labels:
+    for label in present_labels:
         true_positive = confusion[label][label]
         false_negative = per_class_total[label] - true_positive
         false_positive = sum(row_counts[label] for true_label, row_counts in confusion.items() if true_label != label)
@@ -120,11 +121,12 @@ def evaluate_metrics(model: dict[str, Any], rows: list[dict[str, Any]]) -> dict[
         per_class_f1[label] = round(f1, 6)
 
     row_count = len(rows)
-    macro_precision = sum(per_class_precision.values()) / len(labels) if labels else 0.0
-    macro_recall = sum(per_class_recall.values()) / len(labels) if labels else 0.0
-    macro_f1 = sum(per_class_f1.values()) / len(labels) if labels else 0.0
+    macro_precision = sum(per_class_precision.values()) / len(present_labels) if present_labels else 0.0
+    macro_recall = sum(per_class_recall.values()) / len(present_labels) if present_labels else 0.0
+    macro_f1 = sum(per_class_f1.values()) / len(present_labels) if present_labels else 0.0
     return {
         "test_rows": row_count,
+        "present_class_count": len(present_labels),
         "accuracy": round(correct / row_count, 6) if row_count else None,
         "covered_accuracy": round(covered_correct / covered, 6) if covered else None,
         "top3_accuracy": round(top3_correct / row_count, 6) if row_count else None,
@@ -132,13 +134,14 @@ def evaluate_metrics(model: dict[str, Any], rows: list[dict[str, Any]]) -> dict[
         "macro_recall": round(macro_recall, 6),
         "macro_f1": round(macro_f1, 6),
         "per_class_recall": per_class_recall,
-        "confusion_matrix": {label: dict(sorted(counts.items())) for label, counts in confusion.items()},
+        "confusion_matrix": {label: dict(sorted(counts.items())) for label, counts in confusion.items() if per_class_total[label] > 0},
         "coverage": round(covered / row_count, 6) if row_count else 0.0,
         "abstention_rate": round((row_count - covered) / row_count, 6) if row_count else 0.0,
         "abstention_policy": {
             "confidence_threshold": ABSTAIN_THRESHOLD,
             "description": "top-1 probability below threshold is withheld from the assistive disease display",
         },
+        "metric_scope": "macro metrics average only classes present in this test split",
     }
 
 
@@ -159,6 +162,166 @@ def near_duplicate_audit(rows: list[dict[str, Any]], threshold: float = 0.8) -> 
     }
 
 
+def jaccard(left: set[str], right: set[str]) -> float:
+    union = left | right
+    return len(left & right) / len(union) if union else 1.0
+
+
+class _UnionFind:
+    def __init__(self, size: int) -> None:
+        self.parent = list(range(size))
+        self.rank = [0] * size
+
+    def find(self, value: int) -> int:
+        while self.parent[value] != value:
+            self.parent[value] = self.parent[self.parent[value]]
+            value = self.parent[value]
+        return value
+
+    def union(self, left: int, right: int) -> None:
+        left_root, right_root = self.find(left), self.find(right)
+        if left_root == right_root:
+            return
+        if self.rank[left_root] < self.rank[right_root]:
+            self.parent[left_root] = right_root
+        elif self.rank[left_root] > self.rank[right_root]:
+            self.parent[right_root] = left_root
+        else:
+            self.parent[right_root] = left_root
+            self.rank[left_root] += 1
+
+
+def near_duplicate_components(
+    rows: list[dict[str, Any]],
+    threshold: float = 0.8,
+    mode: str = "same_label",
+) -> tuple[list[list[int]], dict[str, Any]]:
+    """Build connected components over near-duplicate symptom sets.
+
+    mode="same_label" only links pairs that share the disease label so one giant
+    cross-disease component cannot collapse the dataset. mode="global" links any
+    pair above the Jaccard threshold and is reported for comparison.
+    """
+
+    symptom_sets = [set(row["symptoms"]) for row in rows]
+    labels = [row["disease"] for row in rows]
+    uf = _UnionFind(len(rows))
+    edge_count = 0
+    cross_label_edge_count = 0
+    for left, right in itertools.combinations(range(len(rows)), 2):
+        score = jaccard(symptom_sets[left], symptom_sets[right])
+        if score < threshold:
+            continue
+        cross = labels[left] != labels[right]
+        if mode == "same_label" and cross:
+            continue
+        uf.union(left, right)
+        edge_count += 1
+        if cross:
+            cross_label_edge_count += 1
+
+    buckets: dict[int, list[int]] = defaultdict(list)
+    for index in range(len(rows)):
+        buckets[uf.find(index)].append(index)
+    components = sorted(buckets.values(), key=lambda item: (-len(item), item[0]))
+    stats = {
+        "mode": mode,
+        "jaccard_threshold": threshold,
+        "sample_count": len(rows),
+        "component_count": len(components),
+        "largest_component_size": max((len(item) for item in components), default=0),
+        "edge_count": edge_count,
+        "cross_label_edge_count": cross_label_edge_count,
+        "singleton_count": sum(1 for item in components if len(item) == 1),
+    }
+    return components, stats
+
+
+def component_grouped_split(
+    rows: list[dict[str, Any]],
+    components: list[list[int]],
+    test_size: float,
+    seed: int,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, list[int]]]:
+    """Assign whole near-duplicate components to train/test by row quota.
+
+    Starts with all components in train, then moves whole components to test
+    while keeping at least one component and a minimal train footprint for each
+    disease. Smaller components are preferred for test so a disease's dominant
+    near-duplicate cluster is not stripped out of training.
+    """
+
+    rng = random.Random(seed)
+    by_disease: dict[str, list[list[int]]] = defaultdict(list)
+    for component in components:
+        by_disease[rows[component[0]]["disease"]].append(component)
+
+    moved_to_test: set[int] = set()
+    target_test_rows = max(1, round(len(rows) * test_size))
+    test_rows = 0
+    candidates = list(components)
+    rng.shuffle(candidates)
+    candidates.sort(key=lambda item: len(item))
+
+    for component in candidates:
+        if test_rows >= target_test_rows:
+            break
+        disease = rows[component[0]]["disease"]
+        disease_components = by_disease[disease]
+        if len(disease_components) <= 1:
+            continue
+        remaining = [item for item in disease_components if id(item) not in moved_to_test]
+        if len(remaining) <= 1:
+            continue
+        remaining_rows = sum(len(item) for item in remaining)
+        if remaining_rows - len(component) < max(2, round(0.4 * remaining_rows)):
+            continue
+        moved_to_test.add(id(component))
+        test_rows += len(component)
+
+    train_indices: list[int] = []
+    test_indices: list[int] = []
+    for component in components:
+        if id(component) in moved_to_test:
+            test_indices.extend(component)
+        else:
+            train_indices.extend(component)
+
+    train_set, test_set = set(train_indices), set(test_indices)
+    if train_set & test_set:
+        raise AssertionError("near-duplicate component leakage detected")
+    if not test_indices:
+        raise AssertionError("near-duplicate split produced an empty test set")
+    train = [rows[index] for index in train_indices]
+    test = [rows[index] for index in test_indices]
+    rng.shuffle(train)
+    rng.shuffle(test)
+    return train, test, {
+        "train": sorted(train_set),
+        "test": sorted(test_set),
+    }
+
+
+def cross_split_near_duplicate_count(
+    train: list[dict[str, Any]],
+    test: list[dict[str, Any]],
+    threshold: float = 0.8,
+) -> dict[str, int]:
+    pair_count = 0
+    cross_label = 0
+    for left_row in train:
+        left_set = set(left_row["symptoms"])
+        for right_row in test:
+            if jaccard(left_set, set(right_row["symptoms"])) >= threshold:
+                pair_count += 1
+                if left_row["disease"] != right_row["disease"]:
+                    cross_label += 1
+    return {
+        "pair_count": pair_count,
+        "cross_label_pair_count": cross_label,
+    }
+
+
 def build_artifacts(
     dataset_path: Path = DEFAULT_DATASET,
     model_path: Path = DEFAULT_MODEL,
@@ -167,14 +330,32 @@ def build_artifacts(
     random_train, random_test = split_dataset(rows, TEST_SIZE, SEED)
     grouped_train, grouped_test, grouped_groups = grouped_fingerprint_split(rows, TEST_SIZE, SEED)
 
+    same_label_components, same_label_stats = near_duplicate_components(rows, mode="same_label")
+    global_components, global_stats = near_duplicate_components(rows, mode="global")
+    near_train, near_test, near_indices = component_grouped_split(
+        rows, same_label_components, TEST_SIZE, SEED
+    )
+    global_train, global_test, _ = component_grouped_split(rows, global_components, TEST_SIZE, SEED)
+
     random_model = fit(random_train, ALPHA, MIN_SYMPTOM_DF)
     grouped_model = fit(grouped_train, ALPHA, MIN_SYMPTOM_DF)
+    near_model = fit(near_train, ALPHA, MIN_SYMPTOM_DF)
+    global_model = fit(global_train, ALPHA, MIN_SYMPTOM_DF)
     model_payload = json.loads(model_path.read_text(encoding="utf-8"))
     model_hash = sha256_file(model_path)
     dataset_hash = sha256_file(dataset_path)
 
+    random_metrics = evaluate_metrics(random_model, random_test)
+    grouped_metrics = evaluate_metrics(grouped_model, grouped_test)
+    near_metrics = evaluate_metrics(near_model, near_test)
+    global_metrics = evaluate_metrics(global_model, global_test)
+    random_metrics["cross_split_near_duplicates"] = cross_split_near_duplicate_count(random_train, random_test)
+    grouped_metrics["cross_split_near_duplicates"] = cross_split_near_duplicate_count(grouped_train, grouped_test)
+    near_metrics["cross_split_near_duplicates"] = cross_split_near_duplicate_count(near_train, near_test)
+    global_metrics["cross_split_near_duplicates"] = cross_split_near_duplicate_count(global_train, global_test)
+
     manifest = {
-        "schema_version": "model-split-manifest/v1",
+        "schema_version": "model-split-manifest/v2",
         "dataset": {
             "path": str(dataset_path),
             "sha256": dataset_hash,
@@ -191,6 +372,7 @@ def build_artifacts(
             "test_size": TEST_SIZE,
             "alpha": ALPHA,
             "min_symptom_df": MIN_SYMPTOM_DF,
+            "near_duplicate_threshold": 0.8,
         },
         "splits": {
             "random_baseline": {
@@ -207,21 +389,45 @@ def build_artifacts(
                 "train_group_fingerprints": grouped_groups["train"],
                 "test_group_fingerprints": grouped_groups["test"],
             },
+            "near_duplicate_same_label": {
+                "strategy": "near_duplicate_same_label_component_grouped",
+                "train_rows": len(near_train),
+                "test_rows": len(near_test),
+                "component_count": same_label_stats["component_count"],
+                "train_sample_count": len(near_indices["train"]),
+                "test_sample_count": len(near_indices["test"]),
+                "component_stats": same_label_stats,
+            },
+            "near_duplicate_global": {
+                "strategy": "near_duplicate_global_component_grouped",
+                "train_rows": len(global_train),
+                "test_rows": len(global_test),
+                "component_count": global_stats["component_count"],
+                "component_stats": global_stats,
+            },
         },
     }
 
     report = {
-        "schema_version": "model-evaluation/v1",
+        "schema_version": "model-evaluation/v2",
         "dataset": manifest["dataset"],
         "model": manifest["model"],
         "configuration": manifest["configuration"],
-        "random_baseline": evaluate_metrics(random_model, random_test),
-        "grouped_fingerprint": evaluate_metrics(grouped_model, grouped_test),
+        "random_baseline": random_metrics,
+        "grouped_fingerprint": grouped_metrics,
+        "near_duplicate_same_label": near_metrics,
+        "near_duplicate_global": global_metrics,
+        "near_duplicate_components": {
+            "same_label": same_label_stats,
+            "global": global_stats,
+        },
         "near_duplicate_audit": near_duplicate_audit(rows),
+        "primary_split": "near_duplicate_same_label",
         "limitations": [
             "数据集只有 304 条记录，指标是离线原型评估，不代表临床表现。",
-            "exact fingerprint 分组无法识别所有语义近重复；近重复审计仅作为风险提示。",
-            "grouped split 与当前数据的随机 split 行数相同并不意味着不存在近重复风险。",
+            "exact fingerprint 分组无法识别所有语义近重复；Near-duplicate Group Split 用于降低跨 split 近重复泄漏。",
+            "same-label 分组避免跨疾病样本被机械合并成超大 component；global 分组仅作对照。",
+            "更严格切分可能降低表面指标，但更贴近真实泛化风险。",
         ],
     }
     return manifest, report
@@ -244,6 +450,9 @@ def main() -> None:
     print(json.dumps({
         "random_baseline": report["random_baseline"],
         "grouped_fingerprint": report["grouped_fingerprint"],
+        "near_duplicate_same_label": report["near_duplicate_same_label"],
+        "near_duplicate_global": report["near_duplicate_global"],
+        "near_duplicate_components": report["near_duplicate_components"],
         "near_duplicate_audit": report["near_duplicate_audit"],
     }, ensure_ascii=False, indent=2))
 

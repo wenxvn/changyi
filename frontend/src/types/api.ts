@@ -295,6 +295,13 @@ export interface ModelEvidence {
   training_data_source: EvidenceDataset | null;
   random_baseline?: ModelSplitMetrics;
   grouped_fingerprint?: ModelSplitMetrics;
+  near_duplicate_same_label?: ModelSplitMetrics;
+  near_duplicate_global?: ModelSplitMetrics;
+  near_duplicate_components?: {
+    same_label?: Record<string, unknown>;
+    global?: Record<string, unknown>;
+  };
+  primary_split?: string;
   near_duplicate_audit?: {
     jaccard_threshold: number;
     pair_count: number;
@@ -316,6 +323,10 @@ export interface ModelSplitMetrics {
   abstention_rate: number | null;
   per_class_recall?: Record<string, number>;
   confusion_matrix?: Record<string, Record<string, number>>;
+  cross_split_near_duplicates?: {
+    pair_count: number;
+    cross_label_pair_count: number;
+  };
 }
 
 export interface DataQualityEvidence {

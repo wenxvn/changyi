@@ -240,8 +240,16 @@ def build_hospital_candidates(
             distance = distance_fn(user_lat, user_lng, hospital["lat"], hospital["lng"])
         accessibility = access_score_fn(hospital, user_lat, user_lng, access_context)
         traffic_access = traffic_access_fn(hospital)
-        traffic_access["used_in_ranking"] = uses_traffic_in_ranking and distance is not None
-        traffic_access["ranking_policy"] = ranking_policy
+        quality_rankable = traffic_access.get("rankable", True) is not False
+        traffic_access["used_in_ranking"] = bool(
+            uses_traffic_in_ranking and distance is not None and quality_rankable
+        )
+        if not quality_rankable:
+            traffic_access["ranking_policy"] = (
+                "交通数据未通过质量门，可达性按直线距离估算；站点信息仅作参考"
+            )
+        else:
+            traffic_access["ranking_policy"] = ranking_policy
         results.append(
             compose_fn(
                 hospital=hospital,

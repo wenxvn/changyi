@@ -488,6 +488,12 @@ function parseOptionalEvidenceDataset(value: unknown, field: string): EvidenceDa
 
 function parseModelSplit(value: unknown): ModelSplitMetrics | undefined {
   if (!isRecord(value)) return undefined;
+  const crossSplit = isRecord(value.cross_split_near_duplicates)
+    ? {
+        pair_count: optionalNumber(value.cross_split_near_duplicates.pair_count) ?? 0,
+        cross_label_pair_count: optionalNumber(value.cross_split_near_duplicates.cross_label_pair_count) ?? 0,
+      }
+    : undefined;
   return {
     test_rows: optionalNumber(value.test_rows) ?? 0,
     accuracy: nullableNumber(value.accuracy),
@@ -508,6 +514,7 @@ function parseModelSplit(value: unknown): ModelSplitMetrics | undefined {
     confusion_matrix: isRecord(value.confusion_matrix)
       ? value.confusion_matrix as Record<string, Record<string, number>>
       : undefined,
+    cross_split_near_duplicates: crossSplit,
   };
 }
 
@@ -577,6 +584,15 @@ export function parseEvidence(value: unknown): EvidencePayload {
       ),
       random_baseline: parseModelSplit(model.random_baseline),
       grouped_fingerprint: parseModelSplit(model.grouped_fingerprint),
+      near_duplicate_same_label: parseModelSplit(model.near_duplicate_same_label),
+      near_duplicate_global: parseModelSplit(model.near_duplicate_global),
+      near_duplicate_components: isRecord(model.near_duplicate_components)
+        ? {
+            same_label: isRecord(model.near_duplicate_components.same_label) ? model.near_duplicate_components.same_label : undefined,
+            global: isRecord(model.near_duplicate_components.global) ? model.near_duplicate_components.global : undefined,
+          }
+        : undefined,
+      primary_split: optionalString(model.primary_split),
       near_duplicate_audit: isRecord(model.near_duplicate_audit)
         ? {
             jaccard_threshold: optionalNumber(model.near_duplicate_audit.jaccard_threshold) ?? 0,

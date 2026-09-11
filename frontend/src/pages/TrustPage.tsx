@@ -75,10 +75,12 @@ function SourceRow({ source, label }: { source: EvidenceDataset | null; label: s
 
 function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onNavigate: (path: string) => void }) {
   const visibleManifest = evidence.dataset_manifest.slice(0, 8);
-  const modelSplits: Array<{ label: string; metrics: ModelSplitMetrics | undefined }> = [
-    { label: "随机基线", metrics: evidence.model.random_baseline },
-    { label: "严格 fingerprint 分组", metrics: evidence.model.grouped_fingerprint },
-  ];
+  const modelSplits: Array<{ label: string; metrics: ModelSplitMetrics | undefined; note?: string }> = [
+    { label: "随机基线", metrics: evidence.model.random_baseline, note: "宽松参考，可能受近重复样本影响。" },
+    { label: "严格 fingerprint 分组", metrics: evidence.model.grouped_fingerprint, note: "保证完全相同症状集合不跨 split。" },
+    { label: "近重复同标签分组", metrics: evidence.model.near_duplicate_same_label, note: "默认强调：Jaccard≥0.8 同标签样本不跨 split。更严格切分可能降低表面指标，但更能反映泛化能力。" },
+    { label: "近重复全局分组", metrics: evidence.model.near_duplicate_global, note: "对照：跨疾病高相似样本也会被连接，可能形成更大 component。" },
+  ].filter((item) => Boolean(item.metrics));
   return (
     <>
       <div className="trust-page__hero">
@@ -155,9 +157,9 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
             ) : null}
           </article>
         </div>
-        {evidence.model.random_baseline || evidence.model.grouped_fingerprint ? (
+        {(evidence.model.near_duplicate_same_label || evidence.model.random_baseline || evidence.model.grouped_fingerprint) ? (
           <div className="trust-model-comparison">
-            {modelSplits.map(({ label, metrics }) => metrics ? (
+            {modelSplits.map(({ label, metrics, note }) => metrics ? (
               <article className="evidence-panel" key={label}>
                 <div className="evidence-panel__topline"><GitBranch size={17} aria-hidden="true" /><span>{label}</span></div>
                 <div className="evidence-metric-grid">
@@ -166,10 +168,20 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
                   <EvidenceMetric label="覆盖率" value={splitMetricValue(metrics.coverage)} />
                   <EvidenceMetric label="测试样本" value={formatCount(metrics.test_rows)} />
                 </div>
-                <p className="evidence-panel__footnote">Top-1 {splitMetricValue(metrics.accuracy)} · Top-3 {splitMetricValue(metrics.top3_accuracy)}。分组结果用于检查完全相同症状集合是否跨训练/测试集。</p>
+                <p className="evidence-panel__footnote">
+                  Top-1 {splitMetricValue(metrics.accuracy)} · Top-3 {splitMetricValue(metrics.top3_accuracy)}
+                  {metrics.cross_split_near_duplicates ? ` · 跨 split 近重复 ${metrics.cross_split_near_duplicates.pair_count} 对` : ""}
+                  {note ? `。${note}` : ""}
+                </p>
               </article>
             ) : null)}
           </div>
+        ) : null}
+        {evidence.model.near_duplicate_audit ? (
+          <p className="evidence-panel__footnote trust-model-audit">
+            近重复审计：阈值 {evidence.model.near_duplicate_audit.jaccard_threshold}，共 {evidence.model.near_duplicate_audit.pair_count} 对，
+            其中跨疾病 {evidence.model.near_duplicate_audit.cross_label_pair_count} 对。更严格切分可能降低表面指标，但更能反映泛化能力。
+          </p>
         ) : null}
       </section>
 

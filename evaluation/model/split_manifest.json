@@ -1,5 +1,5 @@
 {
-  "schema_version": "model-split-manifest/v1",
+  "schema_version": "model-split-manifest/v2",
   "dataset": {
     "path": "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
     "sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
@@ -15,7 +15,8 @@
     "seed": 42,
     "test_size": 0.25,
     "alpha": 1.0,
-    "min_symptom_df": 2
+    "min_symptom_df": 2,
+    "near_duplicate_threshold": 0.8
   },
   "splits": {
     "random_baseline": {
@@ -337,6 +338,40 @@
         "fbf650fadf12ec5931080b636fa4132d028b3edaf1c94d09447364837c714b27",
         "fed4a43a7765f7a7aadffe3d1f13e0e18c64a7a1e2482664eafee5640c088910"
       ]
+    },
+    "near_duplicate_same_label": {
+      "strategy": "near_duplicate_same_label_component_grouped",
+      "train_rows": 280,
+      "test_rows": 24,
+      "component_count": 73,
+      "train_sample_count": 280,
+      "test_sample_count": 24,
+      "component_stats": {
+        "mode": "same_label",
+        "jaccard_threshold": 0.8,
+        "sample_count": 304,
+        "component_count": 73,
+        "largest_component_size": 10,
+        "edge_count": 604,
+        "cross_label_edge_count": 0,
+        "singleton_count": 40
+      }
+    },
+    "near_duplicate_global": {
+      "strategy": "near_duplicate_global_component_grouped",
+      "train_rows": 280,
+      "test_rows": 24,
+      "component_count": 72,
+      "component_stats": {
+        "mode": "global",
+        "jaccard_threshold": 0.8,
+        "sample_count": 304,
+        "component_count": 72,
+        "largest_component_size": 19,
+        "edge_count": 605,
+        "cross_label_edge_count": 1,
+        "singleton_count": 40
+      }
     }
   }
 }

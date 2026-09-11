@@ -87,6 +87,7 @@ from backend.app.domain.recommendation.traffic import (
     hospital_taxi_access as _hospital_taxi_access_rows,
     index_traffic_rows as _index_traffic_rows,
 )
+from backend.app.domain.recommendation.transit_quality import TransitQualityGate
 
 app = create_app()
 
@@ -617,6 +618,17 @@ def _load_bike_vehicles():
 
 BIKE_VEHICLE_DATA = _load_bike_vehicles()
 
+TRANSIT_QUALITY_GATE = TransitQualityGate.from_datasets(
+    bus_rows=BUS_STATION_DATA.get("stations") or [],
+    bus_summary=BUS_STATION_DATA.get("summary") or {},
+    taxi_rows=TAXI_OPERATION_DATA.get("operations") or [],
+    taxi_summary=TAXI_OPERATION_DATA.get("summary") or {},
+    bike_rows=BIKE_STATION_DATA.get("stations") or [],
+    bike_summary=BIKE_STATION_DATA.get("summary") or {},
+)
+TRANSIT_RANKABLE = TRANSIT_QUALITY_GATE.can_rank("bus_stations")
+print(f"[质量门] 交通数据 quality={TRANSIT_QUALITY_GATE.quality('bus_stations').quality} rankable={TRANSIT_RANKABLE}")
+
 def _distance_km(lat1, lng1, lat2, lng2):
     r = 6371.0
     p1 = math.radians(float(lat1))
@@ -696,12 +708,22 @@ def _transit_access_maps():
     return _TRANSIT_ACCESS_CACHE.get()
 def _hospital_traffic_access(hospital):
     if not hospital:
-        return _default_traffic_access()
+        payload = _default_traffic_access()
+        payload["quality"] = TRANSIT_QUALITY_GATE.quality("bus_stations").to_payload()
+        payload["used_in_ranking"] = False
+        payload["ranking_policy"] = TRANSIT_QUALITY_GATE.ranking_notice()
+        return payload
     maps = _transit_access_maps()
     station = maps["station"].get(hospital["id"], {})
     taxi = maps["taxi"].get(hospital["id"], {})
     bike = maps["bike"].get(hospital["id"], {})
-    return _build_traffic_access(station, taxi, bike)
+    payload = _build_traffic_access(station, taxi, bike)
+    payload["quality"] = TRANSIT_QUALITY_GATE.quality("bus_stations").to_payload()
+    payload["rankable"] = TRANSIT_RANKABLE
+    if not TRANSIT_RANKABLE:
+        payload["display_only"] = True
+        payload["notice"] = TRANSIT_QUALITY_GATE.quality("bus_stations").notice
+    return payload
 
 def _access_score(hospital, user_lat=None, user_lng=None, triage_level="routine"):
     traffic = _hospital_traffic_access(hospital)
