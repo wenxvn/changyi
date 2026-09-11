@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import {
   ArrowRight,
   Check,
@@ -47,6 +47,7 @@ function formatMetric(value: number): string {
 export function HomePage({ onStart, onNavigate }: HomePageProps) {
   const [condition, setCondition] = useState("");
   const [journeyIndex, setJourneyIndex] = useState(0);
+  const journeyTabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const summary = useCitySummary();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -57,6 +58,22 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
   const currentJourney = journeySteps[journeyIndex];
   const cityName = summary.data?.region.name ?? "常州";
   const metrics = summary.data?.metrics;
+
+  const focusJourneyStep = (index: number) => {
+    setJourneyIndex(index);
+    window.requestAnimationFrame(() => journeyTabRefs.current[index]?.focus());
+  };
+
+  const handleJourneyKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex: number | null = null;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % journeySteps.length;
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + journeySteps.length) % journeySteps.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = journeySteps.length - 1;
+    if (nextIndex === null) return;
+    event.preventDefault();
+    focusJourneyStep(nextIndex);
+  };
 
   return (
     <>
@@ -146,11 +163,17 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
             <div className="journey__controls" role="tablist" aria-label="AI Journey 步骤">
               {journeySteps.map((step, index) => (
                 <button
+                  type="button"
                   key={step.number}
                   role="tab"
+                  id={`journey-tab-${step.number}`}
+                  aria-controls="journey-step-panel"
                   aria-selected={journeyIndex === index}
+                  tabIndex={journeyIndex === index ? 0 : -1}
+                  ref={(element) => { journeyTabRefs.current[index] = element; }}
                   className={journeyIndex === index ? "is-active" : ""}
                   onClick={() => setJourneyIndex(index)}
+                  onKeyDown={(event) => handleJourneyKeyDown(event, index)}
                 >
                   <span>{step.number}</span>
                   <span>{step.title}</span>
@@ -162,6 +185,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
             <div className="journey__steps-list">
               {journeySteps.map((step, index) => (
                 <button
+                  type="button"
                   className={`journey__step${journeyIndex === index ? " is-active" : ""}`}
                   key={step.number}
                   onClick={() => setJourneyIndex(index)}
@@ -172,7 +196,15 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
                 </button>
               ))}
             </div>
-            <JourneyPreview step={currentJourney} />
+            <div
+              className="journey__tabpanel"
+              id="journey-step-panel"
+              role="tabpanel"
+              aria-labelledby={`journey-tab-${currentJourney.number}`}
+              tabIndex={0}
+            >
+              <JourneyPreview step={currentJourney} />
+            </div>
           </div>
         </div>
       </section>
@@ -238,7 +270,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
               <div className="city-metrics__error" role="status">
                 <CircleAlert size={15} aria-hidden="true" />
                 <span>城市摘要暂时无法载入。</span>
-                <button onClick={summary.retry}>重试</button>
+                <button type="button" onClick={summary.retry}>重试</button>
               </div>
             ) : null}
             <div className="city-metrics__source">

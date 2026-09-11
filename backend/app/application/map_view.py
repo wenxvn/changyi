@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping
+from collections.abc import Callable, Iterable, Mapping
 import math
 from typing import Any
 
@@ -108,3 +108,28 @@ def build_map_payload(
         "distance_method": "haversine_straight_line_km" if user_lat is not None else None,
         "notice": "地图为资源位置示意，不是导航地图；医院来源逐字段 provenance 仍在迁移中。",
     }
+
+
+class MapViewApplicationService:
+    """Compose the public map projection from the active region and hospital catalog."""
+
+    def __init__(self, *, hospitals: Callable[[], Iterable[Mapping[str, Any]]], region: Callable[[str], Any]) -> None:
+        self._hospitals = hospitals
+        self._region = region
+
+    def build(
+        self,
+        *,
+        region_code: str,
+        user_lat: float | None = None,
+        user_lng: float | None = None,
+    ) -> dict[str, Any]:
+        region = self._region(region_code)
+        return build_map_payload(
+            self._hospitals(),
+            region_code=region_code,
+            region_name=region.name if region else "常州市",
+            region_pack_version=region.version if region else "unknown",
+            user_lat=user_lat,
+            user_lng=user_lng,
+        )

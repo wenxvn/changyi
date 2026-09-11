@@ -2,23 +2,26 @@ from __future__ import annotations
 
 from pathlib import Path
 from unittest import TestCase
-from unittest.mock import patch
-
 import app as legacy_app
+from backend.app.infrastructure.models.symptom_disease import SymptomDiseaseModelAdapter
 
 
 class ModelSmokeTests(TestCase):
     def setUp(self):
-        self._runtime = legacy_app._SYMPTOM_DISEASE_RUNTIME
-        self._runtime_error = legacy_app._SYMPTOM_DISEASE_RUNTIME_ERROR
+        self._adapter = legacy_app.SYMPTOM_DISEASE_MODEL_ADAPTER
+        self._runtime = self._adapter._runtime
+        self._runtime_error = self._adapter._runtime_error
+        self._runtime_loader_called = self._adapter._runtime_loader_called
 
     def tearDown(self):
-        legacy_app._SYMPTOM_DISEASE_RUNTIME = self._runtime
-        legacy_app._SYMPTOM_DISEASE_RUNTIME_ERROR = self._runtime_error
+        self._adapter._runtime = self._runtime
+        self._adapter._runtime_error = self._runtime_error
+        self._adapter._runtime_loader_called = self._runtime_loader_called
 
     def _reset_runtime(self):
-        legacy_app._SYMPTOM_DISEASE_RUNTIME = None
-        legacy_app._SYMPTOM_DISEASE_RUNTIME_ERROR = None
+        self._adapter._runtime = None
+        self._adapter._runtime_error = None
+        self._adapter._runtime_loader_called = False
 
     def test_local_model_loads_and_marks_prediction_as_assistive(self):
         self._reset_runtime()
@@ -39,11 +42,14 @@ class ModelSmokeTests(TestCase):
         self.assertTrue(result["need_more_info"])
 
     def test_missing_model_degrades_without_disease_claim(self):
-        self._reset_runtime()
         missing_path = Path(legacy_app.SYMPTOM_DISEASE_MODEL_PATH).with_name("missing-model.json")
+        adapter = SymptomDiseaseModelAdapter(
+            model_dir=Path(legacy_app.SYMPTOM_DISEASE_MODEL_DIR),
+            model_path=missing_path,
+            normalize=legacy_app.normalize_patient_expression,
+        )
 
-        with patch.object(legacy_app, "SYMPTOM_DISEASE_MODEL_PATH", str(missing_path)):
-            result = legacy_app.predict_disease_name("咳嗽", details=True)
+        result = adapter.predict("咳嗽", details=True)
 
         self.assertFalse(result["available"])
         self.assertEqual(result["disease"], "")

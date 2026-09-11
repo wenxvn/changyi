@@ -151,11 +151,11 @@ export function MapPage() {
             <span>{map.notice}</span>
           </div>
           <div className="map-tabs" role="tablist" aria-label="地图资源筛选">
-            <button type="button" role="tab" aria-selected={filter === "all"} className={filter === "all" ? "is-active" : ""} onClick={() => setFilter("all")}>全部资源 <small>{map.count}</small></button>
-            <button type="button" role="tab" aria-selected={filter === "emergency"} className={filter === "emergency" ? "is-active" : ""} onClick={() => setFilter("emergency")}>含急诊字段 <small>{map.items.filter((item) => item.emergency).length}</small></button>
+            <button id="map-tab-all" type="button" role="tab" aria-controls="map-resource-panel" aria-selected={filter === "all"} tabIndex={filter === "all" ? 0 : -1} className={filter === "all" ? "is-active" : ""} onClick={() => setFilter("all")}>全部资源 <small>{map.count}</small></button>
+            <button id="map-tab-emergency" type="button" role="tab" aria-controls="map-resource-panel" aria-selected={filter === "emergency"} tabIndex={filter === "emergency" ? 0 : -1} className={filter === "emergency" ? "is-active" : ""} onClick={() => setFilter("emergency")}>含急诊字段 <small>{map.items.filter((item) => item.emergency).length}</small></button>
             <span className="map-tabs__hint">{map.distance_method ? "已按直线距离计算" : "未使用用户定位"}</span>
           </div>
-          <div className="map-layout">
+          <div id="map-resource-panel" className="map-layout" role="tabpanel" aria-labelledby={filter === "all" ? "map-tab-all" : "map-tab-emergency"} tabIndex={-1}>
             <div className="map-resource-list">
               <div className="map-resource-list__heading"><span>{map.region.name} · 公开资源</span><small>{visibleItems.length} 个位置</small></div>
               {visibleItems.map((item) => {

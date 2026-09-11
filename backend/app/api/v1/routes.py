@@ -2,20 +2,17 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 from flask import Blueprint, current_app, jsonify
 
 from .legacy_adapter import call_legacy_handler
 from .response import failure, success
-from ...infrastructure.regions.registry import RegionRegistry
 
 
 api_v1 = Blueprint("api_v1", __name__, url_prefix="/api/v1")
 
 
-def _registry() -> RegionRegistry:
-    return RegionRegistry.from_root(Path(current_app.config["REGION_ROOT"]))
+def _region_service():
+    return current_app.extensions["changyi.region_read_service"]
 
 
 @api_v1.get("/health")
@@ -30,12 +27,10 @@ def health():
 
 @api_v1.get("/ready")
 def ready():
-    registry = _registry()
-    active = registry.active()
-    is_ready = any(region.code == current_app.config["REGION_CODE"] for region in active)
+    is_ready, active_region_count = _region_service().readiness(current_app.config["REGION_CODE"])
     status = 200 if is_ready else 503
     payload = success(
-        {"status": "ready" if is_ready else "not_ready", "active_region_count": len(active)},
+        {"status": "ready" if is_ready else "not_ready", "active_region_count": active_region_count},
         region_code=current_app.config["REGION_CODE"],
         model_version=current_app.config["MODEL_VERSION"],
     ) if is_ready else failure(
@@ -49,8 +44,7 @@ def ready():
 
 @api_v1.get("/regions")
 def regions():
-    registry = _registry()
-    summaries = registry.public_summaries(active_only=True)
+    summaries = _region_service().public_summaries()
     return jsonify(success(
         summaries,
         region_code=current_app.config["REGION_CODE"],

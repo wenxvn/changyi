@@ -6,17 +6,27 @@ from flask import render_template, jsonify, request
 import math
 import json
 import os
-import sys
 from datetime import datetime
 from pathlib import Path
 
 from backend.app import create_app
-from backend.app.application.evidence import build_evidence_payload
-from backend.app.application.map_view import MapLocationError, build_map_payload, parse_coordinate
-from backend.app.application.resources import build_doctor_detail, build_hospital_detail
+from backend.app.application.evidence import EvidenceApplicationService
+from backend.app.application.map_view import MapLocationError, MapViewApplicationService, parse_coordinate
+from backend.app.application.resources import ResourceCatalogApplicationService
+from backend.app.application.triage import TriageApplicationService
+from backend.app.application.prediction import DiseasePredictionApplicationService
+from backend.app.application.transit import TransitCatalogApplicationService
+from backend.app.application.summary import SummaryApplicationService
+from backend.app.api.v1.legacy_adapter import register_legacy_handlers
+from backend.app.application.recommendation import (
+    DistanceRerankApplicationService,
+    RecommendationApplicationService,
+    RecommendationContext,
+)
 from backend.app.api.v1.response import failure, success
 from backend.app.api.v1.schemas.recommendation import RecommendationRequest, RequestValidationError
 from backend.app.infrastructure.data.loaders import DataLoadError, JsonDataLoader
+from backend.app.infrastructure.models.symptom_disease import SymptomDiseaseModelAdapter
 from backend.app.infrastructure.regions.registry import RegionRegistry
 from backend.app.infrastructure.repositories.transit_repository import LazyTrafficAccessCache
 from backend.app.domain.medical_input import (
@@ -94,8 +104,11 @@ SYMPTOM_DISEASE_MODEL_PATH = os.path.join(
     "models",
     "symptom_disease_41_nb.json",
 )
-_SYMPTOM_DISEASE_RUNTIME = None
-_SYMPTOM_DISEASE_RUNTIME_ERROR = None
+SYMPTOM_DISEASE_MODEL_ADAPTER = SymptomDiseaseModelAdapter(
+    model_dir=Path(SYMPTOM_DISEASE_MODEL_DIR),
+    model_path=Path(SYMPTOM_DISEASE_MODEL_PATH),
+    normalize=normalize_patient_expression,
+)
 
 
 def _read_json_data(path):
@@ -107,63 +120,9 @@ def _read_json_data(path):
         return None
 
 
-def _load_symptom_disease_runtime():
-    """Lazy-load the local symptom-to-disease model packaged inside this system."""
-    global _SYMPTOM_DISEASE_RUNTIME, _SYMPTOM_DISEASE_RUNTIME_ERROR
-    if _SYMPTOM_DISEASE_RUNTIME is not None:
-        return _SYMPTOM_DISEASE_RUNTIME
-    if _SYMPTOM_DISEASE_RUNTIME_ERROR is not None:
-        return None
-
-    try:
-        if not os.path.exists(SYMPTOM_DISEASE_MODEL_PATH):
-            raise FileNotFoundError(SYMPTOM_DISEASE_MODEL_PATH)
-        if SYMPTOM_DISEASE_MODEL_DIR not in sys.path:
-            sys.path.insert(0, SYMPTOM_DISEASE_MODEL_DIR)
-
-        from inference import load_symptom_alias_map, load_symptom_name_map, predict_with_details
-        from labels import load_disease_name_map
-
-        with open(SYMPTOM_DISEASE_MODEL_PATH, "r", encoding="utf-8") as f:
-            model = json.load(f)
-
-        _SYMPTOM_DISEASE_RUNTIME = {
-            "model": model,
-            "disease_name_map": load_disease_name_map(),
-            "symptom_alias_map": load_symptom_alias_map(),
-            "symptom_name_map": load_symptom_name_map(),
-            "predict_with_details": predict_with_details,
-        }
-        return _SYMPTOM_DISEASE_RUNTIME
-    except Exception as exc:
-        _SYMPTOM_DISEASE_RUNTIME_ERROR = str(exc)
-        return None
-
-
 def predict_disease_name(condition, details=False):
     """Return the model disease prediction for free-text Chinese symptoms."""
-    condition, colloquial_replacements = normalize_patient_expression(condition)
-    runtime = _load_symptom_disease_runtime()
-    if not runtime:
-        result = {
-            "disease": "",
-            "available": False,
-            "error": _SYMPTOM_DISEASE_RUNTIME_ERROR or "model_unavailable",
-        }
-        return result if details else {"disease": ""}
-
-    result = runtime["predict_with_details"](
-        runtime["model"],
-        condition,
-        disease_name_map=runtime["disease_name_map"],
-        symptom_alias_map=runtime["symptom_alias_map"],
-        symptom_name_map=runtime["symptom_name_map"],
-        top_k=5 if details else 3,
-    )
-    result["available"] = True
-    if details:
-        result["colloquial_replacements"] = colloquial_replacements
-    return result if details else {"disease": result.get("disease", "")}
+    return SYMPTOM_DISEASE_MODEL_ADAPTER.predict(condition, details=details)
 
 
 def _model_standard_symptom_tags(condition):
@@ -1022,53 +981,7 @@ def _hospital_bike_vehicle_distribution():
     )
 
 def _bus_route_stats():
-    routes = BUS_ROUTE_DATA.get("routes", [])
-    company_counts = {}
-    company_bus_counts = {}
-    line_type_counts = {}
-    ticket_counts = {}
-    total_bus = 0
-    tickets = []
-
-    for r in routes:
-        company = r.get("company") or "未知分公司"
-        line_type = r.get("line_type") or "未知类型"
-        bus_count = int(r.get("bus_count") or 0)
-        ticket = r.get("ticket") or 0
-
-        company_counts[company] = company_counts.get(company, 0) + 1
-        company_bus_counts[company] = company_bus_counts.get(company, 0) + bus_count
-        line_type_counts[line_type] = line_type_counts.get(line_type, 0) + 1
-        total_bus += bus_count
-
-        if ticket:
-            tickets.append(float(ticket))
-            ticket_key = f"{ticket:g}元"
-            ticket_counts[ticket_key] = ticket_counts.get(ticket_key, 0) + 1
-
-    summary = dict(BUS_ROUTE_DATA.get("summary", {}))
-    summary.update({
-        "total_routes": len(routes),
-        "total_bus_count": total_bus,
-        "company_count": len(company_counts),
-        "line_type_count": len(line_type_counts),
-        "avg_ticket": round(sum(tickets) / len(tickets), 2) if tickets else 0,
-        "max_bus_route": max(routes, key=lambda r: int(r.get("bus_count") or 0), default={}),
-        "company_route_counts": company_counts,
-        "company_bus_counts": company_bus_counts,
-        "line_type_counts": line_type_counts,
-        "ticket_counts": ticket_counts,
-        "routes_preview": routes[:8],
-        "station_summary": BUS_STATION_DATA.get("summary", {}),
-        "taxi_summary": TAXI_OPERATION_DATA.get("summary", {}),
-        "bike_summary": BIKE_STATION_DATA.get("summary", {}),
-        "bike_vehicle_summary": BIKE_VEHICLE_DATA.get("summary", {}),
-        "hospital_station_access": _hospital_station_access(),
-        "hospital_taxi_access": _hospital_taxi_access(),
-        "hospital_bike_access": _hospital_bike_access(),
-        "hospital_bike_vehicle_distribution": _hospital_bike_vehicle_distribution(),
-    })
-    return summary
+    return TRANSIT_CATALOG_APPLICATION_SERVICE.stats()
 
 # ============================================================
 # 增强版推荐引擎 (基于爬取的真实数据 + 动态权重)
@@ -1996,19 +1909,16 @@ def index():
 @app.route("/api/hospitals")
 def api_hospitals():
     """获取所有医院列表 [接口预留: 对接医院信息数据库]"""
-    return jsonify({"code": 200, "data": HOSPITALS, "count": len(HOSPITALS)})
+    payload = RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_hospitals()
+    return jsonify({"code": 200, "data": payload["items"], "count": payload["count"]})
 
 
 @app.route("/api/hospitals/<int:hid>")
 def api_hospital_detail(hid):
     """获取单个医院详情 [已接入多院区真实数据]"""
-    h = next((x for x in HOSPITALS if x["id"] == hid), None)
-    if h:
-        doctors = [d for d in REAL_DOCTORS if d["hospital_id"] == hid]
-        if not doctors:
-            doctors = [d for d in DOCTORS if d["hospital_id"] == hid]
-        data_source = "real" if any(d["hospital_id"] == hid for d in REAL_DOCTORS) else "mock"
-        return jsonify({"code": 200, "data": {"hospital": h, "doctors": doctors, "source": data_source}})
+    payload = RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_hospital_detail(hid)
+    if payload is not None:
+        return jsonify({"code": 200, "data": payload})
     return jsonify({"code": 404, "message": "医院不存在"}), 404
 
 
@@ -2018,26 +1928,20 @@ def api_doctors():
     dept = request.args.get("department")
     hid = request.args.get("hospital_id", type=int)
     use_real = request.args.get("real", "1")  # 默认返回真实数据
-
-    # 合并真实数据和模拟数据
-    result = REAL_DOCTORS if use_real == "1" else DOCTORS
-    if not result:
-        result = DOCTORS
-
-    if dept:
-        result = [d for d in result if d["department"] == dept]
-    if hid:
-        result = [d for d in result if d["hospital_id"] == hid]
-    return jsonify({"code": 200, "data": result, "count": len(result), "source": "real" if use_real == "1" else "mock"})
+    payload = RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_doctors(
+        department=dept,
+        hospital_id=hid,
+        use_real=use_real == "1",
+    )
+    return jsonify({"code": 200, "data": payload["items"], "count": payload["count"], "source": payload["source"]})
 
 
 @app.route("/api/doctors/<int:did>")
 def api_doctor_detail(did):
     """获取单个医生详情 [接口预留: 对接医生信息数据库]"""
-    d = next((x for x in DOCTORS if x["id"] == did), None)
-    if d:
-        hospital = next((h for h in HOSPITALS if h["id"] == d["hospital_id"]), None)
-        return jsonify({"code": 200, "data": {"doctor": d, "hospital": hospital}})
+    payload = RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_doctor_detail(did)
+    if payload is not None:
+        return jsonify({"code": 200, "data": payload})
     return jsonify({"code": 404, "message": "医生不存在"}), 404
 
 
@@ -2053,24 +1957,21 @@ def api_predict_disease():
     if not symptom_input:
         return jsonify({"code": 400, "message": "请输入症状"}), 400
 
-    prediction = predict_disease_name(symptom_input, details=details)
-    if not prediction.get("available", True):
+    result = DISEASE_PREDICTION_APPLICATION_SERVICE.predict(symptom_input, details=details)
+    if not result.available:
         return jsonify({
             "code": 503,
             "message": "疾病预测模型不可用",
-            "data": prediction,
+            "data": result.prediction,
         }), 503
 
-    disease = prediction.get("disease", "")
-    if not disease:
-        return jsonify({"code": 400, "message": "症状信息不足", "data": prediction}), 400
-    if details:
-        prediction["standard_symptom_tags"], _ = _model_standard_symptom_tags(symptom_input)
+    if not result.disease:
+        return jsonify({"code": 400, "message": "症状信息不足", "data": result.prediction}), 400
 
     return jsonify({
         "code": 200,
-        "disease": disease,
-        "data": prediction if details else {"disease": disease},
+        "disease": result.disease,
+        "data": result.prediction if details else {"disease": result.disease},
     })
 
 
@@ -2082,17 +1983,7 @@ def api_triage():
     scenario = data.get("scenario", "common")
     if not condition:
         return jsonify({"code": 400, "message": "请输入病情或症状"}), 400
-    triage = analyze_medical_triage(condition, scenario)
-    return jsonify({
-        "code": 200,
-        "data": {
-            "condition": condition,
-            "matched_department": triage.get("matched_department") or match_department(condition),
-            "disease_prediction": predict_disease_name(condition, details=True),
-            "triage": triage,
-            "htriage_analysis": _htriage_public_payload(triage),
-        }
-    })
+    return jsonify({"code": 200, "data": TRIAGE_APPLICATION_SERVICE.build_legacy_triage_payload(condition, scenario)})
 
 
 @app.route("/api/followup", methods=["POST"])
@@ -2103,19 +1994,7 @@ def api_followup():
     scenario = data.get("scenario", "common")
     if not condition:
         return jsonify({"code": 400, "message": "请输入病情或症状"}), 400
-    triage = analyze_medical_triage(condition, scenario)
-    return jsonify({
-        "code": 200,
-        "data": {
-            "condition": condition,
-            "matched_department": triage.get("matched_department") or match_department(condition),
-            "triage_level": triage.get("level"),
-            "triage_label": triage.get("label"),
-            "htriage_analysis": _htriage_public_payload(triage),
-            "followup": triage.get("followup", {}),
-            "known_disease": triage.get("known_disease", {}),
-        }
-    })
+    return jsonify({"code": 200, "data": TRIAGE_APPLICATION_SERVICE.build_legacy_followup_payload(condition, scenario)})
 
 
 def _trim_feedback_value(value, max_len=1200):
@@ -2202,45 +2081,20 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         expert_preference = data.get("expert_preference", "system")
         lat, lng = _resolve_recommendation_location(district, data.get("lat"), data.get("lng"))
 
-    triage = analyze_medical_triage(condition, scenario)
-    effective_scenario = triage.get("recommended_scenario") or scenario
-    resource_strategy = _resource_strategy(triage, expert_preference)
-    hospitals = recommend(condition, lat, lng, triage=triage)
-    if enhanced or REAL_DOCTORS:
-        doctors = enhanced_recommend_doctors(
-            condition,
-            effective_scenario,
-            top_n=doctor_top_n,
-            user_lat=lat,
-            user_lng=lng,
-            triage=triage,
-            expert_preference=expert_preference,
-        )
-    else:
-        doctors = recommend_doctors(condition)
-    matched_dept = triage.get("matched_department") or match_department(condition)
-
-    result = {
-        "condition": condition,
-        "scenario": scenario,
-        "effective_scenario": effective_scenario,
-        "expert_preference": expert_preference,
-        "resource_strategy": resource_strategy,
-        "triage": triage,
-        "htriage_analysis": _htriage_public_payload(triage),
-        "disease_prediction": predict_disease_name(condition, details=True),
-        "matched_department": matched_dept,
-        "user_location": {"district": district, "lat": lat, "lng": lng},
-        "recommended_hospitals": hospitals,
-        "recommended_doctors": doctors,
-        "weights_used": ENHANCED_WEIGHTS.get(effective_scenario, ENHANCED_WEIGHTS["surgery"]),
-        "hospital_weights_used": HOSPITAL_RANKING_WEIGHTS.get(triage.get("level", "routine"), HOSPITAL_RANKING_WEIGHTS["routine"]),
-        "ranking_model": RANKING_MODEL_VERSION,
-        "data_source": "real_data" if enhanced else ("real" if REAL_DOCTORS else "mock"),
-    }
-    if not enhanced:
-        result["total_real_doctors"] = len(REAL_DOCTORS)
-    return _safety_first_publication(result, triage) if safety_first else result
+    context = RecommendationContext(
+        condition=condition,
+        scenario=scenario,
+        district=district,
+        expert_preference=expert_preference,
+        user_lat=lat,
+        user_lng=lng,
+    )
+    return RECOMMENDATION_APPLICATION_SERVICE.build(
+        context,
+        doctor_top_n=doctor_top_n,
+        enhanced=enhanced,
+        safety_first=safety_first,
+    )
 
 
 @app.route("/api/recommend", methods=["POST"])
@@ -2259,35 +2113,19 @@ def api_recommend():
 @app.route("/api/hospitals/<int:hid>/doctors")
 def api_hospital_doctors(hid):
     """获取某医院的所有医生 [真实数据]"""
-    result = [d for d in REAL_DOCTORS if d["hospital_id"] == hid]
-    if not result:
-        result = [d for d in DOCTORS if d["hospital_id"] == hid]
-    hospital = next((h for h in HOSPITALS if h["id"] == hid), None)
-    return jsonify({
-        "code": 200,
-        "data": {
-            "hospital": hospital,
-            "doctors": result,
-            "count": len(result),
-            "source": "real" if any(d["id"] >= 1000 for d in result) else "mock"
-        }
-    })
+    return jsonify({"code": 200, "data": RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_hospital_doctors(hid)})
 
 
 @app.route("/api/departments")
 def api_departments():
     """获取科室列表"""
-    depts = set()
-    for h in HOSPITALS:
-        for d in h["departments"]:
-            depts.add(d)
-    return jsonify({"code": 200, "data": sorted(depts)})
+    return jsonify({"code": 200, "data": RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_departments()})
 
 
 @app.route("/api/districts")
 def api_districts():
     """获取区域列表"""
-    return jsonify({"code": 200, "data": list(USER_LOCATIONS.keys())})
+    return jsonify({"code": 200, "data": RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_districts(USER_LOCATIONS)})
 
 
 @app.route("/api/recommend/enhanced", methods=["POST"])
@@ -2311,22 +2149,97 @@ def _safety_first_publication(payload, triage):
     return _publish_safety_first(payload, triage, _htriage_public_payload)
 
 
+RECOMMENDATION_APPLICATION_SERVICE = RecommendationApplicationService(
+    analyze_triage=analyze_medical_triage,
+    resource_strategy=_resource_strategy,
+    recommend_hospitals=recommend,
+    enhanced_recommend_doctors=enhanced_recommend_doctors,
+    legacy_recommend_doctors=recommend_doctors,
+    match_department=match_department,
+    build_public_htriage=_htriage_public_payload,
+    predict_disease=predict_disease_name,
+    publish_safety_first=_safety_first_publication,
+    enhanced_weights=ENHANCED_WEIGHTS,
+    hospital_weights=HOSPITAL_RANKING_WEIGHTS,
+    ranking_model=RANKING_MODEL_VERSION,
+    has_real_doctors=bool(REAL_DOCTORS),
+    real_doctor_count=len(REAL_DOCTORS),
+)
+
+
+TRIAGE_APPLICATION_SERVICE = TriageApplicationService(
+    analyze_triage=analyze_medical_triage,
+    evaluate_safety=evaluate_safety_gate,
+    publish_triage=_safety_first_triage,
+    predict_disease=predict_disease_name,
+    publish_prediction=_safety_first_prediction,
+    build_public_htriage=_htriage_public_payload,
+    publish_htriage=_safety_first_htriage_payload,
+    match_department=match_department,
+)
+
+
+RESOURCE_CATALOG_APPLICATION_SERVICE = ResourceCatalogApplicationService(
+    hospitals=lambda: HOSPITALS,
+    real_doctors=lambda: REAL_DOCTORS,
+    fallback_doctors=lambda: DOCTORS,
+)
+
+
+DISEASE_PREDICTION_APPLICATION_SERVICE = DiseasePredictionApplicationService(
+    predict_disease=predict_disease_name,
+    standard_symptom_tags=_model_standard_symptom_tags,
+)
+
+
+TRANSIT_CATALOG_APPLICATION_SERVICE = TransitCatalogApplicationService(
+    routes=lambda: BUS_ROUTE_DATA,
+    stations=lambda: BUS_STATION_DATA,
+    taxi_operations=lambda: TAXI_OPERATION_DATA,
+    bike_stations=lambda: BIKE_STATION_DATA,
+    bike_vehicles=lambda: BIKE_VEHICLE_DATA,
+    hospital_station_access=_hospital_station_access,
+    hospital_taxi_access=_hospital_taxi_access,
+    hospital_bike_access=_hospital_bike_access,
+    hospital_bike_vehicle_distribution=_hospital_bike_vehicle_distribution,
+)
+
+
+SUMMARY_APPLICATION_SERVICE = SummaryApplicationService(
+    region=REGION_REGISTRY.get,
+    hospitals=lambda: HOSPITALS,
+    real_doctors=lambda: REAL_DOCTORS,
+    fallback_doctors=lambda: DOCTORS,
+    transit=lambda: BUS_ROUTE_DATA,
+)
+
+
+EVIDENCE_APPLICATION_SERVICE = EvidenceApplicationService(
+    Path(BASE_DIR),
+    analyze_medical_triage,
+)
+
+
+MAP_VIEW_APPLICATION_SERVICE = MapViewApplicationService(
+    hospitals=lambda: HOSPITALS,
+    region=REGION_REGISTRY.get,
+)
+
+
+DISTANCE_RERANK_APPLICATION_SERVICE = DistanceRerankApplicationService(
+    real_doctors=lambda: REAL_DOCTORS,
+    fallback_doctors=lambda: DOCTORS,
+    hospitals=lambda: HOSPITALS,
+    distance=haversine,
+)
+
+
 def _v1_triage_payload(condition, scenario):
-    triage = analyze_medical_triage(condition, scenario)
-    decision = evaluate_safety_gate(triage)
-    public_triage = _safety_first_triage(triage, decision)
-    return {
-        "condition": condition,
-        "matched_department": public_triage.get("matched_department") or match_department(condition),
-        "triage_status": decision.status.value,
-        "disease_prediction": (
-            _safety_first_prediction(predict_disease_name(condition, details=True))
-            if decision.status in (TriageStatus.EMERGENCY, TriageStatus.INSUFFICIENT_INFORMATION)
-            else predict_disease_name(condition, details=True)
-        ),
-        "triage": public_triage,
-        "htriage_analysis": _safety_first_htriage_payload(_htriage_public_payload(public_triage), decision),
-    }
+    return TRIAGE_APPLICATION_SERVICE.build_payload(condition, scenario)
+
+
+def _v1_followup_payload(payload):
+    return TRIAGE_APPLICATION_SERVICE.build_followup_payload(payload)
 
 
 def _v1_success(data):
@@ -2373,15 +2286,7 @@ def api_v1_followups():
     except RequestValidationError as exc:
         return _v1_validation_error(exc)
     payload = _v1_triage_payload(parsed.condition, parsed.scenario)
-    payload = {
-        "condition": payload["condition"],
-        "matched_department": payload["matched_department"],
-        "triage_status": payload["triage_status"],
-        "triage_label": payload["triage"].get("label"),
-        "followup": payload["triage"].get("followup", {}),
-        "known_disease": payload["triage"].get("known_disease", {}),
-        "htriage_analysis": payload["htriage_analysis"],
-    }
+    payload = _v1_followup_payload(payload)
     return _v1_success(payload)
 
 
@@ -2401,13 +2306,12 @@ def api_v1_recommendations():
 
 
 def api_v1_hospitals():
-    return _v1_success({"items": HOSPITALS, "count": len(HOSPITALS), "source": "legacy_catalog_pending_provenance"})
+    return _v1_success(RESOURCE_CATALOG_APPLICATION_SERVICE.list_hospitals())
 
 
 def api_v1_doctors():
     hospital_id = request.args.get("hospital_id", type=int)
-    rows = REAL_DOCTORS if hospital_id is None else [row for row in REAL_DOCTORS if row.get("hospital_id") == hospital_id]
-    return _v1_success({"items": rows, "count": len(rows), "source": "public_source_mixed"})
+    return _v1_success(RESOURCE_CATALOG_APPLICATION_SERVICE.list_doctors(hospital_id=hospital_id))
 
 
 def _v1_resource_not_found(resource_label: str, resource_id: int):
@@ -2421,81 +2325,30 @@ def _v1_resource_not_found(resource_label: str, resource_id: int):
 
 def api_v1_hospital_detail(hid: int):
     """Return a safe public hospital detail view without internal ranking fields."""
-    hospital = next((item for item in HOSPITALS if item.get("id") == hid), None)
-    if hospital is None:
+    payload = RESOURCE_CATALOG_APPLICATION_SERVICE.hospital_detail(hid)
+    if payload is None:
         return _v1_resource_not_found("医院", hid)
-    doctor_count = sum(1 for doctor in REAL_DOCTORS if doctor.get("hospital_id") == hid)
-    return _v1_success(build_hospital_detail(hospital, doctor_count=doctor_count))
+    return _v1_success(payload)
 
 
 def api_v1_doctor_detail(did: int):
     """Return a safe public doctor detail view with a minimal hospital relation."""
-    doctor = next((item for item in REAL_DOCTORS if item.get("id") == did), None)
-    source_class = "public_source_mixed"
-    if doctor is None:
-        doctor = next((item for item in DOCTORS if item.get("id") == did), None)
-        source_class = "legacy_mock_catalog"
-    if doctor is None:
+    payload = RESOURCE_CATALOG_APPLICATION_SERVICE.doctor_detail(did)
+    if payload is None:
         return _v1_resource_not_found("医生", did)
-    hospital = next((item for item in HOSPITALS if item.get("id") == doctor.get("hospital_id")), None)
-    return _v1_success(build_doctor_detail(
-        doctor,
-        hospital=hospital,
-        source_class=source_class,
-    ))
+    return _v1_success(payload)
 
 
 def api_v1_summary():
     """Return API-backed summary metrics without loading full resource collections."""
-    region = REGION_REGISTRY.get(app.config.get("REGION_CODE", "320400"))
-    districts = list(region.manifest.get("districts") or []) if region else []
-    hospital_dataset = (region.datasets.get("hospitals") or {}) if region else {}
-    transit_dataset = (region.datasets.get("transit") or {}) if region else {}
-    metrics = {
-        "hospitals": {
-            "value": len(HOSPITALS),
-            "label": "医疗机构",
-            "source_class": hospital_dataset.get("source", "legacy_catalog_pending_provenance"),
-            "status": hospital_dataset.get("status", "migration_pending"),
-        },
-        "doctors": {
-            "value": len(REAL_DOCTORS) if REAL_DOCTORS else len(DOCTORS),
-            "label": "医生公开资料",
-            "source_class": "public_source_mixed" if REAL_DOCTORS else "legacy_mock_catalog",
-            "status": "available" if REAL_DOCTORS else "fallback",
-        },
-        "bus_routes": {
-            "value": len(BUS_ROUTE_DATA.get("routes", [])),
-            "label": "公交线路",
-            "source_class": (transit_dataset.get("bus_routes") or {}).get("source_class", "unknown"),
-            "status": "available",
-        },
-        "districts": {
-            "value": len(districts),
-            "label": "城市区域",
-            "source_class": "region_manifest",
-            "status": "available" if region else "not_ready",
-        },
-    }
-    return _v1_success({
-        "region": {
-            "code": region.code if region else app.config.get("REGION_CODE", "320400"),
-            "name": region.name if region else "常州市",
-            "status": region.status if region else "not_ready",
-            "region_pack_version": region.version if region else "unknown",
-        },
-        "metrics": metrics,
-        "generated_from": {
-            "region_pack_version": region.version if region else "unknown",
-            "dataset_status": "runtime_summary",
-        },
-    })
+    return _v1_success(SUMMARY_APPLICATION_SERVICE.build(
+        app.config.get("REGION_CODE", "320400"),
+    ))
 
 
 def api_v1_evidence():
     """Return committed evaluation and provenance facts for the Trust Center."""
-    return _v1_success(build_evidence_payload(
-        Path(BASE_DIR),
+    return _v1_success(EVIDENCE_APPLICATION_SERVICE.build(
         app_version=app.config.get("APP_VERSION", "unknown"),
         ranking_version=app.config.get("RANKING_VERSION", RANKING_MODEL_VERSION),
         triage_rules_version=app.config.get("TRIAGE_RULES_VERSION", "unknown"),
@@ -2503,7 +2356,6 @@ def api_v1_evidence():
         dataset_version=app.config.get("DATASET_VERSION", "unknown"),
         region_pack_version=app.config.get("REGION_PACK_VERSION", "unknown"),
         region_code=app.config.get("REGION_CODE", "320400"),
-        triage_fn=analyze_medical_triage,
     ))
 
 
@@ -2512,12 +2364,8 @@ def api_v1_map():
     try:
         user_lat = parse_coordinate(request.args.get("lat"), "lat", -90, 90)
         user_lng = parse_coordinate(request.args.get("lng"), "lng", -180, 180)
-        region = REGION_REGISTRY.get(app.config.get("REGION_CODE", "320400"))
-        payload = build_map_payload(
-            HOSPITALS,
+        payload = MAP_VIEW_APPLICATION_SERVICE.build(
             region_code=app.config.get("REGION_CODE", "320400"),
-            region_name=region.name if region else "常州市",
-            region_pack_version=region.version if region else app.config.get("REGION_PACK_VERSION", "unknown"),
             user_lat=user_lat,
             user_lng=user_lng,
         )
@@ -2529,6 +2377,20 @@ def api_v1_map():
             model_version=app.config.get("MODEL_VERSION", RANKING_MODEL_VERSION),
         )), 400
     return _v1_success(payload)
+
+
+register_legacy_handlers(app, {
+    "api_v1_triage": api_v1_triage,
+    "api_v1_followups": api_v1_followups,
+    "api_v1_recommendations": api_v1_recommendations,
+    "api_v1_hospitals": api_v1_hospitals,
+    "api_v1_hospital_detail": api_v1_hospital_detail,
+    "api_v1_doctors": api_v1_doctors,
+    "api_v1_doctor_detail": api_v1_doctor_detail,
+    "api_v1_summary": api_v1_summary,
+    "api_v1_evidence": api_v1_evidence,
+    "api_v1_map": api_v1_map,
+})
 
 
 @app.route("/api/recommend/rerank", methods=["POST"])
@@ -2553,128 +2415,60 @@ def api_rerank_by_distance():
             district = "天宁区"
         user_lat, user_lng = USER_LOCATIONS[district]
 
-    results = []
-    for did in doctor_ids:
-        doc = None
-        for d in REAL_DOCTORS:
-            if d["id"] == did:
-                doc = d
-                break
-        if not doc:
-            for d in DOCTORS:
-                if d["id"] == did:
-                    doc = d
-                    break
-        if not doc:
-            continue
-
-        hid = doc["hospital_id"]
-        hospital = next((h for h in HOSPITALS if h["id"] == hid), None)
-        if not hospital:
-            continue
-
-        distance = haversine(user_lat, user_lng, hospital["lat"], hospital["lng"])
-        results.append({
-            "doctor": doc,
-            "hospital": {
-                "id": hospital["id"],
-                "name": hospital["name"],
-                "level": hospital["level"],
-                "address": hospital["address"],
-                "lat": hospital["lat"],
-                "lng": hospital["lng"],
-            },
-            "distance_km": distance,
-        })
-
-    results.sort(key=lambda r: r["distance_km"])
-
     return jsonify({
         "code": 200,
-        "data": {
-            "user_district": district,
-            "user_location": {"lat": user_lat, "lng": user_lng},
-            "ranked_doctors": results,
-            "count": len(results),
-        }
+        "data": DISTANCE_RERANK_APPLICATION_SERVICE.rerank(
+            doctor_ids,
+            district=district,
+            user_lat=user_lat,
+            user_lng=user_lng,
+        ),
     })
 
 
 @app.route("/api/doctors/detail/<int:did>")
 def api_doctor_detail_enhanced(did):
     """获取医生详细信息 [真实数据, 含手术量/论文/科研成果]"""
-    # 先在真实数据中查找
-    for d in REAL_DOCTORS:
-        if d["id"] == did:
-            return jsonify({"code": 200, "data": d})
-    # 再查模拟数据
-    d = next((x for x in DOCTORS if x["id"] == did), None)
-    if d:
-        hospital = next((h for h in HOSPITALS if h["id"] == d["hospital_id"]), None)
-        return jsonify({"code": 200, "data": {"doctor": d, "hospital": hospital}})
+    payload = RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_enhanced_doctor_detail(did)
+    if payload is not None:
+        return jsonify({"code": 200, "data": payload})
     return jsonify({"code": 404, "message": "医生不存在"}), 404
 
 
 @app.route("/api/stats")
 def api_stats():
     """系统统计概览 [接口预留: 对接大数据平台]"""
-    return jsonify({
-        "code": 200,
-        "data": {
-            "total_hospitals": len(HOSPITALS),
-            "total_doctors": len(REAL_DOCTORS) if REAL_DOCTORS else len(DOCTORS),
-            "total_real_doctors": len(REAL_DOCTORS),
-            "total_mock_doctors": len(DOCTORS),
-            "total_beds": sum(h["beds"] for h in HOSPITALS),
-            "daily_outpatients_total": sum(h["daily_outpatients"] for h in HOSPITALS),
-            "top_departments": ["心血管内科", "骨科", "肿瘤科", "神经内科", "消化内科"],
-        }
-    })
+    return jsonify({"code": 200, "data": RESOURCE_CATALOG_APPLICATION_SERVICE.legacy_stats()})
 
 @app.route("/api/transit/routes")
 def api_transit_routes():
     """公共交通线路脱敏数据。"""
-    return jsonify({
-        "code": 200,
-        "data": BUS_ROUTE_DATA.get("routes", []),
-        "summary": BUS_ROUTE_DATA.get("summary", {}),
-    })
+    payload = TRANSIT_CATALOG_APPLICATION_SERVICE.routes_payload()
+    return jsonify({"code": 200, "data": payload["items"], "summary": payload["summary"]})
 
 @app.route("/api/transit/stations")
 def api_transit_stations():
     """公共交通站点脱敏数据。"""
-    return jsonify({
-        "code": 200,
-        "data": BUS_STATION_DATA.get("stations", []),
-        "summary": BUS_STATION_DATA.get("summary", {}),
-    })
+    payload = TRANSIT_CATALOG_APPLICATION_SERVICE.stations_payload()
+    return jsonify({"code": 200, "data": payload["items"], "summary": payload["summary"]})
 
 @app.route("/api/transit/taxi-operations")
 def api_transit_taxi_operations():
     """出租车/网约车运营脱敏样本数据。"""
-    return jsonify({
-        "code": 200,
-        "data": TAXI_OPERATION_DATA.get("operations", []),
-        "summary": TAXI_OPERATION_DATA.get("summary", {}),
-    })
+    payload = TRANSIT_CATALOG_APPLICATION_SERVICE.taxi_operations_payload()
+    return jsonify({"code": 200, "data": payload["items"], "summary": payload["summary"]})
 
 @app.route("/api/transit/bike-stations")
 def api_transit_bike_stations():
     """公共自行车/助力车站点脱敏数据。"""
-    return jsonify({
-        "code": 200,
-        "data": BIKE_STATION_DATA.get("stations", []),
-        "summary": BIKE_STATION_DATA.get("summary", {}),
-    })
+    payload = TRANSIT_CATALOG_APPLICATION_SERVICE.bike_stations_payload()
+    return jsonify({"code": 200, "data": payload["items"], "summary": payload["summary"]})
 
 @app.route("/api/transit/bike-vehicles")
 def api_transit_bike_vehicles():
     """共享单车/助力车车辆状态脱敏数据。"""
-    return jsonify({
-        "code": 200,
-        "data": BIKE_VEHICLE_DATA.get("vehicles", []),
-        "summary": BIKE_VEHICLE_DATA.get("summary", {}),
-    })
+    payload = TRANSIT_CATALOG_APPLICATION_SERVICE.bike_vehicles_payload()
+    return jsonify({"code": 200, "data": payload["items"], "summary": payload["summary"]})
 
 @app.route("/api/transit/stats")
 def api_transit_stats():
@@ -2693,35 +2487,7 @@ def api_assistant_process():
 
     if not answers:
         return jsonify({"code": 400, "message": "请提供问诊回答"}), 400
-
-    parts = []
-    if answers.get("step0"):
-        parts.append(answers["step0"])
-    if answers.get("step1"):
-        parts.append(f"持续{answers['step1']}")
-    if answers.get("step2"):
-        severity = answers["step2"]
-        if "较严重" in severity:
-            parts.insert(0, "严重症状")
-        elif "严重" in severity:
-            parts.insert(0, "中度症状")
-    if answers.get("step3") and answers["step3"] != "没有其他症状":
-        parts.append(answers["step3"])
-
-    condition = "；".join(parts) if parts else answers.get("step0", "")
-    matched_dept = match_department(answers.get("step0", ""))
-    triage = analyze_medical_triage(condition, "first_visit")
-
-    return jsonify({
-        "code": 200,
-        "data": {
-            "condition": condition,
-            "matched_department": matched_dept,
-            "disease_prediction": predict_disease_name(condition, details=True),
-            "triage": triage,
-            "htriage_analysis": _htriage_public_payload(triage),
-        }
-    })
+    return jsonify({"code": 200, "data": TRIAGE_APPLICATION_SERVICE.build_legacy_assistant_payload(answers)})
 
 
 if __name__ == "__main__":

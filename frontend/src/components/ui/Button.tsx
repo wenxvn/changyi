@@ -13,10 +13,11 @@ export function Button({
   icon,
   children,
   className = "",
+  type = "button",
   ...props
 }: ButtonProps) {
   return (
-    <button className={`button button--${variant} ${className}`.trim()} {...props}>
+    <button type={type} className={`button button--${variant} ${className}`.trim()} {...props}>
       <span>{children}</span>
       {icon ? <span className="button__icon">{icon}</span> : null}
     </button>

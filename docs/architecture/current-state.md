@@ -1,6 +1,6 @@
 # 当前架构与重构边界
 
-更新时间：2026-09-10
+更新时间：2026-09-11
 
 ## 当前形态
 
@@ -42,13 +42,18 @@ app.py（legacy shell + adapters）
 - **推荐**：科室匹配、医院/医生资源评分、距离、交通可达性、公平性和推荐解释。
 - **接口层**：医院、医生、推荐、分诊、追问、反馈、统计、交通和助手接口。
 - **演示启动**：`app.run(... port=5002)`。
-- **版本化接口**：全部 `/api/v1` 外壳由 blueprint 提供；triage、followups、recommendations、医院/医生通过 `backend.app.api.v1.legacy_adapter` 延迟复用组合逻辑，完整 legacy route factory parity 尚未完成。
+- **版本化接口**：全部 `/api/v1` 外壳由 blueprint 提供；triage、followups、recommendations、医院/医生通过 `backend.app.api.v1.legacy_adapter` 延迟复用兼容入口，其中 triage/recommendation/resource catalog/prediction/transit/rerank/summary/evidence/map/region read 的编排已落到 application service，完整 legacy route factory parity 尚未完成。
 - **输入 domain**：`backend.app.domain.medical_input` 已承载现有口语归一化和否定窗口纯函数；已知疾病、红旗和分诊仍由 legacy 组合逻辑提供，等待后续 Safety Gate 切片。
 - **Safety Gate domain**：`backend.app.domain.triage.safety_gate` 已承载四态枚举和基于 legacy 输出的安全交接 decision；`backend.app.domain.triage.publication` 已承载 Safety-first 的疾病候选/模型/追问脱敏；红旗规则本身仍在 legacy 组合逻辑中，评估集已把现有缺口显式列为 review required。
 - **v1 安全发布边界**：`/api/v1` triage/recommendations 在 `EMERGENCY` 或 `INSUFFICIENT_INFORMATION` 时对疾病候选做 abstain；急症不公开普通 follow-up，保留红旗、急诊动作和免责声明。legacy `/api/*` 暂保留原输出，等待后续 adapter parity 切片。
-- **推荐 domain**：`backend.app.domain.recommendation.scoring` 已承载 clamp、文本、科室关系、医生职称、内部资源分层、医院/医生 score 组合；`resource_policy` 已承载医生资源策略、专家偏好修正和错配惩罚；`candidate` 已承载医院候选遍历 orchestration、急症医生兜底候选遍历、单候选 feature/score/explain/result 组合、急症兜底评分、普通医生和急症兜底候选的解释/结果对象组装；`candidates` 已承载医生 candidate 过滤、医院科室命中/强项回退和急症医院资格；`traffic` 已承载交通摘要、可达性 score、样本行索引和四类样本计算；`backend.app.infrastructure.repositories.transit_repository.LazyTrafficAccessCache` 已承载交通 map 的懒加载生命周期；交通数据加载和急症整体排序仍在 `app.py`，通过快照渐进迁移。
+- **推荐 domain**：`backend.app.domain.recommendation.scoring` 已承载 clamp、文本、科室关系、医生职称、内部资源分层、医院/医生 score 组合；`resource_policy` 已承载医生资源策略、专家偏好修正和错配惩罚；`candidate` 已承载医院候选遍历 orchestration、急症医生兜底候选遍历、单候选 feature/score/explain/result 组合、急症兜底评分、普通医生和急症兜底候选的解释/结果对象组装；`candidates` 已承载医生 candidate 过滤、医院科室命中/强项回退和急症医院资格；`traffic` 已承载交通摘要、可达性 score、样本行索引和四类样本计算；`backend.app.infrastructure.repositories.transit_repository.LazyTrafficAccessCache` 已承载交通 map 的懒加载生命周期；`backend.app.application.recommendation.RecommendationApplicationService` 已承载推荐结果编排；交通数据加载和急症整体排序仍在 `app.py`，通过快照渐进迁移。
 - **医院 feature domain**：`backend.app.domain.recommendation.features` 已承载医院能力、等级、可用性、质量、连续照护、特殊人群适配、风险惩罚和解释纯函数；交通/距离与完整排序组合仍在 legacy。
 - **医院 rerank domain**：`backend.app.domain.recommendation.pipeline` 已承载已评分医院候选的基础排序、区域多样性和普通场景三甲数量约束；候选生成、交通/距离和 score 组合仍在 legacy，急症旁路不应用普通约束。
+- **资源目录 application**：`backend.app.application.resources.ResourceCatalogApplicationService` 已承载 v1 与 legacy 医院/医生索引、筛选、详情查找、关系、科室/区域索引、统计和兼容医生回退；公开字段白名单和 provenance read model 仍由同模块提供，医院正式发布仍处于 pending。
+- **模型/交通/重排 application**：`backend.app.application.prediction.DiseasePredictionApplicationService` 承载 prediction endpoint 的状态判定与详情 enrichment；`backend.app.infrastructure.models.SymptomDiseaseModelAdapter` 承载本地模型 lazy loading/inference；`backend.app.application.transit.TransitCatalogApplicationService` 承载五类交通 read model/统计；`backend.app.application.recommendation.DistanceRerankApplicationService` 承载旧医生距离重排。它们均由 `app.py` composition root 注入 legacy 数据/函数，未改变模型、交通或推荐语义。
+- **只读投影 application**：`backend.app.application.summary.SummaryApplicationService` 承载运行摘要指标；`EvidenceApplicationService` 承载 Trust Center 离线证据组合；`MapViewApplicationService` 承载区域/医院地图投影。三者只读取注入 supplier，保留 provisional、provenance 限制、坐标校验和“位置示意非导航”语义。
+- **区域读取 application**：`backend.app.application.regions.RegionReadApplicationService` 承载 active Region Pack readiness 和 active-only public summaries；由 `create_app` extension 注册，blueprint 不直接创建 `RegionRegistry`。
+- **v1 兼容接缝**：`backend.app.api.v1.legacy_adapter` 优先从 Flask extension registry 解析已注册 handler，未注册时保留旧 import fallback；registry 只负责解析，不承载业务策略。
 
 ## 前端职责现状
 
@@ -88,6 +93,6 @@ frontend shell
 
 - `app.py` 中存在硬编码常量和动态加载混合，适合先做“只搬运不改行为”的分层。
 - 当前已有基础测试和稳定字段快照，先扩展接口/纯函数表征与模型不可用样例，比直接拆文件更安全。
-- 当前已有 86 个基础、输入边界、模型 smoke、Safety Gate、安全发布、评估集、API contract 和推荐 scoring/feature/rerank/resource-policy/candidate/traffic/cache 测试，以及稳定快照；CI workflow 已建立，远端首次运行待推送后确认。
+- 当前已有 116 个基础、输入边界、模型 adapter/prediction smoke、Safety Gate、安全发布、评估集、API contract、资源/交通/重排/只读投影/区域读取 application-service 测试，以及稳定快照；CI workflow 已建立，远端首次运行待推送后确认。
 - 前端全局状态较多，先抽 API client 和页面级状态边界，不宜立即引入大型框架。
 - 交通数据参与可达性展示和部分评分，拆分时必须验证“展示数据”和“推荐排序数据”的边界。

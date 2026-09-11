@@ -148,3 +148,34 @@ def build_evidence_payload(
             "模型指标来自小数据单次切分，不能代表真实临床表现。",
         ],
     }
+
+
+class EvidenceApplicationService:
+    """Compose the Trust Center evidence view from a fixed project root."""
+
+    def __init__(self, project_root: Path, triage_fn: Callable[[str], Mapping[str, Any]]) -> None:
+        self._project_root = project_root
+        self._triage_fn = triage_fn
+
+    def build(
+        self,
+        *,
+        app_version: str,
+        ranking_version: str,
+        triage_rules_version: str,
+        model_version: str,
+        dataset_version: str,
+        region_pack_version: str,
+        region_code: str,
+    ) -> dict[str, Any]:
+        return build_evidence_payload(
+            self._project_root,
+            app_version=app_version,
+            ranking_version=ranking_version,
+            triage_rules_version=triage_rules_version,
+            model_version=model_version,
+            dataset_version=dataset_version,
+            region_pack_version=region_pack_version,
+            region_code=region_code,
+            triage_fn=self._triage_fn,
+        )

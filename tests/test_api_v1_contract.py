@@ -123,3 +123,9 @@ class ApiV1ContractTests(TestCase):
     def test_legacy_adapter_resolves_handlers_lazily(self):
         handler = resolve_legacy_handler("api_v1_triage")
         self.assertTrue(callable(handler))
+
+    def test_legacy_adapter_prefers_registered_factory_handlers(self):
+        with legacy_app.app.app_context():
+            handler = resolve_legacy_handler("api_v1_triage")
+        self.assertIs(handler, legacy_app.api_v1_triage)
+        self.assertIn("api_v1_map", legacy_app.app.extensions["changyi.v1_legacy_handlers"])

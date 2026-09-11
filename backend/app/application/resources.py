@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping, Sequence
+from dataclasses import dataclass
 from typing import Any
 
 
@@ -48,6 +49,166 @@ DOCTOR_PUBLIC_FIELDS = (
     "outpatient_time",
     "photo_url",
 )
+
+LEGACY_TOP_DEPARTMENTS = (
+    "心血管内科",
+    "骨科",
+    "肿瘤科",
+    "神经内科",
+    "消化内科",
+)
+
+
+@dataclass(frozen=True)
+class ResourceCatalogApplicationService:
+    """Coordinate read-only catalog access without owning HTTP concerns."""
+
+    hospitals: Callable[[], Sequence[Mapping[str, Any]]]
+    real_doctors: Callable[[], Sequence[Mapping[str, Any]]]
+    fallback_doctors: Callable[[], Sequence[Mapping[str, Any]]]
+
+    def legacy_hospitals(self) -> dict[str, Any]:
+        """Build the unchanged legacy hospital-list payload."""
+
+        items = list(self.hospitals())
+        return {"items": items, "count": len(items)}
+
+    def legacy_hospital_detail(self, hospital_id: int) -> dict[str, Any] | None:
+        """Build the unchanged legacy hospital detail payload."""
+
+        hospital = next((item for item in self.hospitals() if item.get("id") == hospital_id), None)
+        if hospital is None:
+            return None
+        doctors = [doctor for doctor in self.real_doctors() if doctor.get("hospital_id") == hospital_id]
+        if not doctors:
+            doctors = [doctor for doctor in self.fallback_doctors() if doctor.get("hospital_id") == hospital_id]
+        source = "real" if any(doctor.get("hospital_id") == hospital_id for doctor in self.real_doctors()) else "mock"
+        return {"hospital": hospital, "doctors": doctors, "source": source}
+
+    def legacy_doctors(
+        self,
+        *,
+        department: str | None = None,
+        hospital_id: int | None = None,
+        use_real: bool = True,
+    ) -> dict[str, Any]:
+        """Build the unchanged legacy doctor index payload."""
+
+        doctors = list(self.real_doctors() if use_real else self.fallback_doctors())
+        if not doctors:
+            doctors = list(self.fallback_doctors())
+        if department:
+            doctors = [doctor for doctor in doctors if doctor.get("department") == department]
+        if hospital_id:
+            doctors = [doctor for doctor in doctors if doctor.get("hospital_id") == hospital_id]
+        return {
+            "items": doctors,
+            "count": len(doctors),
+            "source": "real" if use_real else "mock",
+        }
+
+    def legacy_doctor_detail(self, doctor_id: int) -> dict[str, Any] | None:
+        """Build the original doctor detail response (fallback catalog only)."""
+
+        doctor = next((item for item in self.fallback_doctors() if item.get("id") == doctor_id), None)
+        if doctor is None:
+            return None
+        hospital = next((item for item in self.hospitals() if item.get("id") == doctor.get("hospital_id")), None)
+        return {"doctor": doctor, "hospital": hospital}
+
+    def legacy_hospital_doctors(self, hospital_id: int) -> dict[str, Any]:
+        """Build the original hospital-doctor relation response."""
+
+        doctors = [doctor for doctor in self.real_doctors() if doctor.get("hospital_id") == hospital_id]
+        if not doctors:
+            doctors = [doctor for doctor in self.fallback_doctors() if doctor.get("hospital_id") == hospital_id]
+        hospital = next((item for item in self.hospitals() if item.get("id") == hospital_id), None)
+        return {
+            "hospital": hospital,
+            "doctors": doctors,
+            "count": len(doctors),
+            "source": "real" if any(doctor.get("id", 0) >= 1000 for doctor in doctors) else "mock",
+        }
+
+    def legacy_departments(self) -> list[str]:
+        """Return the original sorted hospital department index."""
+
+        departments = {
+            department
+            for hospital in self.hospitals()
+            for department in hospital.get("departments", [])
+        }
+        return sorted(departments)
+
+    @staticmethod
+    def legacy_districts(locations: Mapping[str, Any]) -> list[str]:
+        """Return region names in the original mapping order."""
+
+        return list(locations)
+
+    def legacy_stats(self) -> dict[str, Any]:
+        """Return the original catalog statistics read model."""
+
+        hospitals = list(self.hospitals())
+        real_doctors = list(self.real_doctors())
+        fallback_doctors = list(self.fallback_doctors())
+        return {
+            "total_hospitals": len(hospitals),
+            "total_doctors": len(real_doctors) if real_doctors else len(fallback_doctors),
+            "total_real_doctors": len(real_doctors),
+            "total_mock_doctors": len(fallback_doctors),
+            "total_beds": sum(hospital["beds"] for hospital in hospitals),
+            "daily_outpatients_total": sum(hospital["daily_outpatients"] for hospital in hospitals),
+            "top_departments": list(LEGACY_TOP_DEPARTMENTS),
+        }
+
+    def legacy_enhanced_doctor_detail(self, doctor_id: int) -> dict[str, Any] | None:
+        """Build the original enhanced doctor detail response."""
+
+        doctor = next((item for item in self.real_doctors() if item.get("id") == doctor_id), None)
+        if doctor is not None:
+            return doctor
+        doctor = next((item for item in self.fallback_doctors() if item.get("id") == doctor_id), None)
+        if doctor is None:
+            return None
+        hospital = next((item for item in self.hospitals() if item.get("id") == doctor.get("hospital_id")), None)
+        return {"doctor": doctor, "hospital": hospital}
+
+    def list_hospitals(self) -> dict[str, Any]:
+        items = list(self.hospitals())
+        return {
+            "items": items,
+            "count": len(items),
+            "source": "legacy_catalog_pending_provenance",
+        }
+
+    def list_doctors(self, *, hospital_id: int | None = None) -> dict[str, Any]:
+        rows = list(self.real_doctors())
+        if hospital_id is not None:
+            rows = [row for row in rows if row.get("hospital_id") == hospital_id]
+        return {
+            "items": rows,
+            "count": len(rows),
+            "source": "public_source_mixed",
+        }
+
+    def hospital_detail(self, hospital_id: int) -> dict[str, Any] | None:
+        hospital = next((item for item in self.hospitals() if item.get("id") == hospital_id), None)
+        if hospital is None:
+            return None
+        doctor_count = sum(1 for doctor in self.real_doctors() if doctor.get("hospital_id") == hospital_id)
+        return build_hospital_detail(hospital, doctor_count=doctor_count)
+
+    def doctor_detail(self, doctor_id: int) -> dict[str, Any] | None:
+        doctor = next((item for item in self.real_doctors() if item.get("id") == doctor_id), None)
+        source_class = "public_source_mixed"
+        if doctor is None:
+            doctor = next((item for item in self.fallback_doctors() if item.get("id") == doctor_id), None)
+            source_class = "legacy_mock_catalog"
+        if doctor is None:
+            return None
+        hospital = next((item for item in self.hospitals() if item.get("id") == doctor.get("hospital_id")), None)
+        return build_doctor_detail(doctor, hospital=hospital, source_class=source_class)
 
 
 def _public_record(source: Mapping[str, Any], fields: tuple[str, ...]) -> dict[str, Any]:

@@ -327,7 +327,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         {([[
           "overview", "资源总览",
         ], ["hospitals", "医院"], ["doctors", "医生"]] as Array<[ResourceTab, string]>).map(([tab, label]) => (
-          <button key={tab} type="button" role="tab" aria-selected={activeTab === tab} className={activeTab === tab ? "is-active" : ""} onClick={() => { setActiveTab(tab); setSelection(null); }}>
+          <button key={tab} id={`resource-tab-${tab}`} type="button" role="tab" aria-controls="resource-results-panel" aria-selected={activeTab === tab} tabIndex={activeTab === tab ? 0 : -1} className={activeTab === tab ? "is-active" : ""} onClick={() => { setActiveTab(tab); setSelection(null); }}>
             {label}
           </button>
         ))}
@@ -339,31 +339,33 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         <span>筛选只改变展示顺序与范围，不改变后端推荐策略。</span>
       </div>
 
-      {showingHospitals && hospitalError ? <div className="resources-error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{hospitalError.message}</span><button type="button" onClick={retryHospitals}>重试</button></div> : null}
-      {showingDoctors && doctorError ? <div className="resources-error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{doctorError.message}</span><button type="button" onClick={retryDoctors}>重试</button></div> : null}
+      <div id="resource-results-panel" role="tabpanel" aria-labelledby={`resource-tab-${activeTab}`} tabIndex={-1}>
+        {showingHospitals && hospitalError ? <div className="resources-error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{hospitalError.message}</span><button type="button" onClick={retryHospitals}>重试</button></div> : null}
+        {showingDoctors && doctorError ? <div className="resources-error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{doctorError.message}</span><button type="button" onClick={retryDoctors}>重试</button></div> : null}
 
-      {showingHospitals && hospitalLoading ? <div className="resources-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医院索引…</div> : null}
-      {showingDoctors && doctorLoading ? <div className="resources-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医生公开资料…</div> : null}
+        {showingHospitals && hospitalLoading ? <div className="resources-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医院索引…</div> : null}
+        {showingDoctors && doctorLoading ? <div className="resources-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医生公开资料…</div> : null}
 
-      {!hospitalLoading && showingHospitals && !hospitalError && filteredHospitals.length === 0 ? <div className="resources-empty"><Building2 size={22} aria-hidden="true" /><strong>没有匹配的医院资料</strong><span>可以换一个医院名称、地址或科室关键词。</span></div> : null}
-      {!doctorLoading && showingDoctors && !doctorError && filteredDoctors.length === 0 ? <div className="resources-empty"><Stethoscope size={22} aria-hidden="true" /><strong>没有匹配的医生资料</strong><span>可以换一个姓名、医院、科室或公开专长关键词。</span></div> : null}
+        {!hospitalLoading && showingHospitals && !hospitalError && filteredHospitals.length === 0 ? <div className="resources-empty"><Building2 size={22} aria-hidden="true" /><strong>没有匹配的医院资料</strong><span>可以换一个医院名称、地址或科室关键词。</span></div> : null}
+        {!doctorLoading && showingDoctors && !doctorError && filteredDoctors.length === 0 ? <div className="resources-empty"><Stethoscope size={22} aria-hidden="true" /><strong>没有匹配的医生资料</strong><span>可以换一个姓名、医院、科室或公开专长关键词。</span></div> : null}
 
-      {showingHospitals && !hospitalLoading && !hospitalError && filteredHospitals.length > 0 ? (
-        <div className="resource-index-layout">
-          <div className="resource-index-grid">{filteredHospitals.map((hospital) => <HospitalCard key={String(hospital.id ?? hospital.name)} hospital={hospital} selected={selection?.kind === "hospital" && selection.item.id === hospital.id} onSelect={() => setSelection({ kind: "hospital", item: hospital })} />)}</div>
-          {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} /> : null}
-        </div>
-      ) : null}
-
-      {showingDoctors && !doctorLoading && !doctorError && visibleDoctors.length > 0 ? (
-        <div className="resource-index-layout">
-          <div>
-            <div className="resource-index-grid">{visibleDoctors.map((doctor, index) => <DoctorCard key={String(doctor.id ?? `${doctor.name}-${index}`)} doctor={doctor} selected={selection?.kind === "doctor" && selection.item.id === doctor.id} onSelect={() => setSelection({ kind: "doctor", item: doctor })} />)}</div>
-            {filteredDoctors.length > visibleDoctors.length ? <p className="resource-index-cap">当前展示前 {visibleDoctors.length} 条匹配资料；继续缩小关键词以定位更多结果。</p> : null}
+        {showingHospitals && !hospitalLoading && !hospitalError && filteredHospitals.length > 0 ? (
+          <div className="resource-index-layout">
+            <div className="resource-index-grid">{filteredHospitals.map((hospital) => <HospitalCard key={String(hospital.id ?? hospital.name)} hospital={hospital} selected={selection?.kind === "hospital" && selection.item.id === hospital.id} onSelect={() => setSelection({ kind: "hospital", item: hospital })} />)}</div>
+            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} /> : null}
           </div>
-          {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} /> : null}
-        </div>
-      ) : null}
+        ) : null}
+
+        {showingDoctors && !doctorLoading && !doctorError && visibleDoctors.length > 0 ? (
+          <div className="resource-index-layout">
+            <div>
+              <div className="resource-index-grid">{visibleDoctors.map((doctor, index) => <DoctorCard key={String(doctor.id ?? `${doctor.name}-${index}`)} doctor={doctor} selected={selection?.kind === "doctor" && selection.item.id === doctor.id} onSelect={() => setSelection({ kind: "doctor", item: doctor })} />)}</div>
+              {filteredDoctors.length > visibleDoctors.length ? <p className="resource-index-cap">当前展示前 {visibleDoctors.length} 条匹配资料；继续缩小关键词以定位更多结果。</p> : null}
+            </div>
+            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} /> : null}
+          </div>
+        ) : null}
+      </div>
 
       <div className="resources-page__footer-note"><ArrowRight size={15} aria-hidden="true" /><span>需要根据当前症状寻找路径？</span><button type="button" onClick={() => onNavigate("/triage")}>开始智能分诊</button></div>
     </section>

@@ -1,7 +1,7 @@
 # Frontend Architecture — 常医智导
 
 状态：进行中  
-已完成切片：2026-09-10 Foundation / App Shell / Homepage / Triage / Follow-up / Result / Resources / Map / Trust 首版
+已完成切片：2026-09-10 Foundation / App Shell / Homepage / Triage / Follow-up / Result / Resources / Map / Trust 首版；2026-09-11 Profile / History / F12 accessibility polish / keyboard semantics 首版
 
 ## 目标
 
@@ -36,8 +36,9 @@ parallel frontend
 | `/resources` | 医疗资源 | F7/F8 资源浏览与详情首版 | 医院/医生索引、关键词筛选、来源状态和按选择加载的公开详情；逐字段 provenance 待后续 |
 | `/map` | 就医地图 | F9 Map 首版 | `/api/v1/map` 医院位置示意、列表/marker 联动、急诊字段筛选和资料预览；正式导航待后续 |
 | `/trust` | 可信 AI | F10 Trust 首版 | 安全评估、模型/数据证据、版本、SHA-256 和限制；指标标记为 provisional |
+| `/profile` | 本地演示资料 | F11 Profile / History 首版 | 本地访客说明、显式历史开关、脱敏分析摘要和二次确认清除；不代表登录或医疗档案 |
 
-路由使用浏览器 History API 的轻量控制器，不引入大型路由依赖。页面组件通过 `App` 接收当前路径，导航事件只改变页面状态和 URL，不写入 `window._*`。
+路由使用浏览器 History API 的轻量控制器，不引入大型路由依赖。页面组件通过 `App` 接收当前路径，导航事件只改变页面状态和 URL，不写入 `window._*`。App Shell 提供 skip link、main landmark、活动路由 `aria-current` 和移动导航 `aria-expanded`/`aria-controls`；Journey、资源和地图筛选使用显式 tab/panel 语义，Journey 支持方向键/Home/End。
 
 ## 状态边界
 
@@ -47,8 +48,9 @@ parallel frontend
 - `EvidenceState`：`/api/v1/evidence` 的 loading/success/error；只展示评测、来源、版本和限制，不在前端重算医学指标。
 - `ResourceDetailState`：用户选择的医院/医生详情、loading/error/retry；详情只由后端公开字段白名单和 provenance 契约提供。
 - `MapState`：`/api/v1/map` 的资源 items、筛选和 selected marker；距离只由后端在明确提供坐标时返回。
+- `DemoProfileState`：本地演示标识、历史开关和最多 8 条脱敏分析摘要；通过受控 state module 使用版本化 `localStorage`，不保存原始描述或追问答案。
 - `UiState`：AI Journey 当前手动选择、toast 和移动导航开关。
-- 收藏、历史和认证状态暂不在此切片实现；未来应使用明确的 local demo profile store，而不是全局变量。
+- 不提供账号、收藏、云端同步或真实身份状态；未来若扩展到这些能力必须另立 L4 隐私/认证评审。
 
 ## API 规则
 
@@ -58,9 +60,11 @@ parallel frontend
 - 每次请求生成 `X-Request-ID`，设置 timeout，并在组件卸载时传入 AbortSignal。
 - 统一解析 v1 `{ data, meta, error }` envelope；非 2xx、业务 error、JSON 解析失败和超时统一为 `ApiError`。
 - 页面组件不能直接调用 `fetch`，也不能从 legacy `/api/*` 复制业务数据。
-- API 缺字段时先补 v1 契约；当前前端使用 `/api/v1/summary`、`/api/v1/triage`、`/api/v1/triage/followups`、`/api/v1/recommendations`、`/api/v1/hospitals`、`/api/v1/hospitals/<id>`、`/api/v1/doctors`、`/api/v1/doctors/<id>` 和 `/api/v1/evidence`，数值、推荐对象、资源资料、评测、数据指纹和版本由运行数据/后端返回。
+- API 缺字段时先补 v1 契约；当前前端使用 `/api/v1/summary`、`/api/v1/triage`、`/api/v1/triage/followups`、`/api/v1/recommendations`、`/api/v1/hospitals`、`/api/v1/hospitals/<id>`、`/api/v1/doctors`、`/api/v1/doctors/<id>`、`/api/v1/evidence` 和 `/api/v1/map`，数值、推荐对象、资源资料、评测、地图、数据指纹和版本由运行数据/后端返回。
 - Trust Center 只读取 Evidence payload；`provisional`、`review_required`、数据质量问题和来源状态必须伴随指标显示，不得改写为临床验证或发布放行。
 - Map 只读取 `/api/v1/map`；列表与 marker 使用同一 items，`distance_km` 只有明确合法坐标时才出现，直线距离不展示为导航/急救时间。
+- Profile/History 不调用后端，不把本地摘要当作 API 事实；历史默认关闭，开启后只保留时间、固定场景、服务端状态/标签和匹配科室，并始终标记为当前浏览器本地数据。
+- App Shell 的跨页滚动遵守 `prefers-reduced-motion`；共享 `:focus-visible` 覆盖 button、textarea、input 和 anchor，页面关键跳转可通过 skip link 直达 main landmark。共享 `Button` 默认使用 `type="button"`，提交动作显式声明 `type="submit"`。
 
 ## 医学安全边界
 
@@ -73,7 +77,8 @@ components/ui          Button, IconButton, Input, Badge, Skeleton
 components/visualization CarePath, JourneyPreview, CityMapSketch
 components/medical     CurrentUnderstanding, FollowupPrompt, TriageResults
 features/triage        TriageWorkspace (当前由 TriagePage 编排)
-  pages                  HomePage, TriagePage, ResourcesPage, MapPage, TrustPage
+  pages                  HomePage, TriagePage, ResourcesPage, MapPage, TrustPage, ProfilePage
+  state                  demoProfile.ts (opt-in, redacted, local-only)
 ```
 
 Editorial 内容优先使用 grid、分隔线、排版和留白；Card 只用于医院、医生、证据和安全状态等功能对象。
@@ -87,7 +92,7 @@ Editorial 内容优先使用 grid、分隔线、排版和留白；Card 只用于
 
 ## 数据与性能
 
-首页只加载 `/api/v1/summary` 和 `/api/v1/regions` 摘要，不加载全部医生、医院详情或交通明细；资源页首屏只加载医院索引，切到医生视图才读取 2,100 条医生公开资料，详情只在用户选择后按 id 读取，并只渲染前 48 条；Map 页只读取一次坐标资源索引，Trust 页只发起一次轻量 Evidence 请求，manifest 首屏展示前 8 条。图片使用明确的 fallback 和 lazy 策略；本切片主要使用 CSS/SVG，避免额外大资源。
+首页只加载 `/api/v1/summary` 和 `/api/v1/regions` 摘要，不加载全部医生、医院详情或交通明细；资源页首屏只加载医院索引，切到医生视图才读取 2,100 条医生公开资料，详情只在用户选择后按 id 读取，并只渲染前 48 条；Map 页只读取一次坐标资源索引，Trust 页只发起一次轻量 Evidence 请求，manifest 首屏展示前 8 条；Profile 页不发起网络请求，历史最多保留 8 条状态摘要。图片使用明确的 fallback 和 lazy 策略；本切片主要使用 CSS/SVG，避免额外大资源。
 
 ## 迁移与回滚
 

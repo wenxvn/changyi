@@ -8,6 +8,7 @@ import { StatusPill } from "../components/ui/StatusPill";
 import { CurrentUnderstanding } from "../components/medical/CurrentUnderstanding";
 import { FollowupPrompt } from "../components/medical/FollowupPrompt";
 import { TriageResults } from "../components/medical/TriageResults";
+import { recordAnalysis } from "../state/demoProfile";
 import type {
   FollowupPayload,
   FollowupQuestion,
@@ -76,6 +77,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
       setResult(nextResult);
       const nextFollowup = followupFrom(nextResult);
       setFollowup(nextFollowup);
+      if (!nextFollowup) recordAnalysis(nextResult);
 
       if (nextFollowup) {
         // The v1 triage response already contains a safe follow-up fallback. The
@@ -189,6 +191,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                 onAnswer={handleAnswer}
                 onSkip={() => {
                   setFollowup(null);
+                  if (result) recordAnalysis(result);
                   void loadRecommendations();
                 }}
               />

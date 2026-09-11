@@ -13,10 +13,11 @@ import { TriagePage } from "../pages/TriagePage";
 import { ResourcesPage } from "../pages/ResourcesPage";
 import { TrustPage } from "../pages/TrustPage";
 import { MapPage } from "../pages/MapPage";
+import { ProfilePage } from "../pages/ProfilePage";
 import { BrandMark } from "../components/ui/BrandMark";
 import { Button } from "../components/ui/Button";
 
-type AppRoute = "home" | "triage" | "resources" | "map" | "trust";
+type AppRoute = "home" | "triage" | "resources" | "map" | "trust" | "profile";
 
 const navItems: Array<{ route: AppRoute; label: string; path: string }> = [
   { route: "triage", label: "智能就医", path: "/triage" },
@@ -31,6 +32,7 @@ function routeFromLocation(): AppRoute {
   if (path.startsWith("/resources")) return "resources";
   if (path.startsWith("/map")) return "map";
   if (path.startsWith("/trust")) return "trust";
+  if (path.startsWith("/profile")) return "profile";
   return "home";
 }
 
@@ -56,8 +58,9 @@ function AppShell({
 
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main-content">跳转到主要内容</a>
       <header className="site-header">
-        <button className="brand-lockup" onClick={() => navigate("/")} aria-label="返回常医智导首页">
+        <button className="brand-lockup" type="button" onClick={() => navigate("/")} aria-label="返回常医智导首页">
           <BrandMark />
           <span className="brand-lockup__copy">
             <strong>常医智导</strong>
@@ -65,12 +68,14 @@ function AppShell({
           </span>
         </button>
 
-        <nav className={`site-nav${mobileOpen ? " site-nav--open" : ""}`} aria-label="主导航">
+        <nav id="primary-navigation" className={`site-nav${mobileOpen ? " site-nav--open" : ""}`} aria-label="主导航">
           {navItems.map((item) => (
             <button
+              type="button"
               className={`site-nav__item${route === item.route ? " site-nav__item--active" : ""}`}
               key={item.route}
               onClick={() => navigate(item.path)}
+              aria-current={route === item.route ? "page" : undefined}
             >
               {item.label}
             </button>
@@ -86,20 +91,29 @@ function AppShell({
 
         <div className="site-header__actions">
           <span className="region-mark"><span /> 常州 · 320400</span>
-          <button className="profile-button" aria-label="本地演示资料" title="本地演示资料">
+          <button
+            className={`profile-button${route === "profile" ? " profile-button--active" : ""}`}
+            type="button"
+            onClick={() => navigate("/profile")}
+            aria-label="打开本地演示资料"
+            title="本地演示资料"
+            aria-current={route === "profile" ? "page" : undefined}
+          >
             <CircleUserRound size={20} strokeWidth={1.6} aria-hidden="true" />
           </button>
           <button
+            type="button"
             className="mobile-menu-button"
             onClick={() => setMobileOpen((value) => !value)}
             aria-expanded={mobileOpen}
+            aria-controls="primary-navigation"
             aria-label={mobileOpen ? "关闭导航" : "打开导航"}
           >
             {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
         </div>
       </header>
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1}>{children}</main>
       <footer className="site-footer">
         <div className="site-footer__brand">
           <BrandMark compact />
@@ -107,49 +121,13 @@ function AppShell({
         </div>
         <p>面向常州示范区的可信智能就医决策辅助体验。</p>
         <div className="site-footer__links">
-          <button onClick={() => navigate("/trust")}><ShieldCheck size={14} aria-hidden="true" /> 可信 AI</button>
-          <button onClick={() => navigate("/resources")}><Hospital size={14} aria-hidden="true" /> 医疗资源</button>
-          <button onClick={() => navigate("/map")}><MapPinned size={14} aria-hidden="true" /> 就医地图</button>
+          <button type="button" onClick={() => navigate("/trust")}><ShieldCheck size={14} aria-hidden="true" /> 可信 AI</button>
+          <button type="button" onClick={() => navigate("/resources")}><Hospital size={14} aria-hidden="true" /> 医疗资源</button>
+          <button type="button" onClick={() => navigate("/map")}><MapPinned size={14} aria-hidden="true" /> 就医地图</button>
         </div>
         <small>本系统提供就医方向与资源信息参考，不替代医生诊断、急救或处方。</small>
       </footer>
     </div>
-  );
-}
-
-function PlaceholderPage({ route, onNavigate }: { route: AppRoute; onNavigate: (path: string) => void }) {
-  const details = {
-    resources: {
-      eyebrow: "RESOURCE LAYER",
-      title: "把城市资源，放回你的就医路径。",
-      text: "医院、科室与医生资源页正在接入新的可解释检索体验。",
-      icon: Hospital,
-    },
-    map: {
-      eyebrow: "CITY LAYER",
-      title: "从地图上，看见更实际的到院选择。",
-      text: "地图与资源列表同步能力将在下一切片接入。",
-      icon: MapPinned,
-    },
-    trust: {
-      eyebrow: "TRUST LAYER",
-      title: "AI 应该知道，什么时候不该给出答案。",
-      text: "安全评估、数据来源与版本证据正在汇入可信 AI 中心。",
-      icon: ShieldCheck,
-    },
-  } as const;
-  const content = details[route as keyof typeof details] ?? details.trust;
-  const Icon = content.icon;
-  return (
-    <section className="placeholder-page page-container">
-      <div className="placeholder-page__icon"><Icon size={24} strokeWidth={1.5} aria-hidden="true" /></div>
-      <span className="eyebrow">{content.eyebrow}</span>
-      <h1>{content.title}</h1>
-      <p>{content.text}</p>
-      <Button onClick={() => onNavigate("/")} variant="secondary" icon={<ArrowRight size={16} aria-hidden="true" />}>
-        返回首页
-      </Button>
-    </section>
   );
 }
 
@@ -165,7 +143,8 @@ export function App() {
   const navigate = (path: string) => {
     window.history.pushState({}, "", path);
     setRoute(routeFromLocation());
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    window.scrollTo({ top: 0, behavior });
   };
 
   const content = route === "home" ? (
@@ -181,9 +160,9 @@ export function App() {
     <TrustPage onNavigate={navigate} />
   ) : route === "map" ? (
     <MapPage />
-  ) : (
-    <PlaceholderPage route={route} onNavigate={navigate} />
-  );
+  ) : route === "profile" ? (
+    <ProfilePage onNavigate={navigate} />
+  ) : null;
 
   return <AppShell route={route} onNavigate={navigate}>{content}</AppShell>;
 }

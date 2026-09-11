@@ -7,8 +7,28 @@ import importlib
 from typing import Any
 
 
+HANDLER_EXTENSION = "changyi.v1_legacy_handlers"
+
+
+def register_legacy_handlers(application: Any, handlers: dict[str, Callable[..., Any]]) -> None:
+    """Register compatibility handlers on the active Flask app composition root."""
+
+    application.extensions[HANDLER_EXTENSION] = dict(handlers)
+
+
 def resolve_legacy_handler(name: str) -> Callable[..., Any]:
-    """Resolve one existing app-level handler without importing it at startup."""
+    """Resolve a registered handler, with the import bridge kept for old callers."""
+
+    try:
+        from flask import current_app, has_app_context
+
+        if has_app_context():
+            handlers = current_app.extensions.get(HANDLER_EXTENSION, {})
+            handler = handlers.get(name)
+            if handler is not None:
+                return handler
+    except ImportError:
+        pass
 
     legacy_module = importlib.import_module("app")
     return getattr(legacy_module, name)

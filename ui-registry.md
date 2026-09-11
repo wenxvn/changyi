@@ -180,7 +180,7 @@ File: `frontend/src/components/visualization/JourneyPreview.tsx`, `frontend/src/
 | Shadow | `var(--shadow-inset)` |
 | Accent usage | `var(--accent-primary)` stage icon, `var(--accent-soft)` line/halo |
 
-**Pattern notes:** Key explanation is user-controlled through tabs/list buttons. There is no auto-advancing carousel.
+**Pattern notes:** Key explanation is user-controlled through tabs/list buttons. There is no auto-advancing carousel. The tab set uses one selected keyboard entry point and Arrow/Home/End navigation; the preview is an explicitly labelled `tabpanel`.
 
 ### Triage result preview
 
@@ -290,6 +290,50 @@ File: `frontend/src/pages/TrustPage.tsx`, `frontend/src/api/evidence.ts`, `front
 
 **Pattern notes:** The Trust Center is a read-only evidence view, not a clinical validation dashboard. It must show `provisional`, “不代表临床验证”, review-required cases, data quality issues, source fingerprints and version identifiers together. Null or unavailable metrics remain “未提供”; dataset hashes support reproducibility only and do not imply provenance approval or clinical suitability.
 
+### Local demo profile / history
+
+File: `frontend/src/pages/ProfilePage.tsx`, `frontend/src/state/demoProfile.ts`, `frontend/src/styles/globals.css`
+
+| Property | Confirmed pattern |
+| --- | --- |
+| Background | `var(--surface-raised)` and `var(--surface-tinted)` with tokenized accent notice |
+| Border | `var(--border-default)`; privacy notice uses a low-opacity `var(--accent-primary)` mix |
+| Border radius | `var(--radius-md)` cards, `var(--radius-sm)` preference row, circular identity/history icons |
+| Text — primary | `var(--text-primary)` |
+| Text — secondary | `var(--text-secondary)` / `var(--text-muted)` for storage limitations |
+| Spacing | 15/17/23px card rhythm; history rows separated by `var(--border-default)` |
+| Interactive state | profile header button, explicit checkbox, two-step clear action and visible focus outline |
+| Accent usage | teal marks local boundary and preference; danger is reserved for the clear action |
+
+**Pattern notes:** This page is a local demo boundary, not an account page. History is opt-in and shows only a redacted status summary. The “仅保存在当前浏览器” notice, default-off state and explicit clear confirmation are part of the component contract, not optional copy.
+
+### Accessibility shell controls
+
+File: `frontend/src/app/App.tsx`, `frontend/src/styles/globals.css`
+
+| Property | Confirmed pattern |
+| --- | --- |
+| Skip link surface | `var(--accent-ink)` with `var(--text-inverse)` and `var(--border-strong)` |
+| Focus state | shared `:focus-visible` outline using the accent token; applies to buttons, anchors, textareas and inputs |
+| Navigation state | active route uses accent underline plus `aria-current="page"`; mobile menu exposes `aria-expanded` and `aria-controls` |
+| Spacing | skip link uses the existing 12px/16px rhythm and token spacing for viewport offset |
+| Motion | route scroll uses `auto` when `prefers-reduced-motion: reduce`; CSS transitions/animations also collapse |
+
+**Pattern notes:** The skip link is visually quiet until keyboard focus and points to a focusable main landmark. These semantics are part of the shell contract; new routes should keep a stable main target and expose their active navigation state.
+
+### Keyboard tab and form semantics
+
+Files: `frontend/src/pages/HomePage.tsx`, `frontend/src/pages/ResourcesPage.tsx`, `frontend/src/pages/MapPage.tsx`, `frontend/src/components/ui/Button.tsx`, `frontend/src/styles/globals.css`
+
+| Property | Confirmed pattern |
+| --- | --- |
+| Tab relationship | Each visible tab has a stable id, `aria-controls` and `aria-selected`; the active content exposes the matching `tabpanel` and `aria-labelledby` |
+| Keyboard behavior | Journey uses Arrow keys plus Home/End to move the selected tab; inactive tabs are removed from the normal tab sequence |
+| Form safety | Shared `Button` defaults to `type="button"`; submit actions opt in explicitly with `type="submit"` |
+| Focus state | Journey panel has a tokenized focus-visible outline; resource/map panels remain focusable for assistive technology navigation |
+
+**Pattern notes:** These semantics improve navigation without introducing a second state source. Tab changes still only select already-loaded presentation data; they do not change triage, recommendation or map meaning.
+
 ### Map / resource location view
 
 File: `frontend/src/pages/MapPage.tsx`, `frontend/src/api/map.ts`, `frontend/src/styles/globals.css`
@@ -307,3 +351,15 @@ File: `frontend/src/pages/MapPage.tsx`, `frontend/src/api/map.ts`, `frontend/src
 | Accent usage | teal marks normal resource points; danger marks the server-provided emergency field; no recommendation color without recommendation context |
 
 **Pattern notes:** Map list and marker use the same `/api/v1/map` items. The view is a lightweight coordinate projection labeled “非导航地图”; it does not request location, fabricate distances, or imply real-time emergency availability. The source pill keeps `legacy_catalog_pending_provenance` visible.
+
+### Legacy static asset fallback
+
+Files: `templates/index.html`, `static/favicon.svg`, `static/images/leaflet-layers.svg`, `static/css/leaflet.css`
+
+| Property | Confirmed pattern |
+| --- | --- |
+| Favicon | Explicit local `/static/favicon.svg`; no external host or tracking asset |
+| Leaflet layers icon | Local SVG used for standard and retina CSS states; control dimensions remain Leaflet defaults |
+| Scope | Static asset hardening only; no map data, marker behavior or navigation semantics changed |
+
+**Pattern notes:** These assets close the two known legacy 404s from the audit without treating the legacy interface as the competition-ready frontend. Marker PNG/default-icon handling remains outside this slice until it has a separate asset inventory and visual check.
