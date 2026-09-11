@@ -13,23 +13,46 @@ from .scoring import clamp
 
 
 def hospital_strength_for_department(hospital: dict[str, Any] | None, target_dept: str | None) -> float:
+    """Explainable department-fit only.
+
+    Provisional legacy scores (`derived_capability_scores` / `strength_scores`)
+    are retained in the catalog for migration and debug, but must not decide
+    clinical ranking. Ranking uses public department existence facts only.
+    """
+
     if not hospital:
         return 0.5
     if not target_dept:
         return 0.6
-    scores = hospital.get("derived_capability_scores") or hospital.get("strength_scores", {})
     departments = hospital.get("departments", [])
-    if target_dept in scores:
-        return min(1.0, scores[target_dept] / 100.0)
     if target_dept in departments:
-        return 0.75
-    for dept, score in scores.items():
-        if target_dept in dept or dept in target_dept:
-            return min(1.0, score / 100.0)
+        return 0.82
     for dept in departments:
         if target_dept in dept or dept in target_dept:
-            return 0.65
+            return 0.72
+    for dept in departments:
+        if _dept_pair_related(target_dept, dept):
+            return 0.68
     return 0.5
+
+
+def _dept_pair_related(target_dept: str, dept: str) -> bool:
+    families = (
+        ("肿瘤",),
+        ("消化", "脾胃", "胃肠"),
+        ("呼吸", "肺"),
+        ("心血管", "心脏"),
+        ("神经", "脑"),
+        ("骨", "脊柱", "关节"),
+        ("妇", "产", "生殖"),
+        ("儿", "儿童", "新生儿"),
+        ("肾", "泌尿"),
+        ("中医", "针灸", "推拿", "康复"),
+    )
+    for family in families:
+        if any(token in target_dept for token in family) and any(token in dept for token in family):
+            return True
+    return False
 
 
 def level_score_norm(hospital: dict[str, Any] | None) -> float:
@@ -159,7 +182,15 @@ def hospital_recommend_reasons(
 ) -> list[str]:
     reasons = []
     if matched_dept:
-        reasons.append(f"{matched_dept}匹配度{int(feature_scores['clinical'] * 100)}%")
+        departments = hospital.get("departments") or []
+        if matched_dept in departments:
+            reasons.append(f"设有{matched_dept}")
+        elif any(matched_dept in dept or dept in matched_dept for dept in departments):
+            reasons.append(f"公开资料显示存在{matched_dept}相关专科方向")
+        elif departments:
+            reasons.append("公开资料显示存在相关专科方向")
+        else:
+            reasons.append("按公开科室资料综合匹配")
     if distance is not None and distance <= 8:
         reasons.append(f"距离近，约{distance}km")
     elif feature_scores["quality"] >= 0.85:

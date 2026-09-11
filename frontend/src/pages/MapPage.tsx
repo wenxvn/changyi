@@ -63,7 +63,7 @@ function MapPreview({ item, source, onClose }: { item: MapHospitalRecord; source
       </dl>
       <p className="map-preview__reason">{item.map_reason}</p>
       <AmapNavigationLink target={item} className="map-preview__navigation" />
-      <p className="map-preview__source">地图底图 © OpenStreetMap contributors © CARTO。距离仅供参考，实际路线请以导航结果为准。</p>
+      <p className="map-preview__source">地图底图 © OpenStreetMap contributors。距离仅供参考，实际路线请以导航结果为准。</p>
     </aside>
   );
 }
@@ -108,7 +108,9 @@ function RealMapCanvas({
         key: wrappedX + "-" + y,
         left: "calc(50% + " + (x * 256 - center.x) + "px)",
         top: "calc(50% + " + (y * 256 - center.y) + "px)",
-        url: "https://a.basemaps.cartocdn.com/light_all/" + view.zoom + "/" + wrappedX + "/" + y + ".png",
+        // OSM standard tiles: public, no API key, attribution required.
+        // CARTO free CDN started returning API KEY REQUIRED watermarks.
+        url: "https://tile.openstreetmap.org/" + view.zoom + "/" + wrappedX + "/" + y + ".png",
       });
     }
   }
@@ -156,7 +158,7 @@ function RealMapCanvas({
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
     >
-      <div className="map-canvas__topline"><span>常州地理位置</span><small>OpenStreetMap · CARTO · 可拖动缩放</small></div>
+      <div className="map-canvas__topline"><span>常州地理位置</span><small>OpenStreetMap · 可拖动缩放</small></div>
       <div className="map-tile-layer" aria-hidden="true">
         {tiles.map((tile) => <img src={tile.url} alt="" key={tile.key} style={{ left: tile.left, top: tile.top }} onError={() => setTileLoadFailed(true)} />)}
       </div>
@@ -195,7 +197,7 @@ function RealMapCanvas({
         <span><i className="map-legend-dot map-legend-dot--emergency" />含急诊字段</span>
         <span><i className="map-legend-dot" />普通资源</span>
       </div>
-      <span className="map-canvas__caption">底图 © OpenStreetMap contributors © CARTO</span>
+      <span className="map-canvas__caption">底图 © OpenStreetMap contributors</span>
     </div>
   );
 }

@@ -49,20 +49,19 @@ def resolve_hospital_candidate_match(
     hospital: Mapping[str, Any],
     target_dept: str | None,
 ) -> tuple[float, str | None]:
-    """Resolve the legacy hospital department match and strength fallback."""
+    """Resolve department match from public department facts only.
 
-    scores = hospital.get("derived_capability_scores") or hospital.get("strength_scores", {})
-    if target_dept and target_dept in scores:
-        return scores[target_dept], target_dept
-    if target_dept and target_dept in hospital.get("departments", []):
+    Provisional legacy capability scores are ignored for ranking so they cannot
+    silently decide hospital order before external provenance is complete.
+    """
+
+    departments = hospital.get("departments", [])
+    if target_dept and target_dept in departments:
         return 75, target_dept
-
-    strength_score = 50
-    matched_dept = target_dept
-    for department in hospital.get("departments", []):
+    for department in departments:
         if target_dept and departments_related(target_dept, department):
             return 70, department
-    return strength_score, matched_dept
+    return 50, target_dept
 
 
 def hospital_supports_emergency_fallback(

@@ -39,8 +39,6 @@ def doctor_recommendation_reasons(
         reasons.append("科室/专长匹配")
     if surgery_score >= 0.55:
         reasons.append("临床经验较强")
-    if academic_score >= 0.55:
-        reasons.append("科研与学术能力较强")
     if access_score >= 0.8:
         reasons.append("距离可及性较好")
     if availability_score >= 0.7:
@@ -48,7 +46,7 @@ def doctor_recommendation_reasons(
     if penalty_details:
         reasons.append("已应用资源错配惩罚")
     reasons.extend(resource_notes)
-    return reasons[:4] or ["按专科匹配、医生履历和可及性综合排序"]
+    return reasons[:4] or ["按专科匹配、临床经历和可及性综合排序"]
 
 
 def build_doctor_recommendation_result(

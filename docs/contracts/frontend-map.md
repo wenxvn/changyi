@@ -41,7 +41,7 @@ GET /api/v1/map?location_source=district&district=<district>
 }
 ```
 
-`map_point` 仍是服务端坐标投影的兼容字段；正式页面使用 OpenStreetMap 数据的 CARTO light 地理底图、拖动和缩放，并保留底图署名。页面的医院资料预览可通过共享导航 utility 生成高德导航 URI；这只是外部地图跳转，不是系统计算的路线或急救指令。`distance_km` 是 Haversine 直线/区域参考点距离，不是驾车、公交或急救到院时间。`EMERGENCY_CAPABLE` 仅复述接口的急诊字段，不代表实时可用性；没有推荐上下文时不生成推荐 marker。底图加载失败时仍保留坐标 marker 和资料入口，并显示降级提示。
+`map_point` 仍是服务端坐标投影的兼容字段；正式页面使用 OpenStreetMap 官方标准瓦片（`tile.openstreetmap.org`，无需 API Key）叠加公开医院坐标，支持拖动和缩放，并保留底图署名。CARTO 免费 CDN 在实际浏览器中可能返回 “API KEY REQUIRED” 水印瓦片，已不再使用。页面的医院资料预览可通过共享导航 utility 生成高德导航 URI；这只是外部地图跳转，不是系统计算的路线或急救指令。`distance_km` 是 Haversine 直线/区域参考点距离，不是驾车、公交或急救到院时间。`EMERGENCY_CAPABLE` 仅复述接口的急诊字段，不代表实时可用性；没有推荐上下文时不生成推荐 marker。底图加载失败时仍保留坐标 marker、医院列表、资料入口和高德导航，并显示降级提示。桌面端左侧列表独立滚动，右侧地图与 viewport 高度绑定并保持可见；移动端为正常单列。
 
 ## 错误与展示安全边界
 

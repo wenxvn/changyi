@@ -54,16 +54,21 @@ def doctor_resource_tier(
     academic_score: float,
     surgery_score: float,
 ) -> str:
-    """Return an internal resource tier, not a public doctor grade."""
+    """Return an internal resource tier, not a public doctor grade.
+
+    Academic output (SCI, funding, patents) stays available as profile
+    metadata, but must not define clinical expert tiers: research volume is
+    not a proxy for patient-care fit.
+    """
 
     hospital_text = (hospital or {}).get("level", "")
     title_score = doctor_title_score(doc)
     strong_platform = "三级甲等" in hospital_text or "三甲" in hospital_text
-    high_academic = academic_score >= 0.58 or doc.get("national_funding") or (doc.get("sci_papers") or 0) >= 20
-    high_experience = surgery_score >= 0.62 or (doc.get("surgery_count") or 0) >= 800
-    if strong_platform and specialty_score >= 0.78 and title_score >= 0.72 and (high_academic or high_experience):
+    high_clinical = surgery_score >= 0.62 or (doc.get("surgery_count") or 0) >= 800
+    strong_specialty = specialty_score >= 0.85
+    if strong_platform and specialty_score >= 0.78 and title_score >= 0.72 and (high_clinical or strong_specialty):
         return "top_expert"
-    if specialty_score >= 0.72 and (title_score >= 0.72 or high_experience or high_academic):
+    if specialty_score >= 0.72 and (title_score >= 0.72 or high_clinical or strong_specialty):
         return "expert"
     if specialty_score >= 0.58 or title_score >= 0.42:
         return "specialist"

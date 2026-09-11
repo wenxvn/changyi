@@ -249,9 +249,17 @@ def accessibility_score_from_context(
     traffic_access: Mapping[str, Any],
     triage_level: str = "routine",
 ) -> float:
-    """Calculate legacy access score from explicit distance and traffic data."""
+    """Calculate legacy access score from explicit distance and traffic data.
+
+    Traffic samples are provisional (see data quality register). They only
+    influence ranking when a hospital has concrete nearby evidence; otherwise
+    ranking falls back to straight-line distance so sparse quality-gate-failed
+    transit rows cannot silently reorder hospitals.
+    """
 
     if distance is None:
+        if not traffic_access.get("used_in_ranking"):
+            return 0.6
         return traffic_access["public_transport_score"] * 0.45 + 0.55 * 0.60
     if distance <= 5:
         distance_score = 1.0
@@ -260,6 +268,13 @@ def accessibility_score_from_context(
     else:
         distance_score = max(0.1, 1.0 - (distance - 5) * 0.02)
     if triage_level in ("emergency", "urgent"):
+        return clamp(distance_score)
+    has_traffic_evidence = bool(
+        traffic_access.get("nearest_station_name")
+        or traffic_access.get("nearby_station_count_2km")
+        or traffic_access.get("nearby_taxi_destination_count_3km")
+    )
+    if not has_traffic_evidence:
         return clamp(distance_score)
     if triage_level == "first_visit":
         return clamp(distance_score * 0.56 + traffic_access["station_score"] * 0.28 + traffic_access["taxi_score"] * 0.16)

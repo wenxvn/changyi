@@ -20,7 +20,9 @@
 | R-014 | 未知位置被静默解释为具体区域，造成虚假距离和排序 | 高 | 中 | 已缓解 | v1 使用 `unknown`、`district` 和 `geolocation` 明确区分；未知位置返回 null 距离并将距离/交通/公平性权重置零，区域只使用显式参考点，保留位置契约回归 |
 | R-015 | 系统 Follow-up 问题和答案污染用户原始症状，导致重复分析或不可审计 | 高 | 中 | 已缓解 | `original_condition` 只保存用户输入；答案使用 `question_id` + `value/text_answer` 结构化传递，问题展示为 label/value；保留 red-flag `present/none/unknown` 安全回归 |
 | R-016 | 疾病模型 random split 因相同症状集合跨集合而高估指标 | 高 | 高 | 已缓解 | 生成 `evaluation/model/split_manifest.json` 与 grouped fingerprint 报告，同时展示 random baseline、grouped 结果和近重复审计；指标仍是小样本 prototype/offline evidence，不代表临床验证 |
-| R-017 | 医院硬编码评分、容量或评级缺少来源却参与推荐 | 高 | 中 | 已缓解 | 医院目录移出组合根；公开事实、provisional 派生能力、unsupported null 分开登记，缺失的 beds/daily_outpatients/rating/description 不进入公开事实或排序，Trust Center 展示限制 |
+| R-017 | 医院硬编码评分、容量或评级缺少来源却参与推荐 | 高 | 中 | 已缓解 | 医院目录移出组合根；公开事实、provisional 派生能力、unsupported null 分开登记，缺失的 beds/daily_outpatients/rating/description 不进入公开事实或排序；`derived_capability_scores`/`strength_scores` 仅保留用于 migration/debug，正式 clinical ranking 只依赖公开科室存在事实；Trust Center 展示限制 |
+| R-018 | 科研产出（SCI/基金/专利）被误当作临床适配证据主导医生推荐 | 高 | 中 | 已缓解 | academic 权重降至 0.02，资源层级不再依赖学术指标，推荐解释不再突出科研；学术资料仍可展示，展示 ≠ 推荐依据 |
+| R-019 | 第三方地图瓦片失效导致地图页不可用或显示水印瓦片 | 中 | 中 | 已缓解 | 底图切换为无需 Key 的 OpenStreetMap 官方瓦片；失败时保留医院列表、坐标 marker、资料预览和高德导航降级 |
 
 ## 近期优先级
 

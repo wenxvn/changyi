@@ -15,15 +15,17 @@ from backend.app.domain.recommendation.features import (
 
 
 class RecommendationFeatureTests(TestCase):
-    def test_strength_and_quality_keep_explicit_positive_and_fallback_paths(self):
+    def test_strength_uses_public_department_facts_not_provisional_scores(self):
         hospital = {
             "level": "三级甲等",
             "rating": 4.8,
+            "derived_capability_scores": {"心血管内科": 96},
             "strength_scores": {"心血管内科": 95},
             "departments": ["呼吸与危重症医学科"],
         }
-        self.assertEqual(hospital_strength_for_department(hospital, "心血管内科"), 0.95)
-        self.assertEqual(hospital_strength_for_department(hospital, "呼吸"), 0.65)
+        exact = {**hospital, "departments": ["心血管内科"]}
+        self.assertEqual(hospital_strength_for_department(exact, "心血管内科"), 0.82)
+        self.assertEqual(hospital_strength_for_department(hospital, "呼吸"), 0.72)
         self.assertEqual(hospital_strength_for_department(hospital, "眼科"), 0.5)
         self.assertGreater(hospital_quality_score(hospital), hospital_quality_score({"level": "二级", "rating": 3.5}))
 
@@ -74,5 +76,5 @@ class RecommendationFeatureTests(TestCase):
             "emergency",
         )
         self.assertLessEqual(len(reasons), 4)
-        self.assertIn("心内科匹配度90%", reasons)
+        self.assertIn("按公开科室资料综合匹配", reasons)
         self.assertIn("具备急诊能力", reasons)

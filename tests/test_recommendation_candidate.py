@@ -156,13 +156,13 @@ class RecommendationCandidateTests(TestCase):
         )
         self.assertEqual(
             reasons,
-            ["科室/专长匹配", "临床经验较强", "科研与学术能力较强", "距离可及性较好"],
+            ["科室/专长匹配", "临床经验较强", "距离可及性较好", "医院承载能力较好"],
         )
 
     def test_explanation_has_explicit_fallback_when_no_signal_is_high(self):
         self.assertEqual(
             doctor_recommendation_reasons(0.2, 0.2, 0.2, 0.2, 0.2, [], []),
-            ["按专科匹配、医生履历和可及性综合排序"],
+            ["按专科匹配、临床经历和可及性综合排序"],
         )
 
     def test_candidate_builder_preserves_scores_penalties_and_strategy_fields(self):
@@ -308,7 +308,7 @@ class RecommendationCandidateTests(TestCase):
         )
         self.assertIs(result["hospital"], hospital)
         self.assertIs(result["traffic_access"], traffic)
-        self.assertEqual(result["strength_score"], 90)
+        self.assertEqual(result["strength_score"], 75)
         self.assertEqual(result["matched_department"], "心血管内科")
         self.assertEqual(result["feature_scores"]["risk_penalty"], 0.0)
         self.assertIn("具备急诊能力", result["explanations"])

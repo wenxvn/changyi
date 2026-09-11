@@ -6,7 +6,6 @@ import {
   CircleAlert,
   Database,
   MapPinned,
-  Mic2,
   MoveUpRight,
   Network,
   ShieldCheck,
@@ -104,10 +103,6 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
               maxLength={2000}
             />
             <div className="symptom-composer__footer">
-              <button className="voice-button" type="button" disabled title="语音输入将在后续切片接入">
-                <Mic2 size={17} strokeWidth={1.7} aria-hidden="true" />
-                <span>语音描述</span>
-              </button>
               <Button
                 type="submit"
                 disabled={!condition.trim()}

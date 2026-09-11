@@ -33,9 +33,13 @@ class RecommendationCandidateFilterTests(TestCase):
         self.assertTrue(doctor_matches_candidate(doctor, None, {"心血管"}))
         self.assertFalse(doctor_matches_candidate(doctor, None, {"皮疹"}))
 
-    def test_hospital_match_prefers_explicit_strength_score(self):
-        hospital = {"strength_scores": {"心血管内科": 88}, "departments": ["心血管内科"]}
-        self.assertEqual(resolve_hospital_candidate_match(hospital, "心血管内科"), (88, "心血管内科"))
+    def test_hospital_match_ignores_provisional_strength_scores(self):
+        hospital = {
+            "derived_capability_scores": {"心血管内科": 96},
+            "strength_scores": {"心血管内科": 88},
+            "departments": ["心血管内科"],
+        }
+        self.assertEqual(resolve_hospital_candidate_match(hospital, "心血管内科"), (75, "心血管内科"))
 
     def test_hospital_match_keeps_department_and_related_fallbacks(self):
         listed = {"strength_scores": {}, "departments": ["骨科"]}

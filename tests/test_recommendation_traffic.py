@@ -40,13 +40,34 @@ class RecommendationTrafficTests(TestCase):
         self.assertEqual(accessibility_score_from_context(3.0, traffic, "urgent"), 1.0)
 
     def test_routine_and_first_visit_fuse_distance_and_transit_samples(self):
-        traffic = {"station_score": 0.8, "taxi_score": 0.6, "public_transport_score": 0.71}
+        traffic = {
+            "station_score": 0.8,
+            "taxi_score": 0.6,
+            "public_transport_score": 0.71,
+            "nearest_station_name": "人民公园",
+            "nearby_station_count_2km": 3,
+            "nearby_taxi_destination_count_3km": 2,
+        }
         routine = accessibility_score_from_context(10.0, traffic, "routine")
         first_visit = accessibility_score_from_context(10.0, traffic, "first_visit")
         self.assertGreater(routine, 0.0)
         self.assertGreater(first_visit, 0.0)
         self.assertNotEqual(routine, first_visit)
-        self.assertEqual(accessibility_score_from_context(None, traffic, "routine"), 0.71 * 0.45 + 0.55 * 0.60)
+        # No location: ranking stays neutral instead of inventing transit-driven access.
+        self.assertEqual(accessibility_score_from_context(None, traffic, "routine"), 0.6)
+        marked = {**traffic, "used_in_ranking": True}
+        self.assertAlmostEqual(
+            accessibility_score_from_context(None, marked, "routine"),
+            0.71 * 0.45 + 0.55 * 0.60,
+        )
+
+    def test_sparse_traffic_samples_fall_back_to_distance_only(self):
+        sparse = {"station_score": 0.95, "taxi_score": 0.92, "public_transport_score": 0.94}
+        self.assertEqual(
+            accessibility_score_from_context(10.0, sparse, "routine"),
+            accessibility_score_from_context(10.0, sparse, "first_visit"),
+        )
+        self.assertEqual(accessibility_score_from_context(None, sparse, "routine"), 0.6)
 
     def test_index_preserves_rows_and_last_duplicate_wins(self):
         station = {"hospital_id": "h1", "transit_station_score": 70}

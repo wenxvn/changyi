@@ -499,20 +499,6 @@ em {
   border-top: 1px solid var(--border-subtle);
 }
 
-.voice-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 0;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 12px;
-}
-
-.voice-button:disabled {
-  opacity: 0.72;
-}
-
 .character-count {
   color: var(--text-muted);
   font-family: var(--font-mono);
@@ -3737,6 +3723,57 @@ em {
 .map-resource-list {
   min-width: 0;
   border-top: 1px solid var(--border-default);
+}
+
+/* Desktop map workspace: list scrolls in place; stage stays on screen. */
+@media (min-width: 921px) {
+  .map-layout {
+    height: calc(100vh - 220px);
+    min-height: 560px;
+    max-height: 860px;
+    align-items: stretch;
+  }
+
+  .map-resource-list {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .map-resource-list__heading {
+    flex-shrink: 0;
+  }
+
+  .map-resource-list > .map-resource-row {
+    /* rows scroll inside the list pane */
+  }
+
+  .map-resource-list {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .map-stage {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .map-canvas,
+  .map-canvas--real {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .map-stage .map-preview,
+  .map-stage .map-stage__hint {
+    flex-shrink: 0;
+  }
 }
 
 .map-resource-list__heading {

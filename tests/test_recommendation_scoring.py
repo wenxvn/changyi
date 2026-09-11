@@ -52,6 +52,16 @@ class RecommendationScoringTests(TestCase):
             "general",
         )
 
+    def test_resource_tier_does_not_promote_on_academic_only(self):
+        academic_only = doctor_resource_tier(
+            {"title": "主治医师", "national_funding": True, "sci_papers": 30},
+            {"level": "三级甲等"},
+            specialty_score=0.55,
+            academic_score=0.95,
+            surgery_score=0.2,
+        )
+        self.assertEqual(academic_only, "specialist")
+
     def test_hospital_score_combines_weights_and_risk_penalty(self):
         score, features = score_hospital_candidate(
             clinical=1.0,
