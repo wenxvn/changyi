@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
+import { SpeechInput } from "../components/ui/SpeechInput";
 import { CarePath } from "../components/visualization/CarePath";
 import { JourneyPreview, journeySteps } from "../components/visualization/JourneyPreview";
 import { useCitySummary } from "../hooks/useCitySummary";
@@ -103,6 +104,11 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
               maxLength={2000}
             />
             <div className="symptom-composer__footer">
+              <div className="symptom-composer__tools">
+                <SpeechInput
+                  onTranscript={(text) => setCondition((value) => (value ? `${value}${value.endsWith("。") ? "" : "。"}${text}` : text))}
+                />
+              </div>
               <Button
                 type="submit"
                 disabled={!condition.trim()}

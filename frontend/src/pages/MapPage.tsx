@@ -3,16 +3,15 @@ import {
   CircleAlert,
   ExternalLink,
   LoaderCircle,
-  MapPinned,
   Minus,
   Navigation,
   Plus,
-  ShieldCheck,
   X,
 } from "lucide-react";
 import { ApiError } from "../api/client";
 import { getMap } from "../api/map";
 import { AmapNavigationLink } from "../components/ui/AmapNavigationLink";
+import { HospitalLogo } from "../components/ui/HospitalLogo";
 import { LocationSelector } from "../components/ui/LocationSelector";
 import { StatusPill } from "../components/ui/StatusPill";
 import { useLocationContext } from "../state/locationContext";
@@ -50,9 +49,7 @@ function MapPreview({ item, source, onClose }: { item: MapHospitalRecord; source
         <button type="button" onClick={onClose} aria-label="关闭地图资料预览"><X size={18} aria-hidden="true" /></button>
       </div>
       <div className="map-preview__heading">
-        <div className={"map-preview__icon" + (item.emergency ? " map-preview__icon--emergency" : "")} aria-hidden="true">
-          {item.emergency ? <ShieldCheck size={20} strokeWidth={1.5} /> : <MapPinned size={20} strokeWidth={1.5} />}
-        </div>
+        <HospitalLogo hospitalId={typeof item.id === "number" ? item.id : undefined} size="preview" className={item.emergency ? "hospital-logo--emergency" : ""} />
         <div><h2 id="map-preview-title">{item.name ?? "未命名医院"}</h2><p>{[item.level, item.type].filter((value): value is string => Boolean(value)).join(" · ") || "公开资源资料"}</p></div>
       </div>
       <dl className="map-preview__facts">

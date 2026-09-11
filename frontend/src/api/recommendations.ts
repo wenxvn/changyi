@@ -2,6 +2,8 @@ import { apiRequest } from "./client";
 import { parseRecommendations } from "./schemas";
 import type { FollowupAnswer, RecommendationPayload } from "../types/api";
 
+export type ExpertPreference = "system" | "no_expert" | "wish_expert";
+
 export interface RecommendationRequest {
   condition: string;
   scenario?: "common" | "complex" | "surgery" | "first_visit";
@@ -10,6 +12,7 @@ export interface RecommendationRequest {
   lng?: number;
   location_source?: "unknown" | "geolocation" | "district";
   followup_answers?: FollowupAnswer[];
+  expert_preference?: ExpertPreference;
 }
 
 export function getRecommendations(

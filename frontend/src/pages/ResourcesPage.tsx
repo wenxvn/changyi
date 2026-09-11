@@ -7,6 +7,7 @@ import {
   Filter,
   LoaderCircle,
   MapPinned,
+  RotateCcw,
   Search,
   Stethoscope,
   X,
@@ -16,6 +17,8 @@ import { getDoctorDetail, getDoctors, getHospitalDetail, getHospitals } from "..
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
 import { AmapNavigationLink } from "../components/ui/AmapNavigationLink";
+import { DoctorAvatar } from "../components/ui/DoctorAvatar";
+import { HospitalLogo } from "../components/ui/HospitalLogo";
 import type { DoctorRecord, HospitalRecord, ResourceDetailPayload } from "../types/api";
 
 type ResourceTab = "overview" | "hospitals" | "doctors";
@@ -51,7 +54,7 @@ function HospitalCard({
   const departments = (hospital.departments ?? []).slice(0, 4);
   return (
     <article className={`resource-index-card${selected ? " resource-index-card--selected" : ""}`}>
-      <div className="resource-index-card__mark" aria-hidden="true"><Building2 size={20} strokeWidth={1.5} /></div>
+      <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} />
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
           <span className="eyebrow eyebrow--muted">医院资源</span>
@@ -88,10 +91,9 @@ function DoctorCard({
   onSelect: () => void;
 }) {
   const specialties = (doctor.specialties ?? []).slice(0, 3);
-  const initial = doctor.name?.slice(0, 1) ?? "医";
   return (
     <article className={`resource-index-card resource-index-card--doctor${selected ? " resource-index-card--selected" : ""}`}>
-      <div className="doctor-index-avatar" aria-hidden="true">{initial}</div>
+      <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
           <span className="eyebrow eyebrow--muted">公开医生资料</span>
@@ -151,7 +153,10 @@ function ResourceDetail({
         const hospital = detail.resource;
         return (
           <>
-            <h2 id="resource-detail-title">{hospital.name ?? "未命名医院"}</h2>
+            <div className="resource-detail__identity">
+              <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} size="preview" />
+              <div><h2 id="resource-detail-title">{hospital.name ?? "未命名医院"}</h2><p>{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "公开机构资料"}</p></div>
+            </div>
             <p className="resource-detail__lede">当前展示公开机构字段与派生能力线索；不构成官方排名、疗效或临床质量结论。</p>
             <dl className="resource-detail__facts">
               <div><dt>机构类型</dt><dd>{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "未提供"}</dd></div>
@@ -171,7 +176,7 @@ function ResourceDetail({
         const doctor = detail.resource;
         return (
           <>
-            <div className="resource-detail__identity"><div className="doctor-index-avatar doctor-index-avatar--large" aria-hidden="true">{doctor.name?.slice(0, 1) ?? "医"}</div><div><h2 id="resource-detail-title">{doctor.name ?? "公开医生资料"}</h2><p>{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "职称/科室未提供"}</p></div></div>
+            <div className="resource-detail__identity"><DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} size="large" /><div><h2 id="resource-detail-title">{doctor.name ?? "公开医生资料"}</h2><p>{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "职称/科室未提供"}</p></div></div>
             <dl className="resource-detail__facts">
               <div><dt>所属医院</dt><dd>{doctor.hospital_name ?? "未提供"}</dd></div>
               <div><dt>公开专长</dt><dd>{doctor.specialties?.slice(0, 6).join(" · ") || doctor.specialty || "未提供"}</dd></div>
@@ -190,8 +195,19 @@ function ResourceDetail({
 }
 
 export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => void }) {
-  const [activeTab, setActiveTab] = useState<ResourceTab>("overview");
-  const [query, setQuery] = useState("");
+  const initialParams = useMemo(() => new URLSearchParams(window.location.search), []);
+  const [activeTab, setActiveTab] = useState<ResourceTab>(() => {
+    const type = initialParams.get("type");
+    if (type === "doctor" || type === "doctors") return "doctors";
+    if (type === "hospital" || type === "hospitals") return "hospitals";
+    return "overview";
+  });
+  const [query, setQuery] = useState(initialParams.get("q") ?? "");
+  const [hospitalLevel, setHospitalLevel] = useState(initialParams.get("level") ?? "");
+  const [hospitalType, setHospitalType] = useState(initialParams.get("hospital_type") ?? "");
+  const [doctorHospital, setDoctorHospital] = useState(initialParams.get("hospital_name") ?? "");
+  const [doctorDepartment, setDoctorDepartment] = useState(initialParams.get("department") ?? "");
+  const [doctorTitle, setDoctorTitle] = useState(initialParams.get("title") ?? "");
   const [hospitals, setHospitals] = useState<HospitalRecord[]>([]);
   const [hospitalSource, setHospitalSource] = useState("unknown");
   const [doctors, setDoctors] = useState<DoctorRecord[]>([]);
@@ -298,31 +314,95 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   }, [detailAttempt, selection]);
 
   const normalizedQuery = query.trim().toLocaleLowerCase();
+  const hospitalLevels = useMemo(
+    () => Array.from(new Set(hospitals.map((item) => item.level).filter((value): value is string => Boolean(value)))).sort(),
+    [hospitals],
+  );
+  const hospitalTypes = useMemo(
+    () => Array.from(new Set(hospitals.map((item) => item.type).filter((value): value is string => Boolean(value)))).sort(),
+    [hospitals],
+  );
+  const doctorHospitalNames = useMemo(
+    () => Array.from(new Set(doctors.map((item) => item.hospital_name).filter((value): value is string => Boolean(value)))).sort(),
+    [doctors],
+  );
+  const doctorDepartments = useMemo(
+    () => Array.from(new Set(doctors.map((item) => item.department).filter((value): value is string => Boolean(value)))).sort(),
+    [doctors],
+  );
+  const doctorTitles = useMemo(
+    () => Array.from(new Set(doctors.map((item) => item.title || item.position).filter((value): value is string => Boolean(value)))).sort(),
+    [doctors],
+  );
   const filteredHospitals = useMemo(
-    () => hospitals.filter((hospital) => includesQuery([
-      hospital.name,
-      hospital.alias,
-      hospital.address,
-      ...(hospital.departments ?? []),
-      ...(hospital.strengths ?? []),
-      ...(hospital.derived_capability_areas ?? []),
-    ], normalizedQuery)),
-    [hospitals, normalizedQuery],
+    () => hospitals.filter((hospital) => {
+      if (hospitalLevel && hospital.level !== hospitalLevel) return false;
+      if (hospitalType && hospital.type !== hospitalType) return false;
+      return includesQuery([
+        hospital.name,
+        hospital.alias,
+        hospital.address,
+        ...(hospital.departments ?? []),
+        ...(hospital.strengths ?? []),
+        ...(hospital.derived_capability_areas ?? []),
+      ], normalizedQuery);
+    }),
+    [hospitals, hospitalLevel, hospitalType, normalizedQuery],
   );
   const filteredDoctors = useMemo(
-    () => doctors.filter((doctor) => includesQuery([
-      doctor.name,
-      doctor.hospital_name,
-      doctor.department,
-      doctor.specialty,
-      ...(doctor.specialties ?? []),
-    ], normalizedQuery)),
-    [doctors, normalizedQuery],
+    () => doctors.filter((doctor) => {
+      if (doctorHospital && doctor.hospital_name !== doctorHospital) return false;
+      if (doctorDepartment && doctor.department !== doctorDepartment) return false;
+      if (doctorTitle && (doctor.title || doctor.position) !== doctorTitle) return false;
+      return includesQuery([
+        doctor.name,
+        doctor.hospital_name,
+        doctor.department,
+        doctor.specialty,
+        ...(doctor.specialties ?? []),
+      ], normalizedQuery);
+    }),
+    [doctors, doctorHospital, doctorDepartment, doctorTitle, normalizedQuery],
   );
   const visibleDoctors = filteredDoctors.slice(0, 48);
   const showingDoctors = activeTab === "doctors";
   const showingHospitals = activeTab !== "doctors";
   const resultCount = showingDoctors ? filteredDoctors.length : filteredHospitals.length;
+  const hasActiveFilters = Boolean(hospitalLevel || hospitalType || doctorHospital || doctorDepartment || doctorTitle);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (activeTab === "doctors") params.set("type", "doctor");
+    if (activeTab === "hospitals") params.set("type", "hospital");
+    if (query.trim()) params.set("q", query.trim());
+    if (hospitalLevel) params.set("level", hospitalLevel);
+    if (hospitalType) params.set("hospital_type", hospitalType);
+    if (doctorHospital) params.set("hospital_name", doctorHospital);
+    if (doctorDepartment) params.set("department", doctorDepartment);
+    if (doctorTitle) params.set("title", doctorTitle);
+    if (selection?.kind === "hospital" && typeof selection.item.id === "number") {
+      params.set("hospital", String(selection.item.id));
+    } else if (!selection && initialParams.get("hospital")) {
+      params.set("hospital", initialParams.get("hospital") as string);
+    }
+    if (selection?.kind === "doctor" && typeof selection.item.id === "number") {
+      params.set("doctor", String(selection.item.id));
+    } else if (!selection && initialParams.get("doctor")) {
+      params.set("doctor", initialParams.get("doctor") as string);
+    }
+    const search = params.toString();
+    const next = search ? `?${search}` : window.location.pathname;
+    window.history.replaceState(null, "", next);
+  }, [activeTab, query, hospitalLevel, hospitalType, doctorHospital, doctorDepartment, doctorTitle, selection]);
+
+  function resetFilters() {
+    setQuery("");
+    setHospitalLevel("");
+    setHospitalType("");
+    setDoctorHospital("");
+    setDoctorDepartment("");
+    setDoctorTitle("");
+  }
 
   function retryHospitals() {
     setHospitalError(null);
@@ -356,6 +436,50 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       <div className="resources-toolbar">
         <label className="resources-search"><Search size={18} aria-hidden="true" /><span className="sr-only">搜索医疗资源</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索医院、科室或医生" /></label>
         <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>打开医院地图</Button>
+      </div>
+
+      <div className="resources-filters" aria-label="资源高级筛选">
+        <span className="resources-filters__label"><Filter size={14} aria-hidden="true" /> 筛选</span>
+        <label className="resources-filters__field">
+          <span className="sr-only">医院等级</span>
+          <select value={hospitalLevel} onChange={(event) => setHospitalLevel(event.target.value)} data-testid="filter-hospital-level">
+            <option value="">全部等级</option>
+            {hospitalLevels.map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </label>
+        <label className="resources-filters__field">
+          <span className="sr-only">医院类型</span>
+          <select value={hospitalType} onChange={(event) => setHospitalType(event.target.value)} data-testid="filter-hospital-type">
+            <option value="">全部类型</option>
+            {hospitalTypes.map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </label>
+        <label className="resources-filters__field">
+          <span className="sr-only">所属医院</span>
+          <select value={doctorHospital} onChange={(event) => setDoctorHospital(event.target.value)} data-testid="filter-doctor-hospital">
+            <option value="">全部医院</option>
+            {doctorHospitalNames.map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </label>
+        <label className="resources-filters__field">
+          <span className="sr-only">科室</span>
+          <select value={doctorDepartment} onChange={(event) => setDoctorDepartment(event.target.value)} data-testid="filter-doctor-department">
+            <option value="">全部科室</option>
+            {doctorDepartments.map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </label>
+        <label className="resources-filters__field">
+          <span className="sr-only">职称</span>
+          <select value={doctorTitle} onChange={(event) => setDoctorTitle(event.target.value)} data-testid="filter-doctor-title">
+            <option value="">全部职称</option>
+            {doctorTitles.map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </label>
+        {hasActiveFilters || query.trim() ? (
+          <button className="resources-filters__reset" type="button" onClick={resetFilters}>
+            <RotateCcw size={13} aria-hidden="true" /> 重置
+          </button>
+        ) : null}
       </div>
 
       <div className="resources-tabs" role="tablist" aria-label="医疗资源类型">

@@ -5217,4 +5217,205 @@ em {
   .map-canvas--real {
     min-height: 390px;
   }
+
+  .resources-filters {
+    flex-wrap: wrap;
+  }
+
+  .resources-filters select {
+    min-width: 100%;
+  }
+}
+
+/* Doctor photo / hospital logo imagery */
+.doctor-index-avatar--photo {
+  overflow: hidden;
+  background: var(--surface-sage);
+}
+
+.doctor-index-avatar--photo img,
+.hospital-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hospital-logo {
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--surface-sage);
+}
+
+.hospital-logo img {
+  object-fit: contain;
+  padding: 3px;
+  background: var(--surface-elevated);
+}
+
+.hospital-logo--preview {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.hospital-logo--preview img {
+  padding: 4px;
+}
+
+.hospital-logo--emergency {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--state-danger, #c45c4a) 35%, transparent);
+}
+
+.resource-card__identity {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.resource-card__identity h3 {
+  margin: 0 0 2px;
+}
+
+.resource-card__traffic {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.resource-card__traffic span {
+  display: inline-block;
+  margin-right: 6px;
+  color: var(--accent-ink);
+  font-weight: 650;
+}
+
+.resource-card__traffic small {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.resources-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 14px;
+}
+
+.resources-filters__label {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 620;
+}
+
+.resources-filters__field select {
+  min-width: 118px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.resources-filters__reset {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 7px 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.expert-preference {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+}
+
+.expert-preference legend {
+  padding: 0 4px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.expert-preference__note {
+  margin: 0 0 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.expert-preference label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.speech-input {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.speech-input__button {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 620;
+}
+
+.speech-input__button:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  color: var(--accent-ink);
+}
+
+.speech-input__button:disabled {
+  opacity: 0.55;
+}
+
+.speech-input--unsupported {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.speech-input__hint {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.symptom-composer__tools {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
 }

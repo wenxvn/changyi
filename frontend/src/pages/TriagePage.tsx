@@ -2,13 +2,14 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, CircleAlert, LoaderCircle, ShieldCheck } from "lucide-react";
 import { ApiError } from "../api/client";
 import { getFollowups, startTriage } from "../api/triage";
-import { getRecommendations } from "../api/recommendations";
+import { getRecommendations, type ExpertPreference } from "../api/recommendations";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
 import { CurrentUnderstanding } from "../components/medical/CurrentUnderstanding";
 import { FollowupPrompt } from "../components/medical/FollowupPrompt";
 import { TriageResults } from "../components/medical/TriageResults";
 import { LocationSelector } from "../components/ui/LocationSelector";
+import { SpeechInput } from "../components/ui/SpeechInput";
 import { recordAnalysis } from "../state/demoProfile";
 import { useLocationContext } from "../state/locationContext";
 import type {
@@ -43,6 +44,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const [error, setError] = useState<ApiError | null>(null);
   const [recommendationsError, setRecommendationsError] = useState<ApiError | null>(null);
   const [followupAnswers, setFollowupAnswers] = useState<FollowupAnswer[]>([]);
+  const [expertPreference, setExpertPreference] = useState<ExpertPreference>("system");
   const { location } = useLocationContext();
   const triageController = useRef<AbortController | null>(null);
   const recommendationController = useRef<AbortController | null>(null);
@@ -69,6 +71,13 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     setRecommendations(null);
     setRecommendationsError(null);
   }, [location.source, location.district, location.lat, location.lng]);
+
+  useEffect(() => {
+    if (!recommendations || recommendationsLoading) return;
+    void loadRecommendations();
+    // Reload recommendations when the user changes expert preference after results are shown.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [expertPreference]);
 
   async function submitCondition(
     value: string,
@@ -142,6 +151,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           scenario: "common",
           ...locationRequest(),
           followup_answers: followupAnswers,
+          expert_preference: expertPreference,
         },
         controller.signal,
       );
@@ -206,7 +216,13 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                 disabled={loading}
               />
               <div className="symptom-composer__footer">
-                <span className="character-count">{condition.length} / 2000</span>
+                <div className="symptom-composer__tools">
+                  <SpeechInput
+                    disabled={loading}
+                    onTranscript={(text) => setCondition((value) => (value ? `${value}${value.endsWith("。") ? "" : "。"}${text}` : text))}
+                  />
+                  <span className="character-count">{condition.length} / 2000</span>
+                </div>
                 <Button type="submit" disabled={!condition.trim() || loading} icon={loading ? <LoaderCircle className="spin" size={17} aria-hidden="true" /> : <ArrowRight size={17} aria-hidden="true" />}>
                   {loading ? "正在分析" : "查看安全状态"}
                 </Button>
@@ -215,6 +231,43 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           )}
 
           <LocationSelector />
+
+          {canShowResults ? (
+            <fieldset className="expert-preference">
+              <legend>医生资源偏好</legend>
+              <p className="expert-preference__note">专家资源不一定适合所有常见病与初诊场景；默认为系统平衡推荐。</p>
+              <label>
+                <input
+                  type="radio"
+                  name="expert-preference"
+                  value="system"
+                  checked={expertPreference === "system"}
+                  onChange={() => setExpertPreference("system")}
+                />
+                系统平衡推荐
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="expert-preference"
+                  value="wish_expert"
+                  checked={expertPreference === "wish_expert"}
+                  onChange={() => setExpertPreference("wish_expert")}
+                />
+                希望优先专家
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="expert-preference"
+                  value="no_expert"
+                  checked={expertPreference === "no_expert"}
+                  onChange={() => setExpertPreference("no_expert")}
+                />
+                不特别需要专家
+              </label>
+            </fieldset>
+          ) : null}
 
           {error ? (
             <div className="inline-error" role="alert">

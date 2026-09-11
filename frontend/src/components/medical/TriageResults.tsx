@@ -2,6 +2,8 @@ import { ArrowRight, ExternalLink, MapPinned, PhoneCall, ShieldAlert, Sparkles }
 import { Button } from "../ui/Button";
 import { StatusPill } from "../ui/StatusPill";
 import { AmapNavigationLink } from "../ui/AmapNavigationLink";
+import { DoctorAvatar } from "../ui/DoctorAvatar";
+import { HospitalLogo } from "../ui/HospitalLogo";
 import type {
   RecommendationPayload,
   RecommendedDoctor,
@@ -50,6 +52,21 @@ function RecommendationError({ message, onRetry }: { message: string; onRetry: (
   );
 }
 
+function TrafficAccessNote({ item }: { item: RecommendedHospital }) {
+  const access = item.traffic_access;
+  if (!access || typeof access !== "object") return null;
+  const summary = typeof access.summary === "string" ? access.summary : "";
+  const used = Boolean(access.used_in_ranking);
+  if (!summary || summary.includes("暂无交通融合数据")) return null;
+  return (
+    <p className="resource-card__traffic">
+      <span>交通可达性</span>
+      {summary}
+      <small>{used ? "基于当前已接入公共交通站点数据估算，可能参与可达性排序。" : "基于当前已接入公共交通站点数据估算，仅作参考，不参与正式排序。"}</small>
+    </p>
+  );
+}
+
 function HospitalCard({ item, index, onNavigate }: { item: RecommendedHospital; index: number; onNavigate: (path: string) => void }) {
   const name = hospitalName(item);
   const hospital = item.hospital;
@@ -61,8 +78,13 @@ function HospitalCard({ item, index, onNavigate }: { item: RecommendedHospital; 
         <span className="resource-card__index">0{index + 1}</span>
         <span className="resource-card__meta">医院路径</span>
       </div>
-      <h3>{name}</h3>
-      <p className="resource-card__subline">{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "公开资源资料"}</p>
+      <div className="resource-card__identity">
+        <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} />
+        <div>
+          <h3>{name}</h3>
+          <p className="resource-card__subline">{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "公开资源资料"}</p>
+        </div>
+      </div>
       <p className="resource-card__address">{hospital.address ?? "地址信息以机构公开资料为准"}{distance ? ` · ${distance}` : ""}</p>
       {item.matched_department ? <div className="resource-card__department">{item.matched_department}</div> : null}
       {reasons.length > 0 ? (
@@ -70,6 +92,7 @@ function HospitalCard({ item, index, onNavigate }: { item: RecommendedHospital; 
           {reasons.map((reason) => <li key={reason}>{reason}</li>)}
         </ul>
       ) : null}
+      <TrafficAccessNote item={item} />
       <div className="resource-card__actions">
         <AmapNavigationLink target={hospital} className="resource-card__link" />
         <button
@@ -94,7 +117,7 @@ function DoctorRow({ item, onNavigate }: { item: RecommendedDoctor; onNavigate: 
       onClick={() => typeof doctor.id === "number" && onNavigate(`/resources?doctor=${doctor.id}`)}
       disabled={typeof doctor.id !== "number"}
     >
-      <div className="doctor-row__avatar" aria-hidden="true">{doctor.name?.slice(0, 1) || "医"}</div>
+      <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
       <div>
         <strong>{doctorName(item)}</strong>
         <span>{[doctor.title, doctor.department, doctor.hospital_name].filter((value): value is string => Boolean(value)).join(" · ") || "公开医生资料"}</span>
