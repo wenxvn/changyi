@@ -20,7 +20,7 @@
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
-cd frontend && npm ci && npm run build && cd ..
+cd frontend && npm ci && npm run build && npx playwright install chromium && cd ..
 python app.py
 ```
 
@@ -36,9 +36,11 @@ cd frontend
 npm run typecheck
 npm run test
 npm run build
+npx playwright install chromium
+npm run e2e
 ```
 
-质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 187 个已知异常；Safety Evaluation 当前基线为 16 cases、Red Flag Recall `0.9231`、Under-triage `0.0769`、Over-triage `0.0`、Emergency False Negative `1`，这些不是临床发布结论。
+质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 187 个已知异常；当前 Safety Evaluation 为 38 cases、Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency False Negative `0`。这些是固定样例上的工程回归结果，不是临床验证或发布结论。
 
 ## 入口文档
 

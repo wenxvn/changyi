@@ -31,7 +31,7 @@ Flask `/` and SPA refresh fallback
 | `/` | Homepage | 首个切片 | 产品说明、症状输入入口、Care Path、证据/信任入口 |
 | `/triage` | 智能就医 | Triage / Follow-up / Result 首版 | 文本采集、一次一个追问、后端状态、安全结果和 v1 资源路径 |
 | `/resources` | 医疗资源 | F7/F8 资源浏览与详情首版 | 医院/医生索引、关键词筛选、来源状态和按选择加载的公开详情；逐字段 provenance 待后续 |
-| `/map` | 就医地图 | F9 Map 首版 | `/api/v1/map` 医院位置示意、列表/marker 联动、急诊字段筛选和资料预览；正式导航待后续 |
+| `/map` | 就医地图 | F9 Map 首版 | `/api/v1/map` 医院位置分布、列表/marker 联动、急诊字段筛选、资料预览和高德导航 URI；实时急诊可用性仍待后续 |
 | `/trust` | 可信 AI | F10 Trust 首版 | 安全评估、模型/数据证据、版本、SHA-256 和限制；指标标记为 provisional |
 | `/profile` | 本地演示资料 | F11 Profile / History 首版 | 本地访客说明、显式历史开关、脱敏分析摘要和二次确认清除；不代表登录或医疗档案 |
 
@@ -93,4 +93,4 @@ Editorial 内容优先使用 grid、分隔线、排版和留白；Card 只用于
 
 ## 迁移与回滚
 
-每个 Slice 依次完成 read → design → implement → run → test → review → document。正式 build、v1 contract、Safety baseline、核心 route refresh、desktop/mobile smoke 通过后，React 成为默认入口；完整 Playwright、视觉 baseline 和远端 CI 首次结果仍记录在 backlog，不改变当前正式边界。
+每个 Slice 依次完成 read → design → implement → run → test → review → document。正式 build、v1 contract、Safety baseline、核心 route refresh、desktop/mobile smoke 和本地 Playwright 已通过；完整视觉矩阵、对比度审查和远端 CI 首次结果仍记录在 backlog，不改变当前正式边界。

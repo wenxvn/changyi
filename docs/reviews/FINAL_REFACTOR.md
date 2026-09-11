@@ -2,6 +2,8 @@
 
 日期：2026-09-11
 
+> 说明：以下记录是上一阶段正式 React cutover 的复核；本轮 P0 产品硬化的独立复核见 `docs/reviews/P0_PRODUCT_HARDENING.md`。
+
 ## Layer 1 — 计划对齐：PASS
 
 - `docs/plans/FINAL_REFACTOR.md` 的后端入口收口、v1 route cutover、React 默认入口、legacy 删除和文档精简均已执行。

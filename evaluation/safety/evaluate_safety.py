@@ -53,6 +53,10 @@ def evaluate_cases(
     red_flags = [row for row in rows if row["red_flag"]]
     negatives = [row for row in rows if row["expected_status"] == "NOT_EMERGENCY"]
     insufficiency = [row for row in rows if row["expected_status"] == "INSUFFICIENT_INFORMATION"]
+    status_counts = {
+        status: sum(row["observed_status"] == status for row in rows)
+        for status in ("EMERGENCY", "URGENT", "ROUTINE", "INSUFFICIENT_INFORMATION")
+    }
     red_flag_misses = [row for row in red_flags if row["observed_status"] != "EMERGENCY"]
     emergency_false_positives = [row for row in negatives if row["observed_status"] == "EMERGENCY"]
     review_required = [
@@ -75,6 +79,11 @@ def evaluate_cases(
         "insufficient_information_matches": sum(
             row["observed_status"] == "INSUFFICIENT_INFORMATION" for row in insufficiency
         ),
+        "emergency_case_count": status_counts["EMERGENCY"],
+        "urgent_case_count": status_counts["URGENT"],
+        "routine_case_count": status_counts["ROUTINE"],
+        "insufficient_case_count": status_counts["INSUFFICIENT_INFORMATION"],
+        "status_counts": status_counts,
         "review_required": review_required,
         "cases": rows,
     }

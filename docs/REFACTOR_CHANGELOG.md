@@ -12,9 +12,15 @@
 
 完成 triage、recommendation、resource catalog、summary/evidence/map/region read service；完成 Profile/History、可访问性和键盘语义；React build 切换为 Flask 默认入口；v1 blueprint 改用直接注册 handler；删除 legacy routes、legacy UI、未使用的 assistant/carousel/background 资产、dead wrappers、反馈 JSONL、backup assets、根 fallback doctors 和 cloudflared 二进制。
 
+## 2026-09-11 — P0 产品硬化
+
+- 修复已记录的口语呼吸困难、压榨样胸痛/冷汗安全回归；笼统输入进入 `INSUFFICIENT_INFORMATION`，并保留否定表达边界。
+- 安全样例扩展至 38 个：Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency False Negative `0`。
+- 恢复医院/地图资料中的高德导航 URI；清理普通页面工程化文案，技术证据收进 Trust Center 的折叠详情；补充 15 个前端边界测试和 5 个 Playwright smoke tests。
+
 ## 基线说明
 
-- Safety Evaluation：16 cases，Red Flag Recall `0.9231`、Under-triage `0.0769`、Over-triage `0.0`、Emergency False Negative `1`；保留为辅助系统基线，不代表临床验证。
+- P0 后 Safety Evaluation：38 cases，Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency False Negative `0`；固定样例回归不代表临床验证。
 - 数据质量：扫描 27 个文件，登记 187 个异常；本轮未修复。
 - 推荐/分诊结果：canonical v1 characterization 保留，旧 `/api/*` route harness 已删除。
-- canonical snapshot SHA-256：`435f0595c1801d2a591775563efca4947f5d1d51f7444fb6bdc074536111ab6a`。
+- P0 后 canonical snapshot SHA-256：`2b0637630eb52013c9cba3a5cc20f1a536602d2cf7bbf4e91170d638f0754d59`。

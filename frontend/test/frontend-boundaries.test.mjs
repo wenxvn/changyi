@@ -30,28 +30,31 @@ test("pages and components do not own direct fetch or legacy global state", asyn
   }
 });
 
-test("resource browsing stays on versioned read-only endpoints", async () => {
+test("resource browsing stays on versioned read-only endpoints and exposes navigation", async () => {
   const page = await source("pages/ResourcesPage.tsx");
   const api = await source("api/resources.ts");
+  const navigation = await source("components/ui/AmapNavigationLink.tsx");
   assert.doesNotMatch(page, /fetch\(/);
   assert.match(api, /\/api\/v1\/hospitals/);
   assert.match(api, /\/api\/v1\/doctors/);
   assert.match(api, /getHospitalDetail/);
   assert.match(api, /getDoctorDetail/);
-  assert.match(page, /RESOURCE DETAIL/);
-  assert.match(page, /provenance/);
-  assert.match(page, /来源待补齐/);
-  assert.match(page, /地图（建设中）/);
+  assert.match(page, /资料详情/);
+  assert.match(page, /AmapNavigationLink/);
+  assert.match(navigation, /高德导航/);
+  assert.match(page, /资料核验中/);
+  assert.match(page, /打开医院地图/);
 });
 
-test("Trust Center reads provisional evidence from the shared v1 API", async () => {
+test("Trust Center presents evidence in user-facing language with technical detail available", async () => {
   const page = await source("pages/TrustPage.tsx");
   const api = await source("api/evidence.ts");
   assert.doesNotMatch(page, /fetch\(/);
   assert.match(api, /\/api\/v1\/evidence/);
-  assert.match(page, /PROVISIONAL EVALUATION/);
+  assert.match(page, /可信信息 · 系统评估/);
+  assert.match(page, /研究与演示阶段/);
   assert.match(page, /不代表临床验证/);
-  assert.match(page, /review_required/);
+  assert.match(page, /技术详情/);
 });
 
 test("map view keeps list and markers on one read-only endpoint", async () => {
@@ -60,7 +63,8 @@ test("map view keeps list and markers on one read-only endpoint", async () => {
   assert.doesNotMatch(page, /fetch\(/);
   assert.match(api, /\/api\/v1\/map/);
   assert.match(page, /aria-label=\{`查看/);
-  assert.match(page, /非导航地图/);
+  assert.match(page, /医院位置分布/);
+  assert.match(page, /高德导航/);
   assert.doesNotMatch(page, /geolocation/);
 });
 

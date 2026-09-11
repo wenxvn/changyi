@@ -64,7 +64,7 @@ jobs:
             tests/characterization/canonical_snapshot.json
 
   frontend:
-    name: Frontend typecheck, boundary tests, and build
+    name: Frontend checks and browser smoke
     runs-on: ubuntu-latest
 
     steps:
@@ -77,6 +77,16 @@ jobs:
           node-version: "22"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
+
+      - name: Set up Python for the Flask smoke server
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install Flask smoke-server dependencies
+        run: python -m pip install -r requirements-dev.txt
 
       - name: Install frontend dependencies
         working-directory: frontend
@@ -93,3 +103,19 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: npm run build
+
+      - name: Install Playwright Chromium
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Run browser smoke and capture screenshots
+        working-directory: frontend
+        run: npm run e2e
+
+      - name: Upload browser smoke artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-${{ github.run_id }}
+          path: frontend/test-results
+          if-no-files-found: ignore

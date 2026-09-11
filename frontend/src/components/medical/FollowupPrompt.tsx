@@ -34,8 +34,8 @@ export function FollowupPrompt({
   return (
     <section className="followup-prompt" aria-labelledby="followup-title">
       <div className="followup-prompt__topline">
-        <span className="eyebrow"><CircleHelp size={14} aria-hidden="true" /> NEED MORE CONTEXT</span>
-        <span className="followup-prompt__step">STEP {stepNumber} / {followup.questions.length}</span>
+        <span className="eyebrow"><CircleHelp size={14} aria-hidden="true" /> 需要补充信息</span>
+        <span className="followup-prompt__step">第 {stepNumber} 问 / 共 {followup.questions.length} 问</span>
       </div>
       <h2 id="followup-title">{question.question}</h2>
       {question.reason ? <p className="followup-prompt__reason">{question.reason}</p> : null}

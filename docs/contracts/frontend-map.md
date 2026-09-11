@@ -38,10 +38,10 @@ GET /api/v1/map?lat=<latitude>&lng=<longitude>
 }
 ```
 
-`map_point` 是服务端根据当前资源坐标生成的轻量视图投影，仅用于 SVG/CSS 位置示意。`distance_km` 是 Haversine 直线距离，不是驾车、公交或急救到院时间。`EMERGENCY_CAPABLE` 仅复述接口的急诊字段，不代表实时可用性；没有推荐上下文时不生成推荐 marker。
+`map_point` 是服务端根据当前资源坐标生成的轻量视图投影，仅用于 SVG/CSS 位置分布。页面的医院资料预览可通过共享导航 utility 生成高德导航 URI；这只是外部地图跳转，不是系统计算的路线或急救指令。`distance_km` 是 Haversine 直线距离，不是驾车、公交或急救到院时间。`EMERGENCY_CAPABLE` 仅复述接口的急诊字段，不代表实时可用性；没有推荐上下文时不生成推荐 marker。
 
 ## 错误与展示安全边界
 
 - 只提供 `lat` 或 `lng`、坐标不可解析或超范围时返回 `400 INVALID_LOCATION` v1 envelope。
 - 坐标缺失的医院不进入位置点，不由前端猜测；当前医院资源仍显示来源待补齐。
-- 地图页面必须显示“不请求定位”“非导航地图”以及来源限制；正式急诊路径和逐字段 provenance 仍待后续契约，资源详情使用 `frontend-resources.md` 的按 id 详情契约。
+- 地图页面必须显示位置分布、直线距离限制、资料来源限制和高德导航入口；导航 URI 不得被包装为实时路线或急救指令。正式急诊可用性和逐字段 provenance 仍待后续契约，资源详情使用 `frontend-resources.md` 的按 id 详情契约。

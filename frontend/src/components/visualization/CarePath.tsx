@@ -1,10 +1,10 @@
 import { ArrowDown, CircleCheck, CircleDot, Route, ShieldCheck } from "lucide-react";
 
 const pathSteps = [
-  { label: "症状", english: "Symptom", state: "active" },
-  { label: "安全门", english: "Safety Gate", state: "soft" },
-  { label: "就医方向", english: "Direction", state: "soft" },
-  { label: "资源路径", english: "Care Path", state: "soft" },
+  { label: "症状", caption: "当前描述", state: "active" },
+  { label: "安全门", caption: "先看风险", state: "soft" },
+  { label: "就医方向", caption: "了解下一步", state: "soft" },
+  { label: "资源路径", caption: "找到可用资源", state: "soft" },
 ] as const;
 
 export function CarePath() {
@@ -13,12 +13,12 @@ export function CarePath() {
       <div className="care-path__orb care-path__orb--one" />
       <div className="care-path__orb care-path__orb--two" />
       <div className="care-path__header">
-        <span className="eyebrow eyebrow--muted">CARE PATH VISUAL</span>
+        <span className="eyebrow eyebrow--muted">就医路径示意</span>
         <Route size={16} strokeWidth={1.7} aria-hidden="true" />
       </div>
       <div className="care-path__rail">
         {pathSteps.map((step, index) => (
-          <div className="care-path__step" key={step.english}>
+          <div className="care-path__step" key={step.label}>
             <div className={`care-path__node care-path__node--${step.state}`}>
               {index === 0 ? (
                 <CircleDot size={18} strokeWidth={1.7} aria-hidden="true" />
@@ -32,7 +32,7 @@ export function CarePath() {
             </div>
             <div>
               <p>{step.label}</p>
-              <span>{step.english}</span>
+              <span>{step.caption}</span>
             </div>
             {index < pathSteps.length - 1 ? (
               <ArrowDown className="care-path__arrow" size={15} strokeWidth={1.5} aria-hidden="true" />

@@ -106,7 +106,7 @@ def build_map_payload(
         "count": len(items),
         "source": "legacy_catalog_pending_provenance",
         "distance_method": "haversine_straight_line_km" if user_lat is not None else None,
-        "notice": "地图为资源位置示意，不是导航地图；医院来源逐字段 provenance 仍在迁移中。",
+        "notice": "医院位置用于辅助查看资源分布；距离为直线距离，仅供参考，实际路线请以高德地图导航结果为准。部分资料仍在核验。",
     }
 
 

@@ -30,14 +30,13 @@
       ],
       "department": "呼吸与危重症医学科",
       "triage": {
-        "level": "routine",
-        "label": "普通/常见病倾向",
-        "severity_bucket": "小病/常见病倾向",
-        "severity_score": 35,
-        "recommended_scenario": "common",
+        "level": "emergency",
+        "label": "疑似急症",
+        "severity_bucket": "大病/重症风险",
+        "severity_score": 96,
+        "recommended_scenario": "surgery",
         "matched_department": "呼吸与危重症医学科",
         "red_flag_tags": [
-          "呼吸困难",
           "呼吸困难"
         ],
         "has_disclaimer": true,
@@ -51,9 +50,9 @@
       "department": "全科医学科",
       "triage": {
         "level": "routine",
-        "label": "普通/常见病倾向",
-        "severity_bucket": "小病/常见病倾向",
-        "severity_score": 35,
+        "label": "需要补充信息",
+        "severity_bucket": "信息不足",
+        "severity_score": 50,
         "recommended_scenario": "common",
         "matched_department": "全科医学科",
         "red_flag_tags": [],

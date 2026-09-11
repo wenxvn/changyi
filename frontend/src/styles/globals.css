@@ -1574,6 +1574,17 @@ em {
   padding-top: 85px;
 }
 
+.triage-page__layout--active {
+  grid-template-columns: minmax(250px, 0.38fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  padding-top: 48px;
+}
+
+.triage-page__layout--active > .current-understanding {
+  position: sticky;
+  top: 100px;
+}
+
 .triage-page__intro h1 {
   margin-top: 36px;
   font-size: clamp(3.1rem, 6vw, 6.2rem);
@@ -1717,6 +1728,42 @@ em {
   display: grid;
   gap: 18px;
   margin-top: 22px;
+}
+
+.triage-submitted-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 15px 17px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-inset);
+}
+
+.triage-submitted-summary > div {
+  min-width: 0;
+}
+
+.triage-submitted-summary p {
+  max-width: 620px;
+  margin: 5px 0 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.65;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triage-submitted-summary button {
+  flex: 0 0 auto;
+  padding: 5px 0;
+  background: transparent;
+  color: var(--accent-primary);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 .current-understanding,
@@ -2220,6 +2267,32 @@ em {
   background: transparent;
   color: var(--text-muted);
   font-size: 10px;
+}
+
+.resource-card__actions,
+.resource-index-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  align-items: center;
+}
+
+.resource-card__actions .resource-card__link,
+.resource-index-card__actions .resource-index-card__link {
+  margin-top: 15px;
+}
+
+.amap-navigation-link {
+  text-decoration: none;
+}
+
+.amap-navigation-link:hover {
+  color: var(--accent-primary);
+}
+
+.amap-navigation-link:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
 }
 
 .resource-card__link:disabled {
@@ -2742,6 +2815,11 @@ em {
 .resource-detail__provenance small {
   color: var(--text-muted);
   font-size: 10px;
+}
+
+.resource-detail__navigation,
+.map-preview__navigation {
+  margin-top: 19px;
 }
 
 .profile-page {
@@ -3280,22 +3358,19 @@ em {
   line-height: 1.7;
 }
 
-.evidence-review-list {
-  display: grid;
-  gap: 0;
-  margin: 19px 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--border-default);
+.evidence-panel__plain-copy {
+  margin: 18px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.8;
 }
 
-.evidence-review-list li {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-default);
+.evidence-review-copy {
+  min-height: 136px;
+  margin: 18px 0 0;
   color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.8;
 }
 
 .evidence-empty-copy {
@@ -3372,6 +3447,52 @@ em {
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   background: var(--border-default);
+}
+
+.trust-technical-details {
+  margin-top: 72px;
+  border-top: 1px solid var(--border-strong);
+}
+
+.trust-technical-details > summary {
+  display: flex;
+  gap: 15px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 19px 0;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 650;
+  list-style: none;
+}
+
+.trust-technical-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.trust-technical-details > summary::after {
+  color: var(--accent-primary);
+  content: "+";
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.trust-technical-details[open] > summary::after {
+  content: "−";
+}
+
+.trust-technical-details > summary small {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.trust-evidence-section--technical {
+  margin-top: 12px;
+  padding-bottom: 5px;
 }
 
 .trust-version {
@@ -4182,6 +4303,14 @@ em {
     padding-top: 58px;
   }
 
+  .triage-page__layout--active {
+    padding-top: 42px;
+  }
+
+  .triage-page__layout--active > .current-understanding {
+    position: static;
+  }
+
   .triage-page__intro h1 {
     margin-top: 28px;
   }
@@ -4409,6 +4538,14 @@ em {
 
   .triage-page__note {
     margin-top: 27px;
+  }
+
+  .triage-submitted-summary {
+    align-items: flex-start;
+  }
+
+  .triage-submitted-summary p {
+    white-space: normal;
   }
 
   .symptom-composer--large textarea {

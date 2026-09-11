@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ApiError } from "../api/client";
 import { getMap } from "../api/map";
+import { AmapNavigationLink } from "../components/ui/AmapNavigationLink";
 import { StatusPill } from "../components/ui/StatusPill";
 import type { MapHospitalRecord, MapPayload } from "../types/api";
 
@@ -30,14 +31,14 @@ function distanceLabel(item: MapHospitalRecord): string {
 }
 
 function sourceLabel(source: string): string {
-  return source.includes("pending") ? "医院目录 · 来源待补齐" : `来源状态 · ${source}`;
+  return source.includes("pending") ? "医院目录 · 资料核验中" : "医院位置资料";
 }
 
 function MapPreview({ item, onClose }: { item: MapHospitalRecord; onClose: () => void }) {
   return (
     <aside className="map-preview" aria-labelledby="map-preview-title">
       <div className="map-preview__topline">
-        <span className="eyebrow">RESOURCE PREVIEW</span>
+        <span className="eyebrow">资源资料预览</span>
         <button type="button" onClick={onClose} aria-label="关闭地图资料预览"><X size={18} aria-hidden="true" /></button>
       </div>
       <div className="map-preview__heading">
@@ -53,15 +54,16 @@ function MapPreview({ item, onClose }: { item: MapHospitalRecord; onClose: () =>
         <div><dt>坐标</dt><dd>{item.lat.toFixed(4)}, {item.lng.toFixed(4)}</dd></div>
       </dl>
       <p className="map-preview__reason">{item.map_reason}</p>
-      <p className="map-preview__source">来源状态：医院目录逐字段 provenance 仍在迁移中。地图位置仅用于资源示意，不构成官方推荐或导航指令。</p>
+      <AmapNavigationLink target={item} className="map-preview__navigation" />
+      <p className="map-preview__source">资料来源信息仍在补充核验。距离为直线距离，仅供参考；实际路线请以高德地图导航结果为准。</p>
     </aside>
   );
 }
 
 function MapCanvas({ items, selectedKey, onSelect }: { items: MapHospitalRecord[]; selectedKey: string | null; onSelect: (item: MapHospitalRecord) => void }) {
   return (
-    <div className="map-canvas" role="region" aria-label="常州医院资源位置示意图">
-      <div className="map-canvas__topline"><span>CHANGZHOU MAP</span><small>320400 · RESOURCE VIEW</small></div>
+    <div className="map-canvas" role="region" aria-label="常州医院位置分布图">
+      <div className="map-canvas__topline"><span>常州位置分布</span><small>320400 · 医院资源</small></div>
       <div className="map-canvas__wash map-canvas__wash--one" />
       <div className="map-canvas__wash map-canvas__wash--two" />
       <svg viewBox="0 0 600 420" aria-hidden="true">
@@ -94,7 +96,7 @@ function MapCanvas({ items, selectedKey, onSelect }: { items: MapHospitalRecord[
         <span><i className="map-legend-dot map-legend-dot--emergency" />含急诊字段</span>
         <span><i className="map-legend-dot" />普通资源</span>
       </div>
-      <span className="map-canvas__caption">位置示意 · 非导航地图</span>
+      <span className="map-canvas__caption">医院位置分布</span>
     </div>
   );
 }
@@ -135,11 +137,11 @@ export function MapPage() {
     <section className="map-page page-container">
       <div className="map-page__hero">
         <div>
-          <span className="eyebrow">CITY LAYER · CHANGZHOU 320400</span>
+          <span className="eyebrow">常州服务区域 · 320400</span>
           <h1>从地图上，<br /><em>看见更实际的到院选择。</em></h1>
           <p>把公开医院资源放回常州城市关系中。列表和位置示意保持同步；急诊字段只表示接口标记，不代表实时急诊可用性。</p>
         </div>
-        <div className="map-page__hero-note"><Navigation size={20} strokeWidth={1.4} aria-hidden="true" /><span>位置资源示意</span><small>不请求定位，不替代导航。</small></div>
+        <div className="map-page__hero-note"><Navigation size={20} strokeWidth={1.4} aria-hidden="true" /><span>医院位置分布</span><small>可从医院资料打开高德导航。</small></div>
       </div>
 
       {loading ? <div className="map-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医院位置索引…</div> : null}

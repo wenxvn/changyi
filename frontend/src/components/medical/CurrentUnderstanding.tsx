@@ -22,14 +22,14 @@ export function CurrentUnderstanding({ condition, result, followup }: CurrentUnd
   return (
     <aside className="current-understanding" aria-labelledby="understanding-title">
       <div className="current-understanding__header">
-        <span className="eyebrow" id="understanding-title"><ClipboardList size={14} aria-hidden="true" /> CURRENT UNDERSTANDING</span>
+        <span className="eyebrow" id="understanding-title"><ClipboardList size={14} aria-hidden="true" /> 当前理解</span>
         <StatusPill tone={statusTone}>{statusLabel[status]}</StatusPill>
       </div>
       <div className="current-understanding__quote">“{condition}”</div>
       <dl className="understanding-facts">
         <div>
           <dt>安全门状态</dt>
-          <dd>{status}</dd>
+          <dd>{statusLabel[status]}</dd>
         </div>
         {result.matched_department ? (
           <div>

@@ -26,7 +26,7 @@ export const journeySteps: JourneyStep[] = [
     number: "02",
     title: "先过安全门",
     description: "先检查需要优先关注的信号，再进入普通资源匹配。",
-    preview: "Safety Gate · 等待后端评估",
+    preview: "安全状态 · 正在读取当前描述",
   },
   {
     number: "03",
@@ -72,17 +72,17 @@ export function JourneyPreview({ step }: JourneyPreviewProps) {
   return (
     <div className="journey-preview" aria-live="polite">
       <div className="journey-preview__topline">
-        <span className="eyebrow eyebrow--muted">PRODUCT PREVIEW</span>
-        <span className="journey-preview__index">{step.number} / 06</span>
+        <span className="eyebrow eyebrow--muted">路径预览</span>
+        <span className="journey-preview__index">第 {step.number} 步 / 共 06 步</span>
       </div>
       <div className="journey-preview__stage">
         <div className="journey-preview__halo" />
         <div className="journey-preview__icon"><Icon size={23} strokeWidth={1.5} aria-hidden="true" /></div>
         <div className="journey-preview__line" />
         <div className="journey-preview__copy">
-          <span className="journey-preview__label">CURRENT UNDERSTANDING</span>
+          <span className="journey-preview__label">当前理解</span>
           <strong>{step.preview}</strong>
-          <span className="journey-preview__note">系统将依据后端返回继续推进</span>
+          <span className="journey-preview__note">系统会根据当前信息继续推进</span>
         </div>
       </div>
       <div className="journey-preview__footer">

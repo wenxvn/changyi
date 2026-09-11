@@ -95,8 +95,8 @@ function AppShell({
             className={`profile-button${route === "profile" ? " profile-button--active" : ""}`}
             type="button"
             onClick={() => navigate("/profile")}
-            aria-label="打开本地演示资料"
-            title="本地演示资料"
+            aria-label="打开本地偏好"
+            title="本地偏好"
             aria-current={route === "profile" ? "page" : undefined}
           >
             <CircleUserRound size={20} strokeWidth={1.6} aria-hidden="true" />

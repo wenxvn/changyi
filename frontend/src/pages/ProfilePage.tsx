@@ -92,15 +92,15 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
 
       <div className="profile-page__hero">
         <div>
-          <span className="eyebrow">LOCAL DEMO · PROFILE / HISTORY</span>
+          <span className="eyebrow">本地偏好 · 最近分析</span>
           <h1>把这次体验，<br /><em>留在你的浏览器里。</em></h1>
-          <p>这里是常州示范区的本地演示资料入口，不需要登录，也不建立真实用户身份。</p>
+          <p>这里可以管理常州示范区的本地偏好与最近分析，不需要登录，也不建立真实用户身份。</p>
         </div>
-        <div className="profile-page__identity" aria-label="本地演示资料">
+        <div className="profile-page__identity" aria-label="本地偏好">
           <div className="profile-page__identity-icon"><CircleUserRound size={29} strokeWidth={1.35} aria-hidden="true" /></div>
-          <strong>常州演示访客</strong>
-          <span>区域包 · 320400</span>
-          <StatusPill tone="neutral">本地演示</StatusPill>
+          <strong>常州本地访客</strong>
+          <span>服务区域 · 320400</span>
+          <StatusPill tone="neutral">仅保存在本机</StatusPill>
         </div>
       </div>
 
@@ -112,7 +112,7 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
       <div className="profile-page__grid">
         <section className="profile-card profile-card--settings" aria-labelledby="profile-settings-title">
           <div className="profile-card__heading">
-            <div><span className="eyebrow">01 · LOCAL PREFERENCE</span><h2 id="profile-settings-title">只记录你主动开启的摘要</h2></div>
+            <div><span className="eyebrow">01 · 本地偏好</span><h2 id="profile-settings-title">只记录你主动开启的摘要</h2></div>
             <Check size={19} aria-hidden="true" />
           </div>
           <label className="profile-toggle">
@@ -124,7 +124,7 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
 
         <section className="profile-card profile-card--history" aria-labelledby="profile-history-title">
           <div className="profile-card__heading">
-            <div><span className="eyebrow">02 · RECENT ANALYSIS</span><h2 id="profile-history-title">最近分析</h2></div>
+            <div><span className="eyebrow">02 · 最近分析</span><h2 id="profile-history-title">最近分析</h2></div>
             <History size={19} aria-hidden="true" />
           </div>
           {history.length > 0 ? (
@@ -149,7 +149,7 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
         </section>
       </div>
 
-      <p className="profile-page__footer-note">本页面仅用于演示本地偏好与历史边界，不代表登录、医疗档案、诊断记录或专业医疗建议。</p>
+      <p className="profile-page__footer-note">本页面用于管理本地偏好与历史边界，不代表登录、医疗档案、诊断记录或专业医疗建议。</p>
     </section>
   );
 }

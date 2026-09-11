@@ -292,7 +292,7 @@ File: `frontend/src/pages/MapPage.tsx`, `frontend/src/api/map.ts`, `frontend/src
 | Shadow | `var(--shadow-soft)` canvas and preview; no map auto-animation |
 | Accent usage | teal marks normal resource points; danger marks the server-provided emergency field; no recommendation color without recommendation context |
 
-**Pattern notes:** Map list and marker use the same `/api/v1/map` items. The view is a lightweight coordinate projection labeled “非导航地图”; it does not request location, fabricate distances, or imply real-time emergency availability. The source pill keeps `legacy_catalog_pending_provenance` visible.
+**Pattern notes:** Map list and marker use the same `/api/v1/map` items. The view is a lightweight hospital-location distribution view; it does not request location, fabricate distances, or imply real-time emergency availability. Each resource may expose a source-aware AMap navigation/search action, while the source pill keeps `legacy_catalog_pending_provenance` visible.
 
 ### Flask-served React release shell
 

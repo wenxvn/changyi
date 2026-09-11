@@ -134,9 +134,14 @@ def _model_standard_symptom_tags(condition):
     for index, code in enumerate(normalized_codes):
         if code in seen:
             continue
-        seen.add(code)
         label = known_labels[index] if index < len(known_labels) else code
-        matched_terms = [raw for raw, mapped in aliases.items() if mapped == code]
+        matched_terms = [
+            raw for raw, mapped in aliases.items()
+            if mapped == code and _contains_positive(condition, [raw])
+        ]
+        if not matched_terms and not _contains_positive(condition, [label]):
+            continue
+        seen.add(code)
         tags.append({
             "tag": label,
             "standard_code": code,
@@ -1253,8 +1258,8 @@ TRIAGE_RED_FLAGS = [
     {
         "name": "疑似心血管急症",
         "dept": "心血管内科",
-        "keywords": ["胸痛", "胸闷", "心前区痛", "压榨感", "冠脉", "心梗", "心肌梗死"],
-        "with_any": ["呼吸困难", "气短", "大汗", "出冷汗", "恶心", "呕吐", "头晕", "晕厥", "放射痛", "左肩痛", "背痛"],
+        "keywords": ["胸痛", "胸闷", "心前区痛", "压榨感", "胸口压榨样疼痛", "压榨样胸痛", "压榨性胸痛", "胸口压着", "冠脉", "心梗", "心肌梗死"],
+        "with_any": ["呼吸困难", "喘不上来", "喘不过气", "上不来气", "气短", "大汗", "出冷汗", "冒冷汗", "冷汗直冒", "恶心", "呕吐", "头晕", "晕厥", "放射痛", "左肩痛", "背痛"],
         "advice": "出现胸痛/胸闷并伴随呼吸困难、大汗、晕厥等表现时，应优先急诊评估。",
     },
     {
@@ -1354,7 +1359,7 @@ TRIAGE_SPECIALTY_DISEASE_RULES = [
 ]
 
 TRIAGE_CRITICAL_SINGLE_KEYWORDS = [
-    "呼吸困难", "喘不上气", "无法呼吸", "憋气明显", "嘴唇发紫", "紫绀", "血氧低",
+    "呼吸困难", "喘不上气", "喘不上来", "喘不过气", "上不来气", "喘不来气", "无法呼吸", "憋气明显", "嘴唇发紫", "紫绀", "血氧低",
     "昏迷", "意识不清", "呼之不应", "休克", "大出血", "大量出血", "止不住血",
     "偏瘫", "一侧无力", "口角歪斜", "说话不清", "言语不清", "抽搐不止", "无法站立",
     "肺栓塞", "主动脉夹层", "宫外孕", "异位妊娠", "视网膜脱落",
@@ -1371,6 +1376,8 @@ TRIAGE_MILD_KEYWORDS = [
     "打喷嚏", "咽痛", "嗓子疼", "轻微腹泻", "轻微扭伤", "痘痘", "痤疮",
 ]
 
+TRIAGE_INSUFFICIENT_INPUTS = ("不舒服", "不适", "难受", "不太好", "不清楚", "说不上来")
+
 
 def _contains_any(text, words):
     return any(w and w in text for w in words)
@@ -1379,9 +1386,9 @@ def _contains_any(text, words):
 HTRIAGE_NOTICE = "疾病候选与病类判断仅用于就医推荐参考，不作为诊断结果。"
 
 STANDARD_SYMPTOM_RULES = [
-    {"tag": "胸痛/胸闷", "aliases": ["胸痛", "胸闷", "心前区痛", "压榨感", "胸口痛"], "system": "心血管系统", "disease": "心绞痛/急性冠脉综合征风险", "primary": "心血管疾病", "secondary": "心血管急症风险", "dept": "心血管内科", "score": 0.88, "red": True},
+    {"tag": "胸痛/胸闷", "aliases": ["胸痛", "胸闷", "心前区痛", "压榨感", "胸口痛", "胸口压榨样疼痛", "压榨样胸痛", "压榨性胸痛", "胸口压着"], "system": "心血管系统", "disease": "心绞痛/急性冠脉综合征风险", "primary": "心血管疾病", "secondary": "心血管急症风险", "dept": "心血管内科", "score": 0.88, "red": True},
     {"tag": "心悸", "aliases": ["心悸", "心慌", "心跳快", "心律失常", "早搏"], "system": "心血管系统", "disease": "心律失常", "primary": "心血管疾病", "secondary": "心律失常相关", "dept": "心血管内科", "score": 0.72},
-    {"tag": "呼吸困难", "aliases": ["呼吸困难", "喘不上气", "气短", "憋气", "无法呼吸", "嘴唇发紫"], "system": "呼吸系统", "disease": "哮喘/肺炎或低氧风险", "primary": "呼吸系统疾病", "secondary": "呼吸系统急症风险", "dept": "呼吸与危重症医学科", "score": 0.90, "red": True},
+    {"tag": "呼吸困难", "aliases": ["呼吸困难", "喘不上气", "喘不上来", "喘不过气", "上不来气", "喘不来气", "透不过气", "气短", "憋气", "无法呼吸", "嘴唇发紫"], "system": "呼吸系统", "disease": "哮喘/肺炎或低氧风险", "primary": "呼吸系统疾病", "secondary": "呼吸系统急症风险", "dept": "呼吸与危重症医学科", "score": 0.90, "red": True},
     {"tag": "咳嗽咳痰", "aliases": ["咳嗽", "咳痰", "痰多", "干咳", "黄痰", "咯血"], "system": "呼吸系统", "disease": "支气管炎/肺部感染", "primary": "呼吸系统疾病", "secondary": "呼吸系统感染", "dept": "呼吸内科", "score": 0.66},
     {"tag": "发热", "aliases": ["发热", "发烧", "高烧", "高热", "低热", "寒战"], "system": "感染/全身症状", "disease": "感染性疾病/流感样症状", "primary": "感染性疾病", "secondary": "发热感染类", "dept": "感染性疾病科", "score": 0.62},
     {"tag": "鼻塞流涕", "aliases": ["鼻塞", "流鼻涕", "打喷嚏", "咽痛", "嗓子疼", "喉咙痛"], "system": "呼吸系统", "disease": "普通上呼吸道感染", "primary": "呼吸系统疾病", "secondary": "呼吸系统普通病", "dept": "呼吸内科", "score": 0.58},
@@ -1483,14 +1490,17 @@ def _model_disease_meta(disease):
 def build_htriage_analysis(condition):
     raw_text = condition or ""
     text, colloquial_replacements = normalize_patient_expression(raw_text)
-    symptom_tags = extract_standard_symptom_tags(text)
-    model_tags, model_prediction = _model_standard_symptom_tags(text)
+    # Keep rule matching on the user's original wording. Appending canonical
+    # aliases is useful for model features, but would turn a negated phrase
+    # such as "没有喘不过气" into a false positive if reused for safety rules.
+    symptom_tags = extract_standard_symptom_tags(raw_text)
+    model_tags, model_prediction = _model_standard_symptom_tags(raw_text)
     seen_tag_names = {item.get("tag") for item in symptom_tags}
     for item in model_tags:
         if item.get("tag") not in seen_tag_names:
             symptom_tags.append(item)
             seen_tag_names.add(item.get("tag"))
-    known_disease = detect_known_disease(text)
+    known_disease = detect_known_disease(raw_text)
     disease_scores = {}
     disease_meta = {}
 
@@ -1505,12 +1515,12 @@ def build_htriage_analysis(condition):
         }
 
     for rule in STANDARD_SYMPTOM_RULES:
-        hit_count = sum(1 for alias in rule["aliases"] if _contains_positive(text, [alias]))
+        hit_count = sum(1 for alias in rule["aliases"] if _contains_positive(raw_text, [alias]))
         if hit_count:
             add_disease(rule["disease"], rule["score"] + min(0.18, hit_count * 0.04), rule)
 
     for rule in DISEASE_DIRECT_RULES:
-        hit_count = sum(1 for alias in rule["aliases"] if _contains_positive(text, [alias]))
+        hit_count = sum(1 for alias in rule["aliases"] if _contains_positive(raw_text, [alias]))
         if hit_count:
             add_disease(rule["name"], rule["score"] + min(0.16, hit_count * 0.04), rule)
 
@@ -1590,7 +1600,7 @@ def build_htriage_analysis(condition):
         "model_disease_prediction": model_prediction,
         "red_flag_tags": red_flags,
     }
-    analysis["followup"] = build_followup_questions(text, analysis)
+    analysis["followup"] = build_followup_questions(raw_text, analysis)
     return analysis
 
 
@@ -1714,6 +1724,20 @@ def analyze_medical_triage(condition, scenario="common"):
             "matched_department": matched_dept,
             "reasons": ["命中较重症状关键词：" + "、".join(urgent_hits[:4]) if urgent_hits else "当前场景更适合优先匹配专科能力强的医生。"],
             "disclaimer": "若出现胸痛、呼吸困难、意识异常、肢体无力等急症表现，请优先急诊。",
+        }, htriage)
+
+    if len(text) <= 8 and any(marker in text for marker in TRIAGE_INSUFFICIENT_INPUTS):
+        return _attach_htriage_fields({
+            "level": "routine",
+            "label": "需要补充信息",
+            "severity_bucket": "信息不足",
+            "severity_score": 50,
+            "care_level": "请先补充症状和持续时间，再判断就医方向",
+            "recommended_scenario": "first_visit" if scenario == "first_visit" else "common",
+            "matched_rule": "描述过于笼统，需要补充信息",
+            "matched_department": matched_dept,
+            "reasons": ["当前描述较为笼统，暂不足以判断合适的就医方向。"],
+            "disclaimer": "本系统不提供诊断结论；补充信息后仍建议结合专业医疗意见。",
         }, htriage)
 
     if mild_hits or scenario == "common":

@@ -1,6 +1,7 @@
 import { ArrowRight, ExternalLink, MapPinned, PhoneCall, ShieldAlert, Sparkles } from "lucide-react";
 import { Button } from "../ui/Button";
 import { StatusPill } from "../ui/StatusPill";
+import { AmapNavigationLink } from "../ui/AmapNavigationLink";
 import type {
   RecommendationPayload,
   RecommendedDoctor,
@@ -34,6 +35,12 @@ function recommendationReasons(item: RecommendedHospital): string[] {
   return (item.explanations ?? []).filter(Boolean).slice(0, 3);
 }
 
+function resourceSourceLabel(source: string | undefined): string {
+  if (source === "real" || source === "real_data") return "常州公开资源";
+  if (source === "mock") return "演示资源";
+  return "公开资源";
+}
+
 function RecommendationError({ message, onRetry }: { message: string; onRetry: () => void }) {
   return (
     <div className="recommendation-error" role="alert">
@@ -63,9 +70,12 @@ function HospitalCard({ item, index }: { item: RecommendedHospital; index: numbe
           {reasons.map((reason) => <li key={reason}>{reason}</li>)}
         </ul>
       ) : null}
-      <button className="resource-card__link" type="button" disabled>
-        查看医院详情 <ExternalLink size={14} aria-hidden="true" />
-      </button>
+      <div className="resource-card__actions">
+        <AmapNavigationLink target={hospital} className="resource-card__link" />
+        <button className="resource-card__link" type="button" disabled>
+          公开资料详情 <ExternalLink size={14} aria-hidden="true" />
+        </button>
+      </div>
     </article>
   );
 }
@@ -88,8 +98,8 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
   const reasons = (result.triage?.reasons ?? []).filter(Boolean).slice(0, 2);
   return (
     <article className="safety-result safety-result--emergency" role="alert" aria-labelledby="emergency-result-title">
-      <div className="safety-result__signal"><ShieldAlert size={18} aria-hidden="true" /><span>HIGH RISK · SAFETY GATE</span></div>
-      <StatusPill tone="danger">EMERGENCY</StatusPill>
+      <div className="safety-result__signal"><ShieldAlert size={18} aria-hidden="true" /><span>高风险 · 安全优先</span></div>
+      <StatusPill tone="danger">需要优先评估</StatusPill>
       <h2 id="emergency-result-title">需要优先进行紧急医疗评估</h2>
       <p>不要继续等待在线推荐结果。如果当前情况紧急、持续加重或有人意识/呼吸异常，请立即联系当地急救服务。</p>
       {tags.length > 0 ? (
@@ -101,7 +111,7 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
       {reasons.length > 0 ? <p className="safety-result__reason">{reasons.join(" ")}</p> : null}
       <div className="safety-result__actions">
         <a className="button button--danger" href="tel:120"><PhoneCall size={17} aria-hidden="true" /> 拨打 120</a>
-        <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>查看附近急诊（建设中）</Button>
+        <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>查看急诊资源</Button>
       </div>
       <small>系统只提供辅助分流信息，不替代急救指令、医生诊断或处方。</small>
     </article>
@@ -119,30 +129,30 @@ function RoutineOrUrgentResult({
   const urgent = result.triage_status === "URGENT";
   const title = insufficient ? "还需要一点信息，才能继续" : urgent ? "建议尽快进行医疗评估" : "可以继续了解合适的就医路径";
   const detail = insufficient
-    ? "当前描述不足以支持下一步资源路径。请先完成一项补充说明，系统会再次把完整描述交给后端安全门。"
+    ? "当前描述不足以支持下一步资源路径。请先完成一项补充说明，系统会再次整理完整描述。"
     : urgent
-    ? "当前状态由后端安全门返回，建议尽快联系专业医疗机构评估；如果症状加重或出现危险信号，请优先急诊。"
+    ? "当前结果表示需要尽快获得专业医疗评估；如果症状加重或出现危险信号，请优先急诊。"
     : "当前返回的安全状态未提示需要立即急诊；这不是诊断结论，建议结合专业医疗意见。";
   return (
     <article className={`safety-result safety-result--${insufficient ? "insufficient" : urgent ? "urgent" : "routine"}`} aria-labelledby="care-result-title">
-      <div className="safety-result__signal"><Sparkles size={18} aria-hidden="true" /><span>{insufficient ? "NEED MORE CONTEXT" : urgent ? "URGENT CARE" : "ROUTINE CARE"}</span></div>
-      <StatusPill tone={insufficient ? "neutral" : urgent ? "warning" : "success"}>{result.triage_status}</StatusPill>
+      <div className="safety-result__signal"><Sparkles size={18} aria-hidden="true" /><span>{insufficient ? "需要补充信息" : urgent ? "建议尽快评估" : "可以继续了解"}</span></div>
+      <StatusPill tone={insufficient ? "neutral" : urgent ? "warning" : "success"}>{insufficient ? "需要补充信息" : urgent ? "建议尽快评估" : "可继续了解路径"}</StatusPill>
       <h2 id="care-result-title">{title}</h2>
       <p>{detail}</p>
       {result.matched_department ? <div className="safety-result__department"><span>建议首先了解</span><strong>{result.matched_department}</strong></div> : null}
       {!insufficient ? <div className="primary-path">
-        <div className="primary-path__heading"><span className="eyebrow eyebrow--muted">PRIMARY CARE PATH</span><span>{recommendations ? "已从 v1 读取" : "等待资源匹配"}</span></div>
+        <div className="primary-path__heading"><span className="eyebrow eyebrow--muted">主要就医路径</span><span>{recommendations ? "已找到资源" : "等待资源匹配"}</span></div>
         {recommendationsLoading ? <div className="result-loading" aria-live="polite">正在读取城市资源路径…</div> : null}
         {recommendationsError ? <RecommendationError message={recommendationsError} onRetry={onLoadRecommendations} /> : null}
         {!recommendations && !recommendationsLoading && !recommendationsError ? (
           <div className="primary-path__empty">
-            <p>资源推荐会单独从 v1 获取，并保留来源与推荐依据。</p>
+            <p>继续查看当前就医资源建议，页面会保留来源与推荐依据。</p>
             <Button variant="secondary" onClick={onLoadRecommendations} icon={<ArrowRight size={16} aria-hidden="true" />}>查看当前资源路径</Button>
           </div>
         ) : null}
         {recommendations ? (
           <div className="recommendation-content">
-            <div className="recommendation-content__meta">{recommendations.resource_strategy?.visit_path ?? "门诊路径"} · {recommendations.data_source ?? "来源状态随接口返回"}</div>
+            <div className="recommendation-content__meta">{recommendations.resource_strategy?.visit_path ?? "门诊路径"} · {resourceSourceLabel(recommendations.data_source)}</div>
             {recommendations.recommended_hospitals.length > 0 ? (
               <div className="hospital-results">
                 {recommendations.recommended_hospitals.slice(0, 3).map((item, index) => <HospitalCard item={item} index={index} key={`${hospitalName(item)}-${index}`} />)}
@@ -150,7 +160,7 @@ function RoutineOrUrgentResult({
             ) : <p className="result-empty">当前没有可展示的医院路径，请稍后重试或浏览医疗资源。</p>}
             {recommendations.recommended_doctors.length > 0 ? (
               <div className="doctor-preview">
-                <div className="doctor-preview__heading"><span className="eyebrow eyebrow--muted">PUBLIC DOCTOR PREVIEW</span><span>医院路径优先</span></div>
+                <div className="doctor-preview__heading"><span className="eyebrow eyebrow--muted">公开医生资料预览</span><span>医院路径优先</span></div>
                 {recommendations.recommended_doctors.slice(0, 3).map((item, index) => <DoctorRow item={item} key={`${doctorName(item)}-${index}`} />)}
               </div>
             ) : null}

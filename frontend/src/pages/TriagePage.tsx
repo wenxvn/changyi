@@ -35,6 +35,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const initialCondition = new URLSearchParams(window.location.search).get("condition") ?? "";
   const [condition, setCondition] = useState(initialCondition);
   const [submittedCondition, setSubmittedCondition] = useState("");
+  const [editingCondition, setEditingCondition] = useState(false);
   const [result, setResult] = useState<TriagePayload | null>(null);
   const [followup, setFollowup] = useState<FollowupPayload | null>(null);
   const [followupStep, setFollowupStep] = useState(1);
@@ -75,13 +76,14 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
       setCondition(nextCondition);
       setSubmittedCondition(nextCondition);
       setResult(nextResult);
+      setEditingCondition(false);
       const nextFollowup = followupFrom(nextResult);
       setFollowup(nextFollowup);
       if (!nextFollowup) recordAnalysis(nextResult);
 
       if (nextFollowup) {
-        // The v1 triage response already contains a safe follow-up fallback. The
-        // dedicated endpoint is queried to keep the UI on the published follow-up contract.
+        // The triage response already contains a safe follow-up fallback. The
+        // dedicated endpoint is queried to keep the UI on the published contract.
         try {
           const followupResponse = await getFollowups(
             { condition: nextCondition, scenario: "common" },
@@ -137,39 +139,51 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   }
 
   const canShowResults = Boolean(result && result.triage_status !== "EMERGENCY");
+  const hasAnalysis = Boolean(result);
 
   return (
     <section className="triage-page page-container">
       <button className="back-link" type="button" onClick={() => onNavigate("/")}>
         <ArrowLeft size={15} aria-hidden="true" /> 返回首页
       </button>
-      <div className="triage-page__layout">
-        <div className="triage-page__intro">
-          <div className="hero__eyebrow"><span className="eyebrow">智能就医 · WORKSPACE</span><StatusPill><ShieldCheck size={14} aria-hidden="true" /> 后端安全门</StatusPill></div>
-          <h1>先说说，<br /><em>现在有什么不舒服？</em></h1>
-          <p>用自己的话描述即可。常医智导会先把你的描述交给安全门，再决定是否需要更多信息和资源路径。</p>
-          <div className="triage-page__note"><ShieldCheck size={16} aria-hidden="true" /><span>这里的结果是辅助信息，不替代医生诊断。</span></div>
-        </div>
+      <div className={`triage-page__layout${hasAnalysis ? " triage-page__layout--active" : ""}`}>
+        {result ? (
+          <CurrentUnderstanding condition={submittedCondition} result={result} followup={followup} />
+        ) : (
+          <div className="triage-page__intro">
+            <div className="hero__eyebrow"><span className="eyebrow">智能就医 · 从描述开始</span><StatusPill><ShieldCheck size={14} aria-hidden="true" /> 先看安全信号</StatusPill></div>
+            <h1>先说说，<br /><em>现在有什么不舒服？</em></h1>
+            <p>用自己的话描述即可。常医智导会先整理安全信号，再决定是否需要更多信息和就医资源。</p>
+            <div className="triage-page__note"><ShieldCheck size={16} aria-hidden="true" /><span>这里的结果是辅助信息，不替代医生诊断。</span></div>
+          </div>
+        )}
 
         <div className="triage-workspace">
-          <form className="symptom-composer symptom-composer--large" onSubmit={handleSubmit}>
-            <label htmlFor="triage-condition" className="symptom-composer__label">你的描述</label>
-            <textarea
-              id="triage-condition"
-              value={condition}
-              onChange={(event) => setCondition(event.target.value)}
-              placeholder="例如：最近总是头晕，大概有几天了。"
-              rows={7}
-              maxLength={2000}
-              disabled={loading}
-            />
-            <div className="symptom-composer__footer">
-              <span className="character-count">{condition.length} / 2000</span>
-              <Button type="submit" disabled={!condition.trim() || loading} icon={loading ? <LoaderCircle className="spin" size={17} aria-hidden="true" /> : <ArrowRight size={17} aria-hidden="true" />}>
-                {loading ? "正在分析" : "交给安全门"}
-              </Button>
+          {result && !editingCondition ? (
+            <div className="triage-submitted-summary">
+              <div><span className="eyebrow eyebrow--muted">你的描述</span><p>“{submittedCondition}”</p></div>
+              <button type="button" onClick={() => setEditingCondition(true)} disabled={loading}>修改</button>
             </div>
-          </form>
+          ) : (
+            <form className="symptom-composer symptom-composer--large" onSubmit={handleSubmit}>
+              <label htmlFor="triage-condition" className="symptom-composer__label">你的描述</label>
+              <textarea
+                id="triage-condition"
+                value={condition}
+                onChange={(event) => setCondition(event.target.value)}
+                placeholder="例如：最近总是头晕，大概有几天了。"
+                rows={7}
+                maxLength={2000}
+                disabled={loading}
+              />
+              <div className="symptom-composer__footer">
+                <span className="character-count">{condition.length} / 2000</span>
+                <Button type="submit" disabled={!condition.trim() || loading} icon={loading ? <LoaderCircle className="spin" size={17} aria-hidden="true" /> : <ArrowRight size={17} aria-hidden="true" />}>
+                  {loading ? "正在分析" : "查看安全状态"}
+                </Button>
+              </div>
+            </form>
+          )}
 
           {error ? (
             <div className="inline-error" role="alert">
@@ -183,7 +197,6 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
 
           {result ? (
             <div className="triage-page__results">
-              <CurrentUnderstanding condition={submittedCondition} result={result} followup={followup} />
               <FollowupPrompt
                 followup={followup ?? { needed: false, confidence: "unknown", missing_slots: [], questions: [] }}
                 stepNumber={followupStep}
@@ -206,7 +219,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
               {canShowResults && followup ? <p className="triage-page__followup-note">可以继续补充，也可以跳过追问查看当前方向。系统不会把当前整理当作诊断。</p> : null}
             </div>
           ) : (
-            <div className="triage-empty"><div className="triage-empty__line" /><span>安全门会在这里呈现后端返回的状态</span></div>
+            <div className="triage-empty"><div className="triage-empty__line" /><span>提交后会在这里呈现安全状态和下一步</span></div>
           )}
         </div>
       </div>

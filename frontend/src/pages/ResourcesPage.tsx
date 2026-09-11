@@ -15,6 +15,7 @@ import { ApiError } from "../api/client";
 import { getDoctorDetail, getDoctors, getHospitalDetail, getHospitals } from "../api/resources";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
+import { AmapNavigationLink } from "../components/ui/AmapNavigationLink";
 import type { DoctorRecord, HospitalRecord, ResourceDetailPayload } from "../types/api";
 
 type ResourceTab = "overview" | "hospitals" | "doctors";
@@ -27,9 +28,9 @@ function errorFor(reason: unknown, fallback: string): ApiError {
 }
 
 function sourceLabel(source: string): string {
-  if (source.includes("pending")) return "医院目录 · 来源待补齐";
+  if (source.includes("pending")) return "医院目录 · 资料核验中";
   if (source.includes("public")) return "公开资料 · 来源混合";
-  return `来源状态 · ${source}`;
+  return "资料来源待补齐";
 }
 
 function includesQuery(values: Array<string | undefined>, query: string): boolean {
@@ -52,7 +53,7 @@ function HospitalCard({
       <div className="resource-index-card__mark" aria-hidden="true"><Building2 size={20} strokeWidth={1.5} /></div>
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
-          <span className="eyebrow eyebrow--muted">HOSPITAL RESOURCE</span>
+          <span className="eyebrow eyebrow--muted">医院资源</span>
           {hospital.emergency ? <span className="resource-index-card__flag">含急诊字段</span> : null}
         </div>
         <h3>{hospital.name ?? "未命名医院"}</h3>
@@ -65,9 +66,12 @@ function HospitalCard({
             {departments.map((department) => <span key={department}>{department}</span>)}
           </div>
         ) : <p className="resource-index-card__muted">科室信息未在当前接口提供。</p>}
-        <button className="resource-index-card__link" type="button" onClick={onSelect} aria-pressed={selected}>
-          {selected ? "正在查看资料" : "查看公开资料"} <ExternalLink size={14} aria-hidden="true" />
-        </button>
+        <div className="resource-index-card__actions">
+          <button className="resource-index-card__link" type="button" onClick={onSelect} aria-pressed={selected}>
+            {selected ? "正在查看资料" : "查看公开资料"} <ExternalLink size={14} aria-hidden="true" />
+          </button>
+          <AmapNavigationLink target={hospital} className="resource-index-card__link" />
+        </div>
       </div>
     </article>
   );
@@ -89,7 +93,7 @@ function DoctorCard({
       <div className="doctor-index-avatar" aria-hidden="true">{initial}</div>
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
-          <span className="eyebrow eyebrow--muted">PUBLIC DOCTOR</span>
+          <span className="eyebrow eyebrow--muted">公开医生资料</span>
           {doctor.outpatient_time ? <span className="resource-index-card__flag">门诊字段</span> : null}
         </div>
         <h3>{doctor.name ?? "公开医生资料"}</h3>
@@ -137,7 +141,7 @@ function ResourceDetail({
 }) {
   return (
     <aside className="resource-detail" aria-labelledby="resource-detail-title">
-      <div className="resource-detail__topline"><span className="eyebrow">RESOURCE DETAIL</span><button type="button" onClick={onClose} aria-label="关闭资料详情"><X size={18} aria-hidden="true" /></button></div>
+      <div className="resource-detail__topline"><span className="eyebrow">资料详情</span><button type="button" onClick={onClose} aria-label="关闭资料详情"><X size={18} aria-hidden="true" /></button></div>
       {loading ? <div className="resource-detail__state" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取详情…</div> : null}
       {!loading && error ? <div className="resource-detail__state resource-detail__state--error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{error.message}</span><button type="button" onClick={onRetry}>重试</button></div> : null}
       {!loading && !error && detail?.resource_type === "hospital" ? (() => {
@@ -154,6 +158,7 @@ function ResourceDetail({
               <div><dt>关联医生</dt><dd>{detail.related.doctor_count} 条公开索引</dd></div>
             </dl>
             {hospital.strengths?.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">重点方向字段</span><p>{hospital.strengths.slice(0, 6).join(" · ")}</p></div> : null}
+            <AmapNavigationLink target={hospital} className="resource-detail__navigation" />
             <ResourceProvenanceNote detail={detail} />
           </>
         );
@@ -169,6 +174,7 @@ function ResourceDetail({
               <div><dt>门诊字段</dt><dd>{doctor.outpatient_time ?? "未提供"}</dd></div>
               <div><dt>关联医院详情</dt><dd>{detail.related.hospital?.name ?? "未关联"}</dd></div>
             </dl>
+            {detail.related.hospital ? <AmapNavigationLink target={detail.related.hospital} label="导航到所属医院" className="resource-detail__navigation" /> : null}
             <ResourceProvenanceNote detail={detail} />
           </>
         );
@@ -311,7 +317,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     <section className="resources-page page-container">
       <div className="resources-page__hero">
         <div>
-          <span className="eyebrow">RESOURCE LAYER · CHANGZHOU 320400</span>
+          <span className="eyebrow">常州医疗资源 · 320400</span>
           <h1>把城市资源，放回你的<br /><em>就医路径。</em></h1>
           <p>搜索医院、科室或医生，先从公开资料了解可用资源。个性化推荐仍以问诊结果和服务端解释为准。</p>
         </div>
@@ -320,7 +326,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
 
       <div className="resources-toolbar">
         <label className="resources-search"><Search size={18} aria-hidden="true" /><span className="sr-only">搜索医疗资源</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索医院、科室或医生" /></label>
-        <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>打开地图（建设中）</Button>
+        <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>打开医院地图</Button>
       </div>
 
       <div className="resources-tabs" role="tablist" aria-label="医疗资源类型">
@@ -336,7 +342,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
 
       <div className="resources-source-row">
         <StatusPill tone={hospitalSource.includes("pending") ? "warning" : "neutral"}>{sourceLabel(showingDoctors ? doctorSource : hospitalSource)}</StatusPill>
-        <span>筛选只改变展示顺序与范围，不改变后端推荐策略。</span>
+        <span>筛选只改变当前列表展示，不会改变个性化推荐结果。</span>
       </div>
 
       <div id="resource-results-panel" role="tabpanel" aria-labelledby={`resource-tab-${activeTab}`} tabIndex={-1}>

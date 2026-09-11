@@ -24,17 +24,17 @@ interface HomePageProps {
 
 const principles = [
   {
-    label: "Safety First",
+    label: "安全优先",
     title: "先确认安全，再谈推荐。",
     text: "系统首先判断是否存在需要优先处理的危险信号，安全优先于任何医院或医生排序。",
   },
   {
-    label: "Resource Aware",
+    label: "资源匹配",
     title: "资源要适合当前情况。",
     text: "普通病例不盲目推向高级资源；疑难和重症才提高相应专科与医院能力的优先级。",
   },
   {
-    label: "City Aware",
+    label: "城市可达",
     title: "路径要能真正抵达。",
     text: "推荐不仅考虑医疗方向，也把常州的距离、区域和实际到院成本纳入解释。",
   },
@@ -134,7 +134,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
       </section>
 
       <section className="philosophy page-container section-block">
-        <div className="section-kicker"><span>01</span><span>OUR APPROACH</span></div>
+        <div className="section-kicker"><span>01</span><span>我们的方式</span></div>
         <div className="philosophy__grid">
           <h2>我们不是在寻找<br /><em>“最好的医院”。</em><br />而是在寻找<br /><strong>更适合当前情况的<br />就医路径。</strong></h2>
           <div className="principles-list">
@@ -154,7 +154,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
 
       <section className="journey section-block">
         <div className="page-container">
-          <div className="section-kicker"><span>02</span><span>AI JOURNEY</span></div>
+          <div className="section-kicker"><span>02</span><span>就医路径</span></div>
           <div className="journey__intro">
             <div>
               <h2>一次只走<br /><em>下一步。</em></h2>
@@ -210,13 +210,13 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
       </section>
 
       <section className="city-layer page-container section-block">
-        <div className="section-kicker"><span>03</span><span>CHANGZHOU INTELLIGENCE LAYER</span></div>
+        <div className="section-kicker"><span>03</span><span>常州资源图景</span></div>
         <div className="city-layer__heading">
           <div>
             <h2>AI 不只理解病情，<br /><em>还理解你所在的城市。</em></h2>
             <p>以常州为示范区，把医疗资源和到院路径放进同一张可解释的城市图景里。</p>
           </div>
-          <span className="city-layer__code">ACTIVE REGION<br /><strong>{summary.data?.region.code ?? "320400"}</strong></span>
+          <span className="city-layer__code">服务区域<br /><strong>{summary.data?.region.code ?? "320400"}</strong></span>
         </div>
         <div className="city-layer__content">
           <div className="city-map-sketch" aria-label={`${cityName}区域关系示意`} role="img">
@@ -241,13 +241,13 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
                 </g>
               ))}
             </svg>
-            <span className="city-map-sketch__caption">区域关系示意 · 非导航地图</span>
+            <span className="city-map-sketch__caption">常州区域关系示意</span>
           </div>
           <div className="city-metrics">
             <div className="city-metrics__intro">
               <Database size={18} strokeWidth={1.5} aria-hidden="true" />
-              <span>DATA LAYER</span>
-              <p>首页指标来自当前运行数据。数据来源与迁移状态同步展示。</p>
+              <span>数据摘要</span>
+              <p>以下数据来自当前已接入的常州医疗与交通资源。</p>
             </div>
             <div className="city-metrics__grid">
               {metrics ? (
@@ -255,7 +255,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
                   <div className="metric" key={metric.label}>
                     <strong>{formatMetric(metric.value)}</strong>
                     <span>{metric.label}</span>
-                    <small>{metric.status === "migration_pending" ? "来源迁移中" : "公开来源"}</small>
+                    <small>{metric.status === "migration_pending" ? "资料核验中" : "公开来源"}</small>
                   </div>
                 ))
               ) : (
@@ -274,8 +274,8 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
               </div>
             ) : null}
             <div className="city-metrics__source">
-              <span>REGION PACK</span>
-              <strong>{summary.data?.region.region_pack_version ?? "读取中"}</strong>
+              <span>当前区域</span>
+              <strong>{summary.data?.region.code ? `${summary.data.region.name} ${summary.data.region.code}` : "常州服务区域"}</strong>
             </div>
           </div>
         </div>
@@ -287,10 +287,10 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
             <div className="trust-section__ring trust-section__ring--outer" />
             <div className="trust-section__ring trust-section__ring--inner" />
             <ShieldCheck size={39} strokeWidth={1.25} />
-            <span>TRUST<br />BY DESIGN</span>
+            <span>可信<br />设计</span>
           </div>
           <div className="trust-section__copy">
-            <div className="section-kicker section-kicker--light"><span>04</span><span>TRUST CENTER</span></div>
+            <div className="section-kicker section-kicker--light"><span>04</span><span>可信信息</span></div>
             <h2>AI 应该知道<br /><em>什么时候不该给出答案。</em></h2>
             <p>安全分诊、低置信度降级、数据来源和推荐解释，应该成为产品的一部分，而不是藏在技术说明里。</p>
             <Button onClick={() => onNavigate("/trust")} variant="secondary" icon={<MoveUpRight size={16} aria-hidden="true" />}>
@@ -307,7 +307,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
 
       <section className="home-cta page-container">
         <div>
-          <span className="eyebrow eyebrow--muted">READY WHEN YOU ARE</span>
+          <span className="eyebrow eyebrow--muted">随时开始</span>
           <h2>从一句话开始，<br /><em>让下一步更清楚。</em></h2>
         </div>
         <Button onClick={() => document.getElementById("symptom-input")?.focus()} icon={<ArrowRight size={17} aria-hidden="true" />}>

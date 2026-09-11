@@ -118,12 +118,172 @@
       "notes": "明确自伤/心理危机表达。"
     },
     {
+      "id": "cardiovascular-autonomic-triad",
+      "category": "cardiovascular_emergency",
+      "condition": "胸口压榨样疼痛，喘不过气，还一直冒冷汗",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "典型危险胸痛、呼吸困难和自主神经症状组合。"
+    },
+    {
+      "id": "cardiovascular-cold-sweat",
+      "category": "cardiovascular_emergency",
+      "condition": "胸口压榨样疼痛并冒冷汗",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "危险胸痛与冷汗组合。"
+    },
+    {
+      "id": "colloquial-air",
+      "category": "colloquial",
+      "condition": "上不来气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "呼吸困难口语表达。"
+    },
+    {
+      "id": "colloquial-breathless",
+      "category": "colloquial",
+      "condition": "喘不过气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "呼吸困难口语表达。"
+    },
+    {
+      "id": "critical-breathlessness",
+      "category": "breathlessness",
+      "condition": "无法呼吸",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "明确无法呼吸。"
+    },
+    {
+      "id": "purple-lips",
+      "category": "breathlessness",
+      "condition": "嘴唇发紫",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "明确发绀信号。"
+    },
+    {
+      "id": "stroke-face",
+      "category": "stroke",
+      "condition": "突然口角歪斜",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "突发面部不对称信号。"
+    },
+    {
+      "id": "acute-abdomen-fever",
+      "category": "acute_abdomen",
+      "condition": "腹部剧痛并伴发热",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "剧烈腹痛合并发热。"
+    },
+    {
+      "id": "severe-allergy-airway",
+      "category": "allergy",
+      "condition": "喉头水肿并呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "气道风险合并呼吸困难。"
+    },
+    {
+      "id": "persistent-seizure",
+      "category": "altered_consciousness",
+      "condition": "持续抽搐",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "持续抽搐高风险表达。"
+    },
+    {
+      "id": "pregnancy-pain",
+      "category": "obstetric",
+      "condition": "孕妇剧烈腹痛",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "孕产期剧烈腹痛。"
+    },
+    {
+      "id": "eye-vision-loss",
+      "category": "eye_emergency",
+      "condition": "视力突然下降",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "突发视力变化。"
+    },
+    {
+      "id": "critical-child-response",
+      "category": "critical_child",
+      "condition": "儿童高热伴反应差",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "儿童高热合并反应差。"
+    },
+    {
+      "id": "self-harm-risk",
+      "category": "mental_crisis",
+      "condition": "出现自残想法",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "明确自伤风险表达。"
+    },
+    {
+      "id": "severe-bleeding",
+      "category": "severe_trauma",
+      "condition": "伤口大量出血",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "大量出血。"
+    },
+    {
+      "id": "chest-pain-syncope",
+      "category": "cardiovascular_emergency",
+      "condition": "心前区痛伴晕厥",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "危险胸痛合并晕厥。"
+    },
+    {
       "id": "negation-only",
       "category": "negation",
       "condition": "没有胸痛，也没有呼吸困难",
       "expected_status": "NOT_EMERGENCY",
       "red_flag": false,
-      "review_status": "review_required",
+      "review_status": "regression_rule_verified",
       "source_type": "legacy_rule_characterization",
       "notes": "否定表达不应仅因关键词命中而升级急症，仍需医学审核其余信息不足路径。"
     },
@@ -133,7 +293,7 @@
       "condition": "没有胸痛，但出现呼吸困难",
       "expected_status": "EMERGENCY",
       "red_flag": true,
-      "review_status": "review_required",
+      "review_status": "regression_rule_verified",
       "source_type": "legacy_rule_characterization",
       "notes": "否定胸痛不能覆盖转折后的呼吸困难。"
     },
@@ -143,9 +303,9 @@
       "condition": "喘不上来",
       "expected_status": "EMERGENCY",
       "red_flag": true,
-      "review_status": "review_required",
+      "review_status": "regression_rule_verified",
       "source_type": "characterization_gap",
-      "notes": "已知 alias under-triage 反例；本切片只记录，不修复规则。"
+      "notes": "口语呼吸困难表达，纳入本轮 Safety regression。"
     },
     {
       "id": "vague-discomfort",
@@ -153,9 +313,9 @@
       "condition": "不舒服",
       "expected_status": "INSUFFICIENT_INFORMATION",
       "red_flag": false,
-      "review_status": "review_required",
+      "review_status": "regression_rule_verified",
       "source_type": "characterization_gap",
-      "notes": "已知模糊输入降级缺口；本切片只记录，不修复规则。"
+      "notes": "描述过于笼统，应降级为信息不足并进入补充信息路径。"
     },
     {
       "id": "ordinary-cough",
@@ -163,9 +323,69 @@
       "condition": "轻微咳嗽两天",
       "expected_status": "NOT_EMERGENCY",
       "red_flag": false,
-      "review_status": "review_required",
+      "review_status": "regression_rule_verified",
       "source_type": "legacy_rule_characterization",
       "notes": "普通症状样例，用于检查不被误升级为急症。"
+    },
+    {
+      "id": "vague-not-well",
+      "category": "insufficient_information",
+      "condition": "很不舒服",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "笼统不适表达。"
+    },
+    {
+      "id": "vague-discomfort-short",
+      "category": "insufficient_information",
+      "condition": "身体不适",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "缺少症状部位、持续时间和严重程度。"
+    },
+    {
+      "id": "question-about-chest-pain",
+      "category": "question_or_history",
+      "condition": "胸痛是不是心脏病",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "疑问句不应仅因提到胸痛就升级急症。"
+    },
+    {
+      "id": "historical-chest-pain",
+      "category": "question_or_history",
+      "condition": "以前胸痛，现在没有",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "历史症状与当前否定需要区分。"
+    },
+    {
+      "id": "mild-skin-itch",
+      "category": "routine_negative",
+      "condition": "最近皮肤一直很痒，大概一周，没有呼吸困难，也没有发烧",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "普通皮肤症状并明确否定主要急症信号。"
+    },
+    {
+      "id": "mild-nasal-symptoms",
+      "category": "routine_negative",
+      "condition": "偶尔鼻塞，没有发热",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p0_safety_regression",
+      "notes": "普通上呼吸道症状。"
     }
   ]
 }

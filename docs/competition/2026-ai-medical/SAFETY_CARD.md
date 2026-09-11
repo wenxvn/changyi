@@ -22,17 +22,17 @@
 
 ## 当前 characterization 发现
 
-`tests/characterization/canonical_snapshot.json` 显示，`喘不上来` 经归一化产生“呼吸困难”标签，但现有 `common` 场景仍返回 `routine`；`不舒服` 也仍返回普通倾向。收口 smoke 还观察到压榨样胸痛伴喘不过气和冷汗的自然语言组合仍返回 `routine`。这些都是待医学审核的 under-triage/信息不足反例，不在本轮直接改规则；Safety Gate 的状态契约已建立，但红旗规则本身仍未完成独立迁移。
+本轮将 `喘不上来`、`喘不过气`、`上不来气` 等口语呼吸困难，以及压榨样胸痛伴冷汗的组合纳入安全回归；“不舒服”“很不舒服”“身体不适”等过于笼统的输入进入信息不足路径。规则仍是演示系统的固定样例回归，不代表医学覆盖完整，新增或修改红旗规则仍需专业复核。
 
 ## P2-S1 输入边界记录
 
-`backend/app/domain/medical_input.py` 现在只承载原有口语归一化和否定窗口纯函数，不改变红旗规则。测试覆盖 `喘不上来 -> 呼吸困难`、`没有胸痛，但出现呼吸困难`、硬边界后的再次阳性和 `否认呼吸困难`。输入层迁移通过快照回归；统一 `INSUFFICIENT_INFORMATION` 的安全语义已在 Safety Gate contract 中定义，但 alias under-triage 和模糊输入降级仍未修复。
+`backend/app/domain/medical_input.py` 承载口语归一化和否定窗口纯函数；测试覆盖呼吸困难口语、压榨样胸痛、冷汗、否定表达和转折后的再次阳性。安全规则匹配保留原始表达，避免把否定短语追加的标准别名误判为阳性；统一 `INSUFFICIENT_INFORMATION` 的安全语义已接入笼统输入路径。
 
 ## P2-S2 状态契约与基线评估
 
 `backend/app/domain/triage/safety_gate.py` 提供 `EMERGENCY`、`URGENT`、`ROUTINE`、`INSUFFICIENT_INFORMATION` 四态枚举，以及“紧急评估”“补充信息并复核”“继续辅助流程”三类非诊断交接动作。它只消费既有 triage 结果，不重新实现医学规则；急症要求人工/专业复核，信息不足要求补充信息并复核。
 
-`evaluation/safety/safety_cases.json` 共 16 个 case，脚本运行结果为：Red Flag Recall `0.9231`、Under-triage Rate `0.0769`、Over-triage Rate `0.0`、Emergency False Negative `1`。唯一红旗漏检是已记录的 `喘不上来` 口语 alias；`不舒服` 的信息不足期望也未命中。两者以及待领域确认的否定/普通样例均列为 `review_required`，这些数字是当前基线，不是发布目标或医学审核结论。
+`evaluation/safety/safety_cases.json` 共 38 个 case，脚本运行结果为：Red Flag Recall `1.0`、Under-triage Rate `0.0`、Over-triage Rate `0.0`、Emergency False Negative `0`；信息不足样例全部命中。数字只反映当前固定样例和规则回归，不是发布目标或医学审核结论。
 
 ## P2-S2 Safety-first 发布
 

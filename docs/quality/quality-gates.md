@@ -42,9 +42,9 @@
 ## CI 门禁
 
 - [ ] `.github/workflows/quality.yml` 在 push/pull request 上运行 Python 编译、pytest、模型 smoke、Safety Evaluation baseline、数据质量和稳定快照检查。
-- [ ] `.github/workflows/quality.yml` 在 push/pull request 上运行 frontend `npm ci`、typecheck、boundary tests 和 build。
+- [ ] `.github/workflows/quality.yml` 在 push/pull request 上运行 frontend `npm ci`、typecheck、boundary tests、build、Playwright Chromium smoke 和截图 artifact。
 - [ ] 质量报告允许已登记异常在非 strict 模式下被记录，但生成报告或表征快照发生未解释漂移时 CI 失败。
 
 ## 当前重构基线
 
-当前本地基线为 107 个 pytest；已运行 canonical v1 API、Safety Evaluation、Python 编译、frontend typecheck/boundary tests/build、数据质量扫描和稳定快照。数据扫描的 187 个异常仍为登记项，不作为放行结论；远端 CI 仍需在获得推送后确认。
+当前本地基线为 108 个 pytest、15 个 frontend boundary tests 和 5 个 Playwright smoke tests；已运行 canonical v1 API、Safety Evaluation、Python 编译、frontend typecheck/build、数据质量扫描和稳定快照。数据扫描的 187 个异常仍为登记项，不作为放行结论；远端 CI 仍需在获得推送后确认。
