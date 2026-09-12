@@ -31,6 +31,7 @@ python app.py
 ```bash
 .venv/bin/python -m pytest
 .venv/bin/python -m evaluation.safety.evaluate_safety
+.venv/bin/python -m evaluation.model.evaluate_grouped --write
 .venv/bin/python -m data_validation.validate_datasets --data-root data --output-dir data_validation
 cd frontend
 npm run typecheck
@@ -40,7 +41,7 @@ npx playwright install chromium
 npm run e2e
 ```
 
-质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 187 个已知异常；当前 Safety Evaluation 为 38 cases、Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency False Negative `0`。这些是固定样例上的工程回归结果，不是临床验证或发布结论。
+质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 186 个已知异常（`PLACEHOLDER_TIMESTAMP` / `TIME_ORDER`）；当前 Safety Evaluation 为 135 cases、Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0312`、Emergency False Negative `0`。模型证据同时包含 random / exact fingerprint / strict near-duplicate single split 与 5-fold Grouped Near-Duplicate CV（跨 split 近重复 0）。这些是固定样例与离线原型上的工程回归结果，不是临床验证或发布结论。
 
 ## 入口文档
 
