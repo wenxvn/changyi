@@ -3139,6 +3139,11 @@ em {
   cursor: pointer;
 }
 
+.favorite-doctor-button:focus-visible {
+  outline: 2px solid var(--focus-ring, #2563eb);
+  outline-offset: 2px;
+}
+
 .favorite-doctor-button.is-active {
   color: var(--accent, #b45309);
   border-color: currentColor;

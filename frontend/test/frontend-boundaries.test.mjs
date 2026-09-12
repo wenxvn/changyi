@@ -147,3 +147,21 @@ test("interactive tabs have explicit controls and form-safe button defaults", as
   assert.match(map, /aria-controls="map-resource-panel"/);
   assert.match(map, /role="tabpanel"/);
 });
+
+test("care routing controls expose accessible names and live regions", async () => {
+  const triage = await source("pages/TriagePage.tsx");
+  const resources = await source("pages/ResourcesPage.tsx");
+  const favorite = await source("components/ui/FavoriteDoctorButton.tsx");
+  const styles = await source("styles/globals.css");
+
+  assert.match(triage, /name="visit-intent"/);
+  assert.match(triage, /这次主要想解决什么/);
+  assert.match(triage, /就医资源偏好/);
+  assert.match(triage, /data-testid="pref-continuity"/);
+  assert.match(favorite, /aria-pressed=\{active\}/);
+  assert.match(favorite, /aria-label=\{active \? "取消收藏该医生" : "收藏该医生"\}/);
+  assert.match(resources, /加载更多/);
+  assert.match(resources, /aria-live="polite"/);
+  assert.match(styles, /\.favorite-doctor-button:focus-visible/);
+  assert.match(styles, /\.resource-index-pagination/);
+});
