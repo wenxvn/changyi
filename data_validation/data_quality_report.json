@@ -3,7 +3,7 @@
   "data_root": "data",
   "region_code": "320400",
   "dataset_count": 30,
-  "issue_count": 187,
+  "issue_count": 186,
   "datasets": [
     {
       "path": "bike_stations.json",
@@ -182,7 +182,7 @@
     },
     {
       "path": "doctors_h6.json",
-      "sha256": "eaf05d1518c6a0779ca1382132b9e21ac0c12d78dcb2f0e7609a47d295df1c1a",
+      "sha256": "4768bf2b6941d872cddf024ebcefbe6ce77fc43b93d2c01cfd7a18e6377897e2",
       "format": "json",
       "top_level_keys": [
         "doctors",
@@ -1549,11 +1549,6 @@
       "dataset": "bus_routes.json",
       "code": "PLACEHOLDER_TIMESTAMP",
       "message": "row 50: evening_peak_end 使用疑似占位年份"
-    },
-    {
-      "dataset": "doctors_h6.json",
-      "code": "COUNT_MISMATCH",
-      "message": "total_doctors=82，实际 doctors=74"
     }
   ],
   "policy": "只记录异常，不自动修复；报告不包含原始症状文本、身份信息或整行数据。"

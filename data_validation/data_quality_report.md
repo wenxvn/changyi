@@ -3,7 +3,7 @@
 - Schema: `data-quality-report/v1`
 - Region: `320400`
 - Datasets scanned: `30`
-- Issues: `187`
+- Issues: `186`
 
 ## Issues
 
@@ -193,7 +193,6 @@
 - `bus_routes.json` · `PLACEHOLDER_TIMESTAMP` · row 50: morning_peak_end 使用疑似占位年份
 - `bus_routes.json` · `PLACEHOLDER_TIMESTAMP` · row 50: evening_peak_start 使用疑似占位年份
 - `bus_routes.json` · `PLACEHOLDER_TIMESTAMP` · row 50: evening_peak_end 使用疑似占位年份
-- `doctors_h6.json` · `COUNT_MISMATCH` · total_doctors=82，实际 doctors=74
 
 ## Dataset inventory
 
@@ -211,7 +210,7 @@
 | `doctors_h3.json` | json | `75f9ecdcd41da635fc4ae9792d056eb658f301cc05b2c85602d8f1bc9b2fa171` | `{'doctors': 264}` |
 | `doctors_h4.json` | json | `843d9226117328efa0e279ca915a2d91d6a9d394f57f95317db28d47a8dfa53d` | `{'doctors': 147}` |
 | `doctors_h5.json` | json | `3e0aa4c39ad98ba2d0fa0d13820bef021cd630b024e79b0578a1d685aefb02ad` | `{'doctors': 133}` |
-| `doctors_h6.json` | json | `eaf05d1518c6a0779ca1382132b9e21ac0c12d78dcb2f0e7609a47d295df1c1a` | `{'doctors': 74}` |
+| `doctors_h6.json` | json | `4768bf2b6941d872cddf024ebcefbe6ce77fc43b93d2c01cfd7a18e6377897e2` | `{'doctors': 74}` |
 | `doctors_h7.json` | json | `2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00` | `{'doctors': 164}` |
 | `doctors_h8.json` | json | `a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288` | `{'doctors': 515}` |
 | `regions/320400/hospitals/catalog.json` | json | `54252846c72af798dd4a6fc8a786ce3a6bde00a5bb7e4430d22cb2f8b053b2ef` | `{'records': 21}` |
