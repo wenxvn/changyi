@@ -2,7 +2,7 @@
   "schema_version": "data-quality-report/v1",
   "data_root": "data",
   "region_code": "320400",
-  "dataset_count": 30,
+  "dataset_count": 31,
   "issue_count": 186,
   "datasets": [
     {
@@ -226,6 +226,16 @@
       "collections": {
         "doctors": 515
       }
+    },
+    {
+      "path": "raw/README.json",
+      "sha256": "fb7f8cb635a9d05bb4f3e50bf68f59d72d7ec4faade6f5e636bd7e623dac312c",
+      "format": "json",
+      "top_level_keys": [
+        "dataset",
+        "note",
+        "schema_version"
+      ]
     },
     {
       "path": "regions/320400/hospitals/catalog.json",

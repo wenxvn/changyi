@@ -2,7 +2,7 @@
 
 - Schema: `data-quality-report/v1`
 - Region: `320400`
-- Datasets scanned: `30`
+- Datasets scanned: `31`
 - Issues: `186`
 
 ## Issues
@@ -213,6 +213,7 @@
 | `doctors_h6.json` | json | `4768bf2b6941d872cddf024ebcefbe6ce77fc43b93d2c01cfd7a18e6377897e2` | `{'doctors': 74}` |
 | `doctors_h7.json` | json | `2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00` | `{'doctors': 164}` |
 | `doctors_h8.json` | json | `a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288` | `{'doctors': 515}` |
+| `raw/README.json` | json | `fb7f8cb635a9d05bb4f3e50bf68f59d72d7ec4faade6f5e636bd7e623dac312c` | `-` |
 | `regions/320400/hospitals/catalog.json` | json | `3deae7e3a33c8d93ec6c9de2156d33938180c9ac323d5a27da9143be7155f430` | `{'records': 21}` |
 | `regions/320400/manifest.json` | json | `09af12e958783afd04bfd4e243cc58260b9f29aebbd0bf04c89af100ecd5ab5a` | `{'activation_gate': 6, 'districts': 7, 'future_regions': 3}` |
 | `resource_provenance/doctor_photos.json` | json | `7fe66053d38e84cdf2d8a59c221dd8df71a374286b6f9acc76af18b65fd251da` | `{'entries': 275}` |

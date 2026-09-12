@@ -40,12 +40,12 @@
 
 | 能力 | 说明 |
 | --- | --- |
-| 服务端医生搜索/分页 | P2-1；当前 2100+ 医生不宜全部前端过滤 |
-| Visit Intent | P2-2；仅影响 Resource Routing，不影响 Safety Gate |
-| Resource Routing Preferences | P2-3；跨区/距离/连续复诊，默认关闭 |
-| 本地收藏 / watchlist | P2-4；localStorage 仅 doctor_id + created_at；非病历 |
-| Provenance-aware import pipeline | P2-5；raw snapshot 只读，应用层不直接读 |
-| 推荐解释强化 | P2-8；明确展示未参与排序字段 |
+| 服务端医生搜索/分页 | **已完成** |
+| Visit Intent | **已完成**（Safety 隔离） |
+| Resource Routing Preferences | **已完成**（默认关闭） |
+| 本地收藏 / watchlist | **已完成**（最小字段） |
+| Provenance-aware import pipeline | **已完成 foundation**；待真实来源导入 |
+| 推荐解释强化 | **已完成** |
 | 交通地图层 | 需 bus/taxi/bike 数据先通过正式质量门 |
 | 交通可达性进排序 | 当前 PROVISIONAL，`rankable=false` |
 | 正式附近急诊路径 | 需实时急诊可用性数据与 L3/L4 |

@@ -41,7 +41,7 @@ npx playwright install chromium
 npm run e2e
 ```
 
-质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 186 个已知异常（`PLACEHOLDER_TIMESTAMP` / `TIME_ORDER`）；当前 Safety Evaluation 为 135 cases、Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0312`、Emergency False Negative `0`。模型证据同时包含 random / exact fingerprint / strict near-duplicate single split 与 5-fold Grouped Near-Duplicate CV（跨 split 近重复 0）。这些是固定样例与离线原型上的工程回归结果，不是临床验证或发布结论。
+质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 186 个已知异常（`PLACEHOLDER_TIMESTAMP` / `TIME_ORDER`）；当前 Safety Evaluation 为 135 cases、Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0312`、Emergency False Negative `0`。模型证据同时包含 random / exact fingerprint / strict near-duplicate single split 与 5-fold Grouped Near-Duplicate CV（跨 split 近重复 0）。P2 已提供服务端医生搜索/分页、Visit Intent、资源偏好与本地收藏；Visit Intent/偏好不影响 Safety Gate。这些是固定样例与离线原型上的工程回归结果，不是临床验证或发布结论。
 
 ## 入口文档
 
