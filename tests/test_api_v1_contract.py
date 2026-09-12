@@ -53,7 +53,32 @@ class ApiV1ContractTests(TestCase):
         doctors = self.client.get("/api/v1/doctors").get_json()["data"]
         self.assertEqual(hospitals["source"], "legacy_catalog_pending_provenance")
         self.assertEqual(hospitals["count"], len(hospitals["items"]))
-        self.assertEqual(doctors["count"], len(doctors["items"]))
+        self.assertEqual(doctors["source"], "public_source_mixed")
+        self.assertEqual(doctors["page"], 1)
+        self.assertEqual(doctors["page_size"], 24)
+        self.assertEqual(len(doctors["items"]), 24)
+        self.assertGreater(doctors["total"], 24)
+        self.assertEqual(doctors["count"], doctors["total"])
+        self.assertTrue(doctors["has_more"])
+        self.assertIn("hospital_names", doctors["facets"])
+
+    def test_doctor_list_supports_filters_and_rejects_invalid_page(self):
+        page2 = self.client.get("/api/v1/doctors?page=2&page_size=10").get_json()["data"]
+        self.assertEqual(page2["page"], 2)
+        self.assertEqual(page2["page_size"], 10)
+        self.assertEqual(len(page2["items"]), 10)
+
+        filtered = self.client.get("/api/v1/doctors?q=主任&page_size=5").get_json()["data"]
+        self.assertLessEqual(len(filtered["items"]), 5)
+        self.assertGreater(filtered["total"], 0)
+
+        invalid_page = self.client.get("/api/v1/doctors?page=0")
+        self.assertEqual(invalid_page.status_code, 400)
+        self.assertEqual(invalid_page.get_json()["error"]["code"], "INVALID_PAGE")
+
+        invalid_size = self.client.get("/api/v1/doctors?page_size=101")
+        self.assertEqual(invalid_size.status_code, 400)
+        self.assertEqual(invalid_size.get_json()["error"]["code"], "INVALID_PAGE_SIZE")
 
     def test_resource_detail_is_allowlisted_and_provenance_explicit(self):
         hospital_response = self.client.get("/api/v1/hospitals/1")

@@ -188,6 +188,22 @@ export interface DoctorListPayload {
   items: DoctorRecord[];
   count: number;
   source: string;
+  page?: number;
+  page_size?: number;
+  total?: number;
+  has_more?: boolean;
+  filters?: {
+    q: string | null;
+    hospital_id: number | null;
+    hospital_name: string | null;
+    department: string | null;
+    title: string | null;
+  };
+  facets?: {
+    hospital_names: string[];
+    departments: string[];
+    titles: string[];
+  };
 }
 
 export interface ResourceProvenance {

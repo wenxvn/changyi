@@ -63,6 +63,61 @@ LEGACY_TOP_DEPARTMENTS = (
 )
 
 
+DOCTOR_LIST_DEFAULT_PAGE_SIZE = 24
+DOCTOR_LIST_MAX_PAGE_SIZE = 100
+
+
+class DoctorListValidationError(ValueError):
+    """Raised when doctor list query parameters are invalid."""
+
+    def __init__(self, code: str, message: str) -> None:
+        super().__init__(message)
+        self.code = code
+        self.message = message
+
+
+def _doctor_search_blob(doctor: Mapping[str, Any]) -> str:
+    specialties = doctor.get("specialties")
+    if isinstance(specialties, (list, tuple, set)):
+        specialty_text = " ".join(str(item) for item in specialties if item)
+    else:
+        specialty_text = str(specialties or "")
+    return " ".join(
+        str(doctor.get(field) or "")
+        for field in ("name", "hospital_name", "department", "title", "position", "specialty")
+    ) + " " + specialty_text
+
+
+def _doctor_matches_filters(
+    doctor: Mapping[str, Any],
+    *,
+    q: str | None,
+    hospital_id: int | None,
+    hospital_name: str | None,
+    department: str | None,
+    title: str | None,
+) -> bool:
+    if hospital_id is not None and doctor.get("hospital_id") != hospital_id:
+        return False
+    if hospital_name and doctor.get("hospital_name") != hospital_name:
+        return False
+    if department and doctor.get("department") != department:
+        return False
+    if title:
+        doctor_title = doctor.get("title") or doctor.get("position") or ""
+        if doctor_title != title:
+            return False
+    if q:
+        needle = q.strip().lower()
+        if needle and needle not in _doctor_search_blob(doctor).lower():
+            return False
+    return True
+
+
+def _unique_sorted(values: Sequence[str | None]) -> list[str]:
+    return sorted({value for value in values if isinstance(value, str) and value.strip()})
+
+
 @dataclass(frozen=True)
 class ResourceCatalogApplicationService:
     """Coordinate read-only catalog access without owning HTTP concerns."""
@@ -200,14 +255,66 @@ class ResourceCatalogApplicationService:
             },
         }
 
-    def list_doctors(self, *, hospital_id: int | None = None) -> dict[str, Any]:
+    def list_doctors(
+        self,
+        *,
+        hospital_id: int | None = None,
+        q: str | None = None,
+        hospital_name: str | None = None,
+        department: str | None = None,
+        title: str | None = None,
+        page: int = 1,
+        page_size: int = DOCTOR_LIST_DEFAULT_PAGE_SIZE,
+    ) -> dict[str, Any]:
+        """Return a filtered, paginated doctor list without loading all rows to the client."""
+
+        if page < 1:
+            raise DoctorListValidationError("INVALID_PAGE", "page 必须 >= 1")
+        if page_size < 1 or page_size > DOCTOR_LIST_MAX_PAGE_SIZE:
+            raise DoctorListValidationError(
+                "INVALID_PAGE_SIZE",
+                f"page_size 必须在 1–{DOCTOR_LIST_MAX_PAGE_SIZE} 之间",
+            )
+
         rows = list(self.real_doctors())
-        if hospital_id is not None:
-            rows = [row for row in rows if row.get("hospital_id") == hospital_id]
+        filtered = [
+            row
+            for row in rows
+            if _doctor_matches_filters(
+                row,
+                q=q,
+                hospital_id=hospital_id,
+                hospital_name=hospital_name,
+                department=department,
+                title=title,
+            )
+        ]
+        total = len(filtered)
+        start = (page - 1) * page_size
+        end = start + page_size
+        items = filtered[start:end]
         return {
-            "items": rows,
-            "count": len(rows),
+            "items": items,
+            "page": page,
+            "page_size": page_size,
+            "total": total,
+            "count": total,
+            "has_more": end < total,
             "source": "public_source_mixed",
+            "filters": {
+                "q": q or None,
+                "hospital_id": hospital_id,
+                "hospital_name": hospital_name or None,
+                "department": department or None,
+                "title": title or None,
+            },
+            "facets": {
+                "hospital_names": _unique_sorted([row.get("hospital_name") for row in rows]),
+                "departments": _unique_sorted([row.get("department") for row in rows]),
+                "titles": _unique_sorted(
+                    [(row.get("title") or row.get("position")) for row in rows]
+                ),
+            },
         }
 
     def hospital_detail(self, hospital_id: int) -> dict[str, Any] | None:

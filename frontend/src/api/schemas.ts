@@ -259,9 +259,37 @@ export function parseHospitalList(value: unknown): HospitalListPayload {
 
 export function parseDoctorList(value: unknown): DoctorListPayload {
   const parsed = parseResourceList(value, "医生");
+  const record = isRecord(value) ? value : {};
+  const facets = isRecord(record.facets) ? record.facets : undefined;
   return {
     ...parsed,
     items: parsed.items.map(parseDoctorRecord),
+    page: optionalNumber(record.page) ?? 1,
+    page_size: optionalNumber(record.page_size) ?? parsed.items.length,
+    total: optionalNumber(record.total) ?? parsed.count,
+    has_more: record.has_more === true,
+    filters: isRecord(record.filters)
+      ? {
+          q: optionalString(record.filters.q) ?? null,
+          hospital_id: nullableNumber(record.filters.hospital_id),
+          hospital_name: optionalString(record.filters.hospital_name) ?? null,
+          department: optionalString(record.filters.department) ?? null,
+          title: optionalString(record.filters.title) ?? null,
+        }
+      : undefined,
+    facets: facets
+      ? {
+          hospital_names: Array.isArray(facets.hospital_names)
+            ? facets.hospital_names.filter((item): item is string => typeof item === "string")
+            : [],
+          departments: Array.isArray(facets.departments)
+            ? facets.departments.filter((item): item is string => typeof item === "string")
+            : [],
+          titles: Array.isArray(facets.titles)
+            ? facets.titles.filter((item): item is string => typeof item === "string")
+            : [],
+        }
+      : undefined,
   };
 }
 

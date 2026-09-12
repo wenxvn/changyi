@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   Building2,
@@ -229,9 +229,20 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   const [hospitalSource, setHospitalSource] = useState("unknown");
   const [doctors, setDoctors] = useState<DoctorRecord[]>([]);
   const [doctorSource, setDoctorSource] = useState("unknown");
-  const doctorRequestStarted = useRef(false);
+  const [doctorPage, setDoctorPage] = useState(() => {
+    const page = Number(initialParams.get("page"));
+    return Number.isInteger(page) && page > 0 ? page : 1;
+  });
+  const [doctorTotal, setDoctorTotal] = useState(0);
+  const [doctorHasMore, setDoctorHasMore] = useState(false);
+  const [doctorFacets, setDoctorFacets] = useState<{
+    hospital_names: string[];
+    departments: string[];
+    titles: string[];
+  }>({ hospital_names: [], departments: [], titles: [] });
   const [hospitalLoading, setHospitalLoading] = useState(true);
   const [doctorLoading, setDoctorLoading] = useState(false);
+  const [doctorAppending, setDoctorAppending] = useState(false);
   const [hospitalError, setHospitalError] = useState<ApiError | null>(null);
   const [doctorError, setDoctorError] = useState<ApiError | null>(null);
   const [selection, setSelection] = useState<Selection | null>(null);
@@ -256,15 +267,28 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     return () => controller.abort();
   }, []);
 
+  const doctorFilterKey = `${doctorHospital}|${doctorDepartment}|${doctorTitle}|${query.trim()}`;
+
   useEffect(() => {
-    if (activeTab !== "doctors" || doctorRequestStarted.current) return;
+    if (activeTab !== "doctors") return;
     const controller = new AbortController();
-    doctorRequestStarted.current = true;
     setDoctorLoading(true);
-    getDoctors({ signal: controller.signal }).then((payload) => {
+    getDoctors({
+      hospitalName: doctorHospital || undefined,
+      department: doctorDepartment || undefined,
+      title: doctorTitle || undefined,
+      q: query.trim() || undefined,
+      page: 1,
+      pageSize: 24,
+      signal: controller.signal,
+    }).then((payload) => {
       if (controller.signal.aborted) return;
       setDoctors(payload.items);
       setDoctorSource(payload.source);
+      setDoctorPage(1);
+      setDoctorTotal(payload.total ?? payload.count);
+      setDoctorHasMore(Boolean(payload.has_more));
+      if (payload.facets) setDoctorFacets(payload.facets);
       setDoctorError(null);
     }).catch((reason) => {
       if (!controller.signal.aborted) setDoctorError(errorFor(reason, "医生资源暂时无法载入。"));
@@ -272,7 +296,37 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       if (!controller.signal.aborted) setDoctorLoading(false);
     });
     return () => controller.abort();
-  }, [activeTab]);
+    // doctorFilterKey intentionally aggregates the filter inputs that reset to page 1.
+  }, [activeTab, doctorFilterKey]);
+
+  function loadMoreDoctors() {
+    if (!doctorHasMore || doctorLoading || doctorAppending) return;
+    const nextPage = doctorPage + 1;
+    setDoctorAppending(true);
+    getDoctors({
+      hospitalName: doctorHospital || undefined,
+      department: doctorDepartment || undefined,
+      title: doctorTitle || undefined,
+      q: query.trim() || undefined,
+      page: nextPage,
+      pageSize: 24,
+    }).then((payload) => {
+      setDoctors((previous) => {
+        const seen = new Set(previous.map((item) => item.id));
+        const merged = [...previous];
+        for (const item of payload.items) {
+          if (!seen.has(item.id)) merged.push(item);
+        }
+        return merged;
+      });
+      setDoctorPage(nextPage);
+      setDoctorTotal(payload.total ?? payload.count);
+      setDoctorHasMore(Boolean(payload.has_more));
+      if (payload.facets) setDoctorFacets(payload.facets);
+      setDoctorSource(payload.source);
+    }).catch((reason) => setDoctorError(errorFor(reason, "医生资源暂时无法载入。")))
+      .finally(() => setDoctorAppending(false));
+  }
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -287,15 +341,22 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     }
     const doctorId = Number(params.get("doctor"));
     if (!Number.isInteger(doctorId) || doctorId <= 0) return;
-    if (doctors.length === 0) {
-      setActiveTab("doctors");
+    setActiveTab("doctors");
+    const cached = doctors.find((item) => item.id === doctorId);
+    if (cached) {
+      setSelection({ kind: "doctor", item: cached });
       return;
     }
-    const doctor = doctors.find((item) => item.id === doctorId);
-    if (doctor) {
-      setActiveTab("doctors");
-      setSelection({ kind: "doctor", item: doctor });
-    }
+    const controller = new AbortController();
+    getDoctorDetail(doctorId, controller.signal).then((payload) => {
+      if (controller.signal.aborted) return;
+      setSelection({ kind: "doctor", item: payload.resource });
+    }).catch(() => {
+      if (!controller.signal.aborted) {
+        setDoctorError(new ApiError("RESOURCE_NOT_FOUND", "该医生资料暂时无法载入。"));
+      }
+    });
+    return () => controller.abort();
   }, [hospitals, doctors]);
 
   useEffect(() => {
@@ -344,16 +405,22 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     [hospitals],
   );
   const doctorHospitalNames = useMemo(
-    () => Array.from(new Set(doctors.map((item) => item.hospital_name).filter((value): value is string => Boolean(value)))).sort(),
-    [doctors],
+    () => doctorFacets.hospital_names.length
+      ? doctorFacets.hospital_names
+      : Array.from(new Set(doctors.map((item) => item.hospital_name).filter((value): value is string => Boolean(value)))).sort(),
+    [doctorFacets.hospital_names, doctors],
   );
   const doctorDepartments = useMemo(
-    () => Array.from(new Set(doctors.map((item) => item.department).filter((value): value is string => Boolean(value)))).sort(),
-    [doctors],
+    () => doctorFacets.departments.length
+      ? doctorFacets.departments
+      : Array.from(new Set(doctors.map((item) => item.department).filter((value): value is string => Boolean(value)))).sort(),
+    [doctorFacets.departments, doctors],
   );
   const doctorTitles = useMemo(
-    () => Array.from(new Set(doctors.map((item) => item.title || item.position).filter((value): value is string => Boolean(value)))).sort(),
-    [doctors],
+    () => doctorFacets.titles.length
+      ? doctorFacets.titles
+      : Array.from(new Set(doctors.map((item) => item.title || item.position).filter((value): value is string => Boolean(value)))).sort(),
+    [doctorFacets.titles, doctors],
   );
   const filteredHospitals = useMemo(
     () => hospitals.filter((hospital) => {
@@ -374,6 +441,8 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     }),
     [hospitals, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, normalizedQuery],
   );
+  // Doctor filtering/pagination is server-side; only keep a local safety net for
+  // rows already fetched so progressive loading stays consistent.
   const filteredDoctors = useMemo(
     () => doctors.filter((doctor) => {
       if (doctorHospital && doctor.hospital_name !== doctorHospital) return false;
@@ -389,10 +458,10 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     }),
     [doctors, doctorHospital, doctorDepartment, doctorTitle, normalizedQuery],
   );
-  const visibleDoctors = filteredDoctors.slice(0, 48);
+  const visibleDoctors = filteredDoctors;
   const showingDoctors = activeTab === "doctors";
   const showingHospitals = activeTab !== "doctors";
-  const resultCount = showingDoctors ? filteredDoctors.length : filteredHospitals.length;
+  const resultCount = showingDoctors ? doctorTotal : filteredHospitals.length;
   const hasActiveFilters = Boolean(hospitalLevel || hospitalType || hospitalDistrict || hospitalEmergency || doctorHospital || doctorDepartment || doctorTitle);
 
   useEffect(() => {
@@ -445,9 +514,20 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   function retryDoctors() {
     setDoctorError(null);
     setDoctorLoading(true);
-    getDoctors().then((payload) => {
+    getDoctors({
+      hospitalName: doctorHospital || undefined,
+      department: doctorDepartment || undefined,
+      title: doctorTitle || undefined,
+      q: query.trim() || undefined,
+      page: 1,
+      pageSize: 24,
+    }).then((payload) => {
       setDoctors(payload.items);
       setDoctorSource(payload.source);
+      setDoctorPage(1);
+      setDoctorTotal(payload.total ?? payload.count);
+      setDoctorHasMore(Boolean(payload.has_more));
+      if (payload.facets) setDoctorFacets(payload.facets);
     }).catch((reason) => setDoctorError(errorFor(reason, "医生资源暂时无法载入。"))).finally(() => setDoctorLoading(false));
   }
 
@@ -570,7 +650,22 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
           <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
             <div>
               <div className="resource-index-grid">{visibleDoctors.map((doctor, index) => <DoctorCard key={String(doctor.id ?? `${doctor.name}-${index}`)} doctor={doctor} selected={selection?.kind === "doctor" && selection.item.id === doctor.id} onSelect={() => setSelection({ kind: "doctor", item: doctor })} />)}</div>
-              {filteredDoctors.length > visibleDoctors.length ? <p className="resource-index-cap">当前展示前 {visibleDoctors.length} 条匹配资料；继续缩小关键词以定位更多结果。</p> : null}
+              <p className="resource-index-cap" aria-live="polite">
+                已加载 {visibleDoctors.length.toLocaleString("zh-CN")} / {doctorTotal.toLocaleString("zh-CN")} 条公开医生资料
+                {doctorHasMore ? "。" : "。已到末页。"}
+              </p>
+              {doctorHasMore ? (
+                <div className="resource-index-pagination">
+                  <Button
+                    variant="secondary"
+                    onClick={loadMoreDoctors}
+                    disabled={doctorAppending}
+                    icon={doctorAppending ? <LoaderCircle className="spin" size={16} aria-hidden="true" /> : undefined}
+                  >
+                    {doctorAppending ? "正在加载…" : "加载更多"}
+                  </Button>
+                </div>
+              ) : null}
             </div>
             {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} /> : null}
           </div>

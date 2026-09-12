@@ -3120,6 +3120,12 @@ em {
   text-align: center;
 }
 
+.resource-index-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
 .resources-page__footer-note {
   display: flex;
   gap: 8px;

@@ -10,7 +10,10 @@ from pathlib import Path
 from backend.app import create_app
 from backend.app.application.evidence import EvidenceApplicationService
 from backend.app.application.map_view import MapLocationError, MapViewApplicationService, parse_coordinate
-from backend.app.application.resources import ResourceCatalogApplicationService
+from backend.app.application.resources import (
+    DoctorListValidationError,
+    ResourceCatalogApplicationService,
+)
 from backend.app.application.triage import TriageApplicationService
 from backend.app.application.summary import SummaryApplicationService
 from backend.app.application.recommendation import (
@@ -1916,8 +1919,27 @@ def api_v1_hospitals():
 
 
 def api_v1_doctors():
-    hospital_id = request.args.get("hospital_id", type=int)
-    return _v1_success(RESOURCE_CATALOG_APPLICATION_SERVICE.list_doctors(hospital_id=hospital_id))
+    try:
+        hospital_id = request.args.get("hospital_id", type=int)
+        page = request.args.get("page", default=1, type=int)
+        page_size = request.args.get("page_size", default=24, type=int)
+        payload = RESOURCE_CATALOG_APPLICATION_SERVICE.list_doctors(
+            hospital_id=hospital_id,
+            q=request.args.get("q"),
+            hospital_name=request.args.get("hospital_name"),
+            department=request.args.get("department"),
+            title=request.args.get("title"),
+            page=page,
+            page_size=page_size,
+        )
+    except DoctorListValidationError as exc:
+        return jsonify(failure(
+            exc.code,
+            exc.message,
+            region_code=app.config.get("REGION_CODE", "320400"),
+            model_version=app.config.get("MODEL_VERSION", RANKING_MODEL_VERSION),
+        )), 400
+    return _v1_success(payload)
 
 
 def _v1_resource_not_found(resource_label: str, resource_id: int):
