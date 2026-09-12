@@ -148,14 +148,19 @@ def build_evidence_payload(
             "vocabulary_size": len(model.get("vocabulary") or []),
             "top1_accuracy": model_metrics.get("accuracy"),
             "top3_accuracy": model_metrics.get("top3_accuracy"),
-            "evaluation_scope": "随机基线 + exact fingerprint grouped + near-duplicate same-label group split；仅作为 prototype/offline evaluation",
+            "evaluation_scope": "随机基线 + exact fingerprint grouped + near-duplicate same-label group split + grouped near-duplicate CV；仅作为 prototype/offline evaluation",
             "random_baseline": grouped_report.get("random_baseline"),
             "grouped_fingerprint": grouped_report.get("grouped_fingerprint"),
             "near_duplicate_same_label": grouped_report.get("near_duplicate_same_label"),
             "near_duplicate_global": grouped_report.get("near_duplicate_global"),
+            "near_duplicate_grouped_cv": grouped_report.get("near_duplicate_grouped_cv"),
             "near_duplicate_components": grouped_report.get("near_duplicate_components"),
             "primary_split": grouped_report.get("primary_split", "near_duplicate_same_label"),
             "near_duplicate_audit": grouped_report.get("near_duplicate_audit"),
+            "evaluation_disclaimer": grouped_report.get(
+                "evaluation_disclaimer",
+                "offline prototype evaluation / not clinical validation",
+            ),
             "strict_near_duplicate_isolation": {
                 "label": "Strict Near-duplicate Isolation",
                 "test_samples": (grouped_report.get("near_duplicate_same_label") or {}).get("test_rows"),
@@ -199,6 +204,7 @@ def build_evidence_payload(
             "医生资料为 public_source_mixed，公开资料不等于临床适配或疗效证明。",
             "模型指标来自 304 条小数据；Near-duplicate Group Split 降低近重复泄漏，指标更贴近泛化风险但不等于临床表现。",
             "严格近重复隔离测试集仅覆盖部分疾病类别，不能与随机切分准确率直接横向比较。",
+            "Grouped Near-Duplicate CV 要求同一近重复 component 不跨 train/validation，mean Top-1 显著低于随机切分，属于 offline prototype evidence。",
             "交通样本未全部通过质量门时，可达性按直线距离估算，站点信息仅作参考。",
         ],
     }

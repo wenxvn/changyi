@@ -372,6 +372,13 @@
         "cross_label_edge_count": 1,
         "singleton_count": 40
       }
+    },
+    "near_duplicate_grouped_cv": {
+      "strategy": "near_duplicate_same_label_component_grouped_cv",
+      "n_folds": 5,
+      "seed": 42,
+      "fold_count": 5,
+      "cross_split_near_duplicates_max_pair_count": 0
     }
   }
 }

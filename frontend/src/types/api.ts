@@ -301,11 +301,13 @@ export interface ModelEvidence {
   grouped_fingerprint?: ModelSplitMetrics;
   near_duplicate_same_label?: ModelSplitMetrics;
   near_duplicate_global?: ModelSplitMetrics;
+  near_duplicate_grouped_cv?: NearDuplicateGroupedCV;
   near_duplicate_components?: {
     same_label?: Record<string, unknown>;
     global?: Record<string, unknown>;
   };
   primary_split?: string;
+  evaluation_disclaimer?: string;
   near_duplicate_audit?: {
     jaccard_threshold: number;
     pair_count: number;
@@ -343,6 +345,49 @@ export interface ModelSplitMetrics {
     pair_count: number;
     cross_label_pair_count: number;
   };
+}
+
+export interface NearDuplicateGroupedCV {
+  strategy: string;
+  n_folds: number;
+  seed: number;
+  jaccard_threshold: number;
+  fold_count: number;
+  folds: Array<{
+    fold: number;
+    train_rows: number;
+    validation_rows: number;
+    present_class_count: number;
+    present_classes: string[];
+    top1_accuracy: number | null;
+    top3_accuracy: number | null;
+    macro_precision: number | null;
+    macro_recall: number | null;
+    macro_f1: number | null;
+    coverage: number | null;
+    abstention_rate: number | null;
+    cross_split_near_duplicates: {
+      pair_count: number;
+      cross_label_pair_count: number;
+    };
+  }>;
+  aggregate: Record<
+    string,
+    {
+      mean: number;
+      std: number;
+      weighted: number;
+    }
+  >;
+  class_coverage_across_folds?: {
+    present_class_count: number;
+    total_class_count: number;
+    present_classes: string[];
+  };
+  cross_split_near_duplicates_max_pair_count?: number;
+  metric_scope?: string;
+  offline_prototype_only?: boolean;
+  clinical_validation?: boolean;
 }
 
 export interface DataQualityEvidence {

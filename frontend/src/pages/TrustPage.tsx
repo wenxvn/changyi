@@ -82,6 +82,8 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
     { label: "近重复全局分组（对照）", metrics: evidence.model.near_duplicate_global, note: "对照：跨疾病高相似样本也会被连接，可能形成更大 component。" },
   ].filter((item) => Boolean(item.metrics));
   const strictIsolation = evidence.model.strict_near_duplicate_isolation;
+  const groupedCV = evidence.model.near_duplicate_grouped_cv;
+  const cvTop1 = groupedCV?.aggregate?.top1_accuracy;
   return (
     <>
       <div className="trust-page__hero">
@@ -177,6 +179,33 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
               </article>
             ) : null)}
           </div>
+        ) : null}
+        {groupedCV ? (
+          <article className="evidence-panel trust-strict-isolation">
+            <div className="evidence-panel__topline">
+              <GitBranch size={17} aria-hidden="true" />
+              <span>Grouped Near-Duplicate CV</span>
+            </div>
+            <div className="evidence-metric-grid">
+              <EvidenceMetric label="折数" value={formatCount(groupedCV.fold_count)} note="同一近重复 component 不跨折" />
+              <EvidenceMetric label="Mean Top-1" value={splitMetricValue(cvTop1?.mean ?? null)} />
+              <EvidenceMetric label="Mean Top-3" value={splitMetricValue(groupedCV.aggregate?.top3_accuracy?.mean ?? null)} />
+              <EvidenceMetric label="Mean Macro-F1" value={splitMetricValue(groupedCV.aggregate?.macro_f1?.mean ?? null)} />
+              <EvidenceMetric
+                label="跨折覆盖类别"
+                value={`${formatCount(groupedCV.class_coverage_across_folds?.present_class_count ?? null)} / ${formatCount(groupedCV.class_coverage_across_folds?.total_class_count ?? null)}`}
+              />
+              <EvidenceMetric
+                label="跨 split 近重复"
+                value={formatCount(groupedCV.cross_split_near_duplicates_max_pair_count ?? null)}
+                note="各折最大近重复对数"
+              />
+            </div>
+            <p className="evidence-panel__footnote">
+              offline prototype evaluation，not clinical validation。Jaccard ≥ {groupedCV.jaccard_threshold} 的同标签 component 整组进入同一折；
+              Seed {groupedCV.seed}。Mean/std 与按验证行数加权结果均写入评估报告，不可与随机切分准确率直接横向比较。
+            </p>
+          </article>
         ) : null}
         {strictIsolation ? (
           <article className="evidence-panel trust-strict-isolation">

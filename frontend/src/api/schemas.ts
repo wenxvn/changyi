@@ -9,6 +9,7 @@ import type {
   MapMarkerType,
   MapPayload,
   ModelSplitMetrics,
+  NearDuplicateGroupedCV,
   FollowupPayload,
   FollowupOption,
   FollowupQuestion,
@@ -490,6 +491,72 @@ function parseOptionalEvidenceDataset(value: unknown, field: string): EvidenceDa
   return value === null || value === undefined ? null : parseEvidenceDataset(value, field);
 }
 
+function parseNearDuplicateGroupedCV(value: unknown): NearDuplicateGroupedCV | undefined {
+  if (!isRecord(value) || !Array.isArray(value.folds) || !isRecord(value.aggregate)) {
+    return undefined;
+  }
+  const folds = value.folds
+    .filter(isRecord)
+    .map((fold) => ({
+      fold: optionalNumber(fold.fold) ?? 0,
+      train_rows: optionalNumber(fold.train_rows) ?? 0,
+      validation_rows: optionalNumber(fold.validation_rows) ?? 0,
+      present_class_count: optionalNumber(fold.present_class_count) ?? 0,
+      present_classes: Array.isArray(fold.present_classes)
+        ? fold.present_classes.filter((item): item is string => typeof item === "string")
+        : [],
+      top1_accuracy: nullableNumber(fold.top1_accuracy),
+      top3_accuracy: nullableNumber(fold.top3_accuracy),
+      macro_precision: nullableNumber(fold.macro_precision),
+      macro_recall: nullableNumber(fold.macro_recall),
+      macro_f1: nullableNumber(fold.macro_f1),
+      coverage: nullableNumber(fold.coverage),
+      abstention_rate: nullableNumber(fold.abstention_rate),
+      cross_split_near_duplicates: isRecord(fold.cross_split_near_duplicates)
+        ? {
+            pair_count: optionalNumber(fold.cross_split_near_duplicates.pair_count) ?? 0,
+            cross_label_pair_count:
+              optionalNumber(fold.cross_split_near_duplicates.cross_label_pair_count) ?? 0,
+          }
+        : { pair_count: 0, cross_label_pair_count: 0 },
+    }));
+  const aggregate: Record<string, { mean: number; std: number; weighted: number }> = {};
+  for (const [key, item] of Object.entries(value.aggregate)) {
+    if (!isRecord(item)) continue;
+    aggregate[key] = {
+      mean: optionalNumber(item.mean) ?? 0,
+      std: optionalNumber(item.std) ?? 0,
+      weighted: optionalNumber(item.weighted) ?? 0,
+    };
+  }
+  return {
+    strategy: optionalString(value.strategy) ?? "near_duplicate_same_label_component_grouped_cv",
+    n_folds: optionalNumber(value.n_folds) ?? folds.length,
+    seed: optionalNumber(value.seed) ?? 42,
+    jaccard_threshold: optionalNumber(value.jaccard_threshold) ?? 0.8,
+    fold_count: optionalNumber(value.fold_count) ?? folds.length,
+    folds,
+    aggregate,
+    class_coverage_across_folds: isRecord(value.class_coverage_across_folds)
+      ? {
+          present_class_count: optionalNumber(value.class_coverage_across_folds.present_class_count) ?? 0,
+          total_class_count: optionalNumber(value.class_coverage_across_folds.total_class_count) ?? 0,
+          present_classes: Array.isArray(value.class_coverage_across_folds.present_classes)
+            ? value.class_coverage_across_folds.present_classes.filter(
+                (item): item is string => typeof item === "string",
+              )
+            : [],
+        }
+      : undefined,
+    cross_split_near_duplicates_max_pair_count: nullableNumber(
+      value.cross_split_near_duplicates_max_pair_count,
+    ) ?? undefined,
+    metric_scope: optionalString(value.metric_scope),
+    offline_prototype_only: value.offline_prototype_only === true,
+    clinical_validation: value.clinical_validation === true,
+  };
+}
+
 function parseModelSplit(value: unknown): ModelSplitMetrics | undefined {
   if (!isRecord(value)) return undefined;
   const crossSplit = isRecord(value.cross_split_near_duplicates)
@@ -591,6 +658,7 @@ export function parseEvidence(value: unknown): EvidencePayload {
       grouped_fingerprint: parseModelSplit(model.grouped_fingerprint),
       near_duplicate_same_label: parseModelSplit(model.near_duplicate_same_label),
       near_duplicate_global: parseModelSplit(model.near_duplicate_global),
+      near_duplicate_grouped_cv: parseNearDuplicateGroupedCV(model.near_duplicate_grouped_cv),
       near_duplicate_components: isRecord(model.near_duplicate_components)
         ? {
             same_label: isRecord(model.near_duplicate_components.same_label) ? model.near_duplicate_components.same_label : undefined,
@@ -598,6 +666,7 @@ export function parseEvidence(value: unknown): EvidencePayload {
           }
         : undefined,
       primary_split: optionalString(model.primary_split),
+      evaluation_disclaimer: optionalString(model.evaluation_disclaimer),
       near_duplicate_audit: isRecord(model.near_duplicate_audit)
         ? {
             jaccard_threshold: optionalNumber(model.near_duplicate_audit.jaccard_threshold) ?? 0,

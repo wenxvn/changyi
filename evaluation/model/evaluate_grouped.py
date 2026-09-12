@@ -84,7 +84,7 @@ def grouped_fingerprint_split(
 
 
 def evaluate_metrics(model: dict[str, Any], rows: list[dict[str, Any]]) -> dict[str, Any]:
-    labels = sorted(model.get("classes") or {row["disease"] for row in rows})
+    labels = sorted(set(model.get("classes") or []) | {row["disease"] for row in rows})
     confusion: dict[str, Counter[str]] = {label: Counter() for label in labels}
     per_class_total = Counter()
     correct = covered_correct = top3_correct = covered = 0
@@ -322,6 +322,151 @@ def cross_split_near_duplicate_count(
     }
 
 
+def assign_components_to_folds(
+    rows: list[dict[str, Any]],
+    components: list[list[int]],
+    n_folds: int,
+    seed: int,
+) -> list[int]:
+    """Assign each whole near-duplicate component to exactly one fold."""
+
+    rng = random.Random(seed)
+    by_disease: dict[str, list[list[int]]] = defaultdict(list)
+    for component in components:
+        by_disease[rows[component[0]]["disease"]].append(component)
+
+    fold_of_index = [0] * len(rows)
+    fold_row_counts = [0] * n_folds
+    for disease in sorted(by_disease):
+        disease_components = sorted(by_disease[disease], key=lambda item: (-len(item), item[0]))
+        rng.shuffle(disease_components)
+        disease_components.sort(key=lambda item: -len(item))
+        for component in disease_components:
+            fold = min(range(n_folds), key=lambda index: (fold_row_counts[index], index))
+            for row_index in component:
+                fold_of_index[row_index] = fold
+            fold_row_counts[fold] += len(component)
+    return fold_of_index
+
+
+def grouped_cross_validation(
+    rows: list[dict[str, Any]],
+    components: list[list[int]],
+    n_folds: int = 5,
+    seed: int = SEED,
+    threshold: float = 0.8,
+) -> dict[str, Any]:
+    """Run component-grouped k-fold CV with no same-component leakage."""
+
+    if n_folds < 2:
+        raise ValueError("n_folds must be >= 2")
+    fold_of_index = assign_components_to_folds(rows, components, n_folds, seed)
+    folds: list[dict[str, Any]] = []
+    metric_keys = (
+        "top1_accuracy",
+        "top3_accuracy",
+        "macro_precision",
+        "macro_recall",
+        "macro_f1",
+        "coverage",
+        "abstention_rate",
+    )
+    weighted_sums = {key: 0.0 for key in metric_keys}
+    weighted_rows = 0
+    all_present_classes: set[str] = set()
+    max_cross_split = 0
+
+    for fold_id in range(n_folds):
+        train_indices = [index for index, assigned in enumerate(fold_of_index) if assigned != fold_id]
+        validation_indices = [index for index, assigned in enumerate(fold_of_index) if assigned == fold_id]
+        if not validation_indices:
+            raise AssertionError(f"fold {fold_id} has no validation rows")
+        if not train_indices:
+            raise AssertionError(f"fold {fold_id} has no train rows")
+        train_rows = [rows[index] for index in train_indices]
+        validation_rows = [rows[index] for index in validation_indices]
+        train_components = {
+            component_id
+            for component_id, component in enumerate(components)
+            if fold_of_index[component[0]] != fold_id
+        }
+        validation_components = {
+            component_id
+            for component_id, component in enumerate(components)
+            if fold_of_index[component[0]] == fold_id
+        }
+        if train_components & validation_components:
+            raise AssertionError("near-duplicate component leakage across CV folds")
+        model = fit(train_rows, ALPHA, MIN_SYMPTOM_DF)
+        metrics = evaluate_metrics(model, validation_rows)
+        cross = cross_split_near_duplicate_count(train_rows, validation_rows, threshold)
+        if cross["pair_count"] > max_cross_split:
+            max_cross_split = cross["pair_count"]
+        present_classes = sorted(metrics.get("per_class_recall") or {})
+        all_present_classes.update(present_classes)
+        fold_payload = {
+            "fold": fold_id + 1,
+            "train_rows": len(train_rows),
+            "validation_rows": len(validation_rows),
+            "present_class_count": metrics["present_class_count"],
+            "present_classes": present_classes,
+            "top1_accuracy": metrics["accuracy"],
+            "top3_accuracy": metrics["top3_accuracy"],
+            "macro_precision": metrics["macro_precision"],
+            "macro_recall": metrics["macro_recall"],
+            "macro_f1": metrics["macro_f1"],
+            "coverage": metrics["coverage"],
+            "abstention_rate": metrics["abstention_rate"],
+            "cross_split_near_duplicates": cross,
+            "train_component_count": len(train_components),
+            "validation_component_count": len(validation_components),
+        }
+        folds.append(fold_payload)
+        for key in metric_keys:
+            source_key = "accuracy" if key == "top1_accuracy" else key
+            weighted_sums[key] += float(metrics.get(source_key) or 0.0) * len(validation_rows)
+        weighted_rows += len(validation_rows)
+
+    def _mean(key: str) -> float:
+        values = [float(fold[key]) for fold in folds if fold[key] is not None]
+        return round(sum(values) / len(values), 6) if values else 0.0
+
+    def _std(key: str) -> float:
+        values = [float(fold[key]) for fold in folds if fold[key] is not None]
+        if len(values) <= 1:
+            return 0.0
+        mean = sum(values) / len(values)
+        variance = sum((value - mean) ** 2 for value in values) / len(values)
+        return round(variance ** 0.5, 6)
+
+    aggregate = {
+        key: {
+            "mean": _mean(key),
+            "std": _std(key),
+            "weighted": round(weighted_sums[key] / weighted_rows, 6) if weighted_rows else 0.0,
+        }
+        for key in metric_keys
+    }
+    return {
+        "strategy": "near_duplicate_same_label_component_grouped_cv",
+        "n_folds": n_folds,
+        "seed": seed,
+        "jaccard_threshold": threshold,
+        "fold_count": len(folds),
+        "folds": folds,
+        "aggregate": aggregate,
+        "class_coverage_across_folds": {
+            "present_class_count": len(all_present_classes),
+            "total_class_count": len({row["disease"] for row in rows}),
+            "present_classes": sorted(all_present_classes),
+        },
+        "cross_split_near_duplicates_max_pair_count": max_cross_split,
+        "metric_scope": "每折仅对该折验证集中出现的类别计算 macro 指标；聚合同时报告 mean/std 与按验证行数加权结果。",
+        "offline_prototype_only": True,
+        "clinical_validation": False,
+    }
+
+
 def build_artifacts(
     dataset_path: Path = DEFAULT_DATASET,
     model_path: Path = DEFAULT_MODEL,
@@ -336,6 +481,9 @@ def build_artifacts(
         rows, same_label_components, TEST_SIZE, SEED
     )
     global_train, global_test, _ = component_grouped_split(rows, global_components, TEST_SIZE, SEED)
+    grouped_cv = grouped_cross_validation(
+        rows, same_label_components, n_folds=5, seed=SEED, threshold=0.8
+    )
 
     random_model = fit(random_train, ALPHA, MIN_SYMPTOM_DF)
     grouped_model = fit(grouped_train, ALPHA, MIN_SYMPTOM_DF)
@@ -405,6 +553,15 @@ def build_artifacts(
                 "component_count": global_stats["component_count"],
                 "component_stats": global_stats,
             },
+            "near_duplicate_grouped_cv": {
+                "strategy": "near_duplicate_same_label_component_grouped_cv",
+                "n_folds": grouped_cv["n_folds"],
+                "seed": grouped_cv["seed"],
+                "fold_count": grouped_cv["fold_count"],
+                "cross_split_near_duplicates_max_pair_count": grouped_cv[
+                    "cross_split_near_duplicates_max_pair_count"
+                ],
+            },
         },
     }
 
@@ -417,17 +574,20 @@ def build_artifacts(
         "grouped_fingerprint": grouped_metrics,
         "near_duplicate_same_label": near_metrics,
         "near_duplicate_global": global_metrics,
+        "near_duplicate_grouped_cv": grouped_cv,
         "near_duplicate_components": {
             "same_label": same_label_stats,
             "global": global_stats,
         },
         "near_duplicate_audit": near_duplicate_audit(rows),
         "primary_split": "near_duplicate_same_label",
+        "evaluation_disclaimer": "offline prototype evaluation / not clinical validation",
         "limitations": [
             "数据集只有 304 条记录，指标是离线原型评估，不代表临床表现。",
             "exact fingerprint 分组无法识别所有语义近重复；Near-duplicate Group Split 用于降低跨 split 近重复泄漏。",
             "same-label 分组避免跨疾病样本被机械合并成超大 component；global 分组仅作对照。",
             "更严格切分可能降低表面指标，但更贴近真实泛化风险。",
+            "Grouped Near-Duplicate CV 要求同一 component 永不跨 train/validation；单 component 疾病会整折落在验证侧，部分折覆盖类别有限。",
         ],
     }
     return manifest, report
@@ -452,6 +612,7 @@ def main() -> None:
         "grouped_fingerprint": report["grouped_fingerprint"],
         "near_duplicate_same_label": report["near_duplicate_same_label"],
         "near_duplicate_global": report["near_duplicate_global"],
+        "near_duplicate_grouped_cv": report["near_duplicate_grouped_cv"],
         "near_duplicate_components": report["near_duplicate_components"],
         "near_duplicate_audit": report["near_duplicate_audit"],
     }, ensure_ascii=False, indent=2))
