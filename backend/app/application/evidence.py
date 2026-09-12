@@ -77,6 +77,8 @@ def _hospital_catalog_evidence(project_root: Path) -> dict[str, Any]:
         "deidentified": catalog.get("deidentified") is True,
         "record_count": len(records),
         "public_fact_fields": list(field_policy.get("public_facts") or []),
+        "field_provenance": catalog.get("field_provenance") or {},
+        "reuse_note": catalog.get("reuse_note"),
         "derived_fields": {
             str(name): {
                 "status": item.get("status", "unknown"),

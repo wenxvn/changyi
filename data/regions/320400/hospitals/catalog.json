@@ -126,6 +126,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "天宁区"
@@ -185,6 +246,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "天宁区"
@@ -244,6 +366,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "天宁区"
@@ -289,6 +472,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "天宁区"
@@ -354,6 +598,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "钟楼区"
@@ -405,6 +710,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "天宁区"
@@ -473,6 +839,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "钟楼区"
@@ -519,6 +946,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "武进区"
@@ -562,6 +1050,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "金坛区"
@@ -605,6 +1154,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "溧阳市"
@@ -681,6 +1291,67 @@
           "status": "unknown",
           "method": "public_address_name_token_match",
           "note": "公开地址/名称中无可靠行政区 token，保持 null。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": null
@@ -728,6 +1399,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "武进区"
@@ -773,6 +1505,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "溧阳市"
@@ -820,6 +1613,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "天宁区"
@@ -865,6 +1719,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "经开区"
@@ -910,6 +1825,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "钟楼区"
@@ -954,6 +1930,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "钟楼区"
@@ -998,6 +2035,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "金坛区"
@@ -1042,6 +2140,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "金坛区"
@@ -1086,6 +2245,67 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "溧阳市"
@@ -1130,9 +2350,131 @@
           "status": "provisional",
           "method": "public_address_name_token_match",
           "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        },
+        "provider": null,
+        "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+        "fields": {
+          "name": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+          },
+          "level": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+          },
+          "type": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "机构类型标签来自旧目录。"
+          },
+          "address": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+          },
+          "district": {
+            "status": "provisional_derived",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "method": "public_address_name_token_match",
+            "note": "由地址/名称 token 推导；不可靠时为 null。"
+          },
+          "phone": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+          },
+          "departments": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+          },
+          "emergency": {
+            "status": "legacy_catalog_import",
+            "source_url": null,
+            "last_checked_at": null,
+            "license_status": "not_recorded",
+            "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+          }
         }
       },
       "district": "新北区"
     }
-  ]
+  ],
+  "provider": null,
+  "reuse_note": "演示用途展示公开目录信息；未取得再分发许可前不得当作官方发布源。",
+  "field_provenance": {
+    "name": {
+      "status": "legacy_catalog_import",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "note": "公开机构名称，来自旧目录导入；未完成本轮外部核验。"
+    },
+    "level": {
+      "status": "legacy_catalog_import",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "note": "医院等级标签来自旧目录；不作为官方实时评定。"
+    },
+    "type": {
+      "status": "legacy_catalog_import",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "note": "机构类型标签来自旧目录。"
+    },
+    "address": {
+      "status": "legacy_catalog_import",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "note": "公开地址文本；不参与精确导航结算以外的权威声明。"
+    },
+    "district": {
+      "status": "provisional_derived",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "method": "public_address_name_token_match",
+      "note": "由地址/名称 token 推导；不可靠时为 null。"
+    },
+    "phone": {
+      "status": "legacy_catalog_import",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "note": "总机号码展示用；拨打前请以机构最新公开信息为准。"
+    },
+    "departments": {
+      "status": "legacy_catalog_import",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "note": "公开科室存在性用于匹配，不代表实时开放或诊疗能力排名。"
+    },
+    "emergency": {
+      "status": "legacy_catalog_import",
+      "source_url": null,
+      "last_checked_at": null,
+      "license_status": "not_recorded",
+      "note": "仅表示目录中记录了急诊相关字段，不表示实时可接诊、床位或当前开放。"
+    }
+  }
 }

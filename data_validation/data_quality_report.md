@@ -213,9 +213,9 @@
 | `doctors_h6.json` | json | `4768bf2b6941d872cddf024ebcefbe6ce77fc43b93d2c01cfd7a18e6377897e2` | `{'doctors': 74}` |
 | `doctors_h7.json` | json | `2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00` | `{'doctors': 164}` |
 | `doctors_h8.json` | json | `a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288` | `{'doctors': 515}` |
-| `regions/320400/hospitals/catalog.json` | json | `54252846c72af798dd4a6fc8a786ce3a6bde00a5bb7e4430d22cb2f8b053b2ef` | `{'records': 21}` |
+| `regions/320400/hospitals/catalog.json` | json | `3deae7e3a33c8d93ec6c9de2156d33938180c9ac323d5a27da9143be7155f430` | `{'records': 21}` |
 | `regions/320400/manifest.json` | json | `09af12e958783afd04bfd4e243cc58260b9f29aebbd0bf04c89af100ecd5ab5a` | `{'activation_gate': 6, 'districts': 7, 'future_regions': 3}` |
-| `resource_provenance/doctor_photos.json` | json | `dc07cf8ad0daa92f7a2b5661002f71b30fcd54e7c243c55278b9254284183db9` | `{'entries': 275}` |
+| `resource_provenance/doctor_photos.json` | json | `7fe66053d38e84cdf2d8a59c221dd8df71a374286b6f9acc76af18b65fd251da` | `{'entries': 275}` |
 | `symptom_disease_model/data/disease_symptom_sources.json` | json | `d361d97140b68706324933e4a086f714a0b74c8fe79a4b320b45297b3e6d4d8e` | `-` |
 | `symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv` | csv | `86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb` | `304` |
 | `symptom_disease_model/data/disease_symptom_training_long.csv` | csv | `8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497` | `2726` |
