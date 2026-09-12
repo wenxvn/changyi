@@ -26,5 +26,6 @@ ppt_build_tmp/
 # Frontend dependencies and build output
 frontend/node_modules/
 frontend/test-results/
+.playwright-mcp/
 # The Flask demo serves this release build as its single frontend entry point.
 frontend/dist/*.map
