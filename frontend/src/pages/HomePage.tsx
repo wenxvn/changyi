@@ -84,13 +84,12 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
             <StatusPill tone="success"><span className="status-dot" /> 系统在线</StatusPill>
           </div>
           <h1>
-            把症状，<br />
-            <em>变成一条更清晰的</em><br />
+            把症状，
+            <em>变成一条更清晰的</em>
             就医路径。
           </h1>
           <p className="hero__lede">
-            从危险信号识别，到科室、医院、医生与实际到院路径，
-            让每一步推荐都有依据。
+            从危险信号识别，到科室、医院、医生与实际到院路径，让每一步推荐都有依据。
           </p>
 
           <form className="symptom-composer" onSubmit={handleSubmit}>
@@ -129,7 +128,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
           <CarePath />
           <div className="hero__visual-note">
             <span>01</span>
-            <p>从你的描述出发，逐步建立就医路径。</p>
+            <p>从你的描述出发，逐步建立就医路径。悬停节点可查看每一步含义。</p>
           </div>
         </div>
       </section>
@@ -137,7 +136,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
       <section className="philosophy page-container section-block">
         <div className="section-kicker"><span>01</span><span>我们的方式</span></div>
         <div className="philosophy__grid">
-          <h2>我们不是在寻找<br /><em>“最好的医院”。</em><br />而是在寻找<br /><strong>更适合当前情况的<br />就医路径。</strong></h2>
+          <h2>不是寻找<br /><em>“最好的医院”</em>，<br />而是更适合当前情况的就医路径。</h2>
           <div className="principles-list">
             {principles.map((principle, index) => (
               <article className="principle" key={principle.label}>
@@ -158,8 +157,8 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
           <div className="section-kicker"><span>02</span><span>就医路径</span></div>
           <div className="journey__intro">
             <div>
-              <h2>一次只走<br /><em>下一步。</em></h2>
-              <p>系统把复杂的就医判断拆成可理解的步骤。滚动查看每一步如何把描述，慢慢变成行动。</p>
+              <h2>一次只走<em>下一步。</em></h2>
+              <p>系统把复杂的就医判断拆成可理解的步骤。选择任一步，查看它如何把描述慢慢变成行动。</p>
             </div>
             <div className="journey__controls" role="tablist" aria-label="AI Journey 步骤">
               {journeySteps.map((step, index) => (
@@ -214,15 +213,13 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
         <div className="section-kicker"><span>03</span><span>常州资源图景</span></div>
         <div className="city-layer__heading">
           <div>
-            <h2>AI 不只理解病情，<br /><em>还理解你所在的城市。</em></h2>
+            <h2>AI 不只理解病情，<em>还理解你所在的城市。</em></h2>
             <p>以常州为示范区，把医疗资源和到院路径放进同一张可解释的城市图景里。</p>
           </div>
           <span className="city-layer__code">服务区域<br /><strong>{summary.data?.region.code ?? "320400"}</strong></span>
         </div>
         <div className="city-layer__content">
           <div className="city-map-sketch" aria-label={`${cityName}区域关系示意`} role="img">
-            <div className="city-map-sketch__wash city-map-sketch__wash--one" />
-            <div className="city-map-sketch__wash city-map-sketch__wash--two" />
             <svg viewBox="0 0 600 420" aria-hidden="true">
               <path className="city-map-sketch__contour" d="M84 328c38-61 35-141 95-183 53-37 91-21 133-62 45-44 94-47 137-20 31 20 50 56 86 69 24 9 47 9 65 29" />
               <path className="city-map-sketch__contour city-map-sketch__contour--soft" d="M42 254c80-26 99-87 166-105 78-22 111 18 172-26 58-42 101-20 170 13" />
@@ -282,17 +279,15 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="trust-section section-block">
+      <section className="trust-section">
         <div className="page-container trust-section__inner">
           <div className="trust-section__visual" aria-hidden="true">
-            <div className="trust-section__ring trust-section__ring--outer" />
-            <div className="trust-section__ring trust-section__ring--inner" />
-            <ShieldCheck size={39} strokeWidth={1.25} />
+            <ShieldCheck size={32} strokeWidth={1.4} />
             <span>可信<br />设计</span>
           </div>
           <div className="trust-section__copy">
-            <div className="section-kicker section-kicker--light"><span>04</span><span>可信信息</span></div>
-            <h2>AI 应该知道<br /><em>什么时候不该给出答案。</em></h2>
+            <div className="section-kicker"><span>04</span><span>可信信息</span></div>
+            <h2>AI 应该知道<em>什么时候不该给出答案。</em></h2>
             <p>安全分诊、低置信度降级、数据来源和推荐解释，应该成为产品的一部分，而不是藏在技术说明里。</p>
             <Button onClick={() => onNavigate("/trust")} variant="secondary" icon={<MoveUpRight size={16} aria-hidden="true" />}>
               了解系统如何做出判断
@@ -309,7 +304,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
       <section className="home-cta page-container">
         <div>
           <span className="eyebrow eyebrow--muted">随时开始</span>
-          <h2>从一句话开始，<br /><em>让下一步更清楚。</em></h2>
+          <h2>从一句话开始，<em>让下一步更清楚。</em></h2>
         </div>
         <Button onClick={() => document.getElementById("symptom-input")?.focus()} icon={<ArrowRight size={17} aria-hidden="true" />}>
           描述现在的不适
