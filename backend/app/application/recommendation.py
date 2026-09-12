@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from backend.app.domain.recommendation.scoring import rebalance_weights
+from backend.app.domain.recommendation.visit_intent import ranking_scenario_for_visit_intent
 
 
 @dataclass(frozen=True)
@@ -24,6 +25,7 @@ class RecommendationContext:
     user_lng: float | None
     location_source: str = "unknown"
     followup_answers: tuple[dict[str, Any], ...] = ()
+    visit_intent: str | None = None
 
 
 @dataclass(frozen=True)
@@ -55,7 +57,10 @@ class RecommendationApplicationService:
             triage = dict(self.analyze_triage(context.condition, context.scenario, context.followup_answers))
         else:
             triage = dict(self.analyze_triage(context.condition, context.scenario))
-        effective_scenario = triage.get("recommended_scenario") or context.scenario
+        # Visit intent never replaces triage rules; it only picks ranking weights.
+        triage_scenario = triage.get("recommended_scenario") or context.scenario
+        ranking_scenario = ranking_scenario_for_visit_intent(context.visit_intent, triage_scenario)
+        effective_scenario = ranking_scenario
         resource_strategy = self.resource_strategy(triage, context.expert_preference)
         hospitals = self.recommend_hospitals(
             context.condition,
@@ -87,7 +92,9 @@ class RecommendationApplicationService:
         result: dict[str, Any] = {
             "condition": context.condition,
             "scenario": context.scenario,
+            "visit_intent": context.visit_intent,
             "effective_scenario": effective_scenario,
+            "triage_scenario": triage_scenario,
             "expert_preference": context.expert_preference,
             "resource_strategy": resource_strategy,
             "triage": triage,

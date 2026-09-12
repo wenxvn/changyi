@@ -3,6 +3,12 @@ import { parseRecommendations } from "./schemas";
 import type { FollowupAnswer, RecommendationPayload } from "../types/api";
 
 export type ExpertPreference = "system" | "no_expert" | "wish_expert";
+export type VisitIntent =
+  | "first_visit"
+  | "follow_up"
+  | "review_results"
+  | "procedure_consult"
+  | "unsure";
 
 export interface RecommendationRequest {
   condition: string;
@@ -13,6 +19,7 @@ export interface RecommendationRequest {
   location_source?: "unknown" | "geolocation" | "district";
   followup_answers?: FollowupAnswer[];
   expert_preference?: ExpertPreference;
+  visit_intent?: VisitIntent;
 }
 
 export function getRecommendations(

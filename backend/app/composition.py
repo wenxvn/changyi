@@ -1742,6 +1742,7 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
             raise RequestValidationError("INVALID_DISTRICT", "district 不在当前 Region Pack")
         location_source = parsed.location_source
         followup_answers = parsed.followup_answers
+        visit_intent = parsed.visit_intent
     else:
         if not isinstance(data, dict):
             raise RequestValidationError("INVALID_JSON", "请求体必须是 JSON 对象")
@@ -1751,6 +1752,8 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         scenario = data.get("scenario", "common")
         district = data.get("district")
         expert_preference = data.get("expert_preference", "system")
+        raw_visit_intent = data.get("visit_intent")
+        visit_intent = str(raw_visit_intent) if raw_visit_intent else None
         raw_lat, raw_lng = data.get("lat"), data.get("lng")
         location_source = (
             "geolocation" if raw_lat is not None and raw_lng is not None
@@ -1772,6 +1775,7 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         user_lng=lng,
         location_source=location_source,
         followup_answers=followup_answers,
+        visit_intent=visit_intent,
     )
     return RECOMMENDATION_APPLICATION_SERVICE.build(
         context,

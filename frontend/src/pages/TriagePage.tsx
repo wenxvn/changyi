@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, CircleAlert, LoaderCircle, ShieldCheck } from "lucide-react";
 import { ApiError } from "../api/client";
 import { getFollowups, startTriage } from "../api/triage";
-import { getRecommendations, type ExpertPreference } from "../api/recommendations";
+import { getRecommendations, type ExpertPreference, type VisitIntent } from "../api/recommendations";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
 import { CurrentUnderstanding } from "../components/medical/CurrentUnderstanding";
@@ -45,6 +45,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const [recommendationsError, setRecommendationsError] = useState<ApiError | null>(null);
   const [followupAnswers, setFollowupAnswers] = useState<FollowupAnswer[]>([]);
   const [expertPreference, setExpertPreference] = useState<ExpertPreference>("system");
+  const [visitIntent, setVisitIntent] = useState<VisitIntent | "">("");
   const { location } = useLocationContext();
   const triageController = useRef<AbortController | null>(null);
   const recommendationController = useRef<AbortController | null>(null);
@@ -70,6 +71,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   useEffect(() => {
     setRecommendations(null);
     setRecommendationsError(null);
+    setVisitIntent("");
   }, [location.source, location.district, location.lat, location.lng]);
 
   useEffect(() => {
@@ -77,7 +79,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     void loadRecommendations();
     // Reload recommendations when the user changes expert preference after results are shown.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expertPreference]);
+  }, [expertPreference, visitIntent]);
 
   async function submitCondition(
     value: string,
@@ -96,6 +98,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     setRecommendations(null);
     setFollowup(null);
     setFollowupAnswers(nextAnswers);
+    setVisitIntent("");
     if (!options.preserveFollowupStep) setFollowupStep(1);
     try {
       const request = {
@@ -152,6 +155,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           ...locationRequest(),
           followup_answers: followupAnswers,
           expert_preference: expertPreference,
+          ...(visitIntent ? { visit_intent: visitIntent } : {}),
         },
         controller.signal,
       );
@@ -233,40 +237,65 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           <LocationSelector />
 
           {canShowResults ? (
-            <fieldset className="expert-preference">
-              <legend>医生资源偏好</legend>
-              <p className="expert-preference__note">专家资源不一定适合所有常见病与初诊场景；默认为系统平衡推荐。</p>
-              <label>
-                <input
-                  type="radio"
-                  name="expert-preference"
-                  value="system"
-                  checked={expertPreference === "system"}
-                  onChange={() => setExpertPreference("system")}
-                />
-                系统平衡推荐
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="expert-preference"
-                  value="wish_expert"
-                  checked={expertPreference === "wish_expert"}
-                  onChange={() => setExpertPreference("wish_expert")}
-                />
-                希望优先专家
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="expert-preference"
-                  value="no_expert"
-                  checked={expertPreference === "no_expert"}
-                  onChange={() => setExpertPreference("no_expert")}
-                />
-                不特别需要专家
-              </label>
-            </fieldset>
+            <>
+              <fieldset className="expert-preference visit-intent">
+                <legend>这次主要想解决什么？</legend>
+                <p className="expert-preference__note">只影响就医资源匹配，不改变安全分诊结果；急症仍优先急诊/急救。</p>
+                {([
+                  ["", "先按系统判断"],
+                  ["first_visit", "首次就诊"],
+                  ["follow_up", "已有诊断，需要复诊"],
+                  ["review_results", "已有检查，希望进一步就医"],
+                  ["procedure_consult", "手术 / 专科治疗咨询"],
+                  ["unsure", "不确定"],
+                ] as Array<[VisitIntent | "", string]>).map(([value, label]) => (
+                  <label key={value || "default"}>
+                    <input
+                      type="radio"
+                      name="visit-intent"
+                      value={value}
+                      checked={visitIntent === value}
+                      onChange={() => setVisitIntent(value)}
+                    />
+                    {label}
+                  </label>
+                ))}
+              </fieldset>
+              <fieldset className="expert-preference">
+                <legend>医生资源偏好</legend>
+                <p className="expert-preference__note">专家资源不一定适合所有常见病与初诊场景；默认为系统平衡推荐。</p>
+                <label>
+                  <input
+                    type="radio"
+                    name="expert-preference"
+                    value="system"
+                    checked={expertPreference === "system"}
+                    onChange={() => setExpertPreference("system")}
+                  />
+                  系统平衡推荐
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="expert-preference"
+                    value="wish_expert"
+                    checked={expertPreference === "wish_expert"}
+                    onChange={() => setExpertPreference("wish_expert")}
+                  />
+                  希望优先专家
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="expert-preference"
+                    value="no_expert"
+                    checked={expertPreference === "no_expert"}
+                    onChange={() => setExpertPreference("no_expert")}
+                  />
+                  不特别需要专家
+                </label>
+              </fieldset>
+            </>
           ) : null}
 
           {error ? (

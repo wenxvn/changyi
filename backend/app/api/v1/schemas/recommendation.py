@@ -14,6 +14,15 @@ class RequestValidationError(ValueError):
         self.details = details
 
 
+VISIT_INTENTS = {
+    "first_visit",
+    "follow_up",
+    "review_results",
+    "procedure_consult",
+    "unsure",
+}
+
+
 @dataclass(frozen=True)
 class RecommendationRequest:
     condition: str
@@ -25,6 +34,7 @@ class RecommendationRequest:
     lng: float | None = None
     location_source: str = "unknown"
     followup_answers: tuple[dict[str, Any], ...] = ()
+    visit_intent: str | None = None
 
     @classmethod
     def parse(cls, payload: Any, *, region_code: str = "320400") -> "RecommendationRequest":
@@ -33,7 +43,7 @@ class RecommendationRequest:
 
         allowed = {
             "condition", "scenario", "district", "expert_preference", "region_code",
-            "lat", "lng", "location_source", "followup_answers",
+            "lat", "lng", "location_source", "followup_answers", "visit_intent",
         }
         unexpected = sorted(set(payload) - allowed)
         if unexpected:
@@ -53,6 +63,14 @@ class RecommendationRequest:
         scenario = str(payload.get("scenario") or "common")
         if scenario not in {"common", "complex", "surgery", "first_visit"}:
             raise RequestValidationError("INVALID_SCENARIO", "scenario 不在已声明的就诊场景范围内")
+
+        raw_visit_intent = payload.get("visit_intent")
+        if raw_visit_intent is None or raw_visit_intent == "":
+            visit_intent = None
+        else:
+            visit_intent = str(raw_visit_intent)
+            if visit_intent not in VISIT_INTENTS:
+                raise RequestValidationError("INVALID_VISIT_INTENT", "visit_intent 不在已声明范围内")
 
         expert_preference = str(payload.get("expert_preference") or "system")
         if expert_preference not in {"system", "no_expert", "wish_expert", "must_expert", "named_followup"}:
@@ -79,6 +97,7 @@ class RecommendationRequest:
             lng=lng,
             location_source=location_source,
             followup_answers=followup_answers,
+            visit_intent=visit_intent,
         )
 
 
