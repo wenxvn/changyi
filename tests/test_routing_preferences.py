@@ -13,7 +13,7 @@ from backend.app.domain.triage.safety_gate import triage_status_from_legacy
 def _service():
     def enhanced_doctors(condition, scenario, **kwargs):
         return [
-            {"doctor": {"id": 1, "name": "收藏医生"}, "match_score": 0.70, "reasons": []},
+            {"doctor": {"id": 1, "name": "收藏医生"}, "match_score": 0.78, "reasons": []},
             {"doctor": {"id": 2, "name": "普通医生"}, "match_score": 0.80, "reasons": []},
         ]
 
@@ -122,6 +122,7 @@ class RoutingPreferenceTests(TestCase):
         off_by_id = {item["doctor"]["id"]: item for item in off["recommended_doctors"]}
         on_by_id = {item["doctor"]["id"]: item for item in on["recommended_doctors"]}
         self.assertEqual(on["recommended_doctors"][0]["doctor"]["id"], 1)
+        self.assertEqual(off["recommended_doctors"][0]["doctor"]["id"], 2)
         self.assertGreater(on_by_id[1]["match_score"], off_by_id[1]["match_score"])
         self.assertEqual(on_by_id[2]["match_score"], off_by_id[2]["match_score"])
         self.assertIn("已按连续复诊偏好优先展示收藏医生", on_by_id[1]["reasons"])
