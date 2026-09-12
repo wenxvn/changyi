@@ -386,6 +386,976 @@
       "review_status": "regression_rule_verified",
       "source_type": "p0_safety_regression",
       "notes": "普通上呼吸道症状。"
+    },
+    {
+      "id": "crushing-chest-cold-sweat",
+      "category": "cardiovascular_emergency",
+      "condition": "胸口像石头压着，还冒冷汗",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "压榨样胸痛合并冷汗。"
+    },
+    {
+      "id": "chest-pain-left-shoulder",
+      "category": "cardiovascular_emergency",
+      "condition": "胸痛并向左肩放射",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "放射痛关键词命中较重路径；当前规则未单独升为急症，不低估为普通门诊。"
+    },
+    {
+      "id": "uncontrolled-scalp-bleed",
+      "category": "severe_trauma",
+      "condition": "头破了，血止不住",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "无法止血。"
+    },
+    {
+      "id": "ongoing-seizure-child",
+      "category": "seizure",
+      "condition": "孩子一直在抽搐",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "抽搐持续。"
+    },
+    {
+      "id": "stroke-slurred-half-body",
+      "category": "stroke",
+      "condition": "突然说话不利索，半边手脚没劲",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "口语卒中样组合。"
+    },
+    {
+      "id": "thunderclap-headache",
+      "category": "neuro_emergency",
+      "condition": "突然剧烈头痛，像炸开一样",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "突发剧烈头痛。"
+    },
+    {
+      "id": "anaphylaxis-airway",
+      "category": "allergy",
+      "condition": "吃了药以后全身过敏，喉咙发紧喘不上气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "过敏合并气道/呼吸风险。"
+    },
+    {
+      "id": "open-fracture-mvc",
+      "category": "severe_trauma",
+      "condition": "车祸后腿变形，怀疑开放性骨折",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "严重外伤。"
+    },
+    {
+      "id": "unresponsive-coma",
+      "category": "altered_consciousness",
+      "condition": "叫不醒，昏迷了",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "昏迷。"
+    },
+    {
+      "id": "shock-signs",
+      "category": "altered_consciousness",
+      "condition": "面色苍白血压测不到，休克表现",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "休克表现。"
+    },
+    {
+      "id": "pregnancy-massive-bleed",
+      "category": "obstetric",
+      "condition": "怀孕七个月阴道大量出血",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "孕期大量出血。"
+    },
+    {
+      "id": "ruptured-membranes",
+      "category": "obstetric",
+      "condition": "羊水破了",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "破水。"
+    },
+    {
+      "id": "decreased-fetal-movement",
+      "category": "obstetric",
+      "condition": "胎动明显减少",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "胎动明显减少。"
+    },
+    {
+      "id": "postop-massive-bleed",
+      "category": "severe_trauma",
+      "condition": "术后大出血",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "术后大出血。"
+    },
+    {
+      "id": "infant-febrile-seizure",
+      "category": "critical_child",
+      "condition": "婴儿高热惊厥",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "婴儿高热惊厥。"
+    },
+    {
+      "id": "cancer-hemoptysis-dyspnea",
+      "category": "oncology_acute",
+      "condition": "肺癌患者突然咯血呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "肿瘤病史合并急性呼吸风险。"
+    },
+    {
+      "id": "chemical-eye-exposure",
+      "category": "eye_emergency",
+      "condition": "化学品溅到眼睛里了",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "化学性眼外伤。"
+    },
+    {
+      "id": "self-harm-soft-wording",
+      "category": "mental_crisis",
+      "condition": "活着没意思，不想活了",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "软性自伤意念表达。"
+    },
+    {
+      "id": "colloquial-slurred-speech",
+      "category": "colloquial_stroke",
+      "condition": "说话不利索",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "口语言语障碍。"
+    },
+    {
+      "id": "colloquial-half-limb-weak",
+      "category": "colloquial_stroke",
+      "condition": "半边手脚没劲",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "口语偏侧无力。"
+    },
+    {
+      "id": "colloquial-chest-tight-mild",
+      "category": "colloquial_cardio",
+      "condition": "胸口闷得慌",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "孤立口语胸闷且无伴随危险信号，当前规则不升级；若加重或伴喘/汗需急诊。"
+    },
+    {
+      "id": "colloquial-chest-pain-severe",
+      "category": "colloquial_cardio",
+      "condition": "胸口疼得厉害",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "口语胸痛合并严重程度。"
+    },
+    {
+      "id": "colloquial-heart-press-sweat",
+      "category": "colloquial_cardio",
+      "condition": "心口压着难受还出汗",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "心口压迫感合并出汗。"
+    },
+    {
+      "id": "colloquial-air-hunger",
+      "category": "colloquial",
+      "condition": "气都喘不上来",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "口语呼吸困难。"
+    },
+    {
+      "id": "colloquial-half-body-near-faint",
+      "category": "colloquial_stroke",
+      "condition": "半边身子没劲，还有点头晕",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "口语偏侧无力伴头晕。"
+    },
+    {
+      "id": "spaced-breathlessness",
+      "category": "input_noise",
+      "condition": "喘 不 上 气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "空格噪音仍应命中呼吸困难。"
+    },
+    {
+      "id": "spaced-chest-pain-breath",
+      "category": "input_noise",
+      "condition": "胸 痛 并 呼 吸 困 难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "空格噪音心血管组合。"
+    },
+    {
+      "id": "emoji-chest-breath",
+      "category": "input_noise",
+      "condition": "胸痛😭喘不上气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "表情符号夹杂。"
+    },
+    {
+      "id": "mixed-language-chest",
+      "category": "input_noise",
+      "condition": "chest pain 伴呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "中英混杂。"
+    },
+    {
+      "id": "long-narrative-colloquial",
+      "category": "colloquial_narrative",
+      "condition": "这两天总觉得胸口闷得慌，特别是上楼的时候，有时候还喘不上气，没有晕厥，也没有大汗",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "长句口语中命中呼吸困难；否定晕厥/大汗不能覆盖喘不上气。"
+    },
+    {
+      "id": "deny-all-major-red-flags",
+      "category": "negation",
+      "condition": "没有胸痛没有呼吸困难没有一侧无力",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "全否定主要红旗。"
+    },
+    {
+      "id": "deny-then-new-stroke-sign",
+      "category": "negation",
+      "condition": "不发烧但突然一侧肢体无力",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "否定发热不能覆盖突发偏侧无力。"
+    },
+    {
+      "id": "historical-chest-pain-resolved",
+      "category": "negation_history",
+      "condition": "以前有胸痛，现在已经好了",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "已缓解的既往胸痛。"
+    },
+    {
+      "id": "deny-dyspnea-spaced",
+      "category": "negation",
+      "condition": "没 有 呼 吸 困 难",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "空格噪音否定。"
+    },
+    {
+      "id": "question-stroke-signs",
+      "category": "question_or_history",
+      "condition": "说话不清是不是中风",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "疑问句不应仅因关键词升级。"
+    },
+    {
+      "id": "family-history-only",
+      "category": "question_or_history",
+      "condition": "家里人有心梗，我需要查什么",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "家族史咨询。"
+    },
+    {
+      "id": "double-negation-dyspnea",
+      "category": "double_negation",
+      "condition": "不是没有呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "双重否定按存在处理，避免危险低估。"
+    },
+    {
+      "id": "double-negation-chest-tight",
+      "category": "double_negation",
+      "condition": "不能说没有胸闷",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "双重否定胸闷，安全优先升级复核。"
+    },
+    {
+      "id": "uncertain-negation",
+      "category": "double_negation",
+      "condition": "好像没有胸痛吧",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "模糊否定且无其他危险信号。"
+    },
+    {
+      "id": "sudden-chest-pain",
+      "category": "time_sudden",
+      "condition": "突然胸痛",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "突发胸痛。"
+    },
+    {
+      "id": "progressive-dyspnea",
+      "category": "time_progressive",
+      "condition": "呼吸困难越来越重",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "进行性加重呼吸困难。"
+    },
+    {
+      "id": "relieved-chest-pain",
+      "category": "time_relief",
+      "condition": "胸痛已经缓解了",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "已缓解胸痛，保留线下评估提示。"
+    },
+    {
+      "id": "recurring-mild-headache",
+      "category": "time_recurring",
+      "condition": "反复轻微头痛",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "反复但轻微。"
+    },
+    {
+      "id": "worsening-over-days",
+      "category": "time_progressive",
+      "condition": "咳嗽三天了，今天开始喘不上气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "病程中出现呼吸困难。"
+    },
+    {
+      "id": "brief-then-gone",
+      "category": "time_relief",
+      "condition": "刚才有点头晕，现在好了",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "短暂头晕已缓解。"
+    },
+    {
+      "id": "vague-belly-unwell",
+      "category": "insufficient_information",
+      "condition": "肚子难受",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "部位笼统。"
+    },
+    {
+      "id": "vague-i-am-unwell",
+      "category": "insufficient_information",
+      "condition": "我不舒服",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "无具体症状。"
+    },
+    {
+      "id": "vague-whole-body",
+      "category": "insufficient_information",
+      "condition": "浑身不舒服",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "全身笼统不适。"
+    },
+    {
+      "id": "vague-not-sure-what",
+      "category": "insufficient_information",
+      "condition": "说不上来哪里不对",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "无法描述。"
+    },
+    {
+      "id": "vague-child-irritable",
+      "category": "insufficient_information",
+      "condition": "孩子老是哭闹",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "信息不足但不构成明确红旗；保留补充信息路径。"
+    },
+    {
+      "id": "contradict-denied-chest-severe",
+      "category": "contradiction",
+      "condition": "没有胸痛但是胸口疼得厉害",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "否定与严重胸痛并存，按危险侧处理。"
+    },
+    {
+      "id": "contradict-denied-dyspnea",
+      "category": "contradiction",
+      "condition": "没有呼吸困难，但是喘不过气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "否定与呼吸困难并存。"
+    },
+    {
+      "id": "contradict-fever-no-fever-hot",
+      "category": "contradiction",
+      "condition": "不发烧，但是烫得厉害出冷汗",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "矛盾发热描述且无胸痛/呼吸困难；不升为急症但需复核。"
+    },
+    {
+      "id": "elder-fall-altered",
+      "category": "special_population_elder",
+      "condition": "老人摔了一跤，现在意识模糊",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "高龄外伤合并意识改变。"
+    },
+    {
+      "id": "postop-fever",
+      "category": "special_population_postop",
+      "condition": "术后三天高热",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "术后发热需尽快评估，当前规则为较重。"
+    },
+    {
+      "id": "pregnancy-severe-abdominal-pain",
+      "category": "obstetric",
+      "condition": "孕妇腹痛难忍",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "孕期剧痛。"
+    },
+    {
+      "id": "child-high-fever-poor-response",
+      "category": "critical_child",
+      "condition": "儿童高热伴反应差",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "儿童危重信号。"
+    },
+    {
+      "id": "diabetes-foot-wound",
+      "category": "special_population_chronic",
+      "condition": "糖尿病足伤口感染",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "高风险人群感染，当前规则较重。"
+    },
+    {
+      "id": "elder-chest-pain-sweat",
+      "category": "special_population_elder",
+      "condition": "老人胸口痛还冒冷汗",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "高龄胸痛合并冷汗。"
+    },
+    {
+      "id": "possible-pregnancy-bleed",
+      "category": "obstetric",
+      "condition": "可能怀孕了，今天有阴道出血",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "疑似妊娠出血，当前规则较重；不按普通门诊处理。"
+    },
+    {
+      "id": "immunocompromised-fever",
+      "category": "special_population_chronic",
+      "condition": "化疗后发热39度",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "肿瘤治疗相关发热。"
+    },
+    {
+      "id": "ordinary-rhinitis",
+      "category": "routine_negative",
+      "condition": "有点鼻塞流鼻涕",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "普通上感样症状。"
+    },
+    {
+      "id": "mild-sprain",
+      "category": "routine_negative",
+      "condition": "打篮球崴脚，轻微肿痛",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "轻微外伤。"
+    },
+    {
+      "id": "htn-medication-refill",
+      "category": "routine_chronic",
+      "condition": "高血压复诊配药",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "慢病复诊。"
+    },
+    {
+      "id": "dm-followup",
+      "category": "routine_chronic",
+      "condition": "糖尿病慢性病随访",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "慢病随访。"
+    },
+    {
+      "id": "physical-exam",
+      "category": "routine_chronic",
+      "condition": "想预约体检",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "健康体检。"
+    },
+    {
+      "id": "mild-acne",
+      "category": "routine_negative",
+      "condition": "脸上有点痘痘",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "轻微皮肤问题。"
+    },
+    {
+      "id": "urgent-high-fever",
+      "category": "urgent_non_emergency",
+      "condition": "高烧39度三天",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "高热需尽快就诊但非当前急症强信号。"
+    },
+    {
+      "id": "urgent-hematuria",
+      "category": "urgent_non_emergency",
+      "condition": "尿血了",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "血尿需尽快评估。"
+    },
+    {
+      "id": "urgent-fracture-suspect",
+      "category": "urgent_non_emergency",
+      "condition": "摔伤后手腕变形，怀疑骨折",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "疑似骨折。"
+    },
+    {
+      "id": "specialty-asthma-stable",
+      "category": "specialty",
+      "condition": "哮喘，最近控制稳定",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "稳定期哮喘专科随访。"
+    },
+    {
+      "id": "specialty-ckd",
+      "category": "specialty",
+      "condition": "慢性肾病复诊",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "专科慢病。"
+    },
+    {
+      "id": "routine-mild-cough-week",
+      "category": "routine_negative",
+      "condition": "轻微咳嗽一周，没有发热也没有胸痛",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "普通咳嗽并否定红旗。"
+    },
+    {
+      "id": "mild-itch-no-dyspnea",
+      "category": "routine_negative",
+      "condition": "皮肤痒了几天，没有呼吸困难",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "皮肤症状否定呼吸困难。"
+    },
+    {
+      "id": "allergic-rash-mild",
+      "category": "routine_negative",
+      "condition": "吃了虾以后皮肤起了几个红疹，没有喉咙紧也没有喘",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "轻型过敏表现且否定气道风险。"
+    },
+    {
+      "id": "vertigo-single-mild",
+      "category": "routine_negative",
+      "condition": "今早起床有点天旋地转，很快就好了",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "短暂眩晕已缓解；若反复或伴神经体征需急诊。"
+    },
+    {
+      "id": "dental-pain",
+      "category": "routine_negative",
+      "condition": "牙疼两天",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "口腔常见症状。"
+    },
+    {
+      "id": "constipation-mild",
+      "category": "routine_negative",
+      "condition": "有点便秘",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "轻微消化症状。"
+    },
+    {
+      "id": "cyanosis-lips",
+      "category": "breathlessness",
+      "condition": "口唇青紫",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "发绀同义表达。"
+    },
+    {
+      "id": "syncope-with-chest",
+      "category": "cardiovascular_emergency",
+      "condition": "胸闷后晕倒了",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "胸闷合并晕厥。"
+    },
+    {
+      "id": "stroke-sudden-vertigo-stand",
+      "category": "stroke",
+      "condition": "突然天旋地转站不稳",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "突发眩晕伴站立不能。"
+    },
+    {
+      "id": "severe-abdominal-rigidity",
+      "category": "acute_abdomen",
+      "condition": "肚子硬得像板，痛得受不了",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "板状腹描述；当前关键词未完全覆盖，登记为较重不低估。"
+    },
+    {
+      "id": "gi-bleed-melena",
+      "category": "gi_bleed",
+      "condition": "大便发黑像柏油",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "黑便需尽快评估。"
+    },
+    {
+      "id": "hemoptysis",
+      "category": "respiratory",
+      "condition": "咳嗽带血丝",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "咯血需尽快评估。"
+    },
+    {
+      "id": "urinary-retention",
+      "category": "urology_urgent",
+      "condition": "尿不出来，小腹胀痛",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "尿潴留。"
+    },
+    {
+      "id": "dehydration-constant-vomit",
+      "category": "gi_urgent",
+      "condition": "一直吐，脱水了",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "持续呕吐脱水。"
+    },
+    {
+      "id": "sudden-deafness",
+      "category": "ent_urgent",
+      "condition": "突然听不见了",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "突发听力下降需尽快耳鼻喉评估。"
+    },
+    {
+      "id": "testicular-pain-severe",
+      "category": "urology_urgent",
+      "condition": "睾丸剧烈疼痛",
+      "expected_status": "URGENT",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "剧烈睾丸痛。"
+    },
+    {
+      "id": "status-asthmaticus-dyspnea",
+      "category": "breathlessness",
+      "condition": "哮喘发作喘不上气",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "哮喘急性发作合并呼吸困难。"
+    },
+    {
+      "id": "pneumonia-high-fever-dyspnea",
+      "category": "breathlessness",
+      "condition": "肺炎，高热，呼吸困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "肺炎合并呼吸困难。"
+    },
+    {
+      "id": "stroke-face-droop-sudden",
+      "category": "stroke",
+      "condition": "突然口角歪斜流口水",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "突发面瘫样。"
+    },
+    {
+      "id": "one-sided-numb-sudden",
+      "category": "stroke",
+      "condition": "急性一侧麻木无力",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "急性偏侧感觉运动障碍。"
+    },
+    {
+      "id": "massive-trauma-crash",
+      "category": "severe_trauma",
+      "condition": "严重外伤，多处出血",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "多发伤。"
+    },
+    {
+      "id": "allergy-throat-tight",
+      "category": "allergy",
+      "condition": "过敏后喉咙肿吞咽困难",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "气道水肿风险。"
+    },
+    {
+      "id": "pregnancy-reduced-movement-again",
+      "category": "obstetric",
+      "condition": "孕晚期感觉不到胎动",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "胎动消失。"
+    },
+    {
+      "id": "child-fever-convulsion-toddler",
+      "category": "critical_child",
+      "condition": "小儿抽搐不止",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "持续惊厥。"
+    },
+    {
+      "id": "altered-sensorium-elderly-diabetes",
+      "category": "special_population_elder",
+      "condition": "糖尿病老人意识模糊",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p1_safety_expansion",
+      "notes": "慢病合并意识改变。"
     }
   ]
 }

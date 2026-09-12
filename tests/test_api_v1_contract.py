@@ -86,9 +86,10 @@ class ApiV1ContractTests(TestCase):
         evidence = body["data"]
         self.assertEqual(response.status_code, 200)
         self.assertEqual(evidence["status"], "provisional")
-        self.assertEqual(evidence["safety"]["case_count"], 38)
+        self.assertGreaterEqual(evidence["safety"]["case_count"], 120)
         self.assertEqual(evidence["safety"]["emergency_false_negative"], 0)
         self.assertEqual(evidence["safety"]["red_flag_recall"], 1.0)
+        self.assertEqual(evidence["safety"]["under_triage_rate"], 0.0)
         self.assertEqual(evidence["model"]["class_count"], 41)
         self.assertGreaterEqual(evidence["data_quality"]["issue_count"], 0)
         self.assertTrue(evidence["dataset_manifest"])

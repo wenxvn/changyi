@@ -23,6 +23,8 @@ COLLOQUIAL_SYMPTOM_ALIASES = {
     "冷汗直冒": "出冷汗",
     "胸口堵": "胸闷",
     "胸口压着": "胸闷",
+    "胸口疼": "胸痛",
+    "心口压着": "胸闷",
     "心口疼": "胸痛",
     "心脏疼": "胸痛",
     "嗓子不舒服": "咽痛",
@@ -116,6 +118,8 @@ def contains_positive(text, words):
     """Return whether any word occurs outside the legacy negation window."""
     neg_prefixes = ("无", "没有", "没", "未", "否认", "不伴", "未见")
     neg_breakers = ("但", "但是", "不过", "然而", "却", "仍", "仍然", "伴", "伴有", "出现")
+    # Double-negation phrases assert presence; never treat them as a clear denial.
+    double_neg_markers = ("不是没有", "并非没有", "不能说没有", "不是没", "并非没")
     hard_boundaries = "。！？；;\n\r"
 
     def is_negated(start):
@@ -125,6 +129,8 @@ def contains_positive(text, words):
             idx = prefix.rfind(mark)
             if idx != -1:
                 prefix = prefix[idx + 1:]
+        if any(marker in prefix for marker in double_neg_markers):
+            return False
         neg_pos = max(prefix.rfind(neg) for neg in neg_prefixes)
         if neg_pos == -1:
             return False

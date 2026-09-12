@@ -26,18 +26,26 @@ class SafetyEvaluationSetTests(TestCase):
                 "negation",
                 "colloquial",
                 "insufficient_information",
+                "double_negation",
+                "contradiction",
+                "input_noise",
+                "time_sudden",
+                "time_progressive",
+                "special_population_elder",
+                "routine_negative",
             },
         )
 
     def test_baseline_metrics_keep_known_gaps_visible(self):
         report = evaluate_cases(load_cases())
 
-        self.assertGreaterEqual(report["case_count"], 30)
+        self.assertGreaterEqual(report["case_count"], 120)
         self.assertIsNotNone(report["red_flag_recall"])
         self.assertIsNotNone(report["under_triage_rate"])
         self.assertIsNotNone(report["over_triage_rate"])
         self.assertEqual(report["emergency_false_negative"], 0)
         self.assertEqual(report["red_flag_recall"], 1.0)
+        self.assertEqual(report["under_triage_rate"], 0.0)
         self.assertIn("emergency_case_count", report)
         self.assertIn("urgent_case_count", report)
         self.assertIn("routine_case_count", report)
