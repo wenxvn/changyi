@@ -94,6 +94,7 @@ export interface HospitalRecord {
   level?: string;
   type?: string;
   address?: string;
+  district?: string | null;
   phone?: string;
   description?: string;
   lat?: number;
@@ -128,6 +129,9 @@ export interface DoctorRecord {
   specialty?: string;
   outpatient_time?: string;
   photo_url?: string;
+  photo_provenance_status?: string;
+  source_image_url?: string;
+  doctor_page_url?: string;
   [key: string]: unknown;
 }
 
@@ -308,6 +312,17 @@ export interface ModelEvidence {
     cross_label_pair_count: number;
     note: string;
   };
+  strict_near_duplicate_isolation?: {
+    label: string;
+    test_samples: number | null;
+    present_classes: number | null;
+    total_classes: number | null;
+    cross_split_near_duplicates: number | null;
+    seed: number | null;
+    jaccard_threshold: number | null;
+    comparable_to_random_split: boolean;
+    explanation: string;
+  };
   split_manifest?: string;
 }
 
@@ -320,6 +335,7 @@ export interface ModelSplitMetrics {
   macro_recall: number | null;
   macro_f1: number | null;
   coverage: number | null;
+  present_class_count?: number | null;
   abstention_rate: number | null;
   per_class_recall?: Record<string, number>;
   confusion_matrix?: Record<string, Record<string, number>>;

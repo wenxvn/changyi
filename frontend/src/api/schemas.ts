@@ -191,6 +191,7 @@ function parseHospital(value: unknown): HospitalRecord {
     level: optionalString(value.level),
     type: optionalString(value.type),
     address: optionalString(value.address),
+    district: typeof value.district === "string" ? value.district : null,
     phone: optionalString(value.phone),
     emergency: typeof value.emergency === "boolean" ? value.emergency : undefined,
     departments: Array.isArray(value.departments)
@@ -227,6 +228,9 @@ function parseDoctorRecord(value: unknown): DoctorRecord {
     specialty: optionalString(value.specialty),
     outpatient_time: optionalString(value.outpatient_time),
     photo_url: optionalString(value.photo_url),
+    photo_provenance_status: optionalString(value.photo_provenance_status),
+    source_image_url: optionalString(value.source_image_url),
+    doctor_page_url: optionalString(value.doctor_page_url),
     specialties: Array.isArray(value.specialties)
       ? value.specialties.filter((item): item is string => typeof item === "string")
       : undefined,
@@ -503,6 +507,7 @@ function parseModelSplit(value: unknown): ModelSplitMetrics | undefined {
     macro_recall: nullableNumber(value.macro_recall),
     macro_f1: nullableNumber(value.macro_f1),
     coverage: nullableNumber(value.coverage),
+    present_class_count: nullableNumber(value.present_class_count),
     abstention_rate: nullableNumber(value.abstention_rate),
     per_class_recall: isRecord(value.per_class_recall)
       ? Object.fromEntries(
@@ -599,6 +604,19 @@ export function parseEvidence(value: unknown): EvidencePayload {
             pair_count: optionalNumber(model.near_duplicate_audit.pair_count) ?? 0,
             cross_label_pair_count: optionalNumber(model.near_duplicate_audit.cross_label_pair_count) ?? 0,
             note: optionalString(model.near_duplicate_audit.note) ?? "",
+          }
+        : undefined,
+      strict_near_duplicate_isolation: isRecord(model.strict_near_duplicate_isolation)
+        ? {
+            label: optionalString(model.strict_near_duplicate_isolation.label) ?? "Strict Near-duplicate Isolation",
+            test_samples: nullableNumber(model.strict_near_duplicate_isolation.test_samples),
+            present_classes: nullableNumber(model.strict_near_duplicate_isolation.present_classes),
+            total_classes: nullableNumber(model.strict_near_duplicate_isolation.total_classes),
+            cross_split_near_duplicates: nullableNumber(model.strict_near_duplicate_isolation.cross_split_near_duplicates),
+            seed: nullableNumber(model.strict_near_duplicate_isolation.seed),
+            jaccard_threshold: nullableNumber(model.strict_near_duplicate_isolation.jaccard_threshold),
+            comparable_to_random_split: model.strict_near_duplicate_isolation.comparable_to_random_split === true,
+            explanation: optionalString(model.strict_near_duplicate_isolation.explanation) ?? "",
           }
         : undefined,
       split_manifest: optionalString(model.split_manifest),

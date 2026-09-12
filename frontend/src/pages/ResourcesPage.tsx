@@ -64,7 +64,7 @@ function HospitalCard({
         <p className="resource-index-card__subline">
           {[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "公开资源资料"}
         </p>
-        <p className="resource-index-card__address">{hospital.address ?? "地址信息以机构公开资料为准"}</p>
+        <p className="resource-index-card__address">{hospital.address ?? "地址信息以机构公开资料为准"}{hospital.district ? ` · ${hospital.district}` : ""}</p>
         {departments.length > 0 ? (
           <div className="resource-chip-list" aria-label="主要科室">
             {departments.map((department) => <span key={department}>{department}</span>)}
@@ -161,8 +161,9 @@ function ResourceDetail({
             <dl className="resource-detail__facts">
               <div><dt>机构类型</dt><dd>{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "未提供"}</dd></div>
               <div><dt>地址</dt><dd>{hospital.address ?? "未提供"}</dd></div>
+              <div><dt>区域</dt><dd>{hospital.district ?? "公开资料未可靠标注行政区"}</dd></div>
               <div><dt>电话</dt><dd>{hospital.phone ?? "未提供"}</dd></div>
-              <div><dt>急诊字段</dt><dd>{hospital.emergency === true ? "接口标记为可用" : "接口未标记"}</dd></div>
+              <div><dt>急诊字段</dt><dd>{hospital.emergency === true ? "资料显示设有急诊（非实时接诊能力）" : "资料未标记急诊"}</dd></div>
               <div><dt>关联医生</dt><dd>{detail.related.doctor_count} 条公开索引</dd></div>
             </dl>
             {detail.derived_capability?.areas.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">派生能力线索 · {detail.derived_capability.status}</span><p>{detail.derived_capability.areas.slice(0, 8).join(" · ")}</p><small>{detail.derived_capability.notice} 公式版本：{detail.derived_capability.formula_version}</small></div> : null}
@@ -182,7 +183,21 @@ function ResourceDetail({
               <div><dt>公开专长</dt><dd>{doctor.specialties?.slice(0, 6).join(" · ") || doctor.specialty || "未提供"}</dd></div>
               <div><dt>门诊字段</dt><dd>{doctor.outpatient_time ?? "未提供"}</dd></div>
               <div><dt>关联医院详情</dt><dd>{detail.related.hospital?.name ?? "未关联"}</dd></div>
+              <div>
+                <dt>资料来源</dt>
+                <dd>
+                  {doctor.doctor_page_url ? (
+                    <a href={doctor.doctor_page_url} target="_blank" rel="noreferrer">查看公开医生主页</a>
+                  ) : doctor.photo_url ? (
+                    "医院公开资料 / 本地公开照片资产"
+                  ) : (
+                    "公开资料索引"
+                  )}
+                  {doctor.photo_provenance_status ? ` · 照片状态 ${doctor.photo_provenance_status}` : ""}
+                </dd>
+              </div>
             </dl>
+            <p className="resource-detail__lede">公开科研与资料信息不等于临床 patient-fit，不作为主要推荐依据。</p>
             {detail.related.hospital ? <AmapNavigationLink target={detail.related.hospital} label="导航到所属医院" className="resource-detail__navigation" /> : null}
             <ResourceProvenanceNote detail={detail} />
           </>
@@ -205,6 +220,8 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   const [query, setQuery] = useState(initialParams.get("q") ?? "");
   const [hospitalLevel, setHospitalLevel] = useState(initialParams.get("level") ?? "");
   const [hospitalType, setHospitalType] = useState(initialParams.get("hospital_type") ?? "");
+  const [hospitalDistrict, setHospitalDistrict] = useState(initialParams.get("district") ?? "");
+  const [hospitalEmergency, setHospitalEmergency] = useState(initialParams.get("emergency") ?? "");
   const [doctorHospital, setDoctorHospital] = useState(initialParams.get("hospital_name") ?? "");
   const [doctorDepartment, setDoctorDepartment] = useState(initialParams.get("department") ?? "");
   const [doctorTitle, setDoctorTitle] = useState(initialParams.get("title") ?? "");
@@ -322,6 +339,10 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     () => Array.from(new Set(hospitals.map((item) => item.type).filter((value): value is string => Boolean(value)))).sort(),
     [hospitals],
   );
+  const hospitalDistricts = useMemo(
+    () => Array.from(new Set(hospitals.map((item) => item.district).filter((value): value is string => typeof value === "string" && Boolean(value)))).sort(),
+    [hospitals],
+  );
   const doctorHospitalNames = useMemo(
     () => Array.from(new Set(doctors.map((item) => item.hospital_name).filter((value): value is string => Boolean(value)))).sort(),
     [doctors],
@@ -338,16 +359,20 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     () => hospitals.filter((hospital) => {
       if (hospitalLevel && hospital.level !== hospitalLevel) return false;
       if (hospitalType && hospital.type !== hospitalType) return false;
+      if (hospitalDistrict && hospital.district !== hospitalDistrict) return false;
+      if (hospitalEmergency === "yes" && hospital.emergency !== true) return false;
+      if (hospitalEmergency === "no" && hospital.emergency === true) return false;
       return includesQuery([
         hospital.name,
         hospital.alias,
         hospital.address,
+        hospital.district ?? undefined,
         ...(hospital.departments ?? []),
         ...(hospital.strengths ?? []),
         ...(hospital.derived_capability_areas ?? []),
       ], normalizedQuery);
     }),
-    [hospitals, hospitalLevel, hospitalType, normalizedQuery],
+    [hospitals, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, normalizedQuery],
   );
   const filteredDoctors = useMemo(
     () => doctors.filter((doctor) => {
@@ -368,7 +393,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   const showingDoctors = activeTab === "doctors";
   const showingHospitals = activeTab !== "doctors";
   const resultCount = showingDoctors ? filteredDoctors.length : filteredHospitals.length;
-  const hasActiveFilters = Boolean(hospitalLevel || hospitalType || doctorHospital || doctorDepartment || doctorTitle);
+  const hasActiveFilters = Boolean(hospitalLevel || hospitalType || hospitalDistrict || hospitalEmergency || doctorHospital || doctorDepartment || doctorTitle);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -377,6 +402,8 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     if (query.trim()) params.set("q", query.trim());
     if (hospitalLevel) params.set("level", hospitalLevel);
     if (hospitalType) params.set("hospital_type", hospitalType);
+    if (hospitalDistrict) params.set("district", hospitalDistrict);
+    if (hospitalEmergency) params.set("emergency", hospitalEmergency);
     if (doctorHospital) params.set("hospital_name", doctorHospital);
     if (doctorDepartment) params.set("department", doctorDepartment);
     if (doctorTitle) params.set("title", doctorTitle);
@@ -393,12 +420,14 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     const search = params.toString();
     const next = search ? `?${search}` : window.location.pathname;
     window.history.replaceState(null, "", next);
-  }, [activeTab, query, hospitalLevel, hospitalType, doctorHospital, doctorDepartment, doctorTitle, selection]);
+  }, [activeTab, query, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, doctorHospital, doctorDepartment, doctorTitle, selection]);
 
   function resetFilters() {
     setQuery("");
     setHospitalLevel("");
     setHospitalType("");
+    setHospitalDistrict("");
+    setHospitalEmergency("");
     setDoctorHospital("");
     setDoctorDepartment("");
     setDoctorTitle("");
@@ -438,43 +467,65 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>打开医院地图</Button>
       </div>
 
-      <div className="resources-filters" aria-label="资源高级筛选">
+      <div className="resources-filters" aria-label={activeTab === "doctors" ? "医生筛选" : "医院筛选"}>
         <span className="resources-filters__label"><Filter size={14} aria-hidden="true" /> 筛选</span>
-        <label className="resources-filters__field">
-          <span className="sr-only">医院等级</span>
-          <select value={hospitalLevel} onChange={(event) => setHospitalLevel(event.target.value)} data-testid="filter-hospital-level">
-            <option value="">全部等级</option>
-            {hospitalLevels.map((value) => <option key={value} value={value}>{value}</option>)}
-          </select>
-        </label>
-        <label className="resources-filters__field">
-          <span className="sr-only">医院类型</span>
-          <select value={hospitalType} onChange={(event) => setHospitalType(event.target.value)} data-testid="filter-hospital-type">
-            <option value="">全部类型</option>
-            {hospitalTypes.map((value) => <option key={value} value={value}>{value}</option>)}
-          </select>
-        </label>
-        <label className="resources-filters__field">
-          <span className="sr-only">所属医院</span>
-          <select value={doctorHospital} onChange={(event) => setDoctorHospital(event.target.value)} data-testid="filter-doctor-hospital">
-            <option value="">全部医院</option>
-            {doctorHospitalNames.map((value) => <option key={value} value={value}>{value}</option>)}
-          </select>
-        </label>
-        <label className="resources-filters__field">
-          <span className="sr-only">科室</span>
-          <select value={doctorDepartment} onChange={(event) => setDoctorDepartment(event.target.value)} data-testid="filter-doctor-department">
-            <option value="">全部科室</option>
-            {doctorDepartments.map((value) => <option key={value} value={value}>{value}</option>)}
-          </select>
-        </label>
-        <label className="resources-filters__field">
-          <span className="sr-only">职称</span>
-          <select value={doctorTitle} onChange={(event) => setDoctorTitle(event.target.value)} data-testid="filter-doctor-title">
-            <option value="">全部职称</option>
-            {doctorTitles.map((value) => <option key={value} value={value}>{value}</option>)}
-          </select>
-        </label>
+        {activeTab !== "doctors" ? (
+          <>
+            <label className="resources-filters__field">
+              <span className="sr-only">医院等级</span>
+              <select value={hospitalLevel} onChange={(event) => setHospitalLevel(event.target.value)} data-testid="filter-hospital-level">
+                <option value="">全部等级</option>
+                {hospitalLevels.map((value) => <option key={value} value={value}>{value}</option>)}
+              </select>
+            </label>
+            <label className="resources-filters__field">
+              <span className="sr-only">医院类型</span>
+              <select value={hospitalType} onChange={(event) => setHospitalType(event.target.value)} data-testid="filter-hospital-type">
+                <option value="">全部类型</option>
+                {hospitalTypes.map((value) => <option key={value} value={value}>{value}</option>)}
+              </select>
+            </label>
+            <label className="resources-filters__field">
+              <span className="sr-only">区域</span>
+              <select value={hospitalDistrict} onChange={(event) => setHospitalDistrict(event.target.value)} data-testid="filter-hospital-district">
+                <option value="">全部区域</option>
+                {hospitalDistricts.map((value) => <option key={value} value={value}>{value}</option>)}
+              </select>
+            </label>
+            <label className="resources-filters__field">
+              <span className="sr-only">急诊字段</span>
+              <select value={hospitalEmergency} onChange={(event) => setHospitalEmergency(event.target.value)} data-testid="filter-hospital-emergency">
+                <option value="">急诊字段不限</option>
+                <option value="yes">资料显示设有急诊</option>
+                <option value="no">资料未标记急诊</option>
+              </select>
+            </label>
+          </>
+        ) : (
+          <>
+            <label className="resources-filters__field">
+              <span className="sr-only">所属医院</span>
+              <select value={doctorHospital} onChange={(event) => setDoctorHospital(event.target.value)} data-testid="filter-doctor-hospital">
+                <option value="">全部医院</option>
+                {doctorHospitalNames.map((value) => <option key={value} value={value}>{value}</option>)}
+              </select>
+            </label>
+            <label className="resources-filters__field">
+              <span className="sr-only">科室</span>
+              <select value={doctorDepartment} onChange={(event) => setDoctorDepartment(event.target.value)} data-testid="filter-doctor-department">
+                <option value="">全部科室</option>
+                {doctorDepartments.map((value) => <option key={value} value={value}>{value}</option>)}
+              </select>
+            </label>
+            <label className="resources-filters__field">
+              <span className="sr-only">职称</span>
+              <select value={doctorTitle} onChange={(event) => setDoctorTitle(event.target.value)} data-testid="filter-doctor-title">
+                <option value="">全部职称</option>
+                {doctorTitles.map((value) => <option key={value} value={value}>{value}</option>)}
+              </select>
+            </label>
+          </>
+        )}
         {hasActiveFilters || query.trim() ? (
           <button className="resources-filters__reset" type="button" onClick={resetFilters}>
             <RotateCcw size={13} aria-hidden="true" /> 重置

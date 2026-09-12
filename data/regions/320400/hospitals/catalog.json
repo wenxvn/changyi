@@ -21,7 +21,8 @@
       "lat",
       "lng",
       "departments",
-      "emergency"
+      "emergency",
+      "district"
     ],
     "derived_features": {
       "derived_capability_areas": {
@@ -40,7 +41,13 @@
       "daily_outpatients",
       "rating",
       "description"
-    ]
+    ],
+    "district_policy": {
+      "status": "provisional",
+      "method": "public_address_name_token_match",
+      "unknown_value": null,
+      "note": "district 仅来自公开地址/名称中的行政区 token；缺失时为 null。"
+    }
   },
   "records": [
     {
@@ -114,8 +121,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "天宁区"
     },
     {
       "id": 2,
@@ -167,8 +180,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "天宁区"
     },
     {
       "id": 3,
@@ -220,8 +239,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "天宁区"
     },
     {
       "id": 4,
@@ -259,8 +284,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "天宁区"
     },
     {
       "id": 5,
@@ -318,8 +349,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "钟楼区"
     },
     {
       "id": 6,
@@ -363,8 +400,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "天宁区"
     },
     {
       "id": 7,
@@ -425,8 +468,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "钟楼区"
     },
     {
       "id": 8,
@@ -465,8 +514,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "武进区"
     },
     {
       "id": 9,
@@ -502,8 +557,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "金坛区"
     },
     {
       "id": 10,
@@ -539,8 +600,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "溧阳市"
     },
     {
       "id": 11,
@@ -609,8 +676,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "unknown",
+          "method": "public_address_name_token_match",
+          "note": "公开地址/名称中无可靠行政区 token，保持 null。"
+        }
+      },
+      "district": null
     },
     {
       "id": 12,
@@ -650,8 +723,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "武进区"
     },
     {
       "id": 13,
@@ -689,8 +768,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "溧阳市"
     },
     {
       "id": 14,
@@ -730,8 +815,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "天宁区"
     },
     {
       "id": 15,
@@ -769,8 +860,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "经开区"
     },
     {
       "id": 16,
@@ -808,8 +905,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "钟楼区"
     },
     {
       "id": 17,
@@ -846,8 +949,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "钟楼区"
     },
     {
       "id": 18,
@@ -884,8 +993,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "金坛区"
     },
     {
       "id": 19,
@@ -922,8 +1037,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "金坛区"
     },
     {
       "id": 20,
@@ -960,8 +1081,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "溧阳市"
     },
     {
       "id": 21,
@@ -998,8 +1125,14 @@
         "source_url": null,
         "last_verified_at": null,
         "license_status": "not_recorded",
-        "deidentified": true
-      }
+        "deidentified": true,
+        "district": {
+          "status": "provisional",
+          "method": "public_address_name_token_match",
+          "note": "从公开地址/名称行政区 token 匹配；无法可靠判断时为 null，不猜测。"
+        }
+      },
+      "district": "新北区"
     }
   ]
 }
