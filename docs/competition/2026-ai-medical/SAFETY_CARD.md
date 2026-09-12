@@ -32,7 +32,7 @@
 
 `backend/app/domain/triage/safety_gate.py` 提供 `EMERGENCY`、`URGENT`、`ROUTINE`、`INSUFFICIENT_INFORMATION` 四态枚举，以及“紧急评估”“补充信息并复核”“继续辅助流程”三类非诊断交接动作。它只消费既有 triage 结果，不重新实现医学规则；急症要求人工/专业复核，信息不足要求补充信息并复核。
 
-`evaluation/safety/safety_cases.json` 共 38 个 case，脚本运行结果为：Red Flag Recall `1.0`、Under-triage Rate `0.0`、Over-triage Rate `0.0`、Emergency False Negative `0`；信息不足样例全部命中。数字只反映当前固定样例和规则回归，不是发布目标或医学审核结论。
+`evaluation/safety/safety_cases.json` 共 135 个 case，脚本运行结果为：Red Flag Recall `1.0`、Under-triage Rate `0.0`、Over-triage Rate `0.0312`、Emergency False Negative `0`；信息不足样例全部命中。数字只反映当前固定样例和规则回归，不是发布目标或医学审核结论。
 
 ## P2-S2 Safety-first 发布
 
