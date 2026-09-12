@@ -72,7 +72,7 @@ test("routine triage can continue to a sourced hospital path", async ({ page }, 
   await page.getByRole("button", { name: "查看当前资源路径" }).click();
   await page.getByRole("link", { name: /高德导航/ }).first().waitFor();
   await page.getByRole("button", { name: /公开资料详情/ }).first().click();
-  await page.waitForURL("**/resources?hospital=*");
+  await page.waitForURL(/\/resources\?.*hospital=\d+/, { waitUntil: "commit" });
   await page.getByText("关联医生", { exact: true }).waitFor();
 });
 

@@ -2,7 +2,7 @@
 
 - Schema: `data-quality-report/v1`
 - Region: `320400`
-- Datasets scanned: `28`
+- Datasets scanned: `30`
 - Issues: `187`
 
 ## Issues
@@ -205,17 +205,18 @@
 | `bus_stations.json` | json | `eabd6f6743996efdbbd5908502b39f21d9f6908049524198081e15aa273e80aa` | `{'stations': 50}` |
 | `doctors_h1.json` | json | `22e4793257349fbec194132299d8090811e474362e4140463227850749a4ba63` | `{'doctors': 498}` |
 | `doctors_h10.json` | json | `06455b80cef8a8b7ea3bc40dde63aa91349d5259e66110dd9adeca521ab13ad5` | `{'doctors': 10}` |
-| `doctors_h11.json` | json | `e895b1a30ac967256a61adb88b83dc3e19d86c3dfa1999d0c9ca3b120015454f` | `{'doctors': 201}` |
+| `doctors_h11.json` | json | `38b904786fc536ae6705f7426e8e8c0f2b141bb16a68639a48b4ca3ca91f00dd` | `{'doctors': 201}` |
 | `doctors_h14.json` | json | `12c87bbc12bd6b8b70a41742f5fc77719155a0f4cc7ae20269ffce49c09cd842` | `{'doctors': 42}` |
 | `doctors_h2.json` | json | `4aabf998a0a3f88961710841daadbcde636d5e0bca7ff9e2c43ec4d7d5d60233` | `{'doctors': 52}` |
 | `doctors_h3.json` | json | `75f9ecdcd41da635fc4ae9792d056eb658f301cc05b2c85602d8f1bc9b2fa171` | `{'doctors': 264}` |
 | `doctors_h4.json` | json | `843d9226117328efa0e279ca915a2d91d6a9d394f57f95317db28d47a8dfa53d` | `{'doctors': 147}` |
 | `doctors_h5.json` | json | `3e0aa4c39ad98ba2d0fa0d13820bef021cd630b024e79b0578a1d685aefb02ad` | `{'doctors': 133}` |
-| `doctors_h6.json` | json | `97a1c2b6a41b0473ec13fa7d0c8c2549c43d86ff8f92e69d2b59f89d75434b4e` | `{'doctors': 74}` |
+| `doctors_h6.json` | json | `eaf05d1518c6a0779ca1382132b9e21ac0c12d78dcb2f0e7609a47d295df1c1a` | `{'doctors': 74}` |
 | `doctors_h7.json` | json | `2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00` | `{'doctors': 164}` |
 | `doctors_h8.json` | json | `a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288` | `{'doctors': 515}` |
-| `regions/320400/hospitals/catalog.json` | json | `df2f57a7fb15f84002ade590db9bc0fb0e0e2987eee13a839a59722d55b2a6a7` | `{'records': 21}` |
+| `regions/320400/hospitals/catalog.json` | json | `54252846c72af798dd4a6fc8a786ce3a6bde00a5bb7e4430d22cb2f8b053b2ef` | `{'records': 21}` |
 | `regions/320400/manifest.json` | json | `09af12e958783afd04bfd4e243cc58260b9f29aebbd0bf04c89af100ecd5ab5a` | `{'activation_gate': 6, 'districts': 7, 'future_regions': 3}` |
+| `resource_provenance/doctor_photos.json` | json | `dc07cf8ad0daa92f7a2b5661002f71b30fcd54e7c243c55278b9254284183db9` | `{'entries': 275}` |
 | `symptom_disease_model/data/disease_symptom_sources.json` | json | `d361d97140b68706324933e4a086f714a0b74c8fe79a4b320b45297b3e6d4d8e` | `-` |
 | `symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv` | csv | `86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb` | `304` |
 | `symptom_disease_model/data/disease_symptom_training_long.csv` | csv | `8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497` | `2726` |
@@ -227,5 +228,6 @@
 | `symptom_disease_model/symptom_alias_zh.json` | json | `0a655ce71dc7c46e0ea5e0b0c87aa50c9454d51470fe6a2be175fe89ec3f7f18` | `-` |
 | `symptom_disease_model/symptom_name_zh.json` | json | `398fc2502b190ccde39f94782c771e6751c43718bd0714c243cf1cfe2235ed70` | `-` |
 | `taxi_operations.json` | json | `154ff257a6674186594af10014a449915439d77956d1dada6a743895232dc06b` | `{'operations': 50}` |
+| `transit/metadata.json` | json | `34e92a92c5f4f2cb740080215ce2cd961d7ba62af7d53b49d649e755e3865e0a` | `-` |
 
 只记录异常，不自动修复；报告不包含原始症状文本、身份信息或整行数据。

@@ -2,7 +2,7 @@
   "schema_version": "data-quality-report/v1",
   "data_root": "data",
   "region_code": "320400",
-  "dataset_count": 28,
+  "dataset_count": 30,
   "issue_count": 187,
   "datasets": [
     {
@@ -91,12 +91,13 @@
     },
     {
       "path": "doctors_h11.json",
-      "sha256": "e895b1a30ac967256a61adb88b83dc3e19d86c3dfa1999d0c9ca3b120015454f",
+      "sha256": "38b904786fc536ae6705f7426e8e8c0f2b141bb16a68639a48b4ca3ca91f00dd",
       "format": "json",
       "top_level_keys": [
         "doctors",
         "hospital",
         "hospital_id",
+        "photo_mapping",
         "source"
       ],
       "collections": {
@@ -181,7 +182,7 @@
     },
     {
       "path": "doctors_h6.json",
-      "sha256": "97a1c2b6a41b0473ec13fa7d0c8c2549c43d86ff8f92e69d2b59f89d75434b4e",
+      "sha256": "eaf05d1518c6a0779ca1382132b9e21ac0c12d78dcb2f0e7609a47d295df1c1a",
       "format": "json",
       "top_level_keys": [
         "doctors",
@@ -189,6 +190,7 @@
         "hospital_id",
         "hospital_level",
         "last_updated",
+        "photo_mapping",
         "total_doctors"
       ],
       "collections": {
@@ -227,7 +229,7 @@
     },
     {
       "path": "regions/320400/hospitals/catalog.json",
-      "sha256": "df2f57a7fb15f84002ade590db9bc0fb0e0e2987eee13a839a59722d55b2a6a7",
+      "sha256": "54252846c72af798dd4a6fc8a786ce3a6bde00a5bb7e4430d22cb2f8b053b2ef",
       "format": "json",
       "top_level_keys": [
         "dataset_id",
@@ -268,6 +270,21 @@
         "activation_gate": 6,
         "districts": 7,
         "future_regions": 3
+      }
+    },
+    {
+      "path": "resource_provenance/doctor_photos.json",
+      "sha256": "dc07cf8ad0daa92f7a2b5661002f71b30fcd54e7c243c55278b9254284183db9",
+      "format": "json",
+      "top_level_keys": [
+        "count",
+        "entries",
+        "generated_at",
+        "policy",
+        "schema_version"
+      ],
+      "collections": {
+        "entries": 275
       }
     },
     {
@@ -589,6 +606,17 @@
       "collections": {
         "operations": 50
       }
+    },
+    {
+      "path": "transit/metadata.json",
+      "sha256": "34e92a92c5f4f2cb740080215ce2cd961d7ba62af7d53b49d649e755e3865e0a",
+      "format": "json",
+      "top_level_keys": [
+        "datasets",
+        "policy",
+        "schema_version",
+        "updated_at"
+      ]
     }
   ],
   "issues": [
