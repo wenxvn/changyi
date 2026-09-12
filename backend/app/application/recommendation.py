@@ -11,6 +11,7 @@ from collections.abc import Callable, Mapping
 from dataclasses import dataclass
 from typing import Any
 
+from backend.app.domain.recommendation.features import EXCLUDED_EVIDENCE_NOTICES
 from backend.app.domain.recommendation.scoring import rebalance_weights
 from backend.app.domain.recommendation.routing_preferences import normalize_routing_preferences
 from backend.app.domain.recommendation.visit_intent import ranking_scenario_for_visit_intent
@@ -137,6 +138,7 @@ class RecommendationApplicationService:
             "followup_answers": list(context.followup_answers),
             "recommended_hospitals": hospitals,
             "recommended_doctors": doctors,
+            "excluded_evidence": list(EXCLUDED_EVIDENCE_NOTICES),
             "weights_used": doctor_weights,
             "hospital_weights_used": hospital_weights,
             "ranking_model": self.ranking_model,

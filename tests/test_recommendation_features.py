@@ -77,4 +77,4 @@ class RecommendationFeatureTests(TestCase):
         )
         self.assertLessEqual(len(reasons), 4)
         self.assertIn("按公开科室资料综合匹配", reasons)
-        self.assertIn("具备急诊能力", reasons)
+        self.assertTrue(any("急诊字段" in item for item in reasons))

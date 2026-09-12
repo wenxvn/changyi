@@ -311,7 +311,7 @@ class RecommendationCandidateTests(TestCase):
         self.assertEqual(result["strength_score"], 75)
         self.assertEqual(result["matched_department"], "心血管内科")
         self.assertEqual(result["feature_scores"]["risk_penalty"], 0.0)
-        self.assertIn("具备急诊能力", result["explanations"])
+        self.assertTrue(any("急诊字段" in item for item in result["explanations"]))
 
     def test_hospital_candidate_composition_preserves_emergency_risk_penalty(self):
         result = compose_hospital_candidate(

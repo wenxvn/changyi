@@ -33,6 +33,8 @@ def doctor_recommendation_reasons(
     availability_score: float,
     penalty_details: Sequence[dict[str, Any]],
     resource_notes: Sequence[str],
+    *,
+    expert_preference: str = "system",
 ) -> list[str]:
     reasons = []
     if specialty_score >= 0.85:
@@ -43,6 +45,10 @@ def doctor_recommendation_reasons(
         reasons.append("距离可及性较好")
     if availability_score >= 0.7:
         reasons.append("医院承载能力较好")
+    if expert_preference == "wish_expert":
+        reasons.append("已按“希望优先专家”偏好综合排序")
+    elif expert_preference == "no_expert":
+        reasons.append("已按“不特别需要专家”偏好综合排序")
     if penalty_details:
         reasons.append("已应用资源错配惩罚")
     reasons.extend(resource_notes)
@@ -73,6 +79,7 @@ def build_doctor_recommendation_result(
     visit_path: str | None,
     resource_cap: float,
     resource_notes: Sequence[str],
+    expert_preference: str = "system",
 ) -> dict[str, Any]:
     reasons = doctor_recommendation_reasons(
         specialty_score,
@@ -82,6 +89,7 @@ def build_doctor_recommendation_result(
         availability_score,
         penalty_details,
         resource_notes,
+        expert_preference=expert_preference,
     )
     return {
         "doctor": doctor,

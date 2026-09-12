@@ -905,6 +905,7 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
             visit_path=strategy.get("visit_path"),
             resource_cap=resource_cap,
             resource_notes=resource_notes,
+            expert_preference=expert_preference,
         ))
     if not results and scenario == "surgery":
         results.extend(_build_emergency_doctor_fallback_candidates(

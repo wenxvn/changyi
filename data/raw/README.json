@@ -1,0 +1,5 @@
+{
+  "schema_version": "raw-snapshot/v1",
+  "dataset": "README",
+  "note": "data/raw 只保存只读原始快照与元数据；应用层不得直接读取。canonical 数据仍在 data/regions 与 data/*.json，并经 Quality Gate 决定 displayable/rankable。"
+}

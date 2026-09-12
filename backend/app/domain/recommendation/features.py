@@ -179,8 +179,13 @@ def hospital_recommend_reasons(
     distance: float | None,
     matched_dept: str | None,
     triage_level: str,
+    *,
+    district: str | None = None,
+    district_preference: str | None = None,
 ) -> list[str]:
     reasons = []
+    if triage_level == "emergency" and hospital.get("emergency"):
+        reasons.append("目录资料标记设有急诊字段（非实时接诊能力）")
     if matched_dept:
         departments = hospital.get("departments") or []
         if matched_dept in departments:
@@ -191,14 +196,18 @@ def hospital_recommend_reasons(
             reasons.append("公开资料显示存在相关专科方向")
         else:
             reasons.append("按公开科室资料综合匹配")
-    if distance is not None and distance <= 8:
-        reasons.append(f"距离近，约{distance}km")
-    elif feature_scores["quality"] >= 0.85:
+    if distance is not None:
+        reasons.append(f"到院直线距离约{distance}km（仅在你提供位置时估算）")
+    elif triage_level != "emergency":
+        reasons.append("未提供精确位置，本次未按距离排序")
+    if district and hospital.get("district") == district:
+        reasons.append(f"位于你选择的{district}")
+    if district_preference == "prefer_home_district" and district:
+        reasons.append("已按“优先本区”偏好综合排序")
+    if feature_scores["quality"] >= 0.85:
         reasons.append("医院等级和综合质量较高")
     if feature_scores["availability"] >= 0.72 and (hospital.get("beds") is not None or hospital.get("daily_outpatients") is not None):
         reasons.append("承载能力/就诊可用性较好")
-    if triage_level == "emergency" and hospital.get("emergency"):
-        reasons.append("具备急诊能力")
     if feature_scores["fairness"] >= 0.70:
         reasons.append("符合分级诊疗与就近可及原则")
     traffic = feature_scores.get("traffic_access") or {}
@@ -207,3 +216,9 @@ def hospital_recommend_reasons(
     if not reasons:
         reasons.append("按临床匹配、医院等级和安全能力综合排序")
     return reasons[:4]
+
+
+EXCLUDED_EVIDENCE_NOTICES = (
+    "科研资料仅作公开资料展示，不参与 patient-fit 排序。",
+    "当前交通数据未通过正式质量门，仅作参考，不参与排序。",
+)
