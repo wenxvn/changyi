@@ -47,4 +47,4 @@
 
 ## 当前重构基线
 
-当前本地基线为 143 个 pytest、17 个 frontend boundary tests 和 20 个 Playwright 用例；已运行 canonical v1 API、Safety Evaluation（135 cases）、Grouped Near-Duplicate CV、Python 编译、frontend typecheck/build、数据质量扫描和稳定快照。数据扫描的 186 个异常仍为登记项，不作为放行结论；远端 CI 仍需在获得推送后确认。
+当前本地基线为 167 个 pytest、17 个 frontend boundary tests 和 20 个 Playwright 用例；已运行 canonical v1 API、Safety Evaluation（142 cases，Recall 1.0 / FN 0 / Over-triage 0）、Grouped Near-Duplicate CV、Python 编译、frontend typecheck/build、数据质量扫描和稳定快照。数据扫描的 186 个异常仍为登记项，不作为放行结论；canonical snapshot 已同步 `excluded_evidence` / `routing_preferences` / `triage_scenario` / `visit_intent`。

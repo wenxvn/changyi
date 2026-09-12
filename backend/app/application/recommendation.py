@@ -67,11 +67,15 @@ class RecommendationApplicationService:
         effective_scenario = ranking_scenario
         preferences = normalize_routing_preferences(context.routing_preferences)
         resource_strategy = self.resource_strategy(triage, context.expert_preference)
+        # District preference participates only when a usable district exists.
+        district_usable = bool(context.district) and context.location_source in ("district", "geolocation")
         hospitals = self.recommend_hospitals(
             context.condition,
             context.user_lat,
             context.user_lng,
             triage=triage,
+            district_preference=preferences["district_preference"] if district_usable else "any_district",
+            user_district=context.district if district_usable else None,
         )
         if enhanced or self.has_real_doctors:
             doctors = self.enhanced_recommend_doctors(
@@ -82,6 +86,7 @@ class RecommendationApplicationService:
                 user_lng=context.user_lng,
                 triage=triage,
                 expert_preference=context.expert_preference,
+                distance_preference=preferences["distance_preference"],
             )
         else:
             doctors = self.legacy_recommend_doctors(context.condition)
@@ -100,8 +105,20 @@ class RecommendationApplicationService:
             doctors = sorted(boosted, key=lambda row: -float(row.get("match_score") or 0.0))
         matched_department = triage.get("matched_department") or self.match_department(context.condition)
         doctor_weights = self.enhanced_weights.get(effective_scenario, self.enhanced_weights["surgery"])
-        if preferences["distance_preference"] == "prefer_nearby" and "access" in doctor_weights:
-            doctor_weights = {**doctor_weights, "access": doctor_weights.get("access", 0.0) + 0.04}
+        # Distance preference is resolved inside enhanced_recommend_doctors
+        # before scoring; weights_used reflects that resolved profile.
+        if preferences["distance_preference"] == "prefer_nearby" and context.user_lat is not None and context.user_lng is not None:
+            doctor_weights = {**doctor_weights, "access": doctor_weights.get("access", 0.0) + 0.06}
+            total = sum(doctor_weights.values()) or 1.0
+            doctor_weights = {key: round(value / total, 6) for key, value in doctor_weights.items()}
+        elif preferences["distance_preference"] == "allow_farther_for_fit" and context.user_lat is not None and context.user_lng is not None:
+            doctor_weights = dict(doctor_weights)
+            if "access" in doctor_weights:
+                doctor_weights["access"] = max(0.04, doctor_weights["access"] * 0.55)
+            if "specialty" in doctor_weights:
+                doctor_weights["specialty"] = doctor_weights["specialty"] + 0.04
+            if "hospital" in doctor_weights:
+                doctor_weights["hospital"] = doctor_weights["hospital"] + 0.02
             total = sum(doctor_weights.values()) or 1.0
             doctor_weights = {key: round(value / total, 6) for key, value in doctor_weights.items()}
         if context.user_lat is None or context.user_lng is None:
@@ -146,6 +163,8 @@ class RecommendationApplicationService:
         }
         if context.user_lat is None or context.user_lng is None:
             result["ranking_notice"] = "未提供精确位置，本次排序未使用距离和交通可达性；如需比较到院距离，请主动提供定位或选择区域。"
+        if preferences["district_preference"] != "any_district" and not district_usable:
+            result["district_preference_notice"] = "当前没有可用区域信息，本次未使用跨区偏好。"
         if not enhanced:
             result["total_real_doctors"] = self.real_doctor_count
         if safety_first:

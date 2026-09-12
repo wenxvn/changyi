@@ -13,7 +13,7 @@ class VisitIntentContractTests(TestCase):
         self.assertEqual(ranking_scenario_for_visit_intent("first_visit", "common"), "first_visit")
         self.assertEqual(ranking_scenario_for_visit_intent("follow_up", "common"), "complex")
         self.assertEqual(ranking_scenario_for_visit_intent("review_results", "common"), "complex")
-        self.assertEqual(ranking_scenario_for_visit_intent("procedure_consult", "common"), "surgery")
+        self.assertEqual(ranking_scenario_for_visit_intent("procedure_consult", "common"), "procedure_consult")
         self.assertEqual(ranking_scenario_for_visit_intent("unsure", "common"), "common")
         self.assertEqual(ranking_scenario_for_visit_intent(None, "surgery"), "surgery")
 
@@ -103,7 +103,7 @@ class VisitIntentSafetyIsolationTests(TestCase):
         self.assertEqual(emergency["visit_intent"], "unsure")
         self.assertEqual(routine["triage"]["level"], "routine")
         self.assertEqual(routine["visit_intent"], "procedure_consult")
-        self.assertEqual(routine["effective_scenario"], "surgery")
+        self.assertEqual(routine["effective_scenario"], "procedure_consult")
         self.assertEqual(routine["triage_scenario"], "common")
         # Triage is always analyzed with the request scenario, never visit intent.
         self.assertTrue(all(call[2] == "common" for call in calls if call[0] == "triage"))

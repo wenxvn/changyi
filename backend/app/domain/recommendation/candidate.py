@@ -169,6 +169,8 @@ def compose_hospital_candidate(
     traffic_access: dict[str, Any],
     ranking_weights: Mapping[str, float],
     ranking_model: str,
+    user_district: str | None = None,
+    district_preference: str | None = None,
 ) -> dict[str, Any]:
     """Compose one hospital candidate from explicit prepared context."""
 
@@ -212,6 +214,8 @@ def compose_hospital_candidate(
             distance,
             matched_department,
             triage_level,
+            district=user_district,
+            district_preference=district_preference,
         ),
     )
 
@@ -232,6 +236,8 @@ def build_hospital_candidates(
     compose_fn: Callable[..., dict[str, Any]],
     ranking_weights: Mapping[str, float],
     ranking_model: str,
+    user_district: str | None = None,
+    district_preference: str | None = None,
 ) -> list[dict[str, Any]]:
     """Build hospital candidates from explicit context and infrastructure callbacks."""
 
@@ -270,6 +276,8 @@ def build_hospital_candidates(
                 traffic_access=traffic_access,
                 ranking_weights=ranking_weights,
                 ranking_model=ranking_model,
+                user_district=user_district,
+                district_preference=district_preference,
             )
         )
     return results

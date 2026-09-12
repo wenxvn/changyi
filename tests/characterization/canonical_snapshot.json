@@ -132,6 +132,7 @@
         "data_source",
         "disease_prediction",
         "effective_scenario",
+        "excluded_evidence",
         "expert_preference",
         "feature_availability",
         "followup_answers",
@@ -142,9 +143,12 @@
         "recommended_doctors",
         "recommended_hospitals",
         "resource_strategy",
+        "routing_preferences",
         "scenario",
         "triage",
+        "triage_scenario",
         "user_location",
+        "visit_intent",
         "weights_used"
       ],
       "triage_level": "routine"

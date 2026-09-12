@@ -32,6 +32,7 @@ from backend.app.domain.medical_input import (
     KNOWN_DISEASE_PATTERNS,
     contains_positive as _contains_positive,
     followup_answer_map,
+    is_general_question_or_history as _is_general_question_or_history,
     normalize_patient_expression,
 )
 from backend.app.domain.triage.safety_gate import (
@@ -696,6 +697,8 @@ ENHANCED_WEIGHTS = {
     "common": {"specialty": 0.42, "access": 0.34, "hospital": 0.16, "surgery": 0.06, "academic": 0.00, "title": 0.00},
     "complex": {"specialty": 0.44, "hospital": 0.24, "surgery": 0.18, "access": 0.12, "academic": 0.00, "title": 0.00},
     "first_visit": {"specialty": 0.42, "access": 0.30, "hospital": 0.16, "surgery": 0.10, "academic": 0.00, "title": 0.00},
+    # Procedure consult is elective/specialty planning, not emergency surgery.
+    "procedure_consult": {"specialty": 0.40, "surgery": 0.26, "hospital": 0.24, "access": 0.10, "academic": 0.00, "title": 0.00},
 }
 
 RANKING_MODEL_VERSION = "h_triagerank_v1_symptom_disease_penalty"
@@ -712,6 +715,7 @@ DOCTOR_EXTRA_WEIGHTS = {
     "common": {"availability": 0.07, "continuity": 0.04, "fairness": 0.07},
     "complex": {"availability": 0.03, "continuity": 0.04, "fairness": 0.03},
     "first_visit": {"availability": 0.06, "continuity": 0.04, "fairness": 0.05},
+    "procedure_consult": {"availability": 0.04, "continuity": 0.04, "fairness": 0.03},
 }
 
 def _hospital_for_doctor(doc):
@@ -769,7 +773,16 @@ def _hospital_district(hospital):
             return "经开区" if district == "戚墅堰区" else district
     return "常州市"
 
-def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=None, user_lng=None, triage=None, expert_preference="system"):
+def enhanced_recommend_doctors(
+    condition,
+    scenario="surgery",
+    top_n=5,
+    user_lat=None,
+    user_lng=None,
+    triage=None,
+    expert_preference="system",
+    distance_preference="distance_flexible",
+):
     """
     增强版医生推荐 (使用爬取的真实数据 + 动态权重)
     """
@@ -777,6 +790,22 @@ def enhanced_recommend_doctors(condition, scenario="surgery", top_n=5, user_lat=
     htriage = triage or build_htriage_analysis(condition)
     w = ENHANCED_WEIGHTS.get(scenario, ENHANCED_WEIGHTS["surgery"])
     has_location = user_lat is not None and user_lng is not None
+    if has_location:
+        # Resolve distance preference into ranking weights BEFORE candidate scoring.
+        if distance_preference == "prefer_nearby":
+            w = {**w, "access": w.get("access", 0.0) + 0.06}
+            total = sum(w.values()) or 1.0
+            w = {key: round(value / total, 6) for key, value in w.items()}
+        elif distance_preference == "allow_farther_for_fit":
+            w = dict(w)
+            if "access" in w:
+                w["access"] = max(0.04, w["access"] * 0.55)
+            if "specialty" in w:
+                w["specialty"] = w["specialty"] + 0.04
+            if "hospital" in w:
+                w["hospital"] = w["hospital"] + 0.02
+            total = sum(w.values()) or 1.0
+            w = {key: round(value / total, 6) for key, value in w.items()}
     if not has_location:
         w = _rebalance_weights(w, {"access"})
     access_context = "urgent" if scenario == "surgery" else ("first_visit" if scenario == "first_visit" else "routine")
@@ -1155,6 +1184,7 @@ TRIAGE_CRITICAL_SINGLE_KEYWORDS = [
     "突发剧烈头痛", "突然剧烈头痛",
     "喉头水肿", "喉咙肿", "吞咽困难", "窒息",
     "肺栓塞", "主动脉夹层", "宫外孕", "异位妊娠", "视网膜脱落",
+    "心梗", "心肌梗死", "急性心肌梗死",
 ]
 
 TRIAGE_SEVERE_MODIFIERS = [
@@ -1322,7 +1352,10 @@ def build_htriage_analysis(condition, followup_answers=None):
         probability = float(item.get("probability") or 0)
         if disease:
             meta = _model_disease_meta(disease)
-            score = 0.54 + min(0.38, probability * 1.9)
+            # Prototype disease model is secondary evidence only. Its score must
+            # stay below rule-engine and user-stated candidates so it cannot
+            # alone decide the patient-facing department route.
+            score = 0.18 + min(0.16, probability * 0.7)
             add_disease(disease, score, meta)
 
     if known_disease.get("has_known_disease"):
@@ -1351,30 +1384,39 @@ def build_htriage_analysis(condition, followup_answers=None):
     disease_candidates = []
     category_scores = {}
     dept_scores = {}
+    dept_sources = {}
     for name, score in ranked:
         meta = disease_meta.get(name, {})
         probability = int(round(max(8, min(92, (score / max_score) * 82))))
         primary = meta.get("primary", "未细分病类")
         secondary = meta.get("secondary", "待门诊评估")
         dept = meta.get("department", "全科医学科")
+        source = "symptom_disease_model" if secondary == "模型预测疾病" else "rule_engine"
+        if primary == "用户已知疾病":
+            source = "user_stated"
         disease_candidates.append({
             "name": name,
             "probability": probability,
             "primary_category": primary,
             "secondary_category": secondary,
             "recommended_department": dept,
-            "source": "symptom_disease_model" if secondary == "模型预测疾病" else "rule_engine",
+            "source": source,
         })
         category_key = f"{primary}/{secondary}"
         category_scores[category_key] = max(category_scores.get(category_key, 0), probability)
-        dept_scores[dept] = max(dept_scores.get(dept, 0), probability)
+        prev_score = dept_scores.get(dept, 0)
+        if probability >= prev_score:
+            dept_scores[dept] = probability
+            dept_sources[dept] = source
+        elif dept not in dept_sources:
+            dept_sources[dept] = source
 
     disease_categories = [
         {"primary": key.split("/", 1)[0], "secondary": key.split("/", 1)[1], "score": score}
         for key, score in sorted(category_scores.items(), key=lambda item: item[1], reverse=True)
     ]
     department_candidates = [
-        {"department": dept, "score": score}
+        {"department": dept, "score": score, "source": dept_sources.get(dept, "rule_engine")}
         for dept, score in sorted(dept_scores.items(), key=lambda item: item[1], reverse=True)
     ]
     red_flags = [item["tag"] for item in symptom_tags if item.get("red_flag_related")]
@@ -1449,9 +1491,17 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
     text = "".join((condition or "").split())
     structured_facts = followup_answer_map(followup_answers)
     htriage = build_htriage_analysis(text, followup_answers)
+    # Department routing priority: rule-based match first; model prediction is
+    # secondary evidence and never the sole source of the patient-facing dept.
     matched_dept = match_department(text)
-    if htriage.get("department_candidates"):
-        matched_dept = htriage["department_candidates"][0]["department"]
+    if not matched_dept:
+        for candidate in htriage.get("department_candidates") or []:
+            if candidate.get("source") != "symptom_disease_model":
+                matched_dept = candidate.get("department")
+                break
+    # General question/history context must not escalate critical keywords to
+    # Emergency; first-person current symptoms still escalate.
+    question_or_history = _is_general_question_or_history(text)
 
     red_flag_answer = structured_facts.get("red_flag_check")
     if red_flag_answer == "present":
@@ -1483,7 +1533,7 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
         }, htriage)
 
     critical_hits = [w for w in TRIAGE_CRITICAL_SINGLE_KEYWORDS if _contains_positive(text, [w])]
-    if critical_hits:
+    if critical_hits and not question_or_history:
         return _attach_htriage_fields({
             "level": "emergency",
             "label": "疑似急症",
@@ -1498,6 +1548,8 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
         }, htriage)
 
     for rule in TRIAGE_RED_FLAGS:
+        if question_or_history:
+            continue
         hit_main = _contains_positive(text, rule["keywords"])
         hit_context = (
             not rule["with_any"] or
@@ -1630,13 +1682,24 @@ def match_department(condition):
     if matched:
         matched.sort(reverse=True)
         return matched[0][2]
+    # Fallback uses rule-engine candidates only. The prototype disease model
+    # may not decide the patient-facing department by itself.
     htriage = build_htriage_analysis(condition)
-    if htriage.get("department_candidates"):
-        return htriage["department_candidates"][0]["department"]
+    for candidate in htriage.get("department_candidates") or []:
+        if candidate.get("source") != "symptom_disease_model":
+            return candidate.get("department")
     return None
 
 
-def recommend(condition, user_lat, user_lng, top_n=5, triage=None):
+def recommend(
+    condition,
+    user_lat,
+    user_lng,
+    top_n=5,
+    triage=None,
+    district_preference="any_district",
+    user_district=None,
+):
     """
     多目标医疗推荐排序：
     1. 安全分诊结果先行，急症优先急诊能力和医院质量
@@ -1671,7 +1734,25 @@ def recommend(condition, user_lat, user_lng, top_n=5, triage=None):
         compose_fn=_compose_hospital_candidate,
         ranking_weights=weights,
         ranking_model=RANKING_MODEL_VERSION,
+        user_district=user_district,
+        district_preference=district_preference,
     )
+
+    # District preference is a soft boost applied before final ranking, never a
+    # hard filter: specialty resources may be scarce inside the home district.
+    if user_district and district_preference == "prefer_home_district" and triage_level != "emergency":
+        for item in results:
+            hospital_district = _hospital_district(item.get("hospital") or {})
+            if hospital_district and hospital_district == user_district:
+                boosted = round(_clamp((float(item.get("composite_score") or 0.0) + 2.5) / 100.0) * 100, 1)
+                item["composite_score"] = boosted
+                item["district_preference_adjustment"] = 2.5
+                notes = list(item.get("explanations") or [])
+                if f"位于你选择的{user_district}" not in notes:
+                    notes.append(f"位于你选择的{user_district}")
+                if "已按“优先本区”偏好综合排序" not in notes:
+                    notes.append("已按“优先本区”偏好综合排序")
+                item["explanations"] = notes[:4]
 
     return _rerank_hospital_candidates(results, triage_level, top_n, _hospital_district)
 

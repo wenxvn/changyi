@@ -16,7 +16,7 @@ class RecommendationApplicationServiceTests(TestCase):
             calls.append(f"analyze:{condition}:{scenario}")
             return {"level": "routine", "recommended_scenario": "common", "matched_department": "内科"}
 
-        def hospitals(condition, lat, lng, *, triage):
+        def hospitals(condition, lat, lng, *, triage, **kwargs):
             calls.append(f"hospitals:{lat}:{lng}")
             return [{"hospital": {"id": 1}}]
 

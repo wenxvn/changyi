@@ -25,11 +25,13 @@ VISIT_INTENT_LABELS = {
 }
 
 # Ranking scenario used for resource routing only.
+# procedure_consult is a distinct elective/specialty-planning profile and must
+# not inherit emergency surgery semantics (urgent access, emergency fallback).
 VISIT_INTENT_TO_RANKING_SCENARIO = {
     "first_visit": "first_visit",
     "follow_up": "complex",
     "review_results": "complex",
-    "procedure_consult": "surgery",
+    "procedure_consult": "procedure_consult",
     "unsure": "common",
 }
 

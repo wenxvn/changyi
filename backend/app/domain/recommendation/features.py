@@ -202,8 +202,10 @@ def hospital_recommend_reasons(
         reasons.append("未提供精确位置，本次未按距离排序")
     if district and hospital.get("district") == district:
         reasons.append(f"位于你选择的{district}")
-    if district_preference == "prefer_home_district" and district:
-        reasons.append("已按“优先本区”偏好综合排序")
+        if district_preference == "prefer_home_district":
+            reasons.append("已按“优先本区”偏好综合排序")
+    elif district_preference == "allow_cross_district" and district and hospital.get("district") and hospital.get("district") != district:
+        reasons.append("可接受跨区就医，未因跨区大幅降权")
     if feature_scores["quality"] >= 0.85:
         reasons.append("医院等级和综合质量较高")
     if feature_scores["availability"] >= 0.72 and (hospital.get("beds") is not None or hospital.get("daily_outpatients") is not None):

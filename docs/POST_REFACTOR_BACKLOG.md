@@ -33,7 +33,7 @@
 | Tester Feedback | 旧测试员后台 |
 | 自动轮播 | 非主路径 |
 | 旧医院能力 96/98/91 分 | 不恢复伪精确分 |
-| 高科研指标主导医生排序 | 学术仅 tie-break |
+| 高科研指标主导医生排序 | 科研资料仅展示，不参与 patient-fit 排序 |
 | 复杂语音自动填表 | 保持 Speech→Text |
 
 ## P2 Product / Resource Routing
@@ -41,11 +41,12 @@
 | 能力 | 说明 |
 | --- | --- |
 | 服务端医生搜索/分页 | **已完成** |
-| Visit Intent | **已完成**（Safety 隔离） |
-| Resource Routing Preferences | **已完成**（默认关闭） |
+| Visit Intent | **已完成**（Safety 隔离；`procedure_consult` 独立 profile） |
+| Resource Routing Preferences | **已完成**（默认关闭；distance/district 已进入真实 scoring） |
 | 本地收藏 / watchlist | **已完成**（最小字段） |
 | Provenance-aware import pipeline | **已完成 foundation**；待真实来源导入 |
 | 推荐解释强化 | **已完成** |
+| 疾病模型路由权限 | **已完成降级**：模型仅为 secondary evidence，不单独决定科室 |
 | 交通地图层 | 需 bus/taxi/bike 数据先通过正式质量门 |
 | 交通可达性进排序 | 当前 PROVISIONAL，`rankable=false` |
 | 正式附近急诊路径 | 需实时急诊可用性数据与 L3/L4 |
@@ -54,8 +55,8 @@
 
 ## Safety / Medical
 
-- Safety Set 已扩到 135 cases；继续专业复核 `question-stroke-signs` 过触发与未覆盖表达。
-- Over-triage 当前 0.0312，可接受但需持续报告；不得为降 over-triage 削弱红旗召回。
+- Safety Set 已扩到 **142** cases；`question-stroke-signs` 误触发已修复，继续专业复核未覆盖表达。
+- Over-triage 当前 **0.0**；不得为降 over-triage 削弱红旗召回。
 - 继续审核压榨样胸痛伴呼吸困难/冷汗、反复头晕等自然语言组合；固定样例通过不代表医学覆盖完整。
 - 评审红旗规则、分诊阈值、医学文案和结构化 follow-up answer 契约。
 

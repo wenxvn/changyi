@@ -114,6 +114,35 @@ def normalize_patient_expression(condition):
     return normalized, replacements
 
 
+CURRENT_SELF_MARKERS = (
+    "我现在", "我目前", "我突然", "我今天", "我刚刚", "我刚", "我正",
+    "现在我", "正在我", "刚出现", "刚发生", "刚发现", "今天突然", "突然我",
+    "目前我", "现症", "当前症状", "现在突然",
+)
+
+QUESTION_OR_HISTORY_MARKERS = (
+    "是不是", "会不会", "算不算", "什么情况下", "什么情况会",
+    "家里人", "家人", "父母", "我爸", "我妈", "孩子会", "小孩会", "老人会",
+    "以前", "历史上", "曾经", "过去", "之前", "听说", "据说",
+    "吗", "么？",
+)
+
+
+def is_general_question_or_history(text):
+    """True when the phrasing looks like a general question or third-party/history.
+
+    A first-person current-state assertion always wins, so
+    "我现在说话不清，是不是中风" still counts as a current symptom report.
+    """
+
+    normalized = "".join((text or "").split())
+    if not normalized:
+        return False
+    if any(marker in normalized for marker in CURRENT_SELF_MARKERS):
+        return False
+    return any(marker in normalized for marker in QUESTION_OR_HISTORY_MARKERS)
+
+
 def contains_positive(text, words):
     """Return whether any word occurs outside the legacy negation window."""
     neg_prefixes = ("无", "没有", "没", "未", "否认", "不伴", "未见")

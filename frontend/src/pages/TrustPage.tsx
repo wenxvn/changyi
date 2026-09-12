@@ -205,6 +205,9 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
               offline prototype evaluation，not clinical validation。Jaccard ≥ {groupedCV.jaccard_threshold} 的同标签 component 整组进入同一折；
               Seed {groupedCV.seed}。Mean/std 与按验证行数加权结果均写入评估报告，不可与随机切分准确率直接横向比较。
             </p>
+            <p className="evidence-panel__footnote">
+              严格评估显示疾病分类模型泛化能力有限，因此当前版本不允许该模型单独决定患者就医科室；模型结果仅作为研究型辅助信号展示。
+            </p>
           </article>
         ) : null}
         {strictIsolation ? (

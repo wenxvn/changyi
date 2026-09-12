@@ -738,6 +738,76 @@
       "notes": "疑问句不应仅因关键词升级。"
     },
     {
+      "id": "first-person-current-stroke",
+      "category": "question_or_history",
+      "condition": "我现在说话不清，是不是中风",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p2_fix_round",
+      "notes": "第一人称当前状态叠加疑问，仍应按当前症状急症处理。"
+    },
+    {
+      "id": "family-stroke-history",
+      "category": "question_or_history",
+      "condition": "家里人中风前会说话不清吗",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p2_fix_round",
+      "notes": "家族史/第三人称咨询，不应把用户本人当急症。"
+    },
+    {
+      "id": "past-slurred-speech-once",
+      "category": "question_or_history",
+      "condition": "以前说话不清过一次",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p2_fix_round",
+      "notes": "历史症状陈述，不是当前急症。"
+    },
+    {
+      "id": "sudden-slurred-speech-now",
+      "category": "question_or_history",
+      "condition": "现在突然说话不清",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p2_fix_round",
+      "notes": "当前突发言语不清，应保持急症路径。"
+    },
+    {
+      "id": "question-heart-attack-signs",
+      "category": "question_or_history",
+      "condition": "胸痛是不是心梗",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p2_fix_round",
+      "notes": "一般医学咨询疑问句。"
+    },
+    {
+      "id": "first-person-current-chest-pain",
+      "category": "question_or_history",
+      "condition": "我现在胸痛，是不是心梗",
+      "expected_status": "EMERGENCY",
+      "red_flag": true,
+      "review_status": "regression_rule_verified",
+      "source_type": "p2_fix_round",
+      "notes": "第一人称当前胸痛叠加疑问，仍应急症。"
+    },
+    {
+      "id": "family-heart-attack-question",
+      "category": "question_or_history",
+      "condition": "家里人心梗会胸痛吗",
+      "expected_status": "NOT_EMERGENCY",
+      "red_flag": false,
+      "review_status": "regression_rule_verified",
+      "source_type": "p2_fix_round",
+      "notes": "家族史/第三人称咨询。"
+    },
+    {
       "id": "family-history-only",
       "category": "question_or_history",
       "condition": "家里人有心梗，我需要查什么",
