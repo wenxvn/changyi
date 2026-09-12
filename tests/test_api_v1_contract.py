@@ -72,7 +72,8 @@ class ApiV1ContractTests(TestCase):
         self.assertEqual(doctor["resource_type"], "doctor")
         self.assertEqual(doctor["provenance"]["source_class"], "public_source_mixed")
         self.assertNotIn("achievements", doctor["resource"])
-        self.assertNotIn("doctor_page_url", doctor["resource"])
+        self.assertIn("photo_provenance_status", doctor["resource"])
+        self.assertIn("doctor_page_url", doctor["resource"])
         self.assertIsNotNone(doctor["related"]["hospital"])
 
         missing = self.client.get("/api/v1/hospitals/999999")

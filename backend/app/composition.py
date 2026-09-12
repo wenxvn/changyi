@@ -510,6 +510,7 @@ def _load_real_doctors():
                         "photo_url": d.get("photo_url", ""),
                         "source_image_url": d.get("source_image_url", ""),
                         "doctor_page_url": d.get("doctor_page_url", ""),
+                        "photo_provenance_status": d.get("photo_provenance_status", ""),
                     }
                     all_doctors.append(rd)
                     all_depts.add(d["department"])
@@ -618,6 +619,20 @@ def _load_bike_vehicles():
 
 BIKE_VEHICLE_DATA = _load_bike_vehicles()
 
+def _load_transit_metadata():
+    path = os.path.join(BASE_DIR, "data", "transit", "metadata.json")
+    if not os.path.exists(path):
+        print("[数据] 未找到交通元数据 data/transit/metadata.json")
+        return {}
+    try:
+        data = _read_json_data(path)
+        return data if isinstance(data, dict) else {}
+    except Exception as e:
+        print(f"[数据] 加载交通元数据失败: {e}")
+        return {}
+
+TRANSIT_METADATA = _load_transit_metadata()
+
 TRANSIT_QUALITY_GATE = TransitQualityGate.from_datasets(
     bus_rows=BUS_STATION_DATA.get("stations") or [],
     bus_summary=BUS_STATION_DATA.get("summary") or {},
@@ -625,6 +640,7 @@ TRANSIT_QUALITY_GATE = TransitQualityGate.from_datasets(
     taxi_summary=TAXI_OPERATION_DATA.get("summary") or {},
     bike_rows=BIKE_STATION_DATA.get("stations") or [],
     bike_summary=BIKE_STATION_DATA.get("summary") or {},
+    metadata=TRANSIT_METADATA,
 )
 TRANSIT_RANKABLE = TRANSIT_QUALITY_GATE.can_rank("bus_stations")
 print(f"[质量门] 交通数据 quality={TRANSIT_QUALITY_GATE.quality('bus_stations').quality} rankable={TRANSIT_RANKABLE}")
@@ -706,10 +722,14 @@ _TRANSIT_ACCESS_CACHE = LazyTrafficAccessCache(
 )
 def _transit_access_maps():
     return _TRANSIT_ACCESS_CACHE.get()
+def _transit_dataset_quality_payload():
+    return TRANSIT_QUALITY_GATE.payload()
+
 def _hospital_traffic_access(hospital):
+    quality_by_dataset = _transit_dataset_quality_payload()
     if not hospital:
         payload = _default_traffic_access()
-        payload["quality"] = TRANSIT_QUALITY_GATE.quality("bus_stations").to_payload()
+        payload["quality"] = quality_by_dataset
         payload["used_in_ranking"] = False
         payload["ranking_policy"] = TRANSIT_QUALITY_GATE.ranking_notice()
         return payload
@@ -718,11 +738,11 @@ def _hospital_traffic_access(hospital):
     taxi = maps["taxi"].get(hospital["id"], {})
     bike = maps["bike"].get(hospital["id"], {})
     payload = _build_traffic_access(station, taxi, bike)
-    payload["quality"] = TRANSIT_QUALITY_GATE.quality("bus_stations").to_payload()
+    payload["quality"] = quality_by_dataset
     payload["rankable"] = TRANSIT_RANKABLE
     if not TRANSIT_RANKABLE:
         payload["display_only"] = True
-        payload["notice"] = TRANSIT_QUALITY_GATE.quality("bus_stations").notice
+        payload["notice"] = TRANSIT_QUALITY_GATE.ranking_notice()
     return payload
 
 def _access_score(hospital, user_lat=None, user_lng=None, triage_level="routine"):

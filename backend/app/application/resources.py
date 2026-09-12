@@ -14,6 +14,7 @@ HOSPITAL_PUBLIC_FIELDS = (
     "level",
     "type",
     "address",
+    "district",
     "phone",
     "lat",
     "lng",
@@ -29,6 +30,7 @@ HOSPITAL_BRIEF_FIELDS = (
     "level",
     "type",
     "address",
+    "district",
     "phone",
     "lat",
     "lng",
@@ -47,6 +49,9 @@ DOCTOR_PUBLIC_FIELDS = (
     "specialty",
     "outpatient_time",
     "photo_url",
+    "photo_provenance_status",
+    "source_image_url",
+    "doctor_page_url",
 )
 
 LEGACY_TOP_DEPARTMENTS = (
