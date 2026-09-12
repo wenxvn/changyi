@@ -53,28 +53,28 @@ function HospitalCard({
   selected: boolean;
   onSelect: () => void;
 }) {
-  const departments = (hospital.departments ?? []).slice(0, 4);
+  const departments = (hospital.departments ?? []).slice(0, 3);
+  const meta = [hospital.level, hospital.type].filter((value): value is string => Boolean(value));
   return (
     <article className={`resource-index-card${selected ? " resource-index-card--selected" : ""}`}>
       <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} />
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
-          <span className="eyebrow eyebrow--muted">医院资源</span>
-          {hospital.emergency ? <span className="resource-index-card__flag">含急诊字段</span> : null}
+          {hospital.emergency ? <span className="resource-index-card__flag resource-index-card__flag--emergency">急诊字段</span> : <span className="resource-index-card__flag">医院</span>}
+          {hospital.district ? <span className="resource-index-card__district">{hospital.district}</span> : null}
         </div>
         <h3>{hospital.name ?? "未命名医院"}</h3>
-        <p className="resource-index-card__subline">
-          {[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "公开资源资料"}
-        </p>
-        <p className="resource-index-card__address">{hospital.address ?? "地址信息以机构公开资料为准"}{hospital.district ? ` · ${hospital.district}` : ""}</p>
+        {meta.length > 0 ? <p className="resource-index-card__subline">{meta.join(" · ")}</p> : null}
+        <p className="resource-index-card__address">{hospital.address ?? "地址以机构公开资料为准"}</p>
         {departments.length > 0 ? (
           <div className="resource-chip-list" aria-label="主要科室">
             {departments.map((department) => <span key={department}>{department}</span>)}
+            {(hospital.departments?.length ?? 0) > 3 ? <span className="resource-chip-list__more">+{(hospital.departments?.length ?? 0) - 3}</span> : null}
           </div>
-        ) : <p className="resource-index-card__muted">科室信息未在当前接口提供。</p>}
+        ) : null}
         <div className="resource-index-card__actions">
           <button className="resource-index-card__link" type="button" onClick={onSelect} aria-pressed={selected}>
-            {selected ? "正在查看资料" : "查看公开资料"} <ExternalLink size={14} aria-hidden="true" />
+            {selected ? "查看中" : "公开资料"} <ExternalLink size={13} aria-hidden="true" />
           </button>
           <AmapNavigationLink target={hospital} className="resource-index-card__link" />
         </div>
@@ -96,22 +96,24 @@ function DoctorCard({
   favorite: boolean;
   onToggleFavorite: (doctorId: number) => void;
 }) {
-  const specialties = (doctor.specialties ?? []).slice(0, 3);
+  const specialties = (doctor.specialties ?? []).slice(0, 2);
   return (
     <article className={`resource-index-card resource-index-card--doctor${selected ? " resource-index-card--selected" : ""}`}>
       <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
-          <span className="eyebrow eyebrow--muted">公开医生资料</span>
-          {typeof doctor.id === "number" ? (
-            <FavoriteDoctorButton
-              doctorId={doctor.id}
-              active={favorite}
-              onToggle={onToggleFavorite}
-              compact
-            />
-          ) : null}
-          {doctor.outpatient_time ? <span className="resource-index-card__flag">门诊字段</span> : null}
+          <span className="resource-index-card__flag">医生</span>
+          <div className="resource-index-card__topline-actions">
+            {doctor.outpatient_time ? <span className="resource-index-card__flag">门诊</span> : null}
+            {typeof doctor.id === "number" ? (
+              <FavoriteDoctorButton
+                doctorId={doctor.id}
+                active={favorite}
+                onToggle={onToggleFavorite}
+                compact
+              />
+            ) : null}
+          </div>
         </div>
         <h3>{doctor.name ?? "公开医生资料"}</h3>
         <p className="resource-index-card__subline">{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "职称/科室未提供"}</p>
@@ -120,10 +122,12 @@ function DoctorCard({
           <div className="resource-chip-list" aria-label="公开专长">
             {specialties.map((specialty) => <span key={specialty}>{specialty}</span>)}
           </div>
-        ) : <p className="resource-index-card__muted">公开专长未在当前接口提供。</p>}
-        <button className="resource-index-card__link" type="button" onClick={onSelect} aria-pressed={selected}>
-          {selected ? "正在查看资料" : "查看公开资料"} <ExternalLink size={14} aria-hidden="true" />
-        </button>
+        ) : null}
+        <div className="resource-index-card__actions">
+          <button className="resource-index-card__link" type="button" onClick={onSelect} aria-pressed={selected}>
+            {selected ? "查看中" : "公开资料"} <ExternalLink size={13} aria-hidden="true" />
+          </button>
+        </div>
       </div>
     </article>
   );
