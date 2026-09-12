@@ -687,11 +687,12 @@ def _hospital_bike_vehicle_distribution():
 # ============================================================
 # Clinical patient-fit ranking. Academic metrics stay in doctor profile
 # metadata only; they must not dominate "who fits this patient".
+# academic weight is 0: SCI/funding/patents are display-only evidence.
 ENHANCED_WEIGHTS = {
-    "surgery": {"specialty": 0.34, "surgery": 0.30, "hospital": 0.22, "access": 0.12, "academic": 0.02, "title": 0.00},
-    "common": {"specialty": 0.42, "access": 0.34, "hospital": 0.16, "surgery": 0.06, "academic": 0.02, "title": 0.00},
-    "complex": {"specialty": 0.44, "hospital": 0.24, "surgery": 0.18, "access": 0.12, "academic": 0.02, "title": 0.00},
-    "first_visit": {"specialty": 0.42, "access": 0.30, "hospital": 0.16, "surgery": 0.10, "academic": 0.02, "title": 0.00},
+    "surgery": {"specialty": 0.34, "surgery": 0.30, "hospital": 0.22, "access": 0.12, "academic": 0.00, "title": 0.00},
+    "common": {"specialty": 0.42, "access": 0.34, "hospital": 0.16, "surgery": 0.06, "academic": 0.00, "title": 0.00},
+    "complex": {"specialty": 0.44, "hospital": 0.24, "surgery": 0.18, "access": 0.12, "academic": 0.00, "title": 0.00},
+    "first_visit": {"specialty": 0.42, "access": 0.30, "hospital": 0.16, "surgery": 0.10, "academic": 0.00, "title": 0.00},
 }
 
 RANKING_MODEL_VERSION = "h_triagerank_v1_symptom_disease_penalty"

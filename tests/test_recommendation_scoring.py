@@ -175,3 +175,60 @@ class RecommendationScoringTests(TestCase):
             extra_weights={"availability": 0.05, "continuity": 0.03, "fairness": 0.02},
         )
         self.assertEqual(score, 0.0)
+
+
+class AcademicPatientFitIsolationTests(TestCase):
+    """Academic metrics are display-only; they must not change patient-fit ranking."""
+
+    def _clinical_kwargs(self, academic_score: float) -> dict:
+        weights = {
+            "surgery": 0.34,
+            "specialty": 0.34,
+            "hospital": 0.22,
+            "access": 0.12,
+            "academic": 0.0,
+            "title": 0.0,
+        }
+        return {
+            "surgery_score": 0.6,
+            "specialty_score": 0.8,
+            "academic_score": academic_score,
+            "title_score": 0.9,
+            "hospital_score": 0.7,
+            "access_score": 0.5,
+            "availability_score": 0.4,
+            "continuity_score": 0.3,
+            "fairness_score": 0.5,
+            "risk_penalty": 0.0,
+            "weights": weights,
+            "extra_weights": {"availability": 0.04, "continuity": 0.03, "fairness": 0.03},
+        }
+
+    def test_enhanced_weights_academic_is_zero_for_all_scenarios(self):
+        from backend.app.composition import ENHANCED_WEIGHTS
+
+        for scenario in ("surgery", "common", "complex", "first_visit"):
+            self.assertIn(scenario, ENHANCED_WEIGHTS)
+            self.assertEqual(ENHANCED_WEIGHTS[scenario]["academic"], 0.0)
+
+    def test_identical_clinical_features_ignore_academic_score(self):
+        low = score_doctor_candidate(**self._clinical_kwargs(0.0))
+        high = score_doctor_candidate(**self._clinical_kwargs(1.0))
+        self.assertEqual(low, high)
+
+    def test_resource_tier_ignores_academic_metrics(self):
+        low_academic = doctor_resource_tier(
+            {"title": "主任医师", "sci_papers": 0, "national_funding": False},
+            {"level": "三级甲等"},
+            specialty_score=0.9,
+            academic_score=0.0,
+            surgery_score=0.7,
+        )
+        high_academic = doctor_resource_tier(
+            {"title": "主任医师", "sci_papers": 80, "national_funding": True, "patents": 5},
+            {"level": "三级甲等"},
+            specialty_score=0.9,
+            academic_score=1.0,
+            surgery_score=0.7,
+        )
+        self.assertEqual(low_academic, high_academic)
