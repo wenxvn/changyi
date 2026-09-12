@@ -1,0 +1,44 @@
+{
+  "schema_version": "transit-metadata/v1",
+  "updated_at": "2026-09-12",
+  "policy": {
+    "unknown_stays_unknown": true,
+    "unverified_not_rankable": true,
+    "note": "来源、许可或时间戳无法确认时保持 PROVISIONAL，rankable=false；禁止把 not_recorded 伪造成 verified。"
+  },
+  "datasets": {
+    "bus_stations": {
+      "dataset_id": "bus_stations",
+      "source_url": null,
+      "provider": null,
+      "license": null,
+      "license_status": "not_recorded",
+      "captured_at": null,
+      "updated_at": null,
+      "geographic_coverage": "常州主城区及武进公开站点样本",
+      "verification_status": "PROVISIONAL"
+    },
+    "taxi_operations": {
+      "dataset_id": "taxi_operations",
+      "source_url": null,
+      "provider": null,
+      "license": null,
+      "license_status": "not_recorded",
+      "captured_at": null,
+      "updated_at": null,
+      "geographic_coverage": "常州出租车/网约车脱敏运营样本",
+      "verification_status": "PROVISIONAL"
+    },
+    "bike": {
+      "dataset_id": "bike",
+      "source_url": null,
+      "provider": null,
+      "license": null,
+      "license_status": "not_recorded",
+      "captured_at": null,
+      "updated_at": null,
+      "geographic_coverage": "常州公共自行车/共享单车展示样本",
+      "verification_status": "PROVISIONAL"
+    }
+  }
+}

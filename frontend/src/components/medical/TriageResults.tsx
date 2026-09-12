@@ -52,17 +52,37 @@ function RecommendationError({ message, onRetry }: { message: string; onRetry: (
   );
 }
 
+function transitDatasetLabel(datasetId: string): string {
+  if (datasetId === "bus_stations") return "公交站";
+  if (datasetId === "taxi_operations") return "出租车";
+  if (datasetId === "bike") return "共享骑行";
+  return datasetId;
+}
+
 function TrafficAccessNote({ item }: { item: RecommendedHospital }) {
   const access = item.traffic_access;
   if (!access || typeof access !== "object") return null;
   const summary = typeof access.summary === "string" ? access.summary : "";
   const used = Boolean(access.used_in_ranking);
   if (!summary || summary.includes("暂无交通融合数据")) return null;
+  const quality = access.quality;
+  const datasetNotes = (quality && typeof quality === "object" && !Array.isArray(quality)
+    ? Object.entries(quality as Record<string, unknown>)
+        .filter(([, value]) => Boolean(value) && typeof value === "object")
+        .map(([datasetId, value]) => {
+          const row = value as Record<string, unknown>;
+          const status = typeof row.quality === "string" ? row.quality : "UNKNOWN";
+          const rankable = Boolean(row.rankable);
+          const suffix = datasetId === "bike" ? "仅展示" : rankable ? "可参与排序" : "仅参考";
+          return `${transitDatasetLabel(datasetId)}：${status} · ${suffix}`;
+        })
+    : []);
   return (
     <p className="resource-card__traffic">
       <span>交通可达性</span>
       {summary}
-      <small>{used ? "基于当前已接入公共交通站点数据估算，可能参与可达性排序。" : "基于当前已接入公共交通站点数据估算，仅作参考，不参与正式排序。"}</small>
+      {datasetNotes.length ? <span className="resource-card__traffic-quality">{datasetNotes.join("；")}</span> : null}
+      <small>{used ? "交通资源参考，可能参与可达性排序。" : "仅作交通资源参考，不参与正式推荐排序。"}</small>
     </p>
   );
 }
