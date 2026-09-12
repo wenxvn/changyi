@@ -160,75 +160,85 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
             ) : null}
           </article>
         </div>
-        {(evidence.model.near_duplicate_same_label || evidence.model.random_baseline || evidence.model.grouped_fingerprint) ? (
-          <div className="trust-model-comparison">
-            {modelSplits.map(({ label, metrics, note }) => metrics ? (
-              <article className="evidence-panel" key={label}>
-                <div className="evidence-panel__topline"><GitBranch size={17} aria-hidden="true" /><span>{label}</span></div>
-                <div className="evidence-metric-grid">
-                  <EvidenceMetric label="Macro-F1" value={splitMetricValue(metrics.macro_f1)} />
-                  <EvidenceMetric label="Macro-Recall" value={splitMetricValue(metrics.macro_recall)} />
-                  <EvidenceMetric label="覆盖率" value={splitMetricValue(metrics.coverage)} />
-                  <EvidenceMetric label="测试样本" value={formatCount(metrics.test_rows)} />
+        {(modelSplits.length > 0 || groupedCV || strictIsolation) ? (
+          <details className="trust-model-details">
+            <summary>
+              <span>模型切分与近重复隔离</span>
+              <small>严格评估用于暴露泛化风险，不可与随机切分横向等价比较</small>
+            </summary>
+            <div className="trust-model-details__body">
+              {(evidence.model.near_duplicate_same_label || evidence.model.random_baseline || evidence.model.grouped_fingerprint) ? (
+                <div className="trust-model-comparison">
+                  {modelSplits.map(({ label, metrics, note }) => metrics ? (
+                    <article className="evidence-panel" key={label}>
+                      <div className="evidence-panel__topline"><GitBranch size={17} aria-hidden="true" /><span>{label}</span></div>
+                      <div className="evidence-metric-grid">
+                        <EvidenceMetric label="Macro-F1" value={splitMetricValue(metrics.macro_f1)} />
+                        <EvidenceMetric label="Macro-Recall" value={splitMetricValue(metrics.macro_recall)} />
+                        <EvidenceMetric label="覆盖率" value={splitMetricValue(metrics.coverage)} />
+                        <EvidenceMetric label="测试样本" value={formatCount(metrics.test_rows)} />
+                      </div>
+                      <p className="evidence-panel__footnote">
+                        Top-1 {splitMetricValue(metrics.accuracy)} · Top-3 {splitMetricValue(metrics.top3_accuracy)}
+                        {metrics.cross_split_near_duplicates ? ` · 跨 split 近重复 ${metrics.cross_split_near_duplicates.pair_count} 对` : ""}
+                        {note ? `。${note}` : ""}
+                      </p>
+                    </article>
+                  ) : null)}
                 </div>
-                <p className="evidence-panel__footnote">
-                  Top-1 {splitMetricValue(metrics.accuracy)} · Top-3 {splitMetricValue(metrics.top3_accuracy)}
-                  {metrics.cross_split_near_duplicates ? ` · 跨 split 近重复 ${metrics.cross_split_near_duplicates.pair_count} 对` : ""}
-                  {note ? `。${note}` : ""}
+              ) : null}
+              {groupedCV ? (
+                <article className="evidence-panel trust-strict-isolation">
+                  <div className="evidence-panel__topline">
+                    <GitBranch size={17} aria-hidden="true" />
+                    <span>Grouped Near-Duplicate CV</span>
+                  </div>
+                  <div className="evidence-metric-grid">
+                    <EvidenceMetric label="折数" value={formatCount(groupedCV.fold_count)} note="同一近重复 component 不跨折" />
+                    <EvidenceMetric label="Mean Top-1" value={splitMetricValue(cvTop1?.mean ?? null)} />
+                    <EvidenceMetric label="Mean Top-3" value={splitMetricValue(groupedCV.aggregate?.top3_accuracy?.mean ?? null)} />
+                    <EvidenceMetric label="Mean Macro-F1" value={splitMetricValue(groupedCV.aggregate?.macro_f1?.mean ?? null)} />
+                    <EvidenceMetric
+                      label="跨折覆盖类别"
+                      value={`${formatCount(groupedCV.class_coverage_across_folds?.present_class_count ?? null)} / ${formatCount(groupedCV.class_coverage_across_folds?.total_class_count ?? null)}`}
+                    />
+                    <EvidenceMetric
+                      label="跨 split 近重复"
+                      value={formatCount(groupedCV.cross_split_near_duplicates_max_pair_count ?? null)}
+                      note="各折最大近重复对数"
+                    />
+                  </div>
+                  <p className="evidence-panel__footnote">
+                    offline prototype evaluation，not clinical validation。Jaccard ≥ {groupedCV.jaccard_threshold} 的同标签 component 整组进入同一折；
+                    Seed {groupedCV.seed}。Mean/std 与按验证行数加权结果均写入评估报告，不可与随机切分准确率直接横向比较。
+                  </p>
+                  <p className="evidence-panel__footnote">
+                    严格评估显示疾病分类模型泛化能力有限，因此当前版本不允许该模型单独决定患者就医科室；模型结果仅作为研究型辅助信号展示。
+                  </p>
+                </article>
+              ) : null}
+              {strictIsolation ? (
+                <article className="evidence-panel trust-strict-isolation">
+                  <div className="evidence-panel__topline"><ShieldCheck size={17} aria-hidden="true" /><span>{strictIsolation.label}</span></div>
+                  <div className="evidence-metric-grid">
+                    <EvidenceMetric label="测试样本" value={formatCount(strictIsolation.test_samples)} />
+                    <EvidenceMetric label="覆盖类别" value={`${formatCount(strictIsolation.present_classes)} / ${formatCount(strictIsolation.total_classes)}`} />
+                    <EvidenceMetric label="跨 split 近重复" value={formatCount(strictIsolation.cross_split_near_duplicates)} note="Jaccard ≥ 阈值的跨 split 对数" />
+                    <EvidenceMetric label="Seed" value={formatCount(strictIsolation.seed)} />
+                    <EvidenceMetric label="Jaccard 阈值" value={strictIsolation.jaccard_threshold === null ? "未提供" : String(strictIsolation.jaccard_threshold)} />
+                  </div>
+                  <p className="evidence-panel__footnote">{strictIsolation.explanation}</p>
+                  <p className="evidence-panel__footnote">该指标用于暴露近重复泄漏风险，不是“真实准确率只有 20%”，也不应与随机切分结果等价横向比较。</p>
+                </article>
+              ) : null}
+              {evidence.model.near_duplicate_audit ? (
+                <p className="evidence-panel__footnote trust-model-audit">
+                  近重复审计：阈值 {evidence.model.near_duplicate_audit.jaccard_threshold}，共 {evidence.model.near_duplicate_audit.pair_count} 对，
+                  其中跨疾病 {evidence.model.near_duplicate_audit.cross_label_pair_count} 对。更严格切分可能降低表面指标，但更能反映泛化能力。
                 </p>
-              </article>
-            ) : null)}
-          </div>
-        ) : null}
-        {groupedCV ? (
-          <article className="evidence-panel trust-strict-isolation">
-            <div className="evidence-panel__topline">
-              <GitBranch size={17} aria-hidden="true" />
-              <span>Grouped Near-Duplicate CV</span>
+              ) : null}
             </div>
-            <div className="evidence-metric-grid">
-              <EvidenceMetric label="折数" value={formatCount(groupedCV.fold_count)} note="同一近重复 component 不跨折" />
-              <EvidenceMetric label="Mean Top-1" value={splitMetricValue(cvTop1?.mean ?? null)} />
-              <EvidenceMetric label="Mean Top-3" value={splitMetricValue(groupedCV.aggregate?.top3_accuracy?.mean ?? null)} />
-              <EvidenceMetric label="Mean Macro-F1" value={splitMetricValue(groupedCV.aggregate?.macro_f1?.mean ?? null)} />
-              <EvidenceMetric
-                label="跨折覆盖类别"
-                value={`${formatCount(groupedCV.class_coverage_across_folds?.present_class_count ?? null)} / ${formatCount(groupedCV.class_coverage_across_folds?.total_class_count ?? null)}`}
-              />
-              <EvidenceMetric
-                label="跨 split 近重复"
-                value={formatCount(groupedCV.cross_split_near_duplicates_max_pair_count ?? null)}
-                note="各折最大近重复对数"
-              />
-            </div>
-            <p className="evidence-panel__footnote">
-              offline prototype evaluation，not clinical validation。Jaccard ≥ {groupedCV.jaccard_threshold} 的同标签 component 整组进入同一折；
-              Seed {groupedCV.seed}。Mean/std 与按验证行数加权结果均写入评估报告，不可与随机切分准确率直接横向比较。
-            </p>
-            <p className="evidence-panel__footnote">
-              严格评估显示疾病分类模型泛化能力有限，因此当前版本不允许该模型单独决定患者就医科室；模型结果仅作为研究型辅助信号展示。
-            </p>
-          </article>
-        ) : null}
-        {strictIsolation ? (
-          <article className="evidence-panel trust-strict-isolation">
-            <div className="evidence-panel__topline"><ShieldCheck size={17} aria-hidden="true" /><span>{strictIsolation.label}</span></div>
-            <div className="evidence-metric-grid">
-              <EvidenceMetric label="测试样本" value={formatCount(strictIsolation.test_samples)} />
-              <EvidenceMetric label="覆盖类别" value={`${formatCount(strictIsolation.present_classes)} / ${formatCount(strictIsolation.total_classes)}`} />
-              <EvidenceMetric label="跨 split 近重复" value={formatCount(strictIsolation.cross_split_near_duplicates)} note="Jaccard ≥ 阈值的跨 split 对数" />
-              <EvidenceMetric label="Seed" value={formatCount(strictIsolation.seed)} />
-              <EvidenceMetric label="Jaccard 阈值" value={strictIsolation.jaccard_threshold === null ? "未提供" : String(strictIsolation.jaccard_threshold)} />
-            </div>
-            <p className="evidence-panel__footnote">{strictIsolation.explanation}</p>
-            <p className="evidence-panel__footnote">该指标用于暴露近重复泄漏风险，不是“真实准确率只有 20%”，也不应与随机切分结果等价横向比较。</p>
-          </article>
-        ) : null}
-        {evidence.model.near_duplicate_audit ? (
-          <p className="evidence-panel__footnote trust-model-audit">
-            近重复审计：阈值 {evidence.model.near_duplicate_audit.jaccard_threshold}，共 {evidence.model.near_duplicate_audit.pair_count} 对，
-            其中跨疾病 {evidence.model.near_duplicate_audit.cross_label_pair_count} 对。更严格切分可能降低表面指标，但更能反映泛化能力。
-          </p>
+          </details>
         ) : null}
       </section>
 

@@ -21,8 +21,9 @@ Last updated: 2026-09-12
 - Tokens: base `#f3f5f6`, ink `#0b1418`, accent `#0b6e6a`, danger `#c23b36`. All from `tokens.css`.
 - Container 1200px; hero auto-height (never min-height 700+).
 - Care Path uses lightweight CSS 3D + flow dash; disable 3D on mobile; respect prefers-reduced-motion.
-- Triage is a decision workbench: stepper + CurrentUnderstanding sidebar + collapsible prefs (`<details>`).
-- Map list ↔ marker hover linkage via `hoveredKey`.
+- Triage is a decision workbench: stepper + CurrentUnderstanding sidebar (path progress + next actions) + collapsible prefs (`<details>`).
+- Map list ↔ marker hover **and focus** linkage via `hoveredKey`.
+- Trust model splits / Grouped CV collapsed under `details.trust-model-details`.
 - DoctorAvatar class is `doctor-index-avatar` (not `doctor-avatar`).
 - FavoriteDoctorButton active class is `.is-active`.
 

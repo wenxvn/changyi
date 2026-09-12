@@ -49,6 +49,13 @@
 - `DoctorAvatar` class 名对齐（`doctor-index-avatar`），修复手机端大图横向溢出
 - 收藏按钮 `focus-visible` 与 `is-active` 状态补齐
 
+### P3.1 体验打磨（同轮后续）
+
+- **Triage 左栏**：Current Understanding 增加路径进度条、「接下来」行动清单与「浏览全部医疗资源」跳转
+- **Resources 卡片**：急诊/医院/医生旗标、区域右对齐、科室 chip 收敛（+N）、操作区贴底
+- **Trust**：模型切分 / Grouped CV / 近重复隔离默认折叠为「模型切分与近重复隔离」
+- **Map**：marker 增加 `focus`/`blur` 与列表双向联动，键盘可达
+
 ## 当前基线
 
 | 领域 | 事实 |

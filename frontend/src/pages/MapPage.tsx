@@ -179,6 +179,8 @@ function RealMapCanvas({
               onClick={(event) => { event.stopPropagation(); onSelect(item); }}
               onMouseEnter={() => onHover?.(key)}
               onMouseLeave={() => onHover?.(null)}
+              onFocus={() => onHover?.(key)}
+              onBlur={() => onHover?.(null)}
               aria-label={"查看 " + (item.name ?? "医院资源")}
               aria-pressed={selected}
               title={item.name ?? "医院资源"}
