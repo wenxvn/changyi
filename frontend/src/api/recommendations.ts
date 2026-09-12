@@ -10,6 +10,12 @@ export type VisitIntent =
   | "procedure_consult"
   | "unsure";
 
+export interface RoutingPreferences {
+  district_preference?: "prefer_home_district" | "allow_cross_district" | "any_district";
+  distance_preference?: "prefer_nearby" | "allow_farther_for_fit" | "distance_flexible";
+  continuity_preference?: boolean;
+}
+
 export interface RecommendationRequest {
   condition: string;
   scenario?: "common" | "complex" | "surgery" | "first_visit";
@@ -20,6 +26,8 @@ export interface RecommendationRequest {
   followup_answers?: FollowupAnswer[];
   expert_preference?: ExpertPreference;
   visit_intent?: VisitIntent;
+  routing_preferences?: RoutingPreferences;
+  favorite_doctor_ids?: number[];
 }
 
 export function getRecommendations(

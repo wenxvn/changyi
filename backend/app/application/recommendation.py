@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from backend.app.domain.recommendation.scoring import rebalance_weights
+from backend.app.domain.recommendation.routing_preferences import normalize_routing_preferences
 from backend.app.domain.recommendation.visit_intent import ranking_scenario_for_visit_intent
 
 
@@ -26,6 +27,8 @@ class RecommendationContext:
     location_source: str = "unknown"
     followup_answers: tuple[dict[str, Any], ...] = ()
     visit_intent: str | None = None
+    routing_preferences: dict[str, Any] | None = None
+    favorite_doctor_ids: tuple[int, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -61,6 +64,7 @@ class RecommendationApplicationService:
         triage_scenario = triage.get("recommended_scenario") or context.scenario
         ranking_scenario = ranking_scenario_for_visit_intent(context.visit_intent, triage_scenario)
         effective_scenario = ranking_scenario
+        preferences = normalize_routing_preferences(context.routing_preferences)
         resource_strategy = self.resource_strategy(triage, context.expert_preference)
         hospitals = self.recommend_hospitals(
             context.condition,
@@ -80,8 +84,25 @@ class RecommendationApplicationService:
             )
         else:
             doctors = self.legacy_recommend_doctors(context.condition)
+        if preferences["continuity_preference"] and context.favorite_doctor_ids:
+            favorite_ids = set(context.favorite_doctor_ids)
+            boosted = []
+            for item in doctors:
+                doctor_id = (item.get("doctor") or {}).get("id")
+                if doctor_id in favorite_ids:
+                    item = dict(item)
+                    item["match_score"] = round(min(1.0, float(item.get("match_score") or 0.0) + 0.05), 4)
+                    notes = list(item.get("reasons") or [])
+                    notes.append("已按连续复诊偏好优先展示收藏医生")
+                    item["reasons"] = notes[:4]
+                boosted.append(item)
+            doctors = sorted(boosted, key=lambda row: -float(row.get("match_score") or 0.0))
         matched_department = triage.get("matched_department") or self.match_department(context.condition)
         doctor_weights = self.enhanced_weights.get(effective_scenario, self.enhanced_weights["surgery"])
+        if preferences["distance_preference"] == "prefer_nearby" and "access" in doctor_weights:
+            doctor_weights = {**doctor_weights, "access": doctor_weights.get("access", 0.0) + 0.04}
+            total = sum(doctor_weights.values()) or 1.0
+            doctor_weights = {key: round(value / total, 6) for key, value in doctor_weights.items()}
         if context.user_lat is None or context.user_lng is None:
             doctor_weights = rebalance_weights(doctor_weights, {"access"})
         hospital_weights = (
@@ -93,6 +114,7 @@ class RecommendationApplicationService:
             "condition": context.condition,
             "scenario": context.scenario,
             "visit_intent": context.visit_intent,
+            "routing_preferences": preferences,
             "effective_scenario": effective_scenario,
             "triage_scenario": triage_scenario,
             "expert_preference": context.expert_preference,

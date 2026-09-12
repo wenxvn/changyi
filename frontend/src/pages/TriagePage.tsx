@@ -2,7 +2,9 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, CircleAlert, LoaderCircle, ShieldCheck } from "lucide-react";
 import { ApiError } from "../api/client";
 import { getFollowups, startTriage } from "../api/triage";
-import { getRecommendations, type ExpertPreference, type VisitIntent } from "../api/recommendations";
+import { getRecommendations, type ExpertPreference, type VisitIntent, type RoutingPreferences } from "../api/recommendations";
+import { useFavoriteDoctors } from "../state/favoriteDoctors";
+import { FavoriteDoctorButton } from "../components/ui/FavoriteDoctorButton";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
 import { CurrentUnderstanding } from "../components/medical/CurrentUnderstanding";
@@ -46,6 +48,12 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const [followupAnswers, setFollowupAnswers] = useState<FollowupAnswer[]>([]);
   const [expertPreference, setExpertPreference] = useState<ExpertPreference>("system");
   const [visitIntent, setVisitIntent] = useState<VisitIntent | "">("");
+  const [routingPreferences, setRoutingPreferences] = useState<RoutingPreferences>({
+    district_preference: "any_district",
+    distance_preference: "distance_flexible",
+    continuity_preference: false,
+  });
+  const { favoriteDoctorIds, isFavorite, toggleFavorite } = useFavoriteDoctors();
   const { location } = useLocationContext();
   const triageController = useRef<AbortController | null>(null);
   const recommendationController = useRef<AbortController | null>(null);
@@ -79,7 +87,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     void loadRecommendations();
     // Reload recommendations when the user changes expert preference after results are shown.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expertPreference, visitIntent]);
+  }, [expertPreference, visitIntent, routingPreferences, favoriteDoctorIds.join(",")]);
 
   async function submitCondition(
     value: string,
@@ -156,6 +164,10 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           followup_answers: followupAnswers,
           expert_preference: expertPreference,
           ...(visitIntent ? { visit_intent: visitIntent } : {}),
+          routing_preferences: routingPreferences,
+          ...(routingPreferences.continuity_preference && favoriteDoctorIds.length
+            ? { favorite_doctor_ids: favoriteDoctorIds.slice(0, 50) }
+            : {}),
         },
         controller.signal,
       );
@@ -260,6 +272,52 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                     {label}
                   </label>
                 ))}
+              </fieldset>
+              <fieldset className="expert-preference routing-preferences">
+                <legend>就医资源偏好</legend>
+                <p className="expert-preference__note">只影响资源匹配，不改变安全分诊；默认关闭。</p>
+                <label>
+                  <span className="routing-preferences__label">跨区就医</span>
+                  <select
+                    value={routingPreferences.district_preference}
+                    onChange={(event) => setRoutingPreferences((prev) => ({
+                      ...prev,
+                      district_preference: event.target.value as RoutingPreferences["district_preference"],
+                    }))}
+                    data-testid="pref-district"
+                  >
+                    <option value="prefer_home_district">优先本区</option>
+                    <option value="allow_cross_district">可接受跨区</option>
+                    <option value="any_district">不限</option>
+                  </select>
+                </label>
+                <label>
+                  <span className="routing-preferences__label">大致距离</span>
+                  <select
+                    value={routingPreferences.distance_preference}
+                    onChange={(event) => setRoutingPreferences((prev) => ({
+                      ...prev,
+                      distance_preference: event.target.value as RoutingPreferences["distance_preference"],
+                    }))}
+                    data-testid="pref-distance"
+                  >
+                    <option value="prefer_nearby">就近优先</option>
+                    <option value="allow_farther_for_fit">可接受更远但资源更匹配</option>
+                    <option value="distance_flexible">不特别在意距离</option>
+                  </select>
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={Boolean(routingPreferences.continuity_preference)}
+                    onChange={(event) => setRoutingPreferences((prev) => ({
+                      ...prev,
+                      continuity_preference: event.target.checked,
+                    }))}
+                    data-testid="pref-continuity"
+                  />
+                  优先考虑之前收藏 / 复诊医生
+                </label>
               </fieldset>
               <fieldset className="expert-preference">
                 <legend>医生资源偏好</legend>

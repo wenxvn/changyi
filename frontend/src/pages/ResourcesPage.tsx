@@ -19,6 +19,8 @@ import { StatusPill } from "../components/ui/StatusPill";
 import { AmapNavigationLink } from "../components/ui/AmapNavigationLink";
 import { DoctorAvatar } from "../components/ui/DoctorAvatar";
 import { HospitalLogo } from "../components/ui/HospitalLogo";
+import { FavoriteDoctorButton } from "../components/ui/FavoriteDoctorButton";
+import { useFavoriteDoctors } from "../state/favoriteDoctors";
 import type { DoctorRecord, HospitalRecord, ResourceDetailPayload } from "../types/api";
 
 type ResourceTab = "overview" | "hospitals" | "doctors";
@@ -85,10 +87,14 @@ function DoctorCard({
   doctor,
   selected,
   onSelect,
+  favorite,
+  onToggleFavorite,
 }: {
   doctor: DoctorRecord;
   selected: boolean;
   onSelect: () => void;
+  favorite: boolean;
+  onToggleFavorite: (doctorId: number) => void;
 }) {
   const specialties = (doctor.specialties ?? []).slice(0, 3);
   return (
@@ -97,6 +103,14 @@ function DoctorCard({
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
           <span className="eyebrow eyebrow--muted">公开医生资料</span>
+          {typeof doctor.id === "number" ? (
+            <FavoriteDoctorButton
+              doctorId={doctor.id}
+              active={favorite}
+              onToggle={onToggleFavorite}
+              compact
+            />
+          ) : null}
           {doctor.outpatient_time ? <span className="resource-index-card__flag">门诊字段</span> : null}
         </div>
         <h3>{doctor.name ?? "公开医生资料"}</h3>
@@ -135,6 +149,8 @@ function ResourceDetail({
   onRetry,
   onClose,
   onNavigate,
+  isFavorite,
+  onToggleFavorite,
 }: {
   selection: Selection;
   detail: ResourceDetailPayload | null;
@@ -143,6 +159,8 @@ function ResourceDetail({
   onRetry: () => void;
   onClose: () => void;
   onNavigate: (path: string) => void;
+  isFavorite: (doctorId: number) => boolean;
+  onToggleFavorite: (doctorId: number) => void;
 }) {
   return (
     <aside className="resource-detail" aria-labelledby="resource-detail-title">
@@ -177,7 +195,20 @@ function ResourceDetail({
         const doctor = detail.resource;
         return (
           <>
-            <div className="resource-detail__identity"><DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} size="large" /><div><h2 id="resource-detail-title">{doctor.name ?? "公开医生资料"}</h2><p>{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "职称/科室未提供"}</p></div></div>
+            <div className="resource-detail__identity">
+              <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} size="large" />
+              <div>
+                <h2 id="resource-detail-title">{doctor.name ?? "公开医生资料"}</h2>
+                <p>{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "职称/科室未提供"}</p>
+                {typeof doctor.id === "number" ? (
+                  <FavoriteDoctorButton
+                    doctorId={doctor.id}
+                    active={isFavorite(doctor.id)}
+                    onToggle={onToggleFavorite}
+                  />
+                ) : null}
+              </div>
+            </div>
             <dl className="resource-detail__facts">
               <div><dt>所属医院</dt><dd>{doctor.hospital_name ?? "未提供"}</dd></div>
               <div><dt>公开专长</dt><dd>{doctor.specialties?.slice(0, 6).join(" · ") || doctor.specialty || "未提供"}</dd></div>
@@ -210,6 +241,7 @@ function ResourceDetail({
 }
 
 export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => void }) {
+  const { isFavorite, toggleFavorite } = useFavoriteDoctors();
   const initialParams = useMemo(() => new URLSearchParams(window.location.search), []);
   const [activeTab, setActiveTab] = useState<ResourceTab>(() => {
     const type = initialParams.get("type");
@@ -642,14 +674,23 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         {showingHospitals && !hospitalLoading && !hospitalError && filteredHospitals.length > 0 ? (
           <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
             <div className="resource-index-grid">{filteredHospitals.map((hospital) => <HospitalCard key={String(hospital.id ?? hospital.name)} hospital={hospital} selected={selection?.kind === "hospital" && selection.item.id === hospital.id} onSelect={() => setSelection({ kind: "hospital", item: hospital })} />)}</div>
-            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} /> : null}
+            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} /> : null}
           </div>
         ) : null}
 
         {showingDoctors && !doctorLoading && !doctorError && visibleDoctors.length > 0 ? (
           <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
             <div>
-              <div className="resource-index-grid">{visibleDoctors.map((doctor, index) => <DoctorCard key={String(doctor.id ?? `${doctor.name}-${index}`)} doctor={doctor} selected={selection?.kind === "doctor" && selection.item.id === doctor.id} onSelect={() => setSelection({ kind: "doctor", item: doctor })} />)}</div>
+              <div className="resource-index-grid">{visibleDoctors.map((doctor, index) => (
+                <DoctorCard
+                  key={String(doctor.id ?? `${doctor.name}-${index}`)}
+                  doctor={doctor}
+                  selected={selection?.kind === "doctor" && selection.item.id === doctor.id}
+                  onSelect={() => setSelection({ kind: "doctor", item: doctor })}
+                  favorite={typeof doctor.id === "number" ? isFavorite(doctor.id) : false}
+                  onToggleFavorite={toggleFavorite}
+                />
+              ))}</div>
               <p className="resource-index-cap" aria-live="polite">
                 已加载 {visibleDoctors.length.toLocaleString("zh-CN")} / {doctorTotal.toLocaleString("zh-CN")} 条公开医生资料
                 {doctorHasMore ? "。" : "。已到末页。"}
@@ -667,7 +708,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
                 </div>
               ) : null}
             </div>
-            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} /> : null}
+            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} /> : null}
           </div>
         ) : null}
       </div>

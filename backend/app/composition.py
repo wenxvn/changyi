@@ -1743,6 +1743,8 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         location_source = parsed.location_source
         followup_answers = parsed.followup_answers
         visit_intent = parsed.visit_intent
+        routing_preferences = parsed.routing_preferences
+        favorite_doctor_ids = parsed.favorite_doctor_ids
     else:
         if not isinstance(data, dict):
             raise RequestValidationError("INVALID_JSON", "请求体必须是 JSON 对象")
@@ -1754,6 +1756,12 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         expert_preference = data.get("expert_preference", "system")
         raw_visit_intent = data.get("visit_intent")
         visit_intent = str(raw_visit_intent) if raw_visit_intent else None
+        routing_preferences = data.get("routing_preferences") if isinstance(data.get("routing_preferences"), dict) else None
+        raw_favorites = data.get("favorite_doctor_ids")
+        favorite_doctor_ids = tuple(
+            int(item) for item in (raw_favorites or [])[:50]
+            if str(item).isdigit() and int(item) > 0
+        ) if isinstance(raw_favorites, list) else ()
         raw_lat, raw_lng = data.get("lat"), data.get("lng")
         location_source = (
             "geolocation" if raw_lat is not None and raw_lng is not None
@@ -1776,6 +1784,8 @@ def _build_recommendation_data(data, *, doctor_top_n=8, enhanced=False, strict=F
         location_source=location_source,
         followup_answers=followup_answers,
         visit_intent=visit_intent,
+        routing_preferences=routing_preferences,
+        favorite_doctor_ids=favorite_doctor_ids,
     )
     return RECOMMENDATION_APPLICATION_SERVICE.build(
         context,

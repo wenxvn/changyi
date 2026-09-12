@@ -4,6 +4,8 @@ import { StatusPill } from "../ui/StatusPill";
 import { AmapNavigationLink } from "../ui/AmapNavigationLink";
 import { DoctorAvatar } from "../ui/DoctorAvatar";
 import { HospitalLogo } from "../ui/HospitalLogo";
+import { FavoriteDoctorButton } from "../ui/FavoriteDoctorButton";
+import { useFavoriteDoctors } from "../../state/favoriteDoctors";
 import type {
   RecommendationPayload,
   RecommendedDoctor,
@@ -128,21 +130,36 @@ function HospitalCard({ item, index, onNavigate }: { item: RecommendedHospital; 
   );
 }
 
-function DoctorRow({ item, onNavigate }: { item: RecommendedDoctor; onNavigate: (path: string) => void }) {
+function DoctorRow({
+  item,
+  onNavigate,
+  favorite,
+  onToggleFavorite,
+}: {
+  item: RecommendedDoctor;
+  onNavigate: (path: string) => void;
+  favorite: boolean;
+  onToggleFavorite: (doctorId: number) => void;
+}) {
   const doctor = item.doctor;
   return (
-    <button
-      className="doctor-row"
-      type="button"
-      onClick={() => typeof doctor.id === "number" && onNavigate(`/resources?doctor=${doctor.id}`)}
-      disabled={typeof doctor.id !== "number"}
-    >
-      <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
-      <div>
-        <strong>{doctorName(item)}</strong>
-        <span>{[doctor.title, doctor.department, doctor.hospital_name].filter((value): value is string => Boolean(value)).join(" · ") || "公开医生资料"}</span>
-      </div>
-    </button>
+    <div className="doctor-row doctor-row--with-favorite">
+      <button
+        className="doctor-row__main"
+        type="button"
+        onClick={() => typeof doctor.id === "number" && onNavigate(`/resources?doctor=${doctor.id}`)}
+        disabled={typeof doctor.id !== "number"}
+      >
+        <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
+        <div>
+          <strong>{doctorName(item)}</strong>
+          <span>{[doctor.title, doctor.department, doctor.hospital_name].filter((value): value is string => Boolean(value)).join(" · ") || "公开医生资料"}</span>
+        </div>
+      </button>
+      {typeof doctor.id === "number" ? (
+        <FavoriteDoctorButton doctorId={doctor.id} active={favorite} onToggle={onToggleFavorite} compact />
+      ) : null}
+    </div>
   );
 }
 
@@ -179,6 +196,7 @@ function RoutineOrUrgentResult({
   onLoadRecommendations,
   onNavigate,
 }: Omit<TriageResultsProps, "onNavigate"> & Pick<TriageResultsProps, "onNavigate">) {
+  const { isFavorite, toggleFavorite } = useFavoriteDoctors();
   const insufficient = result.triage_status === "INSUFFICIENT_INFORMATION";
   const urgent = result.triage_status === "URGENT";
   const title = insufficient ? "还需要一点信息，才能继续" : urgent ? "建议尽快进行医疗评估" : "可以继续了解合适的就医路径";
@@ -215,7 +233,15 @@ function RoutineOrUrgentResult({
             {recommendations.recommended_doctors.length > 0 ? (
               <div className="doctor-preview">
                 <div className="doctor-preview__heading"><span className="eyebrow eyebrow--muted">公开医生资料预览</span><span>医院路径优先</span></div>
-                {recommendations.recommended_doctors.slice(0, 3).map((item, index) => <DoctorRow item={item} onNavigate={onNavigate} key={`${doctorName(item)}-${index}`} />)}
+                {recommendations.recommended_doctors.slice(0, 3).map((item, index) => (
+                  <DoctorRow
+                    item={item}
+                    onNavigate={onNavigate}
+                    key={`${doctorName(item)}-${index}`}
+                    favorite={typeof item.doctor.id === "number" ? isFavorite(item.doctor.id) : false}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                ))}
               </div>
             ) : null}
             <p className="recommendation-notice">推荐分只用于资源排序，不代表诊断概率或治疗效果概率。来源和更新时间以资源详情为准。</p>

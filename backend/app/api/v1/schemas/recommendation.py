@@ -35,6 +35,8 @@ class RecommendationRequest:
     location_source: str = "unknown"
     followup_answers: tuple[dict[str, Any], ...] = ()
     visit_intent: str | None = None
+    routing_preferences: dict[str, Any] | None = None
+    favorite_doctor_ids: tuple[int, ...] = ()
 
     @classmethod
     def parse(cls, payload: Any, *, region_code: str = "320400") -> "RecommendationRequest":
@@ -44,6 +46,7 @@ class RecommendationRequest:
         allowed = {
             "condition", "scenario", "district", "expert_preference", "region_code",
             "lat", "lng", "location_source", "followup_answers", "visit_intent",
+            "routing_preferences", "favorite_doctor_ids",
         }
         unexpected = sorted(set(payload) - allowed)
         if unexpected:
@@ -84,6 +87,30 @@ class RecommendationRequest:
         else:
             district = raw_district.strip()
 
+        raw_prefs = payload.get("routing_preferences")
+        if raw_prefs is None:
+            routing_preferences = None
+        elif not isinstance(raw_prefs, dict):
+            raise RequestValidationError("INVALID_ROUTING_PREFERENCES", "routing_preferences 必须是对象")
+        else:
+            routing_preferences = raw_prefs
+
+        raw_favorites = payload.get("favorite_doctor_ids")
+        if raw_favorites is None:
+            favorite_doctor_ids: tuple[int, ...] = ()
+        elif not isinstance(raw_favorites, list):
+            raise RequestValidationError("INVALID_FAVORITE_DOCTOR_IDS", "favorite_doctor_ids 必须是数组")
+        else:
+            parsed_favorites: list[int] = []
+            for item in raw_favorites[:50]:
+                try:
+                    doctor_id = int(item)
+                except (TypeError, ValueError) as exc:
+                    raise RequestValidationError("INVALID_FAVORITE_DOCTOR_IDS", "favorite_doctor_ids 必须是整数") from exc
+                if doctor_id > 0:
+                    parsed_favorites.append(doctor_id)
+            favorite_doctor_ids = tuple(parsed_favorites)
+
         lat, lng = _parse_coordinates(payload.get("lat"), payload.get("lng"))
         location_source = _parse_location_source(payload.get("location_source"), district, lat, lng)
         followup_answers = _parse_followup_answers(payload.get("followup_answers"))
@@ -98,6 +125,8 @@ class RecommendationRequest:
             location_source=location_source,
             followup_answers=followup_answers,
             visit_intent=visit_intent,
+            routing_preferences=routing_preferences,
+            favorite_doctor_ids=favorite_doctor_ids,
         )
 
 
