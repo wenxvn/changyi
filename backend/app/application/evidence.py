@@ -156,6 +156,19 @@ def build_evidence_payload(
             "near_duplicate_components": grouped_report.get("near_duplicate_components"),
             "primary_split": grouped_report.get("primary_split", "near_duplicate_same_label"),
             "near_duplicate_audit": grouped_report.get("near_duplicate_audit"),
+            "strict_near_duplicate_isolation": {
+                "label": "Strict Near-duplicate Isolation",
+                "test_samples": (grouped_report.get("near_duplicate_same_label") or {}).get("test_rows"),
+                "present_classes": (grouped_report.get("near_duplicate_same_label") or {}).get("present_class_count"),
+                "total_classes": grouped_report.get("dataset", {}).get("class_count"),
+                "cross_split_near_duplicates": (
+                    (grouped_report.get("near_duplicate_same_label") or {}).get("cross_split_near_duplicates") or {}
+                ).get("pair_count"),
+                "seed": grouped_report.get("configuration", {}).get("seed"),
+                "jaccard_threshold": grouped_report.get("configuration", {}).get("near_duplicate_threshold"),
+                "comparable_to_random_split": False,
+                "explanation": "严格近重复隔离用于评估去除症状高度相似样本泄漏后的泛化风险。由于当前数据集规模较小，严格隔离后测试子集仅覆盖部分疾病类别，因此该指标不能与随机切分准确率直接等价比较。",
+            },
             "split_manifest": "evaluation/model/split_manifest.json",
             "model_source": model_entry,
             "training_data_source": training_entry,
@@ -185,6 +198,7 @@ def build_evidence_payload(
             "医院目录已迁移到 Region Pack，但逐字段来源、许可和更新时间仍未齐备；派生能力线索不代表官方评级。",
             "医生资料为 public_source_mixed，公开资料不等于临床适配或疗效证明。",
             "模型指标来自 304 条小数据；Near-duplicate Group Split 降低近重复泄漏，指标更贴近泛化风险但不等于临床表现。",
+            "严格近重复隔离测试集仅覆盖部分疾病类别，不能与随机切分准确率直接横向比较。",
             "交通样本未全部通过质量门时，可达性按直线距离估算，站点信息仅作参考。",
         ],
     }

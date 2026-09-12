@@ -78,9 +78,10 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
   const modelSplits: Array<{ label: string; metrics: ModelSplitMetrics | undefined; note?: string }> = [
     { label: "随机基线", metrics: evidence.model.random_baseline, note: "宽松参考，可能受近重复样本影响。" },
     { label: "严格 fingerprint 分组", metrics: evidence.model.grouped_fingerprint, note: "保证完全相同症状集合不跨 split。" },
-    { label: "近重复同标签分组", metrics: evidence.model.near_duplicate_same_label, note: "默认强调：Jaccard≥0.8 同标签样本不跨 split。更严格切分可能降低表面指标，但更能反映泛化能力。" },
-    { label: "近重复全局分组", metrics: evidence.model.near_duplicate_global, note: "对照：跨疾病高相似样本也会被连接，可能形成更大 component。" },
+    { label: "严格近重复隔离（同标签）", metrics: evidence.model.near_duplicate_same_label, note: "测试子集仅覆盖部分疾病类别，不能与随机切分准确率直接横向比较。" },
+    { label: "近重复全局分组（对照）", metrics: evidence.model.near_duplicate_global, note: "对照：跨疾病高相似样本也会被连接，可能形成更大 component。" },
   ].filter((item) => Boolean(item.metrics));
+  const strictIsolation = evidence.model.strict_near_duplicate_isolation;
   return (
     <>
       <div className="trust-page__hero">
@@ -176,6 +177,20 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
               </article>
             ) : null)}
           </div>
+        ) : null}
+        {strictIsolation ? (
+          <article className="evidence-panel trust-strict-isolation">
+            <div className="evidence-panel__topline"><ShieldCheck size={17} aria-hidden="true" /><span>{strictIsolation.label}</span></div>
+            <div className="evidence-metric-grid">
+              <EvidenceMetric label="测试样本" value={formatCount(strictIsolation.test_samples)} />
+              <EvidenceMetric label="覆盖类别" value={`${formatCount(strictIsolation.present_classes)} / ${formatCount(strictIsolation.total_classes)}`} />
+              <EvidenceMetric label="跨 split 近重复" value={formatCount(strictIsolation.cross_split_near_duplicates)} note="Jaccard ≥ 阈值的跨 split 对数" />
+              <EvidenceMetric label="Seed" value={formatCount(strictIsolation.seed)} />
+              <EvidenceMetric label="Jaccard 阈值" value={strictIsolation.jaccard_threshold === null ? "未提供" : String(strictIsolation.jaccard_threshold)} />
+            </div>
+            <p className="evidence-panel__footnote">{strictIsolation.explanation}</p>
+            <p className="evidence-panel__footnote">该指标用于暴露近重复泄漏风险，不是“真实准确率只有 20%”，也不应与随机切分结果等价横向比较。</p>
+          </article>
         ) : null}
         {evidence.model.near_duplicate_audit ? (
           <p className="evidence-panel__footnote trust-model-audit">
