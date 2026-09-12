@@ -4,7 +4,6 @@ import { ApiError } from "../api/client";
 import { getFollowups, startTriage } from "../api/triage";
 import { getRecommendations, type ExpertPreference, type VisitIntent, type RoutingPreferences } from "../api/recommendations";
 import { useFavoriteDoctors } from "../state/favoriteDoctors";
-import { FavoriteDoctorButton } from "../components/ui/FavoriteDoctorButton";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
 import { CurrentUnderstanding } from "../components/medical/CurrentUnderstanding";
@@ -32,6 +31,15 @@ function followupFrom(result: TriagePayload): FollowupPayload | null {
   return followup?.needed ? followup : null;
 }
 
+function stepIndexFor(hasResult: boolean, hasFollowup: boolean, hasRecommendations: boolean): number {
+  if (!hasResult) return 0;
+  if (hasFollowup) return 1;
+  if (!hasRecommendations) return 2;
+  return 3;
+}
+
+const STEP_LABELS = ["描述症状", "补充信息", "安全方向", "资源路径"] as const;
+
 export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void }) {
   const initialCondition = new URLSearchParams(window.location.search).get("condition") ?? "";
   const [condition, setCondition] = useState(initialCondition);
@@ -53,7 +61,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     distance_preference: "distance_flexible",
     continuity_preference: false,
   });
-  const { favoriteDoctorIds, isFavorite, toggleFavorite } = useFavoriteDoctors();
+  const { favoriteDoctorIds } = useFavoriteDoctors();
   const { location } = useLocationContext();
   const triageController = useRef<AbortController | null>(null);
   const recommendationController = useRef<AbortController | null>(null);
@@ -126,13 +134,8 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
       if (!nextFollowup) recordAnalysis(nextResult);
 
       if (nextFollowup) {
-        // The triage response already contains a safe follow-up fallback. The
-        // dedicated endpoint is queried to keep the UI on the published contract.
         try {
-          const followupResponse = await getFollowups(
-            request,
-            controller.signal,
-          );
+          const followupResponse = await getFollowups(request, controller.signal);
           if (!controller.signal.aborted) setFollowup(followupResponse.followup);
         } catch {
           // Keep the follow-up embedded in the successful triage response.
@@ -195,21 +198,39 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
 
   const canShowResults = Boolean(result && result.triage_status !== "EMERGENCY");
   const hasAnalysis = Boolean(result);
+  const activeStep = stepIndexFor(hasAnalysis, Boolean(followup), Boolean(recommendations));
 
   return (
     <section className="triage-page page-container">
       <button className="back-link" type="button" onClick={() => onNavigate("/")}>
         <ArrowLeft size={15} aria-hidden="true" /> 返回首页
       </button>
+
+      {hasAnalysis ? (
+        <ol className="triage-steps" aria-label="分诊进度">
+          {STEP_LABELS.map((label, index) => (
+            <li key={label} className={index <= activeStep ? "is-active" : index === activeStep + 1 ? "is-next" : ""} aria-current={index === activeStep ? "step" : undefined}>
+              <span className="triage-steps__index">{index + 1}</span>
+              <span>{label}</span>
+            </li>
+          ))}
+        </ol>
+      ) : null}
+
       <div className={`triage-page__layout${hasAnalysis ? " triage-page__layout--active" : ""}`}>
         {result ? (
           <CurrentUnderstanding condition={submittedCondition} result={result} followup={followup} />
         ) : (
           <div className="triage-page__intro">
             <div className="hero__eyebrow"><span className="eyebrow">智能就医 · 从描述开始</span><StatusPill><ShieldCheck size={14} aria-hidden="true" /> 先看安全信号</StatusPill></div>
-            <h1>先说说，<br /><em>现在有什么不舒服？</em></h1>
+            <h1>先说说，<em>现在有什么不舒服？</em></h1>
             <p>用自己的话描述即可。常医智导会先整理安全信号，再决定是否需要更多信息和就医资源。</p>
-            <div className="triage-page__note"><ShieldCheck size={16} aria-hidden="true" /><span>这里的结果是辅助信息，不替代医生诊断。</span></div>
+            <div className="triage-page__note"><ShieldCheck size={16} aria-hidden="true" /><span>这里的结果是辅助信息，不替代医生诊断。急症信号会优先提示急救出口。</span></div>
+            <ul className="triage-page__outcomes">
+              <li><strong>安全状态</strong><span>是否需要优先急诊或尽快评估</span></li>
+              <li><strong>就医方向</strong><span>建议首先了解的科室方向</span></li>
+              <li><strong>资源路径</strong><span>常州医院、公开医生与导航入口</span></li>
+            </ul>
           </div>
         )}
 
@@ -227,7 +248,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                 value={condition}
                 onChange={(event) => setCondition(event.target.value)}
                 placeholder="例如：最近总是头晕，大概有几天了。"
-                rows={7}
+                rows={5}
                 maxLength={2000}
                 disabled={loading}
               />
@@ -249,111 +270,117 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           <LocationSelector />
 
           {canShowResults ? (
-            <>
-              <fieldset className="expert-preference visit-intent">
-                <legend>这次主要想解决什么？</legend>
-                <p className="expert-preference__note">只影响就医资源匹配，不改变安全分诊结果；急症仍优先急诊/急救。</p>
-                {([
-                  ["", "先按系统判断"],
-                  ["first_visit", "首次就诊"],
-                  ["follow_up", "已有诊断，需要复诊"],
-                  ["review_results", "已有检查，希望进一步就医"],
-                  ["procedure_consult", "手术 / 专科治疗咨询"],
-                  ["unsure", "不确定"],
-                ] as Array<[VisitIntent | "", string]>).map(([value, label]) => (
-                  <label key={value || "default"}>
+            <details className="triage-prefs" open={!recommendations && !recommendationsLoading}>
+              <summary>
+                <span>资源偏好</span>
+                <small>只影响匹配，不改变安全分诊</small>
+              </summary>
+              <div className="triage-prefs__body">
+                <fieldset className="expert-preference visit-intent">
+                  <legend>这次主要想解决什么？</legend>
+                  <p className="expert-preference__note">只影响就医资源匹配，不改变安全分诊结果；急症仍优先急诊/急救。</p>
+                  {([
+                    ["", "先按系统判断"],
+                    ["first_visit", "首次就诊"],
+                    ["follow_up", "已有诊断，需要复诊"],
+                    ["review_results", "已有检查，希望进一步就医"],
+                    ["procedure_consult", "手术 / 专科治疗咨询"],
+                    ["unsure", "不确定"],
+                  ] as Array<[VisitIntent | "", string]>).map(([value, label]) => (
+                    <label key={value || "default"}>
+                      <input
+                        type="radio"
+                        name="visit-intent"
+                        value={value}
+                        checked={visitIntent === value}
+                        onChange={() => setVisitIntent(value)}
+                      />
+                      {label}
+                    </label>
+                  ))}
+                </fieldset>
+                <fieldset className="expert-preference routing-preferences">
+                  <legend>就医资源偏好</legend>
+                  <p className="expert-preference__note">只影响资源匹配，不改变安全分诊；默认关闭。</p>
+                  <label>
+                    <span className="routing-preferences__label">跨区就医</span>
+                    <select
+                      value={routingPreferences.district_preference}
+                      onChange={(event) => setRoutingPreferences((prev) => ({
+                        ...prev,
+                        district_preference: event.target.value as RoutingPreferences["district_preference"],
+                      }))}
+                      data-testid="pref-district"
+                    >
+                      <option value="prefer_home_district">优先本区</option>
+                      <option value="allow_cross_district">可接受跨区</option>
+                      <option value="any_district">不限</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span className="routing-preferences__label">大致距离</span>
+                    <select
+                      value={routingPreferences.distance_preference}
+                      onChange={(event) => setRoutingPreferences((prev) => ({
+                        ...prev,
+                        distance_preference: event.target.value as RoutingPreferences["distance_preference"],
+                      }))}
+                      data-testid="pref-distance"
+                    >
+                      <option value="prefer_nearby">就近优先</option>
+                      <option value="allow_farther_for_fit">可接受更远但资源更匹配</option>
+                      <option value="distance_flexible">不特别在意距离</option>
+                    </select>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={Boolean(routingPreferences.continuity_preference)}
+                      onChange={(event) => setRoutingPreferences((prev) => ({
+                        ...prev,
+                        continuity_preference: event.target.checked,
+                      }))}
+                      data-testid="pref-continuity"
+                    />
+                    优先考虑之前收藏 / 复诊医生
+                  </label>
+                </fieldset>
+                <fieldset className="expert-preference">
+                  <legend>医生资源偏好</legend>
+                  <p className="expert-preference__note">专家资源不一定适合所有常见病与初诊场景；默认为系统平衡推荐。</p>
+                  <label>
                     <input
                       type="radio"
-                      name="visit-intent"
-                      value={value}
-                      checked={visitIntent === value}
-                      onChange={() => setVisitIntent(value)}
+                      name="expert-preference"
+                      value="system"
+                      checked={expertPreference === "system"}
+                      onChange={() => setExpertPreference("system")}
                     />
-                    {label}
+                    系统平衡推荐
                   </label>
-                ))}
-              </fieldset>
-              <fieldset className="expert-preference routing-preferences">
-                <legend>就医资源偏好</legend>
-                <p className="expert-preference__note">只影响资源匹配，不改变安全分诊；默认关闭。</p>
-                <label>
-                  <span className="routing-preferences__label">跨区就医</span>
-                  <select
-                    value={routingPreferences.district_preference}
-                    onChange={(event) => setRoutingPreferences((prev) => ({
-                      ...prev,
-                      district_preference: event.target.value as RoutingPreferences["district_preference"],
-                    }))}
-                    data-testid="pref-district"
-                  >
-                    <option value="prefer_home_district">优先本区</option>
-                    <option value="allow_cross_district">可接受跨区</option>
-                    <option value="any_district">不限</option>
-                  </select>
-                </label>
-                <label>
-                  <span className="routing-preferences__label">大致距离</span>
-                  <select
-                    value={routingPreferences.distance_preference}
-                    onChange={(event) => setRoutingPreferences((prev) => ({
-                      ...prev,
-                      distance_preference: event.target.value as RoutingPreferences["distance_preference"],
-                    }))}
-                    data-testid="pref-distance"
-                  >
-                    <option value="prefer_nearby">就近优先</option>
-                    <option value="allow_farther_for_fit">可接受更远但资源更匹配</option>
-                    <option value="distance_flexible">不特别在意距离</option>
-                  </select>
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={Boolean(routingPreferences.continuity_preference)}
-                    onChange={(event) => setRoutingPreferences((prev) => ({
-                      ...prev,
-                      continuity_preference: event.target.checked,
-                    }))}
-                    data-testid="pref-continuity"
-                  />
-                  优先考虑之前收藏 / 复诊医生
-                </label>
-              </fieldset>
-              <fieldset className="expert-preference">
-                <legend>医生资源偏好</legend>
-                <p className="expert-preference__note">专家资源不一定适合所有常见病与初诊场景；默认为系统平衡推荐。</p>
-                <label>
-                  <input
-                    type="radio"
-                    name="expert-preference"
-                    value="system"
-                    checked={expertPreference === "system"}
-                    onChange={() => setExpertPreference("system")}
-                  />
-                  系统平衡推荐
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="expert-preference"
-                    value="wish_expert"
-                    checked={expertPreference === "wish_expert"}
-                    onChange={() => setExpertPreference("wish_expert")}
-                  />
-                  希望优先专家
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="expert-preference"
-                    value="no_expert"
-                    checked={expertPreference === "no_expert"}
-                    onChange={() => setExpertPreference("no_expert")}
-                  />
-                  不特别需要专家
-                </label>
-              </fieldset>
-            </>
+                  <label>
+                    <input
+                      type="radio"
+                      name="expert-preference"
+                      value="wish_expert"
+                      checked={expertPreference === "wish_expert"}
+                      onChange={() => setExpertPreference("wish_expert")}
+                    />
+                    希望优先专家
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="expert-preference"
+                      value="no_expert"
+                      checked={expertPreference === "no_expert"}
+                      onChange={() => setExpertPreference("no_expert")}
+                    />
+                    不特别需要专家
+                  </label>
+                </fieldset>
+              </div>
+            </details>
           ) : null}
 
           {error ? (
