@@ -89,11 +89,11 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
       <div className="trust-page__hero">
         <div>
           <span className="eyebrow">可信信息 · 系统评估</span>
-          <h1>AI 应该知道，<br /><em>什么时候不该给出答案。</em></h1>
+          <h1>AI 应该知道，<em>什么时候不该给出答案。</em></h1>
           <p>{evidence.disclaimer}</p>
         </div>
         <div className="trust-page__hero-note">
-          <div className="trust-page__hero-note-icon"><LockKeyhole size={20} strokeWidth={1.5} aria-hidden="true" /></div>
+          <div className="trust-page__hero-note-icon"><LockKeyhole size={18} strokeWidth={1.6} aria-hidden="true" /></div>
           <strong>研究与演示阶段</strong>
           <span>这些信息帮助理解系统边界与资料来源。</span>
           <StatusPill tone="warning">{evidence.status === "provisional" ? "研究与演示" : evidence.status}</StatusPill>

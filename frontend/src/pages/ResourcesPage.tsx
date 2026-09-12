@@ -568,10 +568,10 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       <div className="resources-page__hero">
         <div>
           <span className="eyebrow">常州医疗资源 · 320400</span>
-          <h1>把城市资源，放回你的<br /><em>就医路径。</em></h1>
+          <h1>把城市资源，<em>放回你的就医路径。</em></h1>
           <p>搜索医院、科室或医生，先从公开资料了解可用资源。个性化推荐仍以问诊结果和服务端解释为准。</p>
         </div>
-        <div className="resources-page__hero-note"><Stethoscope size={20} strokeWidth={1.4} aria-hidden="true" /><span>公开资料索引</span><small>不是诊断，也不是官方排名。</small></div>
+        <div className="resources-page__hero-note"><Stethoscope size={18} strokeWidth={1.5} aria-hidden="true" /><span>公开资料索引</span><small>不是诊断，也不是官方排名。</small></div>
       </div>
 
       <div className="resources-toolbar">

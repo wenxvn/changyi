@@ -79,12 +79,16 @@ function RealMapCanvas({
   items,
   userLocation,
   selectedKey,
+  hoveredKey,
   onSelect,
+  onHover,
 }: {
   items: MapHospitalRecord[];
   userLocation?: MapPayload["user_location"];
   selectedKey: string | null;
+  hoveredKey?: string | null;
   onSelect: (item: MapHospitalRecord) => void;
+  onHover?: (key: string | null) => void;
 }) {
   const [view, setView] = useState({ lat: 31.77, lng: 119.95, zoom: 11 });
   const [tileLoadFailed, setTileLoadFailed] = useState(false);
@@ -165,13 +169,16 @@ function RealMapCanvas({
           const point = project(item.lat, item.lng, view.zoom);
           const key = itemKey(item);
           const selected = selectedKey === key;
+          const hovered = hoveredKey === key;
           return (
             <button
-              className={"map-marker" + (item.emergency ? " map-marker--emergency" : "") + (selected ? " map-marker--selected" : "")}
+              className={"map-marker" + (item.emergency ? " map-marker--emergency" : "") + (selected ? " map-marker--selected" : "") + (hovered && !selected ? " map-marker--hovered" : "")}
               key={key}
               type="button"
               style={{ left: "calc(50% + " + (point.x - center.x) + "px)", top: "calc(50% + " + (point.y - center.y) + "px)" }}
               onClick={(event) => { event.stopPropagation(); onSelect(item); }}
+              onMouseEnter={() => onHover?.(key)}
+              onMouseLeave={() => onHover?.(null)}
               aria-label={"查看 " + (item.name ?? "医院资源")}
               aria-pressed={selected}
               title={item.name ?? "医院资源"}
@@ -203,6 +210,7 @@ export function MapPage() {
   const [map, setMap] = useState<MapPayload | null>(null);
   const [filter, setFilter] = useState<MapFilter>("all");
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const [error, setError] = useState<ApiError | null>(null);
   const [loading, setLoading] = useState(true);
   const [attempt, setAttempt] = useState(0);
@@ -246,10 +254,10 @@ export function MapPage() {
       <div className="map-page__hero">
         <div>
           <span className="eyebrow">常州服务区域 · 320400</span>
-          <h1>从地图上，<br /><em>看见更实际的到院选择。</em></h1>
+          <h1>从地图上，<em>看见更实际的到院选择。</em></h1>
           <p>这里使用公开医院坐标叠加真实地理底图；急诊字段只表示接口标记，不代表实时急诊可用性。</p>
         </div>
-        <div className="map-page__hero-note"><Navigation size={20} strokeWidth={1.4} aria-hidden="true" /><span>真实地理地图</span><small>可从医院资料打开导航。</small></div>
+        <div className="map-page__hero-note"><Navigation size={18} strokeWidth={1.5} aria-hidden="true" /><span>真实地理地图</span><small>可从医院资料打开导航。</small></div>
       </div>
 
       <LocationSelector />
@@ -272,8 +280,19 @@ export function MapPage() {
               {visibleItems.map((item) => {
                 const key = itemKey(item);
                 const selected = key === selectedKey;
+                const hovered = key === hoveredKey;
                 return (
-                  <button className={"map-resource-row" + (selected ? " map-resource-row--selected" : "")} key={key} type="button" onClick={() => setSelectedKey(key)} aria-pressed={selected}>
+                  <button
+                    className={"map-resource-row" + (selected ? " map-resource-row--selected" : "") + (hovered && !selected ? " map-resource-row--hovered" : "")}
+                    key={key}
+                    type="button"
+                    onClick={() => setSelectedKey(key)}
+                    onMouseEnter={() => setHoveredKey(key)}
+                    onMouseLeave={() => setHoveredKey(null)}
+                    onFocus={() => setHoveredKey(key)}
+                    onBlur={() => setHoveredKey(null)}
+                    aria-pressed={selected}
+                  >
                     <span className={"map-resource-row__dot" + (item.emergency ? " map-resource-row__dot--emergency" : "")} aria-hidden="true" />
                     <span className="map-resource-row__body"><strong>{item.name ?? "未命名医院"}</strong><small>{item.address ?? "地址未提供"}</small></span>
                     <span className="map-resource-row__meta">{item.emergency ? "急诊字段" : "资源"}<br />{distanceLabel(item, locationSource)}</span>
@@ -282,7 +301,14 @@ export function MapPage() {
               })}
             </div>
             <div className="map-stage">
-              <RealMapCanvas items={visibleItems} userLocation={map.user_location} selectedKey={selectedKey} onSelect={(item) => setSelectedKey(itemKey(item))} />
+              <RealMapCanvas
+                items={visibleItems}
+                userLocation={map.user_location}
+                selectedKey={selectedKey}
+                hoveredKey={hoveredKey}
+                onSelect={(item) => setSelectedKey(itemKey(item))}
+                onHover={setHoveredKey}
+              />
               {selectedItem ? <MapPreview item={selectedItem} source={locationSource} onClose={() => setSelectedKey(null)} /> : <div className="map-stage__hint"><ExternalLink size={15} aria-hidden="true" />选择列表或 marker 查看公开资料</div>}
             </div>
           </div>

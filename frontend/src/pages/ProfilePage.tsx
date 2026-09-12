@@ -93,11 +93,11 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
       <div className="profile-page__hero">
         <div>
           <span className="eyebrow">本地偏好 · 最近分析</span>
-          <h1>把这次体验，<br /><em>留在你的浏览器里。</em></h1>
+          <h1>把这次体验，<em>留在你的浏览器里。</em></h1>
           <p>这里可以管理常州示范区的本地偏好与最近分析，不需要登录，也不建立真实用户身份。</p>
         </div>
         <div className="profile-page__identity" aria-label="本地偏好">
-          <div className="profile-page__identity-icon"><CircleUserRound size={29} strokeWidth={1.35} aria-hidden="true" /></div>
+          <div className="profile-page__identity-icon"><CircleUserRound size={22} strokeWidth={1.5} aria-hidden="true" /></div>
           <strong>常州本地访客</strong>
           <span>服务区域 · 320400</span>
           <StatusPill tone="neutral">仅保存在本机</StatusPill>
