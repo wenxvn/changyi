@@ -119,6 +119,10 @@ class RoutingPreferenceTests(TestCase):
             enhanced=True,
             safety_first=False,
         )
-        self.assertEqual(off["recommended_doctors"][0]["doctor"]["id"], 2)
+        off_by_id = {item["doctor"]["id"]: item for item in off["recommended_doctors"]}
+        on_by_id = {item["doctor"]["id"]: item for item in on["recommended_doctors"]}
         self.assertEqual(on["recommended_doctors"][0]["doctor"]["id"], 1)
-        self.assertGreater(on["recommended_doctors"][0]["match_score"], off["recommended_doctors"][0]["match_score"])
+        self.assertGreater(on_by_id[1]["match_score"], off_by_id[1]["match_score"])
+        self.assertEqual(on_by_id[2]["match_score"], off_by_id[2]["match_score"])
+        self.assertIn("已按连续复诊偏好优先展示收藏医生", on_by_id[1]["reasons"])
+        self.assertNotIn("已按连续复诊偏好优先展示收藏医生", off_by_id[1]["reasons"])
