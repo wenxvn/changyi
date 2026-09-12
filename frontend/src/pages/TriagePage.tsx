@@ -219,7 +219,14 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
 
       <div className={`triage-page__layout${hasAnalysis ? " triage-page__layout--active" : ""}`}>
         {result ? (
-          <CurrentUnderstanding condition={submittedCondition} result={result} followup={followup} />
+          <CurrentUnderstanding
+            condition={submittedCondition}
+            result={result}
+            followup={followup}
+            recommendations={recommendations}
+            recommendationsLoading={recommendationsLoading}
+            onNavigate={onNavigate}
+          />
         ) : (
           <div className="triage-page__intro">
             <div className="hero__eyebrow"><span className="eyebrow">智能就医 · 从描述开始</span><StatusPill><ShieldCheck size={14} aria-hidden="true" /> 先看安全信号</StatusPill></div>
