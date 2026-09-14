@@ -126,7 +126,15 @@ export function CurrentUnderstanding({
       </div>
 
       {onNavigate && status !== "EMERGENCY" ? (
-        <button className="understanding-jump" type="button" onClick={() => onNavigate("/resources")}>
+        <button
+          className="understanding-jump"
+          type="button"
+          onClick={() => {
+            const params = new URLSearchParams({ from: "triage", safety: status });
+            if (result.matched_department) params.set("direction", result.matched_department);
+            onNavigate(`/resources?${params.toString()}`);
+          }}
+        >
           浏览全部医疗资源 <ArrowRight size={14} aria-hidden="true" />
         </button>
       ) : null}

@@ -89,7 +89,14 @@ function TrafficAccessNote({ item }: { item: RecommendedHospital }) {
   );
 }
 
-function HospitalCard({ item, index, onNavigate }: { item: RecommendedHospital; index: number; onNavigate: (path: string) => void }) {
+function hospitalQueryString(direction?: string | null, safety?: string | null): string {
+  const params = new URLSearchParams({ from: "triage" });
+  if (direction) params.set("direction", direction);
+  if (safety) params.set("safety", safety);
+  return params.toString();
+}
+
+function HospitalCard({ item, index, onNavigate, contextQuery }: { item: RecommendedHospital; index: number; onNavigate: (path: string) => void; contextQuery?: string }) {
   const name = hospitalName(item);
   const hospital = item.hospital;
   const distance = formatDistance(item.distance);
@@ -120,7 +127,7 @@ function HospitalCard({ item, index, onNavigate }: { item: RecommendedHospital; 
         <button
           className="resource-card__link"
           type="button"
-          onClick={() => typeof hospital.id === "number" && onNavigate(`/resources?hospital=${hospital.id}`)}
+          onClick={() => typeof hospital.id === "number" && onNavigate(`/resources?hospital=${hospital.id}${contextQuery ? `&${contextQuery}` : ""}`)}
           disabled={typeof hospital.id !== "number"}
         >
           公开资料详情 <ExternalLink size={14} aria-hidden="true" />
@@ -181,7 +188,13 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
       {reasons.length > 0 ? <p className="safety-result__reason">{reasons.join(" ")}</p> : null}
       <div className="safety-result__actions">
         <a className="button button--danger" href="tel:120"><PhoneCall size={17} aria-hidden="true" /> 拨打 120</a>
-        <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>查看急诊资源</Button>
+        <Button
+          variant="secondary"
+          onClick={() => onNavigate(`/map?${hospitalQueryString(null, "EMERGENCY")}`)}
+          icon={<MapPinned size={16} aria-hidden="true" />}
+        >
+          查看急诊资源
+        </Button>
       </div>
       <small>系统只提供辅助分流信息，不替代急救指令、医生诊断或处方。</small>
     </article>
@@ -199,6 +212,7 @@ function RoutineOrUrgentResult({
   const { isFavorite, toggleFavorite } = useFavoriteDoctors();
   const insufficient = result.triage_status === "INSUFFICIENT_INFORMATION";
   const urgent = result.triage_status === "URGENT";
+  const contextQuery = hospitalQueryString(result.matched_department ?? null, result.triage_status);
   const title = insufficient ? "还需要一点信息，才能继续" : urgent ? "建议尽快进行医疗评估" : "可以继续了解合适的就医路径";
   const detail = insufficient
     ? "当前描述不足以支持下一步资源路径。请先完成一项补充说明，系统会再次整理完整描述。"
@@ -227,7 +241,7 @@ function RoutineOrUrgentResult({
             <div className="recommendation-content__meta">{recommendations.resource_strategy?.visit_path ?? "门诊路径"} · {resourceSourceLabel(recommendations.data_source)}</div>
             {recommendations.recommended_hospitals.length > 0 ? (
               <div className="hospital-results">
-                {recommendations.recommended_hospitals.slice(0, 3).map((item, index) => <HospitalCard item={item} index={index} onNavigate={onNavigate} key={`${hospitalName(item)}-${index}`} />)}
+                {recommendations.recommended_hospitals.slice(0, 3).map((item, index) => <HospitalCard item={item} index={index} onNavigate={onNavigate} contextQuery={contextQuery} key={`${hospitalName(item)}-${index}`} />)}
               </div>
             ) : <p className="result-empty">当前没有可展示的医院路径，请稍后重试或浏览医疗资源。</p>}
             {recommendations.recommended_doctors.length > 0 ? (
