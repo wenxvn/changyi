@@ -114,19 +114,24 @@ function AppShell({
           </button>
         </div>
       </header>
-      <main id="main-content" tabIndex={-1}>{children}</main>
+      <main id="main-content" tabIndex={-1}>
+        <div key={route} className="page-view">
+          {children}
+        </div>
+      </main>
       <footer className="site-footer">
-        <div className="site-footer__brand">
-          <BrandMark compact />
-          <span>常医智导</span>
+        <div className="site-footer__row">
+          <div className="site-footer__brand">
+            <BrandMark compact />
+            <span>常医智导</span>
+          </div>
+          <div className="site-footer__links">
+            <button type="button" onClick={() => navigate("/trust")}><ShieldCheck size={14} aria-hidden="true" /> 可信 AI</button>
+            <button type="button" onClick={() => navigate("/resources")}><Hospital size={14} aria-hidden="true" /> 医疗资源</button>
+            <button type="button" onClick={() => navigate("/map")}><MapPinned size={14} aria-hidden="true" /> 就医地图</button>
+          </div>
         </div>
-        <p>面向常州示范区的可信智能就医决策辅助体验。</p>
-        <div className="site-footer__links">
-          <button type="button" onClick={() => navigate("/trust")}><ShieldCheck size={14} aria-hidden="true" /> 可信 AI</button>
-          <button type="button" onClick={() => navigate("/resources")}><Hospital size={14} aria-hidden="true" /> 医疗资源</button>
-          <button type="button" onClick={() => navigate("/map")}><MapPinned size={14} aria-hidden="true" /> 就医地图</button>
-        </div>
-        <small>本系统提供就医方向与资源信息参考，不替代医生诊断、急救或处方。</small>
+        <small>面向常州示范区的就医方向与资源信息参考，不替代医生诊断、急救或处方。</small>
       </footer>
     </div>
   );
