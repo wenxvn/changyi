@@ -1,10 +1,11 @@
-import { useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import {
   ArrowRight,
   Check,
   ChevronRight,
   CircleAlert,
   Database,
+  LoaderCircle,
   MapPinned,
   MoveUpRight,
   Network,
@@ -47,12 +48,32 @@ function formatMetric(value: number): string {
 export function HomePage({ onStart, onNavigate }: HomePageProps) {
   const [condition, setCondition] = useState("");
   const [journeyIndex, setJourneyIndex] = useState(0);
+  const [phase, setPhase] = useState<"idle" | "analysing" | "ready">("idle");
   const journeyTabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const submitTimerRef = useRef<number | null>(null);
   const summary = useCitySummary();
+
+  useEffect(() => () => {
+    if (submitTimerRef.current !== null) window.clearTimeout(submitTimerRef.current);
+  }, []);
+
+  const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (condition.trim()) onStart(condition.trim());
+    const next = condition.trim();
+    if (!next || phase !== "idle") return;
+    if (reducedMotion()) {
+      onStart(next);
+      return;
+    }
+    setPhase("analysing");
+    submitTimerRef.current = window.setTimeout(() => {
+      setPhase("ready");
+      submitTimerRef.current = window.setTimeout(() => {
+        onStart(next);
+      }, 280);
+    }, 720);
   };
 
   const currentJourney = journeySteps[journeyIndex];
@@ -85,6 +106,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
           </div>
           <h1>
             把症状，
+            <br className="hero-break" />
             <em>变成一条更清晰的</em>
             就医路径。
           </h1>
@@ -110,10 +132,14 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
               </div>
               <Button
                 type="submit"
-                disabled={!condition.trim()}
-                icon={<ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />}
+                disabled={!condition.trim() || phase !== "idle"}
+                icon={
+                  phase === "idle"
+                    ? <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+                    : <LoaderCircle className="spin" size={17} strokeWidth={1.8} aria-hidden="true" />
+                }
               >
-                开始分析
+                {phase === "idle" ? "开始分析" : phase === "ready" ? "即将进入" : "正在分析"}
               </Button>
             </div>
           </form>
@@ -125,10 +151,16 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
           </div>
         </div>
         <div className="hero__visual">
-          <CarePath />
+          <CarePath phase={phase} />
           <div className="hero__visual-note">
             <span>01</span>
-            <p>从你的描述出发，逐步建立就医路径。悬停节点可查看每一步含义。</p>
+            <p>
+              {phase === "idle"
+                ? "从你的描述出发，逐步建立就医路径。悬停节点可查看每一步含义。"
+                : phase === "analysing"
+                  ? "正在把描述送入安全门，并准备科室与资源路径。"
+                  : "路径已建立，正在进入智能就医工作台。"}
+            </p>
           </div>
         </div>
       </section>
