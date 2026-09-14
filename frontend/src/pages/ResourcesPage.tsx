@@ -44,23 +44,33 @@ function includesQuery(values: Array<string | undefined>, query: string): boolea
   return values.some((value) => value?.toLocaleLowerCase().includes(query));
 }
 
+function hospitalMatchesDirection(hospital: HospitalRecord, direction: string | null): boolean {
+  if (!direction) return false;
+  const needle = direction.trim();
+  if (!needle) return false;
+  return (hospital.departments ?? []).some((item) => item.includes(needle) || needle.includes(item));
+}
+
 function HospitalCard({
   hospital,
   selected,
   onSelect,
+  directionMatch,
 }: {
   hospital: HospitalRecord;
   selected: boolean;
   onSelect: () => void;
+  directionMatch?: boolean;
 }) {
   const departments = (hospital.departments ?? []).slice(0, 3);
   const meta = [hospital.level, hospital.type].filter((value): value is string => Boolean(value));
   return (
-    <article className={`resource-index-card${selected ? " resource-index-card--selected" : ""}`}>
+    <article className={`resource-index-card${selected ? " resource-index-card--selected" : ""}${directionMatch ? " resource-index-card--direction" : ""}`}>
       <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} />
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
           {hospital.emergency ? <span className="resource-index-card__flag resource-index-card__flag--emergency">急诊字段</span> : <span className="resource-index-card__flag">医院</span>}
+          {directionMatch ? <span className="resource-index-card__flag resource-index-card__flag--match">公开科室匹配</span> : null}
           {hospital.district ? <span className="resource-index-card__district">{hospital.district}</span> : null}
         </div>
         <h3>{hospital.name ?? "未命名医院"}</h3>
@@ -89,20 +99,23 @@ function DoctorCard({
   onSelect,
   favorite,
   onToggleFavorite,
+  directionMatch,
 }: {
   doctor: DoctorRecord;
   selected: boolean;
   onSelect: () => void;
   favorite: boolean;
   onToggleFavorite: (doctorId: number) => void;
+  directionMatch?: boolean;
 }) {
   const specialties = (doctor.specialties ?? []).slice(0, 2);
   return (
-    <article className={`resource-index-card resource-index-card--doctor${selected ? " resource-index-card--selected" : ""}`}>
+    <article className={`resource-index-card resource-index-card--doctor${selected ? " resource-index-card--selected" : ""}${directionMatch ? " resource-index-card--direction" : ""}`}>
       <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
       <div className="resource-index-card__body">
         <div className="resource-index-card__topline">
           <span className="resource-index-card__flag">医生</span>
+          {directionMatch ? <span className="resource-index-card__flag resource-index-card__flag--match">公开科室匹配</span> : null}
           <div className="resource-index-card__topline-actions">
             {doctor.outpatient_time ? <span className="resource-index-card__flag">门诊</span> : null}
             {typeof doctor.id === "number" ? (
@@ -130,6 +143,48 @@ function DoctorCard({
         </div>
       </div>
     </article>
+  );
+}
+
+const safetyContextLabel: Record<string, string> = {
+  EMERGENCY: "需要优先评估",
+  URGENT: "建议尽快评估",
+  ROUTINE: "可继续了解路径",
+  INSUFFICIENT_INFORMATION: "需要补充信息",
+};
+
+function ResourceContextBar({
+  direction,
+  safety,
+  districtPreference,
+}: {
+  direction: string | null;
+  safety: string | null;
+  districtPreference: string | null;
+}) {
+  if (!direction && !safety) return null;
+  return (
+    <div className="resource-context-bar" role="status" aria-label="当前就医上下文">
+      <span className="resource-context-bar__title">当前就医上下文</span>
+      <div className="resource-context-bar__items">
+        {direction ? <span><small>方向</small><strong>{direction}</strong></span> : null}
+        <span><small>区域</small><strong>常州 · 320400</strong></span>
+        {districtPreference ? <span><small>偏好</small><strong>{districtPreference}</strong></span> : null}
+        {safety ? (
+          <span>
+            <small>安全状态</small>
+            <strong className={`resource-context-bar__safety resource-context-bar__safety--${safety.toLowerCase()}`}>
+              {safetyContextLabel[safety] ?? safety}
+            </strong>
+          </span>
+        ) : null}
+      </div>
+      <small className="resource-context-bar__note">
+        {direction
+          ? "列表会把公开科室字段包含当前方向的医院提前展示；这不改变服务端推荐排序，也不改变安全分诊。"
+          : "排序仍依据公开资料与服务端匹配，不改变安全分诊。"}
+      </small>
+    </div>
   );
 }
 
@@ -247,6 +302,14 @@ function ResourceDetail({
 export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => void }) {
   const { isFavorite, toggleFavorite } = useFavoriteDoctors();
   const initialParams = useMemo(() => new URLSearchParams(window.location.search), []);
+  const triageContext = useMemo(() => {
+    if (initialParams.get("from") !== "triage") return null;
+    return {
+      direction: initialParams.get("direction"),
+      safety: initialParams.get("safety"),
+      districtPreference: initialParams.get("preference") ?? "就近 / 系统匹配",
+    };
+  }, [initialParams]);
   const [activeTab, setActiveTab] = useState<ResourceTab>(() => {
     const type = initialParams.get("type");
     if (type === "doctor" || type === "doctors") return "doctors";
@@ -458,8 +521,9 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       : Array.from(new Set(doctors.map((item) => item.title || item.position).filter((value): value is string => Boolean(value)))).sort(),
     [doctorFacets.titles, doctors],
   );
-  const filteredHospitals = useMemo(
-    () => hospitals.filter((hospital) => {
+  const filteredHospitals = useMemo(() => {
+    const direction = triageContext?.direction ?? null;
+    const rows = hospitals.filter((hospital) => {
       if (hospitalLevel && hospital.level !== hospitalLevel) return false;
       if (hospitalType && hospital.type !== hospitalType) return false;
       if (hospitalDistrict && hospital.district !== hospitalDistrict) return false;
@@ -474,9 +538,15 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         ...(hospital.strengths ?? []),
         ...(hospital.derived_capability_areas ?? []),
       ], normalizedQuery);
-    }),
-    [hospitals, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, normalizedQuery],
-  );
+    });
+    if (!direction) return rows;
+    // Display-only: surface public-department matches first; does not change recommendation ranking.
+    return [...rows].sort((a, b) => {
+      const am = hospitalMatchesDirection(a, direction) ? 1 : 0;
+      const bm = hospitalMatchesDirection(b, direction) ? 1 : 0;
+      return bm - am;
+    });
+  }, [hospitals, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, normalizedQuery, triageContext?.direction]);
   // Doctor filtering/pagination is server-side; only keep a local safety net for
   // rows already fetched so progressive loading stays consistent.
   const filteredDoctors = useMemo(
@@ -578,6 +648,14 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         <div className="resources-page__hero-note"><Stethoscope size={18} strokeWidth={1.5} aria-hidden="true" /><span>公开资料索引</span><small>不是诊断，也不是官方排名。</small></div>
       </div>
 
+      {triageContext ? (
+        <ResourceContextBar
+          direction={triageContext.direction}
+          safety={triageContext.safety}
+          districtPreference={triageContext.districtPreference}
+        />
+      ) : null}
+
       <div className="resources-toolbar">
         <label className="resources-search"><Search size={18} aria-hidden="true" /><span className="sr-only">搜索医疗资源</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索医院、科室或医生" /></label>
         <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>打开医院地图</Button>
@@ -672,12 +750,34 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         {showingHospitals && hospitalLoading ? <div className="resources-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医院索引…</div> : null}
         {showingDoctors && doctorLoading ? <div className="resources-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医生公开资料…</div> : null}
 
-        {!hospitalLoading && showingHospitals && !hospitalError && filteredHospitals.length === 0 ? <div className="resources-empty"><Building2 size={22} aria-hidden="true" /><strong>没有匹配的医院资料</strong><span>可以换一个医院名称、地址或科室关键词。</span></div> : null}
-        {!doctorLoading && showingDoctors && !doctorError && filteredDoctors.length === 0 ? <div className="resources-empty"><Stethoscope size={22} aria-hidden="true" /><strong>没有匹配的医生资料</strong><span>可以换一个姓名、医院、科室或公开专长关键词。</span></div> : null}
+        {!hospitalLoading && showingHospitals && !hospitalError && filteredHospitals.length === 0 ? (
+          <div className="resources-empty">
+            <Building2 size={22} aria-hidden="true" />
+            <strong>没有匹配的医院资料</strong>
+            <span>可以换一个医院名称、地址或科室关键词，或清除筛选后浏览全部公开资料。</span>
+            <Button variant="secondary" onClick={resetFilters}>清除筛选条件</Button>
+          </div>
+        ) : null}
+        {!doctorLoading && showingDoctors && !doctorError && filteredDoctors.length === 0 ? (
+          <div className="resources-empty">
+            <Stethoscope size={22} aria-hidden="true" />
+            <strong>没有匹配的医生资料</strong>
+            <span>可以换一个姓名、医院、科室或公开专长关键词，或清除筛选后浏览全部。</span>
+            <Button variant="secondary" onClick={resetFilters}>清除筛选条件</Button>
+          </div>
+        ) : null}
 
         {showingHospitals && !hospitalLoading && !hospitalError && filteredHospitals.length > 0 ? (
           <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
-            <div className="resource-index-grid">{filteredHospitals.map((hospital) => <HospitalCard key={String(hospital.id ?? hospital.name)} hospital={hospital} selected={selection?.kind === "hospital" && selection.item.id === hospital.id} onSelect={() => setSelection({ kind: "hospital", item: hospital })} />)}</div>
+            <div className="resource-index-grid">{filteredHospitals.map((hospital) => (
+              <HospitalCard
+                key={String(hospital.id ?? hospital.name)}
+                hospital={hospital}
+                selected={selection?.kind === "hospital" && selection.item.id === hospital.id}
+                onSelect={() => setSelection({ kind: "hospital", item: hospital })}
+                directionMatch={hospitalMatchesDirection(hospital, triageContext?.direction ?? null)}
+              />
+            ))}</div>
             {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} /> : null}
           </div>
         ) : null}
@@ -693,6 +793,10 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
                   onSelect={() => setSelection({ kind: "doctor", item: doctor })}
                   favorite={typeof doctor.id === "number" ? isFavorite(doctor.id) : false}
                   onToggleFavorite={toggleFavorite}
+                  directionMatch={hospitalMatchesDirection(
+                    { departments: [doctor.department, ...(doctor.specialties ?? [])].filter((value): value is string => Boolean(value)) },
+                    triageContext?.direction ?? null,
+                  )}
                 />
               ))}</div>
               <p className="resource-index-cap" aria-live="polite">

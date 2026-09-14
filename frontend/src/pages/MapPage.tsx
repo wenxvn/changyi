@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import {
   CircleAlert,
   ExternalLink,
@@ -92,6 +92,7 @@ function RealMapCanvas({
 }) {
   const [view, setView] = useState({ lat: 31.77, lng: 119.95, zoom: 11 });
   const [tileLoadFailed, setTileLoadFailed] = useState(false);
+  const [tileAttempt, setTileAttempt] = useState(0);
   const dragRef = useRef<{ x: number; y: number } | null>(null);
   const center = project(view.lat, view.lng, view.zoom);
   const tileX = Math.floor(center.x / 256);
@@ -122,12 +123,12 @@ function RealMapCanvas({
     if (typeof lat === "number" && typeof lng === "number") setView((current) => ({ ...current, lat, lng }));
   }, [userLocation?.lat, userLocation?.lng]);
 
-  function handlePointerDown(event: PointerEvent<HTMLDivElement>) {
+  function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     event.currentTarget.setPointerCapture(event.pointerId);
     dragRef.current = { x: event.clientX, y: event.clientY };
   }
 
-  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
+  function handlePointerMove(event: ReactPointerEvent<HTMLDivElement>) {
     if (!dragRef.current) return;
     const dx = event.clientX - dragRef.current.x;
     const dy = event.clientY - dragRef.current.y;
@@ -140,7 +141,7 @@ function RealMapCanvas({
     }));
   }
 
-  function handlePointerUp(event: PointerEvent<HTMLDivElement>) {
+  function handlePointerUp(event: ReactPointerEvent<HTMLDivElement>) {
     dragRef.current = null;
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
   }
@@ -160,10 +161,17 @@ function RealMapCanvas({
       onPointerCancel={handlePointerUp}
     >
       <div className="map-canvas__topline"><span>常州地理位置</span><small>OpenStreetMap · 可拖动缩放</small></div>
-      <div className="map-tile-layer" aria-hidden="true">
+      <div className="map-tile-layer" aria-hidden="true" key={tileAttempt}>
         {tiles.map((tile) => <img src={tile.url} alt="" key={tile.key} style={{ left: tile.left, top: tile.top }} onError={() => setTileLoadFailed(true)} />)}
       </div>
-      {tileLoadFailed ? <div className="map-tile-fallback" role="status">底图暂时未加载，医院坐标和公开资料仍可查看；实际路线请以高德导航为准。</div> : null}
+      {tileLoadFailed ? (
+        <div className="map-tile-fallback" role="status">
+          底图暂时未加载，医院坐标和公开资料仍可查看；实际路线请以高德导航为准。
+          <button type="button" onClick={(event) => { event.stopPropagation(); setTileLoadFailed(false); setTileAttempt((value) => value + 1); }}>
+            重试底图
+          </button>
+        </div>
+      ) : null}
       <div className="map-canvas__markers">
         {items.map((item) => {
           const point = project(item.lat, item.lng, view.zoom);
@@ -216,7 +224,27 @@ export function MapPage() {
   const [error, setError] = useState<ApiError | null>(null);
   const [loading, setLoading] = useState(true);
   const [attempt, setAttempt] = useState(0);
+  const rowRefs = useRef<Map<string, HTMLButtonElement | null>>(new Map());
   const { location } = useLocationContext();
+  const triageContext = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("from") !== "triage") return null;
+    return {
+      safety: params.get("safety"),
+      direction: params.get("direction"),
+    };
+  }, []);
+
+  useEffect(() => {
+    if (triageContext?.safety === "EMERGENCY") setFilter("emergency");
+  }, [triageContext?.safety]);
+
+  useEffect(() => {
+    if (!selectedKey) return;
+    const row = rowRefs.current.get(selectedKey);
+    if (!row) return;
+    row.scrollIntoView({ block: "nearest", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }, [selectedKey]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -263,6 +291,24 @@ export function MapPage() {
       </div>
 
       <LocationSelector />
+      {triageContext ? (
+        <div className="resource-context-bar" role="status" aria-label="当前就医上下文">
+          <span className="resource-context-bar__title">当前就医上下文</span>
+          <div className="resource-context-bar__items">
+            {triageContext.direction ? <span><small>方向</small><strong>{triageContext.direction}</strong></span> : null}
+            <span><small>区域</small><strong>常州 · 320400</strong></span>
+            {triageContext.safety ? (
+              <span>
+                <small>安全状态</small>
+                <strong className={`resource-context-bar__safety resource-context-bar__safety--${triageContext.safety.toLowerCase()}`}>
+                  {triageContext.safety === "EMERGENCY" ? "需要优先评估" : triageContext.safety}
+                </strong>
+              </span>
+            ) : null}
+          </div>
+          <small className="resource-context-bar__note">急诊字段只表示接口标记，不代表实时急诊可用性。</small>
+        </div>
+      ) : null}
       {loading ? <div className="map-loading" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取医院位置索引…</div> : null}
       {!loading && error ? <div className="map-error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{error.message}</span><button type="button" onClick={() => setAttempt((value) => value + 1)}>重试</button></div> : null}
       {!loading && !error && map ? (
@@ -288,6 +334,7 @@ export function MapPage() {
                     className={"map-resource-row" + (selected ? " map-resource-row--selected" : "") + (hovered && !selected ? " map-resource-row--hovered" : "")}
                     key={key}
                     type="button"
+                    ref={(element) => { rowRefs.current.set(key, element); }}
                     onClick={() => setSelectedKey(key)}
                     onMouseEnter={() => setHoveredKey(key)}
                     onMouseLeave={() => setHoveredKey(null)}
