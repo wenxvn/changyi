@@ -1,6 +1,6 @@
 # 当前项目状态
 
-更新时间：2026-09-12（P4 Competition Demo Experience Polish）
+更新时间：2026-09-15（初赛提交差距审计）
 
 ## 总体状态
 
@@ -77,8 +77,15 @@
 - 来源/许可不完整（`R-002`）；照片仍非 `SOURCE_VERIFIED`
 - 账号/云同步/实时急诊/实时公交仍明确不做
 
+## 竞赛提交（2026-09-15 审计）
+
+对照官方赛道规范，**工程/Safety 基线可演示，但初赛主材料未按规范产出**。完整 P0/P1/P2 见 `docs/competition/2026-ai-medical/SUBMISSION_GAP.md`，执行阶段见 `SUBMISSION_WORKFLOW.md`。
+
+当前 P0 摘要：技术方案 PDF、演示视频、提交五件套、答辩 PPT（8/25 旧稿过期且含无来源大数字）、匿名门禁、LICENSE、README/MODEL_CARD/SCORECARD 数字漂移。初赛截止 2026-10-15 20:00。
+
 ## 下一步
 
+- 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；先对齐数字与叙事，再写技术方案
 - 可选：Resources 按 direction 高亮相关科室 chip（仅展示已有字段）
 - 继续观察远端 CI；按需补真实来源核验
 - 涉及医学或生产能力按 L3/L4 另立计划

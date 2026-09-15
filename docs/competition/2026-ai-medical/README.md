@@ -10,6 +10,8 @@
 
 ## 文档索引
 
+- [初赛提交差距 P0/P1/P2](SUBMISSION_GAP.md)
+- [竞赛提交工作流](SUBMISSION_WORKFLOW.md)
 - [竞赛简报](COMPETITION_BRIEF.md)
 - [产品规格](PRODUCT_SPEC.md)
 - [当前架构](../../architecture/current-state.md)
