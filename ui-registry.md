@@ -74,6 +74,8 @@ File: `frontend/src/components/ui/Button.tsx`, `frontend/src/styles/globals.css`
 
 File: `frontend/src/pages/HomePage.tsx`, `frontend/src/pages/TriagePage.tsx`, `frontend/src/styles/globals.css`
 
+**Home variant:** on the homepage the composer is the primary call to action — a 3px accent top edge, accent-mixed border, `var(--shadow-md)` elevation, a 104px textarea and a 44px submit button. Idle state keeps the submit button at full opacity with a desaturated accent fill (rather than washing it to 0.48 opacity) so the primary action stays readable before typing.
+
 | Property | Class/value |
 | --- | --- |
 | Background | `color-mix(in srgb, var(--surface-raised) 87%, transparent)` |
@@ -124,23 +126,23 @@ File: `frontend/src/components/visualization/JourneyPreview.tsx`, `frontend/src/
 
 **Pattern notes:** Key explanation is user-controlled through tabs/list buttons. There is no auto-advancing carousel. The tab set uses one selected keyboard entry point and Arrow/Home/End navigation; the preview is an explicitly labelled `tabpanel`.
 
-### Triage result preview
+### Triage decision surface (conclusion banner + next step)
 
-File: `frontend/src/pages/TriagePage.tsx`, `frontend/src/styles/globals.css`
+File: `frontend/src/pages/TriagePage.tsx`, `frontend/src/components/medical/TriageResults.tsx`, `frontend/src/styles/globals.css`
 
 | Property | Class/value |
 | --- | --- |
-| Background | `var(--surface-raised)`; success/warning use semantic soft surfaces |
-| Border | `var(--border-default)` with semantic mixed border for status |
-| Border radius | `var(--radius-md)` |
-| Text — primary | `var(--text-primary)` |
-| Text — secondary | `var(--text-secondary)` |
-| Spacing | 23px internal padding; 35px status-to-title rhythm |
-| Hover state | action/retry buttons retain visible focus |
-| Shadow | `var(--shadow-soft)` |
-| Accent usage | Status text and surface follow server-returned status; never inferred in frontend |
+| Background | `var(--surface-raised)`; routine/urgent/emergency/insufficient use semantic soft gradients |
+| Border | semantic mixed border per status; 4px left rail repeats the status color |
+| Border radius | `var(--radius-xl)` banner; `var(--radius-lg)` next-step card |
+| Text — primary | `var(--text-primary)`; status headline is the page's largest text |
+| Text — secondary | `var(--text-secondary)` lede; `var(--text-muted)` status note and disclaimer |
+| Spacing | 20px banner padding; 12px internal rhythm; steps separated from the rationale by a divider |
+| Hover state | only explicit controls react; the banner itself is static |
+| Shadow | `var(--shadow-sm)` banner; `var(--shadow-xs)` next-step card |
+| Accent usage | Status color is server-returned and never inferred in the frontend; the department block uses the accent surface |
 
-**Pattern notes:** The v1 status is an assistive output. Emergency/urgent presentation must remain text-first and later receive a dedicated high-salience page before cutover.
+**Pattern notes:** The first screen answers three questions in order — how urgent, which direction, what to do next. Structure is fixed: status pill + plain sentence, headline, one-line explanation, department/direction block, "为什么这样判断" list, then the path rail (安全门 → 就医方向 → 城市资源). Emergency is a separate branch that renders no ranking fields; the call-120 action comes first and takes the largest button size, and the ordinary next-step card is not rendered.
 
 ### Follow-up prompt
 
@@ -160,41 +162,41 @@ File: `frontend/src/components/medical/FollowupPrompt.tsx`, `frontend/src/styles
 
 **Pattern notes:** Only one question is visible at a time. Options are buttons; free-text follow-up uses a labeled textarea. The skip action is explicit and explains that the current direction may be incomplete.
 
-### Current understanding
+### Current understanding (context rail)
 
 File: `frontend/src/components/medical/CurrentUnderstanding.tsx`, `frontend/src/styles/globals.css`
 
 | Property | Class/value |
 | --- | --- |
 | Background | `var(--surface-raised)` |
-| Border | `var(--border-default)` |
-| Border radius | `var(--radius-md)` |
+| Border | `var(--border-subtle)` |
+| Border radius | `var(--radius-lg)` |
 | Text — primary | `var(--text-primary)` for the user description |
-| Text — secondary | `var(--text-secondary)` / `var(--text-muted)` for returned facts |
-| Spacing | 20–21px internal padding; 12px fact rows |
+| Text — secondary | `var(--text-muted)` for returned facts |
+| Spacing | 16px internal padding; 7px fact rows |
 | Hover state | none; status is server-returned |
-| Shadow | `var(--shadow-soft)` |
-| Accent usage | Status and department use semantic returned-state presentation |
+| Shadow | `var(--shadow-xs)` |
+| Accent usage | Status pill and fact values use semantic returned-state presentation |
 
-**Pattern notes:** This panel separates the user’s input from system-returned status and department. It is a summary of understanding, not a diagnosis or a second decision engine.
+**Pattern notes:** This card lives in the triage context rail and only restates what the system read plus the returned status/direction. It is deliberately short: the long-form path explanation belongs to the decision surface, and this card must never read as a second decision engine or a diagnosis.
 
-### Safety result / resource preview
+### Resource path preview / next-step checklist
 
-File: `frontend/src/components/medical/TriageResults.tsx`, `frontend/src/styles/globals.css`
+Files: `frontend/src/components/medical/ResourcePreview.tsx`, `frontend/src/components/medical/recommendationDisplay.ts`, `frontend/src/styles/globals.css`
 
 | Property | Class/value |
 | --- | --- |
-| Background | routine/urgent/emergency/insufficient semantic soft surfaces |
-| Border | semantic mixed border with `var(--border-default)` fallback |
-| Border radius | `var(--radius-md)` result; `var(--radius-sm)` resource card |
-| Text — primary | `var(--text-primary)` |
-| Text — secondary | `var(--text-secondary)` and `var(--text-muted)` |
-| Spacing | 22–25px result padding; 16px resource card padding |
-| Hover state | only explicit action/retry controls; disabled detail links remain visibly unavailable |
-| Shadow | `var(--shadow-soft)`; emergency uses restrained danger-tinted elevation |
-| Accent usage | emergency uses icon + text + danger semantic color; recommendation explanations come from v1 |
+| Background | `var(--surface-raised)` cards inside a `var(--surface-sage-wash)` headed panel |
+| Border | `var(--border-subtle)`; hover uses an accent-mixed border |
+| Border radius | `var(--radius-lg)` panel; `var(--radius-md)` cards; `var(--radius-pill)` action pills |
+| Text — primary | `var(--text-primary)` hospital/doctor name |
+| Text — secondary | `var(--text-secondary)` explanations; `var(--text-muted)` address/notice |
+| Spacing | 16–20px card padding; 12px card gap |
+| Hover state | card raises 1px and shows the accent border; navigation/details pills fill with `var(--accent-soft)` |
+| Shadow | `var(--shadow-xs)` panel and cards |
+| Accent usage | Rank badge and matched department use the accent surface; emergency is never shown here |
 
-**Pattern notes:** EmergencyResult is a separate branch and does not render ordinary ranking fields. Routine/Urgent show the hospital path before a small public-doctor preview. Recommendation scores are intentionally not rendered as percentages or user-facing confidence.
+**Pattern notes:** Ranking payload fields are read once through `recommendationDisplay.ts`. Only explanations, matched department, address, distance and the traffic summary the API actually returns are rendered — no invented score, rating, capacity or real-time status. Distance renders only when the server computed a non-null value. The next-step checklist owns the single "查看当前资源路径" trigger; when the panel is already loaded the same label navigates to the full resource list, so the button is never removed.
 
 ### Resource index / public data preview
 
@@ -212,7 +214,7 @@ File: `frontend/src/pages/ResourcesPage.tsx`, `frontend/src/api/resources.ts`, `
 | Shadow | `var(--shadow-soft)` on selected/preview surfaces; inset shadow on cards |
 | Accent usage | teal marks search focus, selected tab and resource action; source warning stays amber |
 
-**Pattern notes:** The page is a read-only resource index, not a recommendation ranking. Hospitals load first; doctors load only after the tab is selected. Cards show public fields only, while the source pill states the provisional catalog/public mixed-source boundary. Derived capability areas are labelled as provisional and unsupported fields remain explicit. Selecting a card loads its v1 detail by id; loading/error/retry remain visible, and the detail provenance note does not imply official validation. Map is a separate route and is not impersonated by the index.
+**Pattern notes:** The page is a read-only resource index, not a recommendation ranking. Hospitals load first; doctors load only after the tab is selected. Cards are decision-first: identity row (logo, name, level · type · district), optional 「公开科室匹配」 flag, address, up to three department chips, then a primary 「查看公开资料」 pill plus the AMap action. Cards render public fields only, and the source pill states the provisional catalog/mixed-source boundary. Selecting a card loads its v1 detail by id into a full-width panel below the list, scrolls it into view, labels the active card 「查看中」, and closes with the panel's close button or Escape; loading/error/retry remain visible, and the provenance note does not imply official validation. Emergency-department presence is a low-key note on the card ("目录记录含急诊字段"), never a badge that competes with the match flag. Map is a separate route and is not impersonated by the index.
 
 ### Trust Center / evidence panels
 
@@ -292,7 +294,25 @@ File: `frontend/src/pages/MapPage.tsx`, `frontend/src/api/map.ts`, `frontend/src
 | Shadow | `var(--shadow-soft)` canvas and preview; no map auto-animation |
 | Accent usage | teal marks normal resource points; danger marks the server-provided emergency field; no recommendation color without recommendation context |
 
-**Pattern notes:** Map list and marker use the same `/api/v1/map` items. The view uses the real OSM geographic base map; it does not request location without a user action, fabricate distances, or imply real-time emergency availability. Unknown location keeps distance null; a selected district is visibly a reference-point estimate, and precise coordinates are session-only. Each resource may expose a source-aware AMap navigation/search action, while the source pill keeps the provisional catalog boundary visible.
+**Pattern notes:** Map list and marker use the same `/api/v1/map` items. The workbench is map-first (map left, synchronised resource list right, hint below) and the long distance/source notice is folded into a `details` disclosure so it does not push the map below the fold. Markers enlarge on hover but do not overlap-resolve; selecting any marker or row scrolls the matching row into view and reveals the resource preview under the map. The view uses the real OSM base map with a visible attribution and a 「重试底图」 fallback; it does not request location without a user action, fabricate distances, or imply real-time emergency availability. Unknown location keeps distance null; a selected district is visibly a reference-point estimate, and precise coordinates are session-only. Each resource may expose a source-aware AMap navigation/search action, while the source pill keeps the provisional catalog boundary visible. In the emergency context the map defaults to the emergency-field filter and the map page is reachable from the emergency result itself.
+
+### Emergency facilities panel
+
+File: `frontend/src/components/medical/EmergencyFacilities.tsx`, `frontend/src/api/map.ts`, `frontend/src/styles/globals.css`
+
+| Property | Class/value |
+| --- | --- |
+| Background | danger-soft mixed with `var(--surface-raised)` |
+| Border | danger-mixed `var(--border-subtle)` |
+| Border radius | `var(--radius-lg)` |
+| Text — primary | `var(--text-primary)` hospital name; heading uses the danger mix |
+| Text — secondary | `var(--text-muted)` level/type and address |
+| Spacing | 16px panel padding; 9px list rows |
+| Hover state | navigation pill fills with `var(--state-danger-soft)` |
+| Shadow | none; the panel reads as part of the emergency card |
+| Accent usage | danger marks emergency framing only; it never implies confirmed availability |
+
+**Pattern notes:** The panel renders only records whose catalogue field already marks an emergency department, taken from the same read-only `/api/v1/map` payload. It states plainly that a recorded emergency department does not mean the hospital can currently admit, and that real emergencies follow 120 dispatch. It never blocks or outranks the call-120 action.
 
 ### Flask-served React release shell
 

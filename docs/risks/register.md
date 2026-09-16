@@ -1,6 +1,6 @@
 # 风险登记表
 
-更新时间：2026-09-12
+更新时间：2026-09-15
 
 | ID | 风险 | 影响 | 可能性 | 状态 | 缓解与触发动作 |
 | --- | --- | --- | --- | --- | --- |
@@ -23,6 +23,7 @@
 | R-017 | 医院硬编码评分、容量或评级缺少来源却参与推荐 | 高 | 中 | 已缓解 | 医院目录移出组合根；公开事实、provisional 派生能力、unsupported null 分开登记，并补充字段级 provenance；缺失的 beds/daily_outpatients/rating/description 不进入公开事实或排序；`derived_capability_scores`/`strength_scores` 仅保留用于 migration/debug，正式 clinical ranking 只依赖公开科室存在事实；Trust Center 展示限制 |
 | R-018 | 科研产出（SCI/基金/专利）被误当作临床适配证据主导医生推荐 | 高 | 中 | 已缓解 | academic patient-fit 权重设为 `0.00`，资源层级不依赖学术指标，回归测试证明仅改变 academic 不改变 patient-fit；学术资料仍可展示，展示 ≠ 推荐依据 |
 | R-019 | 第三方地图瓦片失效导致地图页不可用或显示水印瓦片 | 中 | 中 | 已缓解 | 底图切换为无需 Key 的 OpenStreetMap 官方瓦片；失败时保留医院列表、坐标 marker、资料预览和高德导航降级 |
+| R-020 | 急诊结果页展示「目录含急诊字段」的医院列表，被误解为实时可接诊或就近急诊导航 | 高 | 中 | 已缓解 | `EmergencyFacilities` 只渲染 `/api/v1/map` 中 `emergency === true` 的公开目录字段，不排序、不计算到院时间；面板内固定声明「不代表当前可以接诊，真实急救以 120 调度为准」；`拨打 120` 始终是急诊页第一个且最大的动作，普通推荐路径在急诊状态下完全不渲染 |
 
 ## 近期优先级
 

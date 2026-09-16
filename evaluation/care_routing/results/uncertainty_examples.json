@@ -1,0 +1,2612 @@
+[
+  {
+    "predicted_disease": "丙型肝炎",
+    "predicted_department": "感染性疾病科",
+    "probability_distribution": [
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.479583
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.310945
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.116585
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.03216
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.019906
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.016789
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.004308
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.003837
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.002915
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.002398
+      }
+    ],
+    "confidence": 0.479583,
+    "entropy": 1.989902,
+    "max_entropy": 5.357552,
+    "margin": 0.168639,
+    "uncertainty_level": "high",
+    "prediction_set": [
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.479583,
+        "in_set": true
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.310945,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.116585,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.03216,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.019906,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.016789,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.004308,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.003837,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.002915,
+        "in_set": false
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.002398,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.00192,
+        "in_set": false
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.001493,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 0.00066,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.000656,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.000656,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.000551,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 0.000424,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.000365,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 0.000364,
+        "in_set": false
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.000364,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 0.00029,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.000163,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.000158,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.000158,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.000158,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.000158,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.000158,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 0.000158,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 0.000158,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 0.000142,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 0.000142,
+        "in_set": false
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 0.000141,
+        "in_set": false
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 0.000137,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.000137,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 0.000137,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 0.000137,
+        "in_set": false
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.000132,
+        "in_set": false
+      },
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.000132,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.000128,
+        "in_set": false
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.000128,
+        "in_set": false
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 6.9e-05,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": true,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Hepatitis C",
+    "true_department": "感染性疾病科",
+    "true_symptoms": [
+      "family_history",
+      "fatigue",
+      "nausea",
+      "yellowing_of_eyes",
+      "yellowish_skin"
+    ]
+  },
+  {
+    "predicted_disease": "消化性溃疡",
+    "predicted_department": "消化内科",
+    "probability_distribution": [
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.959571
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.01199
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.008504
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.00681
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.004684
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.001439
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.001417
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.000877
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.000694
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.000492
+      }
+    ],
+    "confidence": 0.959571,
+    "entropy": 0.370237,
+    "max_entropy": 5.357552,
+    "margin": 0.94758,
+    "uncertainty_level": "low",
+    "prediction_set": [
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.959571,
+        "in_set": true
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.01199,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.008504,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.00681,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.004684,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.001439,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.001417,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.000877,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.000694,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.000492,
+        "in_set": false
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.000335,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.000331,
+        "in_set": false
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.000296,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.000265,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 0.000265,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 0.000256,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.000246,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.000223,
+        "in_set": false
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.000172,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.000117,
+        "in_set": false
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 8.7e-05,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 6.9e-05,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 6.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 6.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 6.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 6.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 5.8e-05,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 5.8e-05,
+        "in_set": false
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 5.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 5.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 5.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 5.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 5.1e-05,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 4.9e-05,
+        "in_set": false
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 4.9e-05,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 3.9e-05,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 1.9e-05,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 1.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 1.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 1.2e-05,
+        "in_set": false
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 5e-06,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": false,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Peptic ulcer diseae",
+    "true_department": "消化内科",
+    "true_symptoms": [
+      "abdominal_pain",
+      "indigestion",
+      "internal_itching",
+      "loss_of_appetite",
+      "passage_of_gases",
+      "vomiting"
+    ]
+  },
+  {
+    "predicted_disease": "肺炎",
+    "predicted_department": "呼吸与危重症医学科",
+    "probability_distribution": [
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.994933
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.00466
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 0.000381
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 1.8e-05
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 2e-06
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 1e-06
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 1e-06
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 1e-06
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.0
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.0
+      }
+    ],
+    "confidence": 0.994933,
+    "entropy": 0.048153,
+    "max_entropy": 5.357552,
+    "margin": 0.990273,
+    "uncertainty_level": "low",
+    "prediction_set": [
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.994933,
+        "in_set": true
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.00466,
+        "in_set": false
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 0.000381,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 1.8e-05,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 2e-06,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.0,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": false,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Pneumonia",
+    "true_department": "呼吸与危重症医学科",
+    "true_symptoms": [
+      "breathlessness",
+      "chest_pain",
+      "chills",
+      "cough",
+      "fast_heart_rate",
+      "fatigue",
+      "high_fever",
+      "malaise",
+      "phlegm",
+      "rusty_sputum"
+    ]
+  },
+  {
+    "predicted_disease": "甲状腺功能减退",
+    "predicted_department": "内分泌代谢科",
+    "probability_distribution": [
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 0.999999
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 1e-06
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.0
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 0.0
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.0
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.0
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.0
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.0
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.0
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.0
+      }
+    ],
+    "confidence": 0.999999,
+    "entropy": 2.2e-05,
+    "max_entropy": 5.357552,
+    "margin": 0.999998,
+    "uncertainty_level": "low",
+    "prediction_set": [
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 0.999999,
+        "in_set": true
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 0.0,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": false,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Hypothyroidism",
+    "true_department": "内分泌代谢科",
+    "true_symptoms": [
+      "abnormal_menstruation",
+      "brittle_nails",
+      "cold_hands_and_feets",
+      "depression",
+      "dizziness",
+      "enlarged_thyroid",
+      "fatigue",
+      "irritability",
+      "mood_swings",
+      "puffy_face_and_eyes",
+      "swollen_extremeties",
+      "weight_gain"
+    ]
+  },
+  {
+    "predicted_disease": "银屑病",
+    "predicted_department": "皮肤科",
+    "probability_distribution": [
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.986217
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.001528
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.00129
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.00085
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.000622
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.00051
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.00039
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.000377
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.000377
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.000377
+      }
+    ],
+    "confidence": 0.986217,
+    "entropy": 0.173068,
+    "max_entropy": 5.357552,
+    "margin": 0.984689,
+    "uncertainty_level": "low",
+    "prediction_set": [
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.986217,
+        "in_set": true
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.001528,
+        "in_set": false
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.00129,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.00085,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.000622,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.00051,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.00039,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.000377,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.000377,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.000377,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.000377,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.000377,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 0.000377,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 0.000377,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 0.00034,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 0.00034,
+        "in_set": false
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 0.000328,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.000328,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 0.000328,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 0.000328,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 0.000316,
+        "in_set": false
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.000316,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.000306,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.000306,
+        "in_set": false
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.000306,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.000261,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.000261,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.000261,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.000219,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.00021,
+        "in_set": false
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.000165,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 0.000145,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 0.000124,
+        "in_set": false
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.000124,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.000124,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.000109,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.000102,
+        "in_set": false
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.000102,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 9.9e-05,
+        "in_set": false
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 5.6e-05,
+        "in_set": false
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 4.8e-05,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": false,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Psoriasis",
+    "true_department": "皮肤科",
+    "true_symptoms": [
+      "inflammatory_nails",
+      "joint_pain",
+      "silver_like_dusting",
+      "skin_peeling",
+      "small_dents_in_nails"
+    ]
+  },
+  {
+    "predicted_disease": "偏头痛",
+    "predicted_department": "神经内科",
+    "probability_distribution": [
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.999973
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 1.2e-05
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 2e-06
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 1e-06
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 1e-06
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 1e-06
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 1e-06
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 1e-06
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 1e-06
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 1e-06
+      }
+    ],
+    "confidence": 0.999973,
+    "entropy": 0.000555,
+    "max_entropy": 5.357552,
+    "margin": 0.999961,
+    "uncertainty_level": "low",
+    "prediction_set": [
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.999973,
+        "in_set": true
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 1.2e-05,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 2e-06,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 1e-06,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.0,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": false,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Migraine",
+    "true_department": "神经内科",
+    "true_symptoms": [
+      "acidity",
+      "blurred_and_distorted_vision",
+      "depression",
+      "headache",
+      "indigestion",
+      "irritability",
+      "stiff_neck",
+      "visual_disturbances"
+    ]
+  },
+  {
+    "predicted_disease": "关节炎",
+    "predicted_department": "骨科",
+    "probability_distribution": [
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 0.875787
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.016209
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.01453
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 0.011263
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.00314
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.003054
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.003054
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.003054
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.003054
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.003054
+      }
+    ],
+    "confidence": 0.875787,
+    "entropy": 1.141567,
+    "max_entropy": 5.357552,
+    "margin": 0.859578,
+    "uncertainty_level": "low",
+    "prediction_set": [
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 0.875787,
+        "in_set": true
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.016209,
+        "in_set": false
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.01453,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 0.011263,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.00314,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.003054,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.003054,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.003054,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.003054,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.003054,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 0.003054,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 0.003054,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 0.002812,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 0.002812,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 0.002771,
+        "in_set": false
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.002771,
+        "in_set": false
+      },
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.002771,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.002737,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 0.002737,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 0.002737,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.002702,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.002702,
+        "in_set": false
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.002702,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.002473,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.002473,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.002473,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.002149,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.002141,
+        "in_set": false
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.00178,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 0.001589,
+        "in_set": false
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.001408,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.001408,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.00138,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.0013,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.001204,
+        "in_set": false
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.001204,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 0.001137,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.001075,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.000847,
+        "in_set": false
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.000741,
+        "in_set": false
+      },
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 0.000659,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": false,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Arthritis",
+    "true_department": "骨科",
+    "true_symptoms": [
+      "movement_stiffness",
+      "muscle_weakness",
+      "stiff_neck",
+      "swelling_joints"
+    ]
+  },
+  {
+    "predicted_disease": "普通感冒",
+    "predicted_department": "呼吸内科",
+    "probability_distribution": [
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 1.0
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.0
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.0
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.0
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.0
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.0
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.0
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.0
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.0
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.0
+      }
+    ],
+    "confidence": 1.0,
+    "entropy": 8e-06,
+    "max_entropy": 5.357552,
+    "margin": 0.999999,
+    "uncertainty_level": "low",
+    "prediction_set": [
+      {
+        "disease": "普通感冒",
+        "raw_label": "Common Cold",
+        "probability": 1.0,
+        "in_set": true
+      },
+      {
+        "disease": "肺炎",
+        "raw_label": "Pneumonia",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "结核病",
+        "raw_label": "Tuberculosis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "支气管哮喘",
+        "raw_label": "Bronchial Asthma",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "登革热",
+        "raw_label": "Dengue",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "水痘",
+        "raw_label": "Chicken pox",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "疟疾",
+        "raw_label": "Malaria",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "过敏",
+        "raw_label": "Allergy",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "胃食管反流病",
+        "raw_label": "GERD",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "伤寒",
+        "raw_label": "Typhoid",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "艾滋病",
+        "raw_label": "AIDS",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "心肌梗死",
+        "raw_label": "Heart attack",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "高血压",
+        "raw_label": "Hypertension",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "脓疱疮",
+        "raw_label": "Impetigo",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "黄疸",
+        "raw_label": "Jaundice",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丙型肝炎",
+        "raw_label": "Hepatitis C",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痤疮",
+        "raw_label": "Acne",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "真菌感染",
+        "raw_label": "Fungal infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "胃肠炎",
+        "raw_label": "Gastroenteritis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "脑出血后瘫痪",
+        "raw_label": "Paralysis (brain hemorrhage)",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "尿路感染",
+        "raw_label": "Urinary tract infection",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "静脉曲张",
+        "raw_label": "Varicose veins",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "药物反应",
+        "raw_label": "Drug Reaction",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "关节炎",
+        "raw_label": "Arthritis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "颈椎病",
+        "raw_label": "Cervical spondylosis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "痔疮",
+        "raw_label": "Dimorphic hemmorhoids(piles)",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "良性阵发性位置性眩晕",
+        "raw_label": "(vertigo) Paroymsal Positional Vertigo",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "消化性溃疡",
+        "raw_label": "Peptic ulcer diseae",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "银屑病",
+        "raw_label": "Psoriasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "骨关节炎",
+        "raw_label": "Osteoarthristis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "乙型肝炎",
+        "raw_label": "Hepatitis B",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "戊型肝炎",
+        "raw_label": "Hepatitis E",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "丁型肝炎",
+        "raw_label": "Hepatitis D",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "酒精性肝炎",
+        "raw_label": "Alcoholic hepatitis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "慢性胆汁淤积",
+        "raw_label": "Chronic cholestasis",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "糖尿病",
+        "raw_label": "Diabetes",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲型肝炎",
+        "raw_label": "hepatitis A",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能亢进",
+        "raw_label": "Hyperthyroidism",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "甲状腺功能减退",
+        "raw_label": "Hypothyroidism",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "低血糖",
+        "raw_label": "Hypoglycemia",
+        "probability": 0.0,
+        "in_set": false
+      },
+      {
+        "disease": "偏头痛",
+        "raw_label": "Migraine",
+        "probability": 0.0,
+        "in_set": false
+      }
+    ],
+    "prediction_set_size": 1,
+    "should_clarify": false,
+    "assistive_only": true,
+    "not_medical_confidence": true,
+    "disclaimer": "置信度与不确定性仅来自离线症状分类模型概率，未经临床校准，不得解释为医学置信度；急症仍以 Safety Gate 为准。",
+    "true_disease": "Common Cold",
+    "true_department": "呼吸内科",
+    "true_symptoms": [
+      "chest_pain",
+      "chills",
+      "congestion",
+      "continuous_sneezing",
+      "cough",
+      "fatigue",
+      "high_fever",
+      "loss_of_smell",
+      "malaise",
+      "muscle_pain",
+      "phlegm",
+      "redness_of_eyes",
+      "runny_nose",
+      "sinus_pressure",
+      "swelled_lymph_nodes",
+      "throat_irritation"
+    ]
+  }
+]

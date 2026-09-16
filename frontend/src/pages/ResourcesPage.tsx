@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   Building2,
+  Hospital,
   CircleAlert,
   ExternalLink,
   Filter,
@@ -9,6 +10,7 @@ import {
   MapPinned,
   RotateCcw,
   Search,
+  Sparkles,
   Stethoscope,
   X,
 } from "lucide-react";
@@ -63,32 +65,38 @@ function HospitalCard({
   directionMatch?: boolean;
 }) {
   const departments = (hospital.departments ?? []).slice(0, 3);
-  const meta = [hospital.level, hospital.type].filter((value): value is string => Boolean(value));
+  const meta = [hospital.level, hospital.type, hospital.district].filter((value): value is string => Boolean(value));
   return (
     <article className={`resource-index-card${selected ? " resource-index-card--selected" : ""}${directionMatch ? " resource-index-card--direction" : ""}`}>
-      <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} />
-      <div className="resource-index-card__body">
-        <div className="resource-index-card__topline">
-          {hospital.emergency ? <span className="resource-index-card__flag resource-index-card__flag--emergency">急诊字段</span> : <span className="resource-index-card__flag">医院</span>}
-          {directionMatch ? <span className="resource-index-card__flag resource-index-card__flag--match">公开科室匹配</span> : null}
-          {hospital.district ? <span className="resource-index-card__district">{hospital.district}</span> : null}
+      <header className="resource-index-card__head">
+        <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} />
+        <div className="resource-index-card__heading">
+          <h3>{hospital.name ?? "未命名医院"}</h3>
+          {meta.length > 0 ? <p className="resource-index-card__subline">{meta.join(" · ")}</p> : null}
+          {hospital.emergency ? <p className="resource-index-card__flag-note">目录记录含急诊字段</p> : null}
         </div>
-        <h3>{hospital.name ?? "未命名医院"}</h3>
-        {meta.length > 0 ? <p className="resource-index-card__subline">{meta.join(" · ")}</p> : null}
-        <p className="resource-index-card__address">{hospital.address ?? "地址以机构公开资料为准"}</p>
-        {departments.length > 0 ? (
-          <div className="resource-chip-list" aria-label="主要科室">
-            {departments.map((department) => <span key={department}>{department}</span>)}
-            {(hospital.departments?.length ?? 0) > 3 ? <span className="resource-chip-list__more">+{(hospital.departments?.length ?? 0) - 3}</span> : null}
-          </div>
-        ) : null}
-        <div className="resource-index-card__actions">
-          <button className="resource-index-card__link" type="button" onClick={onSelect} aria-pressed={selected}>
-            {selected ? "查看中" : "公开资料"} <ExternalLink size={13} aria-hidden="true" />
-          </button>
-          <AmapNavigationLink target={hospital} className="resource-index-card__link" />
+        {selected ? <span className="resource-index-card__current">查看中</span> : null}
+      </header>
+      {directionMatch ? (
+        <div className="resource-index-card__flags">
+          <span className="resource-index-card__flag resource-index-card__flag--match">
+            <Sparkles size={11} aria-hidden="true" /> 公开科室匹配
+          </span>
         </div>
-      </div>
+      ) : null}
+      <p className="resource-index-card__address"><MapPinned size={12} aria-hidden="true" />{hospital.address ?? "地址以机构公开资料为准"}</p>
+      {departments.length > 0 ? (
+        <div className="resource-chip-list" aria-label="主要科室">
+          {departments.map((department) => <span key={department}>{department}</span>)}
+          {(hospital.departments?.length ?? 0) > 3 ? <span className="resource-chip-list__more">+{(hospital.departments?.length ?? 0) - 3}</span> : null}
+        </div>
+      ) : null}
+      <footer className="resource-index-card__actions">
+        <button className="resource-index-card__link resource-index-card__link--primary" type="button" onClick={onSelect} aria-pressed={selected}>
+          {selected ? "查看中" : "查看公开资料"} <ExternalLink size={13} aria-hidden="true" />
+        </button>
+        <AmapNavigationLink target={hospital} className="resource-index-card__link" />
+      </footer>
     </article>
   );
 }
@@ -111,37 +119,40 @@ function DoctorCard({
   const specialties = (doctor.specialties ?? []).slice(0, 2);
   return (
     <article className={`resource-index-card resource-index-card--doctor${selected ? " resource-index-card--selected" : ""}${directionMatch ? " resource-index-card--direction" : ""}`}>
-      <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
-      <div className="resource-index-card__body">
-        <div className="resource-index-card__topline">
-          <span className="resource-index-card__flag">医生</span>
-          {directionMatch ? <span className="resource-index-card__flag resource-index-card__flag--match">公开科室匹配</span> : null}
-          <div className="resource-index-card__topline-actions">
-            {doctor.outpatient_time ? <span className="resource-index-card__flag">门诊</span> : null}
-            {typeof doctor.id === "number" ? (
-              <FavoriteDoctorButton
-                doctorId={doctor.id}
-                active={favorite}
-                onToggle={onToggleFavorite}
-                compact
-              />
-            ) : null}
-          </div>
+      <header className="resource-index-card__head">
+        <DoctorAvatar name={doctor.name} photoUrl={doctor.photo_url} />
+        <div className="resource-index-card__heading">
+          <h3>{doctor.name ?? "公开医生资料"}</h3>
+          <p className="resource-index-card__subline">{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "职称/科室未提供"}</p>
         </div>
-        <h3>{doctor.name ?? "公开医生资料"}</h3>
-        <p className="resource-index-card__subline">{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "职称/科室未提供"}</p>
-        <p className="resource-index-card__address">{doctor.hospital_name ?? "所属医院未提供"}</p>
-        {specialties.length > 0 ? (
-          <div className="resource-chip-list" aria-label="公开专长">
-            {specialties.map((specialty) => <span key={specialty}>{specialty}</span>)}
-          </div>
+        {typeof doctor.id === "number" ? (
+          <FavoriteDoctorButton
+            doctorId={doctor.id}
+            active={favorite}
+            onToggle={onToggleFavorite}
+            compact
+          />
         ) : null}
-        <div className="resource-index-card__actions">
-          <button className="resource-index-card__link" type="button" onClick={onSelect} aria-pressed={selected}>
-            {selected ? "查看中" : "公开资料"} <ExternalLink size={13} aria-hidden="true" />
-          </button>
+      </header>
+      <p className="resource-index-card__address"><Hospital size={12} aria-hidden="true" />{doctor.hospital_name ?? "所属医院未提供"}</p>
+      {doctor.outpatient_time ? <p className="resource-index-card__flag-note">有门诊字段</p> : null}
+      {directionMatch ? (
+        <div className="resource-index-card__flags">
+          <span className="resource-index-card__flag resource-index-card__flag--match">
+            <Sparkles size={11} aria-hidden="true" /> 公开科室匹配
+          </span>
         </div>
-      </div>
+      ) : null}
+      {specialties.length > 0 ? (
+        <div className="resource-chip-list" aria-label="公开专长">
+          {specialties.map((specialty) => <span key={specialty}>{specialty}</span>)}
+        </div>
+      ) : null}
+      <footer className="resource-index-card__actions">
+        <button className="resource-index-card__link resource-index-card__link--primary" type="button" onClick={onSelect} aria-pressed={selected}>
+          {selected ? "查看中" : "查看公开资料"} <ExternalLink size={13} aria-hidden="true" />
+        </button>
+      </footer>
     </article>
   );
 }
@@ -210,6 +221,7 @@ function ResourceDetail({
   onNavigate,
   isFavorite,
   onToggleFavorite,
+  containerRef,
 }: {
   selection: Selection;
   detail: ResourceDetailPayload | null;
@@ -220,9 +232,10 @@ function ResourceDetail({
   onNavigate: (path: string) => void;
   isFavorite: (doctorId: number) => boolean;
   onToggleFavorite: (doctorId: number) => void;
+  containerRef: (node: HTMLElement | null) => void;
 }) {
   return (
-    <aside className="resource-detail" aria-labelledby="resource-detail-title">
+    <aside className="resource-detail" aria-labelledby="resource-detail-title" ref={containerRef}>
       <div className="resource-detail__topline"><span className="eyebrow">资料详情</span><button type="button" onClick={onClose} aria-label="关闭资料详情"><X size={18} aria-hidden="true" /></button></div>
       {loading ? <div className="resource-detail__state" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取详情…</div> : null}
       {!loading && error ? <div className="resource-detail__state resource-detail__state--error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{error.message}</span><button type="button" onClick={onRetry}>重试</button></div> : null}
@@ -349,6 +362,8 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState<ApiError | null>(null);
   const [detailAttempt, setDetailAttempt] = useState(0);
+  const detailRef = useRef<HTMLElement | null>(null);
+  const setDetailNode = (node: HTMLElement | null) => { detailRef.current = node; };
 
   useEffect(() => {
     const controller = new AbortController();
@@ -426,6 +441,15 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     }).catch((reason) => setDoctorError(errorFor(reason, "医生资源暂时无法载入。")))
       .finally(() => setDoctorAppending(false));
   }
+
+  useEffect(() => {
+    if (!selection) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelection(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [selection]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -596,6 +620,20 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     const next = search ? `?${search}` : window.location.pathname;
     window.history.replaceState(null, "", next);
   }, [activeTab, query, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, doctorHospital, doctorDepartment, doctorTitle, selection]);
+
+  /** Selecting a card opens the detail panel below the list and brings it into view. */
+  function selectResource(next: Selection) {
+    setSelection(next);
+    window.requestAnimationFrame(() => {
+      const panel = detailRef.current;
+      if (!panel) return;
+      panel.scrollIntoView({
+        block: "start",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      });
+      panel.querySelector<HTMLElement>("button, a")?.focus({ preventScroll: true });
+    });
+  }
 
   function resetFilters() {
     setQuery("");
@@ -768,29 +806,30 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         ) : null}
 
         {showingHospitals && !hospitalLoading && !hospitalError && filteredHospitals.length > 0 ? (
-          <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
+          <div className="resource-index-layout">
             <div className="resource-index-grid">{filteredHospitals.map((hospital) => (
               <HospitalCard
                 key={String(hospital.id ?? hospital.name)}
                 hospital={hospital}
                 selected={selection?.kind === "hospital" && selection.item.id === hospital.id}
-                onSelect={() => setSelection({ kind: "hospital", item: hospital })}
+                onSelect={() => selectResource({ kind: "hospital", item: hospital })}
                 directionMatch={hospitalMatchesDirection(hospital, triageContext?.direction ?? null)}
               />
             ))}</div>
-            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} /> : null}
           </div>
         ) : null}
 
+        {showingHospitals && selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} containerRef={setDetailNode} /> : null}
+
         {showingDoctors && !doctorLoading && !doctorError && visibleDoctors.length > 0 ? (
-          <div className={`resource-index-layout${selection ? " resource-index-layout--with-detail" : ""}`}>
+          <div className="resource-index-layout">
             <div>
               <div className="resource-index-grid">{visibleDoctors.map((doctor, index) => (
                 <DoctorCard
                   key={String(doctor.id ?? `${doctor.name}-${index}`)}
                   doctor={doctor}
                   selected={selection?.kind === "doctor" && selection.item.id === doctor.id}
-                  onSelect={() => setSelection({ kind: "doctor", item: doctor })}
+                  onSelect={() => selectResource({ kind: "doctor", item: doctor })}
                   favorite={typeof doctor.id === "number" ? isFavorite(doctor.id) : false}
                   onToggleFavorite={toggleFavorite}
                   directionMatch={hospitalMatchesDirection(
@@ -816,9 +855,10 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
                 </div>
               ) : null}
             </div>
-            {selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} /> : null}
           </div>
         ) : null}
+
+        {showingDoctors && selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} containerRef={setDetailNode} /> : null}
       </div>
 
       <div className="resources-page__footer-note"><ArrowRight size={15} aria-hidden="true" /><span>需要根据当前症状寻找路径？</span><button type="button" onClick={() => onNavigate("/triage")}>开始智能分诊</button></div>

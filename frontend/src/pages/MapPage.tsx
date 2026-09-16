@@ -290,7 +290,6 @@ export function MapPage() {
         <div className="map-page__hero-note"><Navigation size={18} strokeWidth={1.5} aria-hidden="true" /><span>真实地理地图</span><small>可从医院资料打开导航。</small></div>
       </div>
 
-      <LocationSelector />
       {triageContext ? (
         <div className="resource-context-bar" role="status" aria-label="当前就医上下文">
           <span className="resource-context-bar__title">当前就医上下文</span>
@@ -313,42 +312,23 @@ export function MapPage() {
       {!loading && error ? <div className="map-error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{error.message}</span><button type="button" onClick={() => setAttempt((value) => value + 1)}>重试</button></div> : null}
       {!loading && !error && map ? (
         <>
-          <div className="map-toolbar">
-            <StatusPill tone="warning">{sourceLabel(map.source)}</StatusPill>
-            <span>{map.notice}</span>
+          <div className="map-tools">
+            <LocationSelector />
+            <details className="map-notice">
+              <summary>
+                <StatusPill tone="warning">{sourceLabel(map.source)}</StatusPill>
+                <span>距离与资料来源说明</span>
+              </summary>
+              <p>{map.notice}</p>
+              <p>急诊标记只说明目录中记录了急诊科室，不表示当前可以接诊；真实急救请以 120 调度为准。</p>
+            </details>
           </div>
           <div className="map-tabs" role="tablist" aria-label="地图资源筛选">
             <button id="map-tab-all" type="button" role="tab" aria-controls="map-resource-panel" aria-selected={filter === "all"} tabIndex={filter === "all" ? 0 : -1} className={filter === "all" ? "is-active" : ""} onClick={() => setFilter("all")}>全部资源 <small>{map.count}</small></button>
             <button id="map-tab-emergency" type="button" role="tab" aria-controls="map-resource-panel" aria-selected={filter === "emergency"} tabIndex={filter === "emergency" ? 0 : -1} className={filter === "emergency" ? "is-active" : ""} onClick={() => setFilter("emergency")}>含急诊字段 <small>{map.items.filter((item) => item.emergency).length}</small></button>
             <span className="map-tabs__hint">{map.distance_method === "haversine_reference_point_km" ? "按区域参考点估算" : map.distance_method ? "按直线距离计算" : "未使用用户定位"}</span>
           </div>
-          <div id="map-resource-panel" className="map-layout" role="tabpanel" aria-labelledby={filter === "all" ? "map-tab-all" : "map-tab-emergency"} tabIndex={-1}>
-            <div className="map-resource-list">
-              <div className="map-resource-list__heading"><span>{map.region.name} · 公开资源</span><small>{visibleItems.length} 个位置</small></div>
-              {visibleItems.map((item) => {
-                const key = itemKey(item);
-                const selected = key === selectedKey;
-                const hovered = key === hoveredKey;
-                return (
-                  <button
-                    className={"map-resource-row" + (selected ? " map-resource-row--selected" : "") + (hovered && !selected ? " map-resource-row--hovered" : "")}
-                    key={key}
-                    type="button"
-                    ref={(element) => { rowRefs.current.set(key, element); }}
-                    onClick={() => setSelectedKey(key)}
-                    onMouseEnter={() => setHoveredKey(key)}
-                    onMouseLeave={() => setHoveredKey(null)}
-                    onFocus={() => setHoveredKey(key)}
-                    onBlur={() => setHoveredKey(null)}
-                    aria-pressed={selected}
-                  >
-                    <span className={"map-resource-row__dot" + (item.emergency ? " map-resource-row__dot--emergency" : "")} aria-hidden="true" />
-                    <span className="map-resource-row__body"><strong>{item.name ?? "未命名医院"}</strong><small>{item.address ?? "地址未提供"}</small></span>
-                    <span className="map-resource-row__meta">{item.emergency ? "急诊字段" : "资源"}<br />{distanceLabel(item, locationSource)}</span>
-                  </button>
-                );
-              })}
-            </div>
+          <div id="map-resource-panel" className="map-workbench" role="tabpanel" aria-labelledby={filter === "all" ? "map-tab-all" : "map-tab-emergency"} tabIndex={-1}>
             <div className="map-stage">
               <RealMapCanvas
                 items={visibleItems}
@@ -358,7 +338,42 @@ export function MapPage() {
                 onSelect={(item) => setSelectedKey(itemKey(item))}
                 onHover={setHoveredKey}
               />
-              {selectedItem ? <MapPreview item={selectedItem} source={locationSource} onClose={() => setSelectedKey(null)} /> : <div className="map-stage__hint"><ExternalLink size={15} aria-hidden="true" />选择列表或 marker 查看公开资料</div>}
+              {selectedItem ? (
+                <MapPreview item={selectedItem} source={locationSource} onClose={() => setSelectedKey(null)} />
+              ) : (
+                <div className="map-stage__hint"><ExternalLink size={15} aria-hidden="true" />选择地图上的标记，或右侧列表中的医院，查看公开资料</div>
+              )}
+            </div>
+            <div className="map-resource-list">
+              <div className="map-resource-list__heading">
+                <span>{map.region.name} · 公开资源</span>
+                <small>{visibleItems.length} 个位置</small>
+              </div>
+              <div className="map-resource-list__scroll">
+                {visibleItems.map((item) => {
+                  const key = itemKey(item);
+                  const selected = key === selectedKey;
+                  const hovered = key === hoveredKey;
+                  return (
+                    <button
+                      className={"map-resource-row" + (selected ? " map-resource-row--selected" : "") + (hovered && !selected ? " map-resource-row--hovered" : "")}
+                      key={key}
+                      type="button"
+                      ref={(element) => { rowRefs.current.set(key, element); }}
+                      onClick={() => setSelectedKey(key)}
+                      onMouseEnter={() => setHoveredKey(key)}
+                      onMouseLeave={() => setHoveredKey(null)}
+                      onFocus={() => setHoveredKey(key)}
+                      onBlur={() => setHoveredKey(null)}
+                      aria-pressed={selected}
+                    >
+                      <span className={"map-resource-row__dot" + (item.emergency ? " map-resource-row__dot--emergency" : "")} aria-hidden="true" />
+                      <span className="map-resource-row__body"><strong>{item.name ?? "未命名医院"}</strong><small>{item.address ?? "地址未提供"}</small></span>
+                      <span className="map-resource-row__meta">{item.emergency ? "急诊字段" : "资源"}<br />{distanceLabel(item, locationSource)}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </>
