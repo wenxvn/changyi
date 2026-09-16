@@ -1,0 +1,427 @@
+{
+  "summary": {
+    "random_baseline": {
+      "seeds": [
+        42,
+        123,
+        2026,
+        3407,
+        7777
+      ],
+      "raw_ece": {
+        "mean": 0.112447,
+        "std": 0.008045,
+        "values": [
+          0.102735,
+          0.109538,
+          0.12722,
+          0.111002,
+          0.111741
+        ]
+      },
+      "calibrated_ece": {
+        "mean": 0.031436,
+        "std": 0.005846,
+        "values": [
+          0.033739,
+          0.023734,
+          0.040102,
+          0.033395,
+          0.026208
+        ]
+      },
+      "raw_accuracy": {
+        "mean": 0.983783,
+        "std": 0.005405,
+        "values": [
+          0.972973,
+          0.986486,
+          0.986486,
+          0.986486,
+          0.986486
+        ]
+      },
+      "coverage": {
+        "mean": 0.875676,
+        "std": 0.019861,
+        "values": [
+          0.851351,
+          0.864865,
+          0.905405,
+          0.891892,
+          0.864865
+        ]
+      },
+      "mean_set_size": {
+        "mean": 0.875676,
+        "std": 0.019861,
+        "values": [
+          0.851351,
+          0.864865,
+          0.905405,
+          0.891892,
+          0.864865
+        ]
+      },
+      "temperature": {
+        "mean": 0.42,
+        "std": 0.04,
+        "values": [
+          0.4,
+          0.4,
+          0.5,
+          0.4,
+          0.4
+        ]
+      },
+      "runs": [
+        {
+          "seed": 42,
+          "temperature": 0.4,
+          "conformal_threshold": 0.011852495948046382,
+          "raw_ece": 0.102735,
+          "calibrated_ece": 0.033739,
+          "raw_accuracy": 0.972973,
+          "calibrated_coverage": 0.851351,
+          "mean_set_size": 0.851351,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 123,
+          "temperature": 0.4,
+          "conformal_threshold": 0.011945047275596754,
+          "raw_ece": 0.109538,
+          "calibrated_ece": 0.023734,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.864865,
+          "mean_set_size": 0.864865,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 2026,
+          "temperature": 0.5,
+          "conformal_threshold": 0.09607850491160719,
+          "raw_ece": 0.12722,
+          "calibrated_ece": 0.040102,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.905405,
+          "mean_set_size": 0.905405,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 3407,
+          "temperature": 0.4,
+          "conformal_threshold": 0.03320641242780209,
+          "raw_ece": 0.111002,
+          "calibrated_ece": 0.033395,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.891892,
+          "mean_set_size": 0.891892,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 7777,
+          "temperature": 0.4,
+          "conformal_threshold": 0.012203861816318606,
+          "raw_ece": 0.111741,
+          "calibrated_ece": 0.026208,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.864865,
+          "mean_set_size": 0.864865,
+          "test_rows": 74,
+          "cal_rows": 115
+        }
+      ]
+    },
+    "grouped_fingerprint": {
+      "seeds": [
+        42,
+        123,
+        2026,
+        3407,
+        7777
+      ],
+      "raw_ece": {
+        "mean": 0.113448,
+        "std": 0.005956,
+        "values": [
+          0.103163,
+          0.11347,
+          0.11409,
+          0.121788,
+          0.114729
+        ]
+      },
+      "calibrated_ece": {
+        "mean": 0.028032,
+        "std": 0.002864,
+        "values": [
+          0.024114,
+          0.027256,
+          0.029648,
+          0.032547,
+          0.026597
+        ]
+      },
+      "raw_accuracy": {
+        "mean": 0.986486,
+        "std": 0.0,
+        "values": [
+          0.986486,
+          0.986486,
+          0.986486,
+          0.986486,
+          0.986486
+        ]
+      },
+      "coverage": {
+        "mean": 0.87027,
+        "std": 0.020225,
+        "values": [
+          0.905405,
+          0.878378,
+          0.851351,
+          0.851351,
+          0.864865
+        ]
+      },
+      "mean_set_size": {
+        "mean": 0.87027,
+        "std": 0.020225,
+        "values": [
+          0.905405,
+          0.878378,
+          0.851351,
+          0.851351,
+          0.864865
+        ]
+      },
+      "temperature": {
+        "mean": 0.4,
+        "std": 0.063246,
+        "values": [
+          0.4,
+          0.5,
+          0.4,
+          0.4,
+          0.3
+        ]
+      },
+      "runs": [
+        {
+          "seed": 42,
+          "temperature": 0.4,
+          "conformal_threshold": 0.020751798556191692,
+          "raw_ece": 0.103163,
+          "calibrated_ece": 0.024114,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.905405,
+          "mean_set_size": 0.905405,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 123,
+          "temperature": 0.5,
+          "conformal_threshold": 0.042045395252221396,
+          "raw_ece": 0.11347,
+          "calibrated_ece": 0.027256,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.878378,
+          "mean_set_size": 0.878378,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 2026,
+          "temperature": 0.4,
+          "conformal_threshold": 0.015424791616699962,
+          "raw_ece": 0.11409,
+          "calibrated_ece": 0.029648,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.851351,
+          "mean_set_size": 0.851351,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 3407,
+          "temperature": 0.4,
+          "conformal_threshold": 0.017866619202114964,
+          "raw_ece": 0.121788,
+          "calibrated_ece": 0.032547,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.851351,
+          "mean_set_size": 0.851351,
+          "test_rows": 74,
+          "cal_rows": 115
+        },
+        {
+          "seed": 7777,
+          "temperature": 0.3,
+          "conformal_threshold": 0.002028378708435752,
+          "raw_ece": 0.114729,
+          "calibrated_ece": 0.026597,
+          "raw_accuracy": 0.986486,
+          "calibrated_coverage": 0.864865,
+          "mean_set_size": 0.864865,
+          "test_rows": 74,
+          "cal_rows": 115
+        }
+      ]
+    },
+    "near_duplicate_same_label": {
+      "seeds": [
+        42,
+        123,
+        2026,
+        3407,
+        7777
+      ],
+      "raw_ece": {
+        "mean": 0.216843,
+        "std": 0.040294,
+        "values": [
+          0.181789,
+          0.266616,
+          0.16599,
+          0.259127,
+          0.210692
+        ]
+      },
+      "calibrated_ece": {
+        "mean": 0.200545,
+        "std": 0.041256,
+        "values": [
+          0.215445,
+          0.266616,
+          0.178204,
+          0.200429,
+          0.142032
+        ]
+      },
+      "raw_accuracy": {
+        "mean": 0.1875,
+        "std": 0.0,
+        "values": [
+          0.1875,
+          0.1875,
+          0.1875,
+          0.1875,
+          0.1875
+        ]
+      },
+      "coverage": {
+        "mean": 0.9125,
+        "std": 0.093541,
+        "values": [
+          1.0,
+          0.875,
+          1.0,
+          0.75,
+          0.9375
+        ]
+      },
+      "mean_set_size": {
+        "mean": 19.1125,
+        "std": 4.986764,
+        "values": [
+          25.1875,
+          20.3125,
+          22.625,
+          10.9375,
+          16.5
+        ]
+      },
+      "temperature": {
+        "mean": 1.3,
+        "std": 0.228035,
+        "values": [
+          1.1,
+          1.0,
+          1.6,
+          1.3,
+          1.5
+        ]
+      },
+      "runs": [
+        {
+          "seed": 42,
+          "temperature": 1.1,
+          "conformal_threshold": 0.9881619940942411,
+          "raw_ece": 0.181789,
+          "calibrated_ece": 0.215445,
+          "raw_accuracy": 0.1875,
+          "calibrated_coverage": 1.0,
+          "mean_set_size": 25.1875,
+          "test_rows": 16,
+          "cal_rows": 8
+        },
+        {
+          "seed": 123,
+          "temperature": 1.0,
+          "conformal_threshold": 0.9879582101021605,
+          "raw_ece": 0.266616,
+          "calibrated_ece": 0.266616,
+          "raw_accuracy": 0.1875,
+          "calibrated_coverage": 0.875,
+          "mean_set_size": 20.3125,
+          "test_rows": 16,
+          "cal_rows": 8
+        },
+        {
+          "seed": 2026,
+          "temperature": 1.6,
+          "conformal_threshold": 0.9817415640116142,
+          "raw_ece": 0.16599,
+          "calibrated_ece": 0.178204,
+          "raw_accuracy": 0.1875,
+          "calibrated_coverage": 1.0,
+          "mean_set_size": 22.625,
+          "test_rows": 16,
+          "cal_rows": 8
+        },
+        {
+          "seed": 3407,
+          "temperature": 1.3,
+          "conformal_threshold": 0.9756771809094628,
+          "raw_ece": 0.259127,
+          "calibrated_ece": 0.200429,
+          "raw_accuracy": 0.1875,
+          "calibrated_coverage": 0.75,
+          "mean_set_size": 10.9375,
+          "test_rows": 16,
+          "cal_rows": 8
+        },
+        {
+          "seed": 7777,
+          "temperature": 1.5,
+          "conformal_threshold": 0.9795489311991528,
+          "raw_ece": 0.210692,
+          "calibrated_ece": 0.142032,
+          "raw_accuracy": 0.1875,
+          "calibrated_coverage": 0.9375,
+          "mean_set_size": 16.5,
+          "test_rows": 16,
+          "cal_rows": 8
+        }
+      ]
+    }
+  },
+  "verdict": {
+    "question": "Conformal/温度缩放是否适合作为拒答/追问触发器？",
+    "answer": "RESEARCH_ONLY",
+    "reason": "近重复诚实协议下 coverage/set-size 对分布漂移敏感；多 seed 结果方差可见，且 calibration 样本很小。可作为研究展示与不确定性信号之一，不宜作为生产唯一拒答开关。"
+  },
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ]
+}

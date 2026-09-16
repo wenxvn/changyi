@@ -65,8 +65,7 @@ def load_maps():
 def build_splits(rows: list[dict[str, Any]]) -> dict[str, tuple[list, list]]:
     random_train, random_test = split_dataset(rows, TEST_SIZE, SEED)
     grouped_train, grouped_test, _ = grouped_fingerprint_split(rows, TEST_SIZE, SEED)
-    components, _ = near_duplicate_components(rows, mode="same_label")
-    near_train, near_test, _ = component_grouped_split(rows, components, TEST_SIZE, SEED)
+    near_train, _, near_test = component_triple_split(rows, seed=SEED)
     return {
         "random_baseline": (random_train, random_test),
         "grouped_fingerprint": (grouped_train, grouped_test),

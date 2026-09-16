@@ -1,0 +1,34 @@
+{
+  "schema_version": "inquiry-dataset/v1",
+  "source": "synthetic_example",
+  "annotation_status": "unlabeled",
+  "sessions": [
+    {
+      "session_id": "synthetic-001",
+      "initial_text": "synthetic_example: 头晕两天，没有胸痛",
+      "extracted_present_symptoms": [
+        "dizziness"
+      ],
+      "extracted_absent_symptoms": [
+        "chest_pain"
+      ],
+      "safety_state": "ROUTINE",
+      "turns": [
+        {
+          "turn_index": 1,
+          "question_id": "duration",
+          "question_text": "synthetic_example: 持续多久了？",
+          "answer": "yes"
+        },
+        {
+          "turn_index": 2,
+          "question_id": "chest_pain",
+          "question_text": "synthetic_example: 是否有胸痛？",
+          "answer": "no"
+        }
+      ],
+      "department_label": "神经内科",
+      "final_route": "OUTPATIENT"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Memory — P0 Care Routing Algorithm Exploration
+# Memory — Care Routing Algorithm Round1 + Round2
 
 Last updated: 2026-09-16
 
@@ -8,7 +8,8 @@ Last updated: 2026-09-16
 - `/api/v1/*` only. `app.py` is a thin compatibility layer over `backend/app/composition.py`.
 - Do not reopen architecture refactors, Chatbot, accounts, cloud records, extra cities, real-time emergency/transit fakes.
 - Do not restore magazine style / Dashboard / Demo Login.
-- **P0 algorithm work lives only in `evaluation/care_routing/`** — never wire it into `/api/v1` or Safety Gate without L3.
+- **Algorithm work lives only in `evaluation/care_routing/`** — never wire it into `/api/v1` or Safety Gate without L3.
+- **Uncertainty → Adaptive Inquiry product readiness = `RESEARCH_ONLY`**.
 
 ## Safety invariants
 
@@ -17,15 +18,25 @@ Last updated: 2026-09-16
 - Safety Evaluation: **142 cases**, recall 1.0, under-triage 0.0, over-triage 0.0, emergency FN 0.
 - Emergency branch renders no ranking fields; `拨打 120` is the first and largest action.
 - Model probabilities are uncalibrated assistive scores, not medical confidence.
+- Red-flag negation parsing must never enter production Safety.
 
 ## Algorithm exploration (2026-09-16)
 
+### Round1
 - Package: `evaluation/care_routing/{uncertainty,inquiry,metrics,disease_department,run_experiments}.py`.
 - Reproduce: `.venv/bin/python -m evaluation.care_routing.run_experiments --write`.
-- Reports: `evaluation/care_routing/results/care_routing_experiment_report.json`.
 - Honest split = same-label near-duplicate triple split; random split metrics are leaky.
 - IG inquiry beats random/frequent on leaky splits (+11~16pp); cannot rescue honest-split weak generalization.
-- Missing data for next round: multi-component same-distribution samples, explicit negative symptoms, real multi-turn Q&A logs.
+
+### Round2
+- Report: `evaluation/care_routing/ROUND2_REPORT.md`
+- Reproduce: `.venv/bin/python -m evaluation.care_routing.run_round2 --write`
+- New modules: `error_analysis.py`, `symptom_state.py`, `inquiry_protocol.py`, `stopping.py`, `model_baselines.py`, `data_schema/`
+- 0.188 root cause: unseen combinations (1.0) + 33/41 single-component diseases **and** NB capacity (LR/SVM=1.0 on same test).
+- Three-state negation unit 10/10; IG does **not** beat Random on honest three-state simulation.
+- Conformal/temperature: research only (near-dup ECE ~0.20±0.04, set size ~19).
+- Inquiry dataset schema exists only as `synthetic_example`.
+- Missing data: multi-component samples, real multi-turn Q&A logs.
 
 ## Frontend ownership map (P5)
 
@@ -49,7 +60,7 @@ E2E must keep: headings 把症状 / 现在有什么不舒服 / 把城市资源 /
 
 ## Test baseline
 
-- pytest **180** (169 + 11 care_routing), frontend boundary **17**, Playwright **20/20**, safety **142** cases.
+- pytest **189** (169 + 11 round1 + 9 round2), frontend boundary **17**, Playwright **20/20**, safety **142** cases.
 - Bundle: CSS 100.9KB gzip 15.3KB; JS 355.7KB gzip 103.6KB (baseline JS 347.2KB, +2.4%). Single chunk (`App.tsx` uses conditional rendering, no code splitting).
 - `data_validation`: scanned 31 / issues 186 (unchanged baseline).
 

@@ -1,6 +1,6 @@
 # Care Routing Experiments（离线原型）
 
-本轮按任务书实现 **安全约束不确定性感知分层就医路由** 的 P0 最高优先级两项，并做 P1/P2 可行性判断。  
+本轮按任务书实现 **安全约束不确定性感知分层就医路由** 的 P0 最高优先级两项，并做 P1/P2 可行性判断。
 **不修改** 正式 Flask API、Safety Gate、红旗规则、前端，也不把未校准概率包装成医学置信度。
 
 ## 目标 / 非目标
@@ -85,3 +85,24 @@
 2. 显式阴性症状特征（“没有胸痛”），才能正确更新后验。
 3. 真实多轮追问日志（问题-回答-最终科室），替代 oracle 模拟。
 4. 可核验的号源/距离/等级字段，才谈得上真正的多目标资源路由评测。
+
+## Round2（第二阶段）
+
+详见 **`ROUND2_REPORT.md`**。
+
+新增模块：
+
+- `error_analysis.py` — near-dup 0.188 根因
+- `symptom_state.py` — Present/Absent/Unknown + 保守否定解析
+- `inquiry_protocol.py` — 三态追问 simulation
+- `stopping.py` — 停止策略
+- `model_baselines.py` — 纯 Python LR/SVM/TF-IDF 对照
+- `data_schema/` — 未来多轮数据 schema（仅 synthetic 示例）
+- `run_round2.py` — 一键复现
+
+```bash
+.venv/bin/python -m evaluation.care_routing.run_round2 --write
+.venv/bin/python -m pytest tests/test_care_routing_round2.py -q
+```
+
+**产品接入结论：`RESEARCH_ONLY`**（见 ROUND2_REPORT.md 第 6 问）。

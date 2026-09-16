@@ -1,17 +1,41 @@
 # 当前项目状态
 
-更新时间：2026-09-16（算法探索轮：不确定性感知分诊 + 信息增益追问）
+更新时间：2026-09-16（算法第二阶段：数据诚实性 / 三态表示 / 可产品化追问评估）
 
 ## 总体状态
 
-- 状态：**P5 产品打磨完成** + **P0 算法探索实验完成**（独立实验包，未改正式 API/Safety）
+- 状态：**P5 产品打磨完成** + **算法 Round1/Round2 离线实验完成**（`evaluation/care_routing/`，未改正式 API/Safety）
 - 分支：`main`
 - 正式前端：Flask 提供 `frontend/dist` 中的 React build
 - 正式 API：`/api/v1/*`
 - 根入口：`python app.py`
 - 产品定位：AI Care Routing；Safety 永远先于个性化
+- **Uncertainty → Adaptive Inquiry 产品接入结论：`RESEARCH_ONLY`**
 
-## P0 算法探索（本轮，离线实验包 `evaluation/care_routing/`）
+## 算法 Round2（本轮）
+
+详情：`evaluation/care_routing/ROUND2_REPORT.md`
+复现：`.venv/bin/python -m evaluation.care_routing.run_round2 --write`
+
+### 六问结论（摘要）
+
+1. **0.188 根因**：表达簇外推（33/41 单 component、test unseen combo=1.0）**+ NB 容量**；同切分 LR/SVM=1.0。
+2. **三态表示**：解析层可用，否定单测 **10/10**；absent 用互补似然，Unknown 不写特征。
+3. **IG + 阴性回答**：诚实切分上 IG **未**稳定优于 Random（0.1875 vs 0.25）。
+4. **停止策略**：Accuracy 全平坦；`combined`/`entropy` 略省问题数；阈值只来自 calibration。
+5. **简单模型**：LR/LinearSVM 在 near-dup 上 **1.0** vs NB **0.1875**（test n=16，不可直接上线）。
+6. **产品接入**：**`RESEARCH_ONLY`**。
+
+### 新增模块
+
+`error_analysis.py` / `symptom_state.py` / `inquiry_protocol.py` / `stopping.py` / `model_baselines.py` / `data_schema/` / `run_round2.py`
+
+### 校准稳健性（5 seeds）
+
+- random/fingerprint：ECE 可降到 ~0.03
+- near-dup 诚实：ECE 仍 ~0.20±0.04，set size ~19 → conformal **仅研究可用**
+
+## 算法 Round1（上一轮保留）
 
 ### 不确定性感知分诊（P0-1）
 
@@ -53,6 +77,7 @@
 
 ### Emergency（重新设计）
 
+
 - 急诊结果不再渲染普通推荐，改由 `EmergencyFacilities` 展示公开急诊字段资源（来自只读 `/api/v1/map`）。
 - 明确声明「目录记录了急诊科室 ≠ 当前可接诊」，真实急救以 120 调度为准；`拨打 120` 保持最大按钮与首选位置。
 - 急诊下隐藏普通「下一步」清单与资源偏好；定位选择保留在地图上方。
@@ -87,20 +112,21 @@
 
 | 领域 | 事实 |
 | --- | --- |
-| 测试 | pytest **180**（+11 care_routing 实验单测）；frontend boundary tests **17**；Playwright **20/20** |
-| Safety | **142** cases；Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency FN `0`（本轮未改动） |
-| 算法实验 | `evaluation/care_routing/results/`；复现命令见 README |
+| 测试 | pytest **189**（169 + 11 round1 + 9 round2）；frontend boundary tests **17**；Playwright **20/20** |
+| Safety | **142** cases；Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency FN `0`（两轮算法实验均未改动） |
+| 算法实验 | `evaluation/care_routing/results/round2_*`；主报告 `ROUND2_REPORT.md` |
+| 产品接入结论 | Uncertainty → Adaptive Inquiry = **`RESEARCH_ONLY`** |
 | 数据校验 | `validate_datasets` scanned 31 / issues 186（与基线一致，只登记不修复） |
 | 前端构建 | CSS 100.9KB gzip 15.3KB；JS 355.7KB gzip 103.6KB（基线 JS 347.2KB，+2.4%） |
 | 医生 API | 服务端分页与筛选（P2 保持） |
 
-## 验证记录（本轮算法探索）
+## 验证记录（算法 Round2）
 
-- `.venv/bin/python -m py_compile evaluation/care_routing/*.py`：通过
-- `.venv/bin/python -m pytest tests/test_care_routing_experiments.py`：11 passed
-- `.venv/bin/python -m pytest`：180 passed
+- `.venv/bin/python -m py_compile evaluation/care_routing/*.py evaluation/care_routing/data_schema/*.py`：通过
+- `.venv/bin/python -m pytest tests/test_care_routing_round2.py`：9 passed（含否定解析 10 用例）
+- `.venv/bin/python -m pytest`：**189 passed**
 - `.venv/bin/python -m evaluation.safety.evaluate_safety`：142 cases；Recall 1.0；FN 0；Over-triage 0（与基线一致）
-- `.venv/bin/python -m evaluation.care_routing.run_experiments --write`：完整报告写入 `results/`
+- `.venv/bin/python -m evaluation.care_routing.run_round2 --write`：误差分析 / 三态追问 / 多 seed 校准 / 模型对照 / schema 全部落盘
 - 正式 `/api/v1`、Safety Gate、红旗规则、前端 **零改动**
 
 ## 未改变的风险
@@ -109,7 +135,9 @@
 - 来源/许可不完整（`R-002`）；照片仍非 `SOURCE_VERIFIED`
 - 急诊字段仅为目录标记，不代表实时接诊能力（`R-019` 同源表述）
 - 账号/云同步/实时急诊/实时公交仍明确不做
-- 原型 NB 概率未经临床校准；诚实切分下泛化弱，不得当作医学置信度或科室终裁
+- 原型概率未经临床校准；诚实切分下 NB 泛化弱，不得当作医学置信度或科室终裁
+- 三态追问为 simulation；synthetic schema 不是真实患者数据
+- LR/SVM 对照 test n=16，不得作为直接替换生产模型的依据
 
 ## 竞赛提交（2026-09-15 审计，本轮未推进）
 
@@ -117,13 +145,13 @@
 
 ## 下一步（算法）
 
-1. 扩充同分布多 component 症状数据，或引入显式阴性症状特征。
-2. 在 Safety 门之后做「不确定 → 信息增益追问」的产品化接线（需 L3 评审，保持红旗优先）。
-3. Hybrid Safety Gate 仅做独立对照实验，不改 baseline。
-4. Knowledge Graph 继续限制为症状-疾病-科室轻量检索，不上 GNN。
+1. 扩充同分布多 component 症状描述，扩大诚实 test 覆盖病种。
+2. 在更大诚实集上做 NB vs LR/线性头升级实验（L3 + 校准 + Safety 回归）。
+3. 按 `data_schema/` 准备 opt-in 真实多轮追问采集；在此之前 IG 结论保持 simulation-only。
+4. Hybrid Safety Gate / KG 继续只做研究对照，不接生产。
 
 ## 下一步（产品/提交）
 
-- 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；可把本轮算法实验表写入技术方案
-- 可选：Resources 医生列表首屏骨架屏；Map marker 密集区聚类（需先定展示口径）
+- 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；可把 ROUND2 六问结论写入技术方案
+- Trust/研究页若展示不确定性指标，必须标注 assistive_only / not clinical confidence
 - 涉及医学或生产能力按 L3/L4 另立计划

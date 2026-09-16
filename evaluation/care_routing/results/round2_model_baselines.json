@@ -1,0 +1,57 @@
+{
+  "seed": 42,
+  "train_rows": 280,
+  "test_rows": 16,
+  "models": [
+    {
+      "model": "multinomial_nb",
+      "accuracy": 0.1875,
+      "top3_accuracy": 0.25
+    },
+    {
+      "model": "logistic_regression_binary",
+      "test_rows": 16,
+      "accuracy": 1.0,
+      "topk_accuracy": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0
+      },
+      "macro_f1": 1.0,
+      "mean_confidence": 0.944895
+    },
+    {
+      "model": "tfidf_logistic_regression",
+      "test_rows": 16,
+      "accuracy": 0.9375,
+      "topk_accuracy": {
+        "1": 0.9375,
+        "2": 1.0,
+        "3": 1.0
+      },
+      "macro_f1": 0.851852,
+      "mean_confidence": 0.883687
+    },
+    {
+      "model": "linear_svm_binary",
+      "test_rows": 16,
+      "accuracy": 1.0,
+      "topk_accuracy": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0
+      },
+      "macro_f1": 1.0,
+      "mean_confidence": 0.245431
+    }
+  ],
+  "verdict": {
+    "question": "简单模型升级能否显著改善 near-dup 泛化？",
+    "best_model": "logistic_regression_binary",
+    "best_accuracy": 1.0,
+    "nb_accuracy": 0.1875,
+    "improvement_over_nb": 0.8125,
+    "conclusion": "若 improvement 很小，则 0.188 主因是数据/表达簇结构，而不是 NB 容量；若明显改善，再评估是否升级正式 Triage classifier（需 L3）。",
+    "primary_selection_protocol": "near_duplicate_same_label only"
+  }
+}

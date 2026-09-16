@@ -1,0 +1,581 @@
+{
+  "protocol": "three_state_simulation",
+  "is_synthetic_oracle": true,
+  "seed": 42,
+  "train_rows": 280,
+  "cal_rows": 8,
+  "test_rows": 16,
+  "stopping_thresholds_from_calibration": {
+    "confidence_threshold": 0.1512,
+    "entropy_ratio_threshold": 0.7811,
+    "set_size_threshold": 1,
+    "margin_threshold": 0.1012
+  },
+  "negation_unit": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "cases": [
+      {
+        "text": "胸痛",
+        "code": "chest_pain",
+        "expected": "present",
+        "observed": "present",
+        "pass": true,
+        "features": {
+          "chest_pain__present": 1.0
+        }
+      },
+      {
+        "text": "没有胸痛",
+        "code": "chest_pain",
+        "expected": "absent",
+        "observed": "absent",
+        "pass": true,
+        "features": {
+          "chest_pain__absent": 1.0
+        }
+      },
+      {
+        "text": "目前没有明显胸痛",
+        "code": "chest_pain",
+        "expected": "absent",
+        "observed": "absent",
+        "pass": true,
+        "features": {
+          "chest_pain__absent": 1.0
+        }
+      },
+      {
+        "text": "不知道有没有发热",
+        "code": "high_fever",
+        "expected": "unknown",
+        "observed": "unknown",
+        "pass": true,
+        "features": {}
+      },
+      {
+        "text": "有咳嗽，没有胸痛",
+        "code": "cough",
+        "expected": "present",
+        "observed": "present",
+        "pass": true,
+        "features": {
+          "cough__present": 1.0,
+          "chest_pain__absent": 1.0
+        }
+      },
+      {
+        "text": "有咳嗽，没有胸痛",
+        "code": "chest_pain",
+        "expected": "absent",
+        "observed": "absent",
+        "pass": true,
+        "features": {
+          "cough__present": 1.0,
+          "chest_pain__absent": 1.0
+        }
+      },
+      {
+        "text": "否认发热，伴有头痛",
+        "code": "high_fever",
+        "expected": "absent",
+        "observed": "absent",
+        "pass": true,
+        "features": {
+          "headache__present": 1.0,
+          "high_fever__absent": 1.0
+        }
+      },
+      {
+        "text": "否认发热，伴有头痛",
+        "code": "headache",
+        "expected": "present",
+        "observed": "present",
+        "pass": true,
+        "features": {
+          "headache__present": 1.0,
+          "high_fever__absent": 1.0
+        }
+      },
+      {
+        "text": "无呼吸困难",
+        "code": "breathlessness",
+        "expected": "absent",
+        "observed": "absent",
+        "pass": true,
+        "features": {
+          "breathlessness__absent": 1.0
+        }
+      },
+      {
+        "text": "不伴腹泻",
+        "code": "diarrhoea",
+        "expected": "absent",
+        "observed": "absent",
+        "pass": true,
+        "features": {
+          "diarrhoea__absent": 1.0
+        }
+      }
+    ],
+    "note": "否定解析仅用于离线实验；红旗否定不得接入生产 Safety。"
+  },
+  "policies": {
+    "fixed_n": {
+      "policy": {
+        "name": "fixed_n",
+        "description": "Always ask up to 5 questions",
+        "max_questions": 5,
+        "confidence_threshold": null,
+        "entropy_ratio_threshold": null,
+        "set_size_threshold": null,
+        "margin_threshold": null
+      },
+      "metrics": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.119048,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": 0.093656,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.25,
+        "department_accuracy_delta": -0.0625
+      }
+    },
+    "entropy_threshold": {
+      "policy": {
+        "name": "entropy_threshold",
+        "description": "Stop when entropy ratio is below calibration quantile",
+        "max_questions": 5,
+        "confidence_threshold": null,
+        "entropy_ratio_threshold": 0.7811,
+        "set_size_threshold": null,
+        "margin_threshold": null
+      },
+      "metrics": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.119048,
+        "avg_questions": 4.8125,
+        "median_questions": 5,
+        "questions_distribution": {
+          "2": 1,
+          "5": 15
+        },
+        "mean_entropy_reduction": 0.094936,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0625,
+        "stop_reasons": {
+          "max_questions": 15,
+          "stopping_policy": 1
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.25,
+        "department_accuracy_delta": -0.0625
+      }
+    },
+    "prediction_set_threshold": {
+      "policy": {
+        "name": "prediction_set_threshold",
+        "description": "Stop when top-3 prediction set is already tiny (set_size<=1)",
+        "max_questions": 5,
+        "confidence_threshold": null,
+        "entropy_ratio_threshold": null,
+        "set_size_threshold": 1,
+        "margin_threshold": null
+      },
+      "metrics": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.119048,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": 0.093656,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.25,
+        "department_accuracy_delta": -0.0625
+      }
+    },
+    "combined": {
+      "policy": {
+        "name": "combined",
+        "description": "Stop when confident OR low entropy OR small set OR large margin",
+        "max_questions": 5,
+        "confidence_threshold": 0.1512,
+        "entropy_ratio_threshold": 0.7811,
+        "set_size_threshold": 1,
+        "margin_threshold": 0.1012
+      },
+      "metrics": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.119048,
+        "avg_questions": 4.8125,
+        "median_questions": 5,
+        "questions_distribution": {
+          "2": 1,
+          "5": 15
+        },
+        "mean_entropy_reduction": 0.094936,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0625,
+        "stop_reasons": {
+          "max_questions": 15,
+          "stopping_policy": 1
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.25,
+        "department_accuracy_delta": -0.0625
+      }
+    }
+  },
+  "strategy_comparison": {
+    "information_gain": {
+      "adaptive_combined_stop": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.119048,
+        "avg_questions": 4.8125,
+        "median_questions": 5,
+        "questions_distribution": {
+          "2": 1,
+          "5": 15
+        },
+        "mean_entropy_reduction": 0.094936,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0625,
+        "stop_reasons": {
+          "max_questions": 15,
+          "stopping_policy": 1
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.25,
+        "department_accuracy_delta": -0.0625
+      },
+      "forced_max_questions": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.119048,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": 0.093656,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.25,
+        "department_accuracy_delta": -0.0625
+      }
+    },
+    "random": {
+      "adaptive_combined_stop": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.25,
+        "accuracy_delta": 0.0625,
+        "macro_f1_final": 0.166667,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": -0.002886,
+        "accuracy_gain_per_question": 0.0125,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.375,
+        "department_accuracy_delta": 0.0625
+      },
+      "forced_max_questions": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.25,
+        "accuracy_delta": 0.0625,
+        "macro_f1_final": 0.166667,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": -0.002886,
+        "accuracy_gain_per_question": 0.0125,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.375,
+        "department_accuracy_delta": 0.0625
+      }
+    },
+    "most_frequent": {
+      "adaptive_combined_stop": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.125,
+        "accuracy_delta": -0.0625,
+        "macro_f1_final": 0.066667,
+        "avg_questions": 4.625,
+        "median_questions": 5,
+        "questions_distribution": {
+          "2": 2,
+          "5": 14
+        },
+        "mean_entropy_reduction": 0.142269,
+        "accuracy_gain_per_question": -0.013514,
+        "stop_rate": 0.125,
+        "stop_reasons": {
+          "max_questions": 14,
+          "stopping_policy": 2
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.125,
+        "department_accuracy_delta": -0.1875
+      },
+      "forced_max_questions": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.125,
+        "accuracy_delta": -0.0625,
+        "macro_f1_final": 0.071429,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": 0.139277,
+        "accuracy_gain_per_question": -0.0125,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.125,
+        "department_accuracy_delta": -0.1875
+      }
+    },
+    "margin": {
+      "adaptive_combined_stop": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.128205,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": 0.137024,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.3125,
+        "department_accuracy_delta": 0.0
+      },
+      "forced_max_questions": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.1875,
+        "accuracy_delta": 0.0,
+        "macro_f1_final": 0.128205,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": 0.137024,
+        "accuracy_gain_per_question": 0.0,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.3125,
+        "department_accuracy_delta": 0.0
+      }
+    },
+    "fixed_order": {
+      "adaptive_combined_stop": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.125,
+        "accuracy_delta": -0.0625,
+        "macro_f1_final": 0.066667,
+        "avg_questions": 4.625,
+        "median_questions": 5,
+        "questions_distribution": {
+          "2": 2,
+          "5": 14
+        },
+        "mean_entropy_reduction": 0.142269,
+        "accuracy_gain_per_question": -0.013514,
+        "stop_rate": 0.125,
+        "stop_reasons": {
+          "max_questions": 14,
+          "stopping_policy": 2
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.125,
+        "department_accuracy_delta": -0.1875
+      },
+      "forced_max_questions": {
+        "cases": 16,
+        "initial_accuracy": 0.1875,
+        "final_accuracy": 0.125,
+        "accuracy_delta": -0.0625,
+        "macro_f1_final": 0.071429,
+        "avg_questions": 5.0,
+        "median_questions": 5,
+        "questions_distribution": {
+          "5": 16
+        },
+        "mean_entropy_reduction": 0.139277,
+        "accuracy_gain_per_question": -0.0125,
+        "stop_rate": 0.0,
+        "stop_reasons": {
+          "max_questions": 16
+        },
+        "wrong_but_confident_rate": 0.0,
+        "mean_set_size_before": 3.0,
+        "mean_set_size_after": 3.0,
+        "department_accuracy_initial": 0.3125,
+        "department_accuracy_final": 0.125,
+        "department_accuracy_delta": -0.1875
+      }
+    }
+  },
+  "accuracy_question_cost_pareto": [
+    {
+      "max_questions": 0,
+      "avg_questions": 0.0,
+      "final_accuracy": 0.1875,
+      "macro_f1_final": 0.128205,
+      "wrong_but_confident_rate": 0.0
+    },
+    {
+      "max_questions": 1,
+      "avg_questions": 1.0,
+      "final_accuracy": 0.1875,
+      "macro_f1_final": 0.128205,
+      "wrong_but_confident_rate": 0.0
+    },
+    {
+      "max_questions": 2,
+      "avg_questions": 2.0,
+      "final_accuracy": 0.1875,
+      "macro_f1_final": 0.128205,
+      "wrong_but_confident_rate": 0.0
+    },
+    {
+      "max_questions": 3,
+      "avg_questions": 3.0,
+      "final_accuracy": 0.1875,
+      "macro_f1_final": 0.119048,
+      "wrong_but_confident_rate": 0.0
+    },
+    {
+      "max_questions": 4,
+      "avg_questions": 4.0,
+      "final_accuracy": 0.1875,
+      "macro_f1_final": 0.111111,
+      "wrong_but_confident_rate": 0.0
+    },
+    {
+      "max_questions": 5,
+      "avg_questions": 5.0,
+      "final_accuracy": 0.1875,
+      "macro_f1_final": 0.119048,
+      "wrong_but_confident_rate": 0.0
+    }
+  ],
+  "key_question_ig_vs_baselines": {
+    "question": "IG 在加入 negative answers 后是否仍优于 Random / MostFreq？",
+    "ig_final_accuracy": 0.1875,
+    "random_final_accuracy": 0.25,
+    "most_frequent_final_accuracy": 0.125,
+    "ig_minus_random": -0.0625,
+    "ig_minus_most_frequent": 0.0625,
+    "note": "oracle 为 held-out 症状集合的三态模拟，不是真实患者。"
+  }
+}
