@@ -1,0 +1,160 @@
+{
+  "protocol": "robustness_simulation",
+  "not_real_patients": true,
+  "seed": 42,
+  "threshold": 0.8,
+  "test_rows": 213,
+  "clean": {
+    "nb": {
+      "accuracy": 0.183099,
+      "department_accuracy": 0.28169,
+      "macro_f1": 0.187857
+    },
+    "lr": {
+      "accuracy": 0.267606,
+      "department_accuracy": 0.2723,
+      "macro_f1": 0.413381
+    },
+    "svm": {
+      "accuracy": 0.2723,
+      "department_accuracy": 0.450704,
+      "macro_f1": 0.415713
+    }
+  },
+  "per_kind": {
+    "order_shuffle": {
+      "nb": {
+        "accuracy": 0.183099,
+        "department_accuracy": 0.28169,
+        "robustness_drop_accuracy": 0.0,
+        "robustness_drop_department": 0.0,
+        "macro_f1": 0.187857
+      },
+      "lr": {
+        "accuracy": 0.267606,
+        "department_accuracy": 0.2723,
+        "robustness_drop_accuracy": 0.0,
+        "robustness_drop_department": 0.0,
+        "macro_f1": 0.413381
+      },
+      "svm": {
+        "accuracy": 0.2723,
+        "department_accuracy": 0.450704,
+        "robustness_drop_accuracy": 0.0,
+        "robustness_drop_department": 0.0,
+        "macro_f1": 0.415713
+      }
+    },
+    "synonym_swap": {
+      "nb": {
+        "accuracy": 0.173709,
+        "department_accuracy": 0.276995,
+        "robustness_drop_accuracy": 0.00939,
+        "robustness_drop_department": 0.004695,
+        "macro_f1": 0.175537
+      },
+      "lr": {
+        "accuracy": 0.253521,
+        "department_accuracy": 0.258216,
+        "robustness_drop_accuracy": 0.014085,
+        "robustness_drop_department": 0.014084,
+        "macro_f1": 0.374864
+      },
+      "svm": {
+        "accuracy": 0.262911,
+        "department_accuracy": 0.441315,
+        "robustness_drop_accuracy": 0.009389,
+        "robustness_drop_department": 0.009389,
+        "macro_f1": 0.420352
+      }
+    },
+    "drop_noncritical": {
+      "nb": {
+        "accuracy": 0.159624,
+        "department_accuracy": 0.267606,
+        "robustness_drop_accuracy": 0.023475,
+        "robustness_drop_department": 0.014084,
+        "macro_f1": 0.12395
+      },
+      "lr": {
+        "accuracy": 0.220657,
+        "department_accuracy": 0.230047,
+        "robustness_drop_accuracy": 0.046949,
+        "robustness_drop_department": 0.042253,
+        "macro_f1": 0.359676
+      },
+      "svm": {
+        "accuracy": 0.225352,
+        "department_accuracy": 0.408451,
+        "robustness_drop_accuracy": 0.046948,
+        "robustness_drop_department": 0.042253,
+        "macro_f1": 0.364126
+      }
+    },
+    "add_filler": {
+      "nb": {
+        "accuracy": 0.098592,
+        "department_accuracy": 0.234742,
+        "robustness_drop_accuracy": 0.084507,
+        "robustness_drop_department": 0.046948,
+        "macro_f1": 0.067763
+      },
+      "lr": {
+        "accuracy": 0.262911,
+        "department_accuracy": 0.323944,
+        "robustness_drop_accuracy": 0.004695,
+        "robustness_drop_department": -0.051644,
+        "macro_f1": 0.415212
+      },
+      "svm": {
+        "accuracy": 0.244131,
+        "department_accuracy": 0.29108,
+        "robustness_drop_accuracy": 0.028169,
+        "robustness_drop_department": 0.159624,
+        "macro_f1": 0.387105
+      }
+    },
+    "colloquial_noise": {
+      "nb": {
+        "accuracy": 0.140845,
+        "department_accuracy": 0.258216,
+        "robustness_drop_accuracy": 0.042254,
+        "robustness_drop_department": 0.023474,
+        "macro_f1": 0.114516
+      },
+      "lr": {
+        "accuracy": 0.258216,
+        "department_accuracy": 0.314554,
+        "robustness_drop_accuracy": 0.00939,
+        "robustness_drop_department": -0.042254,
+        "macro_f1": 0.407913
+      },
+      "svm": {
+        "accuracy": 0.220657,
+        "department_accuracy": 0.356808,
+        "robustness_drop_accuracy": 0.051643,
+        "robustness_drop_department": 0.093896,
+        "macro_f1": 0.358155
+      }
+    }
+  },
+  "worst_case": {
+    "nb": {
+      "mean_drop": 0.031925,
+      "max_drop": 0.084507
+    },
+    "lr": {
+      "mean_drop": 0.015024,
+      "max_drop": 0.046949
+    },
+    "svm": {
+      "mean_drop": 0.02723,
+      "max_drop": 0.051643
+    }
+  },
+  "notes": [
+    "order_shuffle 对 bag-of-tags 模型应为 0 drop（表示层置换不变）",
+    "禁止用扰动样本回训后再在同一扰动集上测试",
+    "红旗语义未被扰动生成器修改"
+  ]
+}

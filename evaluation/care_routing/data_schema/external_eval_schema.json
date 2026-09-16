@@ -1,0 +1,32 @@
+{
+  "schema_version": "external-triage-eval/v1",
+  "purpose": "Future manually curated / hospital-approved evaluation set importer",
+  "rows": [
+    {
+      "case_id": "string, opaque",
+      "symptom_text": "free text, de-identified",
+      "symptom_tags": [
+        "standard_code"
+      ],
+      "absent_symptoms": [
+        "standard_code"
+      ],
+      "department_label": "care-routing label, not diagnosis claim",
+      "disease_label": "optional research label",
+      "safety_flags": [
+        "optional existing safety tags only"
+      ],
+      "source": "curated_clinic|expert_panel|public_deidentified",
+      "annotation_status": "unlabeled|weak|expert_reviewed|rejected",
+      "license": "string",
+      "updated_at": "ISO date"
+    }
+  ],
+  "import_rules": [
+    "No synthetic rows may be marked expert_reviewed.",
+    "Leakage: near-duplicate components must not cross train/test.",
+    "Safety flags may only reuse existing evaluation/safety tags.",
+    "Missing license/source blocks import into the primary table."
+  ],
+  "status": "schema_only_no_results"
+}

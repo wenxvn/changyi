@@ -106,3 +106,23 @@
 ```
 
 **产品接入结论：`RESEARCH_ONLY`**（见 ROUND2_REPORT.md 第 6 问）。
+
+## Round3（扩大诚实评测 + 线性模型验证）
+
+详见 **`ROUND3_REPORT.md`**。
+
+新增模块：
+
+- `round3_split_audit.py` — expanded 集 / component 阈值审计 / quota split / 泄漏审计 / 外部评测 schema
+- `round3_models.py` — NB/LR/SVM/TF-IDF 多 seed 统一指标 + 路由错误严重度
+- `learning_curve.py` — 20%–100% 学习曲线
+- `robustness.py` — meaning-preserving 扰动 simulation
+- `hierarchical_triage.py` — Direct Department vs Disease-first
+- `run_round3.py` — 一键复现
+
+```bash
+.venv/bin/python -m evaluation.care_routing.run_round3 --write
+.venv/bin/python -m pytest tests/test_care_routing_round3.py -q
+```
+
+**Shadow Mode 结论：`RESEARCH_ONLY`**（expanded test≈213 后 LR/SVM 仍优于 NB，但绝对科室准确率不足）。

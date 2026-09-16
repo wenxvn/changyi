@@ -142,7 +142,7 @@ def synthetic_example_dataset() -> dict[str, Any]:
     }
 
 
-DATA_DIR = Path(__file__).with_name("data_schema")
+DATA_DIR = Path(__file__).resolve().parent
 EXAMPLE_PATH = DATA_DIR / "synthetic_example.json"
 GUIDE_PATH = DATA_DIR / "SCHEMA.md"
 

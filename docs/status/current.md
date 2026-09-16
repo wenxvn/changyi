@@ -1,18 +1,39 @@
 # 当前项目状态
 
-更新时间：2026-09-16（算法第二阶段：数据诚实性 / 三态表示 / 可产品化追问评估）
+更新时间：2026-09-16（算法 Round3：扩大诚实评测 + Triage 分类器升级验证）
 
 ## 总体状态
 
-- 状态：**P5 产品打磨完成** + **算法 Round1/Round2 离线实验完成**（`evaluation/care_routing/`，未改正式 API/Safety）
+- 状态：**P5 产品打磨完成** + **算法 Round1/2/3 离线实验完成**（`evaluation/care_routing/`，未改正式 API/Safety）
 - 分支：`main`
 - 正式前端：Flask 提供 `frontend/dist` 中的 React build
 - 正式 API：`/api/v1/*`
 - 根入口：`python app.py`
 - 产品定位：AI Care Routing；Safety 永远先于个性化
-- **Uncertainty → Adaptive Inquiry 产品接入结论：`RESEARCH_ONLY`**
+- **Uncertainty → Adaptive Inquiry：`RESEARCH_ONLY`**
+- **Triage classifier Shadow Mode：`RESEARCH_ONLY`**
 
-## 算法 Round2（本轮）
+## 算法 Round3（本轮）
+
+详情：`evaluation/care_routing/ROUND3_REPORT.md`
+复现：`.venv/bin/python -m evaluation.care_routing.run_round3 --write`
+
+### 关键事实
+
+- expanded_41：**1289** 行（structured 304 + training_long extras，来源可追溯）
+- 诚实 quota split（Jaccard 0.8）：test **213 行 / 25 病种**（structured 仅能到 ~8）
+- cross-split 泄漏审计：8 对同标签边界近义（Jaccard=0.75），无跨病泄漏
+- 5-seed：NB 0.173 / LR 0.265 / SVM 0.267（**Round2 的 1.0 主要是 n=16 偶然**）
+- 学习曲线 20%→100% 仍 +9~13pp → **补数据有收益**
+- 鲁棒性最稳：LR（mean drop 0.015）
+- **Direct Department 0.450 ≫ Disease-first 科室 0.291**
+- Shadow Mode：**`RESEARCH_ONLY`**（绝对科室准确率不足）
+
+### 新增模块
+
+`round3_split_audit.py` / `round3_models.py` / `learning_curve.py` / `robustness.py` / `hierarchical_triage.py` / `run_round3.py`
+
+## 算法 Round2（上一轮保留）
 
 详情：`evaluation/care_routing/ROUND2_REPORT.md`
 复现：`.venv/bin/python -m evaluation.care_routing.run_round2 --write`
@@ -23,7 +44,7 @@
 2. **三态表示**：解析层可用，否定单测 **10/10**；absent 用互补似然，Unknown 不写特征。
 3. **IG + 阴性回答**：诚实切分上 IG **未**稳定优于 Random（0.1875 vs 0.25）。
 4. **停止策略**：Accuracy 全平坦；`combined`/`entropy` 略省问题数；阈值只来自 calibration。
-5. **简单模型**：LR/LinearSVM 在 near-dup 上 **1.0** vs NB **0.1875**（test n=16，不可直接上线）。
+5. **简单模型**：LR/LinearSVM 在 near-dup 上 **1.0** vs NB **0.1875**（test n=16，Round3 已证明不可外推）。
 6. **产品接入**：**`RESEARCH_ONLY`**。
 
 ### 新增模块
@@ -112,21 +133,22 @@
 
 | 领域 | 事实 |
 | --- | --- |
-| 测试 | pytest **189**（169 + 11 round1 + 9 round2）；frontend boundary tests **17**；Playwright **20/20** |
-| Safety | **142** cases；Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency FN `0`（两轮算法实验均未改动） |
-| 算法实验 | `evaluation/care_routing/results/round2_*`；主报告 `ROUND2_REPORT.md` |
-| 产品接入结论 | Uncertainty → Adaptive Inquiry = **`RESEARCH_ONLY`** |
+| 测试 | pytest **199**（169 + 11 r1 + 9 r2 + 10 r3）；frontend boundary **17**；Playwright **20/20** |
+| Safety | **142** cases；Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency FN `0`（三轮算法实验均未改动） |
+| 算法实验 | `evaluation/care_routing/results/round3_*`；主报告 `ROUND3_REPORT.md` |
+| 诚实评测上限 | structured≈8 病种；expanded test≈**213/25 病种** |
+| 产品接入 | Uncertainty→Inquiry = **`RESEARCH_ONLY`**；Triage Shadow Mode = **`RESEARCH_ONLY`** |
 | 数据校验 | `validate_datasets` scanned 31 / issues 186（与基线一致，只登记不修复） |
 | 前端构建 | CSS 100.9KB gzip 15.3KB；JS 355.7KB gzip 103.6KB（基线 JS 347.2KB，+2.4%） |
 | 医生 API | 服务端分页与筛选（P2 保持） |
 
-## 验证记录（算法 Round2）
+## 验证记录（算法 Round3）
 
 - `.venv/bin/python -m py_compile evaluation/care_routing/*.py evaluation/care_routing/data_schema/*.py`：通过
-- `.venv/bin/python -m pytest tests/test_care_routing_round2.py`：9 passed（含否定解析 10 用例）
-- `.venv/bin/python -m pytest`：**189 passed**
+- `.venv/bin/python -m pytest tests/test_care_routing_round3.py`：10 passed
+- `.venv/bin/python -m pytest`：**199 passed**
 - `.venv/bin/python -m evaluation.safety.evaluate_safety`：142 cases；Recall 1.0；FN 0；Over-triage 0（与基线一致）
-- `.venv/bin/python -m evaluation.care_routing.run_round2 --write`：误差分析 / 三态追问 / 多 seed 校准 / 模型对照 / schema 全部落盘
+- `.venv/bin/python -m evaluation.care_routing.run_round3 --write`：split 审计 / 模型矩阵 / 学习曲线 / 鲁棒性 / 层级路由 / 七问答案全部落盘
 - 正式 `/api/v1`、Safety Gate、红旗规则、前端 **零改动**
 
 ## 未改变的风险
@@ -135,9 +157,10 @@
 - 来源/许可不完整（`R-002`）；照片仍非 `SOURCE_VERIFIED`
 - 急诊字段仅为目录标记，不代表实时接诊能力（`R-019` 同源表述）
 - 账号/云同步/实时急诊/实时公交仍明确不做
-- 原型概率未经临床校准；诚实切分下 NB 泛化弱，不得当作医学置信度或科室终裁
+- 原型概率未经临床校准；诚实切分下泛化仍弱，不得当作医学置信度或科室终裁
 - 三态追问为 simulation；synthetic schema 不是真实患者数据
-- LR/SVM 对照 test n=16，不得作为直接替换生产模型的依据
+- expanded_41 是公开文本集，不是常州真实就诊分布；16 病种仍无法进诚实 test
+- Round2 的 LR=1.0 不可外推；Shadow 门槛未达成
 
 ## 竞赛提交（2026-09-15 审计，本轮未推进）
 
@@ -145,13 +168,13 @@
 
 ## 下一步（算法）
 
-1. 扩充同分布多 component 症状描述，扩大诚实 test 覆盖病种。
-2. 在更大诚实集上做 NB vs LR/线性头升级实验（L3 + 校准 + Safety 回归）。
-3. 按 `data_schema/` 准备 opt-in 真实多轮追问采集；在此之前 IG 结论保持 simulation-only。
+1. 继续扩多 component 可核验症状描述，把 16 个排除病种纳入诚实 test。
+2. 以 **Direct Department** 为主模型做更大评测、校准与 Safety 回归。
+3. 按 `data_schema/` 准备 opt-in 真实多轮追问采集；IG 结论保持 simulation-only。
 4. Hybrid Safety Gate / KG 继续只做研究对照，不接生产。
 
 ## 下一步（产品/提交）
 
-- 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；可把 ROUND2 六问结论写入技术方案
+- 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；可把 ROUND3 七问与学习曲线写入技术方案
 - Trust/研究页若展示不确定性指标，必须标注 assistive_only / not clinical confidence
 - 涉及医学或生产能力按 L3/L4 另立计划

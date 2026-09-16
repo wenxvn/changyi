@@ -1,0 +1,2505 @@
+{
+  "structured": {
+    "bundle": "structured_41",
+    "row_count": 304,
+    "threshold_audit": {
+      "primary_threshold": 0.8,
+      "definitions": {
+        "component": "same-label connected components over symptom-set Jaccard",
+        "why_not_only_fingerprint": "exact fingerprint cannot group template near-rewrites",
+        "leak_guard": "cross-split pair Jaccard must stay < 0.75"
+      },
+      "thresholds": [
+        {
+          "threshold": 0.7,
+          "component_count": 41,
+          "singleton_count": 0,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 41,
+          "diseases_with_2_components": 0,
+          "diseases_with_3plus_components": 0,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 1,
+            "AIDS": 1,
+            "Acne": 1,
+            "Alcoholic hepatitis": 1,
+            "Allergy": 1,
+            "Arthritis": 1,
+            "Bronchial Asthma": 1,
+            "Cervical spondylosis": 1,
+            "Chicken pox": 1,
+            "Chronic cholestasis": 1,
+            "Common Cold": 1,
+            "Dengue": 1,
+            "Diabetes": 1,
+            "Dimorphic hemmorhoids(piles)": 1,
+            "Drug Reaction": 1,
+            "Fungal infection": 1,
+            "GERD": 1,
+            "Gastroenteritis": 1,
+            "Heart attack": 1,
+            "Hepatitis B": 1,
+            "Hepatitis C": 1,
+            "Hepatitis D": 1,
+            "Hepatitis E": 1,
+            "Hypertension": 1,
+            "Hyperthyroidism": 1,
+            "Hypoglycemia": 1,
+            "Hypothyroidism": 1,
+            "Impetigo": 1,
+            "Jaundice": 1,
+            "Malaria": 1,
+            "Migraine": 1,
+            "Osteoarthristis": 1,
+            "Paralysis (brain hemorrhage)": 1,
+            "Peptic ulcer diseae": 1,
+            "Pneumonia": 1,
+            "Psoriasis": 1,
+            "Tuberculosis": 1,
+            "Typhoid": 1,
+            "Urinary tract infection": 1,
+            "Varicose veins": 1,
+            "hepatitis A": 1
+          }
+        },
+        {
+          "threshold": 0.8,
+          "component_count": 73,
+          "singleton_count": 40,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 33,
+          "diseases_with_2_components": 0,
+          "diseases_with_3plus_components": 8,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 1,
+            "AIDS": 5,
+            "Acne": 5,
+            "Alcoholic hepatitis": 1,
+            "Allergy": 5,
+            "Arthritis": 1,
+            "Bronchial Asthma": 1,
+            "Cervical spondylosis": 1,
+            "Chicken pox": 1,
+            "Chronic cholestasis": 1,
+            "Common Cold": 1,
+            "Dengue": 1,
+            "Diabetes": 1,
+            "Dimorphic hemmorhoids(piles)": 1,
+            "Drug Reaction": 1,
+            "Fungal infection": 5,
+            "GERD": 1,
+            "Gastroenteritis": 5,
+            "Heart attack": 5,
+            "Hepatitis B": 1,
+            "Hepatitis C": 1,
+            "Hepatitis D": 1,
+            "Hepatitis E": 1,
+            "Hypertension": 1,
+            "Hyperthyroidism": 1,
+            "Hypoglycemia": 1,
+            "Hypothyroidism": 1,
+            "Impetigo": 1,
+            "Jaundice": 1,
+            "Malaria": 1,
+            "Migraine": 1,
+            "Osteoarthristis": 1,
+            "Paralysis (brain hemorrhage)": 5,
+            "Peptic ulcer diseae": 1,
+            "Pneumonia": 1,
+            "Psoriasis": 1,
+            "Tuberculosis": 1,
+            "Typhoid": 1,
+            "Urinary tract infection": 5,
+            "Varicose veins": 1,
+            "hepatitis A": 1
+          }
+        },
+        {
+          "threshold": 0.85,
+          "component_count": 145,
+          "singleton_count": 125,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 20,
+          "diseases_with_2_components": 0,
+          "diseases_with_3plus_components": 21,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 7,
+            "AIDS": 5,
+            "Acne": 5,
+            "Alcoholic hepatitis": 1,
+            "Allergy": 5,
+            "Arthritis": 6,
+            "Bronchial Asthma": 7,
+            "Cervical spondylosis": 6,
+            "Chicken pox": 1,
+            "Chronic cholestasis": 1,
+            "Common Cold": 1,
+            "Dengue": 1,
+            "Diabetes": 1,
+            "Dimorphic hemmorhoids(piles)": 6,
+            "Drug Reaction": 6,
+            "Fungal infection": 5,
+            "GERD": 7,
+            "Gastroenteritis": 5,
+            "Heart attack": 5,
+            "Hepatitis B": 1,
+            "Hepatitis C": 7,
+            "Hepatitis D": 1,
+            "Hepatitis E": 1,
+            "Hypertension": 6,
+            "Hyperthyroidism": 1,
+            "Hypoglycemia": 1,
+            "Hypothyroidism": 1,
+            "Impetigo": 6,
+            "Jaundice": 1,
+            "Malaria": 1,
+            "Migraine": 1,
+            "Osteoarthristis": 7,
+            "Paralysis (brain hemorrhage)": 5,
+            "Peptic ulcer diseae": 7,
+            "Pneumonia": 1,
+            "Psoriasis": 7,
+            "Tuberculosis": 1,
+            "Typhoid": 1,
+            "Urinary tract infection": 5,
+            "Varicose veins": 1,
+            "hepatitis A": 1
+          }
+        },
+        {
+          "threshold": 0.9,
+          "component_count": 199,
+          "singleton_count": 186,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 13,
+          "diseases_with_2_components": 0,
+          "diseases_with_3plus_components": 28,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 7,
+            "AIDS": 5,
+            "Acne": 5,
+            "Alcoholic hepatitis": 8,
+            "Allergy": 5,
+            "Arthritis": 6,
+            "Bronchial Asthma": 7,
+            "Cervical spondylosis": 6,
+            "Chicken pox": 1,
+            "Chronic cholestasis": 8,
+            "Common Cold": 1,
+            "Dengue": 1,
+            "Diabetes": 1,
+            "Dimorphic hemmorhoids(piles)": 6,
+            "Drug Reaction": 6,
+            "Fungal infection": 5,
+            "GERD": 7,
+            "Gastroenteritis": 5,
+            "Heart attack": 5,
+            "Hepatitis B": 1,
+            "Hepatitis C": 7,
+            "Hepatitis D": 10,
+            "Hepatitis E": 1,
+            "Hypertension": 6,
+            "Hyperthyroidism": 1,
+            "Hypoglycemia": 1,
+            "Hypothyroidism": 1,
+            "Impetigo": 6,
+            "Jaundice": 9,
+            "Malaria": 8,
+            "Migraine": 10,
+            "Osteoarthristis": 7,
+            "Paralysis (brain hemorrhage)": 5,
+            "Peptic ulcer diseae": 7,
+            "Pneumonia": 1,
+            "Psoriasis": 7,
+            "Tuberculosis": 1,
+            "Typhoid": 1,
+            "Urinary tract infection": 5,
+            "Varicose veins": 8,
+            "hepatitis A": 1
+          }
+        }
+      ]
+    },
+    "primary_quota_split": {
+      "threshold": 0.8,
+      "seed": 42,
+      "train_rows": 288,
+      "cal_rows": 8,
+      "test_rows": 8,
+      "test_disease_count": 8,
+      "train_disease_count": 41,
+      "excluded_from_test": [
+        "(vertigo) Paroymsal Positional Vertigo",
+        "Alcoholic hepatitis",
+        "Arthritis",
+        "Bronchial Asthma",
+        "Cervical spondylosis",
+        "Chicken pox",
+        "Chronic cholestasis",
+        "Common Cold",
+        "Dengue",
+        "Diabetes",
+        "Dimorphic hemmorhoids(piles)",
+        "Drug Reaction",
+        "GERD",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hypertension",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Impetigo",
+        "Jaundice",
+        "Malaria",
+        "Migraine",
+        "Osteoarthristis",
+        "Peptic ulcer diseae",
+        "Pneumonia",
+        "Psoriasis",
+        "Tuberculosis",
+        "Typhoid",
+        "Varicose veins",
+        "hepatitis A"
+      ],
+      "component_stats": {
+        "mode": "same_label",
+        "jaccard_threshold": 0.8,
+        "sample_count": 304,
+        "component_count": 73,
+        "largest_component_size": 10,
+        "edge_count": 604,
+        "cross_label_edge_count": 0,
+        "singleton_count": 40
+      },
+      "per_disease": [
+        {
+          "disease": "(vertigo) Paroymsal Positional Vertigo",
+          "department": "神经内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "AIDS",
+          "department": "感染性疾病科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Acne",
+          "department": "皮肤科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Alcoholic hepatitis",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Allergy",
+          "department": "皮肤科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Arthritis",
+          "department": "骨科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Bronchial Asthma",
+          "department": "呼吸与危重症医学科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Cervical spondylosis",
+          "department": "骨科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Chicken pox",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Chronic cholestasis",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Common Cold",
+          "department": "呼吸内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Dengue",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Diabetes",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Dimorphic hemmorhoids(piles)",
+          "department": "肛肠科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Drug Reaction",
+          "department": "皮肤科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Fungal infection",
+          "department": "皮肤科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "GERD",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Gastroenteritis",
+          "department": "消化内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Heart attack",
+          "department": "心血管内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Hepatitis B",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis C",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis D",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis E",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypertension",
+          "department": "心血管内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hyperthyroidism",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypoglycemia",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypothyroidism",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Impetigo",
+          "department": "皮肤科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Jaundice",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Malaria",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Migraine",
+          "department": "神经内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Osteoarthristis",
+          "department": "骨科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Paralysis (brain hemorrhage)",
+          "department": "神经内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Peptic ulcer diseae",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Pneumonia",
+          "department": "呼吸与危重症医学科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Psoriasis",
+          "department": "皮肤科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Tuberculosis",
+          "department": "呼吸与危重症医学科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Typhoid",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Urinary tract infection",
+          "department": "泌尿外科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Varicose veins",
+          "department": "普外科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "hepatitis A",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        }
+      ],
+      "leakage": {
+        "threshold": 0.75,
+        "pair_count": 9,
+        "cross_label_pair_count": 0,
+        "max_jaccard": 0.75,
+        "examples": [
+          {
+            "jaccard": 0.75,
+            "train_disease": "AIDS",
+            "test_disease": "AIDS"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Acne",
+            "test_disease": "Acne"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Allergy",
+            "test_disease": "Allergy"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Fungal infection",
+            "test_disease": "Fungal infection"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Gastroenteritis",
+            "test_disease": "Gastroenteritis"
+          }
+        ],
+        "leaky": true
+      }
+    },
+    "secondary_0_85_quota_split": {
+      "threshold": 0.85,
+      "seed": 42,
+      "train_rows": 262,
+      "cal_rows": 21,
+      "test_rows": 21,
+      "test_disease_count": 21,
+      "train_disease_count": 41,
+      "excluded_from_test": [
+        "Alcoholic hepatitis",
+        "Chicken pox",
+        "Chronic cholestasis",
+        "Common Cold",
+        "Dengue",
+        "Diabetes",
+        "Hepatitis B",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Jaundice",
+        "Malaria",
+        "Migraine",
+        "Pneumonia",
+        "Tuberculosis",
+        "Typhoid",
+        "Varicose veins",
+        "hepatitis A"
+      ],
+      "component_stats": {
+        "mode": "same_label",
+        "jaccard_threshold": 0.85,
+        "sample_count": 304,
+        "component_count": 145,
+        "largest_component_size": 10,
+        "edge_count": 251,
+        "cross_label_edge_count": 0,
+        "singleton_count": 125
+      },
+      "per_disease": [
+        {
+          "disease": "(vertigo) Paroymsal Positional Vertigo",
+          "department": "神经内科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "AIDS",
+          "department": "感染性疾病科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Acne",
+          "department": "皮肤科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Alcoholic hepatitis",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Allergy",
+          "department": "皮肤科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Arthritis",
+          "department": "骨科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Bronchial Asthma",
+          "department": "呼吸与危重症医学科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Cervical spondylosis",
+          "department": "骨科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Chicken pox",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Chronic cholestasis",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Common Cold",
+          "department": "呼吸内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Dengue",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Diabetes",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Dimorphic hemmorhoids(piles)",
+          "department": "肛肠科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Drug Reaction",
+          "department": "皮肤科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Fungal infection",
+          "department": "皮肤科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "GERD",
+          "department": "消化内科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Gastroenteritis",
+          "department": "消化内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Heart attack",
+          "department": "心血管内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Hepatitis B",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis C",
+          "department": "感染性疾病科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Hepatitis D",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis E",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypertension",
+          "department": "心血管内科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Hyperthyroidism",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypoglycemia",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypothyroidism",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Impetigo",
+          "department": "皮肤科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Jaundice",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Malaria",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Migraine",
+          "department": "神经内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Osteoarthristis",
+          "department": "骨科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Paralysis (brain hemorrhage)",
+          "department": "神经内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Peptic ulcer diseae",
+          "department": "消化内科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Pneumonia",
+          "department": "呼吸与危重症医学科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Psoriasis",
+          "department": "皮肤科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Tuberculosis",
+          "department": "呼吸与危重症医学科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Typhoid",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Urinary tract infection",
+          "department": "泌尿外科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Varicose veins",
+          "department": "普外科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "hepatitis A",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        }
+      ],
+      "leakage": {
+        "threshold": 0.75,
+        "pair_count": 27,
+        "cross_label_pair_count": 0,
+        "max_jaccard": 0.8333,
+        "examples": [
+          {
+            "jaccard": 0.8333,
+            "train_disease": "(vertigo) Paroymsal Positional Vertigo",
+            "test_disease": "(vertigo) Paroymsal Positional Vertigo"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "AIDS",
+            "test_disease": "AIDS"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Allergy",
+            "test_disease": "Allergy"
+          },
+          {
+            "jaccard": 0.8,
+            "train_disease": "Arthritis",
+            "test_disease": "Arthritis"
+          },
+          {
+            "jaccard": 0.8333,
+            "train_disease": "Bronchial Asthma",
+            "test_disease": "Bronchial Asthma"
+          }
+        ],
+        "leaky": true
+      }
+    },
+    "upper_limit_statement": "structured_41 在 threshold=0.8 诚实 quota 下 test 仍有限；不得为覆盖 41 类强行拆散 component。expanded_41 可扩大 test，但仍是公开文本集而非临床病例。"
+  },
+  "expanded": {
+    "bundle": "expanded_41",
+    "row_count": 1289,
+    "threshold_audit": {
+      "primary_threshold": 0.8,
+      "definitions": {
+        "component": "same-label connected components over symptom-set Jaccard",
+        "why_not_only_fingerprint": "exact fingerprint cannot group template near-rewrites",
+        "leak_guard": "cross-split pair Jaccard must stay < 0.75"
+      },
+      "thresholds": [
+        {
+          "threshold": 0.7,
+          "component_count": 1026,
+          "singleton_count": 985,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 10,
+          "diseases_with_2_components": 11,
+          "diseases_with_3plus_components": 20,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 1,
+            "AIDS": 1,
+            "Acne": 2,
+            "Alcoholic hepatitis": 2,
+            "Allergy": 51,
+            "Arthritis": 52,
+            "Bronchial Asthma": 50,
+            "Cervical spondylosis": 51,
+            "Chicken pox": 51,
+            "Chronic cholestasis": 1,
+            "Common Cold": 51,
+            "Dengue": 51,
+            "Diabetes": 52,
+            "Dimorphic hemmorhoids(piles)": 1,
+            "Drug Reaction": 49,
+            "Fungal infection": 49,
+            "GERD": 2,
+            "Gastroenteritis": 1,
+            "Heart attack": 2,
+            "Hepatitis B": 2,
+            "Hepatitis C": 2,
+            "Hepatitis D": 1,
+            "Hepatitis E": 1,
+            "Hypertension": 51,
+            "Hyperthyroidism": 2,
+            "Hypoglycemia": 2,
+            "Hypothyroidism": 2,
+            "Impetigo": 52,
+            "Jaundice": 38,
+            "Malaria": 52,
+            "Migraine": 43,
+            "Osteoarthristis": 1,
+            "Paralysis (brain hemorrhage)": 1,
+            "Peptic ulcer diseae": 1,
+            "Pneumonia": 49,
+            "Psoriasis": 52,
+            "Tuberculosis": 2,
+            "Typhoid": 48,
+            "Urinary tract infection": 50,
+            "Varicose veins": 52,
+            "hepatitis A": 2
+          }
+        },
+        {
+          "threshold": 0.8,
+          "component_count": 1058,
+          "singleton_count": 1025,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 7,
+          "diseases_with_2_components": 9,
+          "diseases_with_3plus_components": 25,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 1,
+            "AIDS": 5,
+            "Acne": 6,
+            "Alcoholic hepatitis": 2,
+            "Allergy": 55,
+            "Arthritis": 52,
+            "Bronchial Asthma": 50,
+            "Cervical spondylosis": 51,
+            "Chicken pox": 51,
+            "Chronic cholestasis": 1,
+            "Common Cold": 51,
+            "Dengue": 51,
+            "Diabetes": 52,
+            "Dimorphic hemmorhoids(piles)": 1,
+            "Drug Reaction": 49,
+            "Fungal infection": 53,
+            "GERD": 2,
+            "Gastroenteritis": 5,
+            "Heart attack": 6,
+            "Hepatitis B": 2,
+            "Hepatitis C": 2,
+            "Hepatitis D": 1,
+            "Hepatitis E": 1,
+            "Hypertension": 51,
+            "Hyperthyroidism": 2,
+            "Hypoglycemia": 2,
+            "Hypothyroidism": 2,
+            "Impetigo": 52,
+            "Jaundice": 38,
+            "Malaria": 52,
+            "Migraine": 43,
+            "Osteoarthristis": 1,
+            "Paralysis (brain hemorrhage)": 5,
+            "Peptic ulcer diseae": 1,
+            "Pneumonia": 49,
+            "Psoriasis": 52,
+            "Tuberculosis": 2,
+            "Typhoid": 48,
+            "Urinary tract infection": 54,
+            "Varicose veins": 52,
+            "hepatitis A": 2
+          }
+        },
+        {
+          "threshold": 0.85,
+          "component_count": 1130,
+          "singleton_count": 1110,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 3,
+          "diseases_with_2_components": 7,
+          "diseases_with_3plus_components": 31,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 7,
+            "AIDS": 5,
+            "Acne": 6,
+            "Alcoholic hepatitis": 2,
+            "Allergy": 55,
+            "Arthritis": 57,
+            "Bronchial Asthma": 56,
+            "Cervical spondylosis": 56,
+            "Chicken pox": 51,
+            "Chronic cholestasis": 1,
+            "Common Cold": 51,
+            "Dengue": 51,
+            "Diabetes": 52,
+            "Dimorphic hemmorhoids(piles)": 6,
+            "Drug Reaction": 54,
+            "Fungal infection": 53,
+            "GERD": 8,
+            "Gastroenteritis": 5,
+            "Heart attack": 6,
+            "Hepatitis B": 2,
+            "Hepatitis C": 8,
+            "Hepatitis D": 1,
+            "Hepatitis E": 1,
+            "Hypertension": 56,
+            "Hyperthyroidism": 2,
+            "Hypoglycemia": 2,
+            "Hypothyroidism": 2,
+            "Impetigo": 57,
+            "Jaundice": 38,
+            "Malaria": 52,
+            "Migraine": 43,
+            "Osteoarthristis": 7,
+            "Paralysis (brain hemorrhage)": 5,
+            "Peptic ulcer diseae": 7,
+            "Pneumonia": 49,
+            "Psoriasis": 58,
+            "Tuberculosis": 2,
+            "Typhoid": 48,
+            "Urinary tract infection": 54,
+            "Varicose veins": 52,
+            "hepatitis A": 2
+          }
+        },
+        {
+          "threshold": 0.9,
+          "component_count": 1184,
+          "singleton_count": 1171,
+          "largest_component_size": 10,
+          "diseases_with_1_component": 1,
+          "diseases_with_2_components": 6,
+          "diseases_with_3plus_components": 34,
+          "per_disease_component_count": {
+            "(vertigo) Paroymsal Positional Vertigo": 7,
+            "AIDS": 5,
+            "Acne": 6,
+            "Alcoholic hepatitis": 9,
+            "Allergy": 55,
+            "Arthritis": 57,
+            "Bronchial Asthma": 56,
+            "Cervical spondylosis": 56,
+            "Chicken pox": 51,
+            "Chronic cholestasis": 8,
+            "Common Cold": 51,
+            "Dengue": 51,
+            "Diabetes": 52,
+            "Dimorphic hemmorhoids(piles)": 6,
+            "Drug Reaction": 54,
+            "Fungal infection": 53,
+            "GERD": 8,
+            "Gastroenteritis": 5,
+            "Heart attack": 6,
+            "Hepatitis B": 2,
+            "Hepatitis C": 8,
+            "Hepatitis D": 10,
+            "Hepatitis E": 1,
+            "Hypertension": 56,
+            "Hyperthyroidism": 2,
+            "Hypoglycemia": 2,
+            "Hypothyroidism": 2,
+            "Impetigo": 57,
+            "Jaundice": 46,
+            "Malaria": 59,
+            "Migraine": 52,
+            "Osteoarthristis": 7,
+            "Paralysis (brain hemorrhage)": 5,
+            "Peptic ulcer diseae": 7,
+            "Pneumonia": 49,
+            "Psoriasis": 58,
+            "Tuberculosis": 2,
+            "Typhoid": 48,
+            "Urinary tract infection": 54,
+            "Varicose veins": 59,
+            "hepatitis A": 2
+          }
+        }
+      ]
+    },
+    "primary_quota_split": {
+      "threshold": 0.8,
+      "seed": 42,
+      "train_rows": 840,
+      "cal_rows": 236,
+      "test_rows": 213,
+      "test_disease_count": 25,
+      "train_disease_count": 41,
+      "excluded_from_test": [
+        "(vertigo) Paroymsal Positional Vertigo",
+        "Alcoholic hepatitis",
+        "Chronic cholestasis",
+        "Dimorphic hemmorhoids(piles)",
+        "GERD",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Osteoarthristis",
+        "Peptic ulcer diseae",
+        "Tuberculosis",
+        "hepatitis A"
+      ],
+      "component_stats": {
+        "mode": "same_label",
+        "jaccard_threshold": 0.8,
+        "sample_count": 1289,
+        "component_count": 1058,
+        "largest_component_size": 10,
+        "edge_count": 604,
+        "cross_label_edge_count": 0,
+        "singleton_count": 1025
+      },
+      "per_disease": [
+        {
+          "disease": "(vertigo) Paroymsal Positional Vertigo",
+          "department": "神经内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "AIDS",
+          "department": "感染性疾病科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Acne",
+          "department": "皮肤科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Alcoholic hepatitis",
+          "department": "消化内科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Allergy",
+          "department": "皮肤科",
+          "components": 55,
+          "train_components": 33,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Arthritis",
+          "department": "骨科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Bronchial Asthma",
+          "department": "呼吸与危重症医学科",
+          "components": 50,
+          "train_components": 30,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Cervical spondylosis",
+          "department": "骨科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Chicken pox",
+          "department": "感染性疾病科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Chronic cholestasis",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Common Cold",
+          "department": "呼吸内科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Dengue",
+          "department": "感染性疾病科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Diabetes",
+          "department": "内分泌代谢科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Dimorphic hemmorhoids(piles)",
+          "department": "肛肠科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Drug Reaction",
+          "department": "皮肤科",
+          "components": 49,
+          "train_components": 29,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Fungal infection",
+          "department": "皮肤科",
+          "components": 53,
+          "train_components": 31,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "GERD",
+          "department": "消化内科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Gastroenteritis",
+          "department": "消化内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Heart attack",
+          "department": "心血管内科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Hepatitis B",
+          "department": "感染性疾病科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis C",
+          "department": "感染性疾病科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis D",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis E",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypertension",
+          "department": "心血管内科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Hyperthyroidism",
+          "department": "内分泌代谢科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypoglycemia",
+          "department": "内分泌代谢科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypothyroidism",
+          "department": "内分泌代谢科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Impetigo",
+          "department": "皮肤科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Jaundice",
+          "department": "消化内科",
+          "components": 38,
+          "train_components": 22,
+          "cal_components": 8,
+          "test_components": 8,
+          "split": "quota"
+        },
+        {
+          "disease": "Malaria",
+          "department": "感染性疾病科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Migraine",
+          "department": "神经内科",
+          "components": 43,
+          "train_components": 25,
+          "cal_components": 9,
+          "test_components": 9,
+          "split": "quota"
+        },
+        {
+          "disease": "Osteoarthristis",
+          "department": "骨科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Paralysis (brain hemorrhage)",
+          "department": "神经内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Peptic ulcer diseae",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Pneumonia",
+          "department": "呼吸与危重症医学科",
+          "components": 49,
+          "train_components": 29,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Psoriasis",
+          "department": "皮肤科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Tuberculosis",
+          "department": "呼吸与危重症医学科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Typhoid",
+          "department": "感染性疾病科",
+          "components": 48,
+          "train_components": 28,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Urinary tract infection",
+          "department": "泌尿外科",
+          "components": 54,
+          "train_components": 32,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Varicose veins",
+          "department": "普外科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "hepatitis A",
+          "department": "感染性疾病科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        }
+      ],
+      "leakage": {
+        "threshold": 0.75,
+        "pair_count": 8,
+        "cross_label_pair_count": 0,
+        "max_jaccard": 0.75,
+        "examples": [
+          {
+            "jaccard": 0.75,
+            "train_disease": "AIDS",
+            "test_disease": "AIDS"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Acne",
+            "test_disease": "Acne"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Allergy",
+            "test_disease": "Allergy"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Allergy",
+            "test_disease": "Allergy"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Fungal infection",
+            "test_disease": "Fungal infection"
+          }
+        ],
+        "leaky": true
+      }
+    },
+    "secondary_0_85_quota_split": {
+      "threshold": 0.85,
+      "seed": 42,
+      "train_rows": 814,
+      "cal_rows": 238,
+      "test_rows": 237,
+      "test_disease_count": 31,
+      "train_disease_count": 41,
+      "excluded_from_test": [
+        "Alcoholic hepatitis",
+        "Chronic cholestasis",
+        "Hepatitis B",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Tuberculosis",
+        "hepatitis A"
+      ],
+      "component_stats": {
+        "mode": "same_label",
+        "jaccard_threshold": 0.85,
+        "sample_count": 1289,
+        "component_count": 1130,
+        "largest_component_size": 10,
+        "edge_count": 251,
+        "cross_label_edge_count": 0,
+        "singleton_count": 1110
+      },
+      "per_disease": [
+        {
+          "disease": "(vertigo) Paroymsal Positional Vertigo",
+          "department": "神经内科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "AIDS",
+          "department": "感染性疾病科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Acne",
+          "department": "皮肤科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Alcoholic hepatitis",
+          "department": "消化内科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Allergy",
+          "department": "皮肤科",
+          "components": 55,
+          "train_components": 33,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Arthritis",
+          "department": "骨科",
+          "components": 57,
+          "train_components": 35,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Bronchial Asthma",
+          "department": "呼吸与危重症医学科",
+          "components": 56,
+          "train_components": 34,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Cervical spondylosis",
+          "department": "骨科",
+          "components": 56,
+          "train_components": 34,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Chicken pox",
+          "department": "感染性疾病科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Chronic cholestasis",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Common Cold",
+          "department": "呼吸内科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Dengue",
+          "department": "感染性疾病科",
+          "components": 51,
+          "train_components": 31,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Diabetes",
+          "department": "内分泌代谢科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Dimorphic hemmorhoids(piles)",
+          "department": "肛肠科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Drug Reaction",
+          "department": "皮肤科",
+          "components": 54,
+          "train_components": 32,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Fungal infection",
+          "department": "皮肤科",
+          "components": 53,
+          "train_components": 31,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "GERD",
+          "department": "消化内科",
+          "components": 8,
+          "train_components": 4,
+          "cal_components": 2,
+          "test_components": 2,
+          "split": "quota"
+        },
+        {
+          "disease": "Gastroenteritis",
+          "department": "消化内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Heart attack",
+          "department": "心血管内科",
+          "components": 6,
+          "train_components": 4,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Hepatitis B",
+          "department": "感染性疾病科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis C",
+          "department": "感染性疾病科",
+          "components": 8,
+          "train_components": 4,
+          "cal_components": 2,
+          "test_components": 2,
+          "split": "quota"
+        },
+        {
+          "disease": "Hepatitis D",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis E",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypertension",
+          "department": "心血管内科",
+          "components": 56,
+          "train_components": 34,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Hyperthyroidism",
+          "department": "内分泌代谢科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypoglycemia",
+          "department": "内分泌代谢科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypothyroidism",
+          "department": "内分泌代谢科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Impetigo",
+          "department": "皮肤科",
+          "components": 57,
+          "train_components": 35,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Jaundice",
+          "department": "消化内科",
+          "components": 38,
+          "train_components": 22,
+          "cal_components": 8,
+          "test_components": 8,
+          "split": "quota"
+        },
+        {
+          "disease": "Malaria",
+          "department": "感染性疾病科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Migraine",
+          "department": "神经内科",
+          "components": 43,
+          "train_components": 25,
+          "cal_components": 9,
+          "test_components": 9,
+          "split": "quota"
+        },
+        {
+          "disease": "Osteoarthristis",
+          "department": "骨科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Paralysis (brain hemorrhage)",
+          "department": "神经内科",
+          "components": 5,
+          "train_components": 3,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Peptic ulcer diseae",
+          "department": "消化内科",
+          "components": 7,
+          "train_components": 5,
+          "cal_components": 1,
+          "test_components": 1,
+          "split": "quota"
+        },
+        {
+          "disease": "Pneumonia",
+          "department": "呼吸与危重症医学科",
+          "components": 49,
+          "train_components": 29,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Psoriasis",
+          "department": "皮肤科",
+          "components": 58,
+          "train_components": 34,
+          "cal_components": 12,
+          "test_components": 12,
+          "split": "quota"
+        },
+        {
+          "disease": "Tuberculosis",
+          "department": "呼吸与危重症医学科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Typhoid",
+          "department": "感染性疾病科",
+          "components": 48,
+          "train_components": 28,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "Urinary tract infection",
+          "department": "泌尿外科",
+          "components": 54,
+          "train_components": 32,
+          "cal_components": 11,
+          "test_components": 11,
+          "split": "quota"
+        },
+        {
+          "disease": "Varicose veins",
+          "department": "普外科",
+          "components": 52,
+          "train_components": 32,
+          "cal_components": 10,
+          "test_components": 10,
+          "split": "quota"
+        },
+        {
+          "disease": "hepatitis A",
+          "department": "感染性疾病科",
+          "components": 2,
+          "split": "train_only",
+          "reason": "components<3"
+        }
+      ],
+      "leakage": {
+        "threshold": 0.75,
+        "pair_count": 18,
+        "cross_label_pair_count": 0,
+        "max_jaccard": 0.8333,
+        "examples": [
+          {
+            "jaccard": 0.8333,
+            "train_disease": "(vertigo) Paroymsal Positional Vertigo",
+            "test_disease": "(vertigo) Paroymsal Positional Vertigo"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "AIDS",
+            "test_disease": "AIDS"
+          },
+          {
+            "jaccard": 0.75,
+            "train_disease": "Allergy",
+            "test_disease": "Allergy"
+          },
+          {
+            "jaccard": 0.8333,
+            "train_disease": "Bronchial Asthma",
+            "test_disease": "Bronchial Asthma"
+          },
+          {
+            "jaccard": 0.8,
+            "train_disease": "Cervical spondylosis",
+            "test_disease": "Cervical spondylosis"
+          }
+        ],
+        "leaky": true
+      }
+    },
+    "upper_limit_statement": "structured_41 在 threshold=0.8 诚实 quota 下 test 仍有限；不得为覆盖 41 类强行拆散 component。expanded_41 可扩大 test，但仍是公开文本集而非临床病例。"
+  },
+  "primary_expanded_split_seed42": {
+    "threshold": 0.8,
+    "seed": 42,
+    "train_rows": 840,
+    "cal_rows": 236,
+    "test_rows": 213,
+    "test_disease_count": 25,
+    "train_disease_count": 41,
+    "excluded_from_test": [
+      "(vertigo) Paroymsal Positional Vertigo",
+      "Alcoholic hepatitis",
+      "Chronic cholestasis",
+      "Dimorphic hemmorhoids(piles)",
+      "GERD",
+      "Hepatitis B",
+      "Hepatitis C",
+      "Hepatitis D",
+      "Hepatitis E",
+      "Hyperthyroidism",
+      "Hypoglycemia",
+      "Hypothyroidism",
+      "Osteoarthristis",
+      "Peptic ulcer diseae",
+      "Tuberculosis",
+      "hepatitis A"
+    ],
+    "component_stats": {
+      "mode": "same_label",
+      "jaccard_threshold": 0.8,
+      "sample_count": 1289,
+      "component_count": 1058,
+      "largest_component_size": 10,
+      "edge_count": 604,
+      "cross_label_edge_count": 0,
+      "singleton_count": 1025
+    },
+    "per_disease": [
+      {
+        "disease": "(vertigo) Paroymsal Positional Vertigo",
+        "department": "神经内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "AIDS",
+        "department": "感染性疾病科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Acne",
+        "department": "皮肤科",
+        "components": 6,
+        "train_components": 4,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Alcoholic hepatitis",
+        "department": "消化内科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Allergy",
+        "department": "皮肤科",
+        "components": 55,
+        "train_components": 33,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "Arthritis",
+        "department": "骨科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Bronchial Asthma",
+        "department": "呼吸与危重症医学科",
+        "components": 50,
+        "train_components": 30,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Cervical spondylosis",
+        "department": "骨科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Chicken pox",
+        "department": "感染性疾病科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Chronic cholestasis",
+        "department": "消化内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Common Cold",
+        "department": "呼吸内科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Dengue",
+        "department": "感染性疾病科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Diabetes",
+        "department": "内分泌代谢科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Dimorphic hemmorhoids(piles)",
+        "department": "肛肠科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Drug Reaction",
+        "department": "皮肤科",
+        "components": 49,
+        "train_components": 29,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Fungal infection",
+        "department": "皮肤科",
+        "components": 53,
+        "train_components": 31,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "GERD",
+        "department": "消化内科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Gastroenteritis",
+        "department": "消化内科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Heart attack",
+        "department": "心血管内科",
+        "components": 6,
+        "train_components": 4,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Hepatitis B",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis C",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis D",
+        "department": "感染性疾病科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis E",
+        "department": "感染性疾病科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypertension",
+        "department": "心血管内科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Hyperthyroidism",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypoglycemia",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypothyroidism",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Impetigo",
+        "department": "皮肤科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Jaundice",
+        "department": "消化内科",
+        "components": 38,
+        "train_components": 22,
+        "cal_components": 8,
+        "test_components": 8,
+        "split": "quota"
+      },
+      {
+        "disease": "Malaria",
+        "department": "感染性疾病科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Migraine",
+        "department": "神经内科",
+        "components": 43,
+        "train_components": 25,
+        "cal_components": 9,
+        "test_components": 9,
+        "split": "quota"
+      },
+      {
+        "disease": "Osteoarthristis",
+        "department": "骨科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Paralysis (brain hemorrhage)",
+        "department": "神经内科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Peptic ulcer diseae",
+        "department": "消化内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Pneumonia",
+        "department": "呼吸与危重症医学科",
+        "components": 49,
+        "train_components": 29,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Psoriasis",
+        "department": "皮肤科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Tuberculosis",
+        "department": "呼吸与危重症医学科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Typhoid",
+        "department": "感染性疾病科",
+        "components": 48,
+        "train_components": 28,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Urinary tract infection",
+        "department": "泌尿外科",
+        "components": 54,
+        "train_components": 32,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "Varicose veins",
+        "department": "普外科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "hepatitis A",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      }
+    ],
+    "leakage": {
+      "threshold": 0.75,
+      "pair_count": 8,
+      "cross_label_pair_count": 0,
+      "max_jaccard": 0.75,
+      "examples": [
+        {
+          "jaccard": 0.75,
+          "train_disease": "AIDS",
+          "test_disease": "AIDS"
+        },
+        {
+          "jaccard": 0.75,
+          "train_disease": "Acne",
+          "test_disease": "Acne"
+        },
+        {
+          "jaccard": 0.75,
+          "train_disease": "Allergy",
+          "test_disease": "Allergy"
+        },
+        {
+          "jaccard": 0.75,
+          "train_disease": "Allergy",
+          "test_disease": "Allergy"
+        },
+        {
+          "jaccard": 0.75,
+          "train_disease": "Fungal infection",
+          "test_disease": "Fungal infection"
+        }
+      ],
+      "leaky": true
+    },
+    "sources": {
+      "structured_path": "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
+      "structured_sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
+      "long_path": "data/symptom_disease_model/data/disease_symptom_training_long.csv",
+      "long_sha256": "8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497",
+      "row_count": 1289,
+      "extra_rows": 985,
+      "disease_count": 41,
+      "provenance": {
+        "shanover_disease_symptoms_prec_full": {
+          "url": "https://huggingface.co/datasets/shanover/disease_symptoms_prec_full",
+          "license": "MIT (per Hugging Face dataset tags)",
+          "file": "shanover_disease_sympts_prec_full.csv"
+        },
+        "fhai50032_symptoms_to_disease_7k": {
+          "url": "https://huggingface.co/datasets/fhai50032/Symptoms_to_disease_7k",
+          "license": "Apache-2.0 (per Hugging Face dataset tags)",
+          "file": "fhai_symptoms_to_disease_7k.json"
+        }
+      },
+      "note": "expanded public-text set for the 41 prototype labels; not clinical cases"
+    }
+  }
+}

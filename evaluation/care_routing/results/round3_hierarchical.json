@@ -1,0 +1,167 @@
+{
+  "protocol": "hierarchical_vs_direct",
+  "threshold": 0.8,
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "direct_department_accuracy": {
+    "mean": 0.450262,
+    "std": 0.025686
+  },
+  "disease_first_department_accuracy": {
+    "mean": 0.290794,
+    "std": 0.026104
+  },
+  "disease_first_disease_accuracy": {
+    "mean": 0.265103,
+    "std": 0.026146
+  },
+  "direct_runs": [
+    {
+      "approach": "direct_department_lr",
+      "accuracy": 0.43662,
+      "macro_f1": 0.345476,
+      "ece": 0.226696,
+      "mean_confidence": 0.629771,
+      "department_labels": [
+        "内分泌代谢科",
+        "呼吸与危重症医学科",
+        "呼吸内科",
+        "心血管内科",
+        "感染性疾病科",
+        "普外科",
+        "泌尿外科",
+        "消化内科",
+        "皮肤科",
+        "神经内科",
+        "肛肠科",
+        "骨科"
+      ],
+      "test_rows": 213,
+      "note": "product-facing care routing baseline; not a diagnosis model"
+    },
+    {
+      "approach": "direct_department_lr",
+      "accuracy": 0.427928,
+      "macro_f1": 0.327492,
+      "ece": 0.238706,
+      "mean_confidence": 0.65634,
+      "department_labels": [
+        "内分泌代谢科",
+        "呼吸与危重症医学科",
+        "呼吸内科",
+        "心血管内科",
+        "感染性疾病科",
+        "普外科",
+        "泌尿外科",
+        "消化内科",
+        "皮肤科",
+        "神经内科",
+        "肛肠科",
+        "骨科"
+      ],
+      "test_rows": 222,
+      "note": "product-facing care routing baseline; not a diagnosis model"
+    },
+    {
+      "approach": "direct_department_lr",
+      "accuracy": 0.486239,
+      "macro_f1": 0.427934,
+      "ece": 0.163313,
+      "mean_confidence": 0.625541,
+      "department_labels": [
+        "内分泌代谢科",
+        "呼吸与危重症医学科",
+        "呼吸内科",
+        "心血管内科",
+        "感染性疾病科",
+        "普外科",
+        "泌尿外科",
+        "消化内科",
+        "皮肤科",
+        "神经内科",
+        "肛肠科",
+        "骨科"
+      ],
+      "test_rows": 218,
+      "note": "product-facing care routing baseline; not a diagnosis model"
+    }
+  ],
+  "disease_first_runs": [
+    {
+      "approach": "disease_first_lr",
+      "disease_accuracy": 0.262911,
+      "department_accuracy": 0.262911,
+      "department_macro_f1": 0.309833,
+      "ece_disease": 0.04259,
+      "routing_error": {
+        "n": 213,
+        "correct": 56,
+        "same_department_error": 0,
+        "cross_department_error": 157,
+        "safety_relevant_error": 8,
+        "care_routing_accuracy": 0.262911,
+        "department_accuracy": 0.262911,
+        "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+      },
+      "test_rows": 213,
+      "nb_disease_first": {
+        "disease_accuracy": 0.183099,
+        "department_accuracy": 0.28169,
+        "ece": 0.09249
+      },
+      "note": "disease label is research-only intermediate; UI must not present it as diagnosis"
+    },
+    {
+      "approach": "disease_first_lr",
+      "disease_accuracy": 0.234234,
+      "department_accuracy": 0.283784,
+      "department_macro_f1": 0.330375,
+      "ece_disease": 0.064241,
+      "routing_error": {
+        "n": 222,
+        "correct": 52,
+        "same_department_error": 11,
+        "cross_department_error": 159,
+        "safety_relevant_error": 10,
+        "care_routing_accuracy": 0.283784,
+        "department_accuracy": 0.283784,
+        "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+      },
+      "test_rows": 222,
+      "nb_disease_first": {
+        "disease_accuracy": 0.148649,
+        "department_accuracy": 0.292793,
+        "ece": 0.069233
+      },
+      "note": "disease label is research-only intermediate; UI must not present it as diagnosis"
+    },
+    {
+      "approach": "disease_first_lr",
+      "disease_accuracy": 0.298165,
+      "department_accuracy": 0.325688,
+      "department_macro_f1": 0.411506,
+      "ece_disease": 0.035311,
+      "routing_error": {
+        "n": 218,
+        "correct": 65,
+        "same_department_error": 6,
+        "cross_department_error": 147,
+        "safety_relevant_error": 7,
+        "care_routing_accuracy": 0.325688,
+        "department_accuracy": 0.325688,
+        "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+      },
+      "test_rows": 218,
+      "nb_disease_first": {
+        "disease_accuracy": 0.206422,
+        "department_accuracy": 0.316514,
+        "ece": 0.098358
+      },
+      "note": "disease label is research-only intermediate; UI must not present it as diagnosis"
+    }
+  ],
+  "recommendation": "若 direct department accuracy ≥ disease-first department accuracy 且更稳定，则产品叙事优先 Direct Department（更贴合 Care Routing，标签更粗、样本更聚合）。"
+}

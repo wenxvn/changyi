@@ -1,0 +1,6223 @@
+{
+  "protocol": "expanded_quota_0.8",
+  "threshold": 0.8,
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "run_count": 5,
+  "headline": {
+    "multinomial_nb": {
+      "accuracy": {
+        "mean": 0.173224,
+        "std": 0.021912,
+        "values": [
+          0.183099,
+          0.148649,
+          0.206422,
+          0.149378,
+          0.178571
+        ]
+      },
+      "macro_f1": {
+        "mean": 0.165284,
+        "std": 0.051793,
+        "values": [
+          0.187857,
+          0.121987,
+          0.15721,
+          0.10706,
+          0.252307
+        ]
+      },
+      "top3_accuracy": {
+        "mean": 0.293406,
+        "std": 0.029116,
+        "values": [
+          0.286385,
+          0.274775,
+          0.344037,
+          0.302905,
+          0.258929
+        ]
+      },
+      "department_accuracy": {
+        "mean": 0.315062,
+        "std": 0.025113,
+        "values": [
+          0.28169,
+          0.292793,
+          0.316514,
+          0.3361,
+          0.348214
+        ]
+      },
+      "ece": {
+        "mean": 0.091604,
+        "std": 0.011702,
+        "values": [
+          0.09249,
+          0.069233,
+          0.098358,
+          0.095144,
+          0.102797
+        ]
+      },
+      "wrong_but_confident_rate": {
+        "mean": 0.017676,
+        "std": 0.014953,
+        "values": [
+          0.032864,
+          0.0,
+          0.0,
+          0.033195,
+          0.022321
+        ]
+      },
+      "care_routing_accuracy": {
+        "mean": 0.315062,
+        "std": 0.025113,
+        "values": [
+          0.28169,
+          0.292793,
+          0.316514,
+          0.3361,
+          0.348214
+        ]
+      },
+      "cross_department_error_rate": {
+        "mean": 0.684938,
+        "std": null
+      }
+    },
+    "multinomial_nb_temperature": {
+      "accuracy": {
+        "mean": 0.173224,
+        "std": 0.021912,
+        "values": [
+          0.183099,
+          0.148649,
+          0.206422,
+          0.149378,
+          0.178571
+        ]
+      },
+      "macro_f1": {
+        "mean": 0.165284,
+        "std": 0.051793,
+        "values": [
+          0.187857,
+          0.121987,
+          0.15721,
+          0.10706,
+          0.252307
+        ]
+      },
+      "top3_accuracy": {
+        "mean": 0.293406,
+        "std": 0.029116,
+        "values": [
+          0.286385,
+          0.274775,
+          0.344037,
+          0.302905,
+          0.258929
+        ]
+      },
+      "department_accuracy": {
+        "mean": 0.315062,
+        "std": 0.025113,
+        "values": [
+          0.28169,
+          0.292793,
+          0.316514,
+          0.3361,
+          0.348214
+        ]
+      },
+      "ece": {
+        "mean": 0.098184,
+        "std": 0.019809,
+        "values": [
+          0.133321,
+          0.078969,
+          0.08021,
+          0.095144,
+          0.103277
+        ]
+      },
+      "wrong_but_confident_rate": {
+        "mean": 0.020508,
+        "std": 0.018189,
+        "values": [
+          0.023474,
+          0.0,
+          0.045872,
+          0.033195,
+          0.0
+        ]
+      },
+      "care_routing_accuracy": {
+        "mean": 0.315062,
+        "std": 0.025113,
+        "values": [
+          0.28169,
+          0.292793,
+          0.316514,
+          0.3361,
+          0.348214
+        ]
+      },
+      "cross_department_error_rate": {
+        "mean": 0.684938,
+        "std": null
+      }
+    },
+    "logistic_regression": {
+      "accuracy": {
+        "mean": 0.264727,
+        "std": 0.021166,
+        "values": [
+          0.262911,
+          0.234234,
+          0.298165,
+          0.273859,
+          0.254464
+        ]
+      },
+      "macro_f1": {
+        "mean": 0.387864,
+        "std": 0.030753,
+        "values": [
+          0.407609,
+          0.347907,
+          0.431668,
+          0.392577,
+          0.359558
+        ]
+      },
+      "top3_accuracy": {
+        "mean": 0.356134,
+        "std": 0.014984,
+        "values": [
+          0.361502,
+          0.337838,
+          0.380734,
+          0.356846,
+          0.34375
+        ]
+      },
+      "department_accuracy": {
+        "mean": 0.299543,
+        "std": 0.032228,
+        "values": [
+          0.262911,
+          0.283784,
+          0.325688,
+          0.348548,
+          0.276786
+        ]
+      },
+      "ece": {
+        "mean": 0.064785,
+        "std": 0.028573,
+        "values": [
+          0.04259,
+          0.064241,
+          0.035311,
+          0.116944,
+          0.06484
+        ]
+      },
+      "wrong_but_confident_rate": {
+        "mean": 0.030484,
+        "std": 0.019943,
+        "values": [
+          0.004695,
+          0.027027,
+          0.027523,
+          0.06639,
+          0.026786
+        ]
+      },
+      "care_routing_accuracy": {
+        "mean": 0.299543,
+        "std": 0.032228,
+        "values": [
+          0.262911,
+          0.283784,
+          0.325688,
+          0.348548,
+          0.276786
+        ]
+      },
+      "cross_department_error_rate": {
+        "mean": 0.700457,
+        "std": null
+      }
+    },
+    "logistic_regression_temperature": {
+      "accuracy": {
+        "mean": 0.264727,
+        "std": 0.021166,
+        "values": [
+          0.262911,
+          0.234234,
+          0.298165,
+          0.273859,
+          0.254464
+        ]
+      },
+      "macro_f1": {
+        "mean": 0.387864,
+        "std": 0.030753,
+        "values": [
+          0.407609,
+          0.347907,
+          0.431668,
+          0.392577,
+          0.359558
+        ]
+      },
+      "top3_accuracy": {
+        "mean": 0.356134,
+        "std": 0.014984,
+        "values": [
+          0.361502,
+          0.337838,
+          0.380734,
+          0.356846,
+          0.34375
+        ]
+      },
+      "department_accuracy": {
+        "mean": 0.299543,
+        "std": 0.032228,
+        "values": [
+          0.262911,
+          0.283784,
+          0.325688,
+          0.348548,
+          0.276786
+        ]
+      },
+      "ece": {
+        "mean": 0.052523,
+        "std": 0.010975,
+        "values": [
+          0.053627,
+          0.046183,
+          0.035311,
+          0.061237,
+          0.066259
+        ]
+      },
+      "wrong_but_confident_rate": {
+        "mean": 0.018204,
+        "std": 0.018347,
+        "values": [
+          0.004695,
+          0.009009,
+          0.027523,
+          0.049793,
+          0.0
+        ]
+      },
+      "care_routing_accuracy": {
+        "mean": 0.299543,
+        "std": 0.032228,
+        "values": [
+          0.262911,
+          0.283784,
+          0.325688,
+          0.348548,
+          0.276786
+        ]
+      },
+      "cross_department_error_rate": {
+        "mean": 0.700457,
+        "std": null
+      }
+    },
+    "linear_svm": {
+      "accuracy": {
+        "mean": 0.267464,
+        "std": 0.015409,
+        "values": [
+          0.2723,
+          0.243243,
+          0.288991,
+          0.273859,
+          0.258929
+        ]
+      },
+      "macro_f1": {
+        "mean": 0.362787,
+        "std": 0.044701,
+        "values": [
+          0.415713,
+          0.306501,
+          0.389082,
+          0.390482,
+          0.312159
+        ]
+      },
+      "top3_accuracy": {
+        "mean": 0.350592,
+        "std": 0.017791,
+        "values": [
+          0.356808,
+          0.315315,
+          0.362385,
+          0.356846,
+          0.361607
+        ]
+      },
+      "department_accuracy": {
+        "mean": 0.401485,
+        "std": 0.040753,
+        "values": [
+          0.450704,
+          0.445946,
+          0.348624,
+          0.369295,
+          0.392857
+        ]
+      },
+      "ece": {
+        "mean": 0.199011,
+        "std": 0.014232,
+        "values": [
+          0.204683,
+          0.17694,
+          0.22059,
+          0.199101,
+          0.19374
+        ]
+      },
+      "wrong_but_confident_rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "care_routing_accuracy": {
+        "mean": 0.401485,
+        "std": 0.040753,
+        "values": [
+          0.450704,
+          0.445946,
+          0.348624,
+          0.369295,
+          0.392857
+        ]
+      },
+      "cross_department_error_rate": {
+        "mean": 0.598515,
+        "std": null
+      }
+    },
+    "linear_svm_temperature": {
+      "accuracy": {
+        "mean": 0.267464,
+        "std": 0.015409,
+        "values": [
+          0.2723,
+          0.243243,
+          0.288991,
+          0.273859,
+          0.258929
+        ]
+      },
+      "macro_f1": {
+        "mean": 0.362787,
+        "std": 0.044701,
+        "values": [
+          0.415713,
+          0.306501,
+          0.389082,
+          0.390482,
+          0.312159
+        ]
+      },
+      "top3_accuracy": {
+        "mean": 0.350592,
+        "std": 0.017791,
+        "values": [
+          0.356808,
+          0.315315,
+          0.362385,
+          0.356846,
+          0.361607
+        ]
+      },
+      "department_accuracy": {
+        "mean": 0.401485,
+        "std": 0.040753,
+        "values": [
+          0.450704,
+          0.445946,
+          0.348624,
+          0.369295,
+          0.392857
+        ]
+      },
+      "ece": {
+        "mean": 0.082669,
+        "std": 0.017206,
+        "values": [
+          0.076671,
+          0.063632,
+          0.072374,
+          0.113595,
+          0.087074
+        ]
+      },
+      "wrong_but_confident_rate": {
+        "mean": 0.038437,
+        "std": 0.030132,
+        "values": [
+          0.014085,
+          0.009009,
+          0.059633,
+          0.087137,
+          0.022321
+        ]
+      },
+      "care_routing_accuracy": {
+        "mean": 0.401485,
+        "std": 0.040753,
+        "values": [
+          0.450704,
+          0.445946,
+          0.348624,
+          0.369295,
+          0.392857
+        ]
+      },
+      "cross_department_error_rate": {
+        "mean": 0.598515,
+        "std": null
+      }
+    },
+    "tfidf_logistic_regression": {
+      "accuracy": {
+        "mean": 0.251945,
+        "std": 0.028129,
+        "values": [
+          0.244131,
+          0.207207,
+          0.288991,
+          0.273859,
+          0.245536
+        ]
+      },
+      "macro_f1": {
+        "mean": 0.359345,
+        "std": 0.040565,
+        "values": [
+          0.40509,
+          0.303085,
+          0.407052,
+          0.341765,
+          0.339731
+        ]
+      },
+      "top3_accuracy": {
+        "mean": 0.320921,
+        "std": 0.025738,
+        "values": [
+          0.333333,
+          0.27027,
+          0.334862,
+          0.340249,
+          0.325893
+        ]
+      },
+      "department_accuracy": {
+        "mean": 0.421404,
+        "std": 0.059488,
+        "values": [
+          0.370892,
+          0.337838,
+          0.458716,
+          0.502075,
+          0.4375
+        ]
+      },
+      "ece": {
+        "mean": 0.085001,
+        "std": 0.021168,
+        "values": [
+          0.061763,
+          0.116825,
+          0.067721,
+          0.102602,
+          0.076093
+        ]
+      },
+      "wrong_but_confident_rate": {
+        "mean": 0.051076,
+        "std": 0.02309,
+        "values": [
+          0.037559,
+          0.067568,
+          0.022936,
+          0.087137,
+          0.040179
+        ]
+      },
+      "care_routing_accuracy": {
+        "mean": 0.421404,
+        "std": 0.059488,
+        "values": [
+          0.370892,
+          0.337838,
+          0.458716,
+          0.502075,
+          0.4375
+        ]
+      },
+      "cross_department_error_rate": {
+        "mean": 0.578596,
+        "std": null
+      }
+    }
+  },
+  "runs": [
+    {
+      "seed": 42,
+      "train_rows": 840,
+      "cal_rows": 236,
+      "test_rows": 213,
+      "models": {
+        "multinomial_nb": {
+          "test_rows": 213,
+          "accuracy": 0.183099,
+          "macro_f1": 0.187857,
+          "top2_accuracy": 0.230047,
+          "top3_accuracy": 0.286385,
+          "department_accuracy": 0.28169,
+          "department_macro_f1": 0.204878,
+          "mean_confidence": 0.140243,
+          "mean_entropy": 4.552397,
+          "ece": 0.09249,
+          "brier": 0.920217,
+          "wrong_but_confident_rate": 0.032864,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 1.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.2,
+            "Bronchial Asthma": 0.2,
+            "Cervical spondylosis": 0.4,
+            "Chicken pox": 1.0,
+            "Common Cold": 0.055556,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.0,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.6,
+            "Impetigo": 0.0,
+            "Jaundice": 0.125,
+            "Malaria": 0.7,
+            "Migraine": 0.111111,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.2,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Impetigo": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Chicken pox": 9,
+              "Malaria": 1,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Chicken pox": 8,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Chicken pox": 7,
+              "Cervical spondylosis": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 6,
+              "Cervical spondylosis": 4
+            },
+            "Chicken pox": {
+              "Chicken pox": 10
+            },
+            "Common Cold": {
+              "Chicken pox": 8,
+              "Tuberculosis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Impetigo": 1,
+              "Chicken pox": 9
+            },
+            "Diabetes": {
+              "Chicken pox": 9,
+              "Pneumonia": 1
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 11
+            },
+            "Gastroenteritis": {
+              "Malaria": 1
+            },
+            "Heart attack": {
+              "Tuberculosis": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 4,
+              "Hypertension": 6
+            },
+            "Impetigo": {
+              "Chicken pox": 10
+            },
+            "Jaundice": {
+              "Chicken pox": 5,
+              "Jaundice": 1,
+              "Malaria": 2
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Chicken pox": 3
+            },
+            "Migraine": {
+              "Chicken pox": 6,
+              "Diabetes": 2,
+              "Migraine": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Malaria": 1,
+              "Chicken pox": 9
+            },
+            "Psoriasis": {
+              "Psoriasis": 2,
+              "Chicken pox": 8
+            },
+            "Typhoid": {
+              "Chicken pox": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 11
+            },
+            "Varicose veins": {
+              "Chicken pox": 10
+            }
+          },
+          "routing_error": {
+            "n": 213,
+            "correct": 39,
+            "same_department_error": 21,
+            "cross_department_error": 153,
+            "safety_relevant_error": 12,
+            "care_routing_accuracy": 0.28169,
+            "department_accuracy": 0.28169,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0030385840218514204,
+          "model_size_chars": 16363,
+          "temperature": 1.0
+        },
+        "multinomial_nb_temperature": {
+          "test_rows": 213,
+          "accuracy": 0.183099,
+          "macro_f1": 0.187857,
+          "top2_accuracy": 0.230047,
+          "top3_accuracy": 0.286385,
+          "department_accuracy": 0.28169,
+          "department_macro_f1": 0.204878,
+          "mean_confidence": 0.094055,
+          "mean_entropy": 4.931823,
+          "ece": 0.133321,
+          "brier": 0.94285,
+          "wrong_but_confident_rate": 0.023474,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 1.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.2,
+            "Bronchial Asthma": 0.2,
+            "Cervical spondylosis": 0.4,
+            "Chicken pox": 1.0,
+            "Common Cold": 0.055556,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.0,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.6,
+            "Impetigo": 0.0,
+            "Jaundice": 0.125,
+            "Malaria": 0.7,
+            "Migraine": 0.111111,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.2,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Impetigo": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Chicken pox": 9,
+              "Malaria": 1,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Chicken pox": 8,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Chicken pox": 7,
+              "Cervical spondylosis": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 6,
+              "Cervical spondylosis": 4
+            },
+            "Chicken pox": {
+              "Chicken pox": 10
+            },
+            "Common Cold": {
+              "Chicken pox": 8,
+              "Tuberculosis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Impetigo": 1,
+              "Chicken pox": 9
+            },
+            "Diabetes": {
+              "Chicken pox": 9,
+              "Pneumonia": 1
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 11
+            },
+            "Gastroenteritis": {
+              "Malaria": 1
+            },
+            "Heart attack": {
+              "Tuberculosis": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 4,
+              "Hypertension": 6
+            },
+            "Impetigo": {
+              "Chicken pox": 10
+            },
+            "Jaundice": {
+              "Chicken pox": 5,
+              "Jaundice": 1,
+              "Malaria": 2
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Chicken pox": 3
+            },
+            "Migraine": {
+              "Chicken pox": 6,
+              "Diabetes": 2,
+              "Migraine": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Malaria": 1,
+              "Chicken pox": 9
+            },
+            "Psoriasis": {
+              "Psoriasis": 2,
+              "Chicken pox": 8
+            },
+            "Typhoid": {
+              "Chicken pox": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 11
+            },
+            "Varicose veins": {
+              "Chicken pox": 10
+            }
+          },
+          "routing_error": {
+            "n": 213,
+            "correct": 39,
+            "same_department_error": 21,
+            "cross_department_error": 153,
+            "safety_relevant_error": 12,
+            "care_routing_accuracy": 0.28169,
+            "department_accuracy": 0.28169,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0030385840218514204,
+          "model_size_chars": 16363,
+          "temperature": 1.6
+        },
+        "logistic_regression": {
+          "test_rows": 213,
+          "accuracy": 0.262911,
+          "macro_f1": 0.407609,
+          "top2_accuracy": 0.323944,
+          "top3_accuracy": 0.361502,
+          "department_accuracy": 0.262911,
+          "department_macro_f1": 0.309833,
+          "mean_confidence": 0.273738,
+          "mean_entropy": 3.517087,
+          "ece": 0.04259,
+          "brier": 0.780981,
+          "wrong_but_confident_rate": 0.004695,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.2,
+            "Bronchial Asthma": 0.3,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.055556,
+            "Dengue": 0.0,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.090909,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.7,
+            "Impetigo": 0.1,
+            "Jaundice": 0.25,
+            "Malaria": 0.7,
+            "Migraine": 0.111111,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.2,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 1.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 9,
+              "Allergy": 2
+            },
+            "Arthritis": {
+              "Varicose veins": 8,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Varicose veins": 6,
+              "Bronchial Asthma": 3,
+              "Hypertension": 1
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 4,
+              "Cervical spondylosis": 6
+            },
+            "Chicken pox": {
+              "Varicose veins": 8,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Varicose veins": 7,
+              "Bronchial Asthma": 1,
+              "Tuberculosis": 4,
+              "Malaria": 3,
+              "Hypertension": 2,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Impetigo": 1,
+              "Varicose veins": 9
+            },
+            "Diabetes": {
+              "Diabetes": 1,
+              "Varicose veins": 8,
+              "Pneumonia": 1
+            },
+            "Drug Reaction": {
+              "Varicose veins": 10
+            },
+            "Fungal infection": {
+              "Varicose veins": 10,
+              "Fungal infection": 1
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 3,
+              "Hypertension": 7
+            },
+            "Impetigo": {
+              "Varicose veins": 9,
+              "Impetigo": 1
+            },
+            "Jaundice": {
+              "Varicose veins": 4,
+              "Jaundice": 2,
+              "Migraine": 2
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Varicose veins": 3
+            },
+            "Migraine": {
+              "Varicose veins": 6,
+              "Diabetes": 2,
+              "Migraine": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Malaria": 2,
+              "Pneumonia": 2,
+              "Varicose veins": 6
+            },
+            "Psoriasis": {
+              "Psoriasis": 2,
+              "Varicose veins": 8
+            },
+            "Typhoid": {
+              "Varicose veins": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 11
+            },
+            "Varicose veins": {
+              "Varicose veins": 10
+            }
+          },
+          "routing_error": {
+            "n": 213,
+            "correct": 56,
+            "same_department_error": 0,
+            "cross_department_error": 157,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.262911,
+            "department_accuracy": 0.262911,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0037212499883025885,
+          "model_size_chars": 6121055,
+          "temperature": 1.0
+        },
+        "logistic_regression_temperature": {
+          "test_rows": 213,
+          "accuracy": 0.262911,
+          "macro_f1": 0.407609,
+          "top2_accuracy": 0.323944,
+          "top3_accuracy": 0.361502,
+          "department_accuracy": 0.262911,
+          "department_macro_f1": 0.309833,
+          "mean_confidence": 0.237954,
+          "mean_entropy": 3.847452,
+          "ece": 0.053627,
+          "brier": 0.789974,
+          "wrong_but_confident_rate": 0.004695,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.2,
+            "Bronchial Asthma": 0.3,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.055556,
+            "Dengue": 0.0,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.090909,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.7,
+            "Impetigo": 0.1,
+            "Jaundice": 0.25,
+            "Malaria": 0.7,
+            "Migraine": 0.111111,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.2,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 1.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 9,
+              "Allergy": 2
+            },
+            "Arthritis": {
+              "Varicose veins": 8,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Varicose veins": 6,
+              "Bronchial Asthma": 3,
+              "Hypertension": 1
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 4,
+              "Cervical spondylosis": 6
+            },
+            "Chicken pox": {
+              "Varicose veins": 8,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Varicose veins": 7,
+              "Bronchial Asthma": 1,
+              "Tuberculosis": 4,
+              "Malaria": 3,
+              "Hypertension": 2,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Impetigo": 1,
+              "Varicose veins": 9
+            },
+            "Diabetes": {
+              "Diabetes": 1,
+              "Varicose veins": 8,
+              "Pneumonia": 1
+            },
+            "Drug Reaction": {
+              "Varicose veins": 10
+            },
+            "Fungal infection": {
+              "Varicose veins": 10,
+              "Fungal infection": 1
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 3,
+              "Hypertension": 7
+            },
+            "Impetigo": {
+              "Varicose veins": 9,
+              "Impetigo": 1
+            },
+            "Jaundice": {
+              "Varicose veins": 4,
+              "Jaundice": 2,
+              "Migraine": 2
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Varicose veins": 3
+            },
+            "Migraine": {
+              "Varicose veins": 6,
+              "Diabetes": 2,
+              "Migraine": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Malaria": 2,
+              "Pneumonia": 2,
+              "Varicose veins": 6
+            },
+            "Psoriasis": {
+              "Psoriasis": 2,
+              "Varicose veins": 8
+            },
+            "Typhoid": {
+              "Varicose veins": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 11
+            },
+            "Varicose veins": {
+              "Varicose veins": 10
+            }
+          },
+          "routing_error": {
+            "n": 213,
+            "correct": 56,
+            "same_department_error": 0,
+            "cross_department_error": 157,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.262911,
+            "department_accuracy": 0.262911,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0037212499883025885,
+          "model_size_chars": 6121055,
+          "temperature": 1.3
+        },
+        "linear_svm": {
+          "test_rows": 213,
+          "accuracy": 0.2723,
+          "macro_f1": 0.415713,
+          "top2_accuracy": 0.314554,
+          "top3_accuracy": 0.356808,
+          "department_accuracy": 0.450704,
+          "department_macro_f1": 0.348326,
+          "mean_confidence": 0.067617,
+          "mean_entropy": 5.197517,
+          "ece": 0.204683,
+          "brier": 0.9137,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.2,
+            "Bronchial Asthma": 0.4,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.055556,
+            "Dengue": 0.0,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.090909,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.7,
+            "Impetigo": 1.0,
+            "Jaundice": 0.25,
+            "Malaria": 0.7,
+            "Migraine": 0.333333,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.2,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Impetigo": 9,
+              "Allergy": 2
+            },
+            "Arthritis": {
+              "Impetigo": 8,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Impetigo": 6,
+              "Bronchial Asthma": 4
+            },
+            "Cervical spondylosis": {
+              "Impetigo": 4,
+              "Cervical spondylosis": 6
+            },
+            "Chicken pox": {
+              "Impetigo": 8,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Impetigo": 7,
+              "Bronchial Asthma": 1,
+              "Tuberculosis": 3,
+              "Hypertension": 6,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Chicken pox": 1,
+              "Impetigo": 9
+            },
+            "Diabetes": {
+              "Diabetes": 1,
+              "Impetigo": 8,
+              "Pneumonia": 1
+            },
+            "Drug Reaction": {
+              "Impetigo": 10
+            },
+            "Fungal infection": {
+              "Impetigo": 10,
+              "Fungal infection": 1
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Impetigo": 3,
+              "Hypertension": 7
+            },
+            "Impetigo": {
+              "Impetigo": 10
+            },
+            "Jaundice": {
+              "Impetigo": 4,
+              "Jaundice": 2,
+              "Migraine": 2
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Impetigo": 3
+            },
+            "Migraine": {
+              "Impetigo": 6,
+              "Migraine": 3
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Malaria": 2,
+              "Pneumonia": 2,
+              "Impetigo": 6
+            },
+            "Psoriasis": {
+              "Psoriasis": 2,
+              "Impetigo": 8
+            },
+            "Typhoid": {
+              "Impetigo": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Impetigo": 11
+            },
+            "Varicose veins": {
+              "Impetigo": 10
+            }
+          },
+          "routing_error": {
+            "n": 213,
+            "correct": 58,
+            "same_department_error": 38,
+            "cross_department_error": 117,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.450704,
+            "department_accuracy": 0.450704,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003515999997034669,
+          "model_size_chars": 1471259,
+          "temperature": 1.0,
+          "probability_note": "decision scores softmax only; not calibrated probabilities"
+        },
+        "linear_svm_temperature": {
+          "test_rows": 213,
+          "accuracy": 0.2723,
+          "macro_f1": 0.415713,
+          "top2_accuracy": 0.314554,
+          "top3_accuracy": 0.356808,
+          "department_accuracy": 0.450704,
+          "department_macro_f1": 0.348326,
+          "mean_confidence": 0.230377,
+          "mean_entropy": 4.133371,
+          "ece": 0.076671,
+          "brier": 0.797225,
+          "wrong_but_confident_rate": 0.014085,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.2,
+            "Bronchial Asthma": 0.4,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.055556,
+            "Dengue": 0.0,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.090909,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.7,
+            "Impetigo": 1.0,
+            "Jaundice": 0.25,
+            "Malaria": 0.7,
+            "Migraine": 0.333333,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.2,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Impetigo": 9,
+              "Allergy": 2
+            },
+            "Arthritis": {
+              "Impetigo": 8,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Impetigo": 6,
+              "Bronchial Asthma": 4
+            },
+            "Cervical spondylosis": {
+              "Impetigo": 4,
+              "Cervical spondylosis": 6
+            },
+            "Chicken pox": {
+              "Impetigo": 8,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Impetigo": 7,
+              "Bronchial Asthma": 1,
+              "Tuberculosis": 3,
+              "Hypertension": 6,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Chicken pox": 1,
+              "Impetigo": 9
+            },
+            "Diabetes": {
+              "Diabetes": 1,
+              "Impetigo": 8,
+              "Pneumonia": 1
+            },
+            "Drug Reaction": {
+              "Impetigo": 10
+            },
+            "Fungal infection": {
+              "Impetigo": 10,
+              "Fungal infection": 1
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Impetigo": 3,
+              "Hypertension": 7
+            },
+            "Impetigo": {
+              "Impetigo": 10
+            },
+            "Jaundice": {
+              "Impetigo": 4,
+              "Jaundice": 2,
+              "Migraine": 2
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Impetigo": 3
+            },
+            "Migraine": {
+              "Impetigo": 6,
+              "Migraine": 3
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Malaria": 2,
+              "Pneumonia": 2,
+              "Impetigo": 6
+            },
+            "Psoriasis": {
+              "Psoriasis": 2,
+              "Impetigo": 8
+            },
+            "Typhoid": {
+              "Impetigo": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Impetigo": 11
+            },
+            "Varicose veins": {
+              "Impetigo": 10
+            }
+          },
+          "routing_error": {
+            "n": 213,
+            "correct": 58,
+            "same_department_error": 38,
+            "cross_department_error": 117,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.450704,
+            "department_accuracy": 0.450704,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003515999997034669,
+          "model_size_chars": 1471259,
+          "temperature": 0.3,
+          "probability_note": "temperature-scaled softmax of decision scores on calibration split"
+        },
+        "tfidf_logistic_regression": {
+          "test_rows": 213,
+          "accuracy": 0.244131,
+          "macro_f1": 0.40509,
+          "top2_accuracy": 0.29108,
+          "top3_accuracy": 0.333333,
+          "department_accuracy": 0.370892,
+          "department_macro_f1": 0.339064,
+          "mean_confidence": 0.299479,
+          "mean_entropy": 3.912163,
+          "ece": 0.061763,
+          "brier": 0.784075,
+          "wrong_but_confident_rate": 0.037559,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.2,
+            "Bronchial Asthma": 0.4,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.055556,
+            "Dengue": 0.0,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.090909,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.7,
+            "Impetigo": 0.1,
+            "Jaundice": 0.25,
+            "Malaria": 1.0,
+            "Migraine": 0.333333,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.2,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Malaria": 9,
+              "Allergy": 2
+            },
+            "Arthritis": {
+              "Malaria": 8,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Malaria": 6,
+              "Bronchial Asthma": 4
+            },
+            "Cervical spondylosis": {
+              "Malaria": 4,
+              "Cervical spondylosis": 6
+            },
+            "Chicken pox": {
+              "Malaria": 8,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Malaria": 7,
+              "Bronchial Asthma": 1,
+              "Tuberculosis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Chicken pox": 1,
+              "Malaria": 9
+            },
+            "Diabetes": {
+              "Diabetes": 1,
+              "Malaria": 8,
+              "Pneumonia": 1
+            },
+            "Drug Reaction": {
+              "Malaria": 10
+            },
+            "Fungal infection": {
+              "Malaria": 10,
+              "Fungal infection": 1
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Malaria": 3,
+              "Hypertension": 7
+            },
+            "Impetigo": {
+              "Malaria": 9,
+              "Impetigo": 1
+            },
+            "Jaundice": {
+              "Malaria": 6,
+              "Jaundice": 2
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Malaria": 6,
+              "Migraine": 3
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Malaria": 8,
+              "Pneumonia": 2
+            },
+            "Psoriasis": {
+              "Psoriasis": 2,
+              "Malaria": 8
+            },
+            "Typhoid": {
+              "Malaria": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Malaria": 11
+            },
+            "Varicose veins": {
+              "Malaria": 10
+            }
+          },
+          "routing_error": {
+            "n": 213,
+            "correct": 52,
+            "same_department_error": 27,
+            "cross_department_error": 134,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.370892,
+            "department_accuracy": 0.370892,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.002915334014687687,
+          "model_size_chars": 6117405,
+          "temperature": 1.0
+        }
+      },
+      "fit_latency_s": {
+        "multinomial_nb": 0.000725707970559597,
+        "logistic_regression": 1.298106166999787,
+        "linear_svm": 0.6443826250033453
+      },
+      "protocol": "expanded_quota_0.8",
+      "split_meta": {
+        "train_rows": 840,
+        "cal_rows": 236,
+        "test_rows": 213,
+        "test_diseases": 25
+      }
+    },
+    {
+      "seed": 123,
+      "train_rows": 845,
+      "cal_rows": 222,
+      "test_rows": 222,
+      "models": {
+        "multinomial_nb": {
+          "test_rows": 222,
+          "accuracy": 0.148649,
+          "macro_f1": 0.121987,
+          "top2_accuracy": 0.220721,
+          "top3_accuracy": 0.274775,
+          "department_accuracy": 0.292793,
+          "department_macro_f1": 0.217703,
+          "mean_confidence": 0.139183,
+          "mean_entropy": 4.588434,
+          "ece": 0.069233,
+          "brier": 0.901752,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 0.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.0625,
+            "Cervical spondylosis": 0.2,
+            "Chicken pox": 0.8,
+            "Common Cold": 0.0,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.090909,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.0,
+            "Malaria": 0.7,
+            "Migraine": 0.444444,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.125,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Typhoid": 1
+            },
+            "Acne": {
+              "Drug Reaction": 1
+            },
+            "Allergy": {
+              "Common Cold": 2,
+              "Chicken pox": 8,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Chicken pox": 9
+            },
+            "Bronchial Asthma": {
+              "Chicken pox": 8,
+              "Bronchial Asthma": 1,
+              "Tuberculosis": 6,
+              "Common Cold": 1
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 8,
+              "Cervical spondylosis": 2
+            },
+            "Chicken pox": {
+              "Chicken pox": 8,
+              "Allergy": 1,
+              "Impetigo": 1
+            },
+            "Common Cold": {
+              "Chicken pox": 9,
+              "Allergy": 1
+            },
+            "Dengue": {
+              "Chicken pox": 10
+            },
+            "Diabetes": {
+              "Chicken pox": 10
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 10,
+              "Fungal infection": 1
+            },
+            "Gastroenteritis": {
+              "Typhoid": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Chicken pox": 15
+            },
+            "Jaundice": {
+              "Chicken pox": 7,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Chicken pox": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Malaria": 2,
+              "Migraine": 4,
+              "Chicken pox": 2,
+              "Hypertension": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 1,
+              "Pneumonia": 1,
+              "Chicken pox": 7,
+              "Malaria": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 12,
+              "Hepatitis D": 1,
+              "Psoriasis": 2,
+              "Allergy": 1
+            },
+            "Typhoid": {
+              "Chicken pox": 10
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 11
+            },
+            "Varicose veins": {
+              "Chicken pox": 9,
+              "Allergy": 1
+            }
+          },
+          "routing_error": {
+            "n": 222,
+            "correct": 33,
+            "same_department_error": 32,
+            "cross_department_error": 157,
+            "safety_relevant_error": 11,
+            "care_routing_accuracy": 0.292793,
+            "department_accuracy": 0.292793,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0034622499952092767,
+          "model_size_chars": 16578,
+          "temperature": 1.0
+        },
+        "multinomial_nb_temperature": {
+          "test_rows": 222,
+          "accuracy": 0.148649,
+          "macro_f1": 0.121987,
+          "top2_accuracy": 0.220721,
+          "top3_accuracy": 0.274775,
+          "department_accuracy": 0.292793,
+          "department_macro_f1": 0.217703,
+          "mean_confidence": 0.06968,
+          "mean_entropy": 5.118624,
+          "ece": 0.078969,
+          "brier": 0.930732,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 0.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.0625,
+            "Cervical spondylosis": 0.2,
+            "Chicken pox": 0.8,
+            "Common Cold": 0.0,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.090909,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.0,
+            "Malaria": 0.7,
+            "Migraine": 0.444444,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.125,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Typhoid": 1
+            },
+            "Acne": {
+              "Drug Reaction": 1
+            },
+            "Allergy": {
+              "Common Cold": 2,
+              "Chicken pox": 8,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Chicken pox": 9
+            },
+            "Bronchial Asthma": {
+              "Chicken pox": 8,
+              "Bronchial Asthma": 1,
+              "Tuberculosis": 6,
+              "Common Cold": 1
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 8,
+              "Cervical spondylosis": 2
+            },
+            "Chicken pox": {
+              "Chicken pox": 8,
+              "Allergy": 1,
+              "Impetigo": 1
+            },
+            "Common Cold": {
+              "Chicken pox": 9,
+              "Allergy": 1
+            },
+            "Dengue": {
+              "Chicken pox": 10
+            },
+            "Diabetes": {
+              "Chicken pox": 10
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 10,
+              "Fungal infection": 1
+            },
+            "Gastroenteritis": {
+              "Typhoid": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Chicken pox": 15
+            },
+            "Jaundice": {
+              "Chicken pox": 7,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Chicken pox": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Malaria": 2,
+              "Migraine": 4,
+              "Chicken pox": 2,
+              "Hypertension": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 1,
+              "Pneumonia": 1,
+              "Chicken pox": 7,
+              "Malaria": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 12,
+              "Hepatitis D": 1,
+              "Psoriasis": 2,
+              "Allergy": 1
+            },
+            "Typhoid": {
+              "Chicken pox": 10
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 11
+            },
+            "Varicose veins": {
+              "Chicken pox": 9,
+              "Allergy": 1
+            }
+          },
+          "routing_error": {
+            "n": 222,
+            "correct": 33,
+            "same_department_error": 32,
+            "cross_department_error": 157,
+            "safety_relevant_error": 11,
+            "care_routing_accuracy": 0.292793,
+            "department_accuracy": 0.292793,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0034622499952092767,
+          "model_size_chars": 16578,
+          "temperature": 1.9
+        },
+        "logistic_regression": {
+          "test_rows": 222,
+          "accuracy": 0.234234,
+          "macro_f1": 0.347907,
+          "top2_accuracy": 0.274775,
+          "top3_accuracy": 0.337838,
+          "department_accuracy": 0.283784,
+          "department_macro_f1": 0.330375,
+          "mean_confidence": 0.283068,
+          "mean_entropy": 3.512438,
+          "ece": 0.064241,
+          "brier": 0.826651,
+          "wrong_but_confident_rate": 0.027027,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.272727,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.0625,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.6,
+            "Impetigo": 0.0,
+            "Jaundice": 0.375,
+            "Malaria": 0.7,
+            "Migraine": 0.777778,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.125,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.9
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Allergy": 3,
+              "Varicose veins": 8
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Varicose veins": 9
+            },
+            "Bronchial Asthma": {
+              "Varicose veins": 7,
+              "Bronchial Asthma": 1,
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Diabetes": 1
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Varicose veins": 6,
+              "Chicken pox": 2,
+              "Fungal infection": 1,
+              "Impetigo": 1
+            },
+            "Common Cold": {
+              "Varicose veins": 8,
+              "Fungal infection": 1,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 9,
+              "Chicken pox": 1
+            },
+            "Diabetes": {
+              "Varicose veins": 8,
+              "Bronchial Asthma": 1,
+              "Allergy": 1
+            },
+            "Drug Reaction": {
+              "Varicose veins": 10
+            },
+            "Fungal infection": {
+              "Varicose veins": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 4,
+              "Hypertension": 6
+            },
+            "Impetigo": {
+              "Varicose veins": 9,
+              "Jaundice": 1,
+              "Drug Reaction": 1,
+              "Chicken pox": 4
+            },
+            "Jaundice": {
+              "Varicose veins": 4,
+              "Jaundice": 3,
+              "Cervical spondylosis": 1
+            },
+            "Malaria": {
+              "Varicose veins": 2,
+              "Malaria": 7,
+              "Chicken pox": 1
+            },
+            "Migraine": {
+              "Migraine": 7,
+              "Varicose veins": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Cervical spondylosis": 1,
+              "Pneumonia": 1,
+              "Varicose veins": 5,
+              "Malaria": 2,
+              "Chicken pox": 1
+            },
+            "Psoriasis": {
+              "Varicose veins": 6,
+              "Diabetes": 1,
+              "Drug Reaction": 6,
+              "Psoriasis": 2,
+              "Fungal infection": 1
+            },
+            "Typhoid": {
+              "Varicose veins": 9,
+              "Chicken pox": 1
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 11
+            },
+            "Varicose veins": {
+              "Varicose veins": 9,
+              "Allergy": 1
+            }
+          },
+          "routing_error": {
+            "n": 222,
+            "correct": 52,
+            "same_department_error": 11,
+            "cross_department_error": 159,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.283784,
+            "department_accuracy": 0.283784,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0035178340040147305,
+          "model_size_chars": 5952970,
+          "temperature": 1.0
+        },
+        "logistic_regression_temperature": {
+          "test_rows": 222,
+          "accuracy": 0.234234,
+          "macro_f1": 0.347907,
+          "top2_accuracy": 0.274775,
+          "top3_accuracy": 0.337838,
+          "department_accuracy": 0.283784,
+          "department_macro_f1": 0.330375,
+          "mean_confidence": 0.202538,
+          "mean_entropy": 4.196682,
+          "ece": 0.046183,
+          "brier": 0.824529,
+          "wrong_but_confident_rate": 0.009009,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.272727,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.0625,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.6,
+            "Impetigo": 0.0,
+            "Jaundice": 0.375,
+            "Malaria": 0.7,
+            "Migraine": 0.777778,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.125,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.9
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Allergy": 3,
+              "Varicose veins": 8
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Varicose veins": 9
+            },
+            "Bronchial Asthma": {
+              "Varicose veins": 7,
+              "Bronchial Asthma": 1,
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Diabetes": 1
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Varicose veins": 6,
+              "Chicken pox": 2,
+              "Fungal infection": 1,
+              "Impetigo": 1
+            },
+            "Common Cold": {
+              "Varicose veins": 8,
+              "Fungal infection": 1,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 9,
+              "Chicken pox": 1
+            },
+            "Diabetes": {
+              "Varicose veins": 8,
+              "Bronchial Asthma": 1,
+              "Allergy": 1
+            },
+            "Drug Reaction": {
+              "Varicose veins": 10
+            },
+            "Fungal infection": {
+              "Varicose veins": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 4,
+              "Hypertension": 6
+            },
+            "Impetigo": {
+              "Varicose veins": 9,
+              "Jaundice": 1,
+              "Drug Reaction": 1,
+              "Chicken pox": 4
+            },
+            "Jaundice": {
+              "Varicose veins": 4,
+              "Jaundice": 3,
+              "Cervical spondylosis": 1
+            },
+            "Malaria": {
+              "Varicose veins": 2,
+              "Malaria": 7,
+              "Chicken pox": 1
+            },
+            "Migraine": {
+              "Migraine": 7,
+              "Varicose veins": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Cervical spondylosis": 1,
+              "Pneumonia": 1,
+              "Varicose veins": 5,
+              "Malaria": 2,
+              "Chicken pox": 1
+            },
+            "Psoriasis": {
+              "Varicose veins": 6,
+              "Diabetes": 1,
+              "Drug Reaction": 6,
+              "Psoriasis": 2,
+              "Fungal infection": 1
+            },
+            "Typhoid": {
+              "Varicose veins": 9,
+              "Chicken pox": 1
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 11
+            },
+            "Varicose veins": {
+              "Varicose veins": 9,
+              "Allergy": 1
+            }
+          },
+          "routing_error": {
+            "n": 222,
+            "correct": 52,
+            "same_department_error": 11,
+            "cross_department_error": 159,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.283784,
+            "department_accuracy": 0.283784,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0035178340040147305,
+          "model_size_chars": 5952970,
+          "temperature": 1.6
+        },
+        "linear_svm": {
+          "test_rows": 222,
+          "accuracy": 0.243243,
+          "macro_f1": 0.306501,
+          "top2_accuracy": 0.283784,
+          "top3_accuracy": 0.315315,
+          "department_accuracy": 0.445946,
+          "department_macro_f1": 0.341682,
+          "mean_confidence": 0.066303,
+          "mean_entropy": 5.214172,
+          "ece": 0.17694,
+          "brier": 0.918947,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 1.0,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.6,
+            "Impetigo": 0.0,
+            "Jaundice": 0.375,
+            "Malaria": 0.7,
+            "Migraine": 0.777778,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.3,
+            "Psoriasis": 0.125,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Allergy": 11
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Allergy": 9
+            },
+            "Bronchial Asthma": {
+              "Allergy": 7,
+              "Bronchial Asthma": 2,
+              "Hepatitis C": 6,
+              "Jaundice": 1
+            },
+            "Cervical spondylosis": {
+              "Allergy": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Allergy": 6,
+              "Chicken pox": 2,
+              "Fungal infection": 1,
+              "Impetigo": 1
+            },
+            "Common Cold": {
+              "Allergy": 8,
+              "Fungal infection": 1,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Allergy": 9,
+              "Chicken pox": 1
+            },
+            "Diabetes": {
+              "Allergy": 9,
+              "Bronchial Asthma": 1
+            },
+            "Drug Reaction": {
+              "Allergy": 10
+            },
+            "Fungal infection": {
+              "Allergy": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Allergy": 4,
+              "Hypertension": 6
+            },
+            "Impetigo": {
+              "Allergy": 9,
+              "Jaundice": 5,
+              "Acne": 1
+            },
+            "Jaundice": {
+              "Allergy": 4,
+              "Jaundice": 3,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Allergy": 2,
+              "Malaria": 7,
+              "Chicken pox": 1
+            },
+            "Migraine": {
+              "Migraine": 7,
+              "Allergy": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Pneumonia": 3,
+              "Allergy": 5,
+              "Malaria": 2
+            },
+            "Psoriasis": {
+              "Allergy": 6,
+              "hepatitis A": 1,
+              "Acne": 6,
+              "Psoriasis": 2,
+              "Fungal infection": 1
+            },
+            "Typhoid": {
+              "Allergy": 9,
+              "Chicken pox": 1
+            },
+            "Urinary tract infection": {
+              "Allergy": 11
+            },
+            "Varicose veins": {
+              "Allergy": 10
+            }
+          },
+          "routing_error": {
+            "n": 222,
+            "correct": 54,
+            "same_department_error": 45,
+            "cross_department_error": 123,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.445946,
+            "department_accuracy": 0.445946,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0034358749981038272,
+          "model_size_chars": 1485498,
+          "temperature": 1.0,
+          "probability_note": "decision scores softmax only; not calibrated probabilities"
+        },
+        "linear_svm_temperature": {
+          "test_rows": 222,
+          "accuracy": 0.243243,
+          "macro_f1": 0.306501,
+          "top2_accuracy": 0.283784,
+          "top3_accuracy": 0.315315,
+          "department_accuracy": 0.445946,
+          "department_macro_f1": 0.341682,
+          "mean_confidence": 0.195564,
+          "mean_entropy": 4.46329,
+          "ece": 0.063632,
+          "brier": 0.837193,
+          "wrong_but_confident_rate": 0.009009,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 1.0,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.6,
+            "Impetigo": 0.0,
+            "Jaundice": 0.375,
+            "Malaria": 0.7,
+            "Migraine": 0.777778,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.3,
+            "Psoriasis": 0.125,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Allergy": 11
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Allergy": 9
+            },
+            "Bronchial Asthma": {
+              "Allergy": 7,
+              "Bronchial Asthma": 2,
+              "Hepatitis C": 6,
+              "Jaundice": 1
+            },
+            "Cervical spondylosis": {
+              "Allergy": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Allergy": 6,
+              "Chicken pox": 2,
+              "Fungal infection": 1,
+              "Impetigo": 1
+            },
+            "Common Cold": {
+              "Allergy": 8,
+              "Fungal infection": 1,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Allergy": 9,
+              "Chicken pox": 1
+            },
+            "Diabetes": {
+              "Allergy": 9,
+              "Bronchial Asthma": 1
+            },
+            "Drug Reaction": {
+              "Allergy": 10
+            },
+            "Fungal infection": {
+              "Allergy": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Allergy": 4,
+              "Hypertension": 6
+            },
+            "Impetigo": {
+              "Allergy": 9,
+              "Jaundice": 5,
+              "Acne": 1
+            },
+            "Jaundice": {
+              "Allergy": 4,
+              "Jaundice": 3,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Allergy": 2,
+              "Malaria": 7,
+              "Chicken pox": 1
+            },
+            "Migraine": {
+              "Migraine": 7,
+              "Allergy": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Pneumonia": 3,
+              "Allergy": 5,
+              "Malaria": 2
+            },
+            "Psoriasis": {
+              "Allergy": 6,
+              "hepatitis A": 1,
+              "Acne": 6,
+              "Psoriasis": 2,
+              "Fungal infection": 1
+            },
+            "Typhoid": {
+              "Allergy": 9,
+              "Chicken pox": 1
+            },
+            "Urinary tract infection": {
+              "Allergy": 11
+            },
+            "Varicose veins": {
+              "Allergy": 10
+            }
+          },
+          "routing_error": {
+            "n": 222,
+            "correct": 54,
+            "same_department_error": 45,
+            "cross_department_error": 123,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.445946,
+            "department_accuracy": 0.445946,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0034358749981038272,
+          "model_size_chars": 1485498,
+          "temperature": 0.4,
+          "probability_note": "temperature-scaled softmax of decision scores on calibration split"
+        },
+        "tfidf_logistic_regression": {
+          "test_rows": 222,
+          "accuracy": 0.207207,
+          "macro_f1": 0.303085,
+          "top2_accuracy": 0.247748,
+          "top3_accuracy": 0.27027,
+          "department_accuracy": 0.337838,
+          "department_macro_f1": 0.320904,
+          "mean_confidence": 0.315443,
+          "mean_entropy": 3.83501,
+          "ece": 0.116825,
+          "brier": 0.870687,
+          "wrong_but_confident_rate": 0.067568,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.6,
+            "Impetigo": 0.0,
+            "Jaundice": 0.375,
+            "Malaria": 0.9,
+            "Migraine": 0.777778,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.125,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Common Cold": 1,
+              "Malaria": 8,
+              "Allergy": 2
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Malaria": 9
+            },
+            "Bronchial Asthma": {
+              "Malaria": 7,
+              "Bronchial Asthma": 2,
+              "Hepatitis C": 6,
+              "Tuberculosis": 1
+            },
+            "Cervical spondylosis": {
+              "Malaria": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Malaria": 6,
+              "Chicken pox": 2,
+              "Fungal infection": 1,
+              "Impetigo": 1
+            },
+            "Common Cold": {
+              "Malaria": 8,
+              "Fungal infection": 1,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Malaria": 9,
+              "Chicken pox": 1
+            },
+            "Diabetes": {
+              "Malaria": 8,
+              "Bronchial Asthma": 1,
+              "Allergy": 1
+            },
+            "Drug Reaction": {
+              "Malaria": 10
+            },
+            "Fungal infection": {
+              "Malaria": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Malaria": 4,
+              "Hypertension": 6
+            },
+            "Impetigo": {
+              "Malaria": 9,
+              "Jaundice": 1,
+              "Chicken pox": 5
+            },
+            "Jaundice": {
+              "Malaria": 4,
+              "Jaundice": 3,
+              "Cervical spondylosis": 1
+            },
+            "Malaria": {
+              "Malaria": 9,
+              "Chicken pox": 1
+            },
+            "Migraine": {
+              "Migraine": 7,
+              "Malaria": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Malaria": 8,
+              "Pneumonia": 2
+            },
+            "Psoriasis": {
+              "Malaria": 6,
+              "Hepatitis D": 6,
+              "Chicken pox": 1,
+              "Psoriasis": 2,
+              "Fungal infection": 1
+            },
+            "Typhoid": {
+              "Malaria": 9,
+              "Chicken pox": 1
+            },
+            "Urinary tract infection": {
+              "Malaria": 11
+            },
+            "Varicose veins": {
+              "Malaria": 9,
+              "Allergy": 1
+            }
+          },
+          "routing_error": {
+            "n": 222,
+            "correct": 46,
+            "same_department_error": 29,
+            "cross_department_error": 147,
+            "safety_relevant_error": 9,
+            "care_routing_accuracy": 0.337838,
+            "department_accuracy": 0.337838,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.002940166974440217,
+          "model_size_chars": 5951779,
+          "temperature": 1.0
+        }
+      },
+      "fit_latency_s": {
+        "multinomial_nb": 0.0007059589843265712,
+        "logistic_regression": 1.2541336250142194,
+        "linear_svm": 0.6487572500482202
+      },
+      "protocol": "expanded_quota_0.8",
+      "split_meta": {
+        "train_rows": 845,
+        "cal_rows": 222,
+        "test_rows": 222,
+        "test_diseases": 25
+      }
+    },
+    {
+      "seed": 2026,
+      "train_rows": 852,
+      "cal_rows": 219,
+      "test_rows": 218,
+      "models": {
+        "multinomial_nb": {
+          "test_rows": 218,
+          "accuracy": 0.206422,
+          "macro_f1": 0.15721,
+          "top2_accuracy": 0.279817,
+          "top3_accuracy": 0.344037,
+          "department_accuracy": 0.316514,
+          "department_macro_f1": 0.286107,
+          "mean_confidence": 0.13804,
+          "mean_entropy": 4.549897,
+          "ece": 0.098358,
+          "brier": 0.89909,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 0.0,
+            "Allergy": 0.272727,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.2,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.9,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.066667,
+            "Fungal infection": 0.0,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.125,
+            "Malaria": 1.0,
+            "Migraine": 0.222222,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.363636,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Impetigo": 1
+            },
+            "Acne": {
+              "Psoriasis": 1
+            },
+            "Allergy": {
+              "Chicken pox": 7,
+              "Allergy": 3,
+              "Hypertension": 1
+            },
+            "Arthritis": {
+              "Chicken pox": 10
+            },
+            "Bronchial Asthma": {
+              "Chicken pox": 8,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Chicken pox": 9,
+              "Psoriasis": 1
+            },
+            "Common Cold": {
+              "Chicken pox": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Chicken pox": 10
+            },
+            "Diabetes": {
+              "Chicken pox": 9,
+              "Diabetes": 1
+            },
+            "Drug Reaction": {
+              "Chicken pox": 13,
+              "Drug Reaction": 1,
+              "Psoriasis": 1
+            },
+            "Fungal infection": {
+              "Chicken pox": 11
+            },
+            "Gastroenteritis": {
+              "Malaria": 1
+            },
+            "Heart attack": {
+              "Tuberculosis": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Chicken pox": 10
+            },
+            "Jaundice": {
+              "Malaria": 1,
+              "Chicken pox": 4,
+              "Jaundice": 2,
+              "Hepatitis B": 1,
+              "Hepatitis E": 7,
+              "Hepatitis D": 1
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Malaria": 3,
+              "Chicken pox": 3,
+              "Migraine": 2,
+              "Diabetes": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Chicken pox": 7,
+              "Bronchial Asthma": 2,
+              "Hypertension": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 8,
+              "Psoriasis": 1,
+              "Impetigo": 1
+            },
+            "Typhoid": {
+              "Chicken pox": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 7,
+              "Urinary tract infection": 4
+            },
+            "Varicose veins": {
+              "Chicken pox": 10
+            }
+          },
+          "routing_error": {
+            "n": 218,
+            "correct": 45,
+            "same_department_error": 24,
+            "cross_department_error": 149,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.316514,
+            "department_accuracy": 0.316514,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003394833009224385,
+          "model_size_chars": 17245,
+          "temperature": 1.0
+        },
+        "multinomial_nb_temperature": {
+          "test_rows": 218,
+          "accuracy": 0.206422,
+          "macro_f1": 0.15721,
+          "top2_accuracy": 0.279817,
+          "top3_accuracy": 0.344037,
+          "department_accuracy": 0.316514,
+          "department_macro_f1": 0.286107,
+          "mean_confidence": 0.210569,
+          "mean_entropy": 3.93851,
+          "ece": 0.08021,
+          "brier": 0.883712,
+          "wrong_but_confident_rate": 0.045872,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 0.0,
+            "Allergy": 0.272727,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.2,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.9,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.066667,
+            "Fungal infection": 0.0,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.125,
+            "Malaria": 1.0,
+            "Migraine": 0.222222,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.363636,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Impetigo": 1
+            },
+            "Acne": {
+              "Psoriasis": 1
+            },
+            "Allergy": {
+              "Chicken pox": 7,
+              "Allergy": 3,
+              "Hypertension": 1
+            },
+            "Arthritis": {
+              "Chicken pox": 10
+            },
+            "Bronchial Asthma": {
+              "Chicken pox": 8,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Chicken pox": 9,
+              "Psoriasis": 1
+            },
+            "Common Cold": {
+              "Chicken pox": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Chicken pox": 10
+            },
+            "Diabetes": {
+              "Chicken pox": 9,
+              "Diabetes": 1
+            },
+            "Drug Reaction": {
+              "Chicken pox": 13,
+              "Drug Reaction": 1,
+              "Psoriasis": 1
+            },
+            "Fungal infection": {
+              "Chicken pox": 11
+            },
+            "Gastroenteritis": {
+              "Malaria": 1
+            },
+            "Heart attack": {
+              "Tuberculosis": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Chicken pox": 10
+            },
+            "Jaundice": {
+              "Malaria": 1,
+              "Chicken pox": 4,
+              "Jaundice": 2,
+              "Hepatitis B": 1,
+              "Hepatitis E": 7,
+              "Hepatitis D": 1
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Malaria": 3,
+              "Chicken pox": 3,
+              "Migraine": 2,
+              "Diabetes": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Chicken pox": 7,
+              "Bronchial Asthma": 2,
+              "Hypertension": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 8,
+              "Psoriasis": 1,
+              "Impetigo": 1
+            },
+            "Typhoid": {
+              "Chicken pox": 9,
+              "Typhoid": 1
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 7,
+              "Urinary tract infection": 4
+            },
+            "Varicose veins": {
+              "Chicken pox": 10
+            }
+          },
+          "routing_error": {
+            "n": 218,
+            "correct": 45,
+            "same_department_error": 24,
+            "cross_department_error": 149,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.316514,
+            "department_accuracy": 0.316514,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003394833009224385,
+          "model_size_chars": 17245,
+          "temperature": 0.6
+        },
+        "logistic_regression": {
+          "test_rows": 218,
+          "accuracy": 0.298165,
+          "macro_f1": 0.431668,
+          "top2_accuracy": 0.330275,
+          "top3_accuracy": 0.380734,
+          "department_accuracy": 0.325688,
+          "department_macro_f1": 0.411506,
+          "mean_confidence": 0.33117,
+          "mean_entropy": 3.350219,
+          "ece": 0.035311,
+          "brier": 0.758184,
+          "wrong_but_confident_rate": 0.027523,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.454545,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.2,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.1,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.066667,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.1875,
+            "Malaria": 1.0,
+            "Migraine": 0.555556,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.454545,
+            "Varicose veins": 1.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 5,
+              "Allergy": 5,
+              "Diabetes": 1
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Varicose veins": 9
+            },
+            "Bronchial Asthma": {
+              "Varicose veins": 8,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Varicose veins": 7,
+              "Common Cold": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Varicose veins": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Varicose veins": 9,
+              "Diabetes": 1
+            },
+            "Drug Reaction": {
+              "Varicose veins": 8,
+              "Drug Reaction": 1,
+              "Chicken pox": 5,
+              "Impetigo": 1
+            },
+            "Fungal infection": {
+              "Varicose veins": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Varicose veins": 10
+            },
+            "Jaundice": {
+              "Varicose veins": 4,
+              "Jaundice": 3,
+              "Hepatitis D": 7,
+              "Chronic cholestasis": 2
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Migraine": 5,
+              "Varicose veins": 4
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 6,
+              "Pneumonia": 1,
+              "Bronchial Asthma": 2,
+              "Hypertension": 1
+            },
+            "Psoriasis": {
+              "Varicose veins": 7,
+              "Psoriasis": 1,
+              "Common Cold": 1,
+              "Chicken pox": 1
+            },
+            "Typhoid": {
+              "Varicose veins": 8,
+              "Typhoid": 1,
+              "Dengue": 1
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 6,
+              "Urinary tract infection": 5
+            },
+            "Varicose veins": {
+              "Varicose veins": 10
+            }
+          },
+          "routing_error": {
+            "n": 218,
+            "correct": 65,
+            "same_department_error": 6,
+            "cross_department_error": 147,
+            "safety_relevant_error": 7,
+            "care_routing_accuracy": 0.325688,
+            "department_accuracy": 0.325688,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003241083992179483,
+          "model_size_chars": 6486986,
+          "temperature": 1.0
+        },
+        "logistic_regression_temperature": {
+          "test_rows": 218,
+          "accuracy": 0.298165,
+          "macro_f1": 0.431668,
+          "top2_accuracy": 0.330275,
+          "top3_accuracy": 0.380734,
+          "department_accuracy": 0.325688,
+          "department_macro_f1": 0.411506,
+          "mean_confidence": 0.33117,
+          "mean_entropy": 3.350219,
+          "ece": 0.035311,
+          "brier": 0.758184,
+          "wrong_but_confident_rate": 0.027523,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.454545,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.2,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.1,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.066667,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.1875,
+            "Malaria": 1.0,
+            "Migraine": 0.555556,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.454545,
+            "Varicose veins": 1.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 5,
+              "Allergy": 5,
+              "Diabetes": 1
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Varicose veins": 9
+            },
+            "Bronchial Asthma": {
+              "Varicose veins": 8,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Varicose veins": 7,
+              "Common Cold": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Varicose veins": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Varicose veins": 9,
+              "Diabetes": 1
+            },
+            "Drug Reaction": {
+              "Varicose veins": 8,
+              "Drug Reaction": 1,
+              "Chicken pox": 5,
+              "Impetigo": 1
+            },
+            "Fungal infection": {
+              "Varicose veins": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Varicose veins": 10
+            },
+            "Jaundice": {
+              "Varicose veins": 4,
+              "Jaundice": 3,
+              "Hepatitis D": 7,
+              "Chronic cholestasis": 2
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Migraine": 5,
+              "Varicose veins": 4
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 6,
+              "Pneumonia": 1,
+              "Bronchial Asthma": 2,
+              "Hypertension": 1
+            },
+            "Psoriasis": {
+              "Varicose veins": 7,
+              "Psoriasis": 1,
+              "Common Cold": 1,
+              "Chicken pox": 1
+            },
+            "Typhoid": {
+              "Varicose veins": 8,
+              "Typhoid": 1,
+              "Dengue": 1
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 6,
+              "Urinary tract infection": 5
+            },
+            "Varicose veins": {
+              "Varicose veins": 10
+            }
+          },
+          "routing_error": {
+            "n": 218,
+            "correct": 65,
+            "same_department_error": 6,
+            "cross_department_error": 147,
+            "safety_relevant_error": 7,
+            "care_routing_accuracy": 0.325688,
+            "department_accuracy": 0.325688,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003241083992179483,
+          "model_size_chars": 6486986,
+          "temperature": 1.0
+        },
+        "linear_svm": {
+          "test_rows": 218,
+          "accuracy": 0.288991,
+          "macro_f1": 0.389082,
+          "top2_accuracy": 0.316514,
+          "top3_accuracy": 0.362385,
+          "department_accuracy": 0.348624,
+          "department_macro_f1": 0.380593,
+          "mean_confidence": 0.068401,
+          "mean_entropy": 5.21788,
+          "ece": 0.22059,
+          "brier": 0.910357,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.454545,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 1.0,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.1,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.066667,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.1875,
+            "Malaria": 1.0,
+            "Migraine": 0.555556,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.454545,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Bronchial Asthma": 5,
+              "Allergy": 5,
+              "Hypertension": 1
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Bronchial Asthma": 9
+            },
+            "Bronchial Asthma": {
+              "Bronchial Asthma": 10
+            },
+            "Cervical spondylosis": {
+              "Bronchial Asthma": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Bronchial Asthma": 7,
+              "Common Cold": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Bronchial Asthma": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Bronchial Asthma": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Bronchial Asthma": 9,
+              "Diabetes": 1
+            },
+            "Drug Reaction": {
+              "Bronchial Asthma": 8,
+              "Drug Reaction": 1,
+              "Fungal infection": 1,
+              "GERD": 5
+            },
+            "Fungal infection": {
+              "Bronchial Asthma": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Bronchial Asthma": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Bronchial Asthma": 10
+            },
+            "Jaundice": {
+              "Gastroenteritis": 1,
+              "Bronchial Asthma": 3,
+              "Jaundice": 3,
+              "Typhoid": 1,
+              "Hepatitis D": 6,
+              "Chronic cholestasis": 2
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Migraine": 5,
+              "Bronchial Asthma": 3,
+              "Gastroenteritis": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Bronchial Asthma": 8,
+              "Pneumonia": 1,
+              "Hypertension": 1
+            },
+            "Psoriasis": {
+              "Bronchial Asthma": 7,
+              "Psoriasis": 1,
+              "Common Cold": 1,
+              "Chicken pox": 1
+            },
+            "Typhoid": {
+              "Bronchial Asthma": 8,
+              "Typhoid": 1,
+              "Dengue": 1
+            },
+            "Urinary tract infection": {
+              "Bronchial Asthma": 6,
+              "Urinary tract infection": 5
+            },
+            "Varicose veins": {
+              "Bronchial Asthma": 10
+            }
+          },
+          "routing_error": {
+            "n": 218,
+            "correct": 63,
+            "same_department_error": 13,
+            "cross_department_error": 142,
+            "safety_relevant_error": 1,
+            "care_routing_accuracy": 0.348624,
+            "department_accuracy": 0.348624,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003470540978014469,
+          "model_size_chars": 1613573,
+          "temperature": 1.0,
+          "probability_note": "decision scores softmax only; not calibrated probabilities"
+        },
+        "linear_svm_temperature": {
+          "test_rows": 218,
+          "accuracy": 0.288991,
+          "macro_f1": 0.389082,
+          "top2_accuracy": 0.316514,
+          "top3_accuracy": 0.362385,
+          "department_accuracy": 0.348624,
+          "department_macro_f1": 0.380593,
+          "mean_confidence": 0.332244,
+          "mean_entropy": 3.526688,
+          "ece": 0.072374,
+          "brier": 0.783952,
+          "wrong_but_confident_rate": 0.059633,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.454545,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 1.0,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.1,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.066667,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.1875,
+            "Malaria": 1.0,
+            "Migraine": 0.555556,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.454545,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Bronchial Asthma": 5,
+              "Allergy": 5,
+              "Hypertension": 1
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Bronchial Asthma": 9
+            },
+            "Bronchial Asthma": {
+              "Bronchial Asthma": 10
+            },
+            "Cervical spondylosis": {
+              "Bronchial Asthma": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Bronchial Asthma": 7,
+              "Common Cold": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Bronchial Asthma": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Bronchial Asthma": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Bronchial Asthma": 9,
+              "Diabetes": 1
+            },
+            "Drug Reaction": {
+              "Bronchial Asthma": 8,
+              "Drug Reaction": 1,
+              "Fungal infection": 1,
+              "GERD": 5
+            },
+            "Fungal infection": {
+              "Bronchial Asthma": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Bronchial Asthma": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Bronchial Asthma": 10
+            },
+            "Jaundice": {
+              "Gastroenteritis": 1,
+              "Bronchial Asthma": 3,
+              "Jaundice": 3,
+              "Typhoid": 1,
+              "Hepatitis D": 6,
+              "Chronic cholestasis": 2
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Migraine": 5,
+              "Bronchial Asthma": 3,
+              "Gastroenteritis": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Bronchial Asthma": 8,
+              "Pneumonia": 1,
+              "Hypertension": 1
+            },
+            "Psoriasis": {
+              "Bronchial Asthma": 7,
+              "Psoriasis": 1,
+              "Common Cold": 1,
+              "Chicken pox": 1
+            },
+            "Typhoid": {
+              "Bronchial Asthma": 8,
+              "Typhoid": 1,
+              "Dengue": 1
+            },
+            "Urinary tract infection": {
+              "Bronchial Asthma": 6,
+              "Urinary tract infection": 5
+            },
+            "Varicose veins": {
+              "Bronchial Asthma": 10
+            }
+          },
+          "routing_error": {
+            "n": 218,
+            "correct": 63,
+            "same_department_error": 13,
+            "cross_department_error": 142,
+            "safety_relevant_error": 1,
+            "care_routing_accuracy": 0.348624,
+            "department_accuracy": 0.348624,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003470540978014469,
+          "model_size_chars": 1613573,
+          "temperature": 0.2,
+          "probability_note": "temperature-scaled softmax of decision scores on calibration split"
+        },
+        "tfidf_logistic_regression": {
+          "test_rows": 218,
+          "accuracy": 0.288991,
+          "macro_f1": 0.407052,
+          "top2_accuracy": 0.298165,
+          "top3_accuracy": 0.334862,
+          "department_accuracy": 0.458716,
+          "department_macro_f1": 0.411911,
+          "mean_confidence": 0.333482,
+          "mean_entropy": 3.647894,
+          "ece": 0.067721,
+          "brier": 0.781539,
+          "wrong_but_confident_rate": 0.022936,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.454545,
+            "Arthritis": 0.1,
+            "Bronchial Asthma": 0.2,
+            "Cervical spondylosis": 0.3,
+            "Chicken pox": 0.1,
+            "Common Cold": 0.1,
+            "Dengue": 0.1,
+            "Diabetes": 0.1,
+            "Drug Reaction": 0.066667,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.5,
+            "Impetigo": 0.0,
+            "Jaundice": 0.1875,
+            "Malaria": 1.0,
+            "Migraine": 0.555556,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.9,
+            "Typhoid": 0.1,
+            "Urinary tract infection": 0.454545,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Psoriasis": 5,
+              "Allergy": 5,
+              "Hypertension": 1
+            },
+            "Arthritis": {
+              "Arthritis": 1,
+              "Psoriasis": 9
+            },
+            "Bronchial Asthma": {
+              "Psoriasis": 8,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Psoriasis": 7,
+              "Cervical spondylosis": 3
+            },
+            "Chicken pox": {
+              "Psoriasis": 7,
+              "Common Cold": 1,
+              "Malaria": 1,
+              "Chicken pox": 1
+            },
+            "Common Cold": {
+              "Psoriasis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Psoriasis": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Psoriasis": 9,
+              "Diabetes": 1
+            },
+            "Drug Reaction": {
+              "Psoriasis": 8,
+              "Drug Reaction": 1,
+              "Chicken pox": 4,
+              "Chronic cholestasis": 1,
+              "GERD": 1
+            },
+            "Fungal infection": {
+              "Psoriasis": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Psoriasis": 5,
+              "Hypertension": 5
+            },
+            "Impetigo": {
+              "Psoriasis": 10
+            },
+            "Jaundice": {
+              "Malaria": 1,
+              "Psoriasis": 3,
+              "Jaundice": 3,
+              "Hepatitis D": 7,
+              "Chronic cholestasis": 2
+            },
+            "Malaria": {
+              "Malaria": 10
+            },
+            "Migraine": {
+              "Migraine": 5,
+              "Psoriasis": 3,
+              "Malaria": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Psoriasis": 6,
+              "Pneumonia": 2,
+              "Malaria": 1,
+              "Bronchial Asthma": 1
+            },
+            "Psoriasis": {
+              "Psoriasis": 9,
+              "Chicken pox": 1
+            },
+            "Typhoid": {
+              "Psoriasis": 8,
+              "Typhoid": 1,
+              "Dengue": 1
+            },
+            "Urinary tract infection": {
+              "Psoriasis": 6,
+              "Urinary tract infection": 5
+            },
+            "Varicose veins": {
+              "Psoriasis": 10
+            }
+          },
+          "routing_error": {
+            "n": 218,
+            "correct": 63,
+            "same_department_error": 37,
+            "cross_department_error": 118,
+            "safety_relevant_error": 7,
+            "care_routing_accuracy": 0.458716,
+            "department_accuracy": 0.458716,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0031572080333717167,
+          "model_size_chars": 6488125,
+          "temperature": 1.0
+        }
+      },
+      "fit_latency_s": {
+        "multinomial_nb": 0.0007145829731598496,
+        "logistic_regression": 1.3379232909646817,
+        "linear_svm": 0.6634634159854613
+      },
+      "protocol": "expanded_quota_0.8",
+      "split_meta": {
+        "train_rows": 852,
+        "cal_rows": 219,
+        "test_rows": 218,
+        "test_diseases": 25
+      }
+    },
+    {
+      "seed": 3407,
+      "train_rows": 830,
+      "cal_rows": 218,
+      "test_rows": 241,
+      "models": {
+        "multinomial_nb": {
+          "test_rows": 241,
+          "accuracy": 0.149378,
+          "macro_f1": 0.10706,
+          "top2_accuracy": 0.248963,
+          "top3_accuracy": 0.302905,
+          "department_accuracy": 0.3361,
+          "department_macro_f1": 0.233267,
+          "mean_confidence": 0.168195,
+          "mean_entropy": 4.423488,
+          "ece": 0.095144,
+          "brier": 0.946924,
+          "wrong_but_confident_rate": 0.033195,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 0.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.133333,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.4,
+            "Chicken pox": 0.8,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.0,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.3,
+            "Impetigo": 0.0,
+            "Jaundice": 0.0,
+            "Malaria": 0.7,
+            "Migraine": 0.277778,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.3,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Typhoid": 1
+            },
+            "Acne": {
+              "Drug Reaction": 1
+            },
+            "Allergy": {
+              "Chicken pox": 9,
+              "Allergy": 1,
+              "Psoriasis": 1
+            },
+            "Arthritis": {
+              "Chicken pox": 7,
+              "Hyperthyroidism": 2,
+              "Osteoarthristis": 4,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Tuberculosis": 6,
+              "Common Cold": 1,
+              "Chicken pox": 7,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 5,
+              "Bronchial Asthma": 1,
+              "Cervical spondylosis": 4
+            },
+            "Chicken pox": {
+              "Chicken pox": 8,
+              "Psoriasis": 1,
+              "Hypertension": 1
+            },
+            "Common Cold": {
+              "Chicken pox": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Chicken pox": 14,
+              "Malaria": 5
+            },
+            "Diabetes": {
+              "Chicken pox": 10
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 11
+            },
+            "Gastroenteritis": {
+              "Malaria": 1
+            },
+            "Heart attack": {
+              "Tuberculosis": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 7,
+              "Hypertension": 3
+            },
+            "Impetigo": {
+              "Chicken pox": 10
+            },
+            "Jaundice": {
+              "Chicken pox": 7,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Chicken pox": 3
+            },
+            "Migraine": {
+              "Hypertension": 2,
+              "Hypothyroidism": 1,
+              "Chicken pox": 1,
+              "Migraine": 5,
+              "Hypoglycemia": 7,
+              "Diabetes": 1,
+              "Hyperthyroidism": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Typhoid": 1
+            },
+            "Pneumonia": {
+              "Chicken pox": 9,
+              "Malaria": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 7,
+              "Psoriasis": 3
+            },
+            "Typhoid": {
+              "Chicken pox": 10
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 11
+            },
+            "Varicose veins": {
+              "Chicken pox": 10,
+              "Diabetes": 7
+            }
+          },
+          "routing_error": {
+            "n": 241,
+            "correct": 36,
+            "same_department_error": 45,
+            "cross_department_error": 160,
+            "safety_relevant_error": 12,
+            "care_routing_accuracy": 0.3361,
+            "department_accuracy": 0.3361,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003813041956163943,
+          "model_size_chars": 16063,
+          "temperature": 1.0
+        },
+        "multinomial_nb_temperature": {
+          "test_rows": 241,
+          "accuracy": 0.149378,
+          "macro_f1": 0.10706,
+          "top2_accuracy": 0.248963,
+          "top3_accuracy": 0.302905,
+          "department_accuracy": 0.3361,
+          "department_macro_f1": 0.233267,
+          "mean_confidence": 0.168195,
+          "mean_entropy": 4.423488,
+          "ece": 0.095144,
+          "brier": 0.946924,
+          "wrong_but_confident_rate": 0.033195,
+          "per_class_recall": {
+            "AIDS": 0.0,
+            "Acne": 0.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.133333,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.4,
+            "Chicken pox": 0.8,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.0,
+            "Gastroenteritis": 0.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.3,
+            "Impetigo": 0.0,
+            "Jaundice": 0.0,
+            "Malaria": 0.7,
+            "Migraine": 0.277778,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.3,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.0,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "Typhoid": 1
+            },
+            "Acne": {
+              "Drug Reaction": 1
+            },
+            "Allergy": {
+              "Chicken pox": 9,
+              "Allergy": 1,
+              "Psoriasis": 1
+            },
+            "Arthritis": {
+              "Chicken pox": 7,
+              "Hyperthyroidism": 2,
+              "Osteoarthristis": 4,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Tuberculosis": 6,
+              "Common Cold": 1,
+              "Chicken pox": 7,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Chicken pox": 5,
+              "Bronchial Asthma": 1,
+              "Cervical spondylosis": 4
+            },
+            "Chicken pox": {
+              "Chicken pox": 8,
+              "Psoriasis": 1,
+              "Hypertension": 1
+            },
+            "Common Cold": {
+              "Chicken pox": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Chicken pox": 14,
+              "Malaria": 5
+            },
+            "Diabetes": {
+              "Chicken pox": 10
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 11
+            },
+            "Gastroenteritis": {
+              "Malaria": 1
+            },
+            "Heart attack": {
+              "Tuberculosis": 1
+            },
+            "Hypertension": {
+              "Chicken pox": 7,
+              "Hypertension": 3
+            },
+            "Impetigo": {
+              "Chicken pox": 10
+            },
+            "Jaundice": {
+              "Chicken pox": 7,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Chicken pox": 3
+            },
+            "Migraine": {
+              "Hypertension": 2,
+              "Hypothyroidism": 1,
+              "Chicken pox": 1,
+              "Migraine": 5,
+              "Hypoglycemia": 7,
+              "Diabetes": 1,
+              "Hyperthyroidism": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Typhoid": 1
+            },
+            "Pneumonia": {
+              "Chicken pox": 9,
+              "Malaria": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 7,
+              "Psoriasis": 3
+            },
+            "Typhoid": {
+              "Chicken pox": 10
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 11
+            },
+            "Varicose veins": {
+              "Chicken pox": 10,
+              "Diabetes": 7
+            }
+          },
+          "routing_error": {
+            "n": 241,
+            "correct": 36,
+            "same_department_error": 45,
+            "cross_department_error": 160,
+            "safety_relevant_error": 12,
+            "care_routing_accuracy": 0.3361,
+            "department_accuracy": 0.3361,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003813041956163943,
+          "model_size_chars": 16063,
+          "temperature": 1.0
+        },
+        "logistic_regression": {
+          "test_rows": 241,
+          "accuracy": 0.273859,
+          "macro_f1": 0.392577,
+          "top2_accuracy": 0.323651,
+          "top3_accuracy": 0.356846,
+          "department_accuracy": 0.348548,
+          "department_macro_f1": 0.388729,
+          "mean_confidence": 0.356365,
+          "mean_entropy": 3.232746,
+          "ece": 0.116944,
+          "brier": 0.825451,
+          "wrong_but_confident_rate": 0.06639,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.133333,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.1,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.2,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.272727,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.4,
+            "Impetigo": 0.0,
+            "Jaundice": 0.25,
+            "Malaria": 0.6,
+            "Migraine": 0.888889,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.3,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.470588
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 8,
+              "Allergy": 2,
+              "Psoriasis": 1
+            },
+            "Arthritis": {
+              "Varicose veins": 9,
+              "Osteoarthristis": 4,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Varicose veins": 7,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 3,
+              "Cervical spondylosis": 6,
+              "Dengue": 1
+            },
+            "Chicken pox": {
+              "Varicose veins": 7,
+              "Psoriasis": 1,
+              "Chicken pox": 1,
+              "Hypertension": 1
+            },
+            "Common Cold": {
+              "Varicose veins": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 7,
+              "Malaria": 10,
+              "Chicken pox": 2
+            },
+            "Diabetes": {
+              "Varicose veins": 8,
+              "Diabetes": 2
+            },
+            "Drug Reaction": {
+              "Varicose veins": 10
+            },
+            "Fungal infection": {
+              "Varicose veins": 8,
+              "Fungal infection": 3
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 4,
+              "Hypertension": 4,
+              "Migraine": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 10
+            },
+            "Jaundice": {
+              "Varicose veins": 5,
+              "Jaundice": 2,
+              "Migraine": 1
+            },
+            "Malaria": {
+              "Malaria": 6,
+              "Varicose veins": 2,
+              "Chicken pox": 1,
+              "Migraine": 1
+            },
+            "Migraine": {
+              "Migraine": 16,
+              "Varicose veins": 1,
+              "Hypertension": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 7,
+              "Malaria": 1,
+              "Pneumonia": 2
+            },
+            "Psoriasis": {
+              "Varicose veins": 7,
+              "Psoriasis": 3
+            },
+            "Typhoid": {
+              "Varicose veins": 10
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Allergy": 1,
+              "Varicose veins": 8,
+              "Diabetes": 7,
+              "Chicken pox": 1
+            }
+          },
+          "routing_error": {
+            "n": 241,
+            "correct": 66,
+            "same_department_error": 18,
+            "cross_department_error": 157,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.348548,
+            "department_accuracy": 0.348548,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.004129208973608911,
+          "model_size_chars": 6410935,
+          "temperature": 1.0
+        },
+        "logistic_regression_temperature": {
+          "test_rows": 241,
+          "accuracy": 0.273859,
+          "macro_f1": 0.392577,
+          "top2_accuracy": 0.323651,
+          "top3_accuracy": 0.356846,
+          "department_accuracy": 0.348548,
+          "department_macro_f1": 0.388729,
+          "mean_confidence": 0.316945,
+          "mean_entropy": 3.53073,
+          "ece": 0.061237,
+          "brier": 0.818619,
+          "wrong_but_confident_rate": 0.049793,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.133333,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.1,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.2,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.272727,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.4,
+            "Impetigo": 0.0,
+            "Jaundice": 0.25,
+            "Malaria": 0.6,
+            "Migraine": 0.888889,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.2,
+            "Psoriasis": 0.3,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.470588
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 8,
+              "Allergy": 2,
+              "Psoriasis": 1
+            },
+            "Arthritis": {
+              "Varicose veins": 9,
+              "Osteoarthristis": 4,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Varicose veins": 7,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Varicose veins": 3,
+              "Cervical spondylosis": 6,
+              "Dengue": 1
+            },
+            "Chicken pox": {
+              "Varicose veins": 7,
+              "Psoriasis": 1,
+              "Chicken pox": 1,
+              "Hypertension": 1
+            },
+            "Common Cold": {
+              "Varicose veins": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 7,
+              "Malaria": 10,
+              "Chicken pox": 2
+            },
+            "Diabetes": {
+              "Varicose veins": 8,
+              "Diabetes": 2
+            },
+            "Drug Reaction": {
+              "Varicose veins": 10
+            },
+            "Fungal infection": {
+              "Varicose veins": 8,
+              "Fungal infection": 3
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Varicose veins": 4,
+              "Hypertension": 4,
+              "Migraine": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 10
+            },
+            "Jaundice": {
+              "Varicose veins": 5,
+              "Jaundice": 2,
+              "Migraine": 1
+            },
+            "Malaria": {
+              "Malaria": 6,
+              "Varicose veins": 2,
+              "Chicken pox": 1,
+              "Migraine": 1
+            },
+            "Migraine": {
+              "Migraine": 16,
+              "Varicose veins": 1,
+              "Hypertension": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 7,
+              "Malaria": 1,
+              "Pneumonia": 2
+            },
+            "Psoriasis": {
+              "Varicose veins": 7,
+              "Psoriasis": 3
+            },
+            "Typhoid": {
+              "Varicose veins": 10
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Allergy": 1,
+              "Varicose veins": 8,
+              "Diabetes": 7,
+              "Chicken pox": 1
+            }
+          },
+          "routing_error": {
+            "n": 241,
+            "correct": 66,
+            "same_department_error": 18,
+            "cross_department_error": 157,
+            "safety_relevant_error": 8,
+            "care_routing_accuracy": 0.348548,
+            "department_accuracy": 0.348548,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.004129208973608911,
+          "model_size_chars": 6410935,
+          "temperature": 1.2
+        },
+        "linear_svm": {
+          "test_rows": 241,
+          "accuracy": 0.273859,
+          "macro_f1": 0.390482,
+          "top2_accuracy": 0.327801,
+          "top3_accuracy": 0.356846,
+          "department_accuracy": 0.369295,
+          "department_macro_f1": 0.350977,
+          "mean_confidence": 0.074759,
+          "mean_entropy": 5.183335,
+          "ece": 0.199101,
+          "brier": 0.922563,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.6,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.1,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.2,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.272727,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.4,
+            "Impetigo": 0.0,
+            "Jaundice": 0.25,
+            "Malaria": 0.6,
+            "Migraine": 0.888889,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.3,
+            "Psoriasis": 0.3,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Arthritis": 8,
+              "Allergy": 2,
+              "Psoriasis": 1
+            },
+            "Arthritis": {
+              "Arthritis": 9,
+              "Osteoarthristis": 6
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Arthritis": 7,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Arthritis": 3,
+              "Cervical spondylosis": 6,
+              "Dengue": 1
+            },
+            "Chicken pox": {
+              "Arthritis": 7,
+              "Psoriasis": 1,
+              "Chicken pox": 1,
+              "Hypertension": 1
+            },
+            "Common Cold": {
+              "Arthritis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Arthritis": 7,
+              "Malaria": 9,
+              "Chicken pox": 3
+            },
+            "Diabetes": {
+              "Arthritis": 8,
+              "Diabetes": 2
+            },
+            "Drug Reaction": {
+              "Arthritis": 10
+            },
+            "Fungal infection": {
+              "Arthritis": 8,
+              "Fungal infection": 3
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Arthritis": 4,
+              "Hypertension": 4,
+              "Migraine": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 1,
+              "Arthritis": 9
+            },
+            "Jaundice": {
+              "Arthritis": 5,
+              "Jaundice": 2,
+              "Migraine": 1
+            },
+            "Malaria": {
+              "Malaria": 6,
+              "Arthritis": 2,
+              "Chicken pox": 1,
+              "Migraine": 1
+            },
+            "Migraine": {
+              "Migraine": 16,
+              "Arthritis": 1,
+              "Hypertension": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Arthritis": 7,
+              "Pneumonia": 3
+            },
+            "Psoriasis": {
+              "Arthritis": 7,
+              "Psoriasis": 3
+            },
+            "Typhoid": {
+              "Arthritis": 10
+            },
+            "Urinary tract infection": {
+              "Arthritis": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Allergy": 1,
+              "Arthritis": 8,
+              "Diabetes": 7,
+              "Hepatitis C": 1
+            }
+          },
+          "routing_error": {
+            "n": 241,
+            "correct": 66,
+            "same_department_error": 23,
+            "cross_department_error": 152,
+            "safety_relevant_error": 7,
+            "care_routing_accuracy": 0.369295,
+            "department_accuracy": 0.369295,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0040672909817658365,
+          "model_size_chars": 1707624,
+          "temperature": 1.0,
+          "probability_note": "decision scores softmax only; not calibrated probabilities"
+        },
+        "linear_svm_temperature": {
+          "test_rows": 241,
+          "accuracy": 0.273859,
+          "macro_f1": 0.390482,
+          "top2_accuracy": 0.327801,
+          "top3_accuracy": 0.356846,
+          "department_accuracy": 0.369295,
+          "department_macro_f1": 0.350977,
+          "mean_confidence": 0.30455,
+          "mean_entropy": 3.847867,
+          "ece": 0.113595,
+          "brier": 0.848791,
+          "wrong_but_confident_rate": 0.087137,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.6,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.1,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.2,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.272727,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.4,
+            "Impetigo": 0.0,
+            "Jaundice": 0.25,
+            "Malaria": 0.6,
+            "Migraine": 0.888889,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.3,
+            "Psoriasis": 0.3,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Arthritis": 8,
+              "Allergy": 2,
+              "Psoriasis": 1
+            },
+            "Arthritis": {
+              "Arthritis": 9,
+              "Osteoarthristis": 6
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Arthritis": 7,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Arthritis": 3,
+              "Cervical spondylosis": 6,
+              "Dengue": 1
+            },
+            "Chicken pox": {
+              "Arthritis": 7,
+              "Psoriasis": 1,
+              "Chicken pox": 1,
+              "Hypertension": 1
+            },
+            "Common Cold": {
+              "Arthritis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Arthritis": 7,
+              "Malaria": 9,
+              "Chicken pox": 3
+            },
+            "Diabetes": {
+              "Arthritis": 8,
+              "Diabetes": 2
+            },
+            "Drug Reaction": {
+              "Arthritis": 10
+            },
+            "Fungal infection": {
+              "Arthritis": 8,
+              "Fungal infection": 3
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Arthritis": 4,
+              "Hypertension": 4,
+              "Migraine": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 1,
+              "Arthritis": 9
+            },
+            "Jaundice": {
+              "Arthritis": 5,
+              "Jaundice": 2,
+              "Migraine": 1
+            },
+            "Malaria": {
+              "Malaria": 6,
+              "Arthritis": 2,
+              "Chicken pox": 1,
+              "Migraine": 1
+            },
+            "Migraine": {
+              "Migraine": 16,
+              "Arthritis": 1,
+              "Hypertension": 1
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Arthritis": 7,
+              "Pneumonia": 3
+            },
+            "Psoriasis": {
+              "Arthritis": 7,
+              "Psoriasis": 3
+            },
+            "Typhoid": {
+              "Arthritis": 10
+            },
+            "Urinary tract infection": {
+              "Arthritis": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Allergy": 1,
+              "Arthritis": 8,
+              "Diabetes": 7,
+              "Hepatitis C": 1
+            }
+          },
+          "routing_error": {
+            "n": 241,
+            "correct": 66,
+            "same_department_error": 23,
+            "cross_department_error": 152,
+            "safety_relevant_error": 7,
+            "care_routing_accuracy": 0.369295,
+            "department_accuracy": 0.369295,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0040672909817658365,
+          "model_size_chars": 1707624,
+          "temperature": 0.3,
+          "probability_note": "temperature-scaled softmax of decision scores on calibration split"
+        },
+        "tfidf_logistic_regression": {
+          "test_rows": 241,
+          "accuracy": 0.273859,
+          "macro_f1": 0.341765,
+          "top2_accuracy": 0.298755,
+          "top3_accuracy": 0.340249,
+          "department_accuracy": 0.502075,
+          "department_macro_f1": 0.422035,
+          "mean_confidence": 0.361966,
+          "mean_entropy": 3.609957,
+          "ece": 0.102602,
+          "brier": 0.854349,
+          "wrong_but_confident_rate": 0.087137,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.181818,
+            "Arthritis": 0.133333,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 0.1,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.2,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.272727,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 1.0,
+            "Hypertension": 0.4,
+            "Impetigo": 0.0,
+            "Jaundice": 0.25,
+            "Malaria": 0.7,
+            "Migraine": 0.833333,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.3,
+            "Psoriasis": 1.0,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Psoriasis": 9,
+              "Allergy": 2
+            },
+            "Arthritis": {
+              "Psoriasis": 7,
+              "Hyperthyroidism": 2,
+              "Osteoarthristis": 4,
+              "Arthritis": 2
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Tuberculosis": 1,
+              "Psoriasis": 7,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Psoriasis": 3,
+              "Cervical spondylosis": 6,
+              "Dengue": 1
+            },
+            "Chicken pox": {
+              "Psoriasis": 8,
+              "Chicken pox": 1,
+              "Hypertension": 1
+            },
+            "Common Cold": {
+              "Psoriasis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Psoriasis": 7,
+              "Malaria": 4,
+              "Chicken pox": 8
+            },
+            "Diabetes": {
+              "Psoriasis": 8,
+              "Diabetes": 2
+            },
+            "Drug Reaction": {
+              "Psoriasis": 10
+            },
+            "Fungal infection": {
+              "Psoriasis": 8,
+              "Fungal infection": 3
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Heart attack": 1
+            },
+            "Hypertension": {
+              "Psoriasis": 4,
+              "Hypertension": 4,
+              "Migraine": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 1,
+              "Psoriasis": 9
+            },
+            "Jaundice": {
+              "Psoriasis": 5,
+              "Jaundice": 2,
+              "Chronic cholestasis": 1
+            },
+            "Malaria": {
+              "Malaria": 7,
+              "Psoriasis": 2,
+              "Chicken pox": 1
+            },
+            "Migraine": {
+              "Migraine": 15,
+              "Psoriasis": 1,
+              "Hypoglycemia": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Psoriasis": 7,
+              "Pneumonia": 3
+            },
+            "Psoriasis": {
+              "Psoriasis": 10
+            },
+            "Typhoid": {
+              "Psoriasis": 10
+            },
+            "Urinary tract infection": {
+              "Psoriasis": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Allergy": 1,
+              "Psoriasis": 8,
+              "Diabetes": 7,
+              "Jaundice": 1
+            }
+          },
+          "routing_error": {
+            "n": 241,
+            "correct": 66,
+            "same_department_error": 55,
+            "cross_department_error": 120,
+            "safety_relevant_error": 7,
+            "care_routing_accuracy": 0.502075,
+            "department_accuracy": 0.502075,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0035869580460712314,
+          "model_size_chars": 6411680,
+          "temperature": 1.0
+        }
+      },
+      "fit_latency_s": {
+        "multinomial_nb": 0.0006697920034639537,
+        "logistic_regression": 1.2237455419963226,
+        "linear_svm": 0.6325799999758601
+      },
+      "protocol": "expanded_quota_0.8",
+      "split_meta": {
+        "train_rows": 830,
+        "cal_rows": 218,
+        "test_rows": 241,
+        "test_diseases": 25
+      }
+    },
+    {
+      "seed": 7777,
+      "train_rows": 831,
+      "cal_rows": 234,
+      "test_rows": 224,
+      "models": {
+        "multinomial_nb": {
+          "test_rows": 224,
+          "accuracy": 0.178571,
+          "macro_f1": 0.252307,
+          "top2_accuracy": 0.241071,
+          "top3_accuracy": 0.258929,
+          "department_accuracy": 0.348214,
+          "department_macro_f1": 0.315923,
+          "mean_confidence": 0.143226,
+          "mean_entropy": 4.571538,
+          "ece": 0.102797,
+          "brier": 0.922723,
+          "wrong_but_confident_rate": 0.022321,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.0,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 1.0,
+            "Common Cold": 0.0,
+            "Dengue": 0.1,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.4,
+            "Impetigo": 0.0,
+            "Jaundice": 0.125,
+            "Malaria": 0.7,
+            "Migraine": 0.222222,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Chicken pox": 11
+            },
+            "Arthritis": {
+              "Chicken pox": 10
+            },
+            "Bronchial Asthma": {
+              "Tuberculosis": 6,
+              "Common Cold": 1,
+              "Chicken pox": 6,
+              "Diabetes": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Cervical spondylosis": 6,
+              "Chicken pox": 3,
+              "Impetigo": 1
+            },
+            "Chicken pox": {
+              "Chicken pox": 10
+            },
+            "Common Cold": {
+              "Chicken pox": 10
+            },
+            "Dengue": {
+              "Chicken pox": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Chicken pox": 9,
+              "Hyperthyroidism": 9
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Hypertension": 4,
+              "Chicken pox": 4,
+              "Allergy": 2
+            },
+            "Impetigo": {
+              "Chicken pox": 15
+            },
+            "Jaundice": {
+              "Jaundice": 1,
+              "Chicken pox": 7
+            },
+            "Malaria": {
+              "Chicken pox": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Chicken pox": 7,
+              "Migraine": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Chicken pox": 9,
+              "Cervical spondylosis": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 8,
+              "Impetigo": 1,
+              "Psoriasis": 1
+            },
+            "Typhoid": {
+              "Chicken pox": 10
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Chicken pox": 10
+            }
+          },
+          "routing_error": {
+            "n": 224,
+            "correct": 40,
+            "same_department_error": 38,
+            "cross_department_error": 146,
+            "safety_relevant_error": 12,
+            "care_routing_accuracy": 0.348214,
+            "department_accuracy": 0.348214,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0031905409996397793,
+          "model_size_chars": 16091,
+          "temperature": 1.0
+        },
+        "multinomial_nb_temperature": {
+          "test_rows": 224,
+          "accuracy": 0.178571,
+          "macro_f1": 0.252307,
+          "top2_accuracy": 0.241071,
+          "top3_accuracy": 0.258929,
+          "department_accuracy": 0.348214,
+          "department_macro_f1": 0.315923,
+          "mean_confidence": 0.075294,
+          "mean_entropy": 5.084537,
+          "ece": 0.103277,
+          "brier": 0.937512,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.0,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.6,
+            "Chicken pox": 1.0,
+            "Common Cold": 0.0,
+            "Dengue": 0.1,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.0,
+            "Fungal infection": 0.181818,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.4,
+            "Impetigo": 0.0,
+            "Jaundice": 0.125,
+            "Malaria": 0.7,
+            "Migraine": 0.222222,
+            "Paralysis (brain hemorrhage)": 0.0,
+            "Pneumonia": 0.0,
+            "Psoriasis": 0.1,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Chicken pox": 11
+            },
+            "Arthritis": {
+              "Chicken pox": 10
+            },
+            "Bronchial Asthma": {
+              "Tuberculosis": 6,
+              "Common Cold": 1,
+              "Chicken pox": 6,
+              "Diabetes": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Cervical spondylosis": 6,
+              "Chicken pox": 3,
+              "Impetigo": 1
+            },
+            "Chicken pox": {
+              "Chicken pox": 10
+            },
+            "Common Cold": {
+              "Chicken pox": 10
+            },
+            "Dengue": {
+              "Chicken pox": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Chicken pox": 9,
+              "Hyperthyroidism": 9
+            },
+            "Drug Reaction": {
+              "Chicken pox": 10
+            },
+            "Fungal infection": {
+              "Chicken pox": 9,
+              "Fungal infection": 2
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Impetigo": 1
+            },
+            "Hypertension": {
+              "Hypertension": 4,
+              "Chicken pox": 4,
+              "Allergy": 2
+            },
+            "Impetigo": {
+              "Chicken pox": 15
+            },
+            "Jaundice": {
+              "Jaundice": 1,
+              "Chicken pox": 7
+            },
+            "Malaria": {
+              "Chicken pox": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Chicken pox": 7,
+              "Migraine": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Malaria": 1
+            },
+            "Pneumonia": {
+              "Chicken pox": 9,
+              "Cervical spondylosis": 1
+            },
+            "Psoriasis": {
+              "Chicken pox": 8,
+              "Impetigo": 1,
+              "Psoriasis": 1
+            },
+            "Typhoid": {
+              "Chicken pox": 10
+            },
+            "Urinary tract infection": {
+              "Chicken pox": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Chicken pox": 10
+            }
+          },
+          "routing_error": {
+            "n": 224,
+            "correct": 40,
+            "same_department_error": 38,
+            "cross_department_error": 146,
+            "safety_relevant_error": 12,
+            "care_routing_accuracy": 0.348214,
+            "department_accuracy": 0.348214,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0031905409996397793,
+          "model_size_chars": 16091,
+          "temperature": 1.8
+        },
+        "logistic_regression": {
+          "test_rows": 224,
+          "accuracy": 0.254464,
+          "macro_f1": 0.359558,
+          "top2_accuracy": 0.303571,
+          "top3_accuracy": 0.34375,
+          "department_accuracy": 0.276786,
+          "department_macro_f1": 0.324726,
+          "mean_confidence": 0.300242,
+          "mean_entropy": 3.475077,
+          "ece": 0.06484,
+          "brier": 0.807846,
+          "wrong_but_confident_rate": 0.026786,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.7,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.1,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.1,
+            "Fungal infection": 0.454545,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.8,
+            "Impetigo": 0.0,
+            "Jaundice": 0.5,
+            "Malaria": 0.7,
+            "Migraine": 0.222222,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.0,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 1.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 10,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Varicose veins": 10
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Varicose veins": 6,
+              "Diabetes": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Cervical spondylosis": 7,
+              "Varicose veins": 2,
+              "Impetigo": 1
+            },
+            "Chicken pox": {
+              "Varicose veins": 7,
+              "Hypertension": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Varicose veins": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Varicose veins": 9,
+              "Migraine": 7,
+              "Jaundice": 2
+            },
+            "Drug Reaction": {
+              "Varicose veins": 9,
+              "Drug Reaction": 1
+            },
+            "Fungal infection": {
+              "Varicose veins": 6,
+              "Fungal infection": 5
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Dengue": 1
+            },
+            "Hypertension": {
+              "Hypertension": 8,
+              "Varicose veins": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 9,
+              "Jaundice": 1,
+              "Fungal infection": 5
+            },
+            "Jaundice": {
+              "Jaundice": 4,
+              "Varicose veins": 4
+            },
+            "Malaria": {
+              "Varicose veins": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Varicose veins": 7,
+              "Migraine": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 8,
+              "Chicken pox": 1,
+              "Pneumonia": 1
+            },
+            "Psoriasis": {
+              "Varicose veins": 8,
+              "Chicken pox": 2
+            },
+            "Typhoid": {
+              "Varicose veins": 10
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Varicose veins": 10
+            }
+          },
+          "routing_error": {
+            "n": 224,
+            "correct": 57,
+            "same_department_error": 5,
+            "cross_department_error": 162,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.276786,
+            "department_accuracy": 0.276786,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0034270830219611526,
+          "model_size_chars": 6503317,
+          "temperature": 1.0
+        },
+        "logistic_regression_temperature": {
+          "test_rows": 224,
+          "accuracy": 0.254464,
+          "macro_f1": 0.359558,
+          "top2_accuracy": 0.303571,
+          "top3_accuracy": 0.34375,
+          "department_accuracy": 0.276786,
+          "department_macro_f1": 0.324726,
+          "mean_confidence": 0.208367,
+          "mean_entropy": 4.203903,
+          "ece": 0.066259,
+          "brier": 0.809871,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.7,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.1,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.1,
+            "Fungal infection": 0.454545,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.8,
+            "Impetigo": 0.0,
+            "Jaundice": 0.5,
+            "Malaria": 0.7,
+            "Migraine": 0.222222,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.0,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 1.0
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Varicose veins": 10,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Varicose veins": 10
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Varicose veins": 6,
+              "Diabetes": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Cervical spondylosis": 7,
+              "Varicose veins": 2,
+              "Impetigo": 1
+            },
+            "Chicken pox": {
+              "Varicose veins": 7,
+              "Hypertension": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Varicose veins": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Varicose veins": 9,
+              "Dengue": 1
+            },
+            "Diabetes": {
+              "Varicose veins": 9,
+              "Migraine": 7,
+              "Jaundice": 2
+            },
+            "Drug Reaction": {
+              "Varicose veins": 9,
+              "Drug Reaction": 1
+            },
+            "Fungal infection": {
+              "Varicose veins": 6,
+              "Fungal infection": 5
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Dengue": 1
+            },
+            "Hypertension": {
+              "Hypertension": 8,
+              "Varicose veins": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 9,
+              "Jaundice": 1,
+              "Fungal infection": 5
+            },
+            "Jaundice": {
+              "Jaundice": 4,
+              "Varicose veins": 4
+            },
+            "Malaria": {
+              "Varicose veins": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Varicose veins": 7,
+              "Migraine": 2
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Varicose veins": 8,
+              "Chicken pox": 1,
+              "Pneumonia": 1
+            },
+            "Psoriasis": {
+              "Varicose veins": 8,
+              "Chicken pox": 2
+            },
+            "Typhoid": {
+              "Varicose veins": 10
+            },
+            "Urinary tract infection": {
+              "Varicose veins": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Varicose veins": 10
+            }
+          },
+          "routing_error": {
+            "n": 224,
+            "correct": 57,
+            "same_department_error": 5,
+            "cross_department_error": 162,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.276786,
+            "department_accuracy": 0.276786,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0034270830219611526,
+          "model_size_chars": 6503317,
+          "temperature": 1.6
+        },
+        "linear_svm": {
+          "test_rows": 224,
+          "accuracy": 0.258929,
+          "macro_f1": 0.312159,
+          "top2_accuracy": 0.3125,
+          "top3_accuracy": 0.361607,
+          "department_accuracy": 0.392857,
+          "department_macro_f1": 0.414019,
+          "mean_confidence": 0.065189,
+          "mean_entropy": 5.219042,
+          "ece": 0.19374,
+          "brier": 0.921369,
+          "wrong_but_confident_rate": 0.0,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.7,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.1,
+            "Fungal infection": 0.454545,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.8,
+            "Impetigo": 0.0,
+            "Jaundice": 0.5,
+            "Malaria": 0.7,
+            "Migraine": 0.333333,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.0,
+            "Typhoid": 1.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.1
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Typhoid": 10,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Typhoid": 10
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Typhoid": 6,
+              "Pneumonia": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Cervical spondylosis": 7,
+              "Typhoid": 2,
+              "Impetigo": 1
+            },
+            "Chicken pox": {
+              "Typhoid": 7,
+              "Hypertension": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Typhoid": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Typhoid": 10
+            },
+            "Diabetes": {
+              "Typhoid": 9,
+              "Hypoglycemia": 1,
+              "Jaundice": 1,
+              "Hyperthyroidism": 7
+            },
+            "Drug Reaction": {
+              "Typhoid": 9,
+              "Drug Reaction": 1
+            },
+            "Fungal infection": {
+              "Typhoid": 6,
+              "Fungal infection": 5
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Dengue": 1
+            },
+            "Hypertension": {
+              "Hypertension": 8,
+              "Typhoid": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 1,
+              "Typhoid": 8,
+              "AIDS": 5,
+              "Acne": 1
+            },
+            "Jaundice": {
+              "Jaundice": 4,
+              "Typhoid": 3,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Typhoid": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Typhoid": 6,
+              "Migraine": 3
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Typhoid": 8,
+              "Chicken pox": 1,
+              "Pneumonia": 1
+            },
+            "Psoriasis": {
+              "Typhoid": 8,
+              "Chicken pox": 2
+            },
+            "Typhoid": {
+              "Typhoid": 10
+            },
+            "Urinary tract infection": {
+              "Typhoid": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Typhoid": 9,
+              "Varicose veins": 1
+            }
+          },
+          "routing_error": {
+            "n": 224,
+            "correct": 58,
+            "same_department_error": 30,
+            "cross_department_error": 136,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.392857,
+            "department_accuracy": 0.392857,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003774416050873697,
+          "model_size_chars": 1611201,
+          "temperature": 1.0,
+          "probability_note": "decision scores softmax only; not calibrated probabilities"
+        },
+        "linear_svm_temperature": {
+          "test_rows": 224,
+          "accuracy": 0.258929,
+          "macro_f1": 0.312159,
+          "top2_accuracy": 0.3125,
+          "top3_accuracy": 0.361607,
+          "department_accuracy": 0.392857,
+          "department_macro_f1": 0.414019,
+          "mean_confidence": 0.201198,
+          "mean_entropy": 4.442663,
+          "ece": 0.087074,
+          "brier": 0.83545,
+          "wrong_but_confident_rate": 0.022321,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.7,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.1,
+            "Fungal infection": 0.454545,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.8,
+            "Impetigo": 0.0,
+            "Jaundice": 0.5,
+            "Malaria": 0.7,
+            "Migraine": 0.333333,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.0,
+            "Typhoid": 1.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.1
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Typhoid": 10,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Typhoid": 10
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Jaundice": 1,
+              "Typhoid": 6,
+              "Pneumonia": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Cervical spondylosis": 7,
+              "Typhoid": 2,
+              "Impetigo": 1
+            },
+            "Chicken pox": {
+              "Typhoid": 7,
+              "Hypertension": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Typhoid": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Typhoid": 10
+            },
+            "Diabetes": {
+              "Typhoid": 9,
+              "Hypoglycemia": 1,
+              "Jaundice": 1,
+              "Hyperthyroidism": 7
+            },
+            "Drug Reaction": {
+              "Typhoid": 9,
+              "Drug Reaction": 1
+            },
+            "Fungal infection": {
+              "Typhoid": 6,
+              "Fungal infection": 5
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Dengue": 1
+            },
+            "Hypertension": {
+              "Hypertension": 8,
+              "Typhoid": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 1,
+              "Typhoid": 8,
+              "AIDS": 5,
+              "Acne": 1
+            },
+            "Jaundice": {
+              "Jaundice": 4,
+              "Typhoid": 3,
+              "Malaria": 1
+            },
+            "Malaria": {
+              "Typhoid": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Typhoid": 6,
+              "Migraine": 3
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Typhoid": 8,
+              "Chicken pox": 1,
+              "Pneumonia": 1
+            },
+            "Psoriasis": {
+              "Typhoid": 8,
+              "Chicken pox": 2
+            },
+            "Typhoid": {
+              "Typhoid": 10
+            },
+            "Urinary tract infection": {
+              "Typhoid": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Typhoid": 9,
+              "Varicose veins": 1
+            }
+          },
+          "routing_error": {
+            "n": 224,
+            "correct": 58,
+            "same_department_error": 30,
+            "cross_department_error": 136,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.392857,
+            "department_accuracy": 0.392857,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.003774416050873697,
+          "model_size_chars": 1611201,
+          "temperature": 0.4,
+          "probability_note": "temperature-scaled softmax of decision scores on calibration split"
+        },
+        "tfidf_logistic_regression": {
+          "test_rows": 224,
+          "accuracy": 0.245536,
+          "macro_f1": 0.339731,
+          "top2_accuracy": 0.28125,
+          "top3_accuracy": 0.325893,
+          "department_accuracy": 0.4375,
+          "department_macro_f1": 0.415543,
+          "mean_confidence": 0.321629,
+          "mean_entropy": 3.819537,
+          "ece": 0.076093,
+          "brier": 0.825927,
+          "wrong_but_confident_rate": 0.040179,
+          "per_class_recall": {
+            "AIDS": 1.0,
+            "Acne": 1.0,
+            "Allergy": 0.090909,
+            "Arthritis": 0.0,
+            "Bronchial Asthma": 0.125,
+            "Cervical spondylosis": 0.7,
+            "Chicken pox": 0.2,
+            "Common Cold": 0.1,
+            "Dengue": 0.0,
+            "Diabetes": 0.0,
+            "Drug Reaction": 0.1,
+            "Fungal infection": 0.454545,
+            "Gastroenteritis": 1.0,
+            "Heart attack": 0.0,
+            "Hypertension": 0.8,
+            "Impetigo": 0.0,
+            "Jaundice": 0.375,
+            "Malaria": 0.7,
+            "Migraine": 0.333333,
+            "Paralysis (brain hemorrhage)": 1.0,
+            "Pneumonia": 0.1,
+            "Psoriasis": 0.8,
+            "Typhoid": 0.0,
+            "Urinary tract infection": 0.090909,
+            "Varicose veins": 0.1
+          },
+          "confusion_matrix": {
+            "AIDS": {
+              "AIDS": 1
+            },
+            "Acne": {
+              "Acne": 1
+            },
+            "Allergy": {
+              "Psoriasis": 10,
+              "Allergy": 1
+            },
+            "Arthritis": {
+              "Psoriasis": 10
+            },
+            "Bronchial Asthma": {
+              "Hepatitis C": 6,
+              "Tuberculosis": 1,
+              "Psoriasis": 6,
+              "Pneumonia": 1,
+              "Bronchial Asthma": 2
+            },
+            "Cervical spondylosis": {
+              "Cervical spondylosis": 7,
+              "Psoriasis": 2,
+              "Impetigo": 1
+            },
+            "Chicken pox": {
+              "Psoriasis": 7,
+              "Hypertension": 1,
+              "Chicken pox": 2
+            },
+            "Common Cold": {
+              "Psoriasis": 9,
+              "Common Cold": 1
+            },
+            "Dengue": {
+              "Psoriasis": 9,
+              "Typhoid": 1
+            },
+            "Diabetes": {
+              "Psoriasis": 9,
+              "Migraine": 2,
+              "Hyperthyroidism": 7
+            },
+            "Drug Reaction": {
+              "Psoriasis": 9,
+              "Drug Reaction": 1
+            },
+            "Fungal infection": {
+              "Psoriasis": 6,
+              "Fungal infection": 5
+            },
+            "Gastroenteritis": {
+              "Gastroenteritis": 1
+            },
+            "Heart attack": {
+              "Dengue": 1
+            },
+            "Hypertension": {
+              "Hypertension": 8,
+              "Psoriasis": 2
+            },
+            "Impetigo": {
+              "Varicose veins": 1,
+              "Psoriasis": 8,
+              "Jaundice": 1,
+              "Chicken pox": 5
+            },
+            "Jaundice": {
+              "Jaundice": 3,
+              "Psoriasis": 3,
+              "Malaria": 2
+            },
+            "Malaria": {
+              "Psoriasis": 3,
+              "Malaria": 7
+            },
+            "Migraine": {
+              "Psoriasis": 6,
+              "Migraine": 3
+            },
+            "Paralysis (brain hemorrhage)": {
+              "Paralysis (brain hemorrhage)": 1
+            },
+            "Pneumonia": {
+              "Psoriasis": 8,
+              "Chicken pox": 1,
+              "Pneumonia": 1
+            },
+            "Psoriasis": {
+              "Psoriasis": 8,
+              "Chicken pox": 2
+            },
+            "Typhoid": {
+              "Psoriasis": 10
+            },
+            "Urinary tract infection": {
+              "Psoriasis": 10,
+              "Urinary tract infection": 1
+            },
+            "Varicose veins": {
+              "Psoriasis": 9,
+              "Varicose veins": 1
+            }
+          },
+          "routing_error": {
+            "n": 224,
+            "correct": 55,
+            "same_department_error": 43,
+            "cross_department_error": 126,
+            "safety_relevant_error": 10,
+            "care_routing_accuracy": 0.4375,
+            "department_accuracy": 0.4375,
+            "note": "research-only severity; safety_relevant uses a fixed prototype disease allowlist, not new clinical grading"
+          },
+          "inference_latency_s": 0.0031273330096155405,
+          "model_size_chars": 6504716,
+          "temperature": 1.0
+        }
+      },
+      "fit_latency_s": {
+        "multinomial_nb": 0.0007015409646555781,
+        "logistic_regression": 1.2781229160027578,
+        "linear_svm": 0.6375544999609701
+      },
+      "protocol": "expanded_quota_0.8",
+      "split_meta": {
+        "train_rows": 831,
+        "cal_rows": 234,
+        "test_rows": 224,
+        "test_diseases": 25
+      }
+    }
+  ]
+}

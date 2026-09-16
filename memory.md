@@ -1,4 +1,4 @@
-# Memory — Care Routing Algorithm Round1 + Round2
+# Memory — Care Routing Algorithm Round1 + Round2 + Round3
 
 Last updated: 2026-09-16
 
@@ -9,7 +9,8 @@ Last updated: 2026-09-16
 - Do not reopen architecture refactors, Chatbot, accounts, cloud records, extra cities, real-time emergency/transit fakes.
 - Do not restore magazine style / Dashboard / Demo Login.
 - **Algorithm work lives only in `evaluation/care_routing/`** — never wire it into `/api/v1` or Safety Gate without L3.
-- **Uncertainty → Adaptive Inquiry product readiness = `RESEARCH_ONLY`**.
+- **Uncertainty → Adaptive Inquiry = `RESEARCH_ONLY`**.
+- **Triage classifier Shadow Mode = `RESEARCH_ONLY`**.
 
 ## Safety invariants
 
@@ -23,20 +24,23 @@ Last updated: 2026-09-16
 ## Algorithm exploration (2026-09-16)
 
 ### Round1
-- Package: `evaluation/care_routing/{uncertainty,inquiry,metrics,disease_department,run_experiments}.py`.
-- Reproduce: `.venv/bin/python -m evaluation.care_routing.run_experiments --write`.
+- Reproduce: `.venv/bin/python -m evaluation.care_routing.run_experiments --write`
 - Honest split = same-label near-duplicate triple split; random split metrics are leaky.
-- IG inquiry beats random/frequent on leaky splits (+11~16pp); cannot rescue honest-split weak generalization.
 
 ### Round2
 - Report: `evaluation/care_routing/ROUND2_REPORT.md`
 - Reproduce: `.venv/bin/python -m evaluation.care_routing.run_round2 --write`
-- New modules: `error_analysis.py`, `symptom_state.py`, `inquiry_protocol.py`, `stopping.py`, `model_baselines.py`, `data_schema/`
-- 0.188 root cause: unseen combinations (1.0) + 33/41 single-component diseases **and** NB capacity (LR/SVM=1.0 on same test).
-- Three-state negation unit 10/10; IG does **not** beat Random on honest three-state simulation.
-- Conformal/temperature: research only (near-dup ECE ~0.20±0.04, set size ~19).
-- Inquiry dataset schema exists only as `synthetic_example`.
-- Missing data: multi-component samples, real multi-turn Q&A logs.
+- Three-state negation unit 10/10; IG does **not** beat Random on honest simulation.
+- Round2 LR/SVM=1.0 on n=16 was **largely a small-sample fluke**.
+
+### Round3
+- Report: `evaluation/care_routing/ROUND3_REPORT.md`
+- Reproduce: `.venv/bin/python -m evaluation.care_routing.run_round3 --write`
+- expanded_41 = 1289 rows; honest quota test ≈213 / 25 diseases (structured ceiling ≈8).
+- 5-seed: NB 0.173 / LR 0.265 / SVM 0.267 — direction real, magnitude modest.
+- Learning curve still rising 20%→100% (+9~13pp) → more data helps.
+- Direct Department 0.450 ≫ disease-first dept 0.291 → product story should be department-first.
+- Shadow Mode blocked by absolute department accuracy.
 
 ## Frontend ownership map (P5)
 
@@ -60,7 +64,7 @@ E2E must keep: headings 把症状 / 现在有什么不舒服 / 把城市资源 /
 
 ## Test baseline
 
-- pytest **189** (169 + 11 round1 + 9 round2), frontend boundary **17**, Playwright **20/20**, safety **142** cases.
+- pytest **199** (169 + 11 r1 + 9 r2 + 10 r3), frontend boundary **17**, Playwright **20/20**, safety **142** cases.
 - Bundle: CSS 100.9KB gzip 15.3KB; JS 355.7KB gzip 103.6KB (baseline JS 347.2KB, +2.4%). Single chunk (`App.tsx` uses conditional rendering, no code splitting).
 - `data_validation`: scanned 31 / issues 186 (unchanged baseline).
 
