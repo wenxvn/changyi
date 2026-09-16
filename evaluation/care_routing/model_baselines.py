@@ -53,6 +53,84 @@ def build_tfidf_features(
     return features
 
 
+def _char_ngrams(text: str, n_min: int = 2, n_max: int = 4) -> list[str]:
+    tokens = []
+    for n in range(n_min, n_max + 1):
+        if len(text) < n:
+            continue
+        for i in range(len(text) - n + 1):
+            tokens.append(f"c{n}:{text[i:i+n]}")
+    return tokens
+
+
+def _row_text(row: Mapping[str, Any]) -> str:
+    # Symptom codes joined; also strip underscores so char n-grams see dense form.
+    return "".join(symptom.replace("_", "") for symptom in row.get("symptoms") or [])
+
+
+def build_char_ngram_tfidf_features(
+    train_rows: Sequence[Mapping[str, Any]],
+    rows: Sequence[Mapping[str, Any]],
+    *,
+    n_min: int = 2,
+    n_max: int = 4,
+) -> list[dict[str, float]]:
+    df: dict[str, int] = {}
+    for row in train_rows:
+        for token in set(_char_ngrams(_row_text(row), n_min, n_max)):
+            df[token] = df.get(token, 0) + 1
+    n_docs = max(len(train_rows), 1)
+    idf = {
+        token: math.log((1.0 + n_docs) / (1.0 + count)) + 1.0
+        for token, count in df.items()
+    }
+    features = []
+    for row in rows:
+        counts: dict[str, int] = {}
+        for token in _char_ngrams(_row_text(row), n_min, n_max):
+            counts[token] = counts.get(token, 0) + 1
+        total = sum(counts.values()) or 1
+        features.append(
+            {
+                token: (count / total) * idf.get(token, 0.0)
+                for token, count in counts.items()
+                if token in idf
+            }
+        )
+    return features
+
+
+def build_fusion_features(
+    left: Sequence[Mapping[str, float]],
+    right: Sequence[Mapping[str, float]],
+) -> list[dict[str, float]]:
+    """Concatenate two sparse feature dicts with a prefix to avoid key collisions."""
+
+    fused = []
+    for a, b in zip(left, right):
+        item = {f"w:{k}": v for k, v in a.items()}
+        for key, value in b.items():
+            item[f"c:{key}"] = value
+        fused.append(item)
+    return fused
+
+
+def build_three_state_features(rows: Sequence[Mapping[str, Any]]) -> list[dict[str, float]]:
+    """Present/Absent features from row fields when available; else present-only."""
+
+    features = []
+    for row in rows:
+        item: dict[str, float] = {}
+        for symptom in row.get("symptoms") or []:
+            item[f"{symptom}__present"] = 1.0
+        for symptom in row.get("absent_symptoms") or []:
+            key = f"{symptom}__absent"
+            if f"{symptom}__present" not in item:
+                item[key] = 1.0
+        features.append(item)
+    return features
+
+
 def _all_keys(feature_dicts: Sequence[Mapping[str, float]]) -> list[str]:
     keys: set[str] = set()
     for item in feature_dicts:

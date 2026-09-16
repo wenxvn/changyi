@@ -40,7 +40,17 @@ Last updated: 2026-09-16
 - 5-seed: NB 0.173 / LR 0.265 / SVM 0.267 — direction real, magnitude modest.
 - Learning curve still rising 20%→100% (+9~13pp) → more data helps.
 - Direct Department 0.450 ≫ disease-first dept 0.291 → product story should be department-first.
-- Shadow Mode blocked by absolute department accuracy.
+
+### Round4
+- Report: `evaluation/care_routing/ROUND4_REPORT.md`
+- Reproduce: `run_round4 --write` or `run_round4_refresh` for selective-only refresh
+- Best Direct Dept: **char n-gram TF-IDF + LR = 0.742±0.013** (vs Round3 0.450)
+- Selective: target 80% → retained Acc **0.807**, wrong-conf <1%
+- Hardest confusions: many depts → 皮肤科; data gaps: 呼吸内科/泌尿外科/内分泌代谢科
+- Representation ablation: char n-gram ≫ binary/word/fusion under same LR
+- Shadow Mode still `RESEARCH_ONLY` because ECE≈0.26
+- Skeleton: `Safety Gate → Direct Department → Selective Abstention → Care Routing`
+
 
 ## Frontend ownership map (P5)
 
@@ -64,7 +74,7 @@ E2E must keep: headings 把症状 / 现在有什么不舒服 / 把城市资源 /
 
 ## Test baseline
 
-- pytest **199** (169 + 11 r1 + 9 r2 + 10 r3), frontend boundary **17**, Playwright **20/20**, safety **142** cases.
+- pytest **206** (169 + 11 r1 + 9 r2 + 10 r3 + 7 r4), frontend boundary **17**, Playwright **20/20**, safety **142** cases.
 - Bundle: CSS 100.9KB gzip 15.3KB; JS 355.7KB gzip 103.6KB (baseline JS 347.2KB, +2.4%). Single chunk (`App.tsx` uses conditional rendering, no code splitting).
 - `data_validation`: scanned 31 / issues 186 (unchanged baseline).
 

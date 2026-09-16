@@ -126,3 +126,25 @@
 ```
 
 **Shadow Mode 结论：`RESEARCH_ONLY`**（expanded test≈213 后 LR/SVM 仍优于 NB，但绝对科室准确率不足）。
+
+## Round4（Safety-Constrained Selective Care Routing）
+
+详见 **`ROUND4_REPORT.md`**。
+
+新增模块：
+
+- `direct_department.py` — Direct Department 模型矩阵（含 char n-gram / fusion）
+- `selective_routing.py` — Risk–Coverage 拒答
+- `department_confusion.py` — 混淆结构 + Data Gap Map
+- `round4_learning.py` — Direct Dept 学习曲线 / 表示消融
+- `round4_robustness_safety.py` — 鲁棒性+Selective / Safety 契约
+- `run_round4.py` / `run_round4_refresh.py` — 一键复现 / 快速刷新
+
+```bash
+.venv/bin/python -m evaluation.care_routing.run_round4 --write
+.venv/bin/python -m evaluation.care_routing.run_round4_refresh
+.venv/bin/python -m pytest tests/test_care_routing_round4.py -q
+```
+
+**关键结果**：char n-gram + LR Direct Dept **0.742**（Round3 0.450）；80% 目标 coverage 下 retained Acc **0.807**。
+**Shadow Mode：`RESEARCH_ONLY`**（ECE 0.26 未过门槛）。

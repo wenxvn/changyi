@@ -1,19 +1,40 @@
 # 当前项目状态
 
-更新时间：2026-09-16（算法 Round3：扩大诚实评测 + Triage 分类器升级验证）
+更新时间：2026-09-16（算法 Round4：Safety-Constrained Selective Care Routing）
 
 ## 总体状态
 
-- 状态：**P5 产品打磨完成** + **算法 Round1/2/3 离线实验完成**（`evaluation/care_routing/`，未改正式 API/Safety）
+- 状态：**P5 产品打磨完成** + **算法 Round1–4 离线实验完成**（`evaluation/care_routing/`，未改正式 API/Safety）
 - 分支：`main`
 - 正式前端：Flask 提供 `frontend/dist` 中的 React build
 - 正式 API：`/api/v1/*`
 - 根入口：`python app.py`
 - 产品定位：AI Care Routing；Safety 永远先于个性化
 - **Uncertainty → Adaptive Inquiry：`RESEARCH_ONLY`**
-- **Triage classifier Shadow Mode：`RESEARCH_ONLY`**
+- **Direct Department Shadow Mode：`RESEARCH_ONLY`**（ECE 未过门槛）
+- 研究主骨架：`Safety Gate → Direct Department → Selective Abstention → Care Routing`
 
-## 算法 Round3（本轮）
+## 算法 Round4（本轮）
+
+详情：`evaluation/care_routing/ROUND4_REPORT.md`
+复现：`.venv/bin/python -m evaluation.care_routing.run_round4 --write`
+
+### 关键事实
+
+- 最佳 Direct Department：**char n-gram TF-IDF + LR = 0.742±0.013**（Round3 0.450，**+29pp**）
+- 表示消融：提升主要来自 **char n-gram**，不是换分类器；fusion 未超过 char-only
+- Selective（阈值只来自 cal）：目标 80/70/60% → 实际 coverage 0.66/0.55/0.48，retained Acc **0.81/0.84/0.87**，wrong-conf ≤1%
+- 最难混淆：多科室 → **皮肤科**（呼吸/泌尿/内分泌/神经等）
+- Data Gap Top：呼吸内科、泌尿外科、内分泌代谢科、神经内科、消化内科（模型数据优先级，非医疗排名）
+- 学习曲线 char：20%→100% **0.44→0.74**，still_rising
+- Safety 契约 all_pass；Safety Evaluation 142 不变
+- Shadow：**`RESEARCH_ONLY`**（ECE≈0.26 未过 0.15）
+
+### 新增模块
+
+`direct_department.py` / `selective_routing.py` / `department_confusion.py` / `round4_learning.py` / `round4_robustness_safety.py` / `run_round4.py`
+
+## 算法 Round3（上一轮保留）
 
 详情：`evaluation/care_routing/ROUND3_REPORT.md`
 复现：`.venv/bin/python -m evaluation.care_routing.run_round3 --write`
@@ -133,22 +154,24 @@
 
 | 领域 | 事实 |
 | --- | --- |
-| 测试 | pytest **199**（169 + 11 r1 + 9 r2 + 10 r3）；frontend boundary **17**；Playwright **20/20** |
-| Safety | **142** cases；Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency FN `0`（三轮算法实验均未改动） |
-| 算法实验 | `evaluation/care_routing/results/round3_*`；主报告 `ROUND3_REPORT.md` |
-| 诚实评测上限 | structured≈8 病种；expanded test≈**213/25 病种** |
-| 产品接入 | Uncertainty→Inquiry = **`RESEARCH_ONLY`**；Triage Shadow Mode = **`RESEARCH_ONLY`** |
+| 测试 | pytest **206**（169 + 11 r1 + 9 r2 + 10 r3 + 7 r4）；frontend boundary **17**；Playwright **20/20** |
+| Safety | **142** cases；Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency FN `0`（四轮算法实验均未改动） |
+| 算法实验 | `evaluation/care_routing/results/round4_*`；主报告 `ROUND4_REPORT.md` |
+| 最佳 Direct Dept | **char n-gram + LR = 0.742±0.013** |
+| Selective | 目标 80% coverage → retained Acc **0.807**（wrong-conf <1%） |
+| 诚实评测 | structured≈8 病种；expanded test≈**213/25 病种** / 11 科室 |
+| 产品接入 | Uncertainty→Inquiry = **`RESEARCH_ONLY`**；Direct Dept Shadow = **`RESEARCH_ONLY`**（ECE 0.26） |
 | 数据校验 | `validate_datasets` scanned 31 / issues 186（与基线一致，只登记不修复） |
 | 前端构建 | CSS 100.9KB gzip 15.3KB；JS 355.7KB gzip 103.6KB（基线 JS 347.2KB，+2.4%） |
 | 医生 API | 服务端分页与筛选（P2 保持） |
 
-## 验证记录（算法 Round3）
+## 验证记录（算法 Round4）
 
 - `.venv/bin/python -m py_compile evaluation/care_routing/*.py evaluation/care_routing/data_schema/*.py`：通过
-- `.venv/bin/python -m pytest tests/test_care_routing_round3.py`：10 passed
-- `.venv/bin/python -m pytest`：**199 passed**
+- `.venv/bin/python -m pytest tests/test_care_routing_round4.py`：7 passed
+- `.venv/bin/python -m pytest`：**206 passed**
 - `.venv/bin/python -m evaluation.safety.evaluate_safety`：142 cases；Recall 1.0；FN 0；Over-triage 0（与基线一致）
-- `.venv/bin/python -m evaluation.care_routing.run_round3 --write`：split 审计 / 模型矩阵 / 学习曲线 / 鲁棒性 / 层级路由 / 七问答案全部落盘
+- `.venv/bin/python -m evaluation.care_routing.run_round4 --write` + `run_round4_refresh`：矩阵 / selective / 混淆 / gap / 曲线 / 鲁棒性 / Safety 落盘
 - 正式 `/api/v1`、Safety Gate、红旗规则、前端 **零改动**
 
 ## 未改变的风险
@@ -157,10 +180,11 @@
 - 来源/许可不完整（`R-002`）；照片仍非 `SOURCE_VERIFIED`
 - 急诊字段仅为目录标记，不代表实时接诊能力（`R-019` 同源表述）
 - 账号/云同步/实时急诊/实时公交仍明确不做
-- 原型概率未经临床校准；诚实切分下泛化仍弱，不得当作医学置信度或科室终裁
+- 原型概率未经临床校准；char LR ECE≈0.26，不得当作医学置信度
 - 三态追问为 simulation；synthetic schema 不是真实患者数据
-- expanded_41 是公开文本集，不是常州真实就诊分布；16 病种仍无法进诚实 test
-- Round2 的 LR=1.0 不可外推；Shadow 门槛未达成
+- expanded_41 是公开文本集，不是常州真实就诊分布
+- Data Gap Map 是模型数据优先级，不是医疗重要性排名
+- Selective 阈值来自 calibration；迁到 test 后 coverage 低于目标
 
 ## 竞赛提交（2026-09-15 审计，本轮未推进）
 
@@ -168,13 +192,13 @@
 
 ## 下一步（算法）
 
-1. 继续扩多 component 可核验症状描述，把 16 个排除病种纳入诚实 test。
-2. 以 **Direct Department** 为主模型做更大评测、校准与 Safety 回归。
-3. 按 `data_schema/` 准备 opt-in 真实多轮追问采集；IG 结论保持 simulation-only。
-4. Hybrid Safety Gate / KG 继续只做研究对照，不接生产。
+1. **校准修复**：char LR 温度/Platt，目标 ECE≤0.15 后再评 Shadow。
+2. 按 Data Gap Map 补呼吸内科/泌尿外科/内分泌代谢科等独立表达。
+3. 重做 word+char fusion；评估原始中文口语 char n-gram。
+4. 按 `data_schema/` 准备 opt-in 多轮追问采集；IG 保持 simulation-only。
 
 ## 下一步（产品/提交）
 
-- 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；可把 ROUND3 七问与学习曲线写入技术方案
-- Trust/研究页若展示不确定性指标，必须标注 assistive_only / not clinical confidence
+- 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；可把 ROUND4 的 Selective Care Routing 骨架写入技术方案
+- Trust/研究页若展示不确定性/拒答率，必须标注 assistive_only / not clinical confidence
 - 涉及医学或生产能力按 L3/L4 另立计划

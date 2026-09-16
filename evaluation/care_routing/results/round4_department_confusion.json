@@ -1,0 +1,458 @@
+{
+  "test_rows": 213,
+  "top_confusion_pairs": [
+    {
+      "true": "呼吸内科",
+      "pred": "皮肤科",
+      "count": 14,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "泌尿外科",
+      "pred": "皮肤科",
+      "count": 11,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "内分泌代谢科",
+      "pred": "皮肤科",
+      "count": 9,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "消化内科",
+      "pred": "感染性疾病科",
+      "count": 9,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "神经内科",
+      "pred": "皮肤科",
+      "count": 9,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "感染性疾病科",
+      "pred": "皮肤科",
+      "count": 8,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "普外科",
+      "pred": "皮肤科",
+      "count": 7,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "呼吸内科",
+      "pred": "感染性疾病科",
+      "count": 4,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "心血管内科",
+      "pred": "皮肤科",
+      "count": 2,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "骨科",
+      "pred": "皮肤科",
+      "count": 2,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "内分泌代谢科",
+      "pred": "感染性疾病科",
+      "count": 1,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "心血管内科",
+      "pred": "呼吸与危重症医学科",
+      "count": 1,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "心血管内科",
+      "pred": "感染性疾病科",
+      "count": 1,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "神经内科",
+      "pred": "感染性疾病科",
+      "count": 1,
+      "reverse_count": 0,
+      "bidirectional": false
+    },
+    {
+      "true": "骨科",
+      "pred": "感染性疾病科",
+      "count": 1,
+      "reverse_count": 0,
+      "bidirectional": false
+    }
+  ],
+  "per_department": [
+    {
+      "department": "呼吸内科",
+      "support": 18,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 14
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "department": "泌尿外科",
+      "support": 11,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "department": "内分泌代谢科",
+      "support": 10,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 9
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "神经内科",
+      "support": 10,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 9
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "消化内科",
+      "support": 9,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "感染性疾病科",
+          "count": 9
+        }
+      ]
+    },
+    {
+      "department": "普外科",
+      "support": 10,
+      "recall": 0.3,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "department": "心血管内科",
+      "support": 11,
+      "recall": 0.636364,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 2
+        },
+        {
+          "pred": "呼吸与危重症医学科",
+          "count": 1
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "感染性疾病科",
+      "support": 41,
+      "recall": 0.804878,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "department": "骨科",
+      "support": 20,
+      "recall": 0.85,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 2
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "皮肤科",
+      "support": 53,
+      "recall": 1.0,
+      "top_confusions": []
+    },
+    {
+      "department": "呼吸与危重症医学科",
+      "support": 20,
+      "recall": 1.0,
+      "top_confusions": []
+    }
+  ],
+  "lowest_recall_departments": [
+    {
+      "department": "呼吸内科",
+      "support": 18,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 14
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "department": "泌尿外科",
+      "support": 11,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "department": "内分泌代谢科",
+      "support": 10,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 9
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "神经内科",
+      "support": 10,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 9
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "消化内科",
+      "support": 9,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "感染性疾病科",
+          "count": 9
+        }
+      ]
+    },
+    {
+      "department": "普外科",
+      "support": 10,
+      "recall": 0.3,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "department": "心血管内科",
+      "support": 11,
+      "recall": 0.636364,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 2
+        },
+        {
+          "pred": "呼吸与危重症医学科",
+          "count": 1
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "感染性疾病科",
+      "support": 41,
+      "recall": 0.804878,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "department": "骨科",
+      "support": 20,
+      "recall": 0.85,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 2
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "department": "皮肤科",
+      "support": 53,
+      "recall": 1.0,
+      "top_confusions": []
+    }
+  ],
+  "top_pair_shared_features": {
+    "department_a": "呼吸内科",
+    "department_b": "皮肤科",
+    "shared_top_symptoms": [
+      {
+        "symptom": "i_have_red",
+        "count_a": 1,
+        "count_b": 5
+      }
+    ],
+    "distinguishing_a": [
+      {
+        "symptom": "i've_been_sneezing_a_lot",
+        "count": 2
+      },
+      {
+        "symptom": "and_my_face_hurts._i've_been_coughing_up_phlegm",
+        "count": 2
+      },
+      {
+        "symptom": "and_i've_been_coughing_up_a_lot_of_phlegm._my_lymph_nodes_are_also_swollen.",
+        "count": 1
+      },
+      {
+        "symptom": "i've_been_feeling_really_run_down_lately",
+        "count": 1
+      },
+      {
+        "symptom": "and_my_muscles_hurt._i_can't_smell_anything.",
+        "count": 1
+      },
+      {
+        "symptom": "and_my_sinuses_are_completely_blocked._i_can't_smell_anything",
+        "count": 1
+      },
+      {
+        "symptom": "i_have_a_really_bad_cold._i_can't_stop_coughing_and_my_sinuses_are_all_blocked._i_have_a_lot_of_mucus_and_my_chest_hurts._i_can't_smell_anything_and_my_muscles_are_really_sore.",
+        "count": 1
+      },
+      {
+        "symptom": "and_my_chest_feels_tight._i_can't_smell_anything",
+        "count": 1
+      }
+    ],
+    "distinguishing_b": [
+      {
+        "symptom": "skin_rash",
+        "count": 21
+      },
+      {
+        "symptom": "itching",
+        "count": 7
+      },
+      {
+        "symptom": "silver_like_dusting",
+        "count": 6
+      },
+      {
+        "symptom": "small_dents_in_nails",
+        "count": 6
+      },
+      {
+        "symptom": "skin_peeling",
+        "count": 6
+      },
+      {
+        "symptom": "joint_pain",
+        "count": 6
+      },
+      {
+        "symptom": "inflammatory_nails",
+        "count": 6
+      },
+      {
+        "symptom": "high_fever",
+        "count": 5
+      }
+    ],
+    "note": "train statistics only; not clinical rules"
+  }
+}

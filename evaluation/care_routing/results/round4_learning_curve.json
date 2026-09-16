@@ -1,0 +1,432 @@
+{
+  "protocol": "direct_department_learning_curve",
+  "threshold": 0.8,
+  "fractions": [
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0
+  ],
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "model_keys": [
+    "logistic_regression_binary",
+    "char_ngram_tfidf_lr"
+  ],
+  "points": [
+    {
+      "fraction": 0.2,
+      "train_rows_mean": 169.0,
+      "per_seed": [
+        {
+          "seed": 42,
+          "train_rows": 168,
+          "test_rows": 213,
+          "logistic_regression_binary_accuracy": 0.356808,
+          "logistic_regression_binary_macro_f1": 0.230169,
+          "logistic_regression_binary_top2": 0.516432,
+          "logistic_regression_binary_ece": 0.164558,
+          "char_ngram_tfidf_lr_accuracy": 0.399061,
+          "char_ngram_tfidf_lr_macro_f1": 0.214081,
+          "char_ngram_tfidf_lr_top2": 0.568075,
+          "char_ngram_tfidf_lr_ece": 0.117852
+        },
+        {
+          "seed": 123,
+          "train_rows": 169,
+          "test_rows": 222,
+          "logistic_regression_binary_accuracy": 0.355856,
+          "logistic_regression_binary_macro_f1": 0.178423,
+          "logistic_regression_binary_top2": 0.527027,
+          "logistic_regression_binary_ece": 0.180737,
+          "char_ngram_tfidf_lr_accuracy": 0.513514,
+          "char_ngram_tfidf_lr_macro_f1": 0.283381,
+          "char_ngram_tfidf_lr_top2": 0.666667,
+          "char_ngram_tfidf_lr_ece": 0.217248
+        },
+        {
+          "seed": 2026,
+          "train_rows": 170,
+          "test_rows": 218,
+          "logistic_regression_binary_accuracy": 0.316514,
+          "logistic_regression_binary_macro_f1": 0.214677,
+          "logistic_regression_binary_top2": 0.568807,
+          "logistic_regression_binary_ece": 0.192632,
+          "char_ngram_tfidf_lr_accuracy": 0.394495,
+          "char_ngram_tfidf_lr_macro_f1": 0.273377,
+          "char_ngram_tfidf_lr_top2": 0.674312,
+          "char_ngram_tfidf_lr_ece": 0.150038
+        }
+      ],
+      "logistic_regression_binary": {
+        "accuracy": {
+          "mean": 0.343059,
+          "std": 0.018774
+        },
+        "macro_f1": {
+          "mean": 0.207756,
+          "std": 0.021685
+        },
+        "top2_accuracy": {
+          "mean": 0.537422,
+          "std": 0.02261
+        },
+        "ece": {
+          "mean": 0.179309,
+          "std": 0.011506
+        }
+      },
+      "char_ngram_tfidf_lr": {
+        "accuracy": {
+          "mean": 0.43569,
+          "std": 0.055061
+        },
+        "macro_f1": {
+          "mean": 0.256946,
+          "std": 0.030584
+        },
+        "top2_accuracy": {
+          "mean": 0.636351,
+          "std": 0.048379
+        },
+        "ece": {
+          "mean": 0.161713,
+          "std": 0.041409
+        }
+      }
+    },
+    {
+      "fraction": 0.4,
+      "train_rows_mean": 338.3,
+      "per_seed": [
+        {
+          "seed": 42,
+          "train_rows": 336,
+          "test_rows": 213,
+          "logistic_regression_binary_accuracy": 0.403756,
+          "logistic_regression_binary_macro_f1": 0.321671,
+          "logistic_regression_binary_top2": 0.568075,
+          "logistic_regression_binary_ece": 0.228214,
+          "char_ngram_tfidf_lr_accuracy": 0.511737,
+          "char_ngram_tfidf_lr_macro_f1": 0.298282,
+          "char_ngram_tfidf_lr_top2": 0.652582,
+          "char_ngram_tfidf_lr_ece": 0.178556
+        },
+        {
+          "seed": 123,
+          "train_rows": 338,
+          "test_rows": 222,
+          "logistic_regression_binary_accuracy": 0.405405,
+          "logistic_regression_binary_macro_f1": 0.244889,
+          "logistic_regression_binary_top2": 0.572072,
+          "logistic_regression_binary_ece": 0.261599,
+          "char_ngram_tfidf_lr_accuracy": 0.576577,
+          "char_ngram_tfidf_lr_macro_f1": 0.348782,
+          "char_ngram_tfidf_lr_top2": 0.707207,
+          "char_ngram_tfidf_lr_ece": 0.242299
+        },
+        {
+          "seed": 2026,
+          "train_rows": 341,
+          "test_rows": 218,
+          "logistic_regression_binary_accuracy": 0.394495,
+          "logistic_regression_binary_macro_f1": 0.266528,
+          "logistic_regression_binary_top2": 0.573394,
+          "logistic_regression_binary_ece": 0.180519,
+          "char_ngram_tfidf_lr_accuracy": 0.610092,
+          "char_ngram_tfidf_lr_macro_f1": 0.396321,
+          "char_ngram_tfidf_lr_top2": 0.715596,
+          "char_ngram_tfidf_lr_ece": 0.288925
+        }
+      ],
+      "logistic_regression_binary": {
+        "accuracy": {
+          "mean": 0.401219,
+          "std": 0.004802
+        },
+        "macro_f1": {
+          "mean": 0.277696,
+          "std": 0.032326
+        },
+        "top2_accuracy": {
+          "mean": 0.57118,
+          "std": 0.002261
+        },
+        "ece": {
+          "mean": 0.223444,
+          "std": 0.033272
+        }
+      },
+      "char_ngram_tfidf_lr": {
+        "accuracy": {
+          "mean": 0.566135,
+          "std": 0.040826
+        },
+        "macro_f1": {
+          "mean": 0.347795,
+          "std": 0.04003
+        },
+        "top2_accuracy": {
+          "mean": 0.691795,
+          "std": 0.027938
+        },
+        "ece": {
+          "mean": 0.236593,
+          "std": 0.045238
+        }
+      }
+    },
+    {
+      "fraction": 0.6,
+      "train_rows_mean": 507.3,
+      "per_seed": [
+        {
+          "seed": 42,
+          "train_rows": 504,
+          "test_rows": 213,
+          "logistic_regression_binary_accuracy": 0.42723,
+          "logistic_regression_binary_macro_f1": 0.352284,
+          "logistic_regression_binary_top2": 0.58216,
+          "logistic_regression_binary_ece": 0.245642,
+          "char_ngram_tfidf_lr_accuracy": 0.535211,
+          "char_ngram_tfidf_lr_macro_f1": 0.404355,
+          "char_ngram_tfidf_lr_top2": 0.699531,
+          "char_ngram_tfidf_lr_ece": 0.097988
+        },
+        {
+          "seed": 123,
+          "train_rows": 507,
+          "test_rows": 222,
+          "logistic_regression_binary_accuracy": 0.432432,
+          "logistic_regression_binary_macro_f1": 0.289113,
+          "logistic_regression_binary_top2": 0.59009,
+          "logistic_regression_binary_ece": 0.307522,
+          "char_ngram_tfidf_lr_accuracy": 0.72973,
+          "char_ngram_tfidf_lr_macro_f1": 0.516061,
+          "char_ngram_tfidf_lr_top2": 0.801802,
+          "char_ngram_tfidf_lr_ece": 0.337355
+        },
+        {
+          "seed": 2026,
+          "train_rows": 511,
+          "test_rows": 218,
+          "logistic_regression_binary_accuracy": 0.440367,
+          "logistic_regression_binary_macro_f1": 0.340688,
+          "logistic_regression_binary_top2": 0.605505,
+          "logistic_regression_binary_ece": 0.228493,
+          "char_ngram_tfidf_lr_accuracy": 0.555046,
+          "char_ngram_tfidf_lr_macro_f1": 0.407043,
+          "char_ngram_tfidf_lr_top2": 0.761468,
+          "char_ngram_tfidf_lr_ece": 0.205287
+        }
+      ],
+      "logistic_regression_binary": {
+        "accuracy": {
+          "mean": 0.433343,
+          "std": 0.005402
+        },
+        "macro_f1": {
+          "mean": 0.327362,
+          "std": 0.027457
+        },
+        "top2_accuracy": {
+          "mean": 0.592585,
+          "std": 0.009692
+        },
+        "ece": {
+          "mean": 0.260552,
+          "std": 0.033942
+        }
+      },
+      "char_ngram_tfidf_lr": {
+        "accuracy": {
+          "mean": 0.606662,
+          "std": 0.087398
+        },
+        "macro_f1": {
+          "mean": 0.442486,
+          "std": 0.052037
+        },
+        "top2_accuracy": {
+          "mean": 0.754267,
+          "std": 0.042061
+        },
+        "ece": {
+          "mean": 0.213543,
+          "std": 0.097895
+        }
+      }
+    },
+    {
+      "fraction": 0.8,
+      "train_rows_mean": 676.7,
+      "per_seed": [
+        {
+          "seed": 42,
+          "train_rows": 672,
+          "test_rows": 213,
+          "logistic_regression_binary_accuracy": 0.431925,
+          "logistic_regression_binary_macro_f1": 0.340454,
+          "logistic_regression_binary_top2": 0.596244,
+          "logistic_regression_binary_ece": 0.236304,
+          "char_ngram_tfidf_lr_accuracy": 0.746479,
+          "char_ngram_tfidf_lr_macro_f1": 0.654006,
+          "char_ngram_tfidf_lr_top2": 0.840376,
+          "char_ngram_tfidf_lr_ece": 0.31663
+        },
+        {
+          "seed": 123,
+          "train_rows": 676,
+          "test_rows": 222,
+          "logistic_regression_binary_accuracy": 0.427928,
+          "logistic_regression_binary_macro_f1": 0.328472,
+          "logistic_regression_binary_top2": 0.612613,
+          "logistic_regression_binary_ece": 0.304779,
+          "char_ngram_tfidf_lr_accuracy": 0.648649,
+          "char_ngram_tfidf_lr_macro_f1": 0.478743,
+          "char_ngram_tfidf_lr_top2": 0.779279,
+          "char_ngram_tfidf_lr_ece": 0.164727
+        },
+        {
+          "seed": 2026,
+          "train_rows": 682,
+          "test_rows": 218,
+          "logistic_regression_binary_accuracy": 0.46789,
+          "logistic_regression_binary_macro_f1": 0.398856,
+          "logistic_regression_binary_top2": 0.62844,
+          "logistic_regression_binary_ece": 0.234422,
+          "char_ngram_tfidf_lr_accuracy": 0.756881,
+          "char_ngram_tfidf_lr_macro_f1": 0.674065,
+          "char_ngram_tfidf_lr_top2": 0.908257,
+          "char_ngram_tfidf_lr_ece": 0.327187
+        }
+      ],
+      "logistic_regression_binary": {
+        "accuracy": {
+          "mean": 0.442581,
+          "std": 0.01797
+        },
+        "macro_f1": {
+          "mean": 0.355927,
+          "std": 0.030747
+        },
+        "top2_accuracy": {
+          "mean": 0.612432,
+          "std": 0.013145
+        },
+        "ece": {
+          "mean": 0.258502,
+          "std": 0.032732
+        }
+      },
+      "char_ngram_tfidf_lr": {
+        "accuracy": {
+          "mean": 0.717336,
+          "std": 0.048755
+        },
+        "macro_f1": {
+          "mean": 0.602271,
+          "std": 0.087731
+        },
+        "top2_accuracy": {
+          "mean": 0.842637,
+          "std": 0.052679
+        },
+        "ece": {
+          "mean": 0.269515,
+          "std": 0.074221
+        }
+      }
+    },
+    {
+      "fraction": 1.0,
+      "train_rows_mean": 845.7,
+      "per_seed": [
+        {
+          "seed": 42,
+          "train_rows": 840,
+          "test_rows": 213,
+          "logistic_regression_binary_accuracy": 0.43662,
+          "logistic_regression_binary_macro_f1": 0.345476,
+          "logistic_regression_binary_top2": 0.586854,
+          "logistic_regression_binary_ece": 0.213964,
+          "char_ngram_tfidf_lr_accuracy": 0.737089,
+          "char_ngram_tfidf_lr_macro_f1": 0.641879,
+          "char_ngram_tfidf_lr_top2": 0.84507,
+          "char_ngram_tfidf_lr_ece": 0.268794
+        },
+        {
+          "seed": 123,
+          "train_rows": 845,
+          "test_rows": 222,
+          "logistic_regression_binary_accuracy": 0.427928,
+          "logistic_regression_binary_macro_f1": 0.327492,
+          "logistic_regression_binary_top2": 0.603604,
+          "logistic_regression_binary_ece": 0.242454,
+          "char_ngram_tfidf_lr_accuracy": 0.765766,
+          "char_ngram_tfidf_lr_macro_f1": 0.622664,
+          "char_ngram_tfidf_lr_top2": 0.864865,
+          "char_ngram_tfidf_lr_ece": 0.26078
+        },
+        {
+          "seed": 2026,
+          "train_rows": 852,
+          "test_rows": 218,
+          "logistic_regression_binary_accuracy": 0.481651,
+          "logistic_regression_binary_macro_f1": 0.425233,
+          "logistic_regression_binary_top2": 0.637615,
+          "logistic_regression_binary_ece": 0.210246,
+          "char_ngram_tfidf_lr_accuracy": 0.729358,
+          "char_ngram_tfidf_lr_macro_f1": 0.626738,
+          "char_ngram_tfidf_lr_top2": 0.889908,
+          "char_ngram_tfidf_lr_ece": 0.263356
+        }
+      ],
+      "logistic_regression_binary": {
+        "accuracy": {
+          "mean": 0.448733,
+          "std": 0.023545
+        },
+        "macro_f1": {
+          "mean": 0.366067,
+          "std": 0.042476
+        },
+        "top2_accuracy": {
+          "mean": 0.609358,
+          "std": 0.021119
+        },
+        "ece": {
+          "mean": 0.222221,
+          "std": 0.014387
+        }
+      },
+      "char_ngram_tfidf_lr": {
+        "accuracy": {
+          "mean": 0.744071,
+          "std": 0.015662
+        },
+        "macro_f1": {
+          "mean": 0.630427,
+          "std": 0.008267
+        },
+        "top2_accuracy": {
+          "mean": 0.866614,
+          "std": 0.018347
+        },
+        "ece": {
+          "mean": 0.26431,
+          "std": 0.003341
+        }
+      }
+    }
+  ],
+  "trend": {
+    "logistic_regression_binary": "still_rising",
+    "char_ngram_tfidf_lr": "still_rising"
+  },
+  "note": "no clinical-level extrapolation"
+}
