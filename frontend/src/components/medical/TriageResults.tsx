@@ -7,6 +7,8 @@ import { hospitalContextQuery } from "./recommendationDisplay";
 interface TriageResultsProps {
   result: TriagePayload;
   onNavigate: (path: string) => void;
+  /** True after follow-up answers were applied so the UI can show path refresh. */
+  pathUpdated?: boolean;
 }
 
 interface CareActionsProps {
@@ -89,12 +91,15 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
         </div>
       ) : null}
       {reasons.length > 0 ? <p className="care-result__reason">{reasons.join(" ")}</p> : null}
+      <p className="care-result__emergency-notice">
+        目录存在急诊字段 ≠ 当前可接诊。真实急救以 120 调度为准。
+      </p>
       <p className="care-result__disclaimer">系统只提供辅助分流信息，不替代急救指令、医生诊断或处方。</p>
     </article>
   );
 }
 
-function CareResult({ result, onNavigate }: TriageResultsProps) {
+function CareResult({ result, onNavigate, pathUpdated }: TriageResultsProps) {
   const status = result.triage_status;
   const copy = STATUS_COPY[status];
   const insufficient = status === "INSUFFICIENT_INFORMATION";
@@ -103,24 +108,33 @@ function CareResult({ result, onNavigate }: TriageResultsProps) {
   const contextDirection = result.matched_department ?? null;
   const reasons = (result.triage?.reasons ?? []).filter(Boolean).slice(0, 2);
   const missing = (result.triage?.followup?.missing_slots ?? []).filter(Boolean).slice(0, 3);
+  const abstainReason = typeof result.triage?.abstain_reason === "string" ? result.triage.abstain_reason : null;
+  const uncertainty = typeof result.triage?.uncertainty_level === "string" ? result.triage.uncertainty_level : null;
 
   return (
     <>
       <article
         className={`care-result care-result--${insufficient ? "insufficient" : urgent ? "urgent" : "routine"}`}
         aria-labelledby="care-result-title"
+        data-testid="care-result"
+        data-triage-status={status}
       >
         <div className="care-result__rail" aria-hidden="true" />
         <div className="care-result__status">
           <StatusPill tone={insufficient ? "neutral" : urgent ? "warning" : "success"}>
-            {insufficient ? <CircleDot size={13} aria-hidden="true" /> : <Sparkles size={13} aria-hidden="true" />} {copy.label}
+            {insufficient ? <CircleDot size={13} aria-hidden="true" /> : <Sparkles size={13} aria-hidden="true" />} <span>{copy.label}</span>
           </StatusPill>
           <span className="care-result__status-note">{copy.plain}</span>
         </div>
+        {pathUpdated ? (
+          <p className="care-result__updated" data-testid="path-updated" role="status">
+            <Check size={14} aria-hidden="true" /> 信息补充后，路径已重新计算
+          </p>
+        ) : null}
         <h2 id="care-result-title">{copy.headline}</h2>
         <p className="care-result__lede">
           {insufficient
-            ? "先补充下面的关键信息，系统会重新整理一次；也可以先按当前一般性方向了解资源。"
+            ? "暂不强行给出确定科室方向。先补充下面的关键信息，系统会重新整理一次；也可以先按当前一般性方向了解资源。"
             : urgent
               ? "请尽快安排专业医疗评估；如果症状加重或出现新的危险信号，请优先急诊。"
               : "可以按下面的方向先去了解科室与常州资源；最终判断以医生面诊为准。"}
@@ -130,14 +144,16 @@ function CareResult({ result, onNavigate }: TriageResultsProps) {
           <span className="care-result__direction-label">
             <Stethoscope size={15} aria-hidden="true" /> {insufficient ? "当前一般性方向" : "建议先了解"}
           </span>
-          <strong>{contextDirection ?? "继续整理科室方向"}</strong>
-          {insufficient ? <small>信息不足时方向会偏保守，补充后可进一步收窄。</small> : null}
+          <strong>{insufficient && !contextDirection ? "暂不强行给出科室方向" : contextDirection ?? "继续整理科室方向"}</strong>
+          {insufficient ? <small>为什么现在不能确定：信息不足时方向会偏保守，补充后可进一步收窄。</small> : null}
         </div>
 
-        {(reasons.length > 0 || missing.length > 0) ? (
-          <div className="care-result__why">
+        {(reasons.length > 0 || missing.length > 0 || abstainReason || uncertainty) ? (
+          <div className="care-result__why" data-testid="result-why">
             <span className="eyebrow eyebrow--muted">为什么这样判断</span>
             <ul>
+              {abstainReason ? <li key="abstain">拒答原因：{abstainReason}</li> : null}
+              {uncertainty ? <li key="uncertainty">不确定性标记：{uncertainty}<small>（来自后端字段，非医学置信度）</small></li> : null}
               {reasons.map((reason) => <li key={reason}>{reason}</li>)}
               {missing.length > 0 ? <li key="missing">还需补充：{missing.join("、")}</li> : <li key="nodanger">描述中未出现需要立即急诊的危险信号</li>}
             </ul>

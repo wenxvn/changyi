@@ -10,6 +10,7 @@ const productFiles = [
   "pages/MapPage.tsx",
   "pages/ProfilePage.tsx",
   "components/medical/TriageResults.tsx",
+  "components/medical/ExampleSymptomChips.tsx",
   "components/visualization/JourneyPreview.tsx",
 ];
 

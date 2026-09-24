@@ -22,6 +22,7 @@ test("pages and components do not own direct fetch or legacy global state", asyn
     "components/medical/CurrentUnderstanding.tsx",
     "components/medical/FollowupPrompt.tsx",
     "components/medical/TriageResults.tsx",
+    "components/medical/ExampleSymptomChips.tsx",
   ];
   const contents = await Promise.all(files.map(source));
   for (const content of contents) {

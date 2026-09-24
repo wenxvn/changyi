@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, CircleHelp } from "lucide-react";
+import { ArrowRight, CircleHelp, History } from "lucide-react";
 import { Button } from "../ui/Button";
 import type { FollowupAnswer, FollowupPayload, FollowupQuestion } from "../../types/api";
 
@@ -32,11 +32,15 @@ export function FollowupPrompt({
   };
 
   return (
-    <section className="followup-prompt" aria-labelledby="followup-title">
+    <section className="followup-prompt" aria-labelledby="followup-title" data-testid="followup-prompt">
       <div className="followup-prompt__topline">
-        <span className="eyebrow"><CircleHelp size={14} aria-hidden="true" /> 需要补充信息</span>
-        <span className="followup-prompt__step">第 {stepNumber} 问 / 共 {followup.questions.length} 问</span>
+        <span className="eyebrow"><CircleHelp size={14} aria-hidden="true" /> 自适应追问 · <span>需要补充信息</span></span>
+        <span className="followup-prompt__step">第 {stepNumber} 问 / 共 {Math.max(followup.questions.length, stepNumber)} 问</span>
       </div>
+      <p className="followup-prompt__why">
+        <History size={14} aria-hidden="true" />
+        为什么现在问：当前信息不足以稳定给出科室方向，补充后路径会重新计算。
+      </p>
       <h2 id="followup-title">{question.question}</h2>
       {question.reason ? <p className="followup-prompt__reason">{question.reason}</p> : null}
 
@@ -48,6 +52,7 @@ export function FollowupPrompt({
               type="button"
               key={option.value}
               disabled={disabled}
+              data-testid={`followup-option-${option.value}`}
               onClick={() => onAnswer(question, { question_id: question.id, value: option.value })}
             >
               <span>{option.label}</span>
@@ -82,6 +87,7 @@ export function FollowupPrompt({
       <button className="followup-prompt__skip" type="button" onClick={onSkip} disabled={disabled}>
         暂时跳过，查看当前就医方向
       </button>
+      <p className="followup-prompt__note">回答后会重新计算路径；跳过则保留当前一般性方向。</p>
     </section>
   );
 }

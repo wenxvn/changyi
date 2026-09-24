@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import {
   CircleCheck,
   CircleDot,
@@ -12,63 +11,52 @@ import {
 export type CarePathPhase = "idle" | "analysing" | "ready";
 export type CarePathTone = "neutral" | "info" | "success" | "warning" | "danger";
 
+/** Algorithm chain stages shown as the product path. Progress is request-driven. */
+export type CarePathStageId = "symptom" | "safety" | "direction" | "resources" | "arrival";
+
+export interface CarePathStageState {
+  id: CarePathStageId;
+  status: "pending" | "active" | "done" | "blocked";
+  hint?: string;
+}
+
 const pathSteps = [
-  { label: "症状", caption: "用自己的话描述不适", icon: CircleDot, depth: 0 },
-  { label: "安全门", caption: "优先识别危险信号", icon: ShieldCheck, depth: 1 },
-  { label: "就医方向", caption: "整理科室与下一步", icon: Stethoscope, depth: 2 },
-  { label: "资源路径", caption: "医院 · 医生 · 导航", icon: MapPinned, depth: 1 },
-  { label: "到院行动", caption: "带着依据去就医", icon: CircleCheck, depth: 0 },
-] as const;
+  { id: "symptom" as const, label: "症状", caption: "用自己的话描述不适", icon: CircleDot, depth: 0 },
+  { id: "safety" as const, label: "安全门", caption: "优先识别危险信号", icon: ShieldCheck, depth: 1 },
+  { id: "direction" as const, label: "就医方向", caption: "整理科室与下一步", icon: Stethoscope, depth: 2 },
+  { id: "resources" as const, label: "资源路径", caption: "医院 · 医生 · 导航", icon: MapPinned, depth: 1 },
+  { id: "arrival" as const, label: "到院行动", caption: "带着依据去就医", icon: CircleCheck, depth: 0 },
+];
 
 interface CarePathProps {
   phase?: CarePathPhase;
-  progress?: number;
+  /** Optional explicit stage states from the real request lifecycle. */
+  stages?: CarePathStageState[];
   tone?: CarePathTone;
   statusLabel?: string;
 }
 
 const phaseFooter: Record<CarePathPhase, string> = {
-  idle: "从安全开始 · 悬停查看每一步",
+  idle: "产品路径示意 · 悬停查看每一步",
   analysing: "正在建立就医路径…",
   ready: "路径已就绪 · 即将进入工作台",
 };
 
-export function CarePath({ phase = "idle", progress, tone = "neutral", statusLabel }: CarePathProps) {
-  const [active, setActive] = useState(0);
-  const timerRef = useRef<number | null>(null);
+/**
+ * Care path diagram. Stage progress is driven by explicit `stages` (real request
+ * state) when provided; otherwise it is a static explainer. There is no timer
+ * animation that pretends to be algorithm execution.
+ */
+export function CarePath({ phase = "idle", stages, tone = "neutral", statusLabel }: CarePathProps) {
   const isAnalysing = phase === "analysing";
   const isReady = phase === "ready";
 
-  useEffect(() => {
-    if (!isAnalysing) {
-      if (timerRef.current !== null) {
-        window.clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-      if (isReady) setActive(pathSteps.length);
-      return;
-    }
-
-    setActive(0);
-    let index = 0;
-    timerRef.current = window.setInterval(() => {
-      index += 1;
-      setActive(index);
-      if (index >= pathSteps.length - 1 && timerRef.current !== null) {
-        window.clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-    }, 160);
-
-    return () => {
-      if (timerRef.current !== null) {
-        window.clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-    };
-  }, [isAnalysing, isReady]);
-
-  const resolvedProgress = typeof progress === "number" ? progress : isReady ? pathSteps.length : active;
+  const stageById = new Map((stages ?? []).map((stage) => [stage.id, stage]));
+  const resolvedProgress = isReady
+    ? pathSteps.length
+    : stages
+      ? pathSteps.filter((step) => stageById.get(step.id)?.status === "done").length
+      : 0;
   const footer = statusLabel ?? phaseFooter[phase];
 
   return (
@@ -104,40 +92,39 @@ export function CarePath({ phase = "idle", progress, tone = "neutral", statusLab
         </svg>
         {pathSteps.map((step, index) => {
           const Icon = step.icon;
-          const isDone = index < resolvedProgress;
-          const isActive = !isDone && (isAnalysing ? index === resolvedProgress : index === active);
+          const stageState = stageById.get(step.id);
+          const isDone = stageState
+            ? stageState.status === "done"
+            : isReady || index < resolvedProgress;
+          const isBlocked = stageState?.status === "blocked";
+          const isActive = stageState
+            ? stageState.status === "active"
+            : !isDone && isAnalysing && index === resolvedProgress;
+          const isBusy = isActive && isAnalysing;
           return (
-            <button
-              type="button"
+            <div
+              key={step.id}
               role="listitem"
-              key={step.label}
               className={[
                 "care-path__step",
                 `care-path__step--d${step.depth}`,
                 isActive ? "is-active" : "",
                 isDone ? "is-done" : "",
-                isAnalysing && index === resolvedProgress ? "is-busy" : "",
+                isBusy ? "is-busy" : "",
+                isBlocked ? "is-blocked" : "",
               ].filter(Boolean).join(" ")}
               style={{ "--i": index } as React.CSSProperties}
-              onMouseEnter={() => {
-                if (!isAnalysing && !isReady) setActive(index);
-              }}
-              onFocus={() => {
-                if (!isAnalysing && !isReady) setActive(index);
-              }}
-              onClick={() => {
-                if (!isAnalysing && !isReady) setActive(index);
-              }}
             >
               <div
                 className={[
                   "care-path__node",
                   isDone ? "care-path__node--done" : "",
                   isActive ? "care-path__node--active" : "",
-                  !isDone && !isActive ? "care-path__node--soft" : "",
+                  isBlocked ? "care-path__node--blocked" : "",
+                  !isDone && !isActive && !isBlocked ? "care-path__node--soft" : "",
                 ].filter(Boolean).join(" ")}
               >
-                {isAnalysing && index === resolvedProgress ? (
+                {isBusy ? (
                   <LoaderCircle className="spin" size={14} strokeWidth={1.8} aria-hidden="true" />
                 ) : (
                   <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
@@ -145,9 +132,9 @@ export function CarePath({ phase = "idle", progress, tone = "neutral", statusLab
               </div>
               <div className="care-path__copy">
                 <p>{step.label}</p>
-                <span>{step.caption}</span>
+                <span>{stageState?.hint ?? step.caption}</span>
               </div>
-            </button>
+            </div>
           );
         })}
       </div>

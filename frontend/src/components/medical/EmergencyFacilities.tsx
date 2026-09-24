@@ -65,7 +65,7 @@ export function EmergencyFacilities({ onNavigate }: EmergencyFacilitiesProps) {
         </ul>
       ) : null}
 
-      <p className="emergency-side__notice">
+      <p className="emergency-side__notice" data-testid="emergency-availability-notice">
         这些标记说明目录中记录了急诊科室，不代表当前可以接诊。真实急救请以 120 调度为准。
       </p>
 

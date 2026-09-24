@@ -78,8 +78,8 @@ test("routine triage can continue to a sourced hospital path", async ({ page }, 
 
 test("insufficient triage asks for one more piece of information", async ({ page }) => {
   await submitTriage(page, "最近总是头晕");
-  await page.getByRole("heading", { name: "可以继续了解合适的就医路径" }).waitFor();
-  await page.getByText("需要补充信息", { exact: true }).waitFor();
+  await page.getByRole("heading", { name: /可以继续了解合适的就医路径|还需要一点信息/ }).waitFor();
+  await page.getByText("需要补充信息", { exact: true }).first().waitFor();
   await page.getByRole("button", { name: "暂时跳过，查看当前就医方向" }).waitFor();
 });
 

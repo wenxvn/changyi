@@ -1,5 +1,18 @@
 # 当前项目状态
 
+更新时间：2026-09-24（产品：Algorithm-visible UX）
+
+## Algorithm-visible UX（本轮前端）
+
+- 核心 Journey 对齐 `Safety Gate → Direct Department → Selective Abstention → Adaptive Inquiry → Multi-objective Care Routing`
+- 首页 CarePath / 提交去掉装饰性计时；阶段由请求与 `/api/v1` 结果驱动
+- 三个透明「示例」入口（普通 / 模糊追问 / 红旗急诊）只预填描述并走真实 API
+- 信息不足明确「暂不强行给出科室方向」；追问后展示「信息补充 → 路径更新」
+- Emergency：`拨打 120` 优先，声明「目录急诊字段 ≠ 实时可接诊」，无普通排行
+- 资源偏好修改会重排并展示 `explanations`；可选 `abstain_reason`/`uncertainty_level` 有则展示
+- 交付文档：`docs/competition/2026-ai-medical/ALGORITHM_VISIBLE_UX.md`、`FRONTEND_SCORECARD.md`
+- 验证：typecheck 通过；frontend tests 17；Playwright **26/26**（含 algorithm-visible 6 项）；pytest 215 通过
+
 更新时间：2026-09-16（算法 Round4：Safety-Constrained Selective Care Routing）
 
 ## 总体状态
@@ -202,3 +215,12 @@
 - 按 `SUBMISSION_WORKFLOW.md` S0→S9 推进初赛材料；可把 ROUND4 的 Selective Care Routing 骨架写入技术方案
 - Trust/研究页若展示不确定性/拒答率，必须标注 assistive_only / not clinical confidence
 - 涉及医学或生产能力按 L3/L4 另立计划
+
+## 竞赛算法评测（2026-09-16，任务 03）
+
+- 权威证据索引：`evaluation/competition/evidence_index.json`；叙事见 `docs/evaluation/COMPETITION_ALGORITHM_EVIDENCE.md`。
+- 新增可复现：`evaluation/competition/{run_matrix,care_routing_ablation,golden_e2e}.py`。
+- 新增测试：`tests/test_competition_golden_e2e.py`、`tests/test_competition_care_routing_ablation.py`（pytest 206→**215**）。
+- 数字漂移：README 仍写 Safety 135 / Over-triage 0.0312；SCORECARD 冻结 38-case/108 pytest。材料只引用 evidence_index。
+- Care Routing 消融证明规则一致性（偏好翻转、缺失重平衡、Emergency bypass）；**非临床有效**。
+- Shadow 仍 `RESEARCH_ONLY`：温度校准后 seed42 ECE 0.269→0.061，但 headline ECE 0.26 未过 0.15，且 cal→test coverage 偏移。

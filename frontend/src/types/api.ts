@@ -69,6 +69,11 @@ export interface TriagePayload {
     red_flag_tags?: string[];
     reasons?: string[];
     disclaimer?: string;
+    /** Optional algorithm fields; rendered only when the API provides them. */
+    abstain_reason?: string;
+    uncertainty_level?: string;
+    should_clarify?: boolean;
+    symptom_tags?: string[];
     [key: string]: unknown;
   };
   htriage_analysis?: Record<string, unknown>;

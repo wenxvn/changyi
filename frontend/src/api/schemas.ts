@@ -150,6 +150,12 @@ export function parseTriagePayload(value: unknown): TriagePayload {
           reasons: Array.isArray(value.triage.reasons)
             ? value.triage.reasons.filter((reason): reason is string => typeof reason === "string")
             : undefined,
+          abstain_reason: optionalString(value.triage.abstain_reason),
+          uncertainty_level: optionalString(value.triage.uncertainty_level),
+          should_clarify: value.triage.should_clarify === true ? true : value.triage.should_clarify === false ? false : undefined,
+          symptom_tags: Array.isArray(value.triage.symptom_tags)
+            ? value.triage.symptom_tags.filter((tag): tag is string => typeof tag === "string")
+            : undefined,
         }
       : undefined,
     htriage_analysis: isRecord(value.htriage_analysis)

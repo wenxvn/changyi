@@ -62,9 +62,12 @@ export function RecommendedHospitalCard({
           </p>
         ) : null}
         {reasons.length > 0 ? (
-          <ul className="path-card__reasons">
-            {reasons.map((reason) => <li key={reason}>{reason}</li>)}
-          </ul>
+          <div className="path-card__why" data-testid="hospital-why">
+            <span className="eyebrow eyebrow--muted">为什么排在前面</span>
+            <ul className="path-card__reasons">
+              {reasons.map((reason) => <li key={reason}>{reason}</li>)}
+            </ul>
+          </div>
         ) : null}
         <p className="path-card__meta">
           {hospital.address ?? "地址以机构公开资料为准"}

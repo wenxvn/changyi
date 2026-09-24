@@ -12,6 +12,7 @@ import { ProgressiveStatus, type ProgressiveStage } from "../components/medical/
 import { EmergencyFacilities } from "../components/medical/EmergencyFacilities";
 import { ResourcePreview } from "../components/medical/ResourcePreview";
 import { CareActions, TriageResults } from "../components/medical/TriageResults";
+import { ExampleSymptomChips, type ExampleSymptom } from "../components/medical/ExampleSymptomChips";
 import { LocationSelector } from "../components/ui/LocationSelector";
 import { SpeechInput } from "../components/ui/SpeechInput";
 import { useRecommendations } from "../hooks/useRecommendations";
@@ -60,6 +61,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ApiError | null>(null);
   const [followupAnswers, setFollowupAnswers] = useState<FollowupAnswer[]>([]);
+  const [pathUpdated, setPathUpdated] = useState(false);
   const [expertPreference, setExpertPreference] = useState<ExpertPreference>("system");
   const [visitIntent, setVisitIntent] = useState<VisitIntent | "">("");
   const [preferencesOpen, setPreferencesOpen] = useState(false);
@@ -122,6 +124,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     setFollowup(null);
     setFollowupAnswers(nextAnswers);
     setVisitIntent("");
+    setPathUpdated(nextAnswers.length > 0);
     if (!options.preserveFollowupStep) setFollowupStep(1);
     try {
       const request = {
@@ -185,6 +188,11 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     void submitCondition(condition);
   }
 
+  function handleExample(example: ExampleSymptom) {
+    setCondition(example.condition);
+    void submitCondition(example.condition);
+  }
+
   function openPreferences() {
     setPreferencesOpen(true);
     window.requestAnimationFrame(() => {
@@ -206,44 +214,75 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const activeStep = stepIndexFor(hasAnalysis, hasFollowup, recommendationsReady);
 
   const analysisStages = useMemo<ProgressiveStage[]>(() => {
+    // Stages map the real algorithm chain. Status is request/result-driven,
+    // not a decorative timer.
     if (loading && !result) {
       return [
-        { id: "read", label: "正在读取症状描述", status: "active", hint: "整理你输入的文字" },
-        { id: "safety", label: "安全门", status: "pending", hint: "优先识别危险信号" },
-        { id: "direction", label: "就医方向", status: "pending" },
-        { id: "resources", label: "城市资源", status: "pending" },
+        { id: "read", label: "读取症状描述", status: "active", hint: "整理你输入的文字" },
+        { id: "safety", label: "Safety Gate", status: "pending", hint: "优先识别危险信号" },
+        { id: "direction", label: "就医方向路由", status: "pending", hint: "Direct Department" },
+        { id: "inquiry", label: "自适应追问", status: "pending", hint: "信息不足时才追问" },
+        { id: "resources", label: "多目标资源路由", status: "pending" },
       ];
     }
     if (!result) {
       return [
-        { id: "read", label: "描述症状", status: "pending" },
-        { id: "safety", label: "安全门", status: "pending" },
-        { id: "direction", label: "就医方向", status: "pending" },
-        { id: "resources", label: "城市资源", status: "pending" },
+        { id: "read", label: "读取症状描述", status: "pending" },
+        { id: "safety", label: "Safety Gate", status: "pending" },
+        { id: "direction", label: "就医方向路由", status: "pending" },
+        { id: "inquiry", label: "自适应追问", status: "pending" },
+        { id: "resources", label: "多目标资源路由", status: "pending" },
       ];
     }
     if (result.triage_status === "EMERGENCY") {
       return [
         { id: "read", label: "已读取描述", status: "done" },
-        { id: "safety", label: "安全门完成", status: "done", hint: "高风险优先处理" },
+        { id: "safety", label: "Safety Gate 完成", status: "done", hint: "高风险优先处理" },
         { id: "emergency", label: "急诊出口", status: "active", hint: "不再推荐普通就医路径" },
       ];
     }
     if (result.triage_status === "INSUFFICIENT_INFORMATION" || followup?.needed) {
       return [
         { id: "read", label: "已读取描述", status: "done" },
-        { id: "safety", label: "安全门完成", status: "done" },
-        { id: "followup", label: "补充信息", status: loading ? "active" : followup?.needed ? "active" : "done", hint: "完善理解后继续" },
-        { id: "resources", label: "城市资源", status: recommendations.loading ? "active" : recommendations.data ? "done" : "pending" },
+        { id: "safety", label: "Safety Gate 完成", status: "done" },
+        {
+          id: "abstain",
+          label: "选择性拒答",
+          status: "done",
+          hint: "暂不强行给出确定科室方向",
+        },
+        {
+          id: "inquiry",
+          label: "自适应追问",
+          status: loading ? "active" : "active",
+          hint: "补充关键信息后重新计算",
+        },
+        { id: "resources", label: "多目标资源路由", status: recommendations.loading ? "active" : recommendations.data ? "done" : "pending" },
       ];
     }
     return [
       { id: "read", label: "已读取描述", status: "done" },
-      { id: "safety", label: "安全门完成", status: "done", hint: result.triage_status === "URGENT" ? "建议尽快评估" : "未提示立即急诊" },
-      { id: "direction", label: "就医方向", status: result.matched_department ? "done" : "active", hint: result.matched_department || undefined },
-      { id: "resources", label: "城市资源", status: recommendations.loading ? "active" : recommendations.data ? "done" : "pending", hint: recommendations.loading ? "正在匹配医院与医生" : undefined },
+      { id: "safety", label: "Safety Gate 完成", status: "done", hint: result.triage_status === "URGENT" ? "建议尽快评估" : "未提示立即急诊" },
+      {
+        id: "direction",
+        label: "就医方向路由",
+        status: result.matched_department ? "done" : "active",
+        hint: result.matched_department || "整理科室方向",
+      },
+      {
+        id: "inquiry",
+        label: "自适应追问",
+        status: "done",
+        hint: followupAnswers.length > 0 ? "已补充信息并重算" : "本轮无需追问",
+      },
+      {
+        id: "resources",
+        label: "多目标资源路由",
+        status: recommendations.loading ? "active" : recommendations.data ? "done" : "pending",
+        hint: recommendations.loading ? "正在匹配医院与医生" : undefined,
+      },
     ];
-  }, [loading, result, followup?.needed, recommendations.loading, recommendations.data]);
+  }, [loading, result, followup?.needed, recommendations.loading, recommendations.data, followupAnswers.length]);
 
   return (
     <section className="triage-page page-container">
@@ -289,6 +328,10 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
               <li><strong>就医方向</strong><span>建议首先了解的科室方向</span></li>
               <li><strong>资源路径</strong><span>常州医院、公开医生与导航入口</span></li>
             </ul>
+            <div className="triage-page__algorithm-chain" aria-label="算法处理链路">
+              <span className="eyebrow eyebrow--muted">算法链路可见</span>
+              <p>Safety Gate → Direct Department → Selective Abstention → Adaptive Inquiry → Multi-objective Care Routing</p>
+            </div>
           </div>
           <div className="triage-workspace" id="triage-workspace">
             <form className="symptom-composer symptom-composer--large" onSubmit={handleSubmit}>
@@ -315,6 +358,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                 </Button>
               </div>
             </form>
+            <ExampleSymptomChips onSelect={handleExample} disabled={loading} />
             {loading ? (
               <div className="triage-progress-panel is-loading">
                 <ProgressiveStatus stages={analysisStages} label="分析进度" />
@@ -330,6 +374,16 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
             <div className="triage-controls-panel triage-controls-panel--idle">
               <LocationSelector />
             </div>
+            {error ? (
+              <div className="inline-error" role="alert">
+                <CircleAlert size={18} aria-hidden="true" />
+                <div>
+                  <strong>{error.code === "MODEL_UNAVAILABLE" ? "部分智能分析暂时不可用" : "暂时还无法完成这一步"}</strong>
+                  <p>{error.message} 你仍可以继续浏览医疗资源。</p>
+                </div>
+                <button type="button" onClick={() => void submitCondition(condition)}>重试</button>
+              </div>
+            ) : null}
           </div>
         </div>
       ) : (
@@ -369,7 +423,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
             </form>
           ) : null}
 
-          <div className="triage-progress-panel">
+          <div className="triage-progress-panel" data-testid="algorithm-stages">
             <ProgressiveStatus stages={analysisStages} label="分析进度" />
           </div>
 
@@ -387,7 +441,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           <div className={`triage-care${isEmergency ? " triage-care--emergency" : ""}`}>
             <div className="triage-care__main">
               <div className="triage-page__results">
-                <TriageResults result={result as TriagePayload} onNavigate={onNavigate} />
+                <TriageResults result={result as TriagePayload} onNavigate={onNavigate} pathUpdated={pathUpdated} />
               </div>
 
               {!isEmergency ? (
@@ -474,6 +528,9 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                     <small>只影响匹配，不改变安全分诊</small>
                   </summary>
                   <div className="triage-prefs__body">
+                    <p className="triage-prefs__explain">
+                      修改偏好会重新请求资源排序；医院/医生顺序会真实变化，解释只使用接口已返回的依据。
+                    </p>
                     <fieldset className="expert-preference visit-intent">
                       <legend>这次主要想解决什么？</legend>
                       <p className="expert-preference__note">只影响就医资源匹配，不改变安全分诊结果；急症仍优先急诊/急救。</p>
