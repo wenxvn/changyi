@@ -1,0 +1,92 @@
+{
+  "schema_version": "care-routing-ablation/v1",
+  "claim_scope": "rule/feature consistency checks, not clinical effectiveness",
+  "feature_weight_ablation": {
+    "base_score": 76.6,
+    "leave_one_out": {
+      "clinical": {
+        "score": 67.7,
+        "delta": -8.9
+      },
+      "availability": {
+        "score": 75.8,
+        "delta": -0.8
+      },
+      "accessibility": {
+        "score": 78.2,
+        "delta": 1.6
+      },
+      "continuity": {
+        "score": 78.4,
+        "delta": 1.8
+      },
+      "quality": {
+        "score": 78.0,
+        "delta": 1.4
+      },
+      "fairness": {
+        "score": 77.4,
+        "delta": 0.8
+      },
+      "emergency": {
+        "score": 77.6,
+        "delta": 1.0
+      }
+    }
+  },
+  "missing_position_rebalance": {
+    "unavailable": [
+      "accessibility"
+    ],
+    "rebalanced": {
+      "clinical": 0.5,
+      "availability": 0.25,
+      "accessibility": 0.0,
+      "continuity": 0.125,
+      "quality": 0.0625,
+      "fairness": 0.0375,
+      "emergency": 0.025
+    }
+  },
+  "distance_vs_specialty_rank_flip": {
+    "distance_profile": {
+      "near_low_fit": 72.0,
+      "far_high_fit": 49.8
+    },
+    "specialty_profile": {
+      "near_low_fit": 58.5,
+      "far_high_fit": 67.8
+    },
+    "flip_observed": true
+  },
+  "emergency_rerank_bypass": {
+    "emergency_adjustments": [
+      0,
+      0,
+      0
+    ],
+    "routine_adjustments": [
+      0,
+      0,
+      -3.5
+    ],
+    "emergency_risk_penalty_no_flag": 0.44999999999999996,
+    "emergency_risk_penalty_with_flag": 0.1
+  },
+  "continuity_preference_gate": {
+    "followup_text_score": 0.82,
+    "first_visit_text_score": 0.55
+  },
+  "missing_or_untrusted_fields": {
+    "availability_missing": {
+      "data_available": false,
+      "score": 0.0
+    },
+    "availability_present": {
+      "data_available": true,
+      "score": 0.97
+    },
+    "academic_weight_production_zero": true,
+    "provisional_capability_scores_ignored_for_ranking": true
+  }
+}

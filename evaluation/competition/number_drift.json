@@ -1,0 +1,86 @@
+{
+  "schema_version": "evidence-number-drift/v1",
+  "authoritative_index": "evaluation/competition/evidence_index.json",
+  "items": [
+    {
+      "metric": "Safety cases",
+      "authoritative": 142,
+      "sources": {
+        "README.md": "135",
+        "memory.md": "142",
+        "docs/status/current.md": "142",
+        "SCORECARD.md": "38-case",
+        "live_evidence_api": "142"
+      }
+    },
+    {
+      "metric": "Over-triage rate",
+      "authoritative": 0.0,
+      "sources": {
+        "README.md": "0.0312",
+        "memory.md": "0.0",
+        "docs/status/current.md": "0.0",
+        "live_evidence_api": "0.0"
+      }
+    },
+    {
+      "metric": "pytest count",
+      "authoritative": 206,
+      "sources": {
+        "memory.md": "206",
+        "docs/status/current.md": "206",
+        "SCORECARD.md": "108",
+        "live_collect": "206"
+      }
+    },
+    {
+      "metric": "frontend boundary tests",
+      "authoritative": 17,
+      "sources": {
+        "memory.md": "17",
+        "docs/status/current.md": "17",
+        "SCORECARD.md": "15",
+        "live_run": "17"
+      }
+    },
+    {
+      "metric": "data quality issues",
+      "authoritative": 186,
+      "sources": {
+        "README.md": "186",
+        "memory.md": "186",
+        "docs/status/current.md": "186",
+        "SCORECARD.md": "187",
+        "live_validate": "186"
+      }
+    },
+    {
+      "metric": "datasets scanned",
+      "authoritative": 31,
+      "sources": {
+        "README.md": "implicit",
+        "SCORECARD.md": "27 files",
+        "live_validate": "31"
+      }
+    },
+    {
+      "metric": "best Direct Dept acc",
+      "authoritative": 0.742438,
+      "sources": {
+        "memory.md": "0.742",
+        "docs/status/current.md": "0.742",
+        "round4_report.json": "0.742438"
+      }
+    },
+    {
+      "metric": "Playwright count",
+      "authoritative": "20 (docs claim; not re-run this turn)",
+      "sources": {
+        "memory.md": "20/20",
+        "docs/status/current.md": "20/20",
+        "SCORECARD.md": "5"
+      }
+    }
+  ],
+  "note": "SCORECARD.md is frozen to 2026-09-11 refactor baseline and is known stale; do not use for final materials."
+}

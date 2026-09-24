@@ -1,0 +1,35 @@
+{
+  "schema_version": "golden-e2e/v1",
+  "claim_scope": "behavior boundaries, not brittle scores",
+  "cases": {
+    "ordinary_clear_path": {
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "hospitals": 5,
+        "doctors": 8,
+        "resource_strategy": "routine_outpatient"
+      },
+      "pass": true
+    },
+    "vague_insufficient_followup_reroute": {
+      "observed": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "disease_abstained": true,
+        "followup_questions": 8,
+        "condition_unchanged_after_answers": true,
+        "original_condition": "不舒服"
+      },
+      "pass": true
+    },
+    "emergency_short_circuit_safety_exit": {
+      "observed": {
+        "triage_status": "EMERGENCY",
+        "disease_abstained": true,
+        "resource_strategy": "emergency_fast_track",
+        "map_emergency_items": 20
+      },
+      "pass": true
+    }
+  }
+}

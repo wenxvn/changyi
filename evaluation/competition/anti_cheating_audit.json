@@ -1,0 +1,76 @@
+{
+  "schema_version": "anti-cheating-audit/v1",
+  "checks": {
+    "random_vs_honest_split": {
+      "status": "pass_with_disclosure",
+      "detail": "primary metrics use honest quota near-dup split (Jaccard 0.8); random-split numbers kept only as leaky baselines and labeled"
+    },
+    "threshold_not_tuned_on_test": {
+      "status": "pass",
+      "detail": "selective thresholds and temperature fit on calibration only; test never tunes coverage"
+    },
+    "duplicate_near_duplicate_leakage": {
+      "status": "pass",
+      "train_test_exact_fingerprint_overlap": 0,
+      "cal_test_exact_fingerprint_overlap": 0,
+      "note": "Round3 also reports cross-split Jaccard pairs below 0.75"
+    },
+    "calibration_independent_of_test": {
+      "status": "pass",
+      "detail": "quota split yields disjoint train/cal/test component groups; cal used for temperature + selective thresholds only",
+      "cal_rows": 236,
+      "test_rows": 213
+    },
+    "class_imbalance": {
+      "status": "disclosed",
+      "train_dept_counts": {
+        "感染性疾病科": 205,
+        "皮肤科": 177,
+        "骨科": 80,
+        "呼吸与危重症医学科": 69,
+        "内分泌代谢科": 69,
+        "消化内科": 57,
+        "心血管内科": 40,
+        "普外科": 39,
+        "神经内科": 35,
+        "泌尿外科": 32,
+        "呼吸内科": 31,
+        "肛肠科": 6
+      },
+      "test_dept_counts": {
+        "皮肤科": 53,
+        "感染性疾病科": 41,
+        "骨科": 20,
+        "呼吸与危重症医学科": 20,
+        "呼吸内科": 18,
+        "心血管内科": 11,
+        "泌尿外科": 11,
+        "内分泌代谢科": 10,
+        "神经内科": 10,
+        "普外科": 10,
+        "消化内科": 9
+      },
+      "note": "infection/derm dominate; 呼吸内科 recall=0 in seed42; accuracy must be read with per-dept recall"
+    },
+    "accuracy_hides_low_recall_depts": {
+      "status": "disclosed",
+      "low_recall_seed42": {
+        "呼吸内科": 0.0,
+        "泌尿外科": 0.181818,
+        "内分泌代谢科": 0.3,
+        "神经内科": 0.3
+      },
+      "macro_f1_vs_acc": {
+        "acc": 0.742438,
+        "macro_f1": 0.641749
+      }
+    },
+    "robustness_not_overclaimed": {
+      "status": "pass_with_limitation",
+      "detail": "robustness uses meaning-preserving synthetic perturbations only; labeled robustness_simulation, not clinical robustness"
+    }
+  },
+  "test_diseases_n": 25,
+  "cal_test_disease_overlap": 25,
+  "verdict": "metrics are honest for offline research; several limitations must stay visible in materials"
+}
