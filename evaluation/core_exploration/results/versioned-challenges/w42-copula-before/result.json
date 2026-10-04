@@ -1,0 +1,233 @@
+{
+  "scope": "synthetic_copula_question_negation_scope_not_clinical_validation",
+  "total": 9,
+  "failed": 8,
+  "rows": [
+    {
+      "text": "是不是咳嗽",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "不是咳嗽",
+      "expected_present": [],
+      "expected_absent": [
+        "cough"
+      ],
+      "expected_unknown": [],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "我不是咳嗽而是恶心",
+      "expected_present": [
+        "nausea"
+      ],
+      "expected_absent": [
+        "cough"
+      ],
+      "expected_unknown": [],
+      "expected_contradiction": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [
+          "cough",
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "消化内科",
+      "pass": false
+    },
+    {
+      "text": "不是没有咳嗽",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "不是咳嗽而是咳嗽",
+      "expected_present": [
+        "cough"
+      ],
+      "expected_absent": [],
+      "expected_unknown": [],
+      "expected_contradiction": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "是不是现在咳嗽",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "可能现在没有咳嗽但恶心",
+      "expected_present": [
+        "nausea"
+      ],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "消化内科",
+      "pass": false
+    },
+    {
+      "text": "咳嗽是不是存在",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "不是咳嗽而是正在呼吸困难",
+      "expected_present": null,
+      "expected_absent": [
+        "cough"
+      ],
+      "expected_unknown": [],
+      "expected_contradiction": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [
+          "breathlessness",
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸内科",
+      "pass": false
+    }
+  ]
+}

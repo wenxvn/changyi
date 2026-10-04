@@ -1,0 +1,431 @@
+{
+  "protocol": "selective_routing",
+  "model_name": "char_ngram_tfidf_lr",
+  "feature_key": "char_ngram_tfidf",
+  "seed": 42,
+  "temperature": 0.7,
+  "full_coverage": {
+    "signal": "max_probability",
+    "threshold": 0.0,
+    "coverage": 1.0,
+    "abstention_rate": 0.0,
+    "retained_rows": 213,
+    "retained_accuracy": 0.624413,
+    "retained_macro_f1": 0.408188,
+    "retained_weighted_f1": 0.53633,
+    "retained_error_rate": 0.375587,
+    "retained_wrong_but_confident_rate": 0.004695,
+    "retained_ece": 0.106119
+  },
+  "risk_coverage": {
+    "max_probability": {
+      "signal": "max_probability",
+      "points": [
+        {
+          "target_coverage": 1.0,
+          "signal": "max_probability",
+          "threshold": 0.23410102693172516,
+          "coverage": 0.995305,
+          "abstention_rate": 0.004695,
+          "retained_rows": 212,
+          "retained_accuracy": 0.627358,
+          "retained_macro_f1": 0.411241,
+          "retained_weighted_f1": 0.538371,
+          "retained_error_rate": 0.372642,
+          "retained_wrong_but_confident_rate": 0.004717,
+          "retained_ece": 0.107677
+        },
+        {
+          "target_coverage": 0.9,
+          "signal": "max_probability",
+          "threshold": 0.3496169225185717,
+          "coverage": 0.877934,
+          "abstention_rate": 0.122066,
+          "retained_rows": 187,
+          "retained_accuracy": 0.663102,
+          "retained_macro_f1": 0.428081,
+          "retained_weighted_f1": 0.576511,
+          "retained_error_rate": 0.336898,
+          "retained_wrong_but_confident_rate": 0.005348,
+          "retained_ece": 0.1066
+        },
+        {
+          "target_coverage": 0.8,
+          "signal": "max_probability",
+          "threshold": 0.43547434594941264,
+          "coverage": 0.657277,
+          "abstention_rate": 0.342723,
+          "retained_rows": 140,
+          "retained_accuracy": 0.807143,
+          "retained_macro_f1": 0.46965,
+          "retained_weighted_f1": 0.751415,
+          "retained_error_rate": 0.192857,
+          "retained_wrong_but_confident_rate": 0.007143,
+          "retained_ece": 0.125531
+        },
+        {
+          "target_coverage": 0.7,
+          "signal": "max_probability",
+          "threshold": 0.4917913899559564,
+          "coverage": 0.549296,
+          "abstention_rate": 0.450704,
+          "retained_rows": 117,
+          "retained_accuracy": 0.837607,
+          "retained_macro_f1": 0.499536,
+          "retained_weighted_f1": 0.787435,
+          "retained_error_rate": 0.162393,
+          "retained_wrong_but_confident_rate": 0.008547,
+          "retained_ece": 0.129674
+        },
+        {
+          "target_coverage": 0.6,
+          "signal": "max_probability",
+          "threshold": 0.5555622293507312,
+          "coverage": 0.478873,
+          "abstention_rate": 0.521127,
+          "retained_rows": 102,
+          "retained_accuracy": 0.872549,
+          "retained_macro_f1": 0.511077,
+          "retained_weighted_f1": 0.831853,
+          "retained_error_rate": 0.127451,
+          "retained_wrong_but_confident_rate": 0.009804,
+          "retained_ece": 0.120817
+        },
+        {
+          "target_coverage": 0.5,
+          "signal": "max_probability",
+          "threshold": 0.635506971807458,
+          "coverage": 0.375587,
+          "abstention_rate": 0.624413,
+          "retained_rows": 80,
+          "retained_accuracy": 0.9375,
+          "retained_macro_f1": 0.695358,
+          "retained_weighted_f1": 0.924077,
+          "retained_error_rate": 0.0625,
+          "retained_wrong_but_confident_rate": 0.0125,
+          "retained_ece": 0.139122
+        }
+      ]
+    },
+    "neg_entropy": {
+      "signal": "neg_entropy",
+      "points": [
+        {
+          "target_coverage": 1.0,
+          "signal": "neg_entropy",
+          "threshold": -3.059250791551358,
+          "coverage": 1.0,
+          "abstention_rate": 0.0,
+          "retained_rows": 213,
+          "retained_accuracy": 0.624413,
+          "retained_macro_f1": 0.408188,
+          "retained_weighted_f1": 0.53633,
+          "retained_error_rate": 0.375587,
+          "retained_wrong_but_confident_rate": 0.004695,
+          "retained_ece": 0.106119
+        },
+        {
+          "target_coverage": 0.9,
+          "signal": "neg_entropy",
+          "threshold": -2.6614066882532774,
+          "coverage": 0.920188,
+          "abstention_rate": 0.079812,
+          "retained_rows": 196,
+          "retained_accuracy": 0.658163,
+          "retained_macro_f1": 0.420349,
+          "retained_weighted_f1": 0.57435,
+          "retained_error_rate": 0.341837,
+          "retained_wrong_but_confident_rate": 0.005102,
+          "retained_ece": 0.105518
+        },
+        {
+          "target_coverage": 0.8,
+          "signal": "neg_entropy",
+          "threshold": -2.3905175189510386,
+          "coverage": 0.666667,
+          "abstention_rate": 0.333333,
+          "retained_rows": 142,
+          "retained_accuracy": 0.788732,
+          "retained_macro_f1": 0.467168,
+          "retained_weighted_f1": 0.73509,
+          "retained_error_rate": 0.211268,
+          "retained_wrong_but_confident_rate": 0.007042,
+          "retained_ece": 0.130418
+        },
+        {
+          "target_coverage": 0.7,
+          "signal": "neg_entropy",
+          "threshold": -2.1339100076049413,
+          "coverage": 0.511737,
+          "abstention_rate": 0.488263,
+          "retained_rows": 109,
+          "retained_accuracy": 0.87156,
+          "retained_macro_f1": 0.506744,
+          "retained_weighted_f1": 0.842298,
+          "retained_error_rate": 0.12844,
+          "retained_wrong_but_confident_rate": 0.009174,
+          "retained_ece": 0.137382
+        },
+        {
+          "target_coverage": 0.6,
+          "signal": "neg_entropy",
+          "threshold": -1.9443169891327736,
+          "coverage": 0.43662,
+          "abstention_rate": 0.56338,
+          "retained_rows": 93,
+          "retained_accuracy": 0.924731,
+          "retained_macro_f1": 0.614601,
+          "retained_weighted_f1": 0.908101,
+          "retained_error_rate": 0.075269,
+          "retained_wrong_but_confident_rate": 0.010753,
+          "retained_ece": 0.160106
+        },
+        {
+          "target_coverage": 0.5,
+          "signal": "neg_entropy",
+          "threshold": -1.7207877699778924,
+          "coverage": 0.356808,
+          "abstention_rate": 0.643192,
+          "retained_rows": 76,
+          "retained_accuracy": 0.947368,
+          "retained_macro_f1": 0.812564,
+          "retained_weighted_f1": 0.940259,
+          "retained_error_rate": 0.052632,
+          "retained_wrong_but_confident_rate": 0.013158,
+          "retained_ece": 0.14838
+        }
+      ]
+    },
+    "margin": {
+      "signal": "margin",
+      "points": [
+        {
+          "target_coverage": 1.0,
+          "signal": "margin",
+          "threshold": 0.010181517909607696,
+          "coverage": 0.967136,
+          "abstention_rate": 0.032864,
+          "retained_rows": 206,
+          "retained_accuracy": 0.635922,
+          "retained_macro_f1": 0.413157,
+          "retained_weighted_f1": 0.547087,
+          "retained_error_rate": 0.364078,
+          "retained_wrong_but_confident_rate": 0.004854,
+          "retained_ece": 0.100788
+        },
+        {
+          "target_coverage": 0.9,
+          "signal": "margin",
+          "threshold": 0.050030856821190794,
+          "coverage": 0.887324,
+          "abstention_rate": 0.112676,
+          "retained_rows": 189,
+          "retained_accuracy": 0.671958,
+          "retained_macro_f1": 0.426959,
+          "retained_weighted_f1": 0.577787,
+          "retained_error_rate": 0.328042,
+          "retained_wrong_but_confident_rate": 0.005291,
+          "retained_ece": 0.087786
+        },
+        {
+          "target_coverage": 0.8,
+          "signal": "margin",
+          "threshold": 0.14344087596904395,
+          "coverage": 0.732394,
+          "abstention_rate": 0.267606,
+          "retained_rows": 156,
+          "retained_accuracy": 0.737179,
+          "retained_macro_f1": 0.438685,
+          "retained_weighted_f1": 0.652138,
+          "retained_error_rate": 0.262821,
+          "retained_wrong_but_confident_rate": 0.00641,
+          "retained_ece": 0.094637
+        },
+        {
+          "target_coverage": 0.7,
+          "signal": "margin",
+          "threshold": 0.2215848809443298,
+          "coverage": 0.605634,
+          "abstention_rate": 0.394366,
+          "retained_rows": 129,
+          "retained_accuracy": 0.79845,
+          "retained_macro_f1": 0.493475,
+          "retained_weighted_f1": 0.727663,
+          "retained_error_rate": 0.20155,
+          "retained_wrong_but_confident_rate": 0.007752,
+          "retained_ece": 0.100016
+        },
+        {
+          "target_coverage": 0.6,
+          "signal": "margin",
+          "threshold": 0.3379241478207636,
+          "coverage": 0.488263,
+          "abstention_rate": 0.511737,
+          "retained_rows": 104,
+          "retained_accuracy": 0.836538,
+          "retained_macro_f1": 0.503478,
+          "retained_weighted_f1": 0.782488,
+          "retained_error_rate": 0.163462,
+          "retained_wrong_but_confident_rate": 0.009615,
+          "retained_ece": 0.138797
+        },
+        {
+          "target_coverage": 0.5,
+          "signal": "margin",
+          "threshold": 0.47687858276153294,
+          "coverage": 0.356808,
+          "abstention_rate": 0.643192,
+          "retained_rows": 76,
+          "retained_accuracy": 0.934211,
+          "retained_macro_f1": 0.619803,
+          "retained_weighted_f1": 0.913916,
+          "retained_error_rate": 0.065789,
+          "retained_wrong_but_confident_rate": 0.013158,
+          "retained_ece": 0.128536
+        }
+      ]
+    },
+    "combined": {
+      "signal": "combined",
+      "points": [
+        {
+          "target_coverage": 1.0,
+          "signal": "combined",
+          "threshold": -0.1653240847722829,
+          "coverage": 0.995305,
+          "abstention_rate": 0.004695,
+          "retained_rows": 212,
+          "retained_accuracy": 0.627358,
+          "retained_macro_f1": 0.411241,
+          "retained_weighted_f1": 0.538371,
+          "retained_error_rate": 0.372642,
+          "retained_wrong_but_confident_rate": 0.004717,
+          "retained_ece": 0.107677
+        },
+        {
+          "target_coverage": 0.9,
+          "signal": "combined",
+          "threshold": -0.04441848466280232,
+          "coverage": 0.859155,
+          "abstention_rate": 0.140845,
+          "retained_rows": 183,
+          "retained_accuracy": 0.688525,
+          "retained_macro_f1": 0.429152,
+          "retained_weighted_f1": 0.604172,
+          "retained_error_rate": 0.311475,
+          "retained_wrong_but_confident_rate": 0.005464,
+          "retained_ece": 0.089799
+        },
+        {
+          "target_coverage": 0.8,
+          "signal": "combined",
+          "threshold": 0.06263594754359622,
+          "coverage": 0.676056,
+          "abstention_rate": 0.323944,
+          "retained_rows": 144,
+          "retained_accuracy": 0.791667,
+          "retained_macro_f1": 0.467302,
+          "retained_weighted_f1": 0.730662,
+          "retained_error_rate": 0.208333,
+          "retained_wrong_but_confident_rate": 0.006944,
+          "retained_ece": 0.117501
+        },
+        {
+          "target_coverage": 0.7,
+          "signal": "combined",
+          "threshold": 0.14429223515928424,
+          "coverage": 0.558685,
+          "abstention_rate": 0.441315,
+          "retained_rows": 119,
+          "retained_accuracy": 0.848739,
+          "retained_macro_f1": 0.502176,
+          "retained_weighted_f1": 0.798386,
+          "retained_error_rate": 0.151261,
+          "retained_wrong_but_confident_rate": 0.008403,
+          "retained_ece": 0.127972
+        },
+        {
+          "target_coverage": 0.6,
+          "signal": "combined",
+          "threshold": 0.24407532834168738,
+          "coverage": 0.483568,
+          "abstention_rate": 0.516432,
+          "retained_rows": 103,
+          "retained_accuracy": 0.873786,
+          "retained_macro_f1": 0.511077,
+          "retained_weighted_f1": 0.833486,
+          "retained_error_rate": 0.126214,
+          "retained_wrong_but_confident_rate": 0.009709,
+          "retained_ece": 0.121503
+        },
+        {
+          "target_coverage": 0.5,
+          "signal": "combined",
+          "threshold": 0.3768503652409214,
+          "coverage": 0.366197,
+          "abstention_rate": 0.633803,
+          "retained_rows": 78,
+          "retained_accuracy": 0.935897,
+          "retained_macro_f1": 0.620384,
+          "retained_weighted_f1": 0.916157,
+          "retained_error_rate": 0.064103,
+          "retained_wrong_but_confident_rate": 0.012821,
+          "retained_ece": 0.133613
+        }
+      ]
+    }
+  },
+  "required_coverages_max_prob": {
+    "100%": {
+      "retained_accuracy": 0.627358,
+      "coverage": 0.995305,
+      "abstention_rate": 0.004695,
+      "retained_macro_f1": 0.411241,
+      "wrong_but_confident_rate": 0.004717,
+      "target_coverage": 1.0
+    },
+    "90%": {
+      "retained_accuracy": 0.663102,
+      "coverage": 0.877934,
+      "abstention_rate": 0.122066,
+      "retained_macro_f1": 0.428081,
+      "wrong_but_confident_rate": 0.005348,
+      "target_coverage": 0.9
+    },
+    "80%": {
+      "retained_accuracy": 0.807143,
+      "coverage": 0.657277,
+      "abstention_rate": 0.342723,
+      "retained_macro_f1": 0.46965,
+      "wrong_but_confident_rate": 0.007143,
+      "target_coverage": 0.8
+    },
+    "70%": {
+      "retained_accuracy": 0.837607,
+      "coverage": 0.549296,
+      "abstention_rate": 0.450704,
+      "retained_macro_f1": 0.499536,
+      "wrong_but_confident_rate": 0.008547,
+      "target_coverage": 0.7
+    },
+    "60%": {
+      "retained_accuracy": 0.872549,
+      "coverage": 0.478873,
+      "abstention_rate": 0.521127,
+      "retained_macro_f1": 0.511077,
+      "wrong_but_confident_rate": 0.009804,
+      "target_coverage": 0.6
+    },
+    "50%": {
+      "retained_accuracy": 0.9375,
+      "coverage": 0.375587,
+      "abstention_rate": 0.624413,
+      "retained_macro_f1": 0.695358,
+      "wrong_but_confident_rate": 0.0125,
+      "target_coverage": 0.5
+    }
+  },
+  "note": "thresholds from calibration only; test never tunes coverage",
+  "matrix_best_model": "char_ngram_tfidf_lr",
+  "selective_evaluated_model": "char_ngram_tfidf_lr"
+}

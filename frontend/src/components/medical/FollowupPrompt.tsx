@@ -9,6 +9,7 @@ interface FollowupPromptProps {
   onAnswer: (question: FollowupQuestion, answer: FollowupAnswer) => void;
   onSkip: () => void;
   disabled?: boolean;
+  directionDeferred?: boolean;
 }
 
 export function FollowupPrompt({
@@ -17,6 +18,7 @@ export function FollowupPrompt({
   onAnswer,
   onSkip,
   disabled = false,
+  directionDeferred = false,
 }: FollowupPromptProps) {
   const question = followup.questions[0];
   const [freeText, setFreeText] = useState("");
@@ -85,9 +87,9 @@ export function FollowupPrompt({
       )}
 
       <button className="followup-prompt__skip" type="button" onClick={onSkip} disabled={disabled}>
-        暂时跳过，查看当前就医方向
+        {directionDeferred ? "稍后补充，保留待复核状态" : "暂时跳过，查看当前就医方向"}
       </button>
-      <p className="followup-prompt__note">回答后会重新计算路径；跳过则保留当前一般性方向。</p>
+      <p className="followup-prompt__note">{directionDeferred ? "稍后补充不会解除待复核状态，确认前不进行资源排序。" : "回答后会重新计算路径；跳过则保留当前一般性方向。"}</p>
     </section>
   );
 }

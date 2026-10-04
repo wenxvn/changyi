@@ -1,0 +1,104 @@
+{
+  "scope": "synthetic_report_conflict_not_clinical_validation",
+  "total": 7,
+  "failed": 0,
+  "rows": [
+    {
+      "family": "conflict",
+      "text": "有糖尿病，但现在否认糖尿病",
+      "expected_known": false,
+      "actual": {
+        "has_known_disease": false,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.0,
+        "source": "conflicting_mentions",
+        "assertion_status": "conflicting"
+      },
+      "pass": true
+    },
+    {
+      "family": "conflict",
+      "text": "已确诊糖尿病，但糖尿病不确定",
+      "expected_known": false,
+      "actual": {
+        "has_known_disease": false,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.0,
+        "source": "conflicting_mentions",
+        "assertion_status": "conflicting"
+      },
+      "pass": true
+    },
+    {
+      "family": "retracted",
+      "text": "以前被误诊糖尿病，现在确认没有糖尿病",
+      "expected_known": false,
+      "actual": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": ""
+      },
+      "pass": true
+    },
+    {
+      "family": "history",
+      "text": "有糖尿病病史，现在没有发热",
+      "expected_known": true,
+      "actual": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "pass": true
+    },
+    {
+      "family": "reported",
+      "text": "已确诊糖尿病，来复诊",
+      "expected_known": true,
+      "actual": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "pass": true
+    },
+    {
+      "family": "different",
+      "text": "否认乙肝但确诊糖尿病",
+      "expected_known": true,
+      "actual": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "pass": true
+    },
+    {
+      "family": "subject_open",
+      "text": "我妈妈确诊糖尿病，现在我咳嗽",
+      "expected_known": false,
+      "actual": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": "",
+        "consultation_subject": "self",
+        "background_mentions": [
+          "糖尿病"
+        ]
+      },
+      "pass": true
+    }
+  ]
+}

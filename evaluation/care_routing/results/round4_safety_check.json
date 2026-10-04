@@ -1,6 +1,6 @@
 {
   "pipeline": "Safety Gate → Direct Department → Selective Abstention → Care Routing",
-  "department_model_accuracy_for_context": 0.742438,
+  "department_model_accuracy_for_context": 0.608179,
   "invariants": [
     {
       "id": "emergency_never_rerouted_by_department",
@@ -29,5 +29,13 @@
     }
   ],
   "all_pass": true,
+  "safety_metrics_observed": {
+    "case_count": 142,
+    "red_flag_recall": 1.0,
+    "under_triage_rate": 0.0,
+    "over_triage_rate": 0.0,
+    "emergency_false_negative": 0
+  },
+  "verification_source": "evaluation.safety.evaluate_safety.evaluate_cases(load_cases()) executed",
   "disclaimer": "离线契约检查；不是临床 Safety 验证"
 }

@@ -1,0 +1,73 @@
+{
+  "scope": "emergency_default_direction_policy_not_clinical_department_validation",
+  "total": 6,
+  "failed": 2,
+  "rows": [
+    {
+      "text": "我现在是否喘不上气，我喘不上气",
+      "answer": null,
+      "expected_status": "EMERGENCY",
+      "expected_direction": "急诊医学科",
+      "status": "EMERGENCY",
+      "triage_department": "全科医学科",
+      "recommendation_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "不确定症状",
+      "answer": "present",
+      "expected_status": "EMERGENCY",
+      "expected_direction": "急诊医学科",
+      "status": "EMERGENCY",
+      "triage_department": "全科医学科",
+      "recommendation_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "我现在喘不上气",
+      "answer": null,
+      "expected_status": "EMERGENCY",
+      "expected_direction": "呼吸与危重症医学科",
+      "status": "EMERGENCY",
+      "triage_department": "呼吸与危重症医学科",
+      "recommendation_department": "呼吸与危重症医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否喘不上气",
+      "answer": null,
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "expected_direction": null,
+      "status": "INSUFFICIENT_INFORMATION",
+      "triage_department": null,
+      "recommendation_department": null,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "没有咳嗽",
+      "answer": null,
+      "expected_status": "ROUTINE",
+      "expected_direction": "全科医学科",
+      "status": "ROUTINE",
+      "triage_department": "全科医学科",
+      "recommendation_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我确诊糖尿病",
+      "answer": null,
+      "expected_status": "URGENT",
+      "expected_direction": "内分泌代谢科",
+      "status": "URGENT",
+      "triage_department": "内分泌代谢科",
+      "recommendation_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

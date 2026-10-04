@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "model_file": "D:\\wenxvn(2)\\AIC\\changyi\\evaluation\\core_exploration\\results\\validation-v1\\2026-portable.joblib",
+  "identity": "919d46b60ccd31eaf357b97c287c53c91fa284fc7bcb52dabed170bd2504da3e",
+  "representation": "concat_char",
+  "exact_prediction_replay": true,
+  "selection": "inner validation only"
+}

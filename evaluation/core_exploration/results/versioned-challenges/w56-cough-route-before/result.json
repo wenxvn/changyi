@@ -1,0 +1,79 @@
+{
+  "scope": "bounded_cough_route_evidence_policy_not_clinical_department_accuracy",
+  "total": 9,
+  "failed": 3,
+  "rows": [
+    {
+      "text": "现在是否咳嗽",
+      "expected_cough_based_respiratory_route": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "现在不确定是否咳嗽",
+      "expected_cough_based_respiratory_route": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有胸痛，现在可能咳嗽",
+      "expected_cough_based_respiratory_route": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有胸痛，现在咳嗽",
+      "expected_cough_based_respiratory_route": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在不确定为什么咳嗽",
+      "expected_cough_based_respiratory_route": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在有咳嗽",
+      "expected_cough_based_respiratory_route": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在没有咳嗽",
+      "expected_cough_based_respiratory_route": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我确诊糖尿病，现在是否咳嗽",
+      "expected_cough_based_respiratory_route": false,
+      "triage_status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我喘不上气，现在是否咳嗽",
+      "expected_cough_based_respiratory_route": null,
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

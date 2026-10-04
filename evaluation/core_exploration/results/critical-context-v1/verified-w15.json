@@ -1,0 +1,3279 @@
+{
+  "scope": "synthetic_existing_rule_context_audit_not_clinical_accuracy",
+  "total": 250,
+  "failed": 0,
+  "families": {
+    "self_current": {
+      "total": 50,
+      "failed": 0
+    },
+    "bystander_current": {
+      "total": 50,
+      "failed": 0
+    },
+    "denied": {
+      "total": 50,
+      "failed": 0
+    },
+    "history_other_current": {
+      "total": 50,
+      "failed": 0
+    },
+    "uncertain": {
+      "total": 50,
+      "failed": 0
+    }
+  },
+  "rows": [
+    {
+      "cue": "呼吸困难",
+      "family": "self_current",
+      "text": "我现在呼吸困难",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "呼吸困难",
+      "family": "bystander_current",
+      "text": "我妈妈正在呼吸困难",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "呼吸困难",
+      "family": "denied",
+      "text": "没有呼吸困难，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "呼吸困难",
+      "family": "history_other_current",
+      "text": "以前呼吸困难，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "呼吸困难",
+      "family": "uncertain",
+      "text": "不确定有没有呼吸困难",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喘不上气",
+      "family": "self_current",
+      "text": "我现在喘不上气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不上气",
+      "family": "bystander_current",
+      "text": "我妈妈正在喘不上气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不上气",
+      "family": "denied",
+      "text": "没有喘不上气，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喘不上气",
+      "family": "history_other_current",
+      "text": "以前喘不上气，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "喘不上气",
+      "family": "uncertain",
+      "text": "不确定有没有喘不上气",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喘不上来",
+      "family": "self_current",
+      "text": "我现在喘不上来",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不上来",
+      "family": "bystander_current",
+      "text": "我妈妈正在喘不上来",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不上来",
+      "family": "denied",
+      "text": "没有喘不上来，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喘不上来",
+      "family": "history_other_current",
+      "text": "以前喘不上来，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "喘不上来",
+      "family": "uncertain",
+      "text": "不确定有没有喘不上来",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喘不过气",
+      "family": "self_current",
+      "text": "我现在喘不过气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不过气",
+      "family": "bystander_current",
+      "text": "我妈妈正在喘不过气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不过气",
+      "family": "denied",
+      "text": "没有喘不过气，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "喘不过气",
+      "family": "history_other_current",
+      "text": "以前喘不过气，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "喘不过气",
+      "family": "uncertain",
+      "text": "不确定有没有喘不过气",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "上不来气",
+      "family": "self_current",
+      "text": "我现在上不来气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "上不来气",
+      "family": "bystander_current",
+      "text": "我妈妈正在上不来气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "上不来气",
+      "family": "denied",
+      "text": "没有上不来气，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "上不来气",
+      "family": "history_other_current",
+      "text": "以前上不来气，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "上不来气",
+      "family": "uncertain",
+      "text": "不确定有没有上不来气",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喘不来气",
+      "family": "self_current",
+      "text": "我现在喘不来气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不来气",
+      "family": "bystander_current",
+      "text": "我妈妈正在喘不来气",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "喘不来气",
+      "family": "denied",
+      "text": "没有喘不来气，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喘不来气",
+      "family": "history_other_current",
+      "text": "以前喘不来气，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "喘不来气",
+      "family": "uncertain",
+      "text": "不确定有没有喘不来气",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "无法呼吸",
+      "family": "self_current",
+      "text": "我现在无法呼吸",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "无法呼吸",
+      "family": "bystander_current",
+      "text": "我妈妈正在无法呼吸",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "无法呼吸",
+      "family": "denied",
+      "text": "没有无法呼吸，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "无法呼吸",
+      "family": "history_other_current",
+      "text": "以前无法呼吸，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "无法呼吸",
+      "family": "uncertain",
+      "text": "不确定有没有无法呼吸",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "憋气明显",
+      "family": "self_current",
+      "text": "我现在憋气明显",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "憋气明显",
+      "family": "bystander_current",
+      "text": "我妈妈正在憋气明显",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "憋气明显",
+      "family": "denied",
+      "text": "没有憋气明显，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "憋气明显",
+      "family": "history_other_current",
+      "text": "以前憋气明显，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "憋气明显",
+      "family": "uncertain",
+      "text": "不确定有没有憋气明显",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "嘴唇发紫",
+      "family": "self_current",
+      "text": "我现在嘴唇发紫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "嘴唇发紫",
+      "family": "bystander_current",
+      "text": "我妈妈正在嘴唇发紫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "cue": "嘴唇发紫",
+      "family": "denied",
+      "text": "没有嘴唇发紫，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "嘴唇发紫",
+      "family": "history_other_current",
+      "text": "以前嘴唇发紫，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "嘴唇发紫",
+      "family": "uncertain",
+      "text": "不确定有没有嘴唇发紫",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "口唇青紫",
+      "family": "self_current",
+      "text": "我现在口唇青紫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "口唇青紫",
+      "family": "bystander_current",
+      "text": "我妈妈正在口唇青紫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "口唇青紫",
+      "family": "denied",
+      "text": "没有口唇青紫，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "口唇青紫",
+      "family": "history_other_current",
+      "text": "以前口唇青紫，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "口唇青紫",
+      "family": "uncertain",
+      "text": "不确定有没有口唇青紫",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "嘴唇青紫",
+      "family": "self_current",
+      "text": "我现在嘴唇青紫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "嘴唇青紫",
+      "family": "bystander_current",
+      "text": "我妈妈正在嘴唇青紫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "嘴唇青紫",
+      "family": "denied",
+      "text": "没有嘴唇青紫，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "嘴唇青紫",
+      "family": "history_other_current",
+      "text": "以前嘴唇青紫，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "嘴唇青紫",
+      "family": "uncertain",
+      "text": "不确定有没有嘴唇青紫",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "紫绀",
+      "family": "self_current",
+      "text": "我现在紫绀",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "紫绀",
+      "family": "bystander_current",
+      "text": "我妈妈正在紫绀",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "紫绀",
+      "family": "denied",
+      "text": "没有紫绀，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "紫绀",
+      "family": "history_other_current",
+      "text": "以前紫绀，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "紫绀",
+      "family": "uncertain",
+      "text": "不确定有没有紫绀",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "血氧低",
+      "family": "self_current",
+      "text": "我现在血氧低",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "血氧低",
+      "family": "bystander_current",
+      "text": "我妈妈正在血氧低",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "血氧低",
+      "family": "denied",
+      "text": "没有血氧低，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "血氧低",
+      "family": "history_other_current",
+      "text": "以前血氧低，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "血氧低",
+      "family": "uncertain",
+      "text": "不确定有没有血氧低",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "昏迷",
+      "family": "self_current",
+      "text": "我现在昏迷",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "昏迷",
+      "family": "bystander_current",
+      "text": "我妈妈正在昏迷",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "昏迷",
+      "family": "denied",
+      "text": "没有昏迷，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "昏迷",
+      "family": "history_other_current",
+      "text": "以前昏迷，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "昏迷",
+      "family": "uncertain",
+      "text": "不确定有没有昏迷",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "意识不清",
+      "family": "self_current",
+      "text": "我现在意识不清",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "意识不清",
+      "family": "bystander_current",
+      "text": "我妈妈正在意识不清",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "意识不清",
+      "family": "denied",
+      "text": "没有意识不清，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "意识不清",
+      "family": "history_other_current",
+      "text": "以前意识不清，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "意识不清",
+      "family": "uncertain",
+      "text": "不确定有没有意识不清",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "意识模糊",
+      "family": "self_current",
+      "text": "我现在意识模糊",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "意识模糊",
+      "family": "bystander_current",
+      "text": "我妈妈正在意识模糊",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "意识模糊",
+      "family": "denied",
+      "text": "没有意识模糊，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "意识模糊",
+      "family": "history_other_current",
+      "text": "以前意识模糊，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "意识模糊",
+      "family": "uncertain",
+      "text": "不确定有没有意识模糊",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "呼之不应",
+      "family": "self_current",
+      "text": "我现在呼之不应",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "呼之不应",
+      "family": "bystander_current",
+      "text": "我妈妈正在呼之不应",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "呼之不应",
+      "family": "denied",
+      "text": "没有呼之不应，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "呼之不应",
+      "family": "history_other_current",
+      "text": "以前呼之不应，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "呼之不应",
+      "family": "uncertain",
+      "text": "不确定有没有呼之不应",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "休克",
+      "family": "self_current",
+      "text": "我现在休克",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "休克",
+      "family": "bystander_current",
+      "text": "我妈妈正在休克",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "休克",
+      "family": "denied",
+      "text": "没有休克，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "休克",
+      "family": "history_other_current",
+      "text": "以前休克，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "休克",
+      "family": "uncertain",
+      "text": "不确定有没有休克",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "大出血",
+      "family": "self_current",
+      "text": "我现在大出血",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "大出血",
+      "family": "bystander_current",
+      "text": "我妈妈正在大出血",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "大出血",
+      "family": "denied",
+      "text": "没有大出血，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "大出血",
+      "family": "history_other_current",
+      "text": "以前大出血，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "大出血",
+      "family": "uncertain",
+      "text": "不确定有没有大出血",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "大量出血",
+      "family": "self_current",
+      "text": "我现在大量出血",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "大量出血",
+      "family": "bystander_current",
+      "text": "我妈妈正在大量出血",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "大量出血",
+      "family": "denied",
+      "text": "没有大量出血，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "大量出血",
+      "family": "history_other_current",
+      "text": "以前大量出血，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "大量出血",
+      "family": "uncertain",
+      "text": "不确定有没有大量出血",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "止不住血",
+      "family": "self_current",
+      "text": "我现在止不住血",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "止不住血",
+      "family": "bystander_current",
+      "text": "我妈妈正在止不住血",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "止不住血",
+      "family": "denied",
+      "text": "没有止不住血，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "止不住血",
+      "family": "history_other_current",
+      "text": "以前止不住血，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "止不住血",
+      "family": "uncertain",
+      "text": "不确定有没有止不住血",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "血止不住",
+      "family": "self_current",
+      "text": "我现在血止不住",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "血止不住",
+      "family": "bystander_current",
+      "text": "我妈妈正在血止不住",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "血止不住",
+      "family": "denied",
+      "text": "没有血止不住，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "血止不住",
+      "family": "history_other_current",
+      "text": "以前血止不住，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "血止不住",
+      "family": "uncertain",
+      "text": "不确定有没有血止不住",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "偏瘫",
+      "family": "self_current",
+      "text": "我现在偏瘫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "偏瘫",
+      "family": "bystander_current",
+      "text": "我妈妈正在偏瘫",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "偏瘫",
+      "family": "denied",
+      "text": "没有偏瘫，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "偏瘫",
+      "family": "history_other_current",
+      "text": "以前偏瘫，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "偏瘫",
+      "family": "uncertain",
+      "text": "不确定有没有偏瘫",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "一侧无力",
+      "family": "self_current",
+      "text": "我现在一侧无力",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "一侧无力",
+      "family": "bystander_current",
+      "text": "我妈妈正在一侧无力",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "一侧无力",
+      "family": "denied",
+      "text": "没有一侧无力，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "一侧无力",
+      "family": "history_other_current",
+      "text": "以前一侧无力，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "一侧无力",
+      "family": "uncertain",
+      "text": "不确定有没有一侧无力",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "肢体无力",
+      "family": "self_current",
+      "text": "我现在肢体无力",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "肢体无力",
+      "family": "bystander_current",
+      "text": "我妈妈正在肢体无力",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "肢体无力",
+      "family": "denied",
+      "text": "没有肢体无力，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "肢体无力",
+      "family": "history_other_current",
+      "text": "以前肢体无力，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "肢体无力",
+      "family": "uncertain",
+      "text": "不确定有没有肢体无力",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "一侧麻木",
+      "family": "self_current",
+      "text": "我现在一侧麻木",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "一侧麻木",
+      "family": "bystander_current",
+      "text": "我妈妈正在一侧麻木",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "一侧麻木",
+      "family": "denied",
+      "text": "没有一侧麻木，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "一侧麻木",
+      "family": "history_other_current",
+      "text": "以前一侧麻木，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "一侧麻木",
+      "family": "uncertain",
+      "text": "不确定有没有一侧麻木",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "半边手脚没劲",
+      "family": "self_current",
+      "text": "我现在半边手脚没劲",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "半边手脚没劲",
+      "family": "bystander_current",
+      "text": "我妈妈正在半边手脚没劲",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "半边手脚没劲",
+      "family": "denied",
+      "text": "没有半边手脚没劲，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "半边手脚没劲",
+      "family": "history_other_current",
+      "text": "以前半边手脚没劲，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "半边手脚没劲",
+      "family": "uncertain",
+      "text": "不确定有没有半边手脚没劲",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "半边身子没劲",
+      "family": "self_current",
+      "text": "我现在半边身子没劲",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "半边身子没劲",
+      "family": "bystander_current",
+      "text": "我妈妈正在半边身子没劲",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "半边身子没劲",
+      "family": "denied",
+      "text": "没有半边身子没劲，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "半边身子没劲",
+      "family": "history_other_current",
+      "text": "以前半边身子没劲，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "半边身子没劲",
+      "family": "uncertain",
+      "text": "不确定有没有半边身子没劲",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "口角歪斜",
+      "family": "self_current",
+      "text": "我现在口角歪斜",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "口角歪斜",
+      "family": "bystander_current",
+      "text": "我妈妈正在口角歪斜",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "口角歪斜",
+      "family": "denied",
+      "text": "没有口角歪斜，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "口角歪斜",
+      "family": "history_other_current",
+      "text": "以前口角歪斜，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "口角歪斜",
+      "family": "uncertain",
+      "text": "不确定有没有口角歪斜",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "说话不清",
+      "family": "self_current",
+      "text": "我现在说话不清",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "说话不清",
+      "family": "bystander_current",
+      "text": "我妈妈正在说话不清",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "说话不清",
+      "family": "denied",
+      "text": "没有说话不清，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "说话不清",
+      "family": "history_other_current",
+      "text": "以前说话不清，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "说话不清",
+      "family": "uncertain",
+      "text": "不确定有没有说话不清",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "言语不清",
+      "family": "self_current",
+      "text": "我现在言语不清",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "言语不清",
+      "family": "bystander_current",
+      "text": "我妈妈正在言语不清",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "言语不清",
+      "family": "denied",
+      "text": "没有言语不清，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "言语不清",
+      "family": "history_other_current",
+      "text": "以前言语不清，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "言语不清",
+      "family": "uncertain",
+      "text": "不确定有没有言语不清",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "说话不利索",
+      "family": "self_current",
+      "text": "我现在说话不利索",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "说话不利索",
+      "family": "bystander_current",
+      "text": "我妈妈正在说话不利索",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "说话不利索",
+      "family": "denied",
+      "text": "没有说话不利索，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "说话不利索",
+      "family": "history_other_current",
+      "text": "以前说话不利索，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "说话不利索",
+      "family": "uncertain",
+      "text": "不确定有没有说话不利索",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "抽搐不止",
+      "family": "self_current",
+      "text": "我现在抽搐不止",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "抽搐不止",
+      "family": "bystander_current",
+      "text": "我妈妈正在抽搐不止",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "抽搐不止",
+      "family": "denied",
+      "text": "没有抽搐不止，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "抽搐不止",
+      "family": "history_other_current",
+      "text": "以前抽搐不止，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "抽搐不止",
+      "family": "uncertain",
+      "text": "不确定有没有抽搐不止",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "一直在抽搐",
+      "family": "self_current",
+      "text": "我现在一直在抽搐",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "一直在抽搐",
+      "family": "bystander_current",
+      "text": "我妈妈正在一直在抽搐",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "一直在抽搐",
+      "family": "denied",
+      "text": "没有一直在抽搐，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "一直在抽搐",
+      "family": "history_other_current",
+      "text": "以前一直在抽搐，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "一直在抽搐",
+      "family": "uncertain",
+      "text": "不确定有没有一直在抽搐",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "一直抽搐",
+      "family": "self_current",
+      "text": "我现在一直抽搐",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "一直抽搐",
+      "family": "bystander_current",
+      "text": "我妈妈正在一直抽搐",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "一直抽搐",
+      "family": "denied",
+      "text": "没有一直抽搐，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "一直抽搐",
+      "family": "history_other_current",
+      "text": "以前一直抽搐，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "一直抽搐",
+      "family": "uncertain",
+      "text": "不确定有没有一直抽搐",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "无法站立",
+      "family": "self_current",
+      "text": "我现在无法站立",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "无法站立",
+      "family": "bystander_current",
+      "text": "我妈妈正在无法站立",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "无法站立",
+      "family": "denied",
+      "text": "没有无法站立，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "无法站立",
+      "family": "history_other_current",
+      "text": "以前无法站立，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "无法站立",
+      "family": "uncertain",
+      "text": "不确定有没有无法站立",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "突发剧烈头痛",
+      "family": "self_current",
+      "text": "我现在突发剧烈头痛",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "突发剧烈头痛",
+      "family": "bystander_current",
+      "text": "我妈妈正在突发剧烈头痛",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "突发剧烈头痛",
+      "family": "denied",
+      "text": "没有突发剧烈头痛，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "突发剧烈头痛",
+      "family": "history_other_current",
+      "text": "以前突发剧烈头痛，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "突发剧烈头痛",
+      "family": "uncertain",
+      "text": "不确定有没有突发剧烈头痛",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "突然剧烈头痛",
+      "family": "self_current",
+      "text": "我现在突然剧烈头痛",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "突然剧烈头痛",
+      "family": "bystander_current",
+      "text": "我妈妈正在突然剧烈头痛",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "突然剧烈头痛",
+      "family": "denied",
+      "text": "没有突然剧烈头痛，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "突然剧烈头痛",
+      "family": "history_other_current",
+      "text": "以前突然剧烈头痛，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "神经内科",
+      "pass": true
+    },
+    {
+      "cue": "突然剧烈头痛",
+      "family": "uncertain",
+      "text": "不确定有没有突然剧烈头痛",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喉头水肿",
+      "family": "self_current",
+      "text": "我现在喉头水肿",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "喉头水肿",
+      "family": "bystander_current",
+      "text": "我妈妈正在喉头水肿",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "喉头水肿",
+      "family": "denied",
+      "text": "没有喉头水肿，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喉头水肿",
+      "family": "history_other_current",
+      "text": "以前喉头水肿，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "喉头水肿",
+      "family": "uncertain",
+      "text": "不确定有没有喉头水肿",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喉咙肿",
+      "family": "self_current",
+      "text": "我现在喉咙肿",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "喉咙肿",
+      "family": "bystander_current",
+      "text": "我妈妈正在喉咙肿",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "喉咙肿",
+      "family": "denied",
+      "text": "没有喉咙肿，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "喉咙肿",
+      "family": "history_other_current",
+      "text": "以前喉咙肿，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "喉咙肿",
+      "family": "uncertain",
+      "text": "不确定有没有喉咙肿",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "吞咽困难",
+      "family": "self_current",
+      "text": "我现在吞咽困难",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "吞咽困难",
+      "family": "bystander_current",
+      "text": "我妈妈正在吞咽困难",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "吞咽困难",
+      "family": "denied",
+      "text": "没有吞咽困难，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "吞咽困难",
+      "family": "history_other_current",
+      "text": "以前吞咽困难，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "吞咽困难",
+      "family": "uncertain",
+      "text": "不确定有没有吞咽困难",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "窒息",
+      "family": "self_current",
+      "text": "我现在窒息",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "窒息",
+      "family": "bystander_current",
+      "text": "我妈妈正在窒息",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "全科医学科",
+      "pass": true
+    },
+    {
+      "cue": "窒息",
+      "family": "denied",
+      "text": "没有窒息，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "窒息",
+      "family": "history_other_current",
+      "text": "以前窒息，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "窒息",
+      "family": "uncertain",
+      "text": "不确定有没有窒息",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "肺栓塞",
+      "family": "self_current",
+      "text": "我现在肺栓塞",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "肺栓塞",
+      "family": "bystander_current",
+      "text": "我妈妈正在肺栓塞",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "肺栓塞",
+      "family": "denied",
+      "text": "没有肺栓塞，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "肺栓塞",
+      "family": "history_other_current",
+      "text": "以前肺栓塞，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "肺栓塞",
+      "family": "uncertain",
+      "text": "不确定有没有肺栓塞",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "主动脉夹层",
+      "family": "self_current",
+      "text": "我现在主动脉夹层",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "主动脉夹层",
+      "family": "bystander_current",
+      "text": "我妈妈正在主动脉夹层",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "主动脉夹层",
+      "family": "denied",
+      "text": "没有主动脉夹层，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "主动脉夹层",
+      "family": "history_other_current",
+      "text": "以前主动脉夹层，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "主动脉夹层",
+      "family": "uncertain",
+      "text": "不确定有没有主动脉夹层",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "宫外孕",
+      "family": "self_current",
+      "text": "我现在宫外孕",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "宫外孕",
+      "family": "bystander_current",
+      "text": "我妈妈正在宫外孕",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "宫外孕",
+      "family": "denied",
+      "text": "没有宫外孕，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "宫外孕",
+      "family": "history_other_current",
+      "text": "以前宫外孕，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "宫外孕",
+      "family": "uncertain",
+      "text": "不确定有没有宫外孕",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "异位妊娠",
+      "family": "self_current",
+      "text": "我现在异位妊娠",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "异位妊娠",
+      "family": "bystander_current",
+      "text": "我妈妈正在异位妊娠",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "异位妊娠",
+      "family": "denied",
+      "text": "没有异位妊娠，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "异位妊娠",
+      "family": "history_other_current",
+      "text": "以前异位妊娠，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "急诊医学科",
+      "pass": true
+    },
+    {
+      "cue": "异位妊娠",
+      "family": "uncertain",
+      "text": "不确定有没有异位妊娠",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "视网膜脱落",
+      "family": "self_current",
+      "text": "我现在视网膜脱落",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "眼科",
+      "pass": true
+    },
+    {
+      "cue": "视网膜脱落",
+      "family": "bystander_current",
+      "text": "我妈妈正在视网膜脱落",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "眼科",
+      "pass": true
+    },
+    {
+      "cue": "视网膜脱落",
+      "family": "denied",
+      "text": "没有视网膜脱落，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "眼科",
+      "pass": true
+    },
+    {
+      "cue": "视网膜脱落",
+      "family": "history_other_current",
+      "text": "以前视网膜脱落，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "URGENT",
+      "matched_rule": "症状较重或存在风险关键词",
+      "direction": "眼科",
+      "pass": true
+    },
+    {
+      "cue": "视网膜脱落",
+      "family": "uncertain",
+      "text": "不确定有没有视网膜脱落",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "心梗",
+      "family": "self_current",
+      "text": "我现在心梗",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "心梗",
+      "family": "bystander_current",
+      "text": "我妈妈正在心梗",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "心梗",
+      "family": "denied",
+      "text": "没有心梗，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "心梗",
+      "family": "history_other_current",
+      "text": "以前心梗，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "呼吸内科",
+      "pass": true
+    },
+    {
+      "cue": "心梗",
+      "family": "uncertain",
+      "text": "不确定有没有心梗",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "心肌梗死",
+      "family": "self_current",
+      "text": "我现在心肌梗死",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "心肌梗死",
+      "family": "bystander_current",
+      "text": "我妈妈正在心肌梗死",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "心肌梗死",
+      "family": "denied",
+      "text": "没有心肌梗死，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "心肌梗死",
+      "family": "history_other_current",
+      "text": "以前心肌梗死，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "心肌梗死",
+      "family": "uncertain",
+      "text": "不确定有没有心肌梗死",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    },
+    {
+      "cue": "急性心肌梗死",
+      "family": "self_current",
+      "text": "我现在急性心肌梗死",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "急性心肌梗死",
+      "family": "bystander_current",
+      "text": "我妈妈正在急性心肌梗死",
+      "expected_statuses": [
+        "EMERGENCY"
+      ],
+      "actual": "EMERGENCY",
+      "matched_rule": "命中危急强信号",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "急性心肌梗死",
+      "family": "denied",
+      "text": "没有急性心肌梗死，只有咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "急性心肌梗死",
+      "family": "history_other_current",
+      "text": "以前急性心肌梗死，现在我咳嗽",
+      "expected_statuses": [
+        "ROUTINE",
+        "URGENT",
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "actual": "ROUTINE",
+      "matched_rule": "普通症状或常见病描述",
+      "direction": "心血管内科",
+      "pass": true
+    },
+    {
+      "cue": "急性心肌梗死",
+      "family": "uncertain",
+      "text": "不确定有没有急性心肌梗死",
+      "expected_statuses": [
+        "INSUFFICIENT_INFORMATION",
+        "EMERGENCY"
+      ],
+      "actual": "INSUFFICIENT_INFORMATION",
+      "matched_rule": "自由文本危险信号尚未确认",
+      "direction": null,
+      "pass": true
+    }
+  ]
+}

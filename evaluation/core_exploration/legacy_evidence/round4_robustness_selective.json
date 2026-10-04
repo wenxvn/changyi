@@ -1,0 +1,75 @@
+{
+  "protocol": "robustness_selective_routing",
+  "not_real_patients": true,
+  "seed": 42,
+  "model_name": "char_ngram_tfidf_lr",
+  "feature_key": "char_ngram_tfidf",
+  "target_coverage_from_cal": 0.8,
+  "threshold": 0.43547434594941264,
+  "clean": {
+    "signal": "max_probability",
+    "threshold": 0.43547434594941264,
+    "coverage": 0.657277,
+    "abstention_rate": 0.342723,
+    "retained_rows": 140,
+    "retained_accuracy": 0.807143,
+    "retained_macro_f1": 0.46965,
+    "retained_weighted_f1": 0.751415,
+    "retained_error_rate": 0.192857,
+    "retained_wrong_but_confident_rate": 0.007143,
+    "retained_ece": 0.125531
+  },
+  "per_kind": {
+    "synonym_swap": {
+      "coverage": 0.685446,
+      "retained_accuracy": 0.890411,
+      "wrong_but_confident_rate": 0.006849,
+      "coverage_delta": 0.028169,
+      "accuracy_delta": 0.083268
+    },
+    "drop_noncritical": {
+      "coverage": 0.713615,
+      "retained_accuracy": 0.868421,
+      "wrong_but_confident_rate": 0.019737,
+      "coverage_delta": 0.056338,
+      "accuracy_delta": 0.061278
+    },
+    "add_filler": {
+      "coverage": 0.629108,
+      "retained_accuracy": 0.880597,
+      "wrong_but_confident_rate": 0.0,
+      "coverage_delta": -0.028169,
+      "accuracy_delta": 0.073454
+    },
+    "colloquial_noise": {
+      "coverage": 0.680751,
+      "retained_accuracy": 0.889655,
+      "wrong_but_confident_rate": 0.006897,
+      "coverage_delta": 0.023474,
+      "accuracy_delta": 0.082512
+    }
+  },
+  "ideal_behavior_checks": [
+    {
+      "kind": "synonym_swap",
+      "more_abstention": false,
+      "retained_acc_holds": true
+    },
+    {
+      "kind": "drop_noncritical",
+      "more_abstention": false,
+      "retained_acc_holds": true
+    },
+    {
+      "kind": "add_filler",
+      "more_abstention": true,
+      "retained_acc_holds": true
+    },
+    {
+      "kind": "colloquial_noise",
+      "more_abstention": false,
+      "retained_acc_holds": true
+    }
+  ],
+  "note": "meaning-preserving perturbations only; Safety Gate unchanged"
+}

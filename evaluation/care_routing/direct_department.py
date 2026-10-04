@@ -6,6 +6,7 @@ Symptoms → Department. No diagnosis claim. Honest quota split only.
 from __future__ import annotations
 
 import json
+import hashlib
 import math
 import statistics
 import time
@@ -180,6 +181,26 @@ def prepare_feature_sets(
     }
 
 
+def transform_department_features(train, rows, feature_key):
+    """Use only the training vocabulary/IDF, with the original representation."""
+    if feature_key == "symptom_binary":
+        return build_binary_features(rows)
+    if feature_key == "three_state_present":
+        return build_three_state_features(rows)
+    if feature_key == "word_tfidf":
+        return build_tfidf_features(train, rows)
+    if feature_key == "char_ngram_tfidf":
+        return build_char_ngram_tfidf_features(train, rows)
+    if feature_key == "word_char_fusion":
+        return build_fusion_features(build_tfidf_features(train, rows), build_char_ngram_tfidf_features(train, rows))
+    raise ValueError(f"unknown feature key: {feature_key}")
+
+
+def predict_fitted_department(state, rows):
+    features = transform_department_features(state["train_rows"], rows, state["feature_key"])
+    return [predict_proba(state["model"], feat, temperature=state["temperature"]) for feat in features]
+
+
 def fit_direct_department_models(
     train: Sequence[Mapping[str, Any]],
     cal: Sequence[Mapping[str, Any]],
@@ -261,8 +282,16 @@ def fit_direct_department_models(
         results["models"][f"{name}_temperature"] = cal_summary
         results.setdefault("fit_latency_s", {})[name] = fit_s
         results.setdefault("temperatures", {})[name] = temp
+        model_id = hashlib.sha256(json.dumps(model, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+        results.setdefault("_fitted", {})[name] = {
+            "model": model, "model_id": model_id, "feature_key": feature_key,
+            "train_rows": list(train), "temperature": temp,
+            "epochs": epochs, "lr": lr, "seed": seed,
+        }
         # Keep predictions for selective routing / confusion analysis.
         results.setdefault("_predictions", {})[name] = {
+            "cal_ranked_calibrated": [predict_proba(model, feat, temperature=temp) for feat in feats["cal"]],
+            "model_id": model_id,
             "ranked": raw,
             "ranked_calibrated": calibrated if feats["cal"] else raw,
             "y_true": y_test,

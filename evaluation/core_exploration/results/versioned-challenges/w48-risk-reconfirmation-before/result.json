@@ -1,0 +1,79 @@
+{
+  "scope": "synthetic_unresolved_risk_reconfirmation_not_clinical_validation",
+  "total": 5,
+  "failed": 2,
+  "rows": [
+    {
+      "text": "咳嗽",
+      "answer": "unknown",
+      "expected_reconfirmation": true,
+      "question_ids": [
+        "duration",
+        "severity",
+        "onset_pattern",
+        "symptom_location",
+        "companion_symptoms",
+        "trigger_factor",
+        "history_medicine",
+        "visit_goal"
+      ],
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "pass": false
+    },
+    {
+      "text": "没有严重胸痛",
+      "answer": "unknown",
+      "expected_reconfirmation": true,
+      "question_ids": [
+        "main_symptom_more",
+        "duration",
+        "onset_pattern",
+        "symptom_location",
+        "companion_symptoms",
+        "trigger_factor",
+        "history_medicine",
+        "visit_goal"
+      ],
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "pass": false
+    },
+    {
+      "text": "咳嗽",
+      "answer": "none",
+      "expected_reconfirmation": false,
+      "question_ids": [
+        "duration",
+        "severity",
+        "onset_pattern",
+        "symptom_location",
+        "companion_symptoms",
+        "trigger_factor",
+        "history_medicine",
+        "visit_goal"
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "咳嗽",
+      "answer": "present",
+      "expected_reconfirmation": false,
+      "question_ids": [],
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "answer": "unknown",
+      "expected_reconfirmation": false,
+      "question_ids": [],
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": true
+    }
+  ]
+}

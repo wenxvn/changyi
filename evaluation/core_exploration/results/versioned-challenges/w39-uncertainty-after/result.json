@@ -1,0 +1,195 @@
+{
+  "scope": "synthetic_uncertainty_overlap_contract_not_clinical_validation",
+  "total": 8,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "有咳嗽但不确定是否咳嗽",
+      "expected_overlap": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [
+          "cough"
+        ],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "不确定是否咳嗽但我咳嗽",
+      "expected_overlap": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [
+          "cough"
+        ],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "没有咳嗽但不确定是否咳嗽",
+      "expected_overlap": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [
+          "cough"
+        ],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "咳嗽和咳嗽不确定",
+      "expected_overlap": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [
+          "cough"
+        ],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "不确定是否咳嗽但有头痛",
+      "expected_overlap": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "神经内科",
+      "pass": true
+    },
+    {
+      "text": "有咳嗽而且咳嗽",
+      "expected_overlap": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "有咳嗽但以前也咳嗽",
+      "expected_overlap": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [
+          "cough"
+        ],
+        "noncurrent_context": true
+      },
+      "abstained": true,
+      "abstain_reason": "noncurrent_symptom_context",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气，有咳嗽但不确定是否咳嗽",
+      "expected_overlap": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "breathlessness",
+          "chest_pain",
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [
+          "cough"
+        ],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": true
+    }
+  ]
+}

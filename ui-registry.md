@@ -1,5 +1,25 @@
 # UI Registry
 
+## 2026-10-03 Unresolved risk reconfirmation
+
+W48保留未确认红旗原选项，unknown不算完成一步；同qid新答案替换旧答案，避免API拒重复ID。复用FollowupPrompt和既有按钮/focus/token，无新颜色布局；后续present用既有ER 120界面，none仍原政策，未知不当安全确认。源TriagePage与本次dist哈希独立记录，不能把Python实验身份当UI源码证明。
+
+## 2026-10-03 Accepted auxiliary scope explanation
+
+W33已接受辅助结果也显示后端notice，复用`care-result__reason`及现有text-secondary/text-sm，不增CSS、按钮或颜色；`model-scope-notice`区别既有拒答`model-abstention-notice`，不把已提供结果称拒答。普通文字说明可能遗漏其他描述、分值非患病概率，内部input_coverage字段不直接展示。Safety出口仍优先，不显示普通模型范围说明。
+
+## 2026-10-03 Auxiliary abstention explanation
+
+TriageResults的辅助拒答提示沿用`care-result__reason`：margin 0、text-secondary、text-sm，不新增颜色、边框或按钮。显示后端人可读notice与较小的辅助范围说明；内部原因码不在此提示展示。Safety优先时不重复模型说明，信息不足不使用“危险信号已排除”的兜底语句。解释与科室方向分开，模型拒答不被呈现为整体安全结论。
+
+## 2026-10-03 Pending review interaction
+
+FollowupPrompt与CareActions复用现有样式：space-3间距、space-4内边距、radius-lg、border-subtle；前者保留accent-soft背景，后者surface-raised/shadow-xs。待复核按钮沿用secondary Button及既有focus/disabled状态，不增加视觉token。未知状态的跳过按钮写“稍后补充，保留待复核状态”，下一步先确认危险信号；手动“浏览医疗资源目录”不表示已经匹配资源。目录URL保留分诊上下文，刷新仍展示当前状态提示。
+
+## 2026-10-03 DoctorAvatar delivery
+
+DoctorAvatar复用既有颜色/字号/圆角，不重新设计页面。图片按80/160/320派生尺寸响应式加载，保留原图与来源状态；索引懒加载，主入口JS不包含整份索引。加载期间显示姓名首字；派生图失败回退原图，原图失败显示首字；photoUrl变化时不会沿用上一位医生的失败状态或照片。装饰图片保持aria-hidden，医生姓名由卡片正文提供。
+
 ## Baseline — Established 2026-09-11
 
 正式 UI 由 `frontend/` 的 React/Vite 构建产物提供；Flask 只负责托管 `frontend/dist/` 和 `/api/v1/*`。本 registry 记录当前组件约束，不再把已删除的 legacy 模板、JS 或 CSS 作为运行时事实。
@@ -326,3 +346,9 @@ Files: `frontend/index.html`, `frontend/src/app/App.tsx`, `backend/app/compositi
 | API boundary | page state uses the shared client and `/api/v1/*`; no legacy route fallback |
 
 **Pattern notes:** The built shell is the only formal frontend. Missing build output returns a clear service error rather than silently serving a second UI.
+
+W71（2026-10-04）：Trust模型范围文案区分症状—疾病离线评测与城市资源目录/排序，明确不对应中文患者科室准确率；沿用原面板与tokens，不改变数值/布局。1440/1280源路径及披露验证、最终75浏览器通过。
+
+W73：Trust主模型卡明确保存随机切分的症状编码疾病分类来源，来源不足则待核对；既有数值/组件/tokens保持，近重复风险可见，76浏览器验证通过。
+
+W74：Resources详情加载依赖稳定kind/id与显式重试，同资源目录对象刷新不清空已显示详情；不同资源与关闭仍取消旧请求。固定异步控制10、照片回退20与完整77浏览器通过，样式/医疗规则不改。

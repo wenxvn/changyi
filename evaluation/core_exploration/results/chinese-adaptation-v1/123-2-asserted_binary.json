@@ -1,0 +1,188 @@
+{
+  "status": "complete",
+  "seed": 123,
+  "fold": 2,
+  "representation": "asserted_binary",
+  "chosen": {
+    "C": 1.0,
+    "class_weight": "balanced",
+    "macro_f1": 0.3709520715368669,
+    "accuracy": 0.34,
+    "warnings": []
+  },
+  "candidates": [
+    {
+      "C": 0.1,
+      "class_weight": null,
+      "macro_f1": 0.06069807385596859,
+      "accuracy": 0.1,
+      "warnings": []
+    },
+    {
+      "C": 0.1,
+      "class_weight": "balanced",
+      "macro_f1": 0.31972552031031565,
+      "accuracy": 0.34,
+      "warnings": []
+    },
+    {
+      "C": 1.0,
+      "class_weight": null,
+      "macro_f1": 0.2219201850780798,
+      "accuracy": 0.2,
+      "warnings": []
+    },
+    {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "macro_f1": 0.3709520715368669,
+      "accuracy": 0.34,
+      "warnings": []
+    },
+    {
+      "C": 10.0,
+      "class_weight": null,
+      "macro_f1": 0.18049506049506048,
+      "accuracy": 0.16,
+      "warnings": []
+    },
+    {
+      "C": 10.0,
+      "class_weight": "balanced",
+      "macro_f1": 0.29449428724791044,
+      "accuracy": 0.18,
+      "warnings": []
+    }
+  ],
+  "raw_test_cases": 95,
+  "rendered_test_cases": 190,
+  "metrics": {
+    "n": 190,
+    "accuracy": 0.37894736842105264,
+    "macro_f1": 0.31003035822707947,
+    "nll": 4.0414360747970735,
+    "brier": 0.9032324434284719,
+    "ece": 0.3734735169817813,
+    "wrong_confident_07": 0.3263157894736842,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 18,
+        "recall": 1.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 36,
+        "recall": 0.5555555555555556
+      },
+      "呼吸内科": {
+        "support": 0,
+        "recall": null
+      },
+      "心血管内科": {
+        "support": 16,
+        "recall": 0.25
+      },
+      "感染性疾病科": {
+        "support": 72,
+        "recall": 0.3611111111111111
+      },
+      "普外科": {
+        "support": 16,
+        "recall": 0.0
+      },
+      "泌尿外科": {
+        "support": 0,
+        "recall": null
+      },
+      "消化内科": {
+        "support": 18,
+        "recall": 0.1111111111111111
+      },
+      "皮肤科": {
+        "support": 2,
+        "recall": 1.0
+      },
+      "神经内科": {
+        "support": 0,
+        "recall": null
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 12,
+        "recall": 0.0
+      }
+    },
+    "reliability": [
+      {
+        "bin": 2,
+        "n": 14,
+        "confidence": 0.27330780104651575,
+        "accuracy": 0.0
+      },
+      {
+        "bin": 3,
+        "n": 16,
+        "confidence": 0.38073759755702025,
+        "accuracy": 0.375
+      },
+      {
+        "bin": 4,
+        "n": 16,
+        "confidence": 0.4176364907907746,
+        "accuracy": 0.125
+      },
+      {
+        "bin": 5,
+        "n": 4,
+        "confidence": 0.5331508821465714,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 6,
+        "n": 24,
+        "confidence": 0.6525749394827052,
+        "accuracy": 0.25
+      },
+      {
+        "bin": 7,
+        "n": 10,
+        "confidence": 0.7407877801287827,
+        "accuracy": 0.2
+      },
+      {
+        "bin": 8,
+        "n": 36,
+        "confidence": 0.8468579139345648,
+        "accuracy": 0.2777777777777778
+      },
+      {
+        "bin": 9,
+        "n": 70,
+        "confidence": 0.9562245125198816,
+        "accuracy": 0.6
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.3105263157894737,
+      0.45789473684210524
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval",
+    "unseen_department_rows": 16
+  },
+  "cal_supported": 177,
+  "cal_unseen": 0,
+  "temperature": 0.5780769397154923,
+  "train_templates": [
+    "症状为{symptoms}。",
+    "主要不适是{symptoms}。",
+    "我有{symptoms}。"
+  ],
+  "test_templates": [
+    "最近身体不舒服：{symptoms}，希望了解就医方向。",
+    "目前感到{symptoms}，该如何继续整理信息？"
+  ],
+  "scope": "synthetic Chinese engineering proxy from structured cases, NOT clinical validation",
+  "case_group_disjoint": true
+}

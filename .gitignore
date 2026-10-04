@@ -23,6 +23,10 @@ ppt_build_tmp/
 *.sqlite
 *.sqlite3
 
+# Local research fitted models and process locks; structured evidence stays tracked.
+evaluation/core_exploration/results/**/*.joblib
+evaluation/core_exploration/results/**/*.lock
+
 # Frontend dependencies and build output
 frontend/node_modules/
 frontend/test-results/

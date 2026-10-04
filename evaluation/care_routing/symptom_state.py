@@ -203,6 +203,7 @@ def binary_symptom_likelihood(
     total_symptom_counts: Mapping[str, int],
     vocabulary: Sequence[str],
     alpha: float = 1.0,
+    class_counts: Mapping[str, int] | None = None,
 ) -> float:
     """P(features | disease) under NB with explicit absent handling.
 
@@ -213,7 +214,9 @@ def binary_symptom_likelihood(
     """
 
     vocab_size = max(len(vocabulary), 1)
-    denom = float(total_symptom_counts.get(disease, 0)) + alpha * vocab_size
+    # A yes/no symptom is Bernoulli over RECORDS. Token totals are only the
+    # legacy multinomial fallback for callers without record counts.
+    denom = (float(class_counts.get(disease, 0)) + 2 * alpha) if class_counts is not None else (float(total_symptom_counts.get(disease, 0)) + alpha * vocab_size)
     counts = symptom_counts.get(disease, {})
     log_likelihood = 0.0
     for code in present_codes:

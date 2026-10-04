@@ -1,0 +1,267 @@
+{
+  "scope": "synthetic_hypothetical_auxiliary_and_tag_contract_not_clinical_validation",
+  "total": 9,
+  "failed": 8,
+  "rows": [
+    {
+      "text": "如果咳嗽",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_included_terms": [],
+      "expected_excluded_terms": [
+        "咳嗽"
+      ],
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "published_terms": [
+        "咳嗽"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "假如咳嗽",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_included_terms": [],
+      "expected_excluded_terms": [
+        "咳嗽"
+      ],
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "published_terms": [
+        "咳嗽"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "假设有咳嗽",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_included_terms": [],
+      "expected_excluded_terms": [
+        "咳嗽"
+      ],
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "published_terms": [
+        "咳嗽"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "倘若咳嗽",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_included_terms": [],
+      "expected_excluded_terms": [
+        "咳嗽"
+      ],
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "published_terms": [
+        "咳嗽"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "咳嗽只是举例",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_included_terms": [],
+      "expected_excluded_terms": [
+        "咳嗽"
+      ],
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "published_terms": [
+        "咳嗽"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "如果咳嗽但现在恶心",
+      "expected_present": [
+        "nausea"
+      ],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_included_terms": [
+        "恶心"
+      ],
+      "expected_excluded_terms": [
+        "咳嗽"
+      ],
+      "assertions": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "published_terms": [
+        "咳嗽",
+        "恶心"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "我现在咳嗽但假设恶心怎么办",
+      "expected_present": [
+        "cough"
+      ],
+      "expected_unknown": [
+        "nausea"
+      ],
+      "expected_included_terms": [
+        "咳嗽"
+      ],
+      "expected_excluded_terms": [
+        "恶心"
+      ],
+      "assertions": {
+        "present": [
+          "cough",
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "published_terms": [
+        "咳嗽",
+        "恶心"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "我现在咳嗽",
+      "expected_present": [
+        "cough"
+      ],
+      "expected_unknown": [],
+      "expected_included_terms": [
+        "咳嗽"
+      ],
+      "expected_excluded_terms": [],
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "published_terms": [
+        "咳嗽"
+      ],
+      "triage_status": "ROUTINE",
+      "pass": true
+    },
+    {
+      "text": "目前我呼吸困难，假如咳嗽",
+      "expected_present": null,
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_included_terms": [
+        "呼吸困难"
+      ],
+      "expected_excluded_terms": [
+        "咳嗽"
+      ],
+      "assertions": {
+        "present": [
+          "breathlessness",
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "published_terms": [
+        "呼吸困难",
+        "咳嗽"
+      ],
+      "triage_status": "EMERGENCY",
+      "pass": false
+    }
+  ]
+}

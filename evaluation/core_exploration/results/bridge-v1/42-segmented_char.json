@@ -1,0 +1,431 @@
+{
+  "status": "complete",
+  "seed": 42,
+  "representation": "segmented_char",
+  "winner": {
+    "config": {
+      "family": "lr",
+      "C": 10.0,
+      "balanced": false
+    },
+    "status": "complete",
+    "macro_f1": 0.6405128205128205,
+    "accuracy": 0.7407407407407407,
+    "seconds": 0.0470000000204891,
+    "warnings": []
+  },
+  "candidate_records": [
+    {
+      "config": {
+        "family": "lr",
+        "C": 0.1,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.09522497704315885,
+      "accuracy": 0.2777777777777778,
+      "seconds": 0.030999999988125637,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "lr",
+        "C": 0.1,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.4115364167995747,
+      "accuracy": 0.5555555555555556,
+      "seconds": 0.0,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "lr",
+        "C": 1.0,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.319534632034632,
+      "accuracy": 0.5925925925925926,
+      "seconds": 0.031000000017229468,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "lr",
+        "C": 1.0,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.5553294074346705,
+      "accuracy": 0.6296296296296297,
+      "seconds": 0.030999999988125637,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "lr",
+        "C": 10.0,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.6405128205128205,
+      "accuracy": 0.7407407407407407,
+      "seconds": 0.0470000000204891,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "lr",
+        "C": 10.0,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.5864868464868466,
+      "accuracy": 0.6666666666666666,
+      "seconds": 0.030999999988125637,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "lr",
+        "C": 100.0,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.6405128205128205,
+      "accuracy": 0.7407407407407407,
+      "seconds": 0.07899999999790452,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "lr",
+        "C": 100.0,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.5864868464868466,
+      "accuracy": 0.6666666666666666,
+      "seconds": 0.062000000005355105,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 0.1,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.5321115665943252,
+      "accuracy": 0.7037037037037037,
+      "seconds": 0.0,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 0.1,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.503781462279486,
+      "accuracy": 0.6111111111111112,
+      "seconds": 0.01600000000325963,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 1.0,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.627096842551388,
+      "accuracy": 0.7222222222222222,
+      "seconds": 0.0,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 1.0,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.5730708685254139,
+      "accuracy": 0.6481481481481481,
+      "seconds": 0.014999999984866008,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 10.0,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.627096842551388,
+      "accuracy": 0.7222222222222222,
+      "seconds": 0.03200000000651926,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 10.0,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.5730708685254139,
+      "accuracy": 0.6481481481481481,
+      "seconds": 0.030999999988125637,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 100.0,
+        "balanced": false
+      },
+      "status": "complete",
+      "macro_f1": 0.6405128205128205,
+      "accuracy": 0.7407407407407407,
+      "seconds": 0.125,
+      "warnings": [
+        "Liblinear failed to converge, increase the number of iterations."
+      ]
+    },
+    {
+      "config": {
+        "family": "svm",
+        "C": 100.0,
+        "balanced": true
+      },
+      "status": "complete",
+      "macro_f1": 0.5864868464868466,
+      "accuracy": 0.6666666666666666,
+      "seconds": 0.125,
+      "warnings": [
+        "Liblinear failed to converge, increase the number of iterations."
+      ]
+    },
+    {
+      "config": {
+        "family": "complement_nb",
+        "alpha": 0.1
+      },
+      "status": "complete",
+      "macro_f1": 0.38697145148758055,
+      "accuracy": 0.5740740740740741,
+      "seconds": 0.0,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "complement_nb",
+        "alpha": 1.0
+      },
+      "status": "complete",
+      "macro_f1": 0.3185216367034549,
+      "accuracy": 0.5370370370370371,
+      "seconds": 0.0,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "multinomial_nb",
+        "alpha": 0.1
+      },
+      "status": "complete",
+      "macro_f1": 0.539485766758494,
+      "accuracy": 0.7222222222222222,
+      "seconds": 0.015000000013969839,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "multinomial_nb",
+        "alpha": 1.0
+      },
+      "status": "complete",
+      "macro_f1": 0.16042018983195455,
+      "accuracy": 0.3888888888888889,
+      "seconds": 0.0,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "extra_trees",
+        "balanced": true,
+        "max_depth": 8
+      },
+      "status": "complete",
+      "macro_f1": 0.4737595737595738,
+      "accuracy": 0.5555555555555556,
+      "seconds": 0.09400000001187436,
+      "warnings": []
+    },
+    {
+      "config": {
+        "family": "extra_trees",
+        "balanced": true,
+        "max_depth": null
+      },
+      "status": "complete",
+      "macro_f1": 0.5862760427977819,
+      "accuracy": 0.6666666666666666,
+      "seconds": 0.23499999998603016,
+      "warnings": []
+    }
+  ],
+  "temperature": 1.1237636542313922,
+  "metrics": {
+    "n": 223,
+    "accuracy": 0.6412556053811659,
+    "macro_f1": 0.642139235842433,
+    "nll": 1.394333953247549,
+    "brier": 0.608689921233544,
+    "ece": 0.2539542802999829,
+    "wrong_confident_07": 0.06278026905829596,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 10,
+        "recall": 0.8
+      },
+      "呼吸与危重症医学科": {
+        "support": 28,
+        "recall": 0.9642857142857143
+      },
+      "呼吸内科": {
+        "support": 26,
+        "recall": 0.2692307692307692
+      },
+      "心血管内科": {
+        "support": 16,
+        "recall": 0.9375
+      },
+      "感染性疾病科": {
+        "support": 64,
+        "recall": 0.765625
+      },
+      "普外科": {
+        "support": 8,
+        "recall": 0.875
+      },
+      "泌尿外科": {
+        "support": 9,
+        "recall": 0.0
+      },
+      "消化内科": {
+        "support": 8,
+        "recall": 0.375
+      },
+      "皮肤科": {
+        "support": 35,
+        "recall": 0.2857142857142857
+      },
+      "神经内科": {
+        "support": 7,
+        "recall": 0.8571428571428571
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 12,
+        "recall": 0.9166666666666666
+      }
+    },
+    "reliability": [
+      {
+        "bin": 1,
+        "n": 1,
+        "confidence": 0.19506408080396515,
+        "accuracy": 0.0
+      },
+      {
+        "bin": 2,
+        "n": 22,
+        "confidence": 0.28805507061278196,
+        "accuracy": 0.9090909090909091
+      },
+      {
+        "bin": 3,
+        "n": 19,
+        "confidence": 0.3451768522148462,
+        "accuracy": 0.6842105263157895
+      },
+      {
+        "bin": 4,
+        "n": 8,
+        "confidence": 0.4683412646620536,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 5,
+        "n": 16,
+        "confidence": 0.5493079361204338,
+        "accuracy": 0.6875
+      },
+      {
+        "bin": 6,
+        "n": 88,
+        "confidence": 0.628801528825138,
+        "accuracy": 0.4090909090909091
+      },
+      {
+        "bin": 7,
+        "n": 21,
+        "confidence": 0.7571242771847048,
+        "accuracy": 0.8571428571428571
+      },
+      {
+        "bin": 8,
+        "n": 28,
+        "confidence": 0.861785837283324,
+        "accuracy": 0.6071428571428571
+      },
+      {
+        "bin": 9,
+        "n": 20,
+        "confidence": 0.9348479446393766,
+        "accuracy": 1.0
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.5738789237668162,
+      0.6951793721973093
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "split": {
+    "threshold": 0.8,
+    "mode": "global",
+    "component_stats": {
+      "mode": "global",
+      "jaccard_threshold": 0.8,
+      "sample_count": 911,
+      "component_count": 247,
+      "largest_component_size": 67,
+      "edge_count": 5389,
+      "cross_label_edge_count": 3090,
+      "singleton_count": 150
+    }
+  },
+  "sizes": [
+    482,
+    206,
+    223
+  ],
+  "leakage": {
+    "threshold": 0.8,
+    "pair_count": 0,
+    "cross_label_pair_count": 0,
+    "max_jaccard": 0.7778,
+    "examples": [],
+    "leaky": false
+  }
+}

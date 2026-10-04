@@ -1,0 +1,29 @@
+# 辅助依赖与公开边界（W36–W38）
+
+## W38：公开错误字段与内部诊断
+
+实际adapter曾把_runtime_error原字符串放进公开error。新3项纯合成marker对照覆盖普通/信息不足/急症，用boolean记录整份响应是否含marker，内部诊断是否保留、内外error是否稳定code、方向/Safety是否与实时基准同；不保存原异常或真实凭证路径。
+
+before3失败→after0失败。公开error固定model_unavailable，内部runtime_error留诊断；人可读notice、available/abstain以及Safety优先不变，adapter状态恢复。输出元数据v3.1，非全部HTTP/安全错误路径审计。
+
+schema2 w38-model-error-before/after结果SHA分别4df1202d2c8c80b4a715babc371492ac7b8f2edbe5e78347555217cb8182c4c4与ec3e64e42658a57b3ddea9db7b0c8c3e5681d8f2c5f2a8ea2fffeb9d2b522aad。新增浏览器用合成不可用响应验证人可读提示而非技术code；与后端实际loader失败对照分开，不称浏览器真实服务器权重失效。
+
+## W37：共享adapter两种不可用入口
+
+新增8基准×2入口=16比较，不与W36的24项池化成临床病例。共享adapter注入loader返回None，以及无缓存且model_path指向固定不存在合成相对文件（真实权重未删除/移动）；因此内层htriage与顶层绑定服务都实际看到available=false、没有模型预测。
+
+16项中Safety/科室/defer均与实时基准相同；普通路径reason=model_unavailable，Safety优先时保该underlying reason但主出口为safety_gate_priority。全部adapter缓存/loader/error/path状态引用在上下文结束后恢复。实验不保存未受控error字符串，不证明模型之外的数据库/网络/GPU/整个网站失效可用。
+
+schema2 w37-shared-adapter-unavailable唯一执行，8/16/0失败，result SHA256 fd9fe34f3ef5ab38a6ceca257d50f89280bcea8db75688b6b304940c0432ba88；17针对测试通过。医疗/网站运行时未修改，W36的640/56/142未为本轮重复。属于两失效入口的工程独立性证据，不是临床准确率、整站灾备或全部错误类型覆盖。
+
+## W36：htriage helper对照与导入边界
+
+固定8输入，记录原公开Safety状态、科室及defer_resource_routing；再对composition.predict_disease_name应用不可用/无关高posterior/同无关低posterior三个受控替身，共24比较。所有比较不变，patch上下文已恢复。
+
+这是htriage内部helper依赖压力测试。顶层ApplicationService已绑定的真实adapter仍可能用于公开disease_prediction，**不能把本组当作整个模型离线演练**，也不是实际预测正确率、临床验证或模型选择。高/低数值是干预参数，不是患者患病概率。
+
+首目标13通过/1失败揭露真实导入顺序问题：composition先使用模型，再import app，永久sys.path.insert(0, model_dir)让后者导入模型CLI，缺网站字段。没有改测试顺序掩盖；按Recover Mode1定点改独立路径命名空间加载，inference包内相对导入、裸CLI保旧导入，不再修改sys.path或占裸inference/labels/train模块名。fresh子进程证明根app及搜索路径正确，包/裸CLI解析都通过。
+
+三固定数学对照（cough、high_fever、cough/headache/nausea）中，命名空间与原裸CLI predict_with_details完整结果均相同；权重SHA仍a84c74f8927fe4fd7df33ee9f07177b70739bb8176b39b9745b39904794f1ba7。输入策略v3.0/路线v4.7未变，不改模型数学函数、词表/JSON、医学规则或Safety；三样例不能证明所有环境或临床预测。
+
+唯一schema2执行w36-auxiliary-route-control，8基准/24比较/0失败，result SHA199a937f5cbad1ba2936a28639a62245d874d291c36dc86df1401e708b408d6e。独立数学JSON含固定CLI源码与权重哈希，不覆盖失败或旧训练。

@@ -150,11 +150,12 @@ def run_selective_routing(
     seed: int = 42,
     model_name: str = "logistic_regression_binary",
     feature_key: str | None = None,
+    fitted: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
-    from .direct_department import fit_direct_department_models, prepare_feature_sets
+    from .direct_department import fit_direct_department_models
 
     SIGNALS["combined"] = combined_signal
-    fitted = fit_direct_department_models(train, cal, test, seed=seed)
+    fitted = fitted if fitted is not None else fit_direct_department_models(train, cal, test, seed=seed)
     preds = fitted.get("_predictions", {}).get(model_name)
     if not preds:
         return {"error": f"missing predictions for {model_name}"}
@@ -163,7 +164,6 @@ def run_selective_routing(
 
     y_test = preds["y_true"]
     y_cal = [department_for(row["disease"]) for row in cal]
-    from .model_baselines import fit_logistic_regression, predict_proba
 
     # Default feature key from model name.
     if feature_key is None:
@@ -178,16 +178,11 @@ def run_selective_routing(
         else:
             feature_key = "symptom_binary"
 
-    y_train = [department_for(row["disease"]) for row in train]
-    features = prepare_feature_sets(train, cal, test)[feature_key]
-    if model_name.startswith("linear_svm"):
-        from .model_baselines import fit_linear_svm
-
-        model = fit_linear_svm(features["train"], y_train, epochs=80, lr=0.15, seed=seed)
-    else:
-        model = fit_logistic_regression(features["train"], y_train, epochs=70, lr=0.4, seed=seed)
+    state = fitted["_fitted"][model_name]
+    if feature_key != state["feature_key"]:
+        raise ValueError("selective feature key must match the fitted predictor")
     temp = float(fitted.get("temperatures", {}).get(model_name, 1.0))
-    cal_ranked = [predict_proba(model, feat, temperature=temp) for feat in features["cal"]]
+    cal_ranked = preds["cal_ranked_calibrated"]
     test_ranked = preds["ranked_calibrated"]
 
     signals = ("max_probability", "neg_entropy", "margin", "combined")
@@ -218,6 +213,8 @@ def run_selective_routing(
         "feature_key": feature_key,
         "seed": seed,
         "temperature": temp,
+        "model_id": state["model_id"],
+        "predictor_identity": "same model and training-fitted features on cal and test",
         "full_coverage": full,
         "risk_coverage": curves,
         "required_coverages_max_prob": required,

@@ -1,0 +1,3177 @@
+{
+  "scope": "research_only_declared_name_bridge_contract_not_model_or_clinical_accuracy",
+  "total": 200,
+  "failed": 0,
+  "baseline_contract_failures": 52,
+  "name_count": 50,
+  "added_alias_count": 16,
+  "conflicts": [],
+  "additions": [
+    {
+      "name": "关节疼痛",
+      "declared_code": "joint_pain"
+    },
+    {
+      "name": "口渴明显",
+      "declared_code": "excessive_thirst"
+    },
+    {
+      "name": "失去平衡",
+      "declared_code": "loss_of_balance"
+    },
+    {
+      "name": "尿色深",
+      "declared_code": "dark_urine"
+    },
+    {
+      "name": "尿量增多",
+      "declared_code": "polyuria"
+    },
+    {
+      "name": "心悸",
+      "declared_code": "palpitations"
+    },
+    {
+      "name": "心跳加快",
+      "declared_code": "fast_heart_rate"
+    },
+    {
+      "name": "意识异常",
+      "declared_code": "altered_sensorium"
+    },
+    {
+      "name": "淋巴结肿大",
+      "declared_code": "swelled_lymph_nodes"
+    },
+    {
+      "name": "眼睛发红",
+      "declared_code": "redness_of_eyes"
+    },
+    {
+      "name": "站立不稳",
+      "declared_code": "unsteadiness"
+    },
+    {
+      "name": "肌肉疼痛",
+      "declared_code": "muscle_pain"
+    },
+    {
+      "name": "血压升高",
+      "declared_code": "high_blood_pressure"
+    },
+    {
+      "name": "颈部疼痛",
+      "declared_code": "neck_pain"
+    },
+    {
+      "name": "食欲下降",
+      "declared_code": "loss_of_appetite"
+    },
+    {
+      "name": "鼻窦压痛",
+      "declared_code": "sinus_pressure"
+    }
+  ],
+  "rows": [
+    {
+      "declared_code": "abdominal_pain",
+      "declared_name": "腹痛",
+      "template": "report",
+      "text": "我有腹痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "abdominal_pain",
+      "declared_name": "腹痛",
+      "template": "denial",
+      "text": "我没有腹痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "abdominal_pain",
+      "declared_name": "腹痛",
+      "template": "existence_query",
+      "text": "我不确定是否有腹痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "abdominal_pain",
+      "declared_name": "腹痛",
+      "template": "history",
+      "text": "去年腹痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "acidity",
+      "declared_name": "反酸",
+      "template": "report",
+      "text": "我有反酸",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "acidity",
+      "declared_name": "反酸",
+      "template": "denial",
+      "text": "我没有反酸",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "acidity",
+      "declared_name": "反酸",
+      "template": "existence_query",
+      "text": "我不确定是否有反酸",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "acidity",
+      "declared_name": "反酸",
+      "template": "history",
+      "text": "去年反酸",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "altered_sensorium",
+      "declared_name": "意识异常",
+      "template": "report",
+      "text": "我有意识异常",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "altered_sensorium",
+      "declared_name": "意识异常",
+      "template": "denial",
+      "text": "我没有意识异常",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "altered_sensorium",
+      "declared_name": "意识异常",
+      "template": "existence_query",
+      "text": "我不确定是否有意识异常",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "altered_sensorium",
+      "declared_name": "意识异常",
+      "template": "history",
+      "text": "去年意识异常",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "back_pain",
+      "declared_name": "背痛",
+      "template": "report",
+      "text": "我有背痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "back_pain",
+      "declared_name": "背痛",
+      "template": "denial",
+      "text": "我没有背痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "back_pain",
+      "declared_name": "背痛",
+      "template": "existence_query",
+      "text": "我不确定是否有背痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "back_pain",
+      "declared_name": "背痛",
+      "template": "history",
+      "text": "去年背痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "blurred_and_distorted_vision",
+      "declared_name": "视物模糊",
+      "template": "report",
+      "text": "我有视物模糊",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "blurred_and_distorted_vision",
+      "declared_name": "视物模糊",
+      "template": "denial",
+      "text": "我没有视物模糊",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "blurred_and_distorted_vision",
+      "declared_name": "视物模糊",
+      "template": "existence_query",
+      "text": "我不确定是否有视物模糊",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "blurred_and_distorted_vision",
+      "declared_name": "视物模糊",
+      "template": "history",
+      "text": "去年视物模糊",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "breathlessness",
+      "declared_name": "呼吸困难",
+      "template": "report",
+      "text": "我有呼吸困难",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "breathlessness",
+      "declared_name": "呼吸困难",
+      "template": "denial",
+      "text": "我没有呼吸困难",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "breathlessness",
+      "declared_name": "呼吸困难",
+      "template": "existence_query",
+      "text": "我不确定是否有呼吸困难",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "breathlessness",
+      "declared_name": "呼吸困难",
+      "template": "history",
+      "text": "去年呼吸困难",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "burning_micturition",
+      "declared_name": "尿痛",
+      "template": "report",
+      "text": "我有尿痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "burning_micturition",
+      "declared_name": "尿痛",
+      "template": "denial",
+      "text": "我没有尿痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "burning_micturition",
+      "declared_name": "尿痛",
+      "template": "existence_query",
+      "text": "我不确定是否有尿痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "burning_micturition",
+      "declared_name": "尿痛",
+      "template": "history",
+      "text": "去年尿痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chest_pain",
+      "declared_name": "胸痛",
+      "template": "report",
+      "text": "我有胸痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chest_pain",
+      "declared_name": "胸痛",
+      "template": "denial",
+      "text": "我没有胸痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chest_pain",
+      "declared_name": "胸痛",
+      "template": "existence_query",
+      "text": "我不确定是否有胸痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chest_pain",
+      "declared_name": "胸痛",
+      "template": "history",
+      "text": "去年胸痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chills",
+      "declared_name": "寒战",
+      "template": "report",
+      "text": "我有寒战",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chills",
+      "declared_name": "寒战",
+      "template": "denial",
+      "text": "我没有寒战",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chills",
+      "declared_name": "寒战",
+      "template": "existence_query",
+      "text": "我不确定是否有寒战",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "chills",
+      "declared_name": "寒战",
+      "template": "history",
+      "text": "去年寒战",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "congestion",
+      "declared_name": "鼻塞",
+      "template": "report",
+      "text": "我有鼻塞",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "congestion",
+      "declared_name": "鼻塞",
+      "template": "denial",
+      "text": "我没有鼻塞",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "congestion",
+      "declared_name": "鼻塞",
+      "template": "existence_query",
+      "text": "我不确定是否有鼻塞",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "congestion",
+      "declared_name": "鼻塞",
+      "template": "history",
+      "text": "去年鼻塞",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "constipation",
+      "declared_name": "便秘",
+      "template": "report",
+      "text": "我有便秘",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "constipation",
+      "declared_name": "便秘",
+      "template": "denial",
+      "text": "我没有便秘",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "constipation",
+      "declared_name": "便秘",
+      "template": "existence_query",
+      "text": "我不确定是否有便秘",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "constipation",
+      "declared_name": "便秘",
+      "template": "history",
+      "text": "去年便秘",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "continuous_sneezing",
+      "declared_name": "连续打喷嚏",
+      "template": "report",
+      "text": "我有连续打喷嚏",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "continuous_sneezing",
+      "declared_name": "连续打喷嚏",
+      "template": "denial",
+      "text": "我没有连续打喷嚏",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "continuous_sneezing",
+      "declared_name": "连续打喷嚏",
+      "template": "existence_query",
+      "text": "我不确定是否有连续打喷嚏",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "continuous_sneezing",
+      "declared_name": "连续打喷嚏",
+      "template": "history",
+      "text": "去年连续打喷嚏",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "cough",
+      "declared_name": "咳嗽",
+      "template": "report",
+      "text": "我有咳嗽",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "cough",
+      "declared_name": "咳嗽",
+      "template": "denial",
+      "text": "我没有咳嗽",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "cough",
+      "declared_name": "咳嗽",
+      "template": "existence_query",
+      "text": "我不确定是否有咳嗽",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "cough",
+      "declared_name": "咳嗽",
+      "template": "history",
+      "text": "去年咳嗽",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dark_urine",
+      "declared_name": "尿色深",
+      "template": "report",
+      "text": "我有尿色深",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dark_urine",
+      "declared_name": "尿色深",
+      "template": "denial",
+      "text": "我没有尿色深",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dark_urine",
+      "declared_name": "尿色深",
+      "template": "existence_query",
+      "text": "我不确定是否有尿色深",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dark_urine",
+      "declared_name": "尿色深",
+      "template": "history",
+      "text": "去年尿色深",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "diarrhoea",
+      "declared_name": "腹泻",
+      "template": "report",
+      "text": "我有腹泻",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "diarrhoea",
+      "declared_name": "腹泻",
+      "template": "denial",
+      "text": "我没有腹泻",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "diarrhoea",
+      "declared_name": "腹泻",
+      "template": "existence_query",
+      "text": "我不确定是否有腹泻",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "diarrhoea",
+      "declared_name": "腹泻",
+      "template": "history",
+      "text": "去年腹泻",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dizziness",
+      "declared_name": "头晕",
+      "template": "report",
+      "text": "我有头晕",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dizziness",
+      "declared_name": "头晕",
+      "template": "denial",
+      "text": "我没有头晕",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dizziness",
+      "declared_name": "头晕",
+      "template": "existence_query",
+      "text": "我不确定是否有头晕",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "dizziness",
+      "declared_name": "头晕",
+      "template": "history",
+      "text": "去年头晕",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "excessive_thirst",
+      "declared_name": "口渴明显",
+      "template": "report",
+      "text": "我有口渴明显",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "excessive_thirst",
+      "declared_name": "口渴明显",
+      "template": "denial",
+      "text": "我没有口渴明显",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "excessive_thirst",
+      "declared_name": "口渴明显",
+      "template": "existence_query",
+      "text": "我不确定是否有口渴明显",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "excessive_thirst",
+      "declared_name": "口渴明显",
+      "template": "history",
+      "text": "去年口渴明显",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fast_heart_rate",
+      "declared_name": "心跳加快",
+      "template": "report",
+      "text": "我有心跳加快",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fast_heart_rate",
+      "declared_name": "心跳加快",
+      "template": "denial",
+      "text": "我没有心跳加快",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fast_heart_rate",
+      "declared_name": "心跳加快",
+      "template": "existence_query",
+      "text": "我不确定是否有心跳加快",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fast_heart_rate",
+      "declared_name": "心跳加快",
+      "template": "history",
+      "text": "去年心跳加快",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fatigue",
+      "declared_name": "乏力",
+      "template": "report",
+      "text": "我有乏力",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fatigue",
+      "declared_name": "乏力",
+      "template": "denial",
+      "text": "我没有乏力",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fatigue",
+      "declared_name": "乏力",
+      "template": "existence_query",
+      "text": "我不确定是否有乏力",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "fatigue",
+      "declared_name": "乏力",
+      "template": "history",
+      "text": "去年乏力",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "headache",
+      "declared_name": "头痛",
+      "template": "report",
+      "text": "我有头痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "headache",
+      "declared_name": "头痛",
+      "template": "denial",
+      "text": "我没有头痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "headache",
+      "declared_name": "头痛",
+      "template": "existence_query",
+      "text": "我不确定是否有头痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "headache",
+      "declared_name": "头痛",
+      "template": "history",
+      "text": "去年头痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_blood_pressure",
+      "declared_name": "血压升高",
+      "template": "report",
+      "text": "我有血压升高",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_blood_pressure",
+      "declared_name": "血压升高",
+      "template": "denial",
+      "text": "我没有血压升高",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_blood_pressure",
+      "declared_name": "血压升高",
+      "template": "existence_query",
+      "text": "我不确定是否有血压升高",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_blood_pressure",
+      "declared_name": "血压升高",
+      "template": "history",
+      "text": "去年血压升高",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_fever",
+      "declared_name": "高烧",
+      "template": "report",
+      "text": "我有高烧",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_fever",
+      "declared_name": "高烧",
+      "template": "denial",
+      "text": "我没有高烧",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_fever",
+      "declared_name": "高烧",
+      "template": "existence_query",
+      "text": "我不确定是否有高烧",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "high_fever",
+      "declared_name": "高烧",
+      "template": "history",
+      "text": "去年高烧",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "indigestion",
+      "declared_name": "消化不良",
+      "template": "report",
+      "text": "我有消化不良",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "indigestion",
+      "declared_name": "消化不良",
+      "template": "denial",
+      "text": "我没有消化不良",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "indigestion",
+      "declared_name": "消化不良",
+      "template": "existence_query",
+      "text": "我不确定是否有消化不良",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "indigestion",
+      "declared_name": "消化不良",
+      "template": "history",
+      "text": "去年消化不良",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "itching",
+      "declared_name": "瘙痒",
+      "template": "report",
+      "text": "我有瘙痒",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "itching",
+      "declared_name": "瘙痒",
+      "template": "denial",
+      "text": "我没有瘙痒",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "itching",
+      "declared_name": "瘙痒",
+      "template": "existence_query",
+      "text": "我不确定是否有瘙痒",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "itching",
+      "declared_name": "瘙痒",
+      "template": "history",
+      "text": "去年瘙痒",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "joint_pain",
+      "declared_name": "关节疼痛",
+      "template": "report",
+      "text": "我有关节疼痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "joint_pain",
+      "declared_name": "关节疼痛",
+      "template": "denial",
+      "text": "我没有关节疼痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "joint_pain",
+      "declared_name": "关节疼痛",
+      "template": "existence_query",
+      "text": "我不确定是否有关节疼痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "joint_pain",
+      "declared_name": "关节疼痛",
+      "template": "history",
+      "text": "去年关节疼痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_appetite",
+      "declared_name": "食欲下降",
+      "template": "report",
+      "text": "我有食欲下降",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_appetite",
+      "declared_name": "食欲下降",
+      "template": "denial",
+      "text": "我没有食欲下降",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_appetite",
+      "declared_name": "食欲下降",
+      "template": "existence_query",
+      "text": "我不确定是否有食欲下降",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_appetite",
+      "declared_name": "食欲下降",
+      "template": "history",
+      "text": "去年食欲下降",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_balance",
+      "declared_name": "失去平衡",
+      "template": "report",
+      "text": "我有失去平衡",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_balance",
+      "declared_name": "失去平衡",
+      "template": "denial",
+      "text": "我没有失去平衡",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_balance",
+      "declared_name": "失去平衡",
+      "template": "existence_query",
+      "text": "我不确定是否有失去平衡",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_balance",
+      "declared_name": "失去平衡",
+      "template": "history",
+      "text": "去年失去平衡",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_smell",
+      "declared_name": "嗅觉减退",
+      "template": "report",
+      "text": "我有嗅觉减退",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_smell",
+      "declared_name": "嗅觉减退",
+      "template": "denial",
+      "text": "我没有嗅觉减退",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_smell",
+      "declared_name": "嗅觉减退",
+      "template": "existence_query",
+      "text": "我不确定是否有嗅觉减退",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "loss_of_smell",
+      "declared_name": "嗅觉减退",
+      "template": "history",
+      "text": "去年嗅觉减退",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "malaise",
+      "declared_name": "全身不适",
+      "template": "report",
+      "text": "我有全身不适",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "malaise",
+      "declared_name": "全身不适",
+      "template": "denial",
+      "text": "我没有全身不适",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "malaise",
+      "declared_name": "全身不适",
+      "template": "existence_query",
+      "text": "我不确定是否有全身不适",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "malaise",
+      "declared_name": "全身不适",
+      "template": "history",
+      "text": "去年全身不适",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "mild_fever",
+      "declared_name": "低烧",
+      "template": "report",
+      "text": "我有低烧",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "mild_fever",
+      "declared_name": "低烧",
+      "template": "denial",
+      "text": "我没有低烧",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "mild_fever",
+      "declared_name": "低烧",
+      "template": "existence_query",
+      "text": "我不确定是否有低烧",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "mild_fever",
+      "declared_name": "低烧",
+      "template": "history",
+      "text": "去年低烧",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "muscle_pain",
+      "declared_name": "肌肉疼痛",
+      "template": "report",
+      "text": "我有肌肉疼痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "muscle_pain",
+      "declared_name": "肌肉疼痛",
+      "template": "denial",
+      "text": "我没有肌肉疼痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "muscle_pain",
+      "declared_name": "肌肉疼痛",
+      "template": "existence_query",
+      "text": "我不确定是否有肌肉疼痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "muscle_pain",
+      "declared_name": "肌肉疼痛",
+      "template": "history",
+      "text": "去年肌肉疼痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "nausea",
+      "declared_name": "恶心",
+      "template": "report",
+      "text": "我有恶心",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "nausea",
+      "declared_name": "恶心",
+      "template": "denial",
+      "text": "我没有恶心",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "nausea",
+      "declared_name": "恶心",
+      "template": "existence_query",
+      "text": "我不确定是否有恶心",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "nausea",
+      "declared_name": "恶心",
+      "template": "history",
+      "text": "去年恶心",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "neck_pain",
+      "declared_name": "颈部疼痛",
+      "template": "report",
+      "text": "我有颈部疼痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "neck_pain",
+      "declared_name": "颈部疼痛",
+      "template": "denial",
+      "text": "我没有颈部疼痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "neck_pain",
+      "declared_name": "颈部疼痛",
+      "template": "existence_query",
+      "text": "我不确定是否有颈部疼痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "neck_pain",
+      "declared_name": "颈部疼痛",
+      "template": "history",
+      "text": "去年颈部疼痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "palpitations",
+      "declared_name": "心悸",
+      "template": "report",
+      "text": "我有心悸",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "palpitations",
+      "declared_name": "心悸",
+      "template": "denial",
+      "text": "我没有心悸",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "palpitations",
+      "declared_name": "心悸",
+      "template": "existence_query",
+      "text": "我不确定是否有心悸",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "palpitations",
+      "declared_name": "心悸",
+      "template": "history",
+      "text": "去年心悸",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "phlegm",
+      "declared_name": "有痰",
+      "template": "report",
+      "text": "我有有痰",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "phlegm",
+      "declared_name": "有痰",
+      "template": "denial",
+      "text": "我没有有痰",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "phlegm",
+      "declared_name": "有痰",
+      "template": "existence_query",
+      "text": "我不确定是否有有痰",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "phlegm",
+      "declared_name": "有痰",
+      "template": "history",
+      "text": "去年有痰",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "polyuria",
+      "declared_name": "尿量增多",
+      "template": "report",
+      "text": "我有尿量增多",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "polyuria",
+      "declared_name": "尿量增多",
+      "template": "denial",
+      "text": "我没有尿量增多",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "polyuria",
+      "declared_name": "尿量增多",
+      "template": "existence_query",
+      "text": "我不确定是否有尿量增多",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "polyuria",
+      "declared_name": "尿量增多",
+      "template": "history",
+      "text": "去年尿量增多",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "redness_of_eyes",
+      "declared_name": "眼睛发红",
+      "template": "report",
+      "text": "我有眼睛发红",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "redness_of_eyes",
+      "declared_name": "眼睛发红",
+      "template": "denial",
+      "text": "我没有眼睛发红",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "redness_of_eyes",
+      "declared_name": "眼睛发红",
+      "template": "existence_query",
+      "text": "我不确定是否有眼睛发红",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "redness_of_eyes",
+      "declared_name": "眼睛发红",
+      "template": "history",
+      "text": "去年眼睛发红",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "runny_nose",
+      "declared_name": "流鼻涕",
+      "template": "report",
+      "text": "我有流鼻涕",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "runny_nose",
+      "declared_name": "流鼻涕",
+      "template": "denial",
+      "text": "我没有流鼻涕",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "runny_nose",
+      "declared_name": "流鼻涕",
+      "template": "existence_query",
+      "text": "我不确定是否有流鼻涕",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "runny_nose",
+      "declared_name": "流鼻涕",
+      "template": "history",
+      "text": "去年流鼻涕",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sinus_pressure",
+      "declared_name": "鼻窦压痛",
+      "template": "report",
+      "text": "我有鼻窦压痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sinus_pressure",
+      "declared_name": "鼻窦压痛",
+      "template": "denial",
+      "text": "我没有鼻窦压痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sinus_pressure",
+      "declared_name": "鼻窦压痛",
+      "template": "existence_query",
+      "text": "我不确定是否有鼻窦压痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sinus_pressure",
+      "declared_name": "鼻窦压痛",
+      "template": "history",
+      "text": "去年鼻窦压痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "skin_rash",
+      "declared_name": "皮疹",
+      "template": "report",
+      "text": "我有皮疹",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "skin_rash",
+      "declared_name": "皮疹",
+      "template": "denial",
+      "text": "我没有皮疹",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "skin_rash",
+      "declared_name": "皮疹",
+      "template": "existence_query",
+      "text": "我不确定是否有皮疹",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "skin_rash",
+      "declared_name": "皮疹",
+      "template": "history",
+      "text": "去年皮疹",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "spinning_movements",
+      "declared_name": "眩晕",
+      "template": "report",
+      "text": "我有眩晕",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "spinning_movements",
+      "declared_name": "眩晕",
+      "template": "denial",
+      "text": "我没有眩晕",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "spinning_movements",
+      "declared_name": "眩晕",
+      "template": "existence_query",
+      "text": "我不确定是否有眩晕",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "spinning_movements",
+      "declared_name": "眩晕",
+      "template": "history",
+      "text": "去年眩晕",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "stomach_pain",
+      "declared_name": "胃痛",
+      "template": "report",
+      "text": "我有胃痛",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "stomach_pain",
+      "declared_name": "胃痛",
+      "template": "denial",
+      "text": "我没有胃痛",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "stomach_pain",
+      "declared_name": "胃痛",
+      "template": "existence_query",
+      "text": "我不确定是否有胃痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "stomach_pain",
+      "declared_name": "胃痛",
+      "template": "history",
+      "text": "去年胃痛",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sweating",
+      "declared_name": "出汗",
+      "template": "report",
+      "text": "我有出汗",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sweating",
+      "declared_name": "出汗",
+      "template": "denial",
+      "text": "我没有出汗",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sweating",
+      "declared_name": "出汗",
+      "template": "existence_query",
+      "text": "我不确定是否有出汗",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "sweating",
+      "declared_name": "出汗",
+      "template": "history",
+      "text": "去年出汗",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "swelled_lymph_nodes",
+      "declared_name": "淋巴结肿大",
+      "template": "report",
+      "text": "我有淋巴结肿大",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "swelled_lymph_nodes",
+      "declared_name": "淋巴结肿大",
+      "template": "denial",
+      "text": "我没有淋巴结肿大",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "swelled_lymph_nodes",
+      "declared_name": "淋巴结肿大",
+      "template": "existence_query",
+      "text": "我不确定是否有淋巴结肿大",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "swelled_lymph_nodes",
+      "declared_name": "淋巴结肿大",
+      "template": "history",
+      "text": "去年淋巴结肿大",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "throat_irritation",
+      "declared_name": "咽喉不适",
+      "template": "report",
+      "text": "我有咽喉不适",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "throat_irritation",
+      "declared_name": "咽喉不适",
+      "template": "denial",
+      "text": "我没有咽喉不适",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "throat_irritation",
+      "declared_name": "咽喉不适",
+      "template": "existence_query",
+      "text": "我不确定是否有咽喉不适",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "throat_irritation",
+      "declared_name": "咽喉不适",
+      "template": "history",
+      "text": "去年咽喉不适",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "unsteadiness",
+      "declared_name": "站立不稳",
+      "template": "report",
+      "text": "我有站立不稳",
+      "expected_dictionary_state": "present",
+      "baseline_states": [],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "unsteadiness",
+      "declared_name": "站立不稳",
+      "template": "denial",
+      "text": "我没有站立不稳",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "unsteadiness",
+      "declared_name": "站立不稳",
+      "template": "existence_query",
+      "text": "我不确定是否有站立不稳",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "unsteadiness",
+      "declared_name": "站立不稳",
+      "template": "history",
+      "text": "去年站立不稳",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": false,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "vomiting",
+      "declared_name": "呕吐",
+      "template": "report",
+      "text": "我有呕吐",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "vomiting",
+      "declared_name": "呕吐",
+      "template": "denial",
+      "text": "我没有呕吐",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "vomiting",
+      "declared_name": "呕吐",
+      "template": "existence_query",
+      "text": "我不确定是否有呕吐",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "vomiting",
+      "declared_name": "呕吐",
+      "template": "history",
+      "text": "去年呕吐",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "weight_loss",
+      "declared_name": "体重下降",
+      "template": "report",
+      "text": "我有体重下降",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "weight_loss",
+      "declared_name": "体重下降",
+      "template": "denial",
+      "text": "我没有体重下降",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "weight_loss",
+      "declared_name": "体重下降",
+      "template": "existence_query",
+      "text": "我不确定是否有体重下降",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "weight_loss",
+      "declared_name": "体重下降",
+      "template": "history",
+      "text": "去年体重下降",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowing_of_eyes",
+      "declared_name": "眼睛发黄",
+      "template": "report",
+      "text": "我有眼睛发黄",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowing_of_eyes",
+      "declared_name": "眼睛发黄",
+      "template": "denial",
+      "text": "我没有眼睛发黄",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowing_of_eyes",
+      "declared_name": "眼睛发黄",
+      "template": "existence_query",
+      "text": "我不确定是否有眼睛发黄",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowing_of_eyes",
+      "declared_name": "眼睛发黄",
+      "template": "history",
+      "text": "去年眼睛发黄",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowish_skin",
+      "declared_name": "皮肤发黄",
+      "template": "report",
+      "text": "我有皮肤发黄",
+      "expected_dictionary_state": "present",
+      "baseline_states": [
+        "present"
+      ],
+      "bridge_states": [
+        "present"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowish_skin",
+      "declared_name": "皮肤发黄",
+      "template": "denial",
+      "text": "我没有皮肤发黄",
+      "expected_dictionary_state": "absent",
+      "baseline_states": [
+        "absent"
+      ],
+      "bridge_states": [
+        "absent"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowish_skin",
+      "declared_name": "皮肤发黄",
+      "template": "existence_query",
+      "text": "我不确定是否有皮肤发黄",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    },
+    {
+      "declared_code": "yellowish_skin",
+      "declared_name": "皮肤发黄",
+      "template": "history",
+      "text": "去年皮肤发黄",
+      "expected_dictionary_state": "unknown",
+      "baseline_states": [
+        "unknown"
+      ],
+      "bridge_states": [
+        "unknown"
+      ],
+      "baseline_contract_pass": true,
+      "bridge_contract_pass": true,
+      "clinical_semantics_verified": false
+    }
+  ],
+  "clinical_accuracy": null,
+  "model_fits": 0,
+  "serving_dictionary_changed": false,
+  "untranslated_codes_filled": 0
+}

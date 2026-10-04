@@ -1,0 +1,112 @@
+{
+  "scope": "synthetic_entity_type_contract_not_clinical_validation",
+  "total": 7,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "中医",
+      "known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "中医内科",
+      "expected_direction": "中医内科",
+      "status": "ROUTINE",
+      "invented_candidate": false,
+      "pass": true
+    },
+    {
+      "text": "针灸",
+      "known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "针灸推拿科",
+      "expected_direction": "针灸推拿科",
+      "status": "ROUTINE",
+      "invented_candidate": false,
+      "pass": true
+    },
+    {
+      "text": "推拿",
+      "known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "针灸推拿科",
+      "expected_direction": "针灸推拿科",
+      "status": "ROUTINE",
+      "invented_candidate": false,
+      "pass": true
+    },
+    {
+      "text": "产科",
+      "known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "产科",
+      "expected_direction": "产科",
+      "status": "ROUTINE",
+      "invented_candidate": false,
+      "pass": true
+    },
+    {
+      "text": "产检",
+      "known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "妇产科",
+      "expected_direction": "妇产科",
+      "status": "ROUTINE",
+      "invented_candidate": false,
+      "pass": true
+    },
+    {
+      "text": "分娩",
+      "known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "产科",
+      "expected_direction": "产科",
+      "status": "ROUTINE",
+      "invented_candidate": false,
+      "pass": true
+    },
+    {
+      "text": "产后",
+      "known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "产科",
+      "expected_direction": "产科",
+      "status": "ROUTINE",
+      "invented_candidate": false,
+      "pass": true
+    }
+  ]
+}

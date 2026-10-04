@@ -15,6 +15,7 @@ from backend.app.domain.recommendation.features import EXCLUDED_EVIDENCE_NOTICES
 from backend.app.domain.recommendation.scoring import rebalance_weights
 from backend.app.domain.recommendation.routing_preferences import normalize_routing_preferences
 from backend.app.domain.recommendation.visit_intent import ranking_scenario_for_visit_intent
+from backend.app.domain.triage.safety_gate import TriageStatus, triage_status_from_legacy
 
 
 @dataclass(frozen=True)
@@ -67,9 +68,11 @@ class RecommendationApplicationService:
         effective_scenario = ranking_scenario
         preferences = normalize_routing_preferences(context.routing_preferences)
         resource_strategy = self.resource_strategy(triage, context.expert_preference)
+        routing_deferred = bool(triage.get("defer_resource_routing"))
+        emergency = triage_status_from_legacy(triage) is TriageStatus.EMERGENCY
         # District preference participates only when a usable district exists.
         district_usable = bool(context.district) and context.location_source in ("district", "geolocation")
-        hospitals = self.recommend_hospitals(
+        hospitals = [] if routing_deferred else self.recommend_hospitals(
             context.condition,
             context.user_lat,
             context.user_lng,
@@ -77,7 +80,9 @@ class RecommendationApplicationService:
             district_preference=preferences["district_preference"] if district_usable else "any_district",
             user_district=context.district if district_usable else None,
         )
-        if enhanced or self.has_real_doctors:
+        if routing_deferred or emergency:
+            doctors = []
+        elif enhanced or self.has_real_doctors:
             doctors = self.enhanced_recommend_doctors(
                 context.condition,
                 effective_scenario,
@@ -103,7 +108,7 @@ class RecommendationApplicationService:
                     item["reasons"] = notes[:4]
                 boosted.append(item)
             doctors = sorted(boosted, key=lambda row: -float(row.get("match_score") or 0.0))
-        matched_department = triage.get("matched_department") or self.match_department(context.condition)
+        matched_department = triage.get("matched_department") if "matched_department" in triage else self.match_department(context.condition)
         doctor_weights = self.enhanced_weights.get(effective_scenario, self.enhanced_weights["surgery"])
         # Distance preference is resolved inside enhanced_recommend_doctors
         # before scoring; weights_used reflects that resolved profile.
@@ -167,6 +172,17 @@ class RecommendationApplicationService:
             result["district_preference_notice"] = "当前没有可用区域信息，本次未使用跨区偏好。"
         if not enhanced:
             result["total_real_doctors"] = self.real_doctor_count
+        if routing_deferred:
+            result.update({
+                "ranking_notice": "危险信号尚未确认，本次暂不进行医院或医生排序；请先补充信息并结合专业复核。",
+                "weights_used": {}, "hospital_weights_used": {},
+                "feature_availability": {"location": context.user_lat is not None and context.user_lng is not None, "distance": False, "transit": False},
+            })
+        elif emergency:
+            result.update({
+                "weights_used": {},
+                "ranking_notice": "急症优先，本次不进行普通医生排序；医院仅为急症资源目录参考，非实时接诊保证，请优先急救或急诊评估。",
+            })
         if safety_first:
             return dict(self.publish_safety_first(result, triage))
         return result

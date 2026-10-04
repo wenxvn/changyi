@@ -1,0 +1,5109 @@
+{
+  "scope": "research_only_cal_selected_case_renderer_ensemble_not_clinical_or_single_input_policy",
+  "total": 30,
+  "failed": 0,
+  "source_result_sha256": "3c911adaf1dbafa9d876d7b5960f2e0ff4397fa5a60010393eaa7a5be3c42603",
+  "saved_models_verified": 30,
+  "new_fits": 0,
+  "temperature_changed": false,
+  "clinical_accuracy": null,
+  "selection_inputs": "cal_cases_only_before_test",
+  "summary": {
+    "current_alias": {
+      "test_cases": 912,
+      "accepted": 419,
+      "abstained": 493,
+      "coverage": 0.4594298245614035,
+      "retained_accuracy": 0.5465393794749404,
+      "no_admissible_cal_jobs": 5,
+      "nonempty_test_jobs": 10,
+      "test_target_met_jobs": 2,
+      "unseen_cases": 82,
+      "unseen_accepted": 25
+    },
+    "declared_name_bridge": {
+      "test_cases": 912,
+      "accepted": 281,
+      "abstained": 631,
+      "coverage": 0.3081140350877193,
+      "retained_accuracy": 0.5693950177935944,
+      "no_admissible_cal_jobs": 8,
+      "nonempty_test_jobs": 7,
+      "test_target_met_jobs": 1,
+      "unseen_cases": 82,
+      "unseen_accepted": 7
+    }
+  },
+  "records": [
+    {
+      "seed": 42,
+      "fold": 0,
+      "method": "current_alias",
+      "model_identity_sha256": "98877abac94148ad801c040d04410330b585edb97f6ffed6cc48c20d7de729df",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.5510204081632653,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.5510204081632653,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.5510204081632653,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.5510204081632653,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.5510204081632653,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.5510204081632653,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 48,
+            "retained_groups": 12,
+            "accuracy": 0.5625,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 46,
+            "retained_groups": 11,
+            "accuracy": 0.5652173913043478,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 42,
+            "retained_groups": 11,
+            "accuracy": 0.5952380952380952,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 41,
+            "retained_groups": 11,
+            "accuracy": 0.6097560975609756,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 37,
+            "retained_groups": 10,
+            "accuracy": 0.6756756756756757,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 36,
+            "retained_groups": 10,
+            "accuracy": 0.6944444444444444,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 31,
+            "retained_groups": 10,
+            "accuracy": 0.6451612903225806,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 31,
+            "retained_groups": 10,
+            "accuracy": 0.6451612903225806,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 19,
+            "retained_groups": 8,
+            "accuracy": 0.631578947368421,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 8,
+            "retained_groups": 7,
+            "accuracy": 0.875,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 7,
+            "retained_groups": 7,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 7,
+            "retained_groups": 7,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 49,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 90,
+      "accepted": 0,
+      "abstained": 90,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 23,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 0,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "2262950f0e0853b7ec1183ef2fe5921565c90fab60da9702211aef0b63679887",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.6326530612244898,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.6326530612244898,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.6326530612244898,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.6326530612244898,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.6326530612244898,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.6326530612244898,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 49,
+            "retained_groups": 12,
+            "accuracy": 0.6326530612244898,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 44,
+            "retained_groups": 11,
+            "accuracy": 0.6136363636363636,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 35,
+            "retained_groups": 11,
+            "accuracy": 0.6,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 31,
+            "retained_groups": 9,
+            "accuracy": 0.5483870967741935,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 27,
+            "retained_groups": 7,
+            "accuracy": 0.5925925925925926,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 26,
+            "retained_groups": 7,
+            "accuracy": 0.5769230769230769,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 26,
+            "retained_groups": 7,
+            "accuracy": 0.5769230769230769,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 19,
+            "retained_groups": 6,
+            "accuracy": 0.631578947368421,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 17,
+            "retained_groups": 6,
+            "accuracy": 0.5882352941176471,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 13,
+            "retained_groups": 6,
+            "accuracy": 0.6923076923076923,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 12,
+            "retained_groups": 6,
+            "accuracy": 0.75,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 7,
+            "retained_groups": 2,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 3,
+            "retained_groups": 2,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 49,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 90,
+      "accepted": 0,
+      "abstained": 90,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 23,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 1,
+      "method": "current_alias",
+      "model_identity_sha256": "309c6298e65bc2da57dc3c539365c48681efa470e7abdb714b530cdc4fab30d2",
+      "policy": {
+        "threshold": 0.7000000000000001,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6949152542372882,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6949152542372882,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6949152542372882,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6949152542372882,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6949152542372882,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6949152542372882,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.7068965517241379,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.7068965517241379,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.7192982456140351,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 55,
+            "retained_groups": 11,
+            "accuracy": 0.7454545454545455,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 54,
+            "retained_groups": 11,
+            "accuracy": 0.7407407407407407,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 47,
+            "retained_groups": 11,
+            "accuracy": 0.7021276595744681,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 42,
+            "retained_groups": 11,
+            "accuracy": 0.7619047619047619,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 38,
+            "retained_groups": 11,
+            "accuracy": 0.7894736842105263,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 28,
+            "retained_groups": 11,
+            "accuracy": 0.8571428571428571,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 27,
+            "retained_groups": 10,
+            "accuracy": 0.8518518518518519,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 23,
+            "retained_groups": 8,
+            "accuracy": 0.8695652173913043,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 20,
+            "retained_groups": 7,
+            "accuracy": 0.95,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 11,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 59,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 41,
+      "accepted": 19,
+      "abstained": 22,
+      "accepted_correct": 16,
+      "retained_accuracy": 0.8421052631578947,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": true
+    },
+    {
+      "seed": 42,
+      "fold": 1,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "f6aab3e7a3312050cfb0a2c0c19164c3a642c1d005c8f786cd01a92f9a7e8fd5",
+      "policy": {
+        "threshold": 0.5,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6779661016949152,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6779661016949152,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6779661016949152,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6779661016949152,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.6779661016949152,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.7017543859649122,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 56,
+            "retained_groups": 12,
+            "accuracy": 0.7142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 52,
+            "retained_groups": 12,
+            "accuracy": 0.7692307692307693,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 51,
+            "retained_groups": 12,
+            "accuracy": 0.7843137254901961,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 48,
+            "retained_groups": 10,
+            "accuracy": 0.8125,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 45,
+            "retained_groups": 9,
+            "accuracy": 0.8,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 39,
+            "retained_groups": 9,
+            "accuracy": 0.7692307692307693,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 37,
+            "retained_groups": 9,
+            "accuracy": 0.7837837837837838,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 33,
+            "retained_groups": 9,
+            "accuracy": 0.7878787878787878,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 24,
+            "retained_groups": 9,
+            "accuracy": 0.75,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 23,
+            "retained_groups": 9,
+            "accuracy": 0.782608695652174,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 20,
+            "retained_groups": 7,
+            "accuracy": 0.8,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 13,
+            "retained_groups": 4,
+            "accuracy": 0.8461538461538461,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 10,
+            "retained_groups": 3,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 59,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 41,
+      "accepted": 34,
+      "abstained": 7,
+      "accepted_correct": 22,
+      "retained_accuracy": 0.6470588235294118,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 2,
+      "method": "current_alias",
+      "model_identity_sha256": "a3e381a475e67f87bba027c7538d69eafba802c88b2e046630fcd7d348eb3fab",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.43859649122807015,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.43859649122807015,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.43859649122807015,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.43859649122807015,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.43859649122807015,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 44,
+            "retained_groups": 10,
+            "accuracy": 0.4090909090909091,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 41,
+            "retained_groups": 9,
+            "accuracy": 0.3902439024390244,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 39,
+            "retained_groups": 8,
+            "accuracy": 0.38461538461538464,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 36,
+            "retained_groups": 6,
+            "accuracy": 0.3333333333333333,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 35,
+            "retained_groups": 6,
+            "accuracy": 0.34285714285714286,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 29,
+            "retained_groups": 5,
+            "accuracy": 0.3793103448275862,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 21,
+            "retained_groups": 5,
+            "accuracy": 0.19047619047619047,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 18,
+            "retained_groups": 4,
+            "accuracy": 0.16666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 15,
+            "retained_groups": 2,
+            "accuracy": 0.06666666666666667,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 15,
+            "retained_groups": 2,
+            "accuracy": 0.06666666666666667,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 10,
+            "retained_groups": 2,
+            "accuracy": 0.1,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 7,
+            "retained_groups": 2,
+            "accuracy": 0.14285714285714285,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 2,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 57,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 66,
+      "accepted": 0,
+      "abstained": 66,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 2,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "61510c8e583fa4c57aa747df696d530e27ac1759f4ce8dbd2b38d29dbff3d968",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.3508771929824561,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.3508771929824561,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.3508771929824561,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 56,
+            "retained_groups": 12,
+            "accuracy": 0.3392857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 50,
+            "retained_groups": 11,
+            "accuracy": 0.32,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 46,
+            "retained_groups": 10,
+            "accuracy": 0.2826086956521739,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 37,
+            "retained_groups": 7,
+            "accuracy": 0.16216216216216217,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 29,
+            "retained_groups": 3,
+            "accuracy": 0.06896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 29,
+            "retained_groups": 3,
+            "accuracy": 0.06896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 28,
+            "retained_groups": 3,
+            "accuracy": 0.07142857142857142,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 24,
+            "retained_groups": 3,
+            "accuracy": 0.08333333333333333,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 22,
+            "retained_groups": 2,
+            "accuracy": 0.045454545454545456,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 20,
+            "retained_groups": 2,
+            "accuracy": 0.05,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 19,
+            "retained_groups": 2,
+            "accuracy": 0.05263157894736842,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 15,
+            "retained_groups": 2,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 11,
+            "retained_groups": 2,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 6,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 2,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 57,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 66,
+      "accepted": 0,
+      "abstained": 66,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 3,
+      "method": "current_alias",
+      "model_identity_sha256": "2bfe482f8c983631e86a65e36c9759316a0d58a7a279f0983a2301e5441df538",
+      "policy": {
+        "threshold": 0.5,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.40540540540540543,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.40540540540540543,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.40540540540540543,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.40540540540540543,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 35,
+            "retained_groups": 10,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 31,
+            "retained_groups": 10,
+            "accuracy": 0.45161290322580644,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 21,
+            "retained_groups": 8,
+            "accuracy": 0.6190476190476191,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 19,
+            "retained_groups": 7,
+            "accuracy": 0.6842105263157895,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 16,
+            "retained_groups": 7,
+            "accuracy": 0.6875,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 15,
+            "retained_groups": 7,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 11,
+            "retained_groups": 6,
+            "accuracy": 0.9090909090909091,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 10,
+            "retained_groups": 5,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 9,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 9,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 9,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 37,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 45,
+      "accepted": 15,
+      "abstained": 30,
+      "accepted_correct": 9,
+      "retained_accuracy": 0.6,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 3,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "30d4a574eb86caf80b0beb8e948e4a23f2ce927a7ab4e48d89a1e48f85692a62",
+      "policy": {
+        "threshold": 0.45,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.43243243243243246,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.43243243243243246,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.43243243243243246,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 37,
+            "retained_groups": 12,
+            "accuracy": 0.43243243243243246,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 35,
+            "retained_groups": 11,
+            "accuracy": 0.45714285714285713,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 34,
+            "retained_groups": 10,
+            "accuracy": 0.4411764705882353,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 21,
+            "retained_groups": 9,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 21,
+            "retained_groups": 9,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 17,
+            "retained_groups": 7,
+            "accuracy": 0.5882352941176471,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 11,
+            "retained_groups": 6,
+            "accuracy": 0.8181818181818182,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 9,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 9,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 3,
+            "retained_groups": 3,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 3,
+            "retained_groups": 3,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 37,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 45,
+      "accepted": 13,
+      "abstained": 32,
+      "accepted_correct": 5,
+      "retained_accuracy": 0.38461538461538464,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 4,
+      "method": "current_alias",
+      "model_identity_sha256": "1627ab59437b293780ebebc6affdb54ec7e88bb14dd9733d5cedd87d2e2b0188",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 41,
+            "retained_groups": 12,
+            "accuracy": 0.4878048780487805,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 39,
+            "retained_groups": 11,
+            "accuracy": 0.5128205128205128,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 37,
+            "retained_groups": 10,
+            "accuracy": 0.5135135135135135,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 35,
+            "retained_groups": 10,
+            "accuracy": 0.5142857142857142,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 34,
+            "retained_groups": 9,
+            "accuracy": 0.5294117647058824,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 27,
+            "retained_groups": 9,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 22,
+            "retained_groups": 6,
+            "accuracy": 0.6363636363636364,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 14,
+            "retained_groups": 6,
+            "accuracy": 0.7857142857142857,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 7,
+            "retained_groups": 4,
+            "accuracy": 0.7142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 4,
+            "retained_groups": 3,
+            "accuracy": 0.75,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 3,
+            "retained_groups": 3,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 42,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 62,
+      "accepted": 0,
+      "abstained": 62,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 42,
+      "fold": 4,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "cbd5f188e3f7d32786d3e6c175043635b8ede341b19c5d9fcdb423a45f6ca45b",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.47619047619047616,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.47619047619047616,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.47619047619047616,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.47619047619047616,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 42,
+            "retained_groups": 12,
+            "accuracy": 0.47619047619047616,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 41,
+            "retained_groups": 12,
+            "accuracy": 0.4878048780487805,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 38,
+            "retained_groups": 10,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 37,
+            "retained_groups": 9,
+            "accuracy": 0.5135135135135135,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 30,
+            "retained_groups": 8,
+            "accuracy": 0.43333333333333335,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 28,
+            "retained_groups": 8,
+            "accuracy": 0.4642857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 25,
+            "retained_groups": 8,
+            "accuracy": 0.48,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 19,
+            "retained_groups": 6,
+            "accuracy": 0.47368421052631576,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 12,
+            "retained_groups": 5,
+            "accuracy": 0.75,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 12,
+            "retained_groups": 5,
+            "accuracy": 0.75,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 8,
+            "retained_groups": 4,
+            "accuracy": 0.875,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 5,
+            "retained_groups": 3,
+            "accuracy": 0.8,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 42,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 62,
+      "accepted": 0,
+      "abstained": 62,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 0,
+      "method": "current_alias",
+      "model_identity_sha256": "987725cf4c4cd685f87ffd461c6e2340d87673896d8994e0090c51c13d6da628",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.3142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.3142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.3142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.3142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.3142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 29,
+            "retained_groups": 8,
+            "accuracy": 0.3448275862068966,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 27,
+            "retained_groups": 7,
+            "accuracy": 0.37037037037037035,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 27,
+            "retained_groups": 7,
+            "accuracy": 0.37037037037037035,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 27,
+            "retained_groups": 7,
+            "accuracy": 0.37037037037037035,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 24,
+            "retained_groups": 7,
+            "accuracy": 0.4166666666666667,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 18,
+            "retained_groups": 6,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 17,
+            "retained_groups": 6,
+            "accuracy": 0.5882352941176471,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 17,
+            "retained_groups": 6,
+            "accuracy": 0.5882352941176471,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 13,
+            "retained_groups": 6,
+            "accuracy": 0.46153846153846156,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 9,
+            "retained_groups": 5,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 7,
+            "retained_groups": 4,
+            "accuracy": 0.7142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 5,
+            "retained_groups": 4,
+            "accuracy": 0.8,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 35,
+        "cal_unseen_cases": 6
+      },
+      "test_cases": 47,
+      "accepted": 0,
+      "abstained": 47,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 13,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 0,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "b373be57e686ee184a4f05e0564df5942af0372c31b2eb2ea296608dfd3890a8",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 35,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 33,
+            "retained_groups": 11,
+            "accuracy": 0.42424242424242425,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 31,
+            "retained_groups": 10,
+            "accuracy": 0.41935483870967744,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 27,
+            "retained_groups": 10,
+            "accuracy": 0.48148148148148145,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 22,
+            "retained_groups": 10,
+            "accuracy": 0.5909090909090909,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 22,
+            "retained_groups": 10,
+            "accuracy": 0.5909090909090909,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 14,
+            "retained_groups": 7,
+            "accuracy": 0.42857142857142855,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 11,
+            "retained_groups": 4,
+            "accuracy": 0.45454545454545453,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 11,
+            "retained_groups": 4,
+            "accuracy": 0.45454545454545453,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 10,
+            "retained_groups": 4,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 10,
+            "retained_groups": 4,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 8,
+            "retained_groups": 4,
+            "accuracy": 0.375,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 5,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 4,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 2,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 0.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 35,
+        "cal_unseen_cases": 6
+      },
+      "test_cases": 47,
+      "accepted": 0,
+      "abstained": 47,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 13,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 1,
+      "method": "current_alias",
+      "model_identity_sha256": "ef5a610d5a41de3df4f52bc919fe99d1f4a46a7d1bda40bca5d9667dd918b0e2",
+      "policy": {
+        "threshold": 0.5,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.5483870967741935,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.5483870967741935,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.5483870967741935,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.5483870967741935,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.5483870967741935,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 30,
+            "retained_groups": 12,
+            "accuracy": 0.5666666666666667,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 30,
+            "retained_groups": 12,
+            "accuracy": 0.5666666666666667,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 30,
+            "retained_groups": 12,
+            "accuracy": 0.5666666666666667,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 26,
+            "retained_groups": 12,
+            "accuracy": 0.6538461538461539,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 21,
+            "retained_groups": 11,
+            "accuracy": 0.7142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 16,
+            "retained_groups": 10,
+            "accuracy": 0.875,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 14,
+            "retained_groups": 9,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 14,
+            "retained_groups": 9,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 12,
+            "retained_groups": 7,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 11,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 11,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 4,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 31,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 63,
+      "accepted": 36,
+      "abstained": 27,
+      "accepted_correct": 24,
+      "retained_accuracy": 0.6666666666666666,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 1,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "5ceb9cc14274a5393fa805d99072496ed6f1c76d38e92a32cc1c0e17ae91d264",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.4838709677419355,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.4838709677419355,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.4838709677419355,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.4838709677419355,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 31,
+            "retained_groups": 12,
+            "accuracy": 0.4838709677419355,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 30,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 30,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 27,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 24,
+            "retained_groups": 11,
+            "accuracy": 0.5833333333333334,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 19,
+            "retained_groups": 10,
+            "accuracy": 0.6842105263157895,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 11,
+            "retained_groups": 9,
+            "accuracy": 0.6363636363636364,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 9,
+            "retained_groups": 8,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 7,
+            "retained_groups": 7,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 7,
+            "retained_groups": 7,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 7,
+            "retained_groups": 7,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 7,
+            "retained_groups": 7,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 6,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 31,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 63,
+      "accepted": 0,
+      "abstained": 63,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 2,
+      "method": "current_alias",
+      "model_identity_sha256": "37a1b7fd42738aa4687701dfe98d2dfc04f01524ea0b50cd48290aaff14c12d7",
+      "policy": {
+        "threshold": 0.45,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.7966101694915254,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.7966101694915254,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.7966101694915254,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.7966101694915254,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.7966101694915254,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.7966101694915254,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 51,
+            "retained_groups": 12,
+            "accuracy": 0.7843137254901961,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 51,
+            "retained_groups": 12,
+            "accuracy": 0.7843137254901961,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 51,
+            "retained_groups": 12,
+            "accuracy": 0.7843137254901961,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 41,
+            "retained_groups": 8,
+            "accuracy": 0.926829268292683,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 41,
+            "retained_groups": 8,
+            "accuracy": 0.926829268292683,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 33,
+            "retained_groups": 8,
+            "accuracy": 0.9090909090909091,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 32,
+            "retained_groups": 8,
+            "accuracy": 0.90625,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 32,
+            "retained_groups": 8,
+            "accuracy": 0.90625,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 30,
+            "retained_groups": 8,
+            "accuracy": 0.9333333333333333,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 30,
+            "retained_groups": 8,
+            "accuracy": 0.9333333333333333,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 30,
+            "retained_groups": 8,
+            "accuracy": 0.9333333333333333,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 26,
+            "retained_groups": 7,
+            "accuracy": 0.9615384615384616,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 21,
+            "retained_groups": 7,
+            "accuracy": 0.9523809523809523,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 19,
+            "retained_groups": 7,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 59,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 95,
+      "accepted": 73,
+      "abstained": 22,
+      "accepted_correct": 33,
+      "retained_accuracy": 0.4520547945205479,
+      "unseen_cases": 8,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 2,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "6e5edb755a22f8214f3e7e5f2816e2eb609fb5a17a4b06d36adc484f8e1c8c39",
+      "policy": {
+        "threshold": 0.35000000000000003,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.711864406779661,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.711864406779661,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.711864406779661,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.711864406779661,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.711864406779661,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.7068965517241379,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 57,
+            "retained_groups": 12,
+            "accuracy": 0.7192982456140351,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 50,
+            "retained_groups": 12,
+            "accuracy": 0.82,
+            "eligible": true
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 48,
+            "retained_groups": 10,
+            "accuracy": 0.8125,
+            "eligible": true
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 41,
+            "retained_groups": 8,
+            "accuracy": 0.9512195121951219,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 40,
+            "retained_groups": 8,
+            "accuracy": 0.95,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 35,
+            "retained_groups": 8,
+            "accuracy": 0.9428571428571428,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 35,
+            "retained_groups": 8,
+            "accuracy": 0.9428571428571428,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 35,
+            "retained_groups": 8,
+            "accuracy": 0.9428571428571428,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 33,
+            "retained_groups": 8,
+            "accuracy": 0.9393939393939394,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 32,
+            "retained_groups": 8,
+            "accuracy": 0.96875,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 26,
+            "retained_groups": 8,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 26,
+            "retained_groups": 8,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 19,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 19,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 59,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 95,
+      "accepted": 82,
+      "abstained": 13,
+      "accepted_correct": 40,
+      "retained_accuracy": 0.4878048780487805,
+      "unseen_cases": 8,
+      "unseen_accepted": 1,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 3,
+      "method": "current_alias",
+      "model_identity_sha256": "7225bda6e908554b34194dcf0812ff19ad304d59614cbec9eeca451c0ac9af26",
+      "policy": {
+        "threshold": 0.6000000000000001,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.5370370370370371,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.5370370370370371,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.5370370370370371,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.5370370370370371,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.5370370370370371,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.5370370370370371,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 51,
+            "retained_groups": 12,
+            "accuracy": 0.5686274509803921,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 49,
+            "retained_groups": 11,
+            "accuracy": 0.5714285714285714,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 48,
+            "retained_groups": 11,
+            "accuracy": 0.5625,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 45,
+            "retained_groups": 10,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 44,
+            "retained_groups": 10,
+            "accuracy": 0.5681818181818182,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 41,
+            "retained_groups": 10,
+            "accuracy": 0.6097560975609756,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 27,
+            "retained_groups": 9,
+            "accuracy": 0.8888888888888888,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 18,
+            "retained_groups": 8,
+            "accuracy": 0.8333333333333334,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 18,
+            "retained_groups": 8,
+            "accuracy": 0.8333333333333334,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 15,
+            "retained_groups": 7,
+            "accuracy": 0.8666666666666667,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 13,
+            "retained_groups": 6,
+            "accuracy": 0.9230769230769231,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 8,
+            "retained_groups": 5,
+            "accuracy": 0.875,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 7,
+            "retained_groups": 4,
+            "accuracy": 0.8571428571428571,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 54,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 48,
+      "accepted": 27,
+      "abstained": 21,
+      "accepted_correct": 26,
+      "retained_accuracy": 0.9629629629629629,
+      "unseen_cases": 6,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": true
+    },
+    {
+      "seed": 123,
+      "fold": 3,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "e0516eecbdd71e33c821ce8bc405b3d9e99679702f41d91771739bc9980fc6ff",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.6851851851851852,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.6851851851851852,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.6851851851851852,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.6851851851851852,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.6851851851851852,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 54,
+            "retained_groups": 12,
+            "accuracy": 0.6851851851851852,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 52,
+            "retained_groups": 12,
+            "accuracy": 0.6730769230769231,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 42,
+            "retained_groups": 11,
+            "accuracy": 0.5952380952380952,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 39,
+            "retained_groups": 9,
+            "accuracy": 0.6153846153846154,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 39,
+            "retained_groups": 9,
+            "accuracy": 0.6153846153846154,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 36,
+            "retained_groups": 9,
+            "accuracy": 0.6111111111111112,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 26,
+            "retained_groups": 8,
+            "accuracy": 0.5769230769230769,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 23,
+            "retained_groups": 8,
+            "accuracy": 0.6086956521739131,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 19,
+            "retained_groups": 8,
+            "accuracy": 0.5263157894736842,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 17,
+            "retained_groups": 7,
+            "accuracy": 0.5294117647058824,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 14,
+            "retained_groups": 7,
+            "accuracy": 0.6428571428571429,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 11,
+            "retained_groups": 6,
+            "accuracy": 0.7272727272727273,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 7,
+            "retained_groups": 5,
+            "accuracy": 0.5714285714285714,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 5,
+            "retained_groups": 4,
+            "accuracy": 0.6,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 54,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 48,
+      "accepted": 0,
+      "abstained": 48,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 6,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 4,
+      "method": "current_alias",
+      "model_identity_sha256": "ac6d397b600da1a46f6282dac0818d60e54e205ba027f827957e7bc9f08bad3a",
+      "policy": {
+        "threshold": 0.7000000000000001,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.5555555555555556,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 44,
+            "retained_groups": 12,
+            "accuracy": 0.5454545454545454,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 42,
+            "retained_groups": 11,
+            "accuracy": 0.5476190476190477,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 42,
+            "retained_groups": 11,
+            "accuracy": 0.5476190476190477,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 34,
+            "retained_groups": 10,
+            "accuracy": 0.6176470588235294,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 29,
+            "retained_groups": 9,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 27,
+            "retained_groups": 9,
+            "accuracy": 0.7037037037037037,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 23,
+            "retained_groups": 8,
+            "accuracy": 0.782608695652174,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 22,
+            "retained_groups": 8,
+            "accuracy": 0.8181818181818182,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 21,
+            "retained_groups": 8,
+            "accuracy": 0.8571428571428571,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 19,
+            "retained_groups": 8,
+            "accuracy": 0.9473684210526315,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 19,
+            "retained_groups": 8,
+            "accuracy": 0.9473684210526315,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 3,
+            "retained_groups": 3,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 45,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 51,
+      "accepted": 24,
+      "abstained": 27,
+      "accepted_correct": 8,
+      "retained_accuracy": 0.3333333333333333,
+      "unseen_cases": 9,
+      "unseen_accepted": 8,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 123,
+      "fold": 4,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "2fe75aaa360ab1620b22d94b2155b3a7f996adc602c49ff6fbd222869f95cfc1",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.4,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 44,
+            "retained_groups": 12,
+            "accuracy": 0.4090909090909091,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 41,
+            "retained_groups": 11,
+            "accuracy": 0.3902439024390244,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 39,
+            "retained_groups": 10,
+            "accuracy": 0.38461538461538464,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 39,
+            "retained_groups": 10,
+            "accuracy": 0.38461538461538464,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 31,
+            "retained_groups": 9,
+            "accuracy": 0.3225806451612903,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 22,
+            "retained_groups": 8,
+            "accuracy": 0.45454545454545453,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 18,
+            "retained_groups": 8,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 18,
+            "retained_groups": 8,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 16,
+            "retained_groups": 8,
+            "accuracy": 0.4375,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 11,
+            "retained_groups": 7,
+            "accuracy": 0.36363636363636365,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 7,
+            "retained_groups": 4,
+            "accuracy": 0.42857142857142855,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 3,
+            "retained_groups": 2,
+            "accuracy": 0.3333333333333333,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 2,
+            "retained_groups": 2,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 45,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 51,
+      "accepted": 0,
+      "abstained": 51,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 9,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 0,
+      "method": "current_alias",
+      "model_identity_sha256": "4a78a525e6385296d42e419f2e3409d9d613bbbcb24709dba945a41571f331a0",
+      "policy": {
+        "threshold": 0.0,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.8103448275862069,
+            "eligible": true
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.8103448275862069,
+            "eligible": true
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.8103448275862069,
+            "eligible": true
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.8103448275862069,
+            "eligible": true
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.8103448275862069,
+            "eligible": true
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.8103448275862069,
+            "eligible": true
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.8103448275862069,
+            "eligible": true
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 56,
+            "retained_groups": 12,
+            "accuracy": 0.8214285714285714,
+            "eligible": true
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 53,
+            "retained_groups": 12,
+            "accuracy": 0.8490566037735849,
+            "eligible": true
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 53,
+            "retained_groups": 12,
+            "accuracy": 0.8490566037735849,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 53,
+            "retained_groups": 12,
+            "accuracy": 0.8490566037735849,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 53,
+            "retained_groups": 12,
+            "accuracy": 0.8490566037735849,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 48,
+            "retained_groups": 12,
+            "accuracy": 0.8333333333333334,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 46,
+            "retained_groups": 11,
+            "accuracy": 0.8478260869565217,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 38,
+            "retained_groups": 11,
+            "accuracy": 0.8157894736842105,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 36,
+            "retained_groups": 11,
+            "accuracy": 0.8055555555555556,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 30,
+            "retained_groups": 11,
+            "accuracy": 0.9,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 25,
+            "retained_groups": 7,
+            "accuracy": 0.88,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 23,
+            "retained_groups": 6,
+            "accuracy": 0.8695652173913043,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 12,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 58,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 57,
+      "accepted": 57,
+      "abstained": 0,
+      "accepted_correct": 27,
+      "retained_accuracy": 0.47368421052631576,
+      "unseen_cases": 8,
+      "unseen_accepted": 8,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 0,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "0ae0d7378200889aef03eaf5a84dab4e2ce070a14cdeb8308953f7c3f273b959",
+      "policy": {
+        "threshold": 0.8500000000000001,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.6896551724137931,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 56,
+            "retained_groups": 12,
+            "accuracy": 0.7142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 53,
+            "retained_groups": 12,
+            "accuracy": 0.7169811320754716,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 53,
+            "retained_groups": 12,
+            "accuracy": 0.7169811320754716,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 50,
+            "retained_groups": 11,
+            "accuracy": 0.76,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 48,
+            "retained_groups": 11,
+            "accuracy": 0.7708333333333334,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 46,
+            "retained_groups": 11,
+            "accuracy": 0.782608695652174,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 43,
+            "retained_groups": 11,
+            "accuracy": 0.7674418604651163,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 42,
+            "retained_groups": 11,
+            "accuracy": 0.7619047619047619,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 35,
+            "retained_groups": 11,
+            "accuracy": 0.7142857142857143,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 26,
+            "retained_groups": 10,
+            "accuracy": 0.7692307692307693,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 19,
+            "retained_groups": 9,
+            "accuracy": 0.8947368421052632,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 7,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 4,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 58,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 57,
+      "accepted": 13,
+      "abstained": 44,
+      "accepted_correct": 7,
+      "retained_accuracy": 0.5384615384615384,
+      "unseen_cases": 8,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 1,
+      "method": "current_alias",
+      "model_identity_sha256": "85c860236453c9f868f0be9b181897547c857b94abd661ecdd23d5f4780f9f03",
+      "policy": {
+        "threshold": 0.4,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 44,
+            "retained_groups": 11,
+            "accuracy": 0.7954545454545454,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 43,
+            "retained_groups": 11,
+            "accuracy": 0.813953488372093,
+            "eligible": true
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 36,
+            "retained_groups": 10,
+            "accuracy": 0.9444444444444444,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 36,
+            "retained_groups": 10,
+            "accuracy": 0.9444444444444444,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 35,
+            "retained_groups": 10,
+            "accuracy": 0.9428571428571428,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 34,
+            "retained_groups": 9,
+            "accuracy": 0.9411764705882353,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 30,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 29,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 27,
+            "retained_groups": 5,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 21,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 20,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 15,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 10,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 45,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 57,
+      "accepted": 54,
+      "abstained": 3,
+      "accepted_correct": 29,
+      "retained_accuracy": 0.5370370370370371,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 1,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "ea17cbd98532c45a905da1f37156ee47bf5f392b81d8b4efe75325f43cd255c6",
+      "policy": {
+        "threshold": 0.35000000000000003,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 45,
+            "retained_groups": 12,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 43,
+            "retained_groups": 11,
+            "accuracy": 0.813953488372093,
+            "eligible": true
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 43,
+            "retained_groups": 11,
+            "accuracy": 0.813953488372093,
+            "eligible": true
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 37,
+            "retained_groups": 10,
+            "accuracy": 0.9459459459459459,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 37,
+            "retained_groups": 10,
+            "accuracy": 0.9459459459459459,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 37,
+            "retained_groups": 10,
+            "accuracy": 0.9459459459459459,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 33,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 32,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 30,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 28,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 20,
+            "retained_groups": 5,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 18,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 17,
+            "retained_groups": 4,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 11,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 45,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 57,
+      "accepted": 54,
+      "abstained": 3,
+      "accepted_correct": 29,
+      "retained_accuracy": 0.5370370370370371,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 2,
+      "method": "current_alias",
+      "model_identity_sha256": "5ad098c9a3502f60070ad5f11f1f04ef9fbadc3a4cf5b4c3962c74ac24cc2a27",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.3728813559322034,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.3728813559322034,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.3728813559322034,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.3728813559322034,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.3728813559322034,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.3728813559322034,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.3793103448275862,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 58,
+            "retained_groups": 12,
+            "accuracy": 0.3793103448275862,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 52,
+            "retained_groups": 10,
+            "accuracy": 0.40384615384615385,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 38,
+            "retained_groups": 9,
+            "accuracy": 0.5263157894736842,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 30,
+            "retained_groups": 7,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 30,
+            "retained_groups": 7,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 26,
+            "retained_groups": 5,
+            "accuracy": 0.6153846153846154,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 20,
+            "retained_groups": 4,
+            "accuracy": 0.55,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 14,
+            "retained_groups": 4,
+            "accuracy": 0.7857142857142857,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 12,
+            "retained_groups": 4,
+            "accuracy": 0.75,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 8,
+            "retained_groups": 3,
+            "accuracy": 0.875,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 7,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 6,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 59,
+        "cal_unseen_cases": 8
+      },
+      "test_cases": 58,
+      "accepted": 0,
+      "abstained": 58,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 2,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "78b71dceeb858a02e383595aef362633f295ba28e51754defa2157201f4821c9",
+      "policy": {
+        "threshold": null,
+        "status": "NO_ADMISSIBLE_CAL_THRESHOLD",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.4745762711864407,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.4745762711864407,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.4745762711864407,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.4745762711864407,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.4745762711864407,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 59,
+            "retained_groups": 12,
+            "accuracy": 0.4745762711864407,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 56,
+            "retained_groups": 12,
+            "accuracy": 0.5,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 52,
+            "retained_groups": 11,
+            "accuracy": 0.5384615384615384,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 43,
+            "retained_groups": 10,
+            "accuracy": 0.627906976744186,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 40,
+            "retained_groups": 7,
+            "accuracy": 0.675,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 31,
+            "retained_groups": 7,
+            "accuracy": 0.6451612903225806,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 27,
+            "retained_groups": 7,
+            "accuracy": 0.5925925925925926,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 26,
+            "retained_groups": 7,
+            "accuracy": 0.6153846153846154,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 23,
+            "retained_groups": 6,
+            "accuracy": 0.6086956521739131,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 20,
+            "retained_groups": 6,
+            "accuracy": 0.55,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 16,
+            "retained_groups": 4,
+            "accuracy": 0.625,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 11,
+            "retained_groups": 4,
+            "accuracy": 0.8181818181818182,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 9,
+            "retained_groups": 3,
+            "accuracy": 0.7777777777777778,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 5,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 1,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 59,
+        "cal_unseen_cases": 8
+      },
+      "test_cases": 58,
+      "accepted": 0,
+      "abstained": 58,
+      "accepted_correct": 0,
+      "retained_accuracy": null,
+      "unseen_cases": 0,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 3,
+      "method": "current_alias",
+      "model_identity_sha256": "e64e088d374851620b6c2cbee8bed97bc182441851e375ca95e3896db8ece651",
+      "policy": {
+        "threshold": 0.0,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.8085106382978723,
+            "eligible": true
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 46,
+            "retained_groups": 12,
+            "accuracy": 0.8043478260869565,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 46,
+            "retained_groups": 12,
+            "accuracy": 0.8043478260869565,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 46,
+            "retained_groups": 12,
+            "accuracy": 0.8043478260869565,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 44,
+            "retained_groups": 11,
+            "accuracy": 0.8181818181818182,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 39,
+            "retained_groups": 11,
+            "accuracy": 0.7948717948717948,
+            "eligible": false
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 33,
+            "retained_groups": 10,
+            "accuracy": 0.9393939393939394,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 33,
+            "retained_groups": 10,
+            "accuracy": 0.9393939393939394,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 33,
+            "retained_groups": 10,
+            "accuracy": 0.9393939393939394,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 33,
+            "retained_groups": 10,
+            "accuracy": 0.9393939393939394,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 28,
+            "retained_groups": 7,
+            "accuracy": 0.9642857142857143,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 27,
+            "retained_groups": 7,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 47,
+        "cal_unseen_cases": 6
+      },
+      "test_cases": 64,
+      "accepted": 64,
+      "abstained": 0,
+      "accepted_correct": 31,
+      "retained_accuracy": 0.484375,
+      "unseen_cases": 9,
+      "unseen_accepted": 9,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 3,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "2928228eabcaf6426dfa2dd41c93a6d879ec4e9d181a4795107b1d3d45529016",
+      "policy": {
+        "threshold": 0.65,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.6808510638297872,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.6808510638297872,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.6808510638297872,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.6808510638297872,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.6808510638297872,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.6808510638297872,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 47,
+            "retained_groups": 12,
+            "accuracy": 0.6808510638297872,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 46,
+            "retained_groups": 12,
+            "accuracy": 0.6956521739130435,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 46,
+            "retained_groups": 12,
+            "accuracy": 0.6956521739130435,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 46,
+            "retained_groups": 12,
+            "accuracy": 0.6956521739130435,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 46,
+            "retained_groups": 12,
+            "accuracy": 0.6956521739130435,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 44,
+            "retained_groups": 11,
+            "accuracy": 0.7272727272727273,
+            "eligible": false
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 41,
+            "retained_groups": 11,
+            "accuracy": 0.7317073170731707,
+            "eligible": false
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 34,
+            "retained_groups": 10,
+            "accuracy": 0.8235294117647058,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 24,
+            "retained_groups": 10,
+            "accuracy": 0.7916666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 21,
+            "retained_groups": 10,
+            "accuracy": 0.9047619047619048,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 19,
+            "retained_groups": 9,
+            "accuracy": 0.8947368421052632,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 14,
+            "retained_groups": 7,
+            "accuracy": 0.9285714285714286,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 11,
+            "retained_groups": 5,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 11,
+            "retained_groups": 5,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 47,
+        "cal_unseen_cases": 6
+      },
+      "test_cases": 64,
+      "accepted": 51,
+      "abstained": 13,
+      "accepted_correct": 29,
+      "retained_accuracy": 0.5686274509803921,
+      "unseen_cases": 9,
+      "unseen_accepted": 6,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 4,
+      "method": "current_alias",
+      "model_identity_sha256": "349c6e6febc4cf2effcb59238ba197201cfdeccf96eb1d7777c471b4d724ea10",
+      "policy": {
+        "threshold": 0.45,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.6545454545454545,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.6545454545454545,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.6545454545454545,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.6545454545454545,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.6545454545454545,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 54,
+            "retained_groups": 11,
+            "accuracy": 0.6666666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 52,
+            "retained_groups": 10,
+            "accuracy": 0.6730769230769231,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 52,
+            "retained_groups": 10,
+            "accuracy": 0.6730769230769231,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 47,
+            "retained_groups": 10,
+            "accuracy": 0.7446808510638298,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 42,
+            "retained_groups": 10,
+            "accuracy": 0.8333333333333334,
+            "eligible": true
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 41,
+            "retained_groups": 10,
+            "accuracy": 0.8292682926829268,
+            "eligible": true
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 37,
+            "retained_groups": 10,
+            "accuracy": 0.8648648648648649,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 33,
+            "retained_groups": 10,
+            "accuracy": 0.9090909090909091,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 33,
+            "retained_groups": 10,
+            "accuracy": 0.9090909090909091,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 32,
+            "retained_groups": 10,
+            "accuracy": 0.90625,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 29,
+            "retained_groups": 7,
+            "accuracy": 0.9655172413793104,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 26,
+            "retained_groups": 7,
+            "accuracy": 0.9615384615384616,
+            "eligible": true
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 24,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 23,
+            "retained_groups": 6,
+            "accuracy": 1.0,
+            "eligible": true
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 16,
+            "retained_groups": 3,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 55,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 68,
+      "accepted": 50,
+      "abstained": 18,
+      "accepted_correct": 26,
+      "retained_accuracy": 0.52,
+      "unseen_cases": 6,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": false
+    },
+    {
+      "seed": 2026,
+      "fold": 4,
+      "method": "declared_name_bridge",
+      "model_identity_sha256": "efeabaa620f71426cd880a242268ac4181c6d8c3cc1b4d8025ffc5cb985ae84e",
+      "policy": {
+        "threshold": 0.55,
+        "status": "CAL_EMPIRICAL_TARGET_MET",
+        "candidates": [
+          {
+            "threshold": 0.0,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.5818181818181818,
+            "eligible": false
+          },
+          {
+            "threshold": 0.05,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.5818181818181818,
+            "eligible": false
+          },
+          {
+            "threshold": 0.1,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.5818181818181818,
+            "eligible": false
+          },
+          {
+            "threshold": 0.15000000000000002,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.5818181818181818,
+            "eligible": false
+          },
+          {
+            "threshold": 0.2,
+            "retained_cases": 55,
+            "retained_groups": 12,
+            "accuracy": 0.5818181818181818,
+            "eligible": false
+          },
+          {
+            "threshold": 0.25,
+            "retained_cases": 54,
+            "retained_groups": 11,
+            "accuracy": 0.5925925925925926,
+            "eligible": false
+          },
+          {
+            "threshold": 0.30000000000000004,
+            "retained_cases": 53,
+            "retained_groups": 11,
+            "accuracy": 0.6037735849056604,
+            "eligible": false
+          },
+          {
+            "threshold": 0.35000000000000003,
+            "retained_cases": 50,
+            "retained_groups": 10,
+            "accuracy": 0.58,
+            "eligible": false
+          },
+          {
+            "threshold": 0.4,
+            "retained_cases": 44,
+            "retained_groups": 10,
+            "accuracy": 0.6136363636363636,
+            "eligible": false
+          },
+          {
+            "threshold": 0.45,
+            "retained_cases": 35,
+            "retained_groups": 10,
+            "accuracy": 0.7428571428571429,
+            "eligible": false
+          },
+          {
+            "threshold": 0.5,
+            "retained_cases": 32,
+            "retained_groups": 8,
+            "accuracy": 0.75,
+            "eligible": false
+          },
+          {
+            "threshold": 0.55,
+            "retained_cases": 30,
+            "retained_groups": 8,
+            "accuracy": 0.8,
+            "eligible": true
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "retained_cases": 30,
+            "retained_groups": 8,
+            "accuracy": 0.8,
+            "eligible": true
+          },
+          {
+            "threshold": 0.65,
+            "retained_cases": 28,
+            "retained_groups": 7,
+            "accuracy": 0.8214285714285714,
+            "eligible": true
+          },
+          {
+            "threshold": 0.7000000000000001,
+            "retained_cases": 26,
+            "retained_groups": 6,
+            "accuracy": 0.8461538461538461,
+            "eligible": true
+          },
+          {
+            "threshold": 0.75,
+            "retained_cases": 15,
+            "retained_groups": 4,
+            "accuracy": 0.7333333333333333,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8,
+            "retained_cases": 12,
+            "retained_groups": 4,
+            "accuracy": 0.9166666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.8500000000000001,
+            "retained_cases": 12,
+            "retained_groups": 4,
+            "accuracy": 0.9166666666666666,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9,
+            "retained_cases": 10,
+            "retained_groups": 2,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 0.9500000000000001,
+            "retained_cases": 9,
+            "retained_groups": 1,
+            "accuracy": 1.0,
+            "eligible": false
+          },
+          {
+            "threshold": 1.0,
+            "retained_cases": 0,
+            "retained_groups": 0,
+            "accuracy": null,
+            "eligible": false
+          }
+        ],
+        "cal_cases": 55,
+        "cal_unseen_cases": 0
+      },
+      "test_cases": 68,
+      "accepted": 34,
+      "abstained": 34,
+      "accepted_correct": 28,
+      "retained_accuracy": 0.8235294117647058,
+      "unseen_cases": 6,
+      "unseen_accepted": 0,
+      "test_empirical_target_met": true
+    }
+  ]
+}

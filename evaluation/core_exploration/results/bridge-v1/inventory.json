@@ -1,0 +1,13 @@
+{
+  "original_rows": 1289,
+  "retained_rows": 911,
+  "excluded_no_concept": {
+    "training_long_extra": 378
+  },
+  "vocabulary_size": 131,
+  "explicit_dictionary": "pre-existing structured code schema, uses no disease labels",
+  "ambiguous_fingerprints": 22,
+  "fingerprint_count": 511,
+  "observed_duplicate_label_majority_ceiling": 0.8638858397365532,
+  "scope": "lexical ontology experiment; free text paragraphs remain weak evidence, no expert annotations"
+}

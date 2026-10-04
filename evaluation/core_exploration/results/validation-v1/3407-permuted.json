@@ -1,0 +1,90 @@
+{
+  "status": "complete",
+  "seed": 3407,
+  "metrics": {
+    "n": 241,
+    "accuracy": 0.13692946058091288,
+    "macro_f1": 0.09254037129065268,
+    "nll": 2.4269916715705966,
+    "brier": 0.9068037273984315,
+    "ece": 0.018222237957067674,
+    "wrong_confident_07": 0.0,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 26,
+        "recall": 0.15384615384615385
+      },
+      "呼吸内科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "心血管内科": {
+        "support": 11,
+        "recall": 0.18181818181818182
+      },
+      "感染性疾病科": {
+        "support": 50,
+        "recall": 0.18
+      },
+      "普外科": {
+        "support": 17,
+        "recall": 0.058823529411764705
+      },
+      "泌尿外科": {
+        "support": 11,
+        "recall": 0.2727272727272727
+      },
+      "消化内科": {
+        "support": 9,
+        "recall": 0.0
+      },
+      "皮肤科": {
+        "support": 53,
+        "recall": 0.22641509433962265
+      },
+      "神经内科": {
+        "support": 19,
+        "recall": 0.0
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 25,
+        "recall": 0.08
+      }
+    },
+    "reliability": [
+      {
+        "bin": 1,
+        "n": 221,
+        "confidence": 0.14871131847280156,
+        "accuracy": 0.14027149321266968
+      },
+      {
+        "bin": 2,
+        "n": 19,
+        "confidence": 0.22072214266724702,
+        "accuracy": 0.10526315789473684
+      },
+      {
+        "bin": 3,
+        "n": 1,
+        "confidence": 0.33263725448647263,
+        "accuracy": 0.0
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.0954356846473029,
+      0.18672199170124482
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "scope": "train labels shuffled, true cal/test unchanged; no test fitting",
+  "expected": "performance should collapse toward class-prior baseline, not retain main headline"
+}

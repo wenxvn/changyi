@@ -26,12 +26,23 @@ class ModelSmokeTests(TestCase):
     def test_local_model_loads_and_marks_prediction_as_assistive(self):
         self._reset_runtime()
 
-        result = application_entry.predict_disease_name("发热 咳嗽", details=True)
+        # Loading smoke uses fully supported features. Generic fever has no
+        # coarse NB feature and is covered by the explicit abstention below.
+        result = application_entry.predict_disease_name("头痛 咳嗽", details=True)
 
         self.assertTrue(result["available"])
         self.assertIn("need_more_info", result)
         self.assertIsInstance(result["predictions"], list)
         self.assertTrue(result["predictions"])
+        self.assertFalse(result["mapping_review"]["required"])
+
+    def test_generic_fever_does_not_silently_disappear_from_mixed_input(self):
+        self._reset_runtime()
+        result = application_entry.predict_disease_name("发热 咳嗽", details=True)
+        self.assertTrue(result["available"])
+        self.assertFalse(result["predictions"])
+        self.assertTrue(result["mapping_review"]["required"])
+        self.assertEqual(result["mapping_review"]["issues"][0]["reason"], "unsupported_model_feature")
 
     def test_insufficient_model_input_requests_more_information(self):
         self._reset_runtime()

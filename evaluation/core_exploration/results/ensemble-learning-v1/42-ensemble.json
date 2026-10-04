@@ -1,0 +1,4210 @@
+{
+  "status": "complete",
+  "seed": 42,
+  "representations": [
+    "binary",
+    "word",
+    "concat_char",
+    "canonical_char",
+    "segmented_char",
+    "fusion_25",
+    "fusion_50",
+    "fusion_75"
+  ],
+  "results": [
+    {
+      "method": "all8_uniform",
+      "status": "complete",
+      "weights": [
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+      ],
+      "metrics": {
+        "n": 213,
+        "accuracy": 0.9624413145539906,
+        "macro_f1": 0.9573971223892904,
+        "nll": 0.3480871855116891,
+        "brier": 0.12339346230081105,
+        "ece": 0.21384106962265867,
+        "wrong_confident_07": 0.0,
+        "per_department": {
+          "内分泌代谢科": {
+            "support": 10,
+            "recall": 0.7
+          },
+          "呼吸与危重症医学科": {
+            "support": 20,
+            "recall": 1.0
+          },
+          "呼吸内科": {
+            "support": 18,
+            "recall": 0.9444444444444444
+          },
+          "心血管内科": {
+            "support": 11,
+            "recall": 1.0
+          },
+          "感染性疾病科": {
+            "support": 41,
+            "recall": 0.975609756097561
+          },
+          "普外科": {
+            "support": 10,
+            "recall": 1.0
+          },
+          "泌尿外科": {
+            "support": 11,
+            "recall": 1.0
+          },
+          "消化内科": {
+            "support": 9,
+            "recall": 1.0
+          },
+          "皮肤科": {
+            "support": 53,
+            "recall": 0.9811320754716981
+          },
+          "神经内科": {
+            "support": 10,
+            "recall": 0.8
+          },
+          "肛肠科": {
+            "support": 0,
+            "recall": null
+          },
+          "骨科": {
+            "support": 20,
+            "recall": 1.0
+          }
+        },
+        "reliability": [
+          {
+            "bin": 2,
+            "n": 4,
+            "confidence": 0.26216710997619047,
+            "accuracy": 0.25
+          },
+          {
+            "bin": 3,
+            "n": 8,
+            "confidence": 0.3515217350880927,
+            "accuracy": 0.5
+          },
+          {
+            "bin": 4,
+            "n": 15,
+            "confidence": 0.4462928852155459,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 5,
+            "n": 9,
+            "confidence": 0.5606220096481693,
+            "accuracy": 0.8888888888888888
+          },
+          {
+            "bin": 6,
+            "n": 21,
+            "confidence": 0.6619200325268066,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 7,
+            "n": 57,
+            "confidence": 0.7559879747889426,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 8,
+            "n": 70,
+            "confidence": 0.8432331022622422,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 9,
+            "n": 29,
+            "confidence": 0.9631173434523237,
+            "accuracy": 1.0
+          }
+        ],
+        "accuracy_row_bootstrap_95ci": [
+          0.9342723004694836,
+          0.9859154929577465
+        ],
+        "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+      },
+      "selective": {
+        "max_probability": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9624413145539906,
+            "error_rate": 0.03755868544600939,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": 0.5521854274157507,
+            "coverage": 0.8591549295774648,
+            "retained": 183,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 39,
+                "coverage": 0.9512195121951219
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 9,
+                "coverage": 0.9
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 47,
+                "coverage": 0.8867924528301887
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": 0.635204753630071,
+            "coverage": 0.8262910798122066,
+            "retained": 176,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 37,
+                "coverage": 0.9024390243902439
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 46,
+                "coverage": 0.8679245283018868
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": 0.7104765218970042,
+            "coverage": 0.7089201877934272,
+            "retained": 151,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 29,
+                "coverage": 0.7073170731707317
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 40,
+                "coverage": 0.7547169811320755
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": 0.7484710869641099,
+            "coverage": 0.647887323943662,
+            "retained": 138,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 4,
+                "coverage": 0.2222222222222222
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 29,
+                "coverage": 0.7073170731707317
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 2,
+                "coverage": 0.18181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": 0.7796242736198034,
+            "coverage": 0.5164319248826291,
+            "retained": 110,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 4,
+                "coverage": 0.2222222222222222
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 21,
+                "coverage": 0.5121951219512195
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 1,
+                "coverage": 0.1
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 1,
+                "coverage": 0.09090909090909091
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 32,
+                "coverage": 0.6037735849056604
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 13,
+                "coverage": 0.65
+              }
+            }
+          }
+        ],
+        "margin": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9624413145539906,
+            "error_rate": 0.03755868544600939,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": 0.3039985651138965,
+            "coverage": 0.863849765258216,
+            "retained": 184,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 39,
+                "coverage": 0.9512195121951219
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 9,
+                "coverage": 0.9
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 47,
+                "coverage": 0.8867924528301887
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": 0.5036072317013706,
+            "coverage": 0.812206572769953,
+            "retained": 173,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 36,
+                "coverage": 0.8780487804878049
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 45,
+                "coverage": 0.8490566037735849
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": 0.5910149540702885,
+            "coverage": 0.7323943661971831,
+            "retained": 156,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 4,
+                "coverage": 0.2222222222222222
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 31,
+                "coverage": 0.7560975609756098
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 43,
+                "coverage": 0.8113207547169812
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": 0.652264177437477,
+            "coverage": 0.6666666666666666,
+            "retained": 142,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 4,
+                "coverage": 0.2222222222222222
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 28,
+                "coverage": 0.6829268292682927
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 4,
+                "coverage": 0.36363636363636365
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 40,
+                "coverage": 0.7547169811320755
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": 0.7089486904712556,
+            "coverage": 0.5117370892018779,
+            "retained": 109,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 15,
+                "coverage": 0.75
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 4,
+                "coverage": 0.2222222222222222
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 20,
+                "coverage": 0.4878048780487805
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 1,
+                "coverage": 0.1
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 1,
+                "coverage": 0.09090909090909091
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 32,
+                "coverage": 0.6037735849056604
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 15,
+                "coverage": 0.75
+              }
+            }
+          }
+        ],
+        "neg_entropy": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9624413145539906,
+            "error_rate": 0.03755868544600939,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": -1.4955245335711664,
+            "coverage": 0.8497652582159625,
+            "retained": 181,
+            "accuracy": 0.994475138121547,
+            "error_rate": 0.0055248618784530384,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 39,
+                "coverage": 0.9512195121951219
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 47,
+                "coverage": 0.8867924528301887
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": -1.2601601540623169,
+            "coverage": 0.7464788732394366,
+            "retained": 159,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 31,
+                "coverage": 0.7560975609756098
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 41,
+                "coverage": 0.7735849056603774
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": -1.1234185725945707,
+            "coverage": 0.6901408450704225,
+            "retained": 147,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 31,
+                "coverage": 0.7560975609756098
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 5,
+                "coverage": 0.45454545454545453
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": -1.0566938722401285,
+            "coverage": 0.6103286384976526,
+            "retained": 130,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 4,
+                "coverage": 0.2222222222222222
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 26,
+                "coverage": 0.6341463414634146
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 3,
+                "coverage": 0.2727272727272727
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": -0.9761212452761608,
+            "coverage": 0.5117370892018779,
+            "retained": 109,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 4,
+                "coverage": 0.2222222222222222
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 21,
+                "coverage": 0.5121951219512195
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 1,
+                "coverage": 0.1
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 1,
+                "coverage": 0.09090909090909091
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 31,
+                "coverage": 0.5849056603773585
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 13,
+                "coverage": 0.65
+              }
+            }
+          }
+        ]
+      },
+      "fit_cal_nll": 0.47060108558678393
+    },
+    {
+      "method": "top3_inner_uniform",
+      "status": "complete",
+      "weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.0,
+        0.0,
+        0.3333333333333333
+      ],
+      "metrics": {
+        "n": 213,
+        "accuracy": 0.9530516431924883,
+        "macro_f1": 0.9485820418469494,
+        "nll": 0.15975196098823927,
+        "brier": 0.06307049240852522,
+        "ece": 0.05430124570038747,
+        "wrong_confident_07": 0.004694835680751174,
+        "per_department": {
+          "内分泌代谢科": {
+            "support": 10,
+            "recall": 0.7
+          },
+          "呼吸与危重症医学科": {
+            "support": 20,
+            "recall": 1.0
+          },
+          "呼吸内科": {
+            "support": 18,
+            "recall": 1.0
+          },
+          "心血管内科": {
+            "support": 11,
+            "recall": 1.0
+          },
+          "感染性疾病科": {
+            "support": 41,
+            "recall": 0.9512195121951219
+          },
+          "普外科": {
+            "support": 10,
+            "recall": 1.0
+          },
+          "泌尿外科": {
+            "support": 11,
+            "recall": 1.0
+          },
+          "消化内科": {
+            "support": 9,
+            "recall": 1.0
+          },
+          "皮肤科": {
+            "support": 53,
+            "recall": 0.9433962264150944
+          },
+          "神经内科": {
+            "support": 10,
+            "recall": 0.8
+          },
+          "肛肠科": {
+            "support": 0,
+            "recall": null
+          },
+          "骨科": {
+            "support": 20,
+            "recall": 1.0
+          }
+        },
+        "reliability": [
+          {
+            "bin": 2,
+            "n": 1,
+            "confidence": 0.2603147454363105,
+            "accuracy": 0.0
+          },
+          {
+            "bin": 3,
+            "n": 4,
+            "confidence": 0.33300794922572596,
+            "accuracy": 0.25
+          },
+          {
+            "bin": 4,
+            "n": 4,
+            "confidence": 0.4569152025399508,
+            "accuracy": 0.5
+          },
+          {
+            "bin": 5,
+            "n": 4,
+            "confidence": 0.5731348670279033,
+            "accuracy": 0.5
+          },
+          {
+            "bin": 6,
+            "n": 4,
+            "confidence": 0.6480386975104728,
+            "accuracy": 0.75
+          },
+          {
+            "bin": 7,
+            "n": 19,
+            "confidence": 0.7562830610062631,
+            "accuracy": 0.9473684210526315
+          },
+          {
+            "bin": 8,
+            "n": 26,
+            "confidence": 0.8597036438811128,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 9,
+            "n": 151,
+            "confidence": 0.9813061733512495,
+            "accuracy": 1.0
+          }
+        ],
+        "accuracy_row_bootstrap_95ci": [
+          0.9247652582159624,
+          0.9765258215962441
+        ],
+        "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+      },
+      "selective": {
+        "max_probability": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9530516431924883,
+            "error_rate": 0.046948356807511735,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": 0.6749334361005985,
+            "coverage": 0.9248826291079812,
+            "retained": 197,
+            "accuracy": 0.9949238578680203,
+            "error_rate": 0.005076142131979695,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 16,
+                "coverage": 0.8888888888888888
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 39,
+                "coverage": 0.9512195121951219
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 47,
+                "coverage": 0.8867924528301887
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": 0.8194367529214204,
+            "coverage": 0.812206572769953,
+            "retained": 173,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 8,
+                "coverage": 0.4444444444444444
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 34,
+                "coverage": 0.8292682926829268
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 43,
+                "coverage": 0.8113207547169812
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": 0.8996160862933957,
+            "coverage": 0.7089201877934272,
+            "retained": 151,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 30,
+                "coverage": 0.7317073170731707
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": 0.9420956903573326,
+            "coverage": 0.6572769953051644,
+            "retained": 140,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 28,
+                "coverage": 0.6829268292682927
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 37,
+                "coverage": 0.6981132075471698
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": 0.9592966560900782,
+            "coverage": 0.6056338028169014,
+            "retained": 129,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 25,
+                "coverage": 0.6097560975609756
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 36,
+                "coverage": 0.6792452830188679
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 1,
+                "coverage": 0.1
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              }
+            }
+          }
+        ],
+        "margin": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9530516431924883,
+            "error_rate": 0.046948356807511735,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": 0.4781417460006759,
+            "coverage": 0.9295774647887324,
+            "retained": 198,
+            "accuracy": 0.9949494949494949,
+            "error_rate": 0.005050505050505051,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 17,
+                "coverage": 0.9444444444444444
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 39,
+                "coverage": 0.9512195121951219
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 47,
+                "coverage": 0.8867924528301887
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": 0.7361381206086818,
+            "coverage": 0.8215962441314554,
+            "retained": 175,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 36,
+                "coverage": 0.8780487804878049
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 43,
+                "coverage": 0.8113207547169812
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": 0.84931308920449,
+            "coverage": 0.7323943661971831,
+            "retained": 156,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 30,
+                "coverage": 0.7317073170731707
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": 0.9170434817887975,
+            "coverage": 0.6572769953051644,
+            "retained": 140,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 27,
+                "coverage": 0.6585365853658537
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 38,
+                "coverage": 0.7169811320754716
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": 0.9479334976507914,
+            "coverage": 0.6056338028169014,
+            "retained": 129,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 25,
+                "coverage": 0.6097560975609756
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 36,
+                "coverage": 0.6792452830188679
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 15,
+                "coverage": 0.75
+              }
+            }
+          }
+        ],
+        "neg_entropy": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9530516431924883,
+            "error_rate": 0.046948356807511735,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": -1.0816962088579671,
+            "coverage": 0.9061032863849765,
+            "retained": 193,
+            "accuracy": 0.9896373056994818,
+            "error_rate": 0.010362694300518135,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 14,
+                "coverage": 0.7777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 39,
+                "coverage": 0.9512195121951219
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 9,
+                "coverage": 0.9
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 48,
+                "coverage": 0.9056603773584906
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": -0.7368787386879081,
+            "coverage": 0.7934272300469484,
+            "retained": 169,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 8,
+                "coverage": 0.4444444444444444
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 33,
+                "coverage": 0.8048780487804879
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 43,
+                "coverage": 0.8113207547169812
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": -0.51100825900127,
+            "coverage": 0.7183098591549296,
+            "retained": 153,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 30,
+                "coverage": 0.7317073170731707
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": -0.315718381586466,
+            "coverage": 0.6431924882629108,
+            "retained": 137,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 26,
+                "coverage": 0.6341463414634146
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 37,
+                "coverage": 0.6981132075471698
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": -0.24782946604881412,
+            "coverage": 0.6103286384976526,
+            "retained": 130,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 25,
+                "coverage": 0.6097560975609756
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 36,
+                "coverage": 0.6792452830188679
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 1,
+                "coverage": 0.1
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              }
+            }
+          }
+        ]
+      },
+      "fit_cal_nll": 0.3291086836120386
+    },
+    {
+      "method": "cal_nll_weights",
+      "status": "complete",
+      "weights": [
+        1.908661873677571e-16,
+        7.002114052457218e-17,
+        6.194806049681403e-17,
+        0.8719414660977264,
+        3.94302707577822e-16,
+        0.0,
+        0.1280585339022728,
+        4.1459037727041823e-17
+      ],
+      "metrics": {
+        "n": 213,
+        "accuracy": 0.9577464788732394,
+        "macro_f1": 0.9550188282237518,
+        "nll": 0.16695844181770653,
+        "brier": 0.07297227975722345,
+        "ece": 0.050654969963468896,
+        "wrong_confident_07": 0.009389671361502348,
+        "per_department": {
+          "内分泌代谢科": {
+            "support": 10,
+            "recall": 0.8
+          },
+          "呼吸与危重症医学科": {
+            "support": 20,
+            "recall": 1.0
+          },
+          "呼吸内科": {
+            "support": 18,
+            "recall": 0.9444444444444444
+          },
+          "心血管内科": {
+            "support": 11,
+            "recall": 1.0
+          },
+          "感染性疾病科": {
+            "support": 41,
+            "recall": 0.9512195121951219
+          },
+          "普外科": {
+            "support": 10,
+            "recall": 1.0
+          },
+          "泌尿外科": {
+            "support": 11,
+            "recall": 1.0
+          },
+          "消化内科": {
+            "support": 9,
+            "recall": 1.0
+          },
+          "皮肤科": {
+            "support": 53,
+            "recall": 0.9622641509433962
+          },
+          "神经内科": {
+            "support": 10,
+            "recall": 0.8
+          },
+          "肛肠科": {
+            "support": 0,
+            "recall": null
+          },
+          "骨科": {
+            "support": 20,
+            "recall": 1.0
+          }
+        },
+        "reliability": [
+          {
+            "bin": 2,
+            "n": 1,
+            "confidence": 0.2702476499124439,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 3,
+            "n": 5,
+            "confidence": 0.3445716757688002,
+            "accuracy": 0.4
+          },
+          {
+            "bin": 4,
+            "n": 2,
+            "confidence": 0.4835102045738846,
+            "accuracy": 0.5
+          },
+          {
+            "bin": 5,
+            "n": 9,
+            "confidence": 0.5590768217356729,
+            "accuracy": 0.7777777777777778
+          },
+          {
+            "bin": 6,
+            "n": 7,
+            "confidence": 0.6501684552900443,
+            "accuracy": 0.8571428571428571
+          },
+          {
+            "bin": 7,
+            "n": 11,
+            "confidence": 0.750207926674285,
+            "accuracy": 0.9090909090909091
+          },
+          {
+            "bin": 8,
+            "n": 19,
+            "confidence": 0.8614029380884203,
+            "accuracy": 0.9473684210526315
+          },
+          {
+            "bin": 9,
+            "n": 159,
+            "confidence": 0.9814374299379146,
+            "accuracy": 1.0
+          }
+        ],
+        "accuracy_row_bootstrap_95ci": [
+          0.9295774647887324,
+          0.9812206572769953
+        ],
+        "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+      },
+      "selective": {
+        "max_probability": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9577464788732394,
+            "error_rate": 0.04225352112676056,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": 0.6850359026560368,
+            "coverage": 0.892018779342723,
+            "retained": 190,
+            "accuracy": 0.9894736842105263,
+            "error_rate": 0.010526315789473684,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 9,
+                "coverage": 0.5
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 40,
+                "coverage": 0.975609756097561
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 46,
+                "coverage": 0.8679245283018868
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": 0.8505825874819783,
+            "coverage": 0.8075117370892019,
+            "retained": 172,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 34,
+                "coverage": 0.8292682926829268
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 42,
+                "coverage": 0.7924528301886793
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": 0.9222279422471095,
+            "coverage": 0.7276995305164319,
+            "retained": 155,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 29,
+                "coverage": 0.7073170731707317
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": 0.9595093910431145,
+            "coverage": 0.6244131455399061,
+            "retained": 133,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 22,
+                "coverage": 0.5365853658536586
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 35,
+                "coverage": 0.660377358490566
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": 0.9697855406252526,
+            "coverage": 0.568075117370892,
+            "retained": 121,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 21,
+                "coverage": 0.5121951219512195
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 31,
+                "coverage": 0.5849056603773585
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              }
+            }
+          }
+        ],
+        "margin": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9577464788732394,
+            "error_rate": 0.04225352112676056,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": 0.49564438603439737,
+            "coverage": 0.8826291079812206,
+            "retained": 188,
+            "accuracy": 0.9946808510638298,
+            "error_rate": 0.005319148936170213,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 9,
+                "coverage": 0.5
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 37,
+                "coverage": 0.9024390243902439
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 47,
+                "coverage": 0.8867924528301887
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": 0.7788571148507091,
+            "coverage": 0.8028169014084507,
+            "retained": 171,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 6,
+                "coverage": 0.6
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 7,
+                "coverage": 0.3888888888888889
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 34,
+                "coverage": 0.8292682926829268
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 42,
+                "coverage": 0.7924528301886793
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": 0.8828512933312767,
+            "coverage": 0.7136150234741784,
+            "retained": 152,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 28,
+                "coverage": 0.6829268292682927
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 38,
+                "coverage": 0.7169811320754716
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": 0.9340590814093586,
+            "coverage": 0.6384976525821596,
+            "retained": 136,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 25,
+                "coverage": 0.6097560975609756
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 35,
+                "coverage": 0.660377358490566
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": 0.9566283695164276,
+            "coverage": 0.5586854460093896,
+            "retained": 119,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 20,
+                "coverage": 0.4878048780487805
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 30,
+                "coverage": 0.5660377358490566
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              }
+            }
+          }
+        ],
+        "neg_entropy": [
+          {
+            "target_coverage": 1.0,
+            "threshold": null,
+            "coverage": 1.0,
+            "retained": 213,
+            "accuracy": 0.9577464788732394,
+            "error_rate": 0.04225352112676056,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 18,
+                "coverage": 1.0
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 41,
+                "coverage": 1.0
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 53,
+                "coverage": 1.0
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 10,
+                "coverage": 1.0
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.9,
+            "threshold": -0.8469140394472727,
+            "coverage": 0.8732394366197183,
+            "retained": 186,
+            "accuracy": 0.9838709677419355,
+            "error_rate": 0.016129032258064516,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 9,
+                "coverage": 0.5
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 37,
+                "coverage": 0.9024390243902439
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 9,
+                "coverage": 0.9
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 11,
+                "coverage": 1.0
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 48,
+                "coverage": 0.9056603773584906
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              }
+            }
+          },
+          {
+            "target_coverage": 0.8,
+            "threshold": -0.5869367151672136,
+            "coverage": 0.7887323943661971,
+            "retained": 168,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 8,
+                "coverage": 0.4444444444444444
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 10,
+                "coverage": 0.9090909090909091
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 32,
+                "coverage": 0.7804878048780488
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 8,
+                "coverage": 0.8
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 41,
+                "coverage": 0.7735849056603774
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              }
+            }
+          },
+          {
+            "target_coverage": 0.7,
+            "threshold": -0.3813010194325174,
+            "coverage": 0.7230046948356808,
+            "retained": 154,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 20,
+                "coverage": 1.0
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 29,
+                "coverage": 0.7073170731707317
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 9,
+                "coverage": 1.0
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 39,
+                "coverage": 0.7358490566037735
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 4,
+                "coverage": 0.4
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 18,
+                "coverage": 0.9
+              }
+            }
+          },
+          {
+            "target_coverage": 0.6,
+            "threshold": -0.2483658051819569,
+            "coverage": 0.6713615023474179,
+            "retained": 143,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 19,
+                "coverage": 0.95
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 6,
+                "coverage": 0.3333333333333333
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 9,
+                "coverage": 0.8181818181818182
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 26,
+                "coverage": 0.6341463414634146
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 7,
+                "coverage": 0.7
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 37,
+                "coverage": 0.6981132075471698
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              }
+            }
+          },
+          {
+            "target_coverage": 0.5,
+            "threshold": -0.18105903684884883,
+            "coverage": 0.5774647887323944,
+            "retained": 123,
+            "accuracy": 1.0,
+            "error_rate": 0.0,
+            "per_department": {
+              "内分泌代谢科": {
+                "support": 10,
+                "retained": 2,
+                "coverage": 0.2
+              },
+              "呼吸与危重症医学科": {
+                "support": 20,
+                "retained": 16,
+                "coverage": 0.8
+              },
+              "呼吸内科": {
+                "support": 18,
+                "retained": 5,
+                "coverage": 0.2777777777777778
+              },
+              "心血管内科": {
+                "support": 11,
+                "retained": 8,
+                "coverage": 0.7272727272727273
+              },
+              "感染性疾病科": {
+                "support": 41,
+                "retained": 21,
+                "coverage": 0.5121951219512195
+              },
+              "普外科": {
+                "support": 10,
+                "retained": 5,
+                "coverage": 0.5
+              },
+              "泌尿外科": {
+                "support": 11,
+                "retained": 7,
+                "coverage": 0.6363636363636364
+              },
+              "消化内科": {
+                "support": 9,
+                "retained": 8,
+                "coverage": 0.8888888888888888
+              },
+              "皮肤科": {
+                "support": 53,
+                "retained": 31,
+                "coverage": 0.5849056603773585
+              },
+              "神经内科": {
+                "support": 10,
+                "retained": 3,
+                "coverage": 0.3
+              },
+              "肛肠科": {
+                "support": 0,
+                "retained": 0,
+                "coverage": null
+              },
+              "骨科": {
+                "support": 20,
+                "retained": 17,
+                "coverage": 0.85
+              }
+            }
+          }
+        ]
+      },
+      "fit_cal_nll": 0.2665254470452342
+    }
+  ],
+  "cal_fit": 117,
+  "threshold_cal": 119,
+  "policy": "train-inner chooses top3; cal_fit only optimizes weights; threshold_cal/test never fit weights"
+}

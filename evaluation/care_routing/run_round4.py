@@ -147,14 +147,14 @@ def main() -> int:
     print("[3/8] Selective routing ...")
     train, cal, test, split_meta = quota_split(rows, threshold=0.8, seed=42)
     best_model = matrix["aggregate"]["best_model"] or "logistic_regression_binary"
+    fitted = fit_direct_department_models(train, cal, test, seed=42)
     selective = run_selective_routing(
-        train, cal, test, seed=42, model_name=best_model
+        train, cal, test, seed=42, model_name=best_model, fitted=fitted
     )
     selective["matrix_best_model"] = best_model
     selective["selective_evaluated_model"] = best_model
 
     print("[4/8] Confusion + shared features ...")
-    fitted = fit_direct_department_models(train, cal, test, seed=42)
     preds = fitted["_predictions"][best_model]
     confusion = department_confusion_report(preds["y_true"], preds["y_pred"])
     # Enrich with shared stats for top pair
@@ -185,7 +185,7 @@ def main() -> int:
     ablation = representation_ablation_from_matrix(matrix)
 
     print("[7/8] Robustness + Safety ...")
-    robust = robustness_selective(rows, seed=42, threshold=0.8)
+    robust = robustness_selective(rows, seed=42, threshold=0.8, model_name=best_model, fitted=fitted)
     safety = safety_first_offline_check(
         department_model_accuracy=matrix["aggregate"]["best_accuracy"]
     )

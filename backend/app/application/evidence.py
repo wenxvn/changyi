@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from collections.abc import Callable, Mapping
 import json
+import hashlib
+import math
 from pathlib import Path
 from typing import Any
 
@@ -14,6 +16,25 @@ def _read_json(path: Path) -> dict[str, Any] | None:
     except (OSError, UnicodeDecodeError, json.JSONDecodeError):
         return None
     return value if isinstance(value, dict) else None
+
+
+def _model_metric_label(path: Path, metrics: Mapping[str, Any], report: Mapping[str, Any]) -> str:
+    fallback = "保存模型指标（切分来源待核对）"
+    linked_model = report.get("model")
+    baseline = report.get("random_baseline")
+    if not isinstance(linked_model, Mapping) or not isinstance(baseline, Mapping):
+        return fallback
+    try:
+        actual_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError:
+        return fallback
+    values = (metrics.get("accuracy"), baseline.get("accuracy"))
+    if (actual_hash != linked_model.get("sha256") or any(type(value) not in (int, float) or not math.isfinite(value) for value in values)
+            or type(metrics.get("test_rows")) is not int or metrics["test_rows"] <= 0
+            or metrics.get("test_rows") != baseline.get("test_rows")
+            or abs(values[0] - values[1]) > 1e-6):
+        return fallback
+    return "随机切分基线 · 症状编码疾病分类"
 
 
 def _dataset_entry(report: Mapping[str, Any], predicate: Callable[[str], bool]) -> dict[str, Any] | None:
@@ -142,7 +163,7 @@ def build_evidence_payload(
         },
         "model": {
             "available": bool(model),
-            "label": "症状模型离线评估",
+            "label": _model_metric_label(project_root / "data/symptom_disease_model/models/symptom_disease_41_nb.json", model_metrics, grouped_report),
             "model_type": model.get("model_type", "unknown"),
             "training_rows": model.get("training_rows"),
             "test_rows": model_metrics.get("test_rows"),

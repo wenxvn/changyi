@@ -117,6 +117,10 @@ jobs:
         working-directory: frontend
         run: npm run e2e
 
+      - name: Verify React request lifecycle in development StrictMode
+        working-directory: frontend
+        run: npm run e2e:hooks
+
       - name: Upload browser smoke artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -124,3 +128,25 @@ jobs:
           name: playwright-${{ github.run_id }}
           path: frontend/test-results
           if-no-files-found: ignore
+
+  research-boundaries:
+    name: Core research probability and safety boundaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            requirements-dev.txt
+            requirements-research.txt
+      - name: Install frozen research tools
+        run: python -m pip install -r requirements-dev.txt -r requirements-research.txt
+      - name: Verify core probability, predictor and input boundaries
+        run: >-
+          python -m pytest -q
+          tests/test_core_predictor_identity.py
+          tests/test_core_inquiry_probability.py
+          tests/test_core_chinese_boundary.py
+          tests/test_core_research_boundaries.py

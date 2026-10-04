@@ -1,0 +1,121 @@
+{
+  "scope": "synthetic_direct_postposed_hypothesis_not_clinical_validation",
+  "total": 8,
+  "failed": 7,
+  "rows": [
+    {
+      "text": "糖尿病只是一个假设，实际没确诊",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "糖尿病是假设的情况，我没确诊",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "糖尿病只是举例，实际没确诊",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "糖尿病仅是一种假想情况",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.74,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "disease_keyword"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "我已确诊乙肝，糖尿病只是一个假设",
+      "expected_known": true,
+      "expected_disease": "乙肝",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "已确诊糖尿病，假设发热怎么办",
+      "expected_known": true,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": true
+    },
+    {
+      "text": "已确诊糖尿病，但糖尿病只是举例",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "目前我呼吸困难，糖尿病只是一个假设",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "background_mentions": [],
+        "confidence": 0.74,
+        "consultation_subject": "self",
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "disease_keyword"
+      },
+      "triage_status": "EMERGENCY",
+      "pass": false
+    }
+  ]
+}

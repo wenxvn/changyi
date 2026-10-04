@@ -1,0 +1,1383 @@
+{
+  "source": "git HEAD e82447c unmodified direct_department.py",
+  "split": {
+    "threshold": 0.8,
+    "seed": 42,
+    "train_rows": 840,
+    "cal_rows": 236,
+    "test_rows": 213,
+    "test_disease_count": 25,
+    "train_disease_count": 41,
+    "excluded_from_test": [
+      "(vertigo) Paroymsal Positional Vertigo",
+      "Alcoholic hepatitis",
+      "Chronic cholestasis",
+      "Dimorphic hemmorhoids(piles)",
+      "GERD",
+      "Hepatitis B",
+      "Hepatitis C",
+      "Hepatitis D",
+      "Hepatitis E",
+      "Hyperthyroidism",
+      "Hypoglycemia",
+      "Hypothyroidism",
+      "Osteoarthristis",
+      "Peptic ulcer diseae",
+      "Tuberculosis",
+      "hepatitis A"
+    ],
+    "component_stats": {
+      "mode": "same_label",
+      "jaccard_threshold": 0.8,
+      "sample_count": 1289,
+      "component_count": 1058,
+      "largest_component_size": 10,
+      "edge_count": 604,
+      "cross_label_edge_count": 0,
+      "singleton_count": 1025
+    },
+    "per_disease": [
+      {
+        "disease": "(vertigo) Paroymsal Positional Vertigo",
+        "department": "神经内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "AIDS",
+        "department": "感染性疾病科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Acne",
+        "department": "皮肤科",
+        "components": 6,
+        "train_components": 4,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Alcoholic hepatitis",
+        "department": "消化内科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Allergy",
+        "department": "皮肤科",
+        "components": 55,
+        "train_components": 33,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "Arthritis",
+        "department": "骨科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Bronchial Asthma",
+        "department": "呼吸与危重症医学科",
+        "components": 50,
+        "train_components": 30,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Cervical spondylosis",
+        "department": "骨科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Chicken pox",
+        "department": "感染性疾病科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Chronic cholestasis",
+        "department": "消化内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Common Cold",
+        "department": "呼吸内科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Dengue",
+        "department": "感染性疾病科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Diabetes",
+        "department": "内分泌代谢科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Dimorphic hemmorhoids(piles)",
+        "department": "肛肠科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Drug Reaction",
+        "department": "皮肤科",
+        "components": 49,
+        "train_components": 29,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Fungal infection",
+        "department": "皮肤科",
+        "components": 53,
+        "train_components": 31,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "GERD",
+        "department": "消化内科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Gastroenteritis",
+        "department": "消化内科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Heart attack",
+        "department": "心血管内科",
+        "components": 6,
+        "train_components": 4,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Hepatitis B",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis C",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis D",
+        "department": "感染性疾病科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis E",
+        "department": "感染性疾病科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypertension",
+        "department": "心血管内科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Hyperthyroidism",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypoglycemia",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypothyroidism",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Impetigo",
+        "department": "皮肤科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Jaundice",
+        "department": "消化内科",
+        "components": 38,
+        "train_components": 22,
+        "cal_components": 8,
+        "test_components": 8,
+        "split": "quota"
+      },
+      {
+        "disease": "Malaria",
+        "department": "感染性疾病科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Migraine",
+        "department": "神经内科",
+        "components": 43,
+        "train_components": 25,
+        "cal_components": 9,
+        "test_components": 9,
+        "split": "quota"
+      },
+      {
+        "disease": "Osteoarthristis",
+        "department": "骨科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Paralysis (brain hemorrhage)",
+        "department": "神经内科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Peptic ulcer diseae",
+        "department": "消化内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Pneumonia",
+        "department": "呼吸与危重症医学科",
+        "components": 49,
+        "train_components": 29,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Psoriasis",
+        "department": "皮肤科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Tuberculosis",
+        "department": "呼吸与危重症医学科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Typhoid",
+        "department": "感染性疾病科",
+        "components": 48,
+        "train_components": 28,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Urinary tract infection",
+        "department": "泌尿外科",
+        "components": 54,
+        "train_components": 32,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "Varicose veins",
+        "department": "普外科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "hepatitis A",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      }
+    ]
+  },
+  "models": {
+    "multinomial_nb": {
+      "test_rows": 213,
+      "accuracy": 0.286385,
+      "macro_f1": 0.206537,
+      "weighted_f1": 0.222215,
+      "top2_accuracy": 0.544601,
+      "top3_accuracy": 0.615023,
+      "mean_confidence": 0.340686,
+      "mean_entropy": 2.806553,
+      "mean_margin": 0.150593,
+      "ece": 0.100725,
+      "brier": 0.814424,
+      "wrong_but_confident_rate": 0.042254,
+      "per_department_recall": {
+        "内分泌代谢科": 0.0,
+        "呼吸与危重症医学科": 0.1,
+        "呼吸内科": 0.0,
+        "心血管内科": 0.454545,
+        "感染性疾病科": 0.97561,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.111111,
+        "皮肤科": 0.09434,
+        "神经内科": 0.2,
+        "骨科": 0.3
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "感染性疾病科": 9,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "感染性疾病科": 17,
+          "皮肤科": 1,
+          "呼吸与危重症医学科": 2
+        },
+        "呼吸内科": {
+          "感染性疾病科": 8,
+          "呼吸与危重症医学科": 9,
+          "皮肤科": 1
+        },
+        "心血管内科": {
+          "呼吸与危重症医学科": 1,
+          "感染性疾病科": 4,
+          "心血管内科": 5,
+          "皮肤科": 1
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 40,
+          "皮肤科": 1
+        },
+        "普外科": {
+          "感染性疾病科": 10
+        },
+        "泌尿外科": {
+          "感染性疾病科": 11
+        },
+        "消化内科": {
+          "消化内科": 1,
+          "感染性疾病科": 7,
+          "皮肤科": 1
+        },
+        "皮肤科": {
+          "皮肤科": 5,
+          "感染性疾病科": 48
+        },
+        "神经内科": {
+          "感染性疾病科": 6,
+          "内分泌代谢科": 2,
+          "神经内科": 2
+        },
+        "骨科": {
+          "感染性疾病科": 14,
+          "骨科": 6
+        }
+      },
+      "inference_latency_s": 0.004011300014099106,
+      "model_size_chars": 12808,
+      "temperature": 1.0
+    },
+    "logistic_regression_binary": {
+      "test_rows": 213,
+      "accuracy": 0.43662,
+      "macro_f1": 0.345476,
+      "weighted_f1": 0.382337,
+      "top2_accuracy": 0.586854,
+      "top3_accuracy": 0.661972,
+      "mean_confidence": 0.630207,
+      "mean_entropy": 1.777612,
+      "mean_margin": 0.464546,
+      "ece": 0.213964,
+      "brier": 0.766094,
+      "wrong_but_confident_rate": 0.046948,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 0.268293,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 1.0,
+        "神经内科": 0.2,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "皮肤科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "皮肤科": 12,
+          "呼吸与危重症医学科": 6,
+          "感染性疾病科": 2
+        },
+        "呼吸内科": {
+          "皮肤科": 7,
+          "呼吸与危重症医学科": 2,
+          "感染性疾病科": 8,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "皮肤科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 11,
+          "皮肤科": 30
+        },
+        "普外科": {
+          "皮肤科": 10
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "皮肤科": 6
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 8,
+          "神经内科": 2
+        },
+        "骨科": {
+          "皮肤科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0018949000223074108,
+      "model_size_chars": 1780567,
+      "temperature": 1.0
+    },
+    "logistic_regression_binary_temperature": {
+      "test_rows": 213,
+      "accuracy": 0.43662,
+      "macro_f1": 0.345476,
+      "weighted_f1": 0.382337,
+      "top2_accuracy": 0.586854,
+      "top3_accuracy": 0.661972,
+      "mean_confidence": 0.454964,
+      "mean_entropy": 2.49583,
+      "mean_margin": 0.296918,
+      "ece": 0.097385,
+      "brier": 0.734143,
+      "wrong_but_confident_rate": 0.042254,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 0.268293,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 1.0,
+        "神经内科": 0.2,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "皮肤科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "皮肤科": 12,
+          "呼吸与危重症医学科": 6,
+          "感染性疾病科": 2
+        },
+        "呼吸内科": {
+          "皮肤科": 7,
+          "呼吸与危重症医学科": 2,
+          "感染性疾病科": 8,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "皮肤科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 11,
+          "皮肤科": 30
+        },
+        "普外科": {
+          "皮肤科": 10
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "皮肤科": 6
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 8,
+          "神经内科": 2
+        },
+        "骨科": {
+          "皮肤科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0018949000223074108,
+      "model_size_chars": 1780567,
+      "temperature": 1.6
+    },
+    "linear_svm_binary": {
+      "test_rows": 213,
+      "accuracy": 0.446009,
+      "macro_f1": 0.362617,
+      "weighted_f1": 0.393319,
+      "top2_accuracy": 0.600939,
+      "top3_accuracy": 0.657277,
+      "mean_confidence": 0.228621,
+      "mean_entropy": 3.291316,
+      "mean_margin": 0.132482,
+      "ece": 0.264499,
+      "brier": 0.817212,
+      "wrong_but_confident_rate": 0.037559,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 0.268293,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 1.0,
+        "神经内科": 0.4,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "皮肤科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "皮肤科": 13,
+          "呼吸与危重症医学科": 6,
+          "感染性疾病科": 1
+        },
+        "呼吸内科": {
+          "皮肤科": 7,
+          "呼吸与危重症医学科": 1,
+          "感染性疾病科": 9,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "皮肤科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 11,
+          "皮肤科": 30
+        },
+        "普外科": {
+          "皮肤科": 10
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "皮肤科": 4,
+          "神经内科": 2
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 6,
+          "神经内科": 4
+        },
+        "骨科": {
+          "皮肤科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0017892999749165028,
+      "model_size_chars": 996716,
+      "temperature": 1.0
+    },
+    "linear_svm_binary_temperature": {
+      "test_rows": 213,
+      "accuracy": 0.446009,
+      "macro_f1": 0.362617,
+      "weighted_f1": 0.393319,
+      "top2_accuracy": 0.600939,
+      "top3_accuracy": 0.657277,
+      "mean_confidence": 0.359054,
+      "mean_entropy": 2.869915,
+      "mean_margin": 0.256239,
+      "ece": 0.170672,
+      "brier": 0.756594,
+      "wrong_but_confident_rate": 0.046948,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 0.268293,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 1.0,
+        "神经内科": 0.4,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "皮肤科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "皮肤科": 13,
+          "呼吸与危重症医学科": 6,
+          "感染性疾病科": 1
+        },
+        "呼吸内科": {
+          "皮肤科": 7,
+          "呼吸与危重症医学科": 1,
+          "感染性疾病科": 9,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "皮肤科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 11,
+          "皮肤科": 30
+        },
+        "普外科": {
+          "皮肤科": 10
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "皮肤科": 4,
+          "神经内科": 2
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 6,
+          "神经内科": 4
+        },
+        "骨科": {
+          "皮肤科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0017892999749165028,
+      "model_size_chars": 996716,
+      "temperature": 0.5
+    },
+    "tfidf_logistic_regression": {
+      "test_rows": 213,
+      "accuracy": 0.370892,
+      "macro_f1": 0.341942,
+      "weighted_f1": 0.330256,
+      "top2_accuracy": 0.600939,
+      "top3_accuracy": 0.657277,
+      "mean_confidence": 0.646836,
+      "mean_entropy": 1.584526,
+      "mean_margin": 0.455109,
+      "ece": 0.278458,
+      "brier": 0.787004,
+      "wrong_but_confident_rate": 0.018779,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 1.0,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 0.132075,
+        "神经内科": 0.4,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "感染性疾病科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "感染性疾病科": 14,
+          "呼吸与危重症医学科": 6
+        },
+        "呼吸内科": {
+          "感染性疾病科": 11,
+          "呼吸与危重症医学科": 6,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "感染性疾病科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 41
+        },
+        "普外科": {
+          "感染性疾病科": 10
+        },
+        "泌尿外科": {
+          "感染性疾病科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "感染性疾病科": 6
+        },
+        "皮肤科": {
+          "皮肤科": 7,
+          "感染性疾病科": 46
+        },
+        "神经内科": {
+          "感染性疾病科": 6,
+          "神经内科": 4
+        },
+        "骨科": {
+          "感染性疾病科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0017646999913267791,
+      "model_size_chars": 1783981,
+      "temperature": 1.0
+    },
+    "tfidf_logistic_regression_temperature": {
+      "test_rows": 213,
+      "accuracy": 0.370892,
+      "macro_f1": 0.341942,
+      "weighted_f1": 0.330256,
+      "top2_accuracy": 0.600939,
+      "top3_accuracy": 0.657277,
+      "mean_confidence": 0.429494,
+      "mean_entropy": 2.565078,
+      "mean_margin": 0.260949,
+      "ece": 0.102523,
+      "brier": 0.71343,
+      "wrong_but_confident_rate": 0.00939,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 1.0,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 0.132075,
+        "神经内科": 0.4,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "感染性疾病科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "感染性疾病科": 14,
+          "呼吸与危重症医学科": 6
+        },
+        "呼吸内科": {
+          "感染性疾病科": 11,
+          "呼吸与危重症医学科": 6,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "感染性疾病科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 41
+        },
+        "普外科": {
+          "感染性疾病科": 10
+        },
+        "泌尿外科": {
+          "感染性疾病科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "感染性疾病科": 6
+        },
+        "皮肤科": {
+          "皮肤科": 7,
+          "感染性疾病科": 46
+        },
+        "神经内科": {
+          "感染性疾病科": 6,
+          "神经内科": 4
+        },
+        "骨科": {
+          "感染性疾病科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0017646999913267791,
+      "model_size_chars": 1783981,
+      "temperature": 1.9
+    },
+    "char_ngram_tfidf_lr": {
+      "test_rows": 213,
+      "accuracy": 0.624413,
+      "macro_f1": 0.408188,
+      "weighted_f1": 0.53633,
+      "top2_accuracy": 0.723005,
+      "top3_accuracy": 0.85446,
+      "mean_confidence": 0.434213,
+      "mean_entropy": 2.569425,
+      "mean_margin": 0.25071,
+      "ece": 0.192779,
+      "brier": 0.55234,
+      "wrong_but_confident_rate": 0.0,
+      "per_department_recall": {
+        "内分泌代谢科": 0.0,
+        "呼吸与危重症医学科": 1.0,
+        "呼吸内科": 0.0,
+        "心血管内科": 0.636364,
+        "感染性疾病科": 0.804878,
+        "普外科": 0.3,
+        "泌尿外科": 0.0,
+        "消化内科": 0.0,
+        "皮肤科": 1.0,
+        "神经内科": 0.0,
+        "骨科": 0.85
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "皮肤科": 9,
+          "感染性疾病科": 1
+        },
+        "呼吸与危重症医学科": {
+          "呼吸与危重症医学科": 20
+        },
+        "呼吸内科": {
+          "皮肤科": 14,
+          "感染性疾病科": 4
+        },
+        "心血管内科": {
+          "呼吸与危重症医学科": 1,
+          "皮肤科": 2,
+          "心血管内科": 7,
+          "感染性疾病科": 1
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 33,
+          "皮肤科": 8
+        },
+        "普外科": {
+          "皮肤科": 7,
+          "普外科": 3
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "感染性疾病科": 9
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 9,
+          "感染性疾病科": 1
+        },
+        "骨科": {
+          "骨科": 17,
+          "皮肤科": 2,
+          "感染性疾病科": 1
+        }
+      },
+      "inference_latency_s": 0.07803269999567419,
+      "model_size_chars": 6791158,
+      "temperature": 1.0
+    },
+    "char_ngram_tfidf_lr_temperature": {
+      "test_rows": 213,
+      "accuracy": 0.624413,
+      "macro_f1": 0.408188,
+      "weighted_f1": 0.53633,
+      "top2_accuracy": 0.723005,
+      "top3_accuracy": 0.85446,
+      "mean_confidence": 0.573769,
+      "mean_entropy": 1.909461,
+      "mean_margin": 0.381754,
+      "ece": 0.106119,
+      "brier": 0.511796,
+      "wrong_but_confident_rate": 0.004695,
+      "per_department_recall": {
+        "内分泌代谢科": 0.0,
+        "呼吸与危重症医学科": 1.0,
+        "呼吸内科": 0.0,
+        "心血管内科": 0.636364,
+        "感染性疾病科": 0.804878,
+        "普外科": 0.3,
+        "泌尿外科": 0.0,
+        "消化内科": 0.0,
+        "皮肤科": 1.0,
+        "神经内科": 0.0,
+        "骨科": 0.85
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "皮肤科": 9,
+          "感染性疾病科": 1
+        },
+        "呼吸与危重症医学科": {
+          "呼吸与危重症医学科": 20
+        },
+        "呼吸内科": {
+          "皮肤科": 14,
+          "感染性疾病科": 4
+        },
+        "心血管内科": {
+          "呼吸与危重症医学科": 1,
+          "皮肤科": 2,
+          "心血管内科": 7,
+          "感染性疾病科": 1
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 33,
+          "皮肤科": 8
+        },
+        "普外科": {
+          "皮肤科": 7,
+          "普外科": 3
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "感染性疾病科": 9
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 9,
+          "感染性疾病科": 1
+        },
+        "骨科": {
+          "骨科": 17,
+          "皮肤科": 2,
+          "感染性疾病科": 1
+        }
+      },
+      "inference_latency_s": 0.07803269999567419,
+      "model_size_chars": 6791158,
+      "temperature": 0.7
+    },
+    "word_char_fusion_lr": {
+      "test_rows": 213,
+      "accuracy": 0.380282,
+      "macro_f1": 0.363555,
+      "weighted_f1": 0.341513,
+      "top2_accuracy": 0.600939,
+      "top3_accuracy": 0.657277,
+      "mean_confidence": 0.53321,
+      "mean_entropy": 1.810983,
+      "mean_margin": 0.269658,
+      "ece": 0.22774,
+      "brier": 0.712633,
+      "wrong_but_confident_rate": 0.023474,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 1.0,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.555556,
+        "皮肤科": 0.132075,
+        "神经内科": 0.4,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "感染性疾病科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "感染性疾病科": 14,
+          "呼吸与危重症医学科": 6
+        },
+        "呼吸内科": {
+          "感染性疾病科": 13,
+          "呼吸与危重症医学科": 4,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "感染性疾病科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 41
+        },
+        "普外科": {
+          "感染性疾病科": 10
+        },
+        "泌尿外科": {
+          "感染性疾病科": 11
+        },
+        "消化内科": {
+          "消化内科": 5,
+          "感染性疾病科": 4
+        },
+        "皮肤科": {
+          "皮肤科": 7,
+          "感染性疾病科": 46
+        },
+        "神经内科": {
+          "感染性疾病科": 6,
+          "神经内科": 4
+        },
+        "骨科": {
+          "感染性疾病科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.08447230001911521,
+      "model_size_chars": 9246371,
+      "temperature": 1.0
+    },
+    "word_char_fusion_lr_temperature": {
+      "test_rows": 213,
+      "accuracy": 0.380282,
+      "macro_f1": 0.363555,
+      "weighted_f1": 0.341513,
+      "top2_accuracy": 0.600939,
+      "top3_accuracy": 0.657277,
+      "mean_confidence": 0.402918,
+      "mean_entropy": 2.547929,
+      "mean_margin": 0.203544,
+      "ece": 0.079579,
+      "brier": 0.697284,
+      "wrong_but_confident_rate": 0.00939,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 1.0,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.555556,
+        "皮肤科": 0.132075,
+        "神经内科": 0.4,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "感染性疾病科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "感染性疾病科": 14,
+          "呼吸与危重症医学科": 6
+        },
+        "呼吸内科": {
+          "感染性疾病科": 13,
+          "呼吸与危重症医学科": 4,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "感染性疾病科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 41
+        },
+        "普外科": {
+          "感染性疾病科": 10
+        },
+        "泌尿外科": {
+          "感染性疾病科": 11
+        },
+        "消化内科": {
+          "消化内科": 5,
+          "感染性疾病科": 4
+        },
+        "皮肤科": {
+          "皮肤科": 7,
+          "感染性疾病科": 46
+        },
+        "神经内科": {
+          "感染性疾病科": 6,
+          "神经内科": 4
+        },
+        "骨科": {
+          "感染性疾病科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.08447230001911521,
+      "model_size_chars": 9246371,
+      "temperature": 1.7
+    },
+    "three_state_lr": {
+      "test_rows": 213,
+      "accuracy": 0.43662,
+      "macro_f1": 0.345476,
+      "weighted_f1": 0.382337,
+      "top2_accuracy": 0.586854,
+      "top3_accuracy": 0.661972,
+      "mean_confidence": 0.630207,
+      "mean_entropy": 1.777612,
+      "mean_margin": 0.464546,
+      "ece": 0.213964,
+      "brier": 0.766094,
+      "wrong_but_confident_rate": 0.046948,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 0.268293,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 1.0,
+        "神经内科": 0.2,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "皮肤科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "皮肤科": 12,
+          "呼吸与危重症医学科": 6,
+          "感染性疾病科": 2
+        },
+        "呼吸内科": {
+          "皮肤科": 7,
+          "呼吸与危重症医学科": 2,
+          "感染性疾病科": 8,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "皮肤科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 11,
+          "皮肤科": 30
+        },
+        "普外科": {
+          "皮肤科": 10
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "皮肤科": 6
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 8,
+          "神经内科": 2
+        },
+        "骨科": {
+          "皮肤科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0023093000054359436,
+      "model_size_chars": 1780567,
+      "temperature": 1.0
+    },
+    "three_state_lr_temperature": {
+      "test_rows": 213,
+      "accuracy": 0.43662,
+      "macro_f1": 0.345476,
+      "weighted_f1": 0.382337,
+      "top2_accuracy": 0.586854,
+      "top3_accuracy": 0.661972,
+      "mean_confidence": 0.454964,
+      "mean_entropy": 2.49583,
+      "mean_margin": 0.296918,
+      "ece": 0.097385,
+      "brier": 0.734143,
+      "wrong_but_confident_rate": 0.042254,
+      "per_department_recall": {
+        "内分泌代谢科": 0.1,
+        "呼吸与危重症医学科": 0.3,
+        "呼吸内科": 0.055556,
+        "心血管内科": 0.727273,
+        "感染性疾病科": 0.268293,
+        "普外科": 0.0,
+        "泌尿外科": 0.0,
+        "消化内科": 0.333333,
+        "皮肤科": 1.0,
+        "神经内科": 0.2,
+        "骨科": 0.4
+      },
+      "confusion_matrix": {
+        "内分泌代谢科": {
+          "内分泌代谢科": 1,
+          "皮肤科": 8,
+          "呼吸与危重症医学科": 1
+        },
+        "呼吸与危重症医学科": {
+          "皮肤科": 12,
+          "呼吸与危重症医学科": 6,
+          "感染性疾病科": 2
+        },
+        "呼吸内科": {
+          "皮肤科": 7,
+          "呼吸与危重症医学科": 2,
+          "感染性疾病科": 8,
+          "呼吸内科": 1
+        },
+        "心血管内科": {
+          "心血管内科": 8,
+          "皮肤科": 3
+        },
+        "感染性疾病科": {
+          "感染性疾病科": 11,
+          "皮肤科": 30
+        },
+        "普外科": {
+          "皮肤科": 10
+        },
+        "泌尿外科": {
+          "皮肤科": 11
+        },
+        "消化内科": {
+          "消化内科": 3,
+          "皮肤科": 6
+        },
+        "皮肤科": {
+          "皮肤科": 53
+        },
+        "神经内科": {
+          "皮肤科": 8,
+          "神经内科": 2
+        },
+        "骨科": {
+          "皮肤科": 12,
+          "骨科": 8
+        }
+      },
+      "inference_latency_s": 0.0023093000054359436,
+      "model_size_chars": 1780567,
+      "temperature": 1.6
+    }
+  },
+  "temperatures": {
+    "logistic_regression_binary": 1.6,
+    "linear_svm_binary": 0.5,
+    "tfidf_logistic_regression": 1.9,
+    "char_ngram_tfidf_lr": 0.7,
+    "word_char_fusion_lr": 1.7,
+    "three_state_lr": 1.6
+  }
+}

@@ -1,0 +1,517 @@
+{
+  "seed": 2026,
+  "representation": "concat_char",
+  "original": {
+    "n": 218,
+    "accuracy": 0.9128440366972477,
+    "macro_f1": 0.9137154136021463,
+    "nll": 0.2526952776580634,
+    "brier": 0.13688524005570132,
+    "ece": 0.043759954559785555,
+    "wrong_confident_07": 0.045871559633027525,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 10,
+        "recall": 0.8
+      },
+      "呼吸与危重症医学科": {
+        "support": 20,
+        "recall": 1.0
+      },
+      "呼吸内科": {
+        "support": 10,
+        "recall": 0.8
+      },
+      "心血管内科": {
+        "support": 11,
+        "recall": 1.0
+      },
+      "感染性疾病科": {
+        "support": 41,
+        "recall": 0.975609756097561
+      },
+      "普外科": {
+        "support": 10,
+        "recall": 1.0
+      },
+      "泌尿外科": {
+        "support": 11,
+        "recall": 0.9090909090909091
+      },
+      "消化内科": {
+        "support": 17,
+        "recall": 0.5294117647058824
+      },
+      "皮肤科": {
+        "support": 58,
+        "recall": 0.9482758620689655
+      },
+      "神经内科": {
+        "support": 10,
+        "recall": 0.9
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 20,
+        "recall": 0.95
+      }
+    },
+    "reliability": [
+      {
+        "bin": 4,
+        "n": 4,
+        "confidence": 0.4615799107625086,
+        "accuracy": 0.25
+      },
+      {
+        "bin": 5,
+        "n": 8,
+        "confidence": 0.5559533437740578,
+        "accuracy": 0.625
+      },
+      {
+        "bin": 6,
+        "n": 8,
+        "confidence": 0.6527256271876399,
+        "accuracy": 0.625
+      },
+      {
+        "bin": 7,
+        "n": 10,
+        "confidence": 0.7370337951545116,
+        "accuracy": 0.9
+      },
+      {
+        "bin": 8,
+        "n": 13,
+        "confidence": 0.8650375594675688,
+        "accuracy": 0.9230769230769231
+      },
+      {
+        "bin": 9,
+        "n": 175,
+        "confidence": 0.9859142766188461,
+        "accuracy": 0.9542857142857143
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.8761467889908257,
+      0.9541284403669725
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "mask_test_only": {
+    "n": 218,
+    "accuracy": 0.9128440366972477,
+    "macro_f1": 0.9137154136021463,
+    "nll": 0.253753274031702,
+    "brier": 0.13669050593234144,
+    "ece": 0.038888246508603765,
+    "wrong_confident_07": 0.045871559633027525,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 10,
+        "recall": 0.8
+      },
+      "呼吸与危重症医学科": {
+        "support": 20,
+        "recall": 1.0
+      },
+      "呼吸内科": {
+        "support": 10,
+        "recall": 0.8
+      },
+      "心血管内科": {
+        "support": 11,
+        "recall": 1.0
+      },
+      "感染性疾病科": {
+        "support": 41,
+        "recall": 0.975609756097561
+      },
+      "普外科": {
+        "support": 10,
+        "recall": 1.0
+      },
+      "泌尿外科": {
+        "support": 11,
+        "recall": 0.9090909090909091
+      },
+      "消化内科": {
+        "support": 17,
+        "recall": 0.5294117647058824
+      },
+      "皮肤科": {
+        "support": 58,
+        "recall": 0.9482758620689655
+      },
+      "神经内科": {
+        "support": 10,
+        "recall": 0.9
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 20,
+        "recall": 0.95
+      }
+    },
+    "reliability": [
+      {
+        "bin": 4,
+        "n": 5,
+        "confidence": 0.4607707580469239,
+        "accuracy": 0.4
+      },
+      {
+        "bin": 5,
+        "n": 7,
+        "confidence": 0.5608739125643644,
+        "accuracy": 0.5714285714285714
+      },
+      {
+        "bin": 6,
+        "n": 8,
+        "confidence": 0.6445224143397502,
+        "accuracy": 0.625
+      },
+      {
+        "bin": 7,
+        "n": 10,
+        "confidence": 0.7370337951545116,
+        "accuracy": 0.9
+      },
+      {
+        "bin": 8,
+        "n": 13,
+        "confidence": 0.8650375594675688,
+        "accuracy": 0.9230769230769231
+      },
+      {
+        "bin": 9,
+        "n": 175,
+        "confidence": 0.9860545614085546,
+        "accuracy": 0.9542857142857143
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.8761467889908257,
+      0.9541284403669725
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "named_disease_test_rows": 3,
+  "interpretation": "test-only intervention measures diagnostic-name reliance; not an independent clinical benchmark",
+  "diagnosis_mentioned": {
+    "n": 3,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25,
+    "nll": 1.7321239158656165,
+    "brier": 1.0410115283433463,
+    "ece": 0.6865633191319451,
+    "wrong_confident_07": 0.3333333333333333,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 1,
+        "recall": 0.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 1,
+        "recall": 1.0
+      },
+      "呼吸内科": {
+        "support": 0,
+        "recall": null
+      },
+      "心血管内科": {
+        "support": 0,
+        "recall": null
+      },
+      "感染性疾病科": {
+        "support": 0,
+        "recall": null
+      },
+      "普外科": {
+        "support": 0,
+        "recall": null
+      },
+      "泌尿外科": {
+        "support": 0,
+        "recall": null
+      },
+      "消化内科": {
+        "support": 0,
+        "recall": null
+      },
+      "皮肤科": {
+        "support": 0,
+        "recall": null
+      },
+      "神经内科": {
+        "support": 0,
+        "recall": null
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 1,
+        "recall": 0.0
+      }
+    },
+    "reliability": [
+      {
+        "bin": 5,
+        "n": 1,
+        "confidence": 0.5215093622419122,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 6,
+        "n": 1,
+        "confidence": 0.6660818695770072,
+        "accuracy": 0.0
+      },
+      {
+        "bin": 9,
+        "n": 1,
+        "confidence": 0.9151174500607404,
+        "accuracy": 0.0
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.0,
+      1.0
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "no_exact_disease_name": {
+    "n": 215,
+    "accuracy": 0.9209302325581395,
+    "macro_f1": 0.921622237411711,
+    "nll": 0.2320520873574929,
+    "brier": 0.12426952440517605,
+    "ece": 0.038923413212972824,
+    "wrong_confident_07": 0.04186046511627907,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 9,
+        "recall": 0.8888888888888888
+      },
+      "呼吸与危重症医学科": {
+        "support": 19,
+        "recall": 1.0
+      },
+      "呼吸内科": {
+        "support": 10,
+        "recall": 0.8
+      },
+      "心血管内科": {
+        "support": 11,
+        "recall": 1.0
+      },
+      "感染性疾病科": {
+        "support": 41,
+        "recall": 0.975609756097561
+      },
+      "普外科": {
+        "support": 10,
+        "recall": 1.0
+      },
+      "泌尿外科": {
+        "support": 11,
+        "recall": 0.9090909090909091
+      },
+      "消化内科": {
+        "support": 17,
+        "recall": 0.5294117647058824
+      },
+      "皮肤科": {
+        "support": 58,
+        "recall": 0.9482758620689655
+      },
+      "神经内科": {
+        "support": 10,
+        "recall": 0.9
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 19,
+        "recall": 1.0
+      }
+    },
+    "reliability": [
+      {
+        "bin": 4,
+        "n": 4,
+        "confidence": 0.4615799107625086,
+        "accuracy": 0.25
+      },
+      {
+        "bin": 5,
+        "n": 7,
+        "confidence": 0.5608739125643644,
+        "accuracy": 0.5714285714285714
+      },
+      {
+        "bin": 6,
+        "n": 7,
+        "confidence": 0.6508175925605876,
+        "accuracy": 0.7142857142857143
+      },
+      {
+        "bin": 7,
+        "n": 10,
+        "confidence": 0.7370337951545116,
+        "accuracy": 0.9
+      },
+      {
+        "bin": 8,
+        "n": 13,
+        "confidence": 0.8650375594675688,
+        "accuracy": 0.9230769230769231
+      },
+      {
+        "bin": 9,
+        "n": 174,
+        "confidence": 0.9863211549323982,
+        "accuracy": 0.9597701149425287
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.8837209302325582,
+      0.958139534883721
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "mask_train_cal_test_refit": {
+    "status": "complete",
+    "frozen_config": {
+      "family": "extra_trees",
+      "balanced": true,
+      "max_depth": null
+    },
+    "representation": "concat_char",
+    "temperature": 0.26441785636993465,
+    "metrics": {
+      "n": 218,
+      "accuracy": 0.9311926605504587,
+      "macro_f1": 0.934367077710731,
+      "nll": 0.24046642032167193,
+      "brier": 0.12196008924860059,
+      "ece": 0.03755648184244412,
+      "wrong_confident_07": 0.05045871559633028,
+      "per_department": {
+        "内分泌代谢科": {
+          "support": 10,
+          "recall": 0.9
+        },
+        "呼吸与危重症医学科": {
+          "support": 20,
+          "recall": 1.0
+        },
+        "呼吸内科": {
+          "support": 10,
+          "recall": 1.0
+        },
+        "心血管内科": {
+          "support": 11,
+          "recall": 1.0
+        },
+        "感染性疾病科": {
+          "support": 41,
+          "recall": 1.0
+        },
+        "普外科": {
+          "support": 10,
+          "recall": 1.0
+        },
+        "泌尿外科": {
+          "support": 11,
+          "recall": 0.8181818181818182
+        },
+        "消化内科": {
+          "support": 17,
+          "recall": 0.5294117647058824
+        },
+        "皮肤科": {
+          "support": 58,
+          "recall": 0.9655172413793104
+        },
+        "神经内科": {
+          "support": 10,
+          "recall": 0.9
+        },
+        "肛肠科": {
+          "support": 0,
+          "recall": null
+        },
+        "骨科": {
+          "support": 20,
+          "recall": 0.95
+        }
+      },
+      "reliability": [
+        {
+          "bin": 4,
+          "n": 1,
+          "confidence": 0.47922391712910123,
+          "accuracy": 0.0
+        },
+        {
+          "bin": 5,
+          "n": 3,
+          "confidence": 0.5677280413514793,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "bin": 6,
+          "n": 13,
+          "confidence": 0.6408717702350122,
+          "accuracy": 0.8461538461538461
+        },
+        {
+          "bin": 7,
+          "n": 12,
+          "confidence": 0.74607663234752,
+          "accuracy": 0.75
+        },
+        {
+          "bin": 8,
+          "n": 8,
+          "confidence": 0.8363786083861673,
+          "accuracy": 0.75
+        },
+        {
+          "bin": 9,
+          "n": 181,
+          "confidence": 0.9889751214514597,
+          "accuracy": 0.9668508287292817
+        }
+      ],
+      "accuracy_row_bootstrap_95ci": [
+        0.8989678899082569,
+        0.9678899082568807
+      ],
+      "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+    }
+  },
+  "mask_refit_leakage": {
+    "threshold": 0.8,
+    "pair_count": 0,
+    "cross_label_pair_count": 0,
+    "max_jaccard": 0.75,
+    "examples": [],
+    "leaky": false
+  },
+  "mask_refit_limit": "original partition retained for intervention comparison; masking can create new duplicates, audit reported"
+}

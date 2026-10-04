@@ -1,0 +1,85 @@
+{
+  "scope": "synthetic_conditional_report_contract_not_clinical_validation",
+  "total": 6,
+  "failed": 5,
+  "rows": [
+    {
+      "text": "如果我有糖尿病应该挂什么科",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.74,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "disease_keyword"
+      },
+      "pass": false
+    },
+    {
+      "text": "假如患有糖尿病",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "pass": false
+    },
+    {
+      "text": "如果我妈妈有糖尿病会怎样",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.74,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "disease_keyword"
+      },
+      "pass": false
+    },
+    {
+      "text": "倘若我有糖尿病",
+      "expected_known": false,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.74,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "disease_keyword"
+      },
+      "pass": false
+    },
+    {
+      "text": "已确诊糖尿病，如果发热怎么办",
+      "expected_known": true,
+      "expected_disease": "糖尿病",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "pass": true
+    },
+    {
+      "text": "我已确诊乙肝但如果糖尿病怎么办",
+      "expected_known": true,
+      "expected_disease": "乙肝",
+      "actual": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "pass": false
+    }
+  ]
+}

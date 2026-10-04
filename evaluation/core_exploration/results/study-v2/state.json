@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "pid": 11708,
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "representations": [
+    "binary",
+    "word",
+    "concat_char",
+    "canonical_char",
+    "segmented_char",
+    "fusion_25",
+    "fusion_50",
+    "fusion_75"
+  ]
+}

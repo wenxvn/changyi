@@ -1,0 +1,90 @@
+{
+  "status": "complete",
+  "seed": 123,
+  "metrics": {
+    "n": 222,
+    "accuracy": 0.15765765765765766,
+    "macro_f1": 0.06319986149014,
+    "nll": 2.421748310322795,
+    "brier": 0.9047785241395818,
+    "ece": 0.02213735099016846,
+    "wrong_confident_07": 0.0,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 26,
+        "recall": 0.038461538461538464
+      },
+      "呼吸内科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "心血管内科": {
+        "support": 11,
+        "recall": 0.0
+      },
+      "感染性疾病科": {
+        "support": 41,
+        "recall": 0.5121951219512195
+      },
+      "普外科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "泌尿外科": {
+        "support": 11,
+        "recall": 0.09090909090909091
+      },
+      "消化内科": {
+        "support": 9,
+        "recall": 0.0
+      },
+      "皮肤科": {
+        "support": 64,
+        "recall": 0.1875
+      },
+      "神经内科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 20,
+        "recall": 0.0
+      }
+    },
+    "reliability": [
+      {
+        "bin": 0,
+        "n": 1,
+        "confidence": 0.09912171902265271,
+        "accuracy": 0.0
+      },
+      {
+        "bin": 1,
+        "n": 218,
+        "confidence": 0.13559960521001677,
+        "accuracy": 0.1559633027522936
+      },
+      {
+        "bin": 2,
+        "n": 3,
+        "confidence": 0.2079719544738671,
+        "accuracy": 0.3333333333333333
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.11261261261261261,
+      0.20281531531531521
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "scope": "train labels shuffled, true cal/test unchanged; no test fitting",
+  "expected": "performance should collapse toward class-prior baseline, not retain main headline"
+}

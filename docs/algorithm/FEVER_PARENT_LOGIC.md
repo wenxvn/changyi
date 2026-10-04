@@ -1,0 +1,15 @@
+# 派生父特征与模型边界（W35）
+
+问题来自现有编码关系，未定义新温度阈值或医学分类。parser把high_fever/mild_fever无论present/absent/unknown都派生到fever，导致没有高烧但有低烧等描述出现伪父特征冲突。
+
+本轮只让子特征present派生父presence；子absent/unknown留在子级。通用发热/发烧仍只粗粒度fever，同grade肯否与通用否认+特定grade肯定仍拒答。未知仍按既有保守策略整条aux拒答。
+
+旧alias_scope_challenge的oracle也把三种状态都派生父，关联1失败/22通过原件保留；新protocol_version=alias_scope_parent_direction_v2明确方向规则，旧1560历史JSON不覆盖、不称旧协议已重现或获得临床验证。
+
+首after版本暴露两个边界问题：normalized_symptoms保留未知父码fever，却被当作全部已纳入特征/与known_labels按位置对齐；仅模型候选又使普通全科fallback消失。最终保原normalized列表，特征计数只算模型词汇表内项，标签按已知code对齐；没有非模型证据时保原全科待评估fallback，辅助模型不能通过抹掉默认方向决定路线。
+
+首浏览器1失败/55通过（断言误把normalized当known）与634项中间pytest均保留，不用来宣称最终版本通过。按Recover Mode 1分类根因后定点修复，另登记w35-fever-parent-boundary-v2，不覆盖首after。
+
+最终8项v2边界协议无契约失败，与原before的Safety状态/科室全部一致；全JSONCSV输入哈希相同。普通接受/拒答策略仅因修正伪冲突发生变化，不改变模型权重、医学阈值或Safety。结果SHA256为5b137a4c17d9e048a83ff7a0af9c412d7259f1bb56ff32d1d45714e96f35e3a9。
+
+这是逻辑与发布边界证据，不是临床准确率提升；更广泛同码/同义/上下位关系、独立中文标签和概率校准仍开放。

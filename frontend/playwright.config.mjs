@@ -1,6 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
+import { fileURLToPath } from "node:url";
 
-const python = process.env.CI ? "python3" : "../.venv/bin/python";
+const python = process.env.CHANGYI_PYTHON ?? (process.env.CI
+  ? "python3"
+  : fileURLToPath(new URL(process.platform === "win32" ? "../.venv/Scripts/python.exe" : "../.venv/bin/python", import.meta.url)));
+const entry = fileURLToPath(new URL("../app.py", import.meta.url));
 
 export default defineConfig({
   testDir: "./e2e",
@@ -18,7 +22,7 @@ export default defineConfig({
       : {}),
   },
   webServer: {
-    command: `${python} ../app.py`,
+    command: `"${python}" "${entry}"`,
     url: "http://127.0.0.1:5002/",
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

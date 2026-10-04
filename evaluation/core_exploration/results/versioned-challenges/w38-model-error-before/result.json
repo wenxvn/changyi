@@ -1,0 +1,62 @@
+{
+  "scope": "synthetic_model_exception_publication_boundary_not_complete_security_audit",
+  "total": 3,
+  "failed": 3,
+  "adapter_state_restored": true,
+  "rows": [
+    {
+      "text": "咳嗽",
+      "marker_absent_from_response": false,
+      "internal_diagnostic_retained": true,
+      "public_error_codes_generic": false,
+      "signature": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "abstain_reason": "model_unavailable",
+      "pass": false
+    },
+    {
+      "text": "抽搐",
+      "marker_absent_from_response": false,
+      "internal_diagnostic_retained": true,
+      "public_error_codes_generic": false,
+      "signature": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "baseline": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "abstain_reason": "safety_gate_priority",
+      "pass": false
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "marker_absent_from_response": false,
+      "internal_diagnostic_retained": true,
+      "public_error_codes_generic": false,
+      "signature": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "baseline": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "abstain_reason": "safety_gate_priority",
+      "pass": false
+    }
+  ]
+}

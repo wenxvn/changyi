@@ -1,0 +1,194 @@
+{
+  "scope": "synthetic_local_cause_vs_presence_uncertainty_not_clinical_validation",
+  "total": 8,
+  "failed": 5,
+  "rows": [
+    {
+      "text": "不确定为什么咳嗽",
+      "expected_present": [
+        "cough"
+      ],
+      "expected_absent": [],
+      "expected_unknown": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "说不清为何咳嗽",
+      "expected_present": [
+        "cough"
+      ],
+      "expected_absent": [],
+      "expected_unknown": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "不确定为什么咳嗽但确实咳嗽",
+      "expected_present": [
+        "cough"
+      ],
+      "expected_absent": [],
+      "expected_unknown": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [
+          "cough"
+        ],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "不确定为什么没有咳嗽",
+      "expected_present": [],
+      "expected_absent": [
+        "cough"
+      ],
+      "expected_unknown": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "pass": false
+    },
+    {
+      "text": "不确定是否咳嗽",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "假如不确定为什么咳嗽",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "以前不确定为什么咳嗽",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": true
+      },
+      "abstain_reason": "noncurrent_symptom_context",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气，不确定为什么咳嗽",
+      "expected_present": null,
+      "expected_absent": [],
+      "expected_unknown": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [
+          "breathlessness",
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": false
+    }
+  ]
+}

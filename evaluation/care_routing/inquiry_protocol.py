@@ -56,6 +56,7 @@ def predict_with_states(
             total_symptom_counts=total_symptom_counts,
             vocabulary=vocabulary,
             alpha=alpha,
+            class_counts=class_counts,
         )
         scores[disease] = math.log(prior) + ll
 
@@ -91,7 +92,6 @@ def expected_information_gain_states(
     def post(answer_present: bool) -> tuple[list[tuple[str, float]], float]:
         new_present = list(present) + ([candidate] if answer_present else [])
         new_absent = list(absent) + ([] if answer_present else [candidate])
-        ranked = predict_with_states(model, new_present, new_absent)
         # P(answer | x) = sum_y P(y|x) P(answer|y)
         symptom_counts = model.get("symptom_counts") or {}
         total_symptom_counts = model.get("total_symptom_counts") or {}
@@ -99,12 +99,21 @@ def expected_information_gain_states(
         alpha = float(model.get("alpha", 1.0))
         p_answer = 0.0
         for label, p_y in posterior:
-            denom = float(total_symptom_counts.get(label, 0)) + alpha * max(len(vocabulary_list), 1)
+            denom = float((model.get("class_counts") or {}).get(label, 0)) + 2 * alpha
             count = float((symptom_counts.get(label) or {}).get(candidate, 0))
             p_yes = (count + alpha) / denom
             p_yes = min(max(p_yes, 1e-12), 1.0 - 1e-12)
             likelihood = p_yes if answer_present else (1.0 - p_yes)
             p_answer += p_y * likelihood
+        # Update the supplied posterior itself so expected entropy uses one
+        # consistent distribution (including when a caller has calibrated it).
+        weighted = []
+        for label, p_y in posterior:
+            count = float((symptom_counts.get(label) or {}).get(candidate, 0))
+            denom = float((model.get("class_counts") or {}).get(label, 0)) + 2 * alpha
+            p_yes = min(max((count + alpha) / denom, 1e-12), 1. - 1e-12)
+            weighted.append((label, p_y * (p_yes if answer_present else 1. - p_yes)))
+        ranked = sorted(((label, mass / p_answer) for label, mass in weighted), key=lambda x: x[1], reverse=True)
         return ranked, p_answer
 
     ranked_yes, p_yes = post(True)

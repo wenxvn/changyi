@@ -32,6 +32,7 @@ function errorFor(reason: unknown, fallback: string): ApiError {
 /** Ordinary resource matching only runs for a non-emergency result with a condition. */
 function hasActionableResult(result: TriagePayload | null, submittedCondition: string): boolean {
   if (!result || result.triage_status === "EMERGENCY") return false;
+  if (result.triage_status === "INSUFFICIENT_INFORMATION" && !result.matched_department) return false;
   return Boolean(submittedCondition.trim());
 }
 
@@ -173,8 +174,12 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
 
   function handleAnswer(_question: FollowupQuestion, answer: FollowupAnswer) {
     if (loading) return;
-    const nextAnswers = [...followupAnswers, answer];
-    setFollowupStep((value) => value + 1);
+    const previousAnswer = followupAnswers.find((item) => item.question_id === answer.question_id);
+    const nextAnswers = [...followupAnswers.filter((item) => item.question_id !== answer.question_id), answer];
+    const unresolvedRisk = answer.question_id === "red_flag_check" && answer.value === "unknown";
+    if (!unresolvedRisk && (!previousAnswer || previousAnswer.value === "unknown")) {
+      setFollowupStep((value) => value + 1);
+    }
     void submitCondition(submittedCondition, { preserveFollowupStep: true, followupAnswers: nextAnswers });
   }
 
@@ -451,6 +456,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                       followup={followup as FollowupPayload}
                       stepNumber={followupStep}
                       disabled={loading}
+                      directionDeferred={result?.triage_status === "INSUFFICIENT_INFORMATION" && !result.matched_department}
                       onAnswer={handleAnswer}
                       onSkip={handleSkipFollowup}
                     />

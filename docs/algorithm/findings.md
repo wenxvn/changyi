@@ -1,0 +1,21 @@
+# 核心算法发现
+
+- 原始 main=e82447c；215 pytest/142 Safety/17 frontend/26 临时 Windows E2E 均通过。
+- direct char 使用 35 epochs/lr .35，selective 与 robustness 又拟合 70/.4；cal/test 和 clean/perturbed 混不同模型。
+- 同名 seed42 已提交 accuracy .737089 vs selective full .624413；T .5 vs .7，结果版本不一致。
+- run_matrix.std 使用 readiness 描述字符串，不是数值。
+- legacy 拼接 char 未分隔症状，且输入顺序改变表示；需顺序与分隔消融。
+- 所谓 synonyms 实际改变症状/严重程度；drop_noncritical 随机丢症状，不能保证非关键。需修正研究叙事和压力实验分类。
+- 现有追问 probability 由 multinomial token counts 推 yes/no，待核验。
+- 严格研究：test 不能选模型/阈值；完整阴性结果保留；无真实患者、无临床宣称。
+- 首个标准模型 smoke：binary / seed42，22 个内层候选；选择 LR C=10 unweighted，外层 Acc .4272、temperature ECE .0319。只是 smoke，不是最终结果。后加入完整 OvR sigmoid/isotonic 校准后，正式结果版本固定为 study-v2，smoke-v1 保留。
+- 修正 Round4 正在跑；实时五 seed headline 暂为 .608179，而旧文件为 .742438。仅模型身份修复不应改变分类器训练逻辑，需用 git HEAD 原函数单独复现 seed42，排除修复改变主分类器的可能。
+- 追问的 Bernoulli 概率错误已用失败用例重现：两类各2样本，fever 一类全有一类全无，混合 yes 应为 .5，原实现为 .3142857。修复记录频率分母为 n_class+2α；IG 的 yes/no 后验直接更新同一输入 posterior，避免混温度分布。
+- 更重要的数据发现：training_long_extra 的若干“symptom code”是整段疾病介绍，含 cystic_acne/alcoholic_hepatitis 等真实目标名称，原样合并为1289样本不是一致的标准症状码数据。Jaccard over whole phrase tokens 不能隔离语义/文本模板改写。标准模型内层选择的五seed约94%只是混合文本研究指标，不能解释为中文症状分诊提升。阶段5新增冻结协议：label-mask ablation、字符cosine global components(.7/.8/.9)、纯structured cohort和来源对照；保留所有覆盖缩小/unsupported结果。
+- 原版Git函数控制已完成：seed42=.624413、T=.7，与当前修正分类器一致；旧 .737089/T=.5 无法从本次源码复现。
+- 疾病名遮蔽被证伪为 headline 的主要成因：seed42 test-only mask 与 mask-refit 都仍 .957746；33条命中精确疾病名，723条extras含>80字符的长字段。不能把所有成绩归因名称泄漏。
+- label-masked文本cosine global group(.7/.8/.9) 五seed平均Acc约 .930/.925/.923；跨来源 structured→extras seed42 .532；reverse缺训练科室为unsupported并保留。完整304条症状-only GroupKFold5，binary/word/segmented Acc约 .615/.609/.533（含23个训练中缺失科室样本，不移出分母）。原quota8/8不能代表304条全覆盖。
+- Phase6完成：5seeds×108策略/概率/预算/噪声条件，540个设置；均明示closed-world oracle，不代表真实阴性回答。
+- Phase7词典归一留911/1289行（378条无可识别概念），存在22个跨科室相同fingerprint；按数据自身标签的多数上界约.864，不是临床上界。12个中文/安全边界工程例通过，尚非临床科室准确率。
+- 最后新增有限对照：25个分组训练量学习曲线点，及每seed3个集成规则（全8表示均匀/top3均匀/cal-NLL加权）。理由：验证提高是否依赖训练量、特征集合共性与cal过拟合；权重只拟合cal_fit，threshold_cal/test分开。结束后不再无限扩模型。
+- 中文720个词典组合性质挑战发现12个失败：否定“连续打喷嚏”时，较短“喷嚏”别名在同一span被再次判阳性。已定位长短别名重叠根因，改为最长匹配span只处理一次，保留旧失败报告；新增真实caller回归。另修复“担心会不会”疑问及“小时候…现在好了”的研究层当前症状误断。正式Safety规则未改。

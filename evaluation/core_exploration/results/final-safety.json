@@ -1,0 +1,1302 @@
+{
+  "schema_version": "safety-evaluation-report/v1",
+  "case_count": 142,
+  "red_flag_count": 84,
+  "red_flag_recall": 1.0,
+  "under_triage_rate": 0.0,
+  "over_triage_rate": 0.0,
+  "emergency_false_negative": 0,
+  "insufficient_information_count": 7,
+  "insufficient_information_matches": 7,
+  "emergency_case_count": 84,
+  "urgent_case_count": 29,
+  "routine_case_count": 22,
+  "insufficient_case_count": 7,
+  "status_counts": {
+    "EMERGENCY": 84,
+    "URGENT": 29,
+    "ROUTINE": 22,
+    "INSUFFICIENT_INFORMATION": 7
+  },
+  "review_required": [],
+  "cases": [
+    {
+      "id": "cardiovascular-respiratory-emergency",
+      "category": "cardiovascular_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "stroke-signal",
+      "category": "stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "breathlessness",
+      "category": "breathlessness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "acute-abdomen",
+      "category": "acute_abdomen",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "severe-trauma-bleeding",
+      "category": "severe_trauma",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "altered-consciousness",
+      "category": "altered_consciousness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "severe-allergy",
+      "category": "allergy",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "obstetric-emergency",
+      "category": "obstetric",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "critical-child",
+      "category": "critical_child",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "eye-emergency",
+      "category": "eye_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "mental-health-crisis",
+      "category": "mental_crisis",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "baseline_rule_verified"
+    },
+    {
+      "id": "cardiovascular-autonomic-triad",
+      "category": "cardiovascular_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "cardiovascular-cold-sweat",
+      "category": "cardiovascular_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-air",
+      "category": "colloquial",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-breathless",
+      "category": "colloquial",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "critical-breathlessness",
+      "category": "breathlessness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "purple-lips",
+      "category": "breathlessness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "stroke-face",
+      "category": "stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "acute-abdomen-fever",
+      "category": "acute_abdomen",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "severe-allergy-airway",
+      "category": "allergy",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "persistent-seizure",
+      "category": "altered_consciousness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "pregnancy-pain",
+      "category": "obstetric",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "eye-vision-loss",
+      "category": "eye_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "critical-child-response",
+      "category": "critical_child",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "self-harm-risk",
+      "category": "mental_crisis",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "severe-bleeding",
+      "category": "severe_trauma",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "chest-pain-syncope",
+      "category": "cardiovascular_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "negation-only",
+      "category": "negation",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "negation-then-positive",
+      "category": "negation",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-breathlessness",
+      "category": "colloquial",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-discomfort",
+      "category": "insufficient_information",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "observed_status": "INSUFFICIENT_INFORMATION",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "ordinary-cough",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-not-well",
+      "category": "insufficient_information",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "observed_status": "INSUFFICIENT_INFORMATION",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-discomfort-short",
+      "category": "insufficient_information",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "observed_status": "INSUFFICIENT_INFORMATION",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "question-about-chest-pain",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "historical-chest-pain",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "mild-skin-itch",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "mild-nasal-symptoms",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "crushing-chest-cold-sweat",
+      "category": "cardiovascular_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "chest-pain-left-shoulder",
+      "category": "cardiovascular_emergency",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "uncontrolled-scalp-bleed",
+      "category": "severe_trauma",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "ongoing-seizure-child",
+      "category": "seizure",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "stroke-slurred-half-body",
+      "category": "stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "thunderclap-headache",
+      "category": "neuro_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "anaphylaxis-airway",
+      "category": "allergy",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "open-fracture-mvc",
+      "category": "severe_trauma",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "unresponsive-coma",
+      "category": "altered_consciousness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "shock-signs",
+      "category": "altered_consciousness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "pregnancy-massive-bleed",
+      "category": "obstetric",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "ruptured-membranes",
+      "category": "obstetric",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "decreased-fetal-movement",
+      "category": "obstetric",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "postop-massive-bleed",
+      "category": "severe_trauma",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "infant-febrile-seizure",
+      "category": "critical_child",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "cancer-hemoptysis-dyspnea",
+      "category": "oncology_acute",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "chemical-eye-exposure",
+      "category": "eye_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "self-harm-soft-wording",
+      "category": "mental_crisis",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-slurred-speech",
+      "category": "colloquial_stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-half-limb-weak",
+      "category": "colloquial_stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-chest-tight-mild",
+      "category": "colloquial_cardio",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-chest-pain-severe",
+      "category": "colloquial_cardio",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-heart-press-sweat",
+      "category": "colloquial_cardio",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-air-hunger",
+      "category": "colloquial",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "colloquial-half-body-near-faint",
+      "category": "colloquial_stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "spaced-breathlessness",
+      "category": "input_noise",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "spaced-chest-pain-breath",
+      "category": "input_noise",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "emoji-chest-breath",
+      "category": "input_noise",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "mixed-language-chest",
+      "category": "input_noise",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "long-narrative-colloquial",
+      "category": "colloquial_narrative",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "deny-all-major-red-flags",
+      "category": "negation",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "deny-then-new-stroke-sign",
+      "category": "negation",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "historical-chest-pain-resolved",
+      "category": "negation_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "deny-dyspnea-spaced",
+      "category": "negation",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "question-stroke-signs",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "first-person-current-stroke",
+      "category": "question_or_history",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "family-stroke-history",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "past-slurred-speech-once",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "sudden-slurred-speech-now",
+      "category": "question_or_history",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "question-heart-attack-signs",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "first-person-current-chest-pain",
+      "category": "question_or_history",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "family-heart-attack-question",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "family-history-only",
+      "category": "question_or_history",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "double-negation-dyspnea",
+      "category": "double_negation",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "double-negation-chest-tight",
+      "category": "double_negation",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "uncertain-negation",
+      "category": "double_negation",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "sudden-chest-pain",
+      "category": "time_sudden",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "progressive-dyspnea",
+      "category": "time_progressive",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "relieved-chest-pain",
+      "category": "time_relief",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "recurring-mild-headache",
+      "category": "time_recurring",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "worsening-over-days",
+      "category": "time_progressive",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "brief-then-gone",
+      "category": "time_relief",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-belly-unwell",
+      "category": "insufficient_information",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "observed_status": "INSUFFICIENT_INFORMATION",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-i-am-unwell",
+      "category": "insufficient_information",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "observed_status": "INSUFFICIENT_INFORMATION",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-whole-body",
+      "category": "insufficient_information",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "observed_status": "INSUFFICIENT_INFORMATION",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-not-sure-what",
+      "category": "insufficient_information",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "observed_status": "INSUFFICIENT_INFORMATION",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vague-child-irritable",
+      "category": "insufficient_information",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "contradict-denied-chest-severe",
+      "category": "contradiction",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "contradict-denied-dyspnea",
+      "category": "contradiction",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "contradict-fever-no-fever-hot",
+      "category": "contradiction",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "elder-fall-altered",
+      "category": "special_population_elder",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "postop-fever",
+      "category": "special_population_postop",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "pregnancy-severe-abdominal-pain",
+      "category": "obstetric",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "child-high-fever-poor-response",
+      "category": "critical_child",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "diabetes-foot-wound",
+      "category": "special_population_chronic",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "elder-chest-pain-sweat",
+      "category": "special_population_elder",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "possible-pregnancy-bleed",
+      "category": "obstetric",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "immunocompromised-fever",
+      "category": "special_population_chronic",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "ordinary-rhinitis",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "mild-sprain",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "htn-medication-refill",
+      "category": "routine_chronic",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "dm-followup",
+      "category": "routine_chronic",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "physical-exam",
+      "category": "routine_chronic",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "mild-acne",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "urgent-high-fever",
+      "category": "urgent_non_emergency",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "urgent-hematuria",
+      "category": "urgent_non_emergency",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "urgent-fracture-suspect",
+      "category": "urgent_non_emergency",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "specialty-asthma-stable",
+      "category": "specialty",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "specialty-ckd",
+      "category": "specialty",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "routine-mild-cough-week",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "mild-itch-no-dyspnea",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "allergic-rash-mild",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "vertigo-single-mild",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "dental-pain",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "constipation-mild",
+      "category": "routine_negative",
+      "expected_status": "NOT_EMERGENCY",
+      "observed_status": "ROUTINE",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "cyanosis-lips",
+      "category": "breathlessness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "syncope-with-chest",
+      "category": "cardiovascular_emergency",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "stroke-sudden-vertigo-stand",
+      "category": "stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "severe-abdominal-rigidity",
+      "category": "acute_abdomen",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "gi-bleed-melena",
+      "category": "gi_bleed",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "hemoptysis",
+      "category": "respiratory",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "urinary-retention",
+      "category": "urology_urgent",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "dehydration-constant-vomit",
+      "category": "gi_urgent",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "sudden-deafness",
+      "category": "ent_urgent",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "testicular-pain-severe",
+      "category": "urology_urgent",
+      "expected_status": "URGENT",
+      "observed_status": "URGENT",
+      "matches_expectation": true,
+      "red_flag": false,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "status-asthmaticus-dyspnea",
+      "category": "breathlessness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "pneumonia-high-fever-dyspnea",
+      "category": "breathlessness",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "stroke-face-droop-sudden",
+      "category": "stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "one-sided-numb-sudden",
+      "category": "stroke",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "massive-trauma-crash",
+      "category": "severe_trauma",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "allergy-throat-tight",
+      "category": "allergy",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "pregnancy-reduced-movement-again",
+      "category": "obstetric",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "child-fever-convulsion-toddler",
+      "category": "critical_child",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    },
+    {
+      "id": "altered-sensorium-elderly-diabetes",
+      "category": "special_population_elder",
+      "expected_status": "EMERGENCY",
+      "observed_status": "EMERGENCY",
+      "matches_expectation": true,
+      "red_flag": true,
+      "review_status": "regression_rule_verified"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "status": "complete",
+  "seed": 2026,
+  "fold": 3,
+  "representation": "asserted_binary",
+  "chosen": {
+    "C": 10.0,
+    "class_weight": "balanced",
+    "macro_f1": 0.4798143033437151,
+    "accuracy": 0.5555555555555556,
+    "warnings": []
+  },
+  "candidates": [
+    {
+      "C": 0.1,
+      "class_weight": null,
+      "macro_f1": 0.44202741702741705,
+      "accuracy": 0.4583333333333333,
+      "warnings": []
+    },
+    {
+      "C": 0.1,
+      "class_weight": "balanced",
+      "macro_f1": 0.4289052271928984,
+      "accuracy": 0.6944444444444444,
+      "warnings": []
+    },
+    {
+      "C": 1.0,
+      "class_weight": null,
+      "macro_f1": 0.4112823041209582,
+      "accuracy": 0.4861111111111111,
+      "warnings": []
+    },
+    {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "macro_f1": 0.4251373626373627,
+      "accuracy": 0.625,
+      "warnings": []
+    },
+    {
+      "C": 10.0,
+      "class_weight": null,
+      "macro_f1": 0.4438492063492063,
+      "accuracy": 0.5138888888888888,
+      "warnings": []
+    },
+    {
+      "C": 10.0,
+      "class_weight": "balanced",
+      "macro_f1": 0.4798143033437151,
+      "accuracy": 0.5555555555555556,
+      "warnings": []
+    }
+  ],
+  "raw_test_cases": 64,
+  "rendered_test_cases": 128,
+  "metrics": {
+    "n": 128,
+    "accuracy": 0.484375,
+    "macro_f1": 0.27945550981046696,
+    "nll": 5.754635221983401,
+    "brier": 0.9354074497935664,
+    "ece": 0.45147877372985146,
+    "wrong_confident_07": 0.390625,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 18,
+        "recall": 0.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 14,
+        "recall": 0.42857142857142855
+      },
+      "呼吸内科": {
+        "support": 18,
+        "recall": 0.0
+      },
+      "心血管内科": {
+        "support": 4,
+        "recall": 0.5
+      },
+      "感染性疾病科": {
+        "support": 36,
+        "recall": 0.8888888888888888
+      },
+      "普外科": {
+        "support": 0,
+        "recall": null
+      },
+      "泌尿外科": {
+        "support": 2,
+        "recall": 0.0
+      },
+      "消化内科": {
+        "support": 16,
+        "recall": 0.25
+      },
+      "皮肤科": {
+        "support": 20,
+        "recall": 0.9
+      },
+      "神经内科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 0,
+        "recall": null
+      }
+    },
+    "reliability": [
+      {
+        "bin": 3,
+        "n": 8,
+        "confidence": 0.35504167384039054,
+        "accuracy": 0.75
+      },
+      {
+        "bin": 5,
+        "n": 16,
+        "confidence": 0.5454323126278282,
+        "accuracy": 0.625
+      },
+      {
+        "bin": 6,
+        "n": 8,
+        "confidence": 0.6469585494036761,
+        "accuracy": 0.0
+      },
+      {
+        "bin": 7,
+        "n": 6,
+        "confidence": 0.7482628776221613,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 8,
+        "n": 12,
+        "confidence": 0.8722509319556639,
+        "accuracy": 0.16666666666666666
+      },
+      {
+        "bin": 9,
+        "n": 78,
+        "confidence": 0.9769670656054481,
+        "accuracy": 0.48717948717948717
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.390625,
+      0.5703125
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval",
+    "unseen_department_rows": 18
+  },
+  "cal_supported": 123,
+  "cal_unseen": 18,
+  "temperature": 0.8618446260366098,
+  "train_templates": [
+    "症状为{symptoms}。",
+    "主要不适是{symptoms}。",
+    "我有{symptoms}。"
+  ],
+  "test_templates": [
+    "最近身体不舒服：{symptoms}，希望了解就医方向。",
+    "目前感到{symptoms}，该如何继续整理信息？"
+  ],
+  "scope": "synthetic Chinese engineering proxy from structured cases, NOT clinical validation",
+  "case_group_disjoint": true
+}

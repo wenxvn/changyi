@@ -4,9 +4,7 @@ from __future__ import annotations
 
 from typing import Any, Mapping, Sequence
 
-from .disease_department import department_for
 from .direct_department import fit_direct_department_models
-from .model_baselines import build_binary_features, fit_logistic_regression, predict_proba
 from .robustness import perturb_symptoms
 from .round3_split_audit import quota_split
 from .selective_routing import SIGNALS, combined_signal, selective_metrics, threshold_for_coverage
@@ -22,29 +20,18 @@ def robustness_selective(
     threshold: float = 0.8,
     target_coverage: float = 0.8,
     model_name: str = "char_ngram_tfidf_lr",
+    fitted: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
-    from .direct_department import prepare_feature_sets
-    from .model_baselines import fit_logistic_regression as _fit_lr, predict_proba as _proba
-
     train, cal, test, _ = quota_split(rows, threshold=threshold, seed=seed)
     if not test:
         return {"error": "empty_test"}
-    fitted = fit_direct_department_models(train, cal, test, seed=seed)
+    fitted = fitted if fitted is not None else fit_direct_department_models(train, cal, test, seed=seed)
     preds = fitted["_predictions"][model_name]
     y_test = preds["y_true"]
-    temp = float(fitted.get("temperatures", {}).get(model_name, 1.0))
-
-    y_train = [department_for(row["disease"]) for row in train]
-    y_cal = [department_for(row["disease"]) for row in cal]
-    if "char" in model_name and "fusion" in model_name:
-        feature_key = "word_char_fusion"
-    elif "char" in model_name:
-        feature_key = "char_ngram_tfidf"
-    else:
-        feature_key = "symptom_binary"
-    features = prepare_feature_sets(train, cal, test)[feature_key]
-    model = _fit_lr(features["train"], y_train, epochs=70, lr=0.4, seed=seed)
-    cal_ranked = [_proba(model, feat, temperature=temp) for feat in features["cal"]]
+    state = fitted["_fitted"][model_name]
+    feature_key = state["feature_key"]
+    from .direct_department import predict_fitted_department
+    cal_ranked = preds["cal_ranked_calibrated"]
     cal_scores = [SIGNALS["max_probability"](r) for r in cal_ranked]
     thr = threshold_for_coverage(cal_scores, target_coverage)
 
@@ -54,6 +41,8 @@ def robustness_selective(
 
     rng = random.Random(seed)
     kinds = (
+        "identity",
+        "order_shuffle",
         "synonym_swap",
         "drop_noncritical",
         "add_filler",
@@ -68,27 +57,7 @@ def robustness_selective(
             }
             for row in test
         ]
-        # Rebuild the same feature type on perturbed rows using train-fitted vectorizer.
-        if feature_key == "char_ngram_tfidf":
-            from .model_baselines import build_char_ngram_tfidf_features
-
-            test_feats = build_char_ngram_tfidf_features(train, perturbed)
-        elif feature_key == "word_char_fusion":
-            from .model_baselines import (
-                build_char_ngram_tfidf_features,
-                build_fusion_features,
-                build_tfidf_features,
-            )
-
-            test_feats = build_fusion_features(
-                build_tfidf_features(train, perturbed),
-                build_char_ngram_tfidf_features(train, perturbed),
-            )
-        else:
-            from .model_baselines import build_binary_features
-
-            test_feats = build_binary_features(perturbed)
-        ranked = [_proba(model, feat, temperature=temp) for feat in test_feats]
+        ranked = predict_fitted_department(state, perturbed)
         metrics = selective_metrics(ranked, y_test, signal="max_probability", threshold=thr)
         per_kind[kind] = {
             "coverage": metrics["coverage"],
@@ -121,12 +90,14 @@ def robustness_selective(
         "seed": seed,
         "model_name": model_name,
         "feature_key": feature_key,
+        "model_id": state["model_id"],
         "target_coverage_from_cal": target_coverage,
         "threshold": thr,
         "clean": clean_metrics,
         "per_kind": per_kind,
         "ideal_behavior_checks": ideal_behavior,
-        "note": "meaning-preserving perturbations only; Safety Gate unchanged",
+        "note": "input stress simulation; identity/order preserve symptom sets, other mutations may change medical meaning; Safety Gate unchanged",
+        "label_preservation_verified": False,
     }
 
 
@@ -139,6 +110,9 @@ def safety_first_offline_check(
     production_emergency_fn: int = 0,
 ) -> dict[str, Any]:
     """Offline contract check. Does not modify Safety Gate."""
+
+    from evaluation.safety.evaluate_safety import evaluate_cases, load_cases
+    observed = evaluate_cases(load_cases())
 
     invariants = [
         {
@@ -164,6 +138,11 @@ def safety_first_offline_check(
                 and production_recall == 1.0
                 and production_under_triage == 0.0
                 and production_emergency_fn == 0
+                and observed["case_count"] == production_safety_cases
+                and observed["red_flag_recall"] == production_recall
+                and observed["under_triage_rate"] == production_under_triage
+                and observed["emergency_false_negative"] == production_emergency_fn
+                and not observed["review_required"]
             )
             else "fail",
             "detail": {
@@ -179,5 +158,7 @@ def safety_first_offline_check(
         "department_model_accuracy_for_context": department_model_accuracy,
         "invariants": invariants,
         "all_pass": all(item["status"] in {"pass", "enforced_by_architecture"} for item in invariants),
+        "safety_metrics_observed": {key: observed[key] for key in ("case_count", "red_flag_recall", "under_triage_rate", "over_triage_rate", "emergency_false_negative")},
+        "verification_source": "evaluation.safety.evaluate_safety.evaluate_cases(load_cases()) executed",
         "disclaimer": "离线契约检查；不是临床 Safety 验证",
     }

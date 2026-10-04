@@ -1,13 +1,14 @@
 """Flask application factory for the canonical v1 API and React shell."""
 
 from pathlib import Path
+import re
 
 from .config import AppSettings
 
 
 def create_app(config=None):
     """Create the configured Flask shell and register the versioned API."""
-    from flask import Flask
+    from flask import Flask, request
     from flask_cors import CORS
 
     settings = AppSettings.from_env()
@@ -33,6 +34,14 @@ def create_app(config=None):
     from .api.v1.routes import api_v1
 
     application.register_blueprint(api_v1)
+
+    @application.after_request
+    def cache_content_addressed_photo_variants(response):
+        if response.status_code in (200, 304) and re.fullmatch(r"/static/images/doctor-variants/[0-9a-f]{20}-(80|160|320)\.webp", request.path):
+            response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+            response.mimetype = "image/webp"
+        return response
+
     return application
 
 

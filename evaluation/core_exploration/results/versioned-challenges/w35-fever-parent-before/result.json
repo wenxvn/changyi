@@ -1,0 +1,218 @@
+{
+  "scope": "synthetic_derived_parent_feature_logic_not_medical_temperature_validation",
+  "total": 8,
+  "failed": 6,
+  "rows": [
+    {
+      "text": "没有高烧但有低烧",
+      "expected_present": [
+        "fever",
+        "mild_fever"
+      ],
+      "expected_absent": [
+        "high_fever"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": true,
+      "actual": {
+        "present": [
+          "fever",
+          "mild_fever"
+        ],
+        "absent": [
+          "high_fever"
+        ],
+        "unknown": [],
+        "contradiction": [
+          "fever"
+        ]
+      },
+      "abstain_reason": "contradictory_symptom_assertions",
+      "normalized_symptoms": [],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "pass": false
+    },
+    {
+      "text": "没有低烧但高烧",
+      "expected_present": [
+        "fever",
+        "high_fever"
+      ],
+      "expected_absent": [
+        "mild_fever"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": true,
+      "actual": {
+        "present": [
+          "fever",
+          "high_fever"
+        ],
+        "absent": [
+          "mild_fever"
+        ],
+        "unknown": [],
+        "contradiction": [
+          "fever"
+        ]
+      },
+      "abstain_reason": "contradictory_symptom_assertions",
+      "normalized_symptoms": [],
+      "triage_status": "URGENT",
+      "matched_department": "感染性疾病科",
+      "pass": false
+    },
+    {
+      "text": "没有高烧",
+      "expected_present": [],
+      "expected_absent": [
+        "high_fever"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "actual": {
+        "present": [],
+        "absent": [
+          "fever",
+          "high_fever"
+        ],
+        "unknown": [],
+        "contradiction": []
+      },
+      "abstain_reason": "no_supported_symptoms",
+      "normalized_symptoms": [],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "pass": false
+    },
+    {
+      "text": "没有低烧",
+      "expected_present": [],
+      "expected_absent": [
+        "mild_fever"
+      ],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "actual": {
+        "present": [],
+        "absent": [
+          "fever",
+          "mild_fever"
+        ],
+        "unknown": [],
+        "contradiction": []
+      },
+      "abstain_reason": "no_supported_symptoms",
+      "normalized_symptoms": [],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "pass": false
+    },
+    {
+      "text": "高烧不确定",
+      "expected_present": [],
+      "expected_absent": [],
+      "expected_contradiction": [],
+      "expected_accepted": false,
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "fever",
+          "high_fever"
+        ],
+        "contradiction": []
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "normalized_symptoms": [],
+      "triage_status": "URGENT",
+      "matched_department": "全科医学科",
+      "pass": false
+    },
+    {
+      "text": "没有发热但高烧",
+      "expected_present": [
+        "fever",
+        "high_fever"
+      ],
+      "expected_absent": [],
+      "expected_contradiction": [
+        "fever"
+      ],
+      "expected_accepted": false,
+      "actual": {
+        "present": [
+          "fever",
+          "high_fever"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "fever"
+        ]
+      },
+      "abstain_reason": "contradictory_symptom_assertions",
+      "normalized_symptoms": [],
+      "triage_status": "URGENT",
+      "matched_department": "感染性疾病科",
+      "pass": true
+    },
+    {
+      "text": "没有高烧但有高烧",
+      "expected_present": [
+        "fever",
+        "high_fever"
+      ],
+      "expected_absent": [],
+      "expected_contradiction": [
+        "high_fever"
+      ],
+      "expected_accepted": false,
+      "actual": {
+        "present": [
+          "fever",
+          "high_fever"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "fever",
+          "high_fever"
+        ]
+      },
+      "abstain_reason": "contradictory_symptom_assertions",
+      "normalized_symptoms": [],
+      "triage_status": "URGENT",
+      "matched_department": "全科医学科",
+      "pass": false
+    },
+    {
+      "text": "高烧",
+      "expected_present": [
+        "fever",
+        "high_fever"
+      ],
+      "expected_absent": [],
+      "expected_contradiction": [],
+      "expected_accepted": true,
+      "actual": {
+        "present": [
+          "fever",
+          "high_fever"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": []
+      },
+      "abstain_reason": null,
+      "normalized_symptoms": [
+        "fever",
+        "high_fever"
+      ],
+      "triage_status": "URGENT",
+      "matched_department": "感染性疾病科",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "status": "complete",
+  "passed": 12,
+  "count": 12,
+  "cases": [
+    {
+      "synthetic_text": "咳嗽，没有胸痛",
+      "parsed": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "咳嗽",
+            "codes": [
+              "cough"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "absent"
+          }
+        ],
+        "needs_clarification": false,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "ROUTINE",
+      "pass": true,
+      "learning_route_permitted": true
+    },
+    {
+      "synthetic_text": "没有胸痛，但后来胸痛",
+      "parsed": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "chest_pain"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "URGENT",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "不是没有胸痛",
+      "parsed": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "unknown"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "URGENT",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "不确定有没有胸痛",
+      "parsed": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "unknown"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "ROUTINE",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "发热",
+      "parsed": {
+        "present": [
+          "fever"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "发热",
+            "codes": [
+              "fever"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": false,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "ROUTINE",
+      "pass": true,
+      "learning_route_permitted": true
+    },
+    {
+      "synthetic_text": "我妈妈以前有胸痛，我没有",
+      "parsed": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ],
+        "contradiction": [],
+        "noncurrent_context": true,
+        "evidence": [
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "unknown"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "URGENT",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "问一下胸痛应该怎么看",
+      "parsed": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ],
+        "contradiction": [],
+        "noncurrent_context": true,
+        "evidence": [
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "unknown"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "URGENT",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "没有咳嗽，没有发热",
+      "parsed": {
+        "present": [],
+        "absent": [
+          "cough",
+          "fever"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "发热",
+            "codes": [
+              "fever"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "咳嗽",
+            "codes": [
+              "cough"
+            ],
+            "state": "absent"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "ROUTINE",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "持续胸痛喘不过气",
+      "parsed": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "胸痛",
+            "codes": [
+              "chest_pain"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": false,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "EMERGENCY",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "最近头晕，说不清怎么回事",
+      "parsed": {
+        "present": [
+          "dizziness"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "头晕",
+            "codes": [
+              "dizziness"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": false,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "ROUTINE",
+      "pass": true,
+      "learning_route_permitted": true
+    },
+    {
+      "synthetic_text": "我只是想随便看看",
+      "parsed": {
+        "present": [],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "ROUTINE",
+      "pass": true,
+      "learning_route_permitted": false
+    },
+    {
+      "synthetic_text": "咳嗽三天，没有呼吸困难，无持续高烧",
+      "parsed": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "breathlessness",
+          "fever",
+          "high_fever"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "呼吸困难",
+            "codes": [
+              "breathlessness"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "高烧",
+            "codes": [
+              "fever",
+              "high_fever"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "咳嗽",
+            "codes": [
+              "cough"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": false,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      },
+      "safety_status": "ROUTINE",
+      "pass": true,
+      "learning_route_permitted": true
+    }
+  ],
+  "claim_scope": "synthetic lexical and Safety boundary checks, not Chinese clinical department accuracy"
+}

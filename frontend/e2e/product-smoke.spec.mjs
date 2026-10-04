@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { test as base } from "@playwright/test";
+import { test as base, expect } from "@playwright/test";
 
 const test = base.extend({
   page: async ({ page }, use, testInfo) => {
@@ -59,6 +59,12 @@ test("home and core resource pages render with actionable navigation", async ({ 
 
   await page.goto("/trust");
   await page.getByRole("heading", { name: /什么时候不该给出答案/ }).waitFor();
+  await expect(page.getByText(/不能换算为中文主诉的就医科室准确率/)).toBeVisible();
+  await expect(page.getByText(/不是常州患者的中文临床评测/)).toBeVisible();
+  await expect(page.getByText("随机切分基线 · 症状编码疾病分类", { exact: true })).toBeVisible();
+  await expect(page.getByText(/随机切分参考可能受近重复样本影响/)).toBeVisible();
+  const evidence = (await (await page.request.get("/api/v1/evidence")).json()).data;
+  expect(evidence.model.training_data_source.path).toContain("disease_symptom_structured_41diseases_long.csv");
   await page.screenshot({ path: testInfo.outputPath("trust-desktop.png"), fullPage: true });
   await page.getByText("技术详情", { exact: true }).click();
   await page.getByText("版本、校验信息与完整资料记录", { exact: true }).waitFor();

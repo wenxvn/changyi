@@ -1,0 +1,67 @@
+{
+  "scope": "emergency_regular_doctor_publication_boundary_not_clinical_capability",
+  "total": 6,
+  "failed": 3,
+  "rows": [
+    {
+      "text": "我现在喘不上气",
+      "expected_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "doctor_count": 8,
+      "hospital_count": 5,
+      "doctor_weights_empty": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "我现在是否喘不上气，我喘不上气",
+      "expected_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "doctor_count": 6,
+      "hospital_count": 5,
+      "doctor_weights_empty": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "现在咳嗽是不是，我喘不上气",
+      "expected_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "doctor_count": 8,
+      "hospital_count": 5,
+      "doctor_weights_empty": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "我现在是否喘不上气",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "status": "INSUFFICIENT_INFORMATION",
+      "doctor_count": 0,
+      "hospital_count": 0,
+      "doctor_weights_empty": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽",
+      "expected_status": "ROUTINE",
+      "status": "ROUTINE",
+      "doctor_count": 8,
+      "hospital_count": 5,
+      "doctor_weights_empty": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我确诊糖尿病",
+      "expected_status": "URGENT",
+      "status": "URGENT",
+      "doctor_count": 8,
+      "hospital_count": 5,
+      "doctor_weights_empty": false,
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

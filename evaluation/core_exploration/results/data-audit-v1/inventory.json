@@ -1,0 +1,18 @@
+{
+  "rows": 1289,
+  "by_source": {
+    "structured_41": {
+      "rows": 304,
+      "disease_name_present": 0,
+      "own_label_present": 0,
+      "has_code_longer_than_80chars": 0
+    },
+    "training_long_extra": {
+      "rows": 985,
+      "disease_name_present": 33,
+      "own_label_present": 32,
+      "has_code_longer_than_80chars": 723
+    }
+  },
+  "mapping_limit": "exact dictionary names only; synonyms, spelling variants and implicit diagnosis not counted"
+}

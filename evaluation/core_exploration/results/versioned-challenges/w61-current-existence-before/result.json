@@ -1,0 +1,88 @@
+{
+  "scope": "current_existence_question_safety_policy_not_clinical_accuracy",
+  "total": 8,
+  "failed": 2,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "我现在是否喘不上气",
+      "expected_existing_policy_status": "INSUFFICIENT_INFORMATION",
+      "triage_status": "EMERGENCY",
+      "matched_department": "全科医学科",
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "我现在不确定是否呼吸困难",
+      "expected_existing_policy_status": "INSUFFICIENT_INFORMATION",
+      "triage_status": "EMERGENCY",
+      "matched_department": "全科医学科",
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "我现在有没有意识不清",
+      "expected_existing_policy_status": "INSUFFICIENT_INFORMATION",
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否胸痛",
+      "expected_existing_policy_status": "INSUFFICIENT_INFORMATION",
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在喘不上气",
+      "expected_existing_policy_status": "EMERGENCY",
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸与危重症医学科",
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否呼吸困难，我喘不上气",
+      "expected_existing_policy_status": "EMERGENCY",
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸与危重症医学科",
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否喘不上气，我喘不上气",
+      "expected_existing_policy_status": "EMERGENCY",
+      "triage_status": "EMERGENCY",
+      "matched_department": "全科医学科",
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在不确定为什么喘不上气",
+      "expected_existing_policy_status": "EMERGENCY",
+      "triage_status": "EMERGENCY",
+      "matched_department": "全科医学科",
+      "public_abstain_reason": "safety_gate_priority",
+      "risk_confirmation_present": false,
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

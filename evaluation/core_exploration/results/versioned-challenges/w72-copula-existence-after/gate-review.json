@@ -1,0 +1,7 @@
+{
+  "status": "NOT_ACCEPTED_FIXED_SAFETY_REGRESSION",
+  "fixed_safety_case": "first-person-current-chest-pain",
+  "emergency_false_negative": 1,
+  "result_sha256": "2ecef62868fcd3a85d92e14577066bc2bbd028e963c7d9d921b450c7632fffae",
+  "replacement_run": "w72-copula-existence-after-v2"
+}

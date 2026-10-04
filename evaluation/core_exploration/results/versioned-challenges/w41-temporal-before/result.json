@@ -1,0 +1,193 @@
+{
+  "scope": "synthetic_current_word_uncertainty_scope_not_clinical_time_reasoning",
+  "total": 8,
+  "failed": 5,
+  "rows": [
+    {
+      "text": "不确定是否现在咳嗽",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": null,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "假如现在咳嗽",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": null,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "不确定是否 现在 咳嗽",
+      "expected_present": [],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": null,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "不确定是否现在有胸痛",
+      "expected_present": [],
+      "expected_unknown": [
+        "chest_pain"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": null,
+      "triage_status": "URGENT",
+      "matched_department": "心血管内科",
+      "pass": false
+    },
+    {
+      "text": "不确定是否咳嗽但现在头痛",
+      "expected_present": [
+        "headache"
+      ],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "神经内科",
+      "pass": true
+    },
+    {
+      "text": "不确定是否有咳嗽现在有头痛",
+      "expected_present": [
+        "headache"
+      ],
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "ROUTINE",
+      "matched_department": "神经内科",
+      "pass": true
+    },
+    {
+      "text": "不确定为什么现在咳嗽",
+      "expected_present": [
+        "cough"
+      ],
+      "expected_unknown": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": null,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气，不确定是否现在咳嗽",
+      "expected_present": null,
+      "expected_unknown": [
+        "cough"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "breathlessness",
+          "chest_pain",
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstain_reason": null,
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": false
+    }
+  ]
+}

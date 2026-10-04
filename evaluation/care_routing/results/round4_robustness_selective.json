@@ -4,60 +4,85 @@
   "seed": 42,
   "model_name": "char_ngram_tfidf_lr",
   "feature_key": "char_ngram_tfidf",
+  "model_id": "f62c94a325c5f9636fac9d3653f06c259ed01d57ef40c93ace4df8a129509e6e",
   "target_coverage_from_cal": 0.8,
-  "threshold": 0.43547434594941264,
+  "threshold": 0.40272724213029704,
   "clean": {
     "signal": "max_probability",
-    "threshold": 0.43547434594941264,
-    "coverage": 0.657277,
-    "abstention_rate": 0.342723,
-    "retained_rows": 140,
-    "retained_accuracy": 0.807143,
-    "retained_macro_f1": 0.46965,
-    "retained_weighted_f1": 0.751415,
-    "retained_error_rate": 0.192857,
-    "retained_wrong_but_confident_rate": 0.007143,
-    "retained_ece": 0.125531
+    "threshold": 0.40272724213029704,
+    "coverage": 0.760563,
+    "abstention_rate": 0.239437,
+    "retained_rows": 162,
+    "retained_accuracy": 0.740741,
+    "retained_macro_f1": 0.460469,
+    "retained_weighted_f1": 0.665125,
+    "retained_error_rate": 0.259259,
+    "retained_wrong_but_confident_rate": 0.006173,
+    "retained_ece": 0.094793
   },
   "per_kind": {
+    "identity": {
+      "coverage": 0.760563,
+      "retained_accuracy": 0.740741,
+      "wrong_but_confident_rate": 0.006173,
+      "coverage_delta": 0.0,
+      "accuracy_delta": 0.0
+    },
+    "order_shuffle": {
+      "coverage": 0.760563,
+      "retained_accuracy": 0.740741,
+      "wrong_but_confident_rate": 0.006173,
+      "coverage_delta": 0.0,
+      "accuracy_delta": 0.0
+    },
     "synonym_swap": {
-      "coverage": 0.685446,
-      "retained_accuracy": 0.890411,
-      "wrong_but_confident_rate": 0.006849,
-      "coverage_delta": 0.028169,
-      "accuracy_delta": 0.083268
+      "coverage": 0.760563,
+      "retained_accuracy": 0.734568,
+      "wrong_but_confident_rate": 0.012346,
+      "coverage_delta": 0.0,
+      "accuracy_delta": -0.006173
     },
     "drop_noncritical": {
-      "coverage": 0.713615,
-      "retained_accuracy": 0.868421,
-      "wrong_but_confident_rate": 0.019737,
-      "coverage_delta": 0.056338,
-      "accuracy_delta": 0.061278
+      "coverage": 0.774648,
+      "retained_accuracy": 0.733333,
+      "wrong_but_confident_rate": 0.012121,
+      "coverage_delta": 0.014085,
+      "accuracy_delta": -0.007408
     },
     "add_filler": {
-      "coverage": 0.629108,
-      "retained_accuracy": 0.880597,
-      "wrong_but_confident_rate": 0.0,
-      "coverage_delta": -0.028169,
-      "accuracy_delta": 0.073454
+      "coverage": 0.694836,
+      "retained_accuracy": 0.75,
+      "wrong_but_confident_rate": 0.006757,
+      "coverage_delta": -0.065727,
+      "accuracy_delta": 0.009259
     },
     "colloquial_noise": {
-      "coverage": 0.680751,
-      "retained_accuracy": 0.889655,
-      "wrong_but_confident_rate": 0.006897,
-      "coverage_delta": 0.023474,
-      "accuracy_delta": 0.082512
+      "coverage": 0.746479,
+      "retained_accuracy": 0.742138,
+      "wrong_but_confident_rate": 0.0,
+      "coverage_delta": -0.014084,
+      "accuracy_delta": 0.001397
     }
   },
   "ideal_behavior_checks": [
     {
+      "kind": "identity",
+      "more_abstention": true,
+      "retained_acc_holds": true
+    },
+    {
+      "kind": "order_shuffle",
+      "more_abstention": true,
+      "retained_acc_holds": true
+    },
+    {
       "kind": "synonym_swap",
-      "more_abstention": false,
+      "more_abstention": true,
       "retained_acc_holds": true
     },
     {
       "kind": "drop_noncritical",
-      "more_abstention": false,
+      "more_abstention": true,
       "retained_acc_holds": true
     },
     {
@@ -67,9 +92,10 @@
     },
     {
       "kind": "colloquial_noise",
-      "more_abstention": false,
+      "more_abstention": true,
       "retained_acc_holds": true
     }
   ],
-  "note": "meaning-preserving perturbations only; Safety Gate unchanged"
+  "note": "input stress simulation; identity/order preserve symptom sets, other mutations may change medical meaning; Safety Gate unchanged",
+  "label_preservation_verified": false
 }

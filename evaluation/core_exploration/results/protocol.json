@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "source_sha256": "4a32a2c37fda3d69caff4bc7c7e297e932b0e33203b6fe3511dc49e03f5027dc",
+  "dataset": {
+    "structured_path": "data\\symptom_disease_model\\data\\disease_symptom_structured_41diseases_long.csv",
+    "structured_sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
+    "long_path": "data\\symptom_disease_model\\data\\disease_symptom_training_long.csv",
+    "long_sha256": "8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497",
+    "row_count": 1289,
+    "extra_rows": 985,
+    "disease_count": 41,
+    "provenance": {
+      "shanover_disease_symptoms_prec_full": {
+        "url": "https://huggingface.co/datasets/shanover/disease_symptoms_prec_full",
+        "license": "MIT (per Hugging Face dataset tags)",
+        "file": "shanover_disease_sympts_prec_full.csv"
+      },
+      "fhai50032_symptoms_to_disease_7k": {
+        "url": "https://huggingface.co/datasets/fhai50032/Symptoms_to_disease_7k",
+        "license": "Apache-2.0 (per Hugging Face dataset tags)",
+        "file": "fhai_symptoms_to_disease_7k.json"
+      }
+    },
+    "note": "expanded public-text set for the 41 prototype labels; not clinical cases"
+  },
+  "grid": [
+    {
+      "family": "lr",
+      "C": 0.1,
+      "balanced": false
+    },
+    {
+      "family": "lr",
+      "C": 0.1,
+      "balanced": true
+    },
+    {
+      "family": "lr",
+      "C": 1.0,
+      "balanced": false
+    },
+    {
+      "family": "lr",
+      "C": 1.0,
+      "balanced": true
+    },
+    {
+      "family": "lr",
+      "C": 10.0,
+      "balanced": false
+    },
+    {
+      "family": "lr",
+      "C": 10.0,
+      "balanced": true
+    },
+    {
+      "family": "lr",
+      "C": 100.0,
+      "balanced": false
+    },
+    {
+      "family": "lr",
+      "C": 100.0,
+      "balanced": true
+    },
+    {
+      "family": "svm",
+      "C": 0.1,
+      "balanced": false
+    },
+    {
+      "family": "svm",
+      "C": 0.1,
+      "balanced": true
+    },
+    {
+      "family": "svm",
+      "C": 1.0,
+      "balanced": false
+    },
+    {
+      "family": "svm",
+      "C": 1.0,
+      "balanced": true
+    },
+    {
+      "family": "svm",
+      "C": 10.0,
+      "balanced": false
+    },
+    {
+      "family": "svm",
+      "C": 10.0,
+      "balanced": true
+    },
+    {
+      "family": "svm",
+      "C": 100.0,
+      "balanced": false
+    },
+    {
+      "family": "svm",
+      "C": 100.0,
+      "balanced": true
+    },
+    {
+      "family": "complement_nb",
+      "alpha": 0.1
+    },
+    {
+      "family": "complement_nb",
+      "alpha": 1.0
+    },
+    {
+      "family": "multinomial_nb",
+      "alpha": 0.1
+    },
+    {
+      "family": "multinomial_nb",
+      "alpha": 1.0
+    },
+    {
+      "family": "extra_trees",
+      "balanced": true,
+      "max_depth": 8
+    },
+    {
+      "family": "extra_trees",
+      "balanced": true,
+      "max_depth": null
+    }
+  ],
+  "versions": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "sklearn": "1.9.1",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1"
+  }
+}

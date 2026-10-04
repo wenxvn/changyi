@@ -1,0 +1,471 @@
+{
+  "count": 720,
+  "failed": 12,
+  "failures": [
+    {
+      "text": "没有打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "否认打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "无明显打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "不伴打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "没有一直打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "一直打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "否认一直打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "一直打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "无明显一直打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "一直打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "不伴一直打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "一直打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "没有连续打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "连续打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "否认连续打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "连续打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "无明显连续打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "连续打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    },
+    {
+      "text": "不伴连续打喷嚏",
+      "target": "continuous_sneezing",
+      "expected": "absent",
+      "actual": {
+        "present": [
+          "continuous_sneezing"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "continuous_sneezing"
+        ],
+        "noncurrent_context": false,
+        "evidence": [
+          {
+            "alias": "连续打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "absent"
+          },
+          {
+            "alias": "打喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          },
+          {
+            "alias": "喷嚏",
+            "codes": [
+              "continuous_sneezing"
+            ],
+            "state": "present"
+          }
+        ],
+        "needs_clarification": true,
+        "scope": "synthetic engineering parser; medical review outstanding"
+      }
+    }
+  ],
+  "scope": "generated lexical dictionary properties, not clinical accuracy"
+}

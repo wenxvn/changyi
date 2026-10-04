@@ -1,0 +1,320 @@
+{
+  "scope": "synthetic_candidate_evidence_consistency_not_clinical_validation",
+  "total": 9,
+  "failed": 6,
+  "rows": [
+    {
+      "text": "怀疑糖尿病",
+      "followup_answer": null,
+      "expected": "exclude_metabolic",
+      "candidates": [
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 82,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 73,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "assertion_status": "uncertain",
+        "confidence": 0.0,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "unconfirmed_mention"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "如果我有糖尿病应该挂什么科",
+      "followup_answer": null,
+      "expected": "exclude_metabolic",
+      "candidates": [
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 82,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 73,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "assertion_status": "uncertain",
+        "confidence": 0.0,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "unconfirmed_mention"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "糖尿病只是举例，实际没确诊",
+      "followup_answer": null,
+      "expected": "exclude_metabolic",
+      "candidates": [
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 82,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 73,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "assertion_status": "uncertain",
+        "confidence": 0.0,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "unconfirmed_mention"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "已确诊糖尿病，但糖尿病只是举例",
+      "followup_answer": null,
+      "expected": "exclude_metabolic",
+      "candidates": [
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 82,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 73,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "assertion_status": "conflicting",
+        "confidence": 0.0,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "conflicting_mentions"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "我已确诊乙肝，糖尿病只是一个假设",
+      "followup_answer": null,
+      "expected": "keep_hepatitis",
+      "candidates": [
+        {
+          "name": "乙肝",
+          "primary_category": "用户已知疾病",
+          "probability": 82,
+          "recommended_department": "感染性疾病科",
+          "secondary_category": "确诊/疑似疾病优先",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 58,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "消化肝胆胰疾病",
+          "primary_category": "消化系统疾病",
+          "probability": 58,
+          "recommended_department": "消化内科",
+          "secondary_category": "消化肝胆专科病类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "confidence": 0.92,
+        "department": "感染性疾病科",
+        "disease": "乙肝",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "怀疑糖尿病但有咳嗽",
+      "followup_answer": null,
+      "expected": "keep_respiratory",
+      "candidates": [
+        {
+          "name": "支气管炎/肺部感染",
+          "primary_category": "呼吸系统疾病",
+          "probability": 82,
+          "recommended_department": "呼吸内科",
+          "secondary_category": "呼吸系统感染",
+          "source": "rule_engine"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 45,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 40,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "assertion_status": "uncertain",
+        "confidence": 0.0,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "unconfirmed_mention"
+      },
+      "triage_status": "URGENT",
+      "pass": false
+    },
+    {
+      "text": "已确诊糖尿病",
+      "followup_answer": null,
+      "expected": "keep_report",
+      "candidates": [
+        {
+          "name": "糖尿病",
+          "primary_category": "用户已知疾病",
+          "probability": 82,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "确诊/疑似疾病优先",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 58,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 52,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": true
+    },
+    {
+      "text": "怀疑糖尿病",
+      "followup_answer": "confirmed",
+      "expected": "keep_report",
+      "candidates": [
+        {
+          "name": "糖尿病",
+          "primary_category": "用户已知疾病",
+          "probability": 82,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "确诊/疑似疾病优先",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 58,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 52,
+          "recommended_department": "内分泌代谢科",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "known": {
+        "assertion_status": "user_reported",
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "evidence_source": "structured_followup",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "triage_status": "URGENT",
+      "pass": true
+    },
+    {
+      "text": "目前我呼吸困难，怀疑糖尿病",
+      "followup_answer": null,
+      "expected": "emergency",
+      "candidates": [],
+      "known": {
+        "assertion_status": "uncertain",
+        "background_mentions": [],
+        "confidence": 0.0,
+        "consultation_subject": "self",
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "unconfirmed_mention"
+      },
+      "triage_status": "EMERGENCY",
+      "pass": true
+    }
+  ]
+}

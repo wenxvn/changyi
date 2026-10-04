@@ -2,8 +2,12 @@ from collections import Counter
 import json
 from pathlib import Path
 
-from labels import translate_disease_name
-from train import parse_symptoms, predict
+if __package__:
+    from .labels import translate_disease_name
+    from .train import parse_symptoms, predict
+else:
+    from labels import translate_disease_name
+    from train import parse_symptoms, predict
 
 
 DEFAULT_SYMPTOM_ALIAS_PATH = Path(__file__).with_name("symptom_alias_zh.json")

@@ -1,0 +1,373 @@
+{
+  "scope": "provisional_report_fact_policy_observation_not_clinical_labels",
+  "total": 8,
+  "failed": 5,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "医生考虑诊断为糖尿病",
+      "expected_known_fact": false,
+      "expected_primary_mention": "糖尿病",
+      "known_fact": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 58,
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "probability": 52,
+          "relative_support_score": 52,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "报告倾向糖尿病",
+      "expected_known_fact": false,
+      "expected_primary_mention": "糖尿病",
+      "known_fact": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.74,
+        "source": "disease_keyword"
+      },
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 69,
+          "relative_support_score": 69,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "probability": 62,
+          "relative_support_score": 62,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "报告提示可能糖尿病",
+      "expected_known_fact": false,
+      "expected_primary_mention": "糖尿病",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.0,
+        "source": "unconfirmed_mention",
+        "assertion_status": "uncertain"
+      },
+      "disease_candidates": [
+        {
+          "name": "待进一步门诊评估",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "未细分病类",
+          "secondary_category": "信息不足",
+          "recommended_department": "全科医学科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生说不能排除糖尿病",
+      "expected_known_fact": false,
+      "expected_primary_mention": "糖尿病",
+      "known_fact": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 58,
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "probability": 52,
+          "relative_support_score": 52,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生建议排查糖尿病",
+      "expected_known_fact": false,
+      "expected_primary_mention": "糖尿病",
+      "known_fact": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.74,
+        "source": "disease_keyword"
+      },
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 69,
+          "relative_support_score": 69,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "probability": 62,
+          "relative_support_score": 62,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "我已确诊乙肝，报告倾向糖尿病",
+      "expected_known_fact": true,
+      "expected_primary_mention": "乙肝",
+      "known_fact": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 58,
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "消化肝胆胰疾病",
+          "probability": 58,
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "primary_category": "消化系统疾病",
+          "secondary_category": "消化肝胆专科病类",
+          "recommended_department": "消化内科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "我已确诊糖尿病",
+      "expected_known_fact": true,
+      "expected_primary_mention": "糖尿病",
+      "known_fact": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 58,
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "probability": 52,
+          "relative_support_score": 52,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我已确诊糖尿病，考虑选择内分泌医生",
+      "expected_known_fact": true,
+      "expected_primary_mention": "糖尿病",
+      "known_fact": {
+        "has_known_disease": true,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.92,
+        "source": "user_stated"
+      },
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 58,
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "probability": 52,
+          "relative_support_score": 52,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        }
+      ],
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

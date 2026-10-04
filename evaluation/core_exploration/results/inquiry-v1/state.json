@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "settings_per_seed": 108,
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ]
+}

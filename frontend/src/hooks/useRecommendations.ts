@@ -45,9 +45,9 @@ function requestKey(input: RecommendationInput): string {
 /**
  * Single owner of the recommendation request lifecycle for the triage workspace.
  *
- * Each request identity is attempted at most once: the effect keyed on `key`
- * never re-fires from its own state updates, and `reload()` is the only way to
- * repeat an identity (used by the visible retry affordance).
+ * State updates never re-fire an active or settled identity. Explicit retry,
+ * re-enabling routing, and development effect replay can start a new attempt;
+ * only the current attempt may publish data or finish its loading state.
  */
 export function useRecommendations(
   enabled: boolean,
@@ -58,31 +58,44 @@ export function useRecommendations(
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ApiError | null>(null);
   const key = requestKey(input);
-  const inFlightRef = useRef<string | null>(null);
+  const inFlightRef = useRef<{ key: string } | null>(null);
   const settledRef = useRef<string | null>(null);
   const mountedRef = useRef(true);
+  const currentRef = useRef({ key, enabled });
+  currentRef.current = { key, enabled };
 
-  useEffect(() => () => { mountedRef.current = false; }, []);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      inFlightRef.current = null;
+    };
+  }, []);
 
   // Drop stale results as soon as the request identity changes.
   useEffect(() => {
-    if (settledRef.current === key || inFlightRef.current === key) return;
+    if (enabled && (settledRef.current === key || inFlightRef.current?.key === key)) return;
+    inFlightRef.current = null;
+    settledRef.current = null;
+    setLoading(false);
     setData(null);
     setError(null);
-  }, [key]);
+  }, [key, enabled]);
 
   useEffect(() => {
     if (!enabled || suspended) return;
     if (!input.condition.trim()) return;
-    if (settledRef.current === key || inFlightRef.current === key) return;
+    if (settledRef.current === key || inFlightRef.current?.key === key) return;
     void load();
     // `load` reads the same key; the guard above keeps this idempotent per identity.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enabled, suspended, key]);
 
   async function load() {
-    if (inFlightRef.current === key) return;
-    inFlightRef.current = key;
+    if (!enabled || !input.condition.trim() || inFlightRef.current?.key === key) return;
+    // A unique attempt token also distinguishes A → B → A from the first A.
+    const attempt = { key };
+    inFlightRef.current = attempt;
     setLoading(true);
     setError(null);
     const { location } = input;
@@ -103,21 +116,23 @@ export function useRecommendations(
           ? { favorite_doctor_ids: input.favoriteDoctorIds.slice(0, 50) }
           : {}),
       });
-      if (!mountedRef.current || inFlightRef.current !== key) return;
+      if (!mountedRef.current || inFlightRef.current !== attempt || !currentRef.current.enabled || currentRef.current.key !== key) return;
       settledRef.current = key;
       setData(payload);
     } catch (reason) {
-      if (!mountedRef.current || inFlightRef.current !== key) return;
+      if (!mountedRef.current || inFlightRef.current !== attempt || !currentRef.current.enabled || currentRef.current.key !== key) return;
       setError(reason instanceof ApiError ? reason : new ApiError("NETWORK_ERROR", "资源推荐暂时无法连接。"));
     } finally {
-      if (inFlightRef.current === key) inFlightRef.current = null;
-      if (mountedRef.current) setLoading(false);
+      if (inFlightRef.current === attempt) {
+        inFlightRef.current = null;
+        if (mountedRef.current) setLoading(false);
+      }
     }
   }
 
   /** Retry the current request identity after a failure. */
   function reload() {
-    if (inFlightRef.current === key) return;
+    if (inFlightRef.current?.key === key) return;
     settledRef.current = null;
     void load();
   }

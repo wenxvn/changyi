@@ -1,0 +1,21 @@
+{
+  "execution_status": "IDENTITY_STABLE_EXECUTION_COMPLETED",
+  "empirical_test_target": 0.8,
+  "outcome": "TARGET_NOT_MET_OUT_OF_SAMPLE",
+  "clinical_validation": false,
+  "result_sha256": "cdb11628a22ca9bd443bde925f95a81f71eafdd9dd5c3c1efd71ed5d276749a0",
+  "methods": {
+    "current_alias": {
+      "full_case_denominator": 912,
+      "retained_accuracy": 0.5465393794749404,
+      "coverage": 0.4594298245614035,
+      "target_met": false
+    },
+    "declared_name_bridge": {
+      "full_case_denominator": 912,
+      "retained_accuracy": 0.5693950177935944,
+      "coverage": 0.3081140350877193,
+      "target_met": false
+    }
+  }
+}

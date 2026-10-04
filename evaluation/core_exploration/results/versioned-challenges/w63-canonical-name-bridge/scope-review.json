@@ -1,0 +1,6 @@
+{
+  "status": "NOT_ACCEPTED_FOR_PREREGISTERED_192_CONTRACT",
+  "reason": "Entire name dictionary has 50 entries; the registered structured inventory intersection has 48. Original 200 rows remain exploratory and unchanged.",
+  "result_sha256": "95f670a9ea148388164c54b78c78c497fc6f794c5fdea6d898f055983ac75f95",
+  "replacement_run": "w63-canonical-name-bridge-v2"
+}

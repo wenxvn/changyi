@@ -1,0 +1,6 @@
+{
+  "status": "complete",
+  "global_jobs": 20,
+  "source_jobs": 10,
+  "stress_jobs": 5
+}

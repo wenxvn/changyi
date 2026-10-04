@@ -1,0 +1,182 @@
+{
+  "status": "complete",
+  "seed": 123,
+  "fold": 3,
+  "representation": "asserted_binary",
+  "chosen": {
+    "C": 10.0,
+    "class_weight": "balanced",
+    "macro_f1": 0.2590364428599723,
+    "accuracy": 0.2903225806451613,
+    "warnings": []
+  },
+  "candidates": [
+    {
+      "C": 0.1,
+      "class_weight": null,
+      "macro_f1": 0.2587654320987654,
+      "accuracy": 0.2903225806451613,
+      "warnings": []
+    },
+    {
+      "C": 0.1,
+      "class_weight": "balanced",
+      "macro_f1": 0.2541666666666667,
+      "accuracy": 0.2903225806451613,
+      "warnings": []
+    },
+    {
+      "C": 1.0,
+      "class_weight": null,
+      "macro_f1": 0.2417153996101364,
+      "accuracy": 0.2903225806451613,
+      "warnings": []
+    },
+    {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "macro_f1": 0.2574074074074074,
+      "accuracy": 0.27419354838709675,
+      "warnings": []
+    },
+    {
+      "C": 10.0,
+      "class_weight": null,
+      "macro_f1": 0.2496031746031746,
+      "accuracy": 0.27419354838709675,
+      "warnings": []
+    },
+    {
+      "C": 10.0,
+      "class_weight": "balanced",
+      "macro_f1": 0.2590364428599723,
+      "accuracy": 0.2903225806451613,
+      "warnings": []
+    }
+  ],
+  "raw_test_cases": 48,
+  "rendered_test_cases": 96,
+  "metrics": {
+    "n": 96,
+    "accuracy": 0.5833333333333334,
+    "macro_f1": 0.3287171229200215,
+    "nll": 4.120840940325499,
+    "brier": 0.45307946976917757,
+    "ece": 0.13940471147569244,
+    "wrong_confident_07": 0.020833333333333332,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 0,
+        "recall": null
+      },
+      "呼吸与危重症医学科": {
+        "support": 14,
+        "recall": 0.0
+      },
+      "呼吸内科": {
+        "support": 0,
+        "recall": null
+      },
+      "心血管内科": {
+        "support": 0,
+        "recall": null
+      },
+      "感染性疾病科": {
+        "support": 42,
+        "recall": 0.9523809523809523
+      },
+      "普外科": {
+        "support": 0,
+        "recall": null
+      },
+      "泌尿外科": {
+        "support": 4,
+        "recall": 1.0
+      },
+      "消化内科": {
+        "support": 16,
+        "recall": 0.25
+      },
+      "皮肤科": {
+        "support": 8,
+        "recall": 1.0
+      },
+      "神经内科": {
+        "support": 0,
+        "recall": null
+      },
+      "肛肠科": {
+        "support": 12,
+        "recall": 0.0
+      },
+      "骨科": {
+        "support": 0,
+        "recall": null
+      }
+    },
+    "reliability": [
+      {
+        "bin": 2,
+        "n": 2,
+        "confidence": 0.27573091945131306,
+        "accuracy": 0.0
+      },
+      {
+        "bin": 3,
+        "n": 24,
+        "confidence": 0.32658292709429587,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "bin": 4,
+        "n": 12,
+        "confidence": 0.43814251170512036,
+        "accuracy": 0.16666666666666666
+      },
+      {
+        "bin": 5,
+        "n": 4,
+        "confidence": 0.5215970636548922,
+        "accuracy": 0.0
+      },
+      {
+        "bin": 7,
+        "n": 8,
+        "confidence": 0.7196890242946486,
+        "accuracy": 0.75
+      },
+      {
+        "bin": 8,
+        "n": 4,
+        "confidence": 0.874512269013346,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 9,
+        "n": 42,
+        "confidence": 0.978455640765945,
+        "accuracy": 1.0
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.48932291666666666,
+      0.6666666666666666
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval",
+    "unseen_department_rows": 12
+  },
+  "cal_supported": 162,
+  "cal_unseen": 0,
+  "temperature": 1.6600840888731887,
+  "train_templates": [
+    "症状为{symptoms}。",
+    "主要不适是{symptoms}。",
+    "我有{symptoms}。"
+  ],
+  "test_templates": [
+    "最近身体不舒服：{symptoms}，希望了解就医方向。",
+    "目前感到{symptoms}，该如何继续整理信息？"
+  ],
+  "scope": "synthetic Chinese engineering proxy from structured cases, NOT clinical validation",
+  "case_group_disjoint": true
+}

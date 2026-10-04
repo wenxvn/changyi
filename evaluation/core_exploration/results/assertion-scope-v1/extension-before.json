@@ -1,0 +1,4358 @@
+{
+  "scope": "synthetic_assertion_regression_not_clinical_validation",
+  "total": 210,
+  "passed": 150,
+  "failed": 60,
+  "rows": [
+    {
+      "family": "positive",
+      "text": "我有咳嗽",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative",
+      "text": "没有咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative_with_particle",
+      "text": "没有明显的咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "denied_presence",
+      "text": "否认有咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_occurred",
+      "text": "未出现咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "post_negative",
+      "text": "咳嗽没有了",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "不确定有没有咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "post_uncertain",
+      "text": "咳嗽不确定",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past",
+      "text": "曾经咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past_year",
+      "text": "去年有咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved",
+      "text": "咳嗽已经好了",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved_disappearance",
+      "text": "咳嗽已消失",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "cough"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "not_improved",
+      "text": "咳嗽没有减轻",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_resolved",
+      "text": "咳嗽没有好",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "partly_improved",
+      "text": "咳嗽有所好转",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "positive",
+      "text": "我有头痛",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative",
+      "text": "没有头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative_with_particle",
+      "text": "没有明显的头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "denied_presence",
+      "text": "否认有头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_occurred",
+      "text": "未出现头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "post_negative",
+      "text": "头痛没有了",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "不确定有没有头痛",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "post_uncertain",
+      "text": "头痛不确定",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past",
+      "text": "曾经头痛",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past_year",
+      "text": "去年有头痛",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved",
+      "text": "头痛已经好了",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved_disappearance",
+      "text": "头痛已消失",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "headache"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "not_improved",
+      "text": "头痛没有减轻",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_resolved",
+      "text": "头痛没有好",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "partly_improved",
+      "text": "头痛有所好转",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "positive",
+      "text": "我有恶心",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative",
+      "text": "没有恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative_with_particle",
+      "text": "没有明显的恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "denied_presence",
+      "text": "否认有恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_occurred",
+      "text": "未出现恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "post_negative",
+      "text": "恶心没有了",
+      "expected": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "不确定有没有恶心",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "post_uncertain",
+      "text": "恶心不确定",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past",
+      "text": "曾经恶心",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past_year",
+      "text": "去年有恶心",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved",
+      "text": "恶心已经好了",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved_disappearance",
+      "text": "恶心已消失",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "nausea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "not_improved",
+      "text": "恶心没有减轻",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_resolved",
+      "text": "恶心没有好",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "partly_improved",
+      "text": "恶心有所好转",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "positive",
+      "text": "我有腹泻",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative",
+      "text": "没有腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative_with_particle",
+      "text": "没有明显的腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "denied_presence",
+      "text": "否认有腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_occurred",
+      "text": "未出现腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "post_negative",
+      "text": "腹泻没有了",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "不确定有没有腹泻",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "post_uncertain",
+      "text": "腹泻不确定",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past",
+      "text": "曾经腹泻",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past_year",
+      "text": "去年有腹泻",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved",
+      "text": "腹泻已经好了",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved_disappearance",
+      "text": "腹泻已消失",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "diarrhoea"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "not_improved",
+      "text": "腹泻没有减轻",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_resolved",
+      "text": "腹泻没有好",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "partly_improved",
+      "text": "腹泻有所好转",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "positive",
+      "text": "我有胸痛",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative",
+      "text": "没有胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative_with_particle",
+      "text": "没有明显的胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "denied_presence",
+      "text": "否认有胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_occurred",
+      "text": "未出现胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "post_negative",
+      "text": "胸痛没有了",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "不确定有没有胸痛",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "post_uncertain",
+      "text": "胸痛不确定",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past",
+      "text": "曾经胸痛",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past_year",
+      "text": "去年有胸痛",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved",
+      "text": "胸痛已经好了",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved_disappearance",
+      "text": "胸痛已消失",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "not_improved",
+      "text": "胸痛没有减轻",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_resolved",
+      "text": "胸痛没有好",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "partly_improved",
+      "text": "胸痛有所好转",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "positive",
+      "text": "我有鼻塞",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative",
+      "text": "没有鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "negative_with_particle",
+      "text": "没有明显的鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "denied_presence",
+      "text": "否认有鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_occurred",
+      "text": "未出现鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "post_negative",
+      "text": "鼻塞没有了",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "不确定有没有鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "post_uncertain",
+      "text": "鼻塞不确定",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past",
+      "text": "曾经鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "past_year",
+      "text": "去年有鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved",
+      "text": "鼻塞已经好了",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "resolved_disappearance",
+      "text": "鼻塞已消失",
+      "expected": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "actual": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "congestion"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "family": "not_improved",
+      "text": "鼻塞没有减轻",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "not_resolved",
+      "text": "鼻塞没有好",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "partly_improved",
+      "text": "鼻塞有所好转",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "contrast",
+      "text": "没有咳嗽，但是有头痛",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有咳嗽和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有咳嗽和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现咳嗽和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有咳嗽，但是有恶心",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有咳嗽和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有咳嗽和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现咳嗽和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有咳嗽，但是有腹泻",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有咳嗽和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有咳嗽和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现咳嗽和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有咳嗽，但是有胸痛",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有咳嗽和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有咳嗽和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现咳嗽和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有咳嗽，但是有鼻塞",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有咳嗽和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有咳嗽和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现咳嗽和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有头痛，但是有咳嗽",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有头痛和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有头痛和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现头痛和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有头痛，但是有恶心",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有头痛和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有头痛和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现头痛和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有头痛，但是有腹泻",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有头痛和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有头痛和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现头痛和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有头痛，但是有胸痛",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有头痛和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有头痛和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现头痛和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有头痛，但是有鼻塞",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有头痛和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有头痛和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现头痛和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有恶心，但是有咳嗽",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有恶心和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有恶心和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现恶心和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有恶心，但是有头痛",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有恶心和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有恶心和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现恶心和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "headache",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有恶心，但是有腹泻",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有恶心和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有恶心和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现恶心和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有恶心，但是有胸痛",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有恶心和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有恶心和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现恶心和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有恶心，但是有鼻塞",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有恶心和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有恶心和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现恶心和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有腹泻，但是有咳嗽",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有腹泻和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有腹泻和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现腹泻和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "cough",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有腹泻，但是有头痛",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有腹泻和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有腹泻和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现腹泻和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有腹泻，但是有恶心",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有腹泻和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有腹泻和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现腹泻和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "diarrhoea",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有腹泻，但是有胸痛",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有腹泻和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有腹泻和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现腹泻和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有腹泻，但是有鼻塞",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有腹泻和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有腹泻和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现腹泻和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有胸痛，但是有咳嗽",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有胸痛和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有胸痛和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现胸痛和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有胸痛，但是有头痛",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有胸痛和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有胸痛和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现胸痛和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有胸痛，但是有恶心",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有胸痛和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有胸痛和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现胸痛和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有胸痛，但是有腹泻",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有胸痛和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有胸痛和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现胸痛和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有胸痛，但是有鼻塞",
+      "expected": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有胸痛和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有胸痛和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现胸痛和鼻塞",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "congestion"
+        ],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有鼻塞，但是有咳嗽",
+      "expected": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有鼻塞和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有鼻塞和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现鼻塞和咳嗽",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "cough"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "cough"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有鼻塞，但是有头痛",
+      "expected": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有鼻塞和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有鼻塞和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现鼻塞和头痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "headache"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有鼻塞，但是有恶心",
+      "expected": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有鼻塞和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有鼻塞和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现鼻塞和恶心",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "nausea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "nausea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有鼻塞，但是有腹泻",
+      "expected": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有鼻塞和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有鼻塞和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现鼻塞和腹泻",
+      "expected": {
+        "present": [],
+        "absent": [
+          "congestion",
+          "diarrhoea"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "diarrhoea"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "contrast",
+      "text": "没有鼻塞，但是有胸痛",
+      "expected": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "coordinated_denial",
+      "text": "没有鼻塞和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": true
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "否认有鼻塞和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    },
+    {
+      "family": "expanded_coordinated_denial",
+      "text": "未出现鼻塞和胸痛",
+      "expected": {
+        "present": [],
+        "absent": [
+          "chest_pain",
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "actual": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [
+          "congestion"
+        ],
+        "unknown": []
+      },
+      "pass": false
+    }
+  ]
+}

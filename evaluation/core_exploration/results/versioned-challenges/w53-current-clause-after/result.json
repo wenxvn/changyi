@@ -1,0 +1,79 @@
+{
+  "scope": "explicit_current_clause_language_evidence_no_clinical_oracle",
+  "total": 7,
+  "failed": 0,
+  "execution_failures": 0,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "没有胸痛，现在咳嗽",
+      "expected_cough_evidence": true,
+      "observed_cough_evidence": true,
+      "pass": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "去年没有严重胸痛，现在咳嗽",
+      "expected_cough_evidence": true,
+      "observed_cough_evidence": true,
+      "pass": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有发烧，目前咳嗽",
+      "expected_cough_evidence": true,
+      "observed_cough_evidence": true,
+      "pass": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，但咳嗽",
+      "expected_cough_evidence": true,
+      "observed_cough_evidence": true,
+      "pass": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "去年没有胸痛。现在咳嗽",
+      "expected_cough_evidence": true,
+      "observed_cough_evidence": true,
+      "pass": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛和咳嗽",
+      "expected_cough_evidence": false,
+      "observed_cough_evidence": false,
+      "pass": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，现在也没有咳嗽",
+      "expected_cough_evidence": false,
+      "observed_cough_evidence": false,
+      "pass": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false
+    }
+  ]
+}

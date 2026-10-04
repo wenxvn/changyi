@@ -1,0 +1,103 @@
+{
+  "scope": "paired_nonclinical_route_observation_not_causal_or_clinical_validation",
+  "source_run": "w54-current-clause-uncertainty",
+  "source_result_sha256": "4b0662a490301e888515b105ebc5f106df46ef3f5ca34a6b01e256f63e504d5c",
+  "declared_runtime_subset_verified": true,
+  "new_api_inputs": 3,
+  "total": 3,
+  "failed": 0,
+  "same_policy_pairs": 3,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "new_control": {
+        "text": "现在是否咳嗽",
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "direct_department_match": "呼吸内科",
+        "abstained": true,
+        "abstain_reason": "symptom_assertion_uncertain"
+      },
+      "saved_comparison": {
+        "text": "没有胸痛，现在是否咳嗽",
+        "expected_existence_state": "unknown",
+        "auxiliary_states": [
+          "unknown"
+        ],
+        "lexical_positive": true,
+        "auxiliary_contract_pass": true,
+        "lexical_existence_agrees": false,
+        "execution_valid": true,
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "abstained": true,
+        "abstain_reason": "symptom_assertion_uncertain",
+        "clinical_label_verified": false
+      },
+      "saved_comparison_replayed": false,
+      "observed_policy_same": true,
+      "pass": true,
+      "clinical_label_verified": false
+    },
+    {
+      "new_control": {
+        "text": "现在不确定是否咳嗽",
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "direct_department_match": "呼吸内科",
+        "abstained": true,
+        "abstain_reason": "symptom_assertion_uncertain"
+      },
+      "saved_comparison": {
+        "text": "没有胸痛，现在不确定是否咳嗽",
+        "expected_existence_state": "unknown",
+        "auxiliary_states": [
+          "unknown"
+        ],
+        "lexical_positive": true,
+        "auxiliary_contract_pass": true,
+        "lexical_existence_agrees": false,
+        "execution_valid": true,
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "abstained": true,
+        "abstain_reason": "symptom_assertion_uncertain",
+        "clinical_label_verified": false
+      },
+      "saved_comparison_replayed": false,
+      "observed_policy_same": true,
+      "pass": true,
+      "clinical_label_verified": false
+    },
+    {
+      "new_control": {
+        "text": "现在可能咳嗽",
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "direct_department_match": "呼吸内科",
+        "abstained": true,
+        "abstain_reason": "symptom_assertion_uncertain"
+      },
+      "saved_comparison": {
+        "text": "没有胸痛，现在可能咳嗽",
+        "expected_existence_state": "unknown",
+        "auxiliary_states": [
+          "unknown"
+        ],
+        "lexical_positive": true,
+        "auxiliary_contract_pass": true,
+        "lexical_existence_agrees": false,
+        "execution_valid": true,
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "abstained": true,
+        "abstain_reason": "symptom_assertion_uncertain",
+        "clinical_label_verified": false
+      },
+      "saved_comparison_replayed": false,
+      "observed_policy_same": true,
+      "pass": true,
+      "clinical_label_verified": false
+    }
+  ]
+}

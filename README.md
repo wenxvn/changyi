@@ -2,6 +2,8 @@
 
 常医智导是面向常州市医疗资源检索、分诊辅助和可解释推荐的演示型 Web 系统。它不能替代医生诊断、处方、急救人员或临床决策。
 
+2026-10-03本地网站验收入口、已验证版本及真实未闭P0/P1/P2见 [网站验收清单](docs/status/WEBSITE_ACCEPTANCE.md)。研究指标、固定Safety与工程测试均不能当作独立中文临床验证。
+
 ## 当前结构
 
 - `frontend/`：React + TypeScript + Vite 正式前端；构建产物由 Flask 从 `frontend/dist/` 提供。
@@ -41,7 +43,29 @@ npx playwright install chromium
 npm run e2e
 ```
 
-质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 186 个已知异常（`PLACEHOLDER_TIMESTAMP` / `TIME_ORDER`）；当前 Safety Evaluation 为 135 cases、Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0312`、Emergency False Negative `0`。模型证据同时包含 random / exact fingerprint / strict near-duplicate single split 与 5-fold Grouped Near-Duplicate CV（跨 split 近重复 0）。P2 已提供服务端医生搜索/分页、Visit Intent、资源偏好与本地收藏；Visit Intent/偏好不影响 Safety Gate。这些是固定样例与离线原型上的工程回归结果，不是临床验证或发布结论。
+质量门禁位于 `.github/workflows/quality.yml`。数据质量报告只登记问题，不自动修复 186 个已知异常（`PLACEHOLDER_TIMESTAMP` / `TIME_ORDER`）；当前 Safety Evaluation 为 142 cases、Red Flag Recall `1.0`、Under-triage `0.0`、Over-triage `0.0`、Emergency False Negative `0`。模型证据同时包含 random / exact fingerprint / strict near-duplicate single split 与 5-fold Grouped Near-Duplicate CV（跨 split 近重复 0）。P2 已提供服务端医生搜索/分页、Visit Intent、资源偏好与本地收藏；Visit Intent/偏好不影响 Safety Gate。这些是固定样例与离线原型上的工程回归结果，不是临床验证或发布结论。
+
+## 2026-10-02 核心算法研究
+
+已修复 cal/test/扰动预测器不一致、追问记录概率与研究证据漂移，新增嵌套表示/模型/校准/拒答/来源/输入域对照。报告：[CORE_EXPLORATION_REPORT.md](docs/algorithm/CORE_EXPLORATION_REPORT.md)。模型保持 `RESEARCH_ONLY`；公开混合文本94%左右的内部成绩不能当作中文临床分诊准确率。复现研究需另装 `requirements-research.txt`，正式Flask运行时仍只依赖 `requirements.txt`。
+
+## Windows 本地网站与验收
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+cd frontend
+npm ci
+npx playwright install chromium
+npm run build
+npm run e2e
+cd ..
+.\.venv\Scripts\python.exe app.py
+```
+
+E2E入口支持Windows/Linux；非默认Python环境可设置`CHANGYI_PYTHON`。头像尺寸派生已经随本地网站准备好；新增/更新源图片时，安装`requirements-data.txt`后执行`.\.venv\Scripts\python.exe scripts/build_doctor_photo_variants.py`并重新构建前端。原图与来源状态保留，不把尺寸派生视为来源核验。
+
+在`frontend/`运行`npm run e2e:hooks`可额外检查React开发StrictMode、请求交错与禁用恢复。此命令独立启动本地Vite测试页面，使用合成响应；不需要启动Flask，不计为算法精度或医学验证。
 
 ## 入口文档
 

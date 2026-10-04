@@ -1,0 +1,137 @@
+{
+  "scope": "synthetic_known_disease_contract_audit_not_clinical_accuracy",
+  "total": 8,
+  "failed": 0,
+  "rows": [
+    {
+      "family": "denied",
+      "text": "没有糖尿病，只是咳嗽",
+      "expected_known": false,
+      "expected_disease": "",
+      "actual_known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": null,
+      "status": "ROUTINE",
+      "pass": true
+    },
+    {
+      "family": "denied",
+      "text": "否认乙肝，有皮疹",
+      "expected_known": false,
+      "expected_disease": "",
+      "actual_known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": null,
+      "status": "ROUTINE",
+      "pass": true
+    },
+    {
+      "family": "denied",
+      "text": "没有类风湿关节炎但有咳嗽",
+      "expected_known": false,
+      "expected_disease": "",
+      "actual_known": {
+        "confidence": 0.0,
+        "department": "",
+        "disease": "",
+        "has_known_disease": false,
+        "source": ""
+      },
+      "direction": "呼吸内科",
+      "status": "ROUTINE",
+      "pass": true
+    },
+    {
+      "family": "contrast",
+      "text": "没有糖尿病但确诊乙肝",
+      "expected_known": true,
+      "expected_disease": "乙肝",
+      "actual_known": {
+        "confidence": 0.92,
+        "department": "感染性疾病科",
+        "disease": "乙肝",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "direction": "感染性疾病科",
+      "status": "URGENT",
+      "pass": true
+    },
+    {
+      "family": "positive",
+      "text": "已经确诊糖尿病，来复诊",
+      "expected_known": true,
+      "expected_disease": "糖尿病",
+      "actual_known": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "direction": "内分泌代谢科",
+      "status": "URGENT",
+      "pass": true
+    },
+    {
+      "family": "history",
+      "text": "有糖尿病病史，来复诊",
+      "expected_known": true,
+      "expected_disease": "糖尿病",
+      "actual_known": {
+        "confidence": 0.92,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": true,
+        "source": "user_stated"
+      },
+      "direction": "内分泌代谢科",
+      "status": "URGENT",
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "不确定是否糖尿病",
+      "expected_known": false,
+      "expected_disease": "",
+      "actual_known": {
+        "assertion_status": "uncertain",
+        "confidence": 0.0,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "unconfirmed_mention"
+      },
+      "direction": "内分泌代谢科",
+      "status": "URGENT",
+      "pass": true
+    },
+    {
+      "family": "uncertain",
+      "text": "糖尿病不确定",
+      "expected_known": false,
+      "expected_disease": "",
+      "actual_known": {
+        "assertion_status": "uncertain",
+        "confidence": 0.0,
+        "department": "内分泌代谢科",
+        "disease": "糖尿病",
+        "has_known_disease": false,
+        "source": "unconfirmed_mention"
+      },
+      "direction": "内分泌代谢科",
+      "status": "URGENT",
+      "pass": true
+    }
+  ]
+}

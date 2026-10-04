@@ -482,14 +482,16 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     return () => controller.abort();
   }, [hospitals, doctors]);
 
+  const selectedResourceKind = selection?.kind;
+  const selectedResourceId = selection?.item.id;
   useEffect(() => {
-    if (!selection) {
+    if (!selectedResourceKind) {
       setDetail(null);
       setDetailError(null);
       setDetailLoading(false);
       return;
     }
-    const resourceId = selection.item.id;
+    const resourceId = selectedResourceId;
     if (typeof resourceId !== "number") {
       setDetail(null);
       setDetailError(new ApiError("INVALID_RESOURCE", "当前资料缺少可查询的资源编号。"));
@@ -500,7 +502,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     setDetail(null);
     setDetailError(null);
     setDetailLoading(true);
-    const request = selection.kind === "hospital"
+    const request = selectedResourceKind === "hospital"
       ? getHospitalDetail(resourceId, controller.signal)
       : getDoctorDetail(resourceId, controller.signal);
     request.then((payload) => {
@@ -512,7 +514,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       if (!controller.signal.aborted) setDetailLoading(false);
     });
     return () => controller.abort();
-  }, [detailAttempt, selection]);
+  }, [detailAttempt, selectedResourceKind, selectedResourceId]);
 
   const normalizedQuery = query.trim().toLocaleLowerCase();
   const hospitalLevels = useMemo(
@@ -596,6 +598,12 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
 
   useEffect(() => {
     const params = new URLSearchParams();
+    if (triageContext) {
+      params.set("from", "triage");
+      if (triageContext.direction) params.set("direction", triageContext.direction);
+      if (triageContext.safety && triageContext.safety in safetyContextLabel) params.set("safety", triageContext.safety);
+      if (initialParams.get("preference")) params.set("preference", initialParams.get("preference") as string);
+    }
     if (activeTab === "doctors") params.set("type", "doctor");
     if (activeTab === "hospitals") params.set("type", "hospital");
     if (query.trim()) params.set("q", query.trim());
@@ -619,7 +627,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     const search = params.toString();
     const next = search ? `?${search}` : window.location.pathname;
     window.history.replaceState(null, "", next);
-  }, [activeTab, query, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, doctorHospital, doctorDepartment, doctorTitle, selection]);
+  }, [activeTab, query, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, doctorHospital, doctorDepartment, doctorTitle, selection, triageContext, initialParams]);
 
   /** Selecting a card opens the detail panel below the list and brings it into view. */
   function selectResource(next: Selection) {

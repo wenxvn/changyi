@@ -1,0 +1,3960 @@
+{
+  "scope": "existing_synthetic_chinese_renderer_feature_coverage_not_clinical_validation",
+  "clinical_accuracy": null,
+  "clinical_labels_verified": 0,
+  "translation_semantics_verified": false,
+  "total": 304,
+  "failed": 0,
+  "symptom_occurrences": 2325,
+  "unique_symptom_codes": 131,
+  "named_occurrences": 1629,
+  "english_fallback_occurrences": 696,
+  "fully_named_rows": 71,
+  "named_but_not_recovered_occurrences": 238,
+  "codes": [
+    {
+      "code": "abdominal_pain",
+      "occurrences": 70,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "abnormal_menstruation",
+      "occurrences": 17,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "acidity",
+      "occurrences": 15,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "acute_liver_failure",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "altered_sensorium",
+      "occurrences": 4,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "anxiety",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "back_pain",
+      "occurrences": 15,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "belly_pain",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "blackheads",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "bladder_discomfort",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "blister",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "blood_in_sputum",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "bloody_stool",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "blurred_and_distorted_vision",
+      "occurrences": 25,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "breathlessness",
+      "occurrences": 26,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "brittle_nails",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "bruising",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "burning_micturition",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "chest_pain",
+      "occurrences": 42,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "chills",
+      "occurrences": 53,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "cold_hands_and_feets",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "coma",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "congestion",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "constipation",
+      "occurrences": 13,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "continuous_feel_of_urine",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "continuous_sneezing",
+      "occurrences": 12,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "cough",
+      "occurrences": 36,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "cramps",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "dark_urine",
+      "occurrences": 41,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "dehydration",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "depression",
+      "occurrences": 17,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "diarrhoea",
+      "occurrences": 35,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "dischromic_patches",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "distention_of_abdomen",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "dizziness",
+      "occurrences": 17,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "drying_and_tingling_lips",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "enlarged_thyroid",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "excessive_hunger",
+      "occurrences": 34,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "extra_marital_contacts",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "family_history",
+      "occurrences": 12,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "fast_heart_rate",
+      "occurrences": 17,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "fatigue",
+      "occurrences": 134,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "fluid_overload",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "foul_smell_of_urine",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "headache",
+      "occurrences": 74,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "high_fever",
+      "occurrences": 89,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "hip_joint_pain",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "history_of_alcohol_consumption",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "increased_appetite",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "indigestion",
+      "occurrences": 15,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "inflammatory_nails",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "internal_itching",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "irregular_sugar_level",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "irritability",
+      "occurrences": 35,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "irritation_in_anus",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "itching",
+      "occurrences": 41,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "joint_pain",
+      "occurrences": 46,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "knee_pain",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "lack_of_concentration",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "lethargy",
+      "occurrences": 32,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "loss_of_appetite",
+      "occurrences": 81,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "loss_of_balance",
+      "occurrences": 16,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "loss_of_smell",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "malaise",
+      "occurrences": 53,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "mild_fever",
+      "occurrences": 27,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "mood_swings",
+      "occurrences": 15,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "movement_stiffness",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "mucoid_sputum",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "muscle_pain",
+      "occurrences": 35,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "muscle_wasting",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "muscle_weakness",
+      "occurrences": 14,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "nausea",
+      "occurrences": 77,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "neck_pain",
+      "occurrences": 11,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "nodal_skin_eruptions",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "obesity",
+      "occurrences": 15,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "pain_behind_the_eyes",
+      "occurrences": 10,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "pain_during_bowel_movements",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "pain_in_anal_region",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "painful_walking",
+      "occurrences": 11,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "palpitations",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "passage_of_gases",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "patches_in_throat",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "phlegm",
+      "occurrences": 26,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "polyuria",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "prominent_veins_on_calf",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "puffy_face_and_eyes",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "pus_filled_pimples",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "receiving_blood_transfusion",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "receiving_unsterile_injections",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "red_sore_around_nose",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "red_spots_over_body",
+      "occurrences": 19,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "redness_of_eyes",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "restlessness",
+      "occurrences": 16,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "runny_nose",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "rusty_sputum",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "scurring",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "shivering",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "silver_like_dusting",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "sinus_pressure",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "skin_peeling",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "skin_rash",
+      "occurrences": 42,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "slurred_speech",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "small_dents_in_nails",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "spinning_movements",
+      "occurrences": 6,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "spotting_urination",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "stiff_neck",
+      "occurrences": 14,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "stomach_bleeding",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "stomach_pain",
+      "occurrences": 11,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "sunken_eyes",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "sweating",
+      "occurrences": 43,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "swelled_lymph_nodes",
+      "occurrences": 26,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "swelling_joints",
+      "occurrences": 11,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "swelling_of_stomach",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "swollen_blood_vessels",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "swollen_extremeties",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "swollen_legs",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "throat_irritation",
+      "occurrences": 9,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "toxic_look_(typhos)",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "ulcers_on_tongue",
+      "occurrences": 6,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "unsteadiness",
+      "occurrences": 6,
+      "has_name": true,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "visual_disturbances",
+      "occurrences": 9,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "vomiting",
+      "occurrences": 117,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "watering_from_eyes",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "weakness_in_limbs",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "weakness_of_one_body_side",
+      "occurrences": 4,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "weight_gain",
+      "occurrences": 7,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "weight_loss",
+      "occurrences": 32,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "yellow_crust_ooze",
+      "occurrences": 5,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "yellow_urine",
+      "occurrences": 8,
+      "has_name": false,
+      "name_recovers_own_code": false
+    },
+    {
+      "code": "yellowing_of_eyes",
+      "occurrences": 58,
+      "has_name": true,
+      "name_recovers_own_code": true
+    },
+    {
+      "code": "yellowish_skin",
+      "occurrences": 61,
+      "has_name": true,
+      "name_recovers_own_code": true
+    }
+  ],
+  "rows": [
+    {
+      "row_index": 0,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "unsteadiness"
+      ]
+    },
+    {
+      "row_index": 1,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "unsteadiness"
+      ]
+    },
+    {
+      "row_index": 2,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance"
+      ]
+    },
+    {
+      "row_index": 3,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "unsteadiness"
+      ]
+    },
+    {
+      "row_index": 4,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "unsteadiness"
+      ]
+    },
+    {
+      "row_index": 5,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "unsteadiness"
+      ]
+    },
+    {
+      "row_index": 6,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "unsteadiness"
+      ]
+    },
+    {
+      "row_index": 7,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "extra_marital_contacts",
+        "muscle_wasting"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 8,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "extra_marital_contacts",
+        "muscle_wasting",
+        "patches_in_throat"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 9,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "muscle_wasting",
+        "patches_in_throat"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 10,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "extra_marital_contacts",
+        "muscle_wasting",
+        "patches_in_throat"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 11,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "extra_marital_contacts",
+        "patches_in_throat"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 12,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "blackheads",
+        "pus_filled_pimples",
+        "scurring"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 13,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "blackheads",
+        "scurring"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 14,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "blackheads",
+        "pus_filled_pimples"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 15,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "blackheads",
+        "pus_filled_pimples",
+        "scurring"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 16,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "pus_filled_pimples",
+        "scurring"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 17,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "distention_of_abdomen",
+        "fluid_overload",
+        "history_of_alcohol_consumption",
+        "swelling_of_stomach"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 18,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "distention_of_abdomen",
+        "fluid_overload",
+        "history_of_alcohol_consumption"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 19,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "distention_of_abdomen",
+        "fluid_overload",
+        "swelling_of_stomach"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 20,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "distention_of_abdomen",
+        "history_of_alcohol_consumption",
+        "swelling_of_stomach"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 21,
+      "symptom_count": 7,
+      "english_fallback_codes": [
+        "distention_of_abdomen",
+        "fluid_overload",
+        "history_of_alcohol_consumption",
+        "swelling_of_stomach"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 22,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "fluid_overload",
+        "history_of_alcohol_consumption",
+        "swelling_of_stomach"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 23,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "distention_of_abdomen",
+        "fluid_overload",
+        "history_of_alcohol_consumption",
+        "swelling_of_stomach"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 24,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "distention_of_abdomen",
+        "fluid_overload",
+        "history_of_alcohol_consumption",
+        "swelling_of_stomach"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 25,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "watering_from_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 26,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "shivering"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 27,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "shivering",
+        "watering_from_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 28,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "shivering",
+        "watering_from_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 29,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "shivering",
+        "watering_from_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 30,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "movement_stiffness",
+        "muscle_weakness",
+        "painful_walking",
+        "stiff_neck"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 31,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "movement_stiffness",
+        "muscle_weakness",
+        "stiff_neck",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 32,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "movement_stiffness",
+        "muscle_weakness",
+        "painful_walking",
+        "stiff_neck",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 33,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "muscle_weakness",
+        "painful_walking",
+        "stiff_neck",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 34,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "movement_stiffness",
+        "muscle_weakness",
+        "painful_walking",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 35,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "movement_stiffness",
+        "painful_walking",
+        "stiff_neck",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 36,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history",
+        "mucoid_sputum"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 37,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history",
+        "mucoid_sputum"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 38,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 39,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "family_history",
+        "mucoid_sputum"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 40,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "mucoid_sputum"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 41,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history",
+        "mucoid_sputum"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 42,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history",
+        "mucoid_sputum"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 43,
+      "symptom_count": 4,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 44,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "weakness_in_limbs"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance"
+      ]
+    },
+    {
+      "row_index": 45,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "weakness_in_limbs"
+      ],
+      "named_but_not_recovered_codes": [
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 46,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "weakness_in_limbs"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 47,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "weakness_in_limbs"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 48,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "weakness_in_limbs"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance",
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 49,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 50,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 51,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 52,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 53,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 54,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 55,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 56,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 57,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 58,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "lethargy",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 59,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 60,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 61,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 62,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 63,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 64,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 65,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 66,
+      "symptom_count": 6,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 67,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 68,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 69,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 70,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure"
+      ]
+    },
+    {
+      "row_index": 71,
+      "symptom_count": 17,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 72,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 73,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 74,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 75,
+      "symptom_count": 16,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "redness_of_eyes",
+        "sinus_pressure",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 76,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 77,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 78,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 79,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 80,
+      "symptom_count": 14,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 81,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 82,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 83,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 84,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 85,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "pain_behind_the_eyes",
+        "red_spots_over_body"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 86,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "irregular_sugar_level",
+        "lethargy",
+        "obesity",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 87,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "irregular_sugar_level",
+        "lethargy",
+        "obesity"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 88,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "irregular_sugar_level",
+        "obesity",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 89,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "lethargy",
+        "obesity",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 90,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "irregular_sugar_level",
+        "lethargy",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 91,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "irregular_sugar_level",
+        "lethargy",
+        "obesity",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 92,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "increased_appetite",
+        "irregular_sugar_level",
+        "lethargy",
+        "obesity",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 93,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "irregular_sugar_level",
+        "lethargy",
+        "obesity",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 94,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "increased_appetite",
+        "irregular_sugar_level",
+        "lethargy",
+        "obesity",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "polyuria"
+      ]
+    },
+    {
+      "row_index": 95,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "bloody_stool",
+        "irritation_in_anus",
+        "pain_during_bowel_movements"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 96,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "bloody_stool",
+        "pain_during_bowel_movements",
+        "pain_in_anal_region"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 97,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "bloody_stool",
+        "irritation_in_anus",
+        "pain_during_bowel_movements",
+        "pain_in_anal_region"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 98,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "irritation_in_anus",
+        "pain_during_bowel_movements",
+        "pain_in_anal_region"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 99,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "bloody_stool",
+        "irritation_in_anus",
+        "pain_in_anal_region"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 100,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "bloody_stool",
+        "irritation_in_anus",
+        "pain_during_bowel_movements",
+        "pain_in_anal_region"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 101,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "spotting_urination"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 102,
+      "symptom_count": 4,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 103,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "spotting_urination"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 104,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "spotting_urination"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 105,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "spotting_urination"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 106,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "spotting_urination"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 107,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "dischromic_patches",
+        "nodal_skin_eruptions"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 108,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "dischromic_patches"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 109,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "nodal_skin_eruptions"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 110,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "dischromic_patches",
+        "nodal_skin_eruptions"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 111,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "dischromic_patches",
+        "nodal_skin_eruptions"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 112,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "ulcers_on_tongue"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 113,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "ulcers_on_tongue"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 114,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "ulcers_on_tongue"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 115,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "ulcers_on_tongue"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 116,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "ulcers_on_tongue"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 117,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 118,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "ulcers_on_tongue"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 119,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "dehydration",
+        "sunken_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 120,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "dehydration"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 121,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "dehydration",
+        "sunken_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 122,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "dehydration",
+        "sunken_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 123,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "sunken_eyes"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 124,
+      "symptom_count": 3,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 125,
+      "symptom_count": 3,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 126,
+      "symptom_count": 3,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 127,
+      "symptom_count": 4,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 128,
+      "symptom_count": 3,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 129,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 130,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 131,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 132,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 133,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 134,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 135,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 136,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 137,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "lethargy",
+        "receiving_blood_transfusion",
+        "receiving_unsterile_injections",
+        "yellow_urine"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 138,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 139,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 140,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 141,
+      "symptom_count": 5,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 142,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "family_history"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 143,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 144,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "family_history"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 145,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 146,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 147,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 148,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 149,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 150,
+      "symptom_count": 9,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 151,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 152,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 153,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 154,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 155,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 156,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 157,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 158,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 159,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 160,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 161,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 162,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 163,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "acute_liver_failure",
+        "coma",
+        "stomach_bleeding"
+      ],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 164,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "lack_of_concentration"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance"
+      ]
+    },
+    {
+      "row_index": 165,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "lack_of_concentration"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 166,
+      "symptom_count": 4,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance"
+      ]
+    },
+    {
+      "row_index": 167,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "lack_of_concentration"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance"
+      ]
+    },
+    {
+      "row_index": 168,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "lack_of_concentration"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance"
+      ]
+    },
+    {
+      "row_index": 169,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "lack_of_concentration"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_balance"
+      ]
+    },
+    {
+      "row_index": 170,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 171,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 172,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 173,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 174,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 175,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 176,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 177,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 178,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "excessive_hunger",
+        "irritability",
+        "mood_swings",
+        "muscle_weakness",
+        "restlessness"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 179,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "anxiety",
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 180,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "anxiety",
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 181,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "anxiety",
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 182,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "anxiety",
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 183,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "anxiety",
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 184,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "anxiety",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 185,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "anxiety",
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 186,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "anxiety",
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 187,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "drying_and_tingling_lips",
+        "excessive_hunger",
+        "irritability",
+        "slurred_speech"
+      ],
+      "named_but_not_recovered_codes": [
+        "palpitations"
+      ]
+    },
+    {
+      "row_index": 188,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "cold_hands_and_feets",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "lethargy",
+        "mood_swings",
+        "puffy_face_and_eyes",
+        "swollen_extremeties"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 189,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "cold_hands_and_feets",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "lethargy",
+        "puffy_face_and_eyes",
+        "swollen_extremeties",
+        "weight_gain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 190,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "cold_hands_and_feets",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "mood_swings",
+        "puffy_face_and_eyes",
+        "swollen_extremeties",
+        "weight_gain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 191,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "cold_hands_and_feets",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "lethargy",
+        "mood_swings",
+        "swollen_extremeties",
+        "weight_gain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 192,
+      "symptom_count": 13,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "cold_hands_and_feets",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "lethargy",
+        "mood_swings",
+        "puffy_face_and_eyes",
+        "swollen_extremeties",
+        "weight_gain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 193,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "cold_hands_and_feets",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "lethargy",
+        "mood_swings",
+        "puffy_face_and_eyes",
+        "swollen_extremeties",
+        "weight_gain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 194,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "lethargy",
+        "mood_swings",
+        "puffy_face_and_eyes",
+        "swollen_extremeties",
+        "weight_gain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 195,
+      "symptom_count": 12,
+      "english_fallback_codes": [
+        "abnormal_menstruation",
+        "brittle_nails",
+        "cold_hands_and_feets",
+        "depression",
+        "enlarged_thyroid",
+        "irritability",
+        "lethargy",
+        "mood_swings",
+        "puffy_face_and_eyes",
+        "swollen_extremeties",
+        "weight_gain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 196,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "blister",
+        "red_sore_around_nose",
+        "yellow_crust_ooze"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 197,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "blister",
+        "red_sore_around_nose",
+        "yellow_crust_ooze"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 198,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "blister",
+        "red_sore_around_nose"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 199,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "blister",
+        "red_sore_around_nose",
+        "yellow_crust_ooze"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 200,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "blister",
+        "yellow_crust_ooze"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 201,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "red_sore_around_nose",
+        "yellow_crust_ooze"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 202,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 203,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 204,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 205,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 206,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 207,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 208,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 209,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 210,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 211,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 212,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 213,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 214,
+      "symptom_count": 8,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 215,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 216,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 217,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 218,
+      "symptom_count": 7,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 219,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "irritability",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 220,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "irritability",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 221,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "irritability",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 222,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "irritability",
+        "stiff_neck"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 223,
+      "symptom_count": 9,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "irritability",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 224,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 225,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "excessive_hunger",
+        "irritability",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 226,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "irritability",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 227,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "irritability",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 228,
+      "symptom_count": 8,
+      "english_fallback_codes": [
+        "depression",
+        "excessive_hunger",
+        "irritability",
+        "stiff_neck",
+        "visual_disturbances"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 229,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "hip_joint_pain",
+        "knee_pain",
+        "painful_walking",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 230,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "hip_joint_pain",
+        "painful_walking",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": [
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 231,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "hip_joint_pain",
+        "knee_pain",
+        "painful_walking"
+      ],
+      "named_but_not_recovered_codes": [
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 232,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "hip_joint_pain",
+        "knee_pain",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": [
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 233,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "hip_joint_pain",
+        "knee_pain",
+        "painful_walking",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": [
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 234,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "knee_pain",
+        "painful_walking",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": [
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 235,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "hip_joint_pain",
+        "knee_pain",
+        "painful_walking",
+        "swelling_joints"
+      ],
+      "named_but_not_recovered_codes": [
+        "neck_pain"
+      ]
+    },
+    {
+      "row_index": 236,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "weakness_of_one_body_side"
+      ],
+      "named_but_not_recovered_codes": [
+        "altered_sensorium"
+      ]
+    },
+    {
+      "row_index": 237,
+      "symptom_count": 3,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "altered_sensorium"
+      ]
+    },
+    {
+      "row_index": 238,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "weakness_of_one_body_side"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 239,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "weakness_of_one_body_side"
+      ],
+      "named_but_not_recovered_codes": [
+        "altered_sensorium"
+      ]
+    },
+    {
+      "row_index": 240,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "weakness_of_one_body_side"
+      ],
+      "named_but_not_recovered_codes": [
+        "altered_sensorium"
+      ]
+    },
+    {
+      "row_index": 241,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "internal_itching",
+        "passage_of_gases"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 242,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "internal_itching",
+        "passage_of_gases"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 243,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "internal_itching"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 244,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "passage_of_gases"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 245,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "internal_itching",
+        "passage_of_gases"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 246,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "internal_itching",
+        "passage_of_gases"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 247,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "internal_itching",
+        "passage_of_gases"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 248,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 249,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 250,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 251,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 252,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 253,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 254,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 255,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 256,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "rusty_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "fast_heart_rate"
+      ]
+    },
+    {
+      "row_index": 257,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "inflammatory_nails",
+        "silver_like_dusting",
+        "skin_peeling",
+        "small_dents_in_nails"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 258,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "inflammatory_nails",
+        "silver_like_dusting",
+        "small_dents_in_nails"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 259,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "inflammatory_nails",
+        "silver_like_dusting",
+        "skin_peeling"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 260,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "silver_like_dusting",
+        "skin_peeling",
+        "small_dents_in_nails"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 261,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "inflammatory_nails",
+        "silver_like_dusting",
+        "skin_peeling",
+        "small_dents_in_nails"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 262,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "inflammatory_nails",
+        "skin_peeling",
+        "small_dents_in_nails"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 263,
+      "symptom_count": 5,
+      "english_fallback_codes": [
+        "inflammatory_nails",
+        "silver_like_dusting",
+        "skin_peeling",
+        "small_dents_in_nails"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 264,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 265,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 266,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 267,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 268,
+      "symptom_count": 16,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 269,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 270,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 271,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 272,
+      "symptom_count": 15,
+      "english_fallback_codes": [
+        "blood_in_sputum"
+      ],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite",
+        "swelled_lymph_nodes"
+      ]
+    },
+    {
+      "row_index": 273,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "belly_pain",
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 274,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "belly_pain",
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 275,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "belly_pain",
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 276,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "belly_pain"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 277,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 278,
+      "symptom_count": 11,
+      "english_fallback_codes": [
+        "belly_pain",
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 279,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "belly_pain",
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 280,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "belly_pain",
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 281,
+      "symptom_count": 10,
+      "english_fallback_codes": [
+        "belly_pain",
+        "toxic_look_(typhos)"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 282,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "bladder_discomfort",
+        "continuous_feel_of_urine",
+        "foul_smell_of_urine"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 283,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "bladder_discomfort",
+        "continuous_feel_of_urine"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 284,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "bladder_discomfort",
+        "foul_smell_of_urine"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 285,
+      "symptom_count": 4,
+      "english_fallback_codes": [
+        "bladder_discomfort",
+        "continuous_feel_of_urine",
+        "foul_smell_of_urine"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 286,
+      "symptom_count": 3,
+      "english_fallback_codes": [
+        "continuous_feel_of_urine",
+        "foul_smell_of_urine"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 287,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "bruising",
+        "cramps",
+        "obesity",
+        "prominent_veins_on_calf",
+        "swollen_blood_vessels",
+        "swollen_legs"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 288,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "bruising",
+        "obesity",
+        "prominent_veins_on_calf",
+        "swollen_blood_vessels",
+        "swollen_legs"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 289,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "bruising",
+        "cramps",
+        "obesity",
+        "prominent_veins_on_calf",
+        "swollen_blood_vessels"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 290,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "bruising",
+        "cramps",
+        "obesity",
+        "prominent_veins_on_calf",
+        "swollen_legs"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 291,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "bruising",
+        "cramps",
+        "obesity",
+        "swollen_blood_vessels",
+        "swollen_legs"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 292,
+      "symptom_count": 7,
+      "english_fallback_codes": [
+        "bruising",
+        "cramps",
+        "obesity",
+        "prominent_veins_on_calf",
+        "swollen_blood_vessels",
+        "swollen_legs"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 293,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "bruising",
+        "cramps",
+        "prominent_veins_on_calf",
+        "swollen_blood_vessels",
+        "swollen_legs"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 294,
+      "symptom_count": 6,
+      "english_fallback_codes": [
+        "cramps",
+        "obesity",
+        "prominent_veins_on_calf",
+        "swollen_blood_vessels",
+        "swollen_legs"
+      ],
+      "named_but_not_recovered_codes": []
+    },
+    {
+      "row_index": 295,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 296,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 297,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine"
+      ]
+    },
+    {
+      "row_index": 298,
+      "symptom_count": 11,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 299,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 300,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 301,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 302,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    },
+    {
+      "row_index": 303,
+      "symptom_count": 10,
+      "english_fallback_codes": [],
+      "named_but_not_recovered_codes": [
+        "dark_urine",
+        "loss_of_appetite"
+      ]
+    }
+  ]
+}

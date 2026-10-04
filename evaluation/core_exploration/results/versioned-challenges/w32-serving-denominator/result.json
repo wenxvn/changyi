@@ -1,0 +1,4063 @@
+{
+  "scope": "legacy_alias_two_template_serving_denominator_not_clinical_coverage_or_calibration",
+  "total": 196,
+  "accepted": 182,
+  "abstained": 14,
+  "public_model_visible": 172,
+  "accepted_hidden_by_safety": 10,
+  "accepted_unexpectedly_hidden": 0,
+  "high_posterior_among_accepted": 0,
+  "high_posterior_threshold": 0.9,
+  "abstention_reasons": {
+    "unsupported_model_feature": 12,
+    "unverified_semantic_equivalence": 2
+  },
+  "unique_texts": 196,
+  "unique_aliases": 98,
+  "unique_legacy_codes": 48,
+  "failed": 0,
+  "by_template": {
+    "single_alias": {
+      "total": 98,
+      "accepted": 91,
+      "abstained": 7,
+      "public_model_visible": 86,
+      "accepted_hidden_by_safety": 5,
+      "accepted_unexpectedly_hidden": 0,
+      "high_posterior_among_accepted": 0,
+      "high_posterior_threshold": 0.9,
+      "abstention_reasons": {
+        "unsupported_model_feature": 6,
+        "unverified_semantic_equivalence": 1
+      },
+      "unique_texts": 98,
+      "unique_aliases": 98,
+      "unique_legacy_codes": 48,
+      "failed": 0
+    },
+    "alias_plus_cough": {
+      "total": 98,
+      "accepted": 91,
+      "abstained": 7,
+      "public_model_visible": 86,
+      "accepted_hidden_by_safety": 5,
+      "accepted_unexpectedly_hidden": 0,
+      "high_posterior_among_accepted": 0,
+      "high_posterior_threshold": 0.9,
+      "abstention_reasons": {
+        "unsupported_model_feature": 6,
+        "unverified_semantic_equivalence": 1
+      },
+      "unique_texts": 98,
+      "unique_aliases": 98,
+      "unique_legacy_codes": 48,
+      "failed": 0
+    }
+  },
+  "rows": [
+    {
+      "alias": "一直打喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "single_alias",
+      "text": "一直打喷嚏",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "一直打喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "alias_plus_cough",
+      "text": "一直打喷嚏和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "乏力",
+      "legacy_code": "fatigue",
+      "template": "single_alias",
+      "text": "乏力",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "乏力",
+      "legacy_code": "fatigue",
+      "template": "alias_plus_cough",
+      "text": "乏力和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "低烧",
+      "legacy_code": "mild_fever",
+      "template": "single_alias",
+      "text": "低烧",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "低烧",
+      "legacy_code": "mild_fever",
+      "template": "alias_plus_cough",
+      "text": "低烧和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "低热",
+      "legacy_code": "mild_fever",
+      "template": "single_alias",
+      "text": "低热",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "低热",
+      "legacy_code": "mild_fever",
+      "template": "alias_plus_cough",
+      "text": "低热和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "体重下降",
+      "legacy_code": "weight_loss",
+      "template": "single_alias",
+      "text": "体重下降",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "体重下降",
+      "legacy_code": "weight_loss",
+      "template": "alias_plus_cough",
+      "text": "体重下降和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "便秘",
+      "legacy_code": "constipation",
+      "template": "single_alias",
+      "text": "便秘",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "便秘",
+      "legacy_code": "constipation",
+      "template": "alias_plus_cough",
+      "text": "便秘和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "全身不适",
+      "legacy_code": "malaise",
+      "template": "single_alias",
+      "text": "全身不适",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "全身不适",
+      "legacy_code": "malaise",
+      "template": "alias_plus_cough",
+      "text": "全身不适和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "关节疼",
+      "legacy_code": "joint_pain",
+      "template": "single_alias",
+      "text": "关节疼",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "关节疼",
+      "legacy_code": "joint_pain",
+      "template": "alias_plus_cough",
+      "text": "关节疼和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "关节痛",
+      "legacy_code": "joint_pain",
+      "template": "single_alias",
+      "text": "关节痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "关节痛",
+      "legacy_code": "joint_pain",
+      "template": "alias_plus_cough",
+      "text": "关节痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "出汗",
+      "legacy_code": "sweating",
+      "template": "single_alias",
+      "text": "出汗",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "出汗",
+      "legacy_code": "sweating",
+      "template": "alias_plus_cough",
+      "text": "出汗和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "反酸",
+      "legacy_code": "acidity",
+      "template": "single_alias",
+      "text": "反酸",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "反酸",
+      "legacy_code": "acidity",
+      "template": "alias_plus_cough",
+      "text": "反酸和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "发冷",
+      "legacy_code": "chills",
+      "template": "single_alias",
+      "text": "发冷",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "发冷",
+      "legacy_code": "chills",
+      "template": "alias_plus_cough",
+      "text": "发冷和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "发烧",
+      "legacy_code": "high_fever",
+      "template": "single_alias",
+      "text": "发烧",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "发烧",
+            "legacy_code": "high_fever",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "发烧",
+      "legacy_code": "high_fever",
+      "template": "alias_plus_cough",
+      "text": "发烧和咳嗽",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "发烧",
+            "legacy_code": "high_fever",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "发热",
+      "legacy_code": "high_fever",
+      "template": "single_alias",
+      "text": "发热",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "发热",
+            "legacy_code": "high_fever",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "发热",
+      "legacy_code": "high_fever",
+      "template": "alias_plus_cough",
+      "text": "发热和咳嗽",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "发热",
+            "legacy_code": "high_fever",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "口渴",
+      "legacy_code": "excessive_thirst",
+      "template": "single_alias",
+      "text": "口渴",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "口渴",
+            "legacy_code": "excessive_thirst",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "口渴",
+      "legacy_code": "excessive_thirst",
+      "template": "alias_plus_cough",
+      "text": "口渴和咳嗽",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "口渴",
+            "legacy_code": "excessive_thirst",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "吐了",
+      "legacy_code": "vomiting",
+      "template": "single_alias",
+      "text": "吐了",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "吐了",
+      "legacy_code": "vomiting",
+      "template": "alias_plus_cough",
+      "text": "吐了和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "呕吐",
+      "legacy_code": "vomiting",
+      "template": "single_alias",
+      "text": "呕吐",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "呕吐",
+      "legacy_code": "vomiting",
+      "template": "alias_plus_cough",
+      "text": "呕吐和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "呼吸困难",
+      "legacy_code": "breathlessness",
+      "template": "single_alias",
+      "text": "呼吸困难",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "EMERGENCY",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "呼吸困难",
+      "legacy_code": "breathlessness",
+      "template": "alias_plus_cough",
+      "text": "呼吸困难和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "EMERGENCY",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咳嗽",
+      "legacy_code": "cough",
+      "template": "single_alias",
+      "text": "咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咳嗽",
+      "legacy_code": "cough",
+      "template": "alias_plus_cough",
+      "text": "咳嗽和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咳痰",
+      "legacy_code": "phlegm",
+      "template": "single_alias",
+      "text": "咳痰",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咳痰",
+      "legacy_code": "phlegm",
+      "template": "alias_plus_cough",
+      "text": "咳痰和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咽喉不适",
+      "legacy_code": "throat_irritation",
+      "template": "single_alias",
+      "text": "咽喉不适",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咽喉不适",
+      "legacy_code": "throat_irritation",
+      "template": "alias_plus_cough",
+      "text": "咽喉不适和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咽痛",
+      "legacy_code": "throat_irritation",
+      "template": "single_alias",
+      "text": "咽痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "咽痛",
+      "legacy_code": "throat_irritation",
+      "template": "alias_plus_cough",
+      "text": "咽痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "喉咙痛",
+      "legacy_code": "throat_irritation",
+      "template": "single_alias",
+      "text": "喉咙痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "喉咙痛",
+      "legacy_code": "throat_irritation",
+      "template": "alias_plus_cough",
+      "text": "喉咙痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "喘不上气",
+      "legacy_code": "breathlessness",
+      "template": "single_alias",
+      "text": "喘不上气",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "EMERGENCY",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "喘不上气",
+      "legacy_code": "breathlessness",
+      "template": "alias_plus_cough",
+      "text": "喘不上气和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "EMERGENCY",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "single_alias",
+      "text": "喷嚏",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "alias_plus_cough",
+      "text": "喷嚏和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "嗅觉减退",
+      "legacy_code": "loss_of_smell",
+      "template": "single_alias",
+      "text": "嗅觉减退",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "嗅觉减退",
+      "legacy_code": "loss_of_smell",
+      "template": "alias_plus_cough",
+      "text": "嗅觉减退和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "嗓子疼",
+      "legacy_code": "throat_irritation",
+      "template": "single_alias",
+      "text": "嗓子疼",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "嗓子疼",
+      "legacy_code": "throat_irritation",
+      "template": "alias_plus_cough",
+      "text": "嗓子疼和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "天旋地转",
+      "legacy_code": "spinning_movements",
+      "template": "single_alias",
+      "text": "天旋地转",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "天旋地转",
+      "legacy_code": "spinning_movements",
+      "template": "alias_plus_cough",
+      "text": "天旋地转和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "头晕",
+      "legacy_code": "dizziness",
+      "template": "single_alias",
+      "text": "头晕",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "头晕",
+      "legacy_code": "dizziness",
+      "template": "alias_plus_cough",
+      "text": "头晕和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "头疼",
+      "legacy_code": "headache",
+      "template": "single_alias",
+      "text": "头疼",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "头疼",
+      "legacy_code": "headache",
+      "template": "alias_plus_cough",
+      "text": "头疼和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "头痛",
+      "legacy_code": "headache",
+      "template": "single_alias",
+      "text": "头痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "头痛",
+      "legacy_code": "headache",
+      "template": "alias_plus_cough",
+      "text": "头痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "寒战",
+      "legacy_code": "chills",
+      "template": "single_alias",
+      "text": "寒战",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "寒战",
+      "legacy_code": "chills",
+      "template": "alias_plus_cough",
+      "text": "寒战和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "小便疼",
+      "legacy_code": "burning_micturition",
+      "template": "single_alias",
+      "text": "小便疼",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "小便疼",
+      "legacy_code": "burning_micturition",
+      "template": "alias_plus_cough",
+      "text": "小便疼和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿多",
+      "legacy_code": "polyuria",
+      "template": "single_alias",
+      "text": "尿多",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿多",
+      "legacy_code": "polyuria",
+      "template": "alias_plus_cough",
+      "text": "尿多和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿急",
+      "legacy_code": "spotting_ urination",
+      "template": "single_alias",
+      "text": "尿急",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "尿急",
+            "legacy_code": "spotting_ urination",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿急",
+      "legacy_code": "spotting_ urination",
+      "template": "alias_plus_cough",
+      "text": "尿急和咳嗽",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "尿急",
+            "legacy_code": "spotting_ urination",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿痛",
+      "legacy_code": "burning_micturition",
+      "template": "single_alias",
+      "text": "尿痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿痛",
+      "legacy_code": "burning_micturition",
+      "template": "alias_plus_cough",
+      "text": "尿痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿频",
+      "legacy_code": "polyuria",
+      "template": "single_alias",
+      "text": "尿频",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿频",
+      "legacy_code": "polyuria",
+      "template": "alias_plus_cough",
+      "text": "尿频和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿黄",
+      "legacy_code": "dark_urine",
+      "template": "single_alias",
+      "text": "尿黄",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "尿黄",
+      "legacy_code": "dark_urine",
+      "template": "alias_plus_cough",
+      "text": "尿黄和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "干咳",
+      "legacy_code": "cough",
+      "template": "single_alias",
+      "text": "干咳",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "干咳",
+      "legacy_code": "cough",
+      "template": "alias_plus_cough",
+      "text": "干咳和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "心慌",
+      "legacy_code": "palpitations",
+      "template": "single_alias",
+      "text": "心慌",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "心慌",
+      "legacy_code": "palpitations",
+      "template": "alias_plus_cough",
+      "text": "心慌和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "心跳快",
+      "legacy_code": "fast_heart_rate",
+      "template": "single_alias",
+      "text": "心跳快",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "心跳快",
+      "legacy_code": "fast_heart_rate",
+      "template": "alias_plus_cough",
+      "text": "心跳快和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "恶心",
+      "legacy_code": "nausea",
+      "template": "single_alias",
+      "text": "恶心",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "恶心",
+      "legacy_code": "nausea",
+      "template": "alias_plus_cough",
+      "text": "恶心和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "想吐",
+      "legacy_code": "nausea",
+      "template": "single_alias",
+      "text": "想吐",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "想吐",
+      "legacy_code": "nausea",
+      "template": "alias_plus_cough",
+      "text": "想吐和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "意识模糊",
+      "legacy_code": "altered_sensorium",
+      "template": "single_alias",
+      "text": "意识模糊",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "EMERGENCY",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "意识模糊",
+      "legacy_code": "altered_sensorium",
+      "template": "alias_plus_cough",
+      "text": "意识模糊和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "EMERGENCY",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "打喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "single_alias",
+      "text": "打喷嚏",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "打喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "alias_plus_cough",
+      "text": "打喷嚏和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "抽搐",
+      "legacy_code": "muscle_pain",
+      "template": "single_alias",
+      "text": "抽搐",
+      "accepted": false,
+      "abstain_reason": "unverified_semantic_equivalence",
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "抽搐",
+            "legacy_code": "muscle_pain",
+            "reason": "unverified_semantic_equivalence"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "抽搐",
+      "legacy_code": "muscle_pain",
+      "template": "alias_plus_cough",
+      "text": "抽搐和咳嗽",
+      "accepted": false,
+      "abstain_reason": "unverified_semantic_equivalence",
+      "public_model_visible": false,
+      "public_abstain_reason": "safety_gate_priority",
+      "safety_gated": true,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "抽搐",
+            "legacy_code": "muscle_pain",
+            "reason": "unverified_semantic_equivalence"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "拉肚子",
+      "legacy_code": "diarrhoea",
+      "template": "single_alias",
+      "text": "拉肚子",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "拉肚子",
+      "legacy_code": "diarrhoea",
+      "template": "alias_plus_cough",
+      "text": "拉肚子和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "无力",
+      "legacy_code": "fatigue",
+      "template": "single_alias",
+      "text": "无力",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "无力",
+      "legacy_code": "fatigue",
+      "template": "alias_plus_cough",
+      "text": "无力和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "有痰",
+      "legacy_code": "phlegm",
+      "template": "single_alias",
+      "text": "有痰",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "有痰",
+      "legacy_code": "phlegm",
+      "template": "alias_plus_cough",
+      "text": "有痰和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "气短",
+      "legacy_code": "breathlessness",
+      "template": "single_alias",
+      "text": "气短",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "气短",
+      "legacy_code": "breathlessness",
+      "template": "alias_plus_cough",
+      "text": "气短和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "没力气",
+      "legacy_code": "fatigue",
+      "template": "single_alias",
+      "text": "没力气",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "没力气",
+      "legacy_code": "fatigue",
+      "template": "alias_plus_cough",
+      "text": "没力气和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "没胃口",
+      "legacy_code": "loss_of_appetite",
+      "template": "single_alias",
+      "text": "没胃口",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "没胃口",
+      "legacy_code": "loss_of_appetite",
+      "template": "alias_plus_cough",
+      "text": "没胃口和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "流涕",
+      "legacy_code": "runny_nose",
+      "template": "single_alias",
+      "text": "流涕",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "流涕",
+      "legacy_code": "runny_nose",
+      "template": "alias_plus_cough",
+      "text": "流涕和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "流鼻涕",
+      "legacy_code": "runny_nose",
+      "template": "single_alias",
+      "text": "流鼻涕",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "流鼻涕",
+      "legacy_code": "runny_nose",
+      "template": "alias_plus_cough",
+      "text": "流鼻涕和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "消化不良",
+      "legacy_code": "indigestion",
+      "template": "single_alias",
+      "text": "消化不良",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "消化不良",
+      "legacy_code": "indigestion",
+      "template": "alias_plus_cough",
+      "text": "消化不良和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "消瘦",
+      "legacy_code": "weight_loss",
+      "template": "single_alias",
+      "text": "消瘦",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "消瘦",
+      "legacy_code": "weight_loss",
+      "template": "alias_plus_cough",
+      "text": "消瘦和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "烧心",
+      "legacy_code": "acidity",
+      "template": "single_alias",
+      "text": "烧心",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "烧心",
+      "legacy_code": "acidity",
+      "template": "alias_plus_cough",
+      "text": "烧心和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "特别渴",
+      "legacy_code": "excessive_thirst",
+      "template": "single_alias",
+      "text": "特别渴",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "特别渴",
+            "legacy_code": "excessive_thirst",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "特别渴",
+      "legacy_code": "excessive_thirst",
+      "template": "alias_plus_cough",
+      "text": "特别渴和咳嗽",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "特别渴",
+            "legacy_code": "excessive_thirst",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "疲劳",
+      "legacy_code": "fatigue",
+      "template": "single_alias",
+      "text": "疲劳",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "疲劳",
+      "legacy_code": "fatigue",
+      "template": "alias_plus_cough",
+      "text": "疲劳和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "痰多",
+      "legacy_code": "phlegm",
+      "template": "single_alias",
+      "text": "痰多",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "痰多",
+      "legacy_code": "phlegm",
+      "template": "alias_plus_cough",
+      "text": "痰多和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "瘙痒",
+      "legacy_code": "itching",
+      "template": "single_alias",
+      "text": "瘙痒",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "瘙痒",
+      "legacy_code": "itching",
+      "template": "alias_plus_cough",
+      "text": "瘙痒和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "皮疹",
+      "legacy_code": "skin_rash",
+      "template": "single_alias",
+      "text": "皮疹",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "皮疹",
+      "legacy_code": "skin_rash",
+      "template": "alias_plus_cough",
+      "text": "皮疹和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "皮肤发黄",
+      "legacy_code": "yellowish_skin",
+      "template": "single_alias",
+      "text": "皮肤发黄",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "皮肤发黄",
+      "legacy_code": "yellowish_skin",
+      "template": "alias_plus_cough",
+      "text": "皮肤发黄和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "皮肤痒",
+      "legacy_code": "itching",
+      "template": "single_alias",
+      "text": "皮肤痒",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "皮肤痒",
+      "legacy_code": "itching",
+      "template": "alias_plus_cough",
+      "text": "皮肤痒和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "盗汗",
+      "legacy_code": "sweating",
+      "template": "single_alias",
+      "text": "盗汗",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "盗汗",
+      "legacy_code": "sweating",
+      "template": "alias_plus_cough",
+      "text": "盗汗和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "看不清",
+      "legacy_code": "blurred_and_distorted_vision",
+      "template": "single_alias",
+      "text": "看不清",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "看不清",
+      "legacy_code": "blurred_and_distorted_vision",
+      "template": "alias_plus_cough",
+      "text": "看不清和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眩晕",
+      "legacy_code": "spinning_movements",
+      "template": "single_alias",
+      "text": "眩晕",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眩晕",
+      "legacy_code": "spinning_movements",
+      "template": "alias_plus_cough",
+      "text": "眩晕和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眼睛发黄",
+      "legacy_code": "yellowing_of_eyes",
+      "template": "single_alias",
+      "text": "眼睛发黄",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眼睛发黄",
+      "legacy_code": "yellowing_of_eyes",
+      "template": "alias_plus_cough",
+      "text": "眼睛发黄和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眼睛红",
+      "legacy_code": "redness_of_eyes",
+      "template": "single_alias",
+      "text": "眼睛红",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眼睛红",
+      "legacy_code": "redness_of_eyes",
+      "template": "alias_plus_cough",
+      "text": "眼睛红和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眼红",
+      "legacy_code": "redness_of_eyes",
+      "template": "single_alias",
+      "text": "眼红",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "眼红",
+      "legacy_code": "redness_of_eyes",
+      "template": "alias_plus_cough",
+      "text": "眼红和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肌肉疼",
+      "legacy_code": "muscle_pain",
+      "template": "single_alias",
+      "text": "肌肉疼",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肌肉疼",
+      "legacy_code": "muscle_pain",
+      "template": "alias_plus_cough",
+      "text": "肌肉疼和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肌肉痛",
+      "legacy_code": "muscle_pain",
+      "template": "single_alias",
+      "text": "肌肉痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肌肉痛",
+      "legacy_code": "muscle_pain",
+      "template": "alias_plus_cough",
+      "text": "肌肉痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肚子疼",
+      "legacy_code": "abdominal_pain",
+      "template": "single_alias",
+      "text": "肚子疼",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肚子疼",
+      "legacy_code": "abdominal_pain",
+      "template": "alias_plus_cough",
+      "text": "肚子疼和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肚子痛",
+      "legacy_code": "abdominal_pain",
+      "template": "single_alias",
+      "text": "肚子痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "肚子痛",
+      "legacy_code": "abdominal_pain",
+      "template": "alias_plus_cough",
+      "text": "肚子痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胃痛",
+      "legacy_code": "stomach_pain",
+      "template": "single_alias",
+      "text": "胃痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胃痛",
+      "legacy_code": "stomach_pain",
+      "template": "alias_plus_cough",
+      "text": "胃痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胃酸",
+      "legacy_code": "acidity",
+      "template": "single_alias",
+      "text": "胃酸",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胃酸",
+      "legacy_code": "acidity",
+      "template": "alias_plus_cough",
+      "text": "胃酸和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "背痛",
+      "legacy_code": "back_pain",
+      "template": "single_alias",
+      "text": "背痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "背痛",
+      "legacy_code": "back_pain",
+      "template": "alias_plus_cough",
+      "text": "背痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胸口痛",
+      "legacy_code": "chest_pain",
+      "template": "single_alias",
+      "text": "胸口痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胸口痛",
+      "legacy_code": "chest_pain",
+      "template": "alias_plus_cough",
+      "text": "胸口痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胸痛",
+      "legacy_code": "chest_pain",
+      "template": "single_alias",
+      "text": "胸痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胸痛",
+      "legacy_code": "chest_pain",
+      "template": "alias_plus_cough",
+      "text": "胸痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胸闷",
+      "legacy_code": "breathlessness",
+      "template": "single_alias",
+      "text": "胸闷",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "胸闷",
+      "legacy_code": "breathlessness",
+      "template": "alias_plus_cough",
+      "text": "胸闷和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "脖子疼",
+      "legacy_code": "neck_pain",
+      "template": "single_alias",
+      "text": "脖子疼",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "脖子疼",
+      "legacy_code": "neck_pain",
+      "template": "alias_plus_cough",
+      "text": "脖子疼和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "腰痛",
+      "legacy_code": "back_pain",
+      "template": "single_alias",
+      "text": "腰痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "腰痛",
+      "legacy_code": "back_pain",
+      "template": "alias_plus_cough",
+      "text": "腰痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "腹泻",
+      "legacy_code": "diarrhoea",
+      "template": "single_alias",
+      "text": "腹泻",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "腹泻",
+      "legacy_code": "diarrhoea",
+      "template": "alias_plus_cough",
+      "text": "腹泻和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "腹痛",
+      "legacy_code": "abdominal_pain",
+      "template": "single_alias",
+      "text": "腹痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "腹痛",
+      "legacy_code": "abdominal_pain",
+      "template": "alias_plus_cough",
+      "text": "腹痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "血压高",
+      "legacy_code": "high_blood_pressure",
+      "template": "single_alias",
+      "text": "血压高",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "血压高",
+            "legacy_code": "high_blood_pressure",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "血压高",
+      "legacy_code": "high_blood_pressure",
+      "template": "alias_plus_cough",
+      "text": "血压高和咳嗽",
+      "accepted": false,
+      "abstain_reason": "unsupported_model_feature",
+      "public_model_visible": false,
+      "public_abstain_reason": "unsupported_model_feature",
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "血压高",
+            "legacy_code": "high_blood_pressure",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "视物模糊",
+      "legacy_code": "blurred_and_distorted_vision",
+      "template": "single_alias",
+      "text": "视物模糊",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "视物模糊",
+      "legacy_code": "blurred_and_distorted_vision",
+      "template": "alias_plus_cough",
+      "text": "视物模糊和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "起疹子",
+      "legacy_code": "skin_rash",
+      "template": "single_alias",
+      "text": "起疹子",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "起疹子",
+      "legacy_code": "skin_rash",
+      "template": "alias_plus_cough",
+      "text": "起疹子和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "连续打喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "single_alias",
+      "text": "连续打喷嚏",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "连续打喷嚏",
+      "legacy_code": "continuous_sneezing",
+      "template": "alias_plus_cough",
+      "text": "连续打喷嚏和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "闻不到味",
+      "legacy_code": "loss_of_smell",
+      "template": "single_alias",
+      "text": "闻不到味",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "闻不到味",
+      "legacy_code": "loss_of_smell",
+      "template": "alias_plus_cough",
+      "text": "闻不到味和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "颈痛",
+      "legacy_code": "neck_pain",
+      "template": "single_alias",
+      "text": "颈痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "颈痛",
+      "legacy_code": "neck_pain",
+      "template": "alias_plus_cough",
+      "text": "颈痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "食欲差",
+      "legacy_code": "loss_of_appetite",
+      "template": "single_alias",
+      "text": "食欲差",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "食欲差",
+      "legacy_code": "loss_of_appetite",
+      "template": "alias_plus_cough",
+      "text": "食欲差和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "高烧",
+      "legacy_code": "high_fever",
+      "template": "single_alias",
+      "text": "高烧",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "高烧",
+      "legacy_code": "high_fever",
+      "template": "alias_plus_cough",
+      "text": "高烧和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "高热",
+      "legacy_code": "high_fever",
+      "template": "single_alias",
+      "text": "高热",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "高热",
+      "legacy_code": "high_fever",
+      "template": "alias_plus_cough",
+      "text": "高热和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "URGENT",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "黄疸",
+      "legacy_code": "yellowish_skin",
+      "template": "single_alias",
+      "text": "黄疸",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "黄疸",
+      "legacy_code": "yellowish_skin",
+      "template": "alias_plus_cough",
+      "text": "黄疸和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻塞",
+      "legacy_code": "congestion",
+      "template": "single_alias",
+      "text": "鼻塞",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻塞",
+      "legacy_code": "congestion",
+      "template": "alias_plus_cough",
+      "text": "鼻塞和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻子堵",
+      "legacy_code": "congestion",
+      "template": "single_alias",
+      "text": "鼻子堵",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻子堵",
+      "legacy_code": "congestion",
+      "template": "alias_plus_cough",
+      "text": "鼻子堵和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻窦痛",
+      "legacy_code": "sinus_pressure",
+      "template": "single_alias",
+      "text": "鼻窦痛",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻窦痛",
+      "legacy_code": "sinus_pressure",
+      "template": "alias_plus_cough",
+      "text": "鼻窦痛和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻窦胀",
+      "legacy_code": "sinus_pressure",
+      "template": "single_alias",
+      "text": "鼻窦胀",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    },
+    {
+      "alias": "鼻窦胀",
+      "legacy_code": "sinus_pressure",
+      "template": "alias_plus_cough",
+      "text": "鼻窦胀和咳嗽",
+      "accepted": true,
+      "abstain_reason": null,
+      "public_model_visible": true,
+      "public_abstain_reason": null,
+      "safety_gated": false,
+      "triage_status": "ROUTINE",
+      "high_posterior": false,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "clinical_semantics_verified": false,
+      "pass": true
+    }
+  ]
+}

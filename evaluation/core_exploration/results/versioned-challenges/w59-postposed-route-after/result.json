@@ -1,0 +1,285 @@
+{
+  "scope": "postposed_cough_route_evidence_policy_observation_not_clinical_labels",
+  "total": 8,
+  "failed": 0,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "现在咳嗽是不是",
+      "expected_cough_based_respiratory_route": false,
+      "pure_cough_route_evidence": false,
+      "direct_department_match": "全科医学科",
+      "department_candidates": [
+        {
+          "department": "全科医学科",
+          "score": 82,
+          "source": "rule_engine"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "待进一步门诊评估",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "未细分病类",
+          "secondary_category": "信息不足",
+          "recommended_department": "全科医学科",
+          "source": "rule_engine"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在咳嗽说不清",
+      "expected_cough_based_respiratory_route": false,
+      "pure_cough_route_evidence": false,
+      "direct_department_match": "全科医学科",
+      "department_candidates": [
+        {
+          "department": "全科医学科",
+          "score": 82,
+          "source": "rule_engine"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "待进一步门诊评估",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "未细分病类",
+          "secondary_category": "信息不足",
+          "recommended_department": "全科医学科",
+          "source": "rule_engine"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在咳嗽是否有",
+      "expected_cough_based_respiratory_route": false,
+      "pure_cough_route_evidence": false,
+      "direct_department_match": "全科医学科",
+      "department_candidates": [
+        {
+          "department": "全科医学科",
+          "score": 82,
+          "source": "rule_engine"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "待进一步门诊评估",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "未细分病类",
+          "secondary_category": "信息不足",
+          "recommended_department": "全科医学科",
+          "source": "rule_engine"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在咳嗽不确定",
+      "expected_cough_based_respiratory_route": false,
+      "pure_cough_route_evidence": false,
+      "direct_department_match": "全科医学科",
+      "department_candidates": [
+        {
+          "department": "全科医学科",
+          "score": 82,
+          "source": "rule_engine"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "待进一步门诊评估",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "未细分病类",
+          "secondary_category": "信息不足",
+          "recommended_department": "全科医学科",
+          "source": "rule_engine"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在有咳嗽",
+      "expected_cough_based_respiratory_route": true,
+      "pure_cough_route_evidence": true,
+      "direct_department_match": "呼吸内科",
+      "department_candidates": [
+        {
+          "department": "呼吸内科",
+          "score": 82,
+          "source": "rule_engine"
+        },
+        {
+          "department": "呼吸与危重症医学科",
+          "score": 15,
+          "source": "symptom_disease_model"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "支气管炎/肺部感染",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "呼吸系统疾病",
+          "secondary_category": "呼吸系统感染",
+          "recommended_department": "呼吸内科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "肺炎",
+          "probability": 15,
+          "relative_support_score": 15,
+          "score_kind": "relative_support_score",
+          "primary_category": "呼吸系统疾病",
+          "secondary_category": "模型预测疾病",
+          "recommended_department": "呼吸与危重症医学科",
+          "source": "symptom_disease_model"
+        },
+        {
+          "name": "结核病",
+          "probability": 15,
+          "relative_support_score": 15,
+          "score_kind": "relative_support_score",
+          "primary_category": "呼吸系统疾病",
+          "secondary_category": "模型预测疾病",
+          "recommended_department": "呼吸与危重症医学科",
+          "source": "symptom_disease_model"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在没有咳嗽",
+      "expected_cough_based_respiratory_route": false,
+      "pure_cough_route_evidence": false,
+      "direct_department_match": "全科医学科",
+      "department_candidates": [
+        {
+          "department": "全科医学科",
+          "score": 82,
+          "source": "rule_engine"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "待进一步门诊评估",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "未细分病类",
+          "secondary_category": "信息不足",
+          "recommended_department": "全科医学科",
+          "source": "rule_engine"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在咳嗽是不是，我确诊糖尿病",
+      "expected_cough_based_respiratory_route": false,
+      "pure_cough_route_evidence": false,
+      "direct_department_match": "内分泌代谢科",
+      "department_candidates": [
+        {
+          "department": "内分泌代谢科",
+          "score": 82,
+          "source": "user_stated"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "糖尿病",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "用户已知疾病",
+          "secondary_category": "确诊/疑似疾病优先",
+          "recommended_department": "内分泌代谢科",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "probability": 58,
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "probability": 52,
+          "relative_support_score": 52,
+          "score_kind": "relative_support_score",
+          "primary_category": "内分泌代谢疾病",
+          "secondary_category": "慢病代谢类",
+          "recommended_department": "内分泌代谢科",
+          "source": "rule_engine"
+        }
+      ],
+      "triage_status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在咳嗽是不是，我喘不上气",
+      "expected_cough_based_respiratory_route": null,
+      "pure_cough_route_evidence": false,
+      "direct_department_match": "呼吸与危重症医学科",
+      "department_candidates": [
+        {
+          "department": "呼吸与危重症医学科",
+          "score": 82,
+          "source": "rule_engine"
+        }
+      ],
+      "disease_candidates": [
+        {
+          "name": "哮喘/肺炎或低氧风险",
+          "probability": 82,
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "primary_category": "呼吸系统疾病",
+          "secondary_category": "呼吸系统急症风险",
+          "recommended_department": "呼吸与危重症医学科",
+          "source": "rule_engine"
+        }
+      ],
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸与危重症医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

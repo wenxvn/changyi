@@ -1,0 +1,138 @@
+{
+  "scope": "exclusion_verb_scope_policy_not_clinical_validation",
+  "total": 8,
+  "failed": 0,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "医生已经排除糖尿病",
+      "expected_state": "absent",
+      "observed_state": "absent",
+      "expected_existing_policy_status": null,
+      "status": "URGENT",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": ""
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生明确排除糖尿病",
+      "expected_state": "absent",
+      "observed_state": "absent",
+      "expected_existing_policy_status": null,
+      "status": "URGENT",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": ""
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生未能排除糖尿病",
+      "expected_state": "uncertain",
+      "observed_state": "uncertain",
+      "expected_existing_policy_status": null,
+      "status": "URGENT",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.0,
+        "source": "unconfirmed_mention",
+        "assertion_status": "uncertain"
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生尚未排除糖尿病",
+      "expected_state": "uncertain",
+      "observed_state": "uncertain",
+      "expected_existing_policy_status": null,
+      "status": "URGENT",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "糖尿病",
+        "department": "内分泌代谢科",
+        "confidence": 0.0,
+        "source": "unconfirmed_mention",
+        "assertion_status": "uncertain"
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生未能排除心梗",
+      "expected_state": "uncertain",
+      "observed_state": "uncertain",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": ""
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生尚未排除心梗",
+      "expected_state": "uncertain",
+      "observed_state": "uncertain",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": ""
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生不能排除心梗",
+      "expected_state": "uncertain",
+      "observed_state": "uncertain",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": ""
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有心梗",
+      "expected_state": "absent",
+      "observed_state": "absent",
+      "expected_existing_policy_status": "ROUTINE",
+      "status": "ROUTINE",
+      "known_fact": {
+        "has_known_disease": false,
+        "disease": "",
+        "department": "",
+        "confidence": 0.0,
+        "source": ""
+      },
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

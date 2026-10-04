@@ -387,35 +387,35 @@
     ],
     "distinguishing_a": [
       {
-        "symptom": "i've_been_sneezing_a_lot",
-        "count": 2
-      },
-      {
         "symptom": "and_my_face_hurts._i've_been_coughing_up_phlegm",
         "count": 2
       },
       {
-        "symptom": "and_i've_been_coughing_up_a_lot_of_phlegm._my_lymph_nodes_are_also_swollen.",
+        "symptom": "i've_been_sneezing_a_lot",
+        "count": 2
+      },
+      {
+        "symptom": "i_have_a_really_bad_cold._my_nose_is_stuffy",
         "count": 1
       },
       {
-        "symptom": "i've_been_feeling_really_run_down_lately",
+        "symptom": "i've_been_feeling_really_sick_and_exhausted_lately._my_throat_is_scratchy",
         "count": 1
       },
       {
-        "symptom": "and_my_muscles_hurt._i_can't_smell_anything.",
+        "symptom": "i've_had_a_bad_cold_for_a_few_days._i've_been_coughing_up_phlegm_and_my_chest_hurts._i_can't_smell_anything_and_my_muscles_are_sore.",
         "count": 1
       },
       {
-        "symptom": "and_my_sinuses_are_completely_blocked._i_can't_smell_anything",
+        "symptom": "i've_been_coughing_a_lot_and_i'm_freezing._my_nose_is_stuffed_up_and_my_face_hurts._i've_also_been_coughing_up_some_nasty_stuff",
         "count": 1
       },
       {
-        "symptom": "i_have_a_really_bad_cold._i_can't_stop_coughing_and_my_sinuses_are_all_blocked._i_have_a_lot_of_mucus_and_my_chest_hurts._i_can't_smell_anything_and_my_muscles_are_really_sore.",
+        "symptom": "and_my_muscles_ache.",
         "count": 1
       },
       {
-        "symptom": "and_my_chest_feels_tight._i_can't_smell_anything",
+        "symptom": "and_i_feel_really_tired._i_have_a_lot_of_gunk_in_my_nose_and_throat",
         "count": 1
       }
     ],
@@ -429,10 +429,6 @@
         "count": 7
       },
       {
-        "symptom": "silver_like_dusting",
-        "count": 6
-      },
-      {
         "symptom": "small_dents_in_nails",
         "count": 6
       },
@@ -441,7 +437,7 @@
         "count": 6
       },
       {
-        "symptom": "joint_pain",
+        "symptom": "silver_like_dusting",
         "count": 6
       },
       {
@@ -449,7 +445,11 @@
         "count": 6
       },
       {
-        "symptom": "high_fever",
+        "symptom": "joint_pain",
+        "count": 6
+      },
+      {
+        "symptom": "burning_micturition",
         "count": 5
       }
     ],

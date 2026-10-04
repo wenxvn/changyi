@@ -2,9 +2,9 @@
   "schema_version": "competition-eval-matrix/v1",
   "pipeline": "Safety Gate → Direct Department → Selective Abstention → Care Routing",
   "dataset": {
-    "structured_path": "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
+    "structured_path": "data\\symptom_disease_model\\data\\disease_symptom_structured_41diseases_long.csv",
     "structured_sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
-    "long_path": "data/symptom_disease_model/data/disease_symptom_training_long.csv",
+    "long_path": "data\\symptom_disease_model\\data\\disease_symptom_training_long.csv",
     "long_sha256": "8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497",
     "row_count": 1289,
     "extra_rows": 985,
@@ -430,8 +430,8 @@
     {
       "track": "direct_department_char_ngram_lr",
       "metric": "accuracy",
-      "value": 0.742438,
-      "std": "best=char_ngram_tfidf_lr acc=0.742438±0.012786 (Round3 direct was 0.450262)",
+      "value": 0.608179,
+      "std": 0.034233,
       "seeds": [
         42,
         123,
@@ -444,15 +444,15 @@
     {
       "track": "calibration_before",
       "metric": "ece",
-      "value": 0.268794,
+      "value": 0.192779,
       "source": "evaluation/care_routing/results/round4_direct_department_matrix.json"
     },
     {
       "track": "calibration_after_temperature",
       "metric": "ece",
-      "value": 0.061294,
-      "temperature": 0.5,
-      "accuracy_unchanged": 0.737089,
+      "value": 0.106119,
+      "temperature": 0.7,
+      "accuracy_unchanged": 0.624413,
       "source": "evaluation/care_routing/results/round4_direct_department_matrix.json"
     },
     {
@@ -460,51 +460,51 @@
       "metric": "retained_accuracy",
       "points": {
         "100%": {
-          "retained_accuracy": 0.627358,
-          "coverage": 0.995305,
-          "abstention_rate": 0.004695,
-          "retained_macro_f1": 0.411241,
-          "wrong_but_confident_rate": 0.004717,
+          "retained_accuracy": 0.625592,
+          "coverage": 0.99061,
+          "abstention_rate": 0.00939,
+          "retained_macro_f1": 0.408716,
+          "wrong_but_confident_rate": 0.004739,
           "target_coverage": 1.0
         },
         "90%": {
-          "retained_accuracy": 0.663102,
-          "coverage": 0.877934,
-          "abstention_rate": 0.122066,
-          "retained_macro_f1": 0.428081,
-          "wrong_but_confident_rate": 0.005348,
+          "retained_accuracy": 0.646154,
+          "coverage": 0.915493,
+          "abstention_rate": 0.084507,
+          "retained_macro_f1": 0.424539,
+          "wrong_but_confident_rate": 0.005128,
           "target_coverage": 0.9
         },
         "80%": {
-          "retained_accuracy": 0.807143,
-          "coverage": 0.657277,
-          "abstention_rate": 0.342723,
-          "retained_macro_f1": 0.46965,
-          "wrong_but_confident_rate": 0.007143,
+          "retained_accuracy": 0.740741,
+          "coverage": 0.760563,
+          "abstention_rate": 0.239437,
+          "retained_macro_f1": 0.460469,
+          "wrong_but_confident_rate": 0.006173,
           "target_coverage": 0.8
         },
         "70%": {
-          "retained_accuracy": 0.837607,
-          "coverage": 0.549296,
-          "abstention_rate": 0.450704,
-          "retained_macro_f1": 0.499536,
-          "wrong_but_confident_rate": 0.008547,
+          "retained_accuracy": 0.81203,
+          "coverage": 0.624413,
+          "abstention_rate": 0.375587,
+          "retained_macro_f1": 0.469707,
+          "wrong_but_confident_rate": 0.007519,
           "target_coverage": 0.7
         },
         "60%": {
-          "retained_accuracy": 0.872549,
-          "coverage": 0.478873,
-          "abstention_rate": 0.521127,
-          "retained_macro_f1": 0.511077,
-          "wrong_but_confident_rate": 0.009804,
+          "retained_accuracy": 0.850877,
+          "coverage": 0.535211,
+          "abstention_rate": 0.464789,
+          "retained_macro_f1": 0.50526,
+          "wrong_but_confident_rate": 0.008772,
           "target_coverage": 0.6
         },
         "50%": {
-          "retained_accuracy": 0.9375,
-          "coverage": 0.375587,
-          "abstention_rate": 0.624413,
-          "retained_macro_f1": 0.695358,
-          "wrong_but_confident_rate": 0.0125,
+          "retained_accuracy": 0.881188,
+          "coverage": 0.474178,
+          "abstention_rate": 0.525822,
+          "retained_macro_f1": 0.511908,
+          "wrong_but_confident_rate": 0.009901,
           "target_coverage": 0.5
         }
       },
@@ -639,10 +639,10 @@
       "department_coverage_ok": true
     },
     "evidence": [
-      "best=char_ngram_tfidf_lr acc=0.742438±0.012786 (Round3 direct was 0.450262)",
-      "retained acc @80/70/60% = 0.807143/0.837607/0.872549",
-      "wrong-but-confident @80% = 0.007143",
-      "ECE=0.258858",
+      "best=char_ngram_tfidf_lr acc=0.608179±0.034233 (Round3 direct was 0.450262)",
+      "retained acc @80/70/60% = 0.740741/0.81203/0.850877",
+      "wrong-but-confident @80% = 0.006173",
+      "ECE=0.195829",
       "test_departments=11",
       "safety_check=True"
     ],

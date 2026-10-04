@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "seed": 42,
+  "metrics": {
+    "n": 213,
+    "accuracy": 0.20657276995305165,
+    "macro_f1": 0.10280828957299544,
+    "nll": 2.382973865552867,
+    "brier": 0.8961287569172454,
+    "ece": 0.022566299210903477,
+    "wrong_confident_07": 0.0,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 20,
+        "recall": 0.05
+      },
+      "呼吸内科": {
+        "support": 18,
+        "recall": 0.0
+      },
+      "心血管内科": {
+        "support": 11,
+        "recall": 0.0
+      },
+      "感染性疾病科": {
+        "support": 41,
+        "recall": 0.3170731707317073
+      },
+      "普外科": {
+        "support": 10,
+        "recall": 0.1
+      },
+      "泌尿外科": {
+        "support": 11,
+        "recall": 0.18181818181818182
+      },
+      "消化内科": {
+        "support": 9,
+        "recall": 0.0
+      },
+      "皮肤科": {
+        "support": 53,
+        "recall": 0.4716981132075472
+      },
+      "神经内科": {
+        "support": 10,
+        "recall": 0.0
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 20,
+        "recall": 0.1
+      }
+    },
+    "reliability": [
+      {
+        "bin": 1,
+        "n": 114,
+        "confidence": 0.16747387859197313,
+        "accuracy": 0.18421052631578946
+      },
+      {
+        "bin": 2,
+        "n": 84,
+        "confidence": 0.2349453017054878,
+        "accuracy": 0.2261904761904762
+      },
+      {
+        "bin": 3,
+        "n": 14,
+        "confidence": 0.3266102681135938,
+        "accuracy": 0.21428571428571427
+      },
+      {
+        "bin": 4,
+        "n": 1,
+        "confidence": 0.4093052054439098,
+        "accuracy": 1.0
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.15492957746478872,
+      0.25833333333333325
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "scope": "train labels shuffled, true cal/test unchanged; no test fitting",
+  "expected": "performance should collapse toward class-prior baseline, not retain main headline"
+}

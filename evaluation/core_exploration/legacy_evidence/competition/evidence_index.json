@@ -1,0 +1,271 @@
+{
+  "schema_version": "competition-algorithm-evidence-index/v1",
+  "disclaimer": "offline research evidence / not clinical validation",
+  "generated_from": "existing evaluation artifacts + live gate runs",
+  "pipeline": "Safety Gate → Direct Department → Selective Abstention → Care Routing",
+  "dataset": {
+    "expanded_41_rows": 1289,
+    "structured_rows": 304,
+    "source_note": "public text sets, not Changzhou clinical cases",
+    "split_seed42": {
+      "train": 840,
+      "cal": 236,
+      "test": 213,
+      "test_diseases": 25,
+      "jaccard_threshold": 0.8
+    }
+  },
+  "baselines": {
+    "disease_first_department_acc": {
+      "mean": 0.290794,
+      "std": 0.026104,
+      "seeds": [
+        42,
+        123,
+        2026
+      ]
+    },
+    "disease_first_disease_acc": {
+      "mean": 0.265103,
+      "std": 0.026146
+    },
+    "direct_department_binary_lr_round3": {
+      "mean": 0.450262,
+      "std": 0.025686
+    }
+  },
+  "direct_department_round4": {
+    "best_model": "char_ngram_tfidf_lr",
+    "accuracy": {
+      "mean": 0.742438,
+      "std": 0.012786,
+      "seeds": [
+        42,
+        123,
+        2026,
+        3407,
+        7777
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.641749,
+      "std": 0.034957
+    },
+    "top2_accuracy": {
+      "mean": 0.876448,
+      "std": 0.024022
+    },
+    "ece_uncalibrated": {
+      "mean": 0.258858,
+      "std": 0.016605
+    },
+    "wrong_but_confident_rate": {
+      "mean": 0.002648,
+      "std": 0.002167
+    }
+  },
+  "calibration": {
+    "temperature_on_char_lr_seed42": {
+      "temperature": 0.5,
+      "ece_before": 0.268794,
+      "ece_after": 0.061294,
+      "accuracy_unchanged": 0.737089
+    },
+    "note": "temperature fit uses calibration split; headline readiness still uses uncalibrated ECE≈0.26 gate and remains RESEARCH_ONLY"
+  },
+  "selective_abstention": {
+    "threshold_source": "calibration-only quantile; test never tunes coverage",
+    "points": {
+      "target_0.8": {
+        "coverage": 0.657277,
+        "retained_accuracy": 0.807143,
+        "wrong_but_confident_rate": 0.007143
+      },
+      "target_0.7": {
+        "coverage": 0.549296,
+        "retained_accuracy": 0.837607,
+        "wrong_but_confident_rate": 0.008547
+      },
+      "target_0.6": {
+        "coverage": 0.478873,
+        "retained_accuracy": 0.872549,
+        "wrong_but_confident_rate": 0.009804
+      },
+      "target_1.0": {
+        "coverage": 0.995305,
+        "retained_accuracy": 0.627358,
+        "wrong_but_confident_rate": 0.004717
+      }
+    }
+  },
+  "representation_ablation_under_lr": {
+    "char_ngram_tfidf_lr": 0.742438,
+    "logistic_regression_binary": 0.459129,
+    "three_state_lr": 0.459129,
+    "tfidf_word_lr": 0.377989,
+    "word_char_fusion_lr": 0.377989
+  },
+  "adaptive_inquiry": {
+    "protocol": "three_state_simulation / synthetic oracle",
+    "honest_near_dup_ig_minus_random": -0.0625,
+    "random_split_ig_delta_acc": 0.108108,
+    "negation_unit": "10/10",
+    "claim_limit": "simulation only; not real multi-turn patients"
+  },
+  "safety": {
+    "case_count": 142,
+    "red_flag_recall": 1.0,
+    "under_triage_rate": 0.0,
+    "over_triage_rate": 0.0,
+    "emergency_false_negative": 0,
+    "gate_priority": "Safety Gate always precedes learning models and care routing"
+  },
+  "data_quality": {
+    "datasets_scanned": 31,
+    "issues": 186,
+    "types": {
+      "PLACEHOLDER_TIMESTAMP": 180,
+      "TIME_ORDER": 6
+    },
+    "files": {
+      "bus_routes.json": 186
+    },
+    "classification": {
+      "affects_algorithm_eval": [],
+      "affects_recommendation_trust": [],
+      "display_only": [
+        "bus_routes TIME_ORDER",
+        "bus_routes PLACEHOLDER_TIMESTAMP"
+      ],
+      "known_acceptable_for_now": [
+        "all 186 issues are transit display/clock metadata"
+      ]
+    }
+  },
+  "tests": {
+    "pytest_collected": 215,
+    "frontend_boundary": 17,
+    "playwright_claimed_in_docs": 20,
+    "competition_additions": 9
+  },
+  "readiness": "RESEARCH_ONLY",
+  "reproduce": [
+    ".venv/bin/python -m evaluation.care_routing.run_round4 --write",
+    ".venv/bin/python -m evaluation.care_routing.run_round3 --write",
+    ".venv/bin/python -m evaluation.care_routing.run_round2 --write",
+    ".venv/bin/python -m evaluation.care_routing.run_experiments --write",
+    ".venv/bin/python -m evaluation.safety.evaluate_safety",
+    ".venv/bin/python -m evaluation.model.evaluate_grouped --write",
+    ".venv/bin/python -m data_validation.validate_datasets --data-root data --output-dir data_validation",
+    ".venv/bin/python -m pytest",
+    "cd frontend && npm run test && npm run build",
+    ".venv/bin/python -m evaluation.competition.run_matrix",
+    ".venv/bin/python -m evaluation.competition.care_routing_ablation"
+  ],
+  "anti_cheating_audit": {
+    "schema_version": "anti-cheating-audit/v1",
+    "checks": {
+      "random_vs_honest_split": {
+        "status": "pass_with_disclosure",
+        "detail": "primary metrics use honest quota near-dup split (Jaccard 0.8); random-split numbers kept only as leaky baselines and labeled"
+      },
+      "threshold_not_tuned_on_test": {
+        "status": "pass",
+        "detail": "selective thresholds and temperature fit on calibration only; test never tunes coverage"
+      },
+      "duplicate_near_duplicate_leakage": {
+        "status": "pass",
+        "train_test_exact_fingerprint_overlap": 0,
+        "cal_test_exact_fingerprint_overlap": 0,
+        "note": "Round3 also reports cross-split Jaccard pairs below 0.75"
+      },
+      "calibration_independent_of_test": {
+        "status": "pass",
+        "detail": "quota split yields disjoint train/cal/test component groups; cal used for temperature + selective thresholds only",
+        "cal_rows": 236,
+        "test_rows": 213
+      },
+      "class_imbalance": {
+        "status": "disclosed",
+        "train_dept_counts": {
+          "感染性疾病科": 205,
+          "皮肤科": 177,
+          "骨科": 80,
+          "呼吸与危重症医学科": 69,
+          "内分泌代谢科": 69,
+          "消化内科": 57,
+          "心血管内科": 40,
+          "普外科": 39,
+          "神经内科": 35,
+          "泌尿外科": 32,
+          "呼吸内科": 31,
+          "肛肠科": 6
+        },
+        "test_dept_counts": {
+          "皮肤科": 53,
+          "感染性疾病科": 41,
+          "骨科": 20,
+          "呼吸与危重症医学科": 20,
+          "呼吸内科": 18,
+          "心血管内科": 11,
+          "泌尿外科": 11,
+          "内分泌代谢科": 10,
+          "神经内科": 10,
+          "普外科": 10,
+          "消化内科": 9
+        },
+        "note": "infection/derm dominate; 呼吸内科 recall=0 in seed42; accuracy must be read with per-dept recall"
+      },
+      "accuracy_hides_low_recall_depts": {
+        "status": "disclosed",
+        "low_recall_seed42": {
+          "呼吸内科": 0.0,
+          "泌尿外科": 0.181818,
+          "内分泌代谢科": 0.3,
+          "神经内科": 0.3
+        },
+        "macro_f1_vs_acc": {
+          "acc": 0.742438,
+          "macro_f1": 0.641749
+        }
+      },
+      "robustness_not_overclaimed": {
+        "status": "pass_with_limitation",
+        "detail": "robustness uses meaning-preserving synthetic perturbations only; labeled robustness_simulation, not clinical robustness"
+      }
+    },
+    "test_diseases_n": 25,
+    "cal_test_disease_overlap": 25,
+    "verdict": "metrics are honest for offline research; several limitations must stay visible in materials"
+  },
+  "data_provenance": {
+    "datasets_scanned": 31,
+    "issues": 186,
+    "types": {
+      "PLACEHOLDER_TIMESTAMP": 180,
+      "TIME_ORDER": 6
+    },
+    "files": {
+      "bus_routes.json": 186
+    },
+    "classification": {
+      "affects_algorithm_eval": [],
+      "affects_recommendation_trust": [
+        "doctor/hospital provenance still provisional (R-002)"
+      ],
+      "display_only": [
+        "bus_routes TIME_ORDER",
+        "bus_routes PLACEHOLDER_TIMESTAMP"
+      ],
+      "known_acceptable_for_now": [
+        "all 186 transit clock-metadata issues (not in ranking: PROVISIONAL rankable=False)"
+      ]
+    }
+  },
+  "golden_e2e": {
+    "ordinary_clear_path": true,
+    "vague_insufficient_followup_reroute": true,
+    "emergency_short_circuit_safety_exit": true,
+    "tests": "tests/test_competition_golden_e2e.py (4) + tests/test_competition_care_routing_ablation.py (5)"
+  }
+}

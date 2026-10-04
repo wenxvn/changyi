@@ -120,7 +120,7 @@ class TriageApplicationService:
             "condition": condition,
             "original_condition": condition,
             "followup_answers": list(followup_answers),
-            "matched_department": public_triage.get("matched_department") or self.match_department(condition),
+            "matched_department": public_triage.get("matched_department") if "matched_department" in public_triage else self.match_department(condition),
             "triage_status": decision.status.value,
             "disease_prediction": dict(public_prediction),
             "triage": public_triage,

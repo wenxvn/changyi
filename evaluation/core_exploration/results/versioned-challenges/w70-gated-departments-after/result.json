@@ -1,0 +1,164 @@
+{
+  "scope": "gated_public_department_candidate_contract_not_clinical_validation",
+  "total": 12,
+  "input_count": 6,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "我现在喘不上气",
+      "endpoint": "triage",
+      "expected_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "matched_department": "呼吸与危重症医学科",
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在喘不上气",
+      "endpoint": "recommendations",
+      "expected_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "matched_department": "呼吸与危重症医学科",
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否喘不上气，我喘不上气",
+      "endpoint": "triage",
+      "expected_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "matched_department": "急诊医学科",
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否喘不上气，我喘不上气",
+      "endpoint": "recommendations",
+      "expected_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "matched_department": "急诊医学科",
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否呼吸困难，但有咳嗽",
+      "endpoint": "triage",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否呼吸困难，但有咳嗽",
+      "endpoint": "recommendations",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "抽搐",
+      "endpoint": "triage",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "抽搐",
+      "endpoint": "recommendations",
+      "expected_status": "INSUFFICIENT_INFORMATION",
+      "status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "public_department_candidate_counts": [
+        0,
+        0
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽",
+      "endpoint": "triage",
+      "expected_status": "ROUTINE",
+      "status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "public_department_candidate_counts": [
+        2,
+        2
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽",
+      "endpoint": "recommendations",
+      "expected_status": "ROUTINE",
+      "status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "public_department_candidate_counts": [
+        2,
+        2
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我确诊糖尿病",
+      "endpoint": "triage",
+      "expected_status": "URGENT",
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "public_department_candidate_counts": [
+        1,
+        1
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我确诊糖尿病",
+      "endpoint": "recommendations",
+      "expected_status": "URGENT",
+      "status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "public_department_candidate_counts": [
+        1,
+        1
+      ],
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

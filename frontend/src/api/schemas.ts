@@ -161,7 +161,13 @@ export function parseTriagePayload(value: unknown): TriagePayload {
     htriage_analysis: isRecord(value.htriage_analysis)
       ? value.htriage_analysis
       : undefined,
-    disease_prediction: value.disease_prediction,
+    disease_prediction: isRecord(value.disease_prediction) ? {
+      ...value.disease_prediction,
+      available: typeof value.disease_prediction.available === "boolean" ? value.disease_prediction.available : undefined,
+      abstained: typeof value.disease_prediction.abstained === "boolean" ? value.disease_prediction.abstained : undefined,
+      abstain_reason: optionalString(value.disease_prediction.abstain_reason),
+      notice: optionalString(value.disease_prediction.notice),
+    } : undefined,
   };
 }
 

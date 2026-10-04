@@ -1,0 +1,138 @@
+{
+  "scope": "current_clause_uncertainty_language_observation_no_clinical_oracle",
+  "total": 8,
+  "failed": 0,
+  "lexical_existence_mismatches": 3,
+  "execution_failures": 0,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "没有胸痛，现在是否咳嗽",
+      "expected_existence_state": "unknown",
+      "auxiliary_states": [
+        "unknown"
+      ],
+      "lexical_positive": true,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": false,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，现在不确定是否咳嗽",
+      "expected_existence_state": "unknown",
+      "auxiliary_states": [
+        "unknown"
+      ],
+      "lexical_positive": true,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": false,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，现在可能咳嗽",
+      "expected_existence_state": "unknown",
+      "auxiliary_states": [
+        "unknown"
+      ],
+      "lexical_positive": true,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": false,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，如果现在咳嗽",
+      "expected_existence_state": "unknown",
+      "auxiliary_states": [
+        "unknown"
+      ],
+      "lexical_positive": false,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，现在有咳嗽",
+      "expected_existence_state": "present",
+      "auxiliary_states": [
+        "present"
+      ],
+      "lexical_positive": true,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "abstained": false,
+      "abstain_reason": null,
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，现在没有咳嗽",
+      "expected_existence_state": "absent",
+      "auxiliary_states": [
+        "absent"
+      ],
+      "lexical_positive": false,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "abstained": true,
+      "abstain_reason": "no_supported_symptoms",
+      "clinical_label_verified": false
+    },
+    {
+      "text": "没有胸痛，现在不确定为什么咳嗽",
+      "expected_existence_state": "present",
+      "auxiliary_states": [
+        "present"
+      ],
+      "lexical_positive": true,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": true,
+      "execution_valid": true,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "abstained": false,
+      "abstain_reason": null,
+      "clinical_label_verified": false
+    },
+    {
+      "text": "不确定是否胸痛，但现在有咳嗽",
+      "expected_existence_state": "present",
+      "auxiliary_states": [
+        "present"
+      ],
+      "lexical_positive": true,
+      "auxiliary_contract_pass": true,
+      "lexical_existence_agrees": true,
+      "execution_valid": true,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "abstained": true,
+      "abstain_reason": "symptom_assertion_uncertain",
+      "clinical_label_verified": false
+    }
+  ]
+}

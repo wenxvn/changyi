@@ -1,0 +1,440 @@
+{
+  "status": "complete",
+  "frozen_config": {
+    "family": "extra_trees",
+    "balanced": true,
+    "max_depth": null
+  },
+  "representation": "concat_char",
+  "temperature": 0.5829927856865236,
+  "metrics": {
+    "n": 489,
+    "accuracy": 0.523517382413088,
+    "macro_f1": 0.38171466927383085,
+    "nll": 1.5292881181192002,
+    "brier": 0.6220435710836572,
+    "ece": 0.06433869659919533,
+    "wrong_confident_07": 0.016359918200409,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 26,
+        "recall": 0.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 48,
+        "recall": 0.375
+      },
+      "呼吸内科": {
+        "support": 25,
+        "recall": 0.08
+      },
+      "心血管内科": {
+        "support": 25,
+        "recall": 0.6
+      },
+      "感染性疾病科": {
+        "support": 100,
+        "recall": 0.45
+      },
+      "普外科": {
+        "support": 26,
+        "recall": 0.15384615384615385
+      },
+      "泌尿外科": {
+        "support": 24,
+        "recall": 0.08333333333333333
+      },
+      "消化内科": {
+        "support": 18,
+        "recall": 0.4444444444444444
+      },
+      "皮肤科": {
+        "support": 125,
+        "recall": 0.8
+      },
+      "神经内科": {
+        "support": 21,
+        "recall": 0.7619047619047619
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 51,
+        "recall": 0.9019607843137255
+      }
+    },
+    "reliability": [
+      {
+        "bin": 1,
+        "n": 1,
+        "confidence": 0.18745814269638036,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 2,
+        "n": 47,
+        "confidence": 0.2616371195531459,
+        "accuracy": 0.2127659574468085
+      },
+      {
+        "bin": 3,
+        "n": 82,
+        "confidence": 0.3541099436820775,
+        "accuracy": 0.34146341463414637
+      },
+      {
+        "bin": 4,
+        "n": 91,
+        "confidence": 0.447883686138904,
+        "accuracy": 0.42857142857142855
+      },
+      {
+        "bin": 5,
+        "n": 96,
+        "confidence": 0.550137525058669,
+        "accuracy": 0.46875
+      },
+      {
+        "bin": 6,
+        "n": 75,
+        "confidence": 0.6516653657976853,
+        "accuracy": 0.5866666666666667
+      },
+      {
+        "bin": 7,
+        "n": 61,
+        "confidence": 0.7439017300006496,
+        "accuracy": 0.9016393442622951
+      },
+      {
+        "bin": 8,
+        "n": 28,
+        "confidence": 0.8334498584898454,
+        "accuracy": 0.9285714285714286
+      },
+      {
+        "bin": 9,
+        "n": 8,
+        "confidence": 0.9269747415711125,
+        "accuracy": 1.0
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.48052147239263804,
+      0.5623721881390593
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "seed": 2026,
+  "split": {
+    "train_source": "structured_41",
+    "other_rows": 985,
+    "removed_near_duplicate": 0,
+    "source_holdout_meta": {
+      "threshold": 0.8,
+      "seed": 2026,
+      "train_rows": 398,
+      "cal_rows": 98,
+      "test_rows": 489,
+      "test_disease_count": 20,
+      "train_disease_count": 31,
+      "excluded_from_test": [
+        "Acne",
+        "Alcoholic hepatitis",
+        "GERD",
+        "Heart attack",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Tuberculosis",
+        "hepatitis A"
+      ],
+      "component_stats": {
+        "mode": "same_label",
+        "jaccard_threshold": 0.8,
+        "sample_count": 985,
+        "component_count": 985,
+        "largest_component_size": 1,
+        "edge_count": 0,
+        "cross_label_edge_count": 0,
+        "singleton_count": 985
+      },
+      "per_disease": [
+        {
+          "disease": "Acne",
+          "department": "皮肤科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Alcoholic hepatitis",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Allergy",
+          "department": "皮肤科",
+          "components": 50,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 25,
+          "split": "quota"
+        },
+        {
+          "disease": "Arthritis",
+          "department": "骨科",
+          "components": 51,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 26,
+          "split": "quota"
+        },
+        {
+          "disease": "Bronchial Asthma",
+          "department": "呼吸与危重症医学科",
+          "components": 49,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 24,
+          "split": "quota"
+        },
+        {
+          "disease": "Cervical spondylosis",
+          "department": "骨科",
+          "components": 50,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 25,
+          "split": "quota"
+        },
+        {
+          "disease": "Chicken pox",
+          "department": "感染性疾病科",
+          "components": 50,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 25,
+          "split": "quota"
+        },
+        {
+          "disease": "Common Cold",
+          "department": "呼吸内科",
+          "components": 50,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 25,
+          "split": "quota"
+        },
+        {
+          "disease": "Dengue",
+          "department": "感染性疾病科",
+          "components": 50,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 25,
+          "split": "quota"
+        },
+        {
+          "disease": "Diabetes",
+          "department": "内分泌代谢科",
+          "components": 51,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 26,
+          "split": "quota"
+        },
+        {
+          "disease": "Drug Reaction",
+          "department": "皮肤科",
+          "components": 48,
+          "train_components": 19,
+          "cal_components": 5,
+          "test_components": 24,
+          "split": "quota"
+        },
+        {
+          "disease": "Fungal infection",
+          "department": "皮肤科",
+          "components": 48,
+          "train_components": 19,
+          "cal_components": 5,
+          "test_components": 24,
+          "split": "quota"
+        },
+        {
+          "disease": "GERD",
+          "department": "消化内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Heart attack",
+          "department": "心血管内科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis B",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hepatitis C",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypertension",
+          "department": "心血管内科",
+          "components": 50,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 25,
+          "split": "quota"
+        },
+        {
+          "disease": "Hyperthyroidism",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypoglycemia",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Hypothyroidism",
+          "department": "内分泌代谢科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Impetigo",
+          "department": "皮肤科",
+          "components": 51,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 26,
+          "split": "quota"
+        },
+        {
+          "disease": "Jaundice",
+          "department": "消化内科",
+          "components": 37,
+          "train_components": 15,
+          "cal_components": 4,
+          "test_components": 18,
+          "split": "quota"
+        },
+        {
+          "disease": "Malaria",
+          "department": "感染性疾病科",
+          "components": 51,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 26,
+          "split": "quota"
+        },
+        {
+          "disease": "Migraine",
+          "department": "神经内科",
+          "components": 42,
+          "train_components": 17,
+          "cal_components": 4,
+          "test_components": 21,
+          "split": "quota"
+        },
+        {
+          "disease": "Pneumonia",
+          "department": "呼吸与危重症医学科",
+          "components": 48,
+          "train_components": 19,
+          "cal_components": 5,
+          "test_components": 24,
+          "split": "quota"
+        },
+        {
+          "disease": "Psoriasis",
+          "department": "皮肤科",
+          "components": 51,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 26,
+          "split": "quota"
+        },
+        {
+          "disease": "Tuberculosis",
+          "department": "呼吸与危重症医学科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        },
+        {
+          "disease": "Typhoid",
+          "department": "感染性疾病科",
+          "components": 47,
+          "train_components": 18,
+          "cal_components": 5,
+          "test_components": 24,
+          "split": "quota"
+        },
+        {
+          "disease": "Urinary tract infection",
+          "department": "泌尿外科",
+          "components": 49,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 24,
+          "split": "quota"
+        },
+        {
+          "disease": "Varicose veins",
+          "department": "普外科",
+          "components": 51,
+          "train_components": 20,
+          "cal_components": 5,
+          "test_components": 26,
+          "split": "quota"
+        },
+        {
+          "disease": "hepatitis A",
+          "department": "感染性疾病科",
+          "components": 1,
+          "split": "train_only",
+          "reason": "components<3"
+        }
+      ]
+    }
+  },
+  "sizes": {
+    "train": 304,
+    "cal": 398,
+    "test": 489
+  },
+  "leakage": {
+    "threshold": 0.8,
+    "pair_count": 0,
+    "cross_label_pair_count": 0,
+    "max_jaccard": 0.3636,
+    "examples": [],
+    "leaky": false
+  }
+}

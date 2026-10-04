@@ -1,0 +1,71 @@
+{
+  "scope": "finite_qualified_exclusion_scope_policy_not_clinical_accuracy",
+  "total": 8,
+  "failed": 4,
+  "rows": [
+    {
+      "text": "医生未能明确排除心梗",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "ROUTINE",
+      "heart_mention_state": "uncertain",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生尚未明确排除心梗",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "ROUTINE",
+      "heart_mention_state": "uncertain",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生未能完全排除心梗",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "ROUTINE",
+      "heart_mention_state": "absent",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生未能够排除心梗",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "ROUTINE",
+      "heart_mention_state": "absent",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生未能排除心梗",
+      "expected_existing_policy_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "heart_mention_state": "uncertain",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有心梗",
+      "expected_existing_policy_status": "ROUTINE",
+      "status": "ROUTINE",
+      "heart_mention_state": "absent",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "去年医生未能明确排除心梗，现在我咳嗽",
+      "expected_existing_policy_status": "NOT_EMERGENCY",
+      "status": "ROUTINE",
+      "heart_mention_state": "uncertain",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "医生未能明确排除肺炎，我没有心梗",
+      "expected_existing_policy_status": "NOT_EMERGENCY",
+      "status": "ROUTINE",
+      "heart_mention_state": "absent",
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

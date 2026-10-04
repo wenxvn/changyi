@@ -2,9 +2,9 @@
   "schema_version": "care-routing-round4/v1",
   "disclaimer": "离线研究；Safety Gate 未改；非临床验证；数据为公开文本集",
   "dataset": {
-    "structured_path": "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
+    "structured_path": "data\\symptom_disease_model\\data\\disease_symptom_structured_41diseases_long.csv",
     "structured_sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
-    "long_path": "data/symptom_disease_model/data/disease_symptom_training_long.csv",
+    "long_path": "data\\symptom_disease_model\\data\\disease_symptom_training_long.csv",
     "long_sha256": "8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497",
     "row_count": 1289,
     "extra_rows": 985,
@@ -414,90 +414,90 @@
       "headline": {
         "char_ngram_tfidf_lr": {
           "accuracy": {
-            "mean": 0.742438,
-            "std": 0.012786,
+            "mean": 0.608179,
+            "std": 0.034233,
             "values": [
-              0.737089,
-              0.765766,
-              0.729358,
-              0.73444,
-              0.745536
+              0.624413,
+              0.576577,
+              0.582569,
+              0.66805,
+              0.589286
             ]
           },
           "macro_f1": {
-            "mean": 0.641749,
-            "std": 0.034957,
+            "mean": 0.404872,
+            "std": 0.04953,
             "values": [
-              0.641879,
-              0.622664,
-              0.626738,
-              0.609015,
-              0.70845
+              0.408188,
+              0.370577,
+              0.369906,
+              0.499821,
+              0.37587
             ]
           },
           "weighted_f1": {
-            "mean": 0.705397,
-            "std": 0.019117,
+            "mean": 0.541702,
+            "std": 0.043986,
             "values": [
-              0.686019,
-              0.719803,
-              0.692399,
-              0.693005,
-              0.735757
+              0.53633,
+              0.522087,
+              0.508173,
+              0.627635,
+              0.514287
             ]
           },
           "top2_accuracy": {
-            "mean": 0.876448,
-            "std": 0.024022,
+            "mean": 0.762639,
+            "std": 0.052807,
             "values": [
-              0.84507,
-              0.864865,
-              0.889908,
+              0.723005,
+              0.743243,
+              0.743119,
               0.86722,
-              0.915179
+              0.736607
             ]
           },
           "top3_accuracy": {
-            "mean": 0.933476,
-            "std": 0.025711,
+            "mean": 0.884009,
+            "std": 0.058168,
             "values": [
-              0.887324,
-              0.959459,
-              0.93578,
-              0.929461,
-              0.955357
+              0.85446,
+              0.95045,
+              0.908257,
+              0.921162,
+              0.785714
             ]
           },
           "ece": {
-            "mean": 0.258858,
-            "std": 0.016605,
+            "mean": 0.195829,
+            "std": 0.043508,
             "values": [
-              0.268794,
-              0.26078,
-              0.263356,
-              0.226993,
-              0.274368
+              0.192779,
+              0.16506,
+              0.166861,
+              0.280601,
+              0.173846
             ]
           },
           "brier": {
-            "mean": 0.43647,
-            "std": 0.020247,
+            "mean": 0.55645,
+            "std": 0.01543,
             "values": [
-              0.442507,
-              0.399419,
-              0.454913,
-              0.432233,
-              0.453277
+              0.55234,
+              0.556477,
+              0.571326,
+              0.529912,
+              0.572197
             ]
           },
           "wrong_but_confident_rate": {
-            "mean": 0.002648,
-            "std": 0.002167,
+            "mean": 0.001818,
+            "std": 0.002227,
             "values": [
               0.0,
               0.004505,
               0.004587,
-              0.004149,
+              0.0,
               0.0
             ]
           }
@@ -954,47 +954,47 @@
         },
         "word_char_fusion_lr": {
           "accuracy": {
-            "mean": 0.377989,
-            "std": 0.027764,
+            "mean": 0.430939,
+            "std": 0.054146,
             "values": [
-              0.370892,
-              0.328829,
-              0.385321,
-              0.394191,
-              0.410714
+              0.380282,
+              0.351351,
+              0.46789,
+              0.473029,
+              0.482143
             ]
           },
           "macro_f1": {
-            "mean": 0.366143,
-            "std": 0.040595,
+            "mean": 0.39145,
+            "std": 0.039006,
             "values": [
-              0.341942,
-              0.315293,
-              0.382781,
-              0.356069,
-              0.434628
+              0.363555,
+              0.336217,
+              0.41514,
+              0.394233,
+              0.448104
             ]
           },
           "weighted_f1": {
-            "mean": 0.35195,
-            "std": 0.040848,
+            "mean": 0.401188,
+            "std": 0.058644,
             "values": [
-              0.330256,
-              0.285244,
-              0.367277,
-              0.3724,
-              0.404574
+              0.341513,
+              0.319229,
+              0.438659,
+              0.446622,
+              0.459915
             ]
           },
           "top2_accuracy": {
-            "mean": 0.626572,
-            "std": 0.014865,
+            "mean": 0.631702,
+            "std": 0.019313,
             "values": [
               0.600939,
               0.621622,
-              0.62844,
-              0.639004,
-              0.642857
+              0.633028,
+              0.655602,
+              0.647321
             ]
           },
           "top3_accuracy": {
@@ -1009,46 +1009,46 @@
             ]
           },
           "ece": {
-            "mean": 0.256765,
-            "std": 0.049968,
+            "mean": 0.174392,
+            "std": 0.037216,
             "values": [
-              0.276029,
-              0.322355,
-              0.282168,
-              0.224951,
-              0.17832
+              0.22774,
+              0.210911,
+              0.145752,
+              0.148828,
+              0.13873
             ]
           },
           "brier": {
-            "mean": 0.763714,
-            "std": 0.052705,
+            "mean": 0.709031,
+            "std": 0.037875,
             "values": [
-              0.779398,
-              0.848602,
-              0.771054,
-              0.726508,
-              0.693009
+              0.712633,
+              0.778749,
+              0.698976,
+              0.687317,
+              0.667481
             ]
           },
           "wrong_but_confident_rate": {
-            "mean": 0.059314,
-            "std": 0.030143,
+            "mean": 0.055068,
+            "std": 0.0256,
             "values": [
-              0.018779,
-              0.103604,
+              0.023474,
+              0.094595,
               0.059633,
-              0.078838,
-              0.035714
+              0.06639,
+              0.03125
             ]
           }
         }
       },
       "best_model": "char_ngram_tfidf_lr",
-      "best_accuracy": 0.742438,
+      "best_accuracy": 0.608179,
       "ranking": [
         [
           "char_ngram_tfidf_lr",
-          0.742438
+          0.608179
         ],
         [
           "linear_svm_binary",
@@ -1063,11 +1063,11 @@
           0.459129
         ],
         [
-          "tfidf_logistic_regression",
-          0.377989
+          "word_char_fusion_lr",
+          0.430939
         ],
         [
-          "word_char_fusion_lr",
+          "tfidf_logistic_regression",
           0.377989
         ],
         [
@@ -1161,7 +1161,7 @@
                 "骨科": 6
               }
             },
-            "inference_latency_s": 0.002685874991584569,
+            "inference_latency_s": 0.004719199991086498,
             "model_size_chars": 12808,
             "temperature": 1.0
           },
@@ -1238,8 +1238,8 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0011016669450327754,
-            "model_size_chars": 1780562,
+            "inference_latency_s": 0.0017432000022381544,
+            "model_size_chars": 1780567,
             "temperature": 1.0
           },
           "logistic_regression_binary_temperature": {
@@ -1315,8 +1315,8 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0011016669450327754,
-            "model_size_chars": 1780562,
+            "inference_latency_s": 0.0017432000022381544,
+            "model_size_chars": 1780567,
             "temperature": 1.6
           },
           "linear_svm_binary": {
@@ -1393,7 +1393,7 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0018529999651946127,
+            "inference_latency_s": 0.0018708999850787222,
             "model_size_chars": 996716,
             "temperature": 1.0
           },
@@ -1471,7 +1471,7 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0018529999651946127,
+            "inference_latency_s": 0.0018708999850787222,
             "model_size_chars": 996716,
             "temperature": 0.5
           },
@@ -1546,8 +1546,8 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0009291250025853515,
-            "model_size_chars": 1784141,
+            "inference_latency_s": 0.0016439000028185546,
+            "model_size_chars": 1783981,
             "temperature": 1.0
           },
           "tfidf_logistic_regression_temperature": {
@@ -1621,187 +1621,173 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0009291250025853515,
-            "model_size_chars": 1784141,
+            "inference_latency_s": 0.0016439000028185546,
+            "model_size_chars": 1783981,
             "temperature": 1.9
           },
           "char_ngram_tfidf_lr": {
             "test_rows": 213,
-            "accuracy": 0.737089,
-            "macro_f1": 0.641879,
-            "weighted_f1": 0.686019,
-            "top2_accuracy": 0.84507,
-            "top3_accuracy": 0.887324,
-            "mean_confidence": 0.475292,
-            "mean_entropy": 2.415194,
-            "mean_margin": 0.315679,
-            "ece": 0.268794,
-            "brier": 0.442507,
+            "accuracy": 0.624413,
+            "macro_f1": 0.408188,
+            "weighted_f1": 0.53633,
+            "top2_accuracy": 0.723005,
+            "top3_accuracy": 0.85446,
+            "mean_confidence": 0.434213,
+            "mean_entropy": 2.569425,
+            "mean_margin": 0.25071,
+            "ece": 0.192779,
+            "brier": 0.55234,
             "wrong_but_confident_rate": 0.0,
             "per_department_recall": {
-              "内分泌代谢科": 0.3,
+              "内分泌代谢科": 0.0,
               "呼吸与危重症医学科": 1.0,
               "呼吸内科": 0.0,
-              "心血管内科": 0.727273,
-              "感染性疾病科": 0.926829,
-              "普外科": 0.6,
-              "泌尿外科": 0.181818,
-              "消化内科": 0.777778,
+              "心血管内科": 0.636364,
+              "感染性疾病科": 0.804878,
+              "普外科": 0.3,
+              "泌尿外科": 0.0,
+              "消化内科": 0.0,
               "皮肤科": 1.0,
-              "神经内科": 0.3,
+              "神经内科": 0.0,
               "骨科": 0.85
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "内分泌代谢科": 3,
-                "皮肤科": 5,
-                "呼吸与危重症医学科": 1,
+                "皮肤科": 9,
                 "感染性疾病科": 1
               },
               "呼吸与危重症医学科": {
                 "呼吸与危重症医学科": 20
               },
               "呼吸内科": {
-                "皮肤科": 11,
-                "感染性疾病科": 5,
-                "呼吸与危重症医学科": 2
+                "皮肤科": 14,
+                "感染性疾病科": 4
               },
               "心血管内科": {
                 "呼吸与危重症医学科": 1,
-                "心血管内科": 8,
-                "感染性疾病科": 2
+                "皮肤科": 2,
+                "心血管内科": 7,
+                "感染性疾病科": 1
               },
               "感染性疾病科": {
-                "感染性疾病科": 38,
-                "皮肤科": 3
+                "感染性疾病科": 33,
+                "皮肤科": 8
               },
               "普外科": {
-                "皮肤科": 4,
-                "普外科": 6
+                "皮肤科": 7,
+                "普外科": 3
               },
               "泌尿外科": {
-                "皮肤科": 7,
-                "感染性疾病科": 2,
-                "泌尿外科": 2
+                "皮肤科": 11
               },
               "消化内科": {
-                "感染性疾病科": 2,
-                "消化内科": 7
+                "感染性疾病科": 9
               },
               "皮肤科": {
                 "皮肤科": 53
               },
               "神经内科": {
-                "皮肤科": 5,
-                "神经内科": 3,
-                "感染性疾病科": 2
+                "皮肤科": 9,
+                "感染性疾病科": 1
               },
               "骨科": {
                 "骨科": 17,
-                "皮肤科": 1,
-                "感染性疾病科": 1,
-                "呼吸与危重症医学科": 1
+                "皮肤科": 2,
+                "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.02848095801891759,
-            "model_size_chars": 6737994,
+            "inference_latency_s": 0.050096699997084215,
+            "model_size_chars": 6791158,
             "temperature": 1.0
           },
           "char_ngram_tfidf_lr_temperature": {
             "test_rows": 213,
-            "accuracy": 0.737089,
-            "macro_f1": 0.641879,
-            "weighted_f1": 0.686019,
-            "top2_accuracy": 0.84507,
-            "top3_accuracy": 0.887324,
-            "mean_confidence": 0.71796,
-            "mean_entropy": 1.191201,
-            "mean_margin": 0.565431,
-            "ece": 0.061294,
-            "brier": 0.351953,
-            "wrong_but_confident_rate": 0.023474,
+            "accuracy": 0.624413,
+            "macro_f1": 0.408188,
+            "weighted_f1": 0.53633,
+            "top2_accuracy": 0.723005,
+            "top3_accuracy": 0.85446,
+            "mean_confidence": 0.573769,
+            "mean_entropy": 1.909461,
+            "mean_margin": 0.381754,
+            "ece": 0.106119,
+            "brier": 0.511796,
+            "wrong_but_confident_rate": 0.004695,
             "per_department_recall": {
-              "内分泌代谢科": 0.3,
+              "内分泌代谢科": 0.0,
               "呼吸与危重症医学科": 1.0,
               "呼吸内科": 0.0,
-              "心血管内科": 0.727273,
-              "感染性疾病科": 0.926829,
-              "普外科": 0.6,
-              "泌尿外科": 0.181818,
-              "消化内科": 0.777778,
+              "心血管内科": 0.636364,
+              "感染性疾病科": 0.804878,
+              "普外科": 0.3,
+              "泌尿外科": 0.0,
+              "消化内科": 0.0,
               "皮肤科": 1.0,
-              "神经内科": 0.3,
+              "神经内科": 0.0,
               "骨科": 0.85
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "内分泌代谢科": 3,
-                "皮肤科": 5,
-                "呼吸与危重症医学科": 1,
+                "皮肤科": 9,
                 "感染性疾病科": 1
               },
               "呼吸与危重症医学科": {
                 "呼吸与危重症医学科": 20
               },
               "呼吸内科": {
-                "皮肤科": 11,
-                "感染性疾病科": 5,
-                "呼吸与危重症医学科": 2
+                "皮肤科": 14,
+                "感染性疾病科": 4
               },
               "心血管内科": {
                 "呼吸与危重症医学科": 1,
-                "心血管内科": 8,
-                "感染性疾病科": 2
+                "皮肤科": 2,
+                "心血管内科": 7,
+                "感染性疾病科": 1
               },
               "感染性疾病科": {
-                "感染性疾病科": 38,
-                "皮肤科": 3
+                "感染性疾病科": 33,
+                "皮肤科": 8
               },
               "普外科": {
-                "皮肤科": 4,
-                "普外科": 6
+                "皮肤科": 7,
+                "普外科": 3
               },
               "泌尿外科": {
-                "皮肤科": 7,
-                "感染性疾病科": 2,
-                "泌尿外科": 2
+                "皮肤科": 11
               },
               "消化内科": {
-                "感染性疾病科": 2,
-                "消化内科": 7
+                "感染性疾病科": 9
               },
               "皮肤科": {
                 "皮肤科": 53
               },
               "神经内科": {
-                "皮肤科": 5,
-                "神经内科": 3,
-                "感染性疾病科": 2
+                "皮肤科": 9,
+                "感染性疾病科": 1
               },
               "骨科": {
                 "骨科": 17,
-                "皮肤科": 1,
-                "感染性疾病科": 1,
-                "呼吸与危重症医学科": 1
+                "皮肤科": 2,
+                "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.02848095801891759,
-            "model_size_chars": 6737994,
-            "temperature": 0.5
+            "inference_latency_s": 0.050096699997084215,
+            "model_size_chars": 6791158,
+            "temperature": 0.7
           },
           "word_char_fusion_lr": {
             "test_rows": 213,
-            "accuracy": 0.370892,
-            "macro_f1": 0.341942,
-            "weighted_f1": 0.330256,
+            "accuracy": 0.380282,
+            "macro_f1": 0.363555,
+            "weighted_f1": 0.341513,
             "top2_accuracy": 0.600939,
             "top3_accuracy": 0.657277,
-            "mean_confidence": 0.64453,
-            "mean_entropy": 1.587402,
-            "mean_margin": 0.450555,
-            "ece": 0.276029,
-            "brier": 0.779398,
-            "wrong_but_confident_rate": 0.018779,
+            "mean_confidence": 0.53321,
+            "mean_entropy": 1.810983,
+            "mean_margin": 0.269658,
+            "ece": 0.22774,
+            "brier": 0.712633,
+            "wrong_but_confident_rate": 0.023474,
             "per_department_recall": {
               "内分泌代谢科": 0.1,
               "呼吸与危重症医学科": 0.3,
@@ -1810,7 +1796,7 @@
               "感染性疾病科": 1.0,
               "普外科": 0.0,
               "泌尿外科": 0.0,
-              "消化内科": 0.333333,
+              "消化内科": 0.555556,
               "皮肤科": 0.132075,
               "神经内科": 0.4,
               "骨科": 0.4
@@ -1826,8 +1812,8 @@
                 "呼吸与危重症医学科": 6
               },
               "呼吸内科": {
-                "感染性疾病科": 11,
-                "呼吸与危重症医学科": 6,
+                "感染性疾病科": 13,
+                "呼吸与危重症医学科": 4,
                 "呼吸内科": 1
               },
               "心血管内科": {
@@ -1844,8 +1830,8 @@
                 "感染性疾病科": 11
               },
               "消化内科": {
-                "消化内科": 3,
-                "感染性疾病科": 6
+                "消化内科": 5,
+                "感染性疾病科": 4
               },
               "皮肤科": {
                 "皮肤科": 7,
@@ -1860,22 +1846,22 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.02861549996305257,
-            "model_size_chars": 9245715,
+            "inference_latency_s": 0.05330780000076629,
+            "model_size_chars": 9246371,
             "temperature": 1.0
           },
           "word_char_fusion_lr_temperature": {
             "test_rows": 213,
-            "accuracy": 0.370892,
-            "macro_f1": 0.341942,
-            "weighted_f1": 0.330256,
+            "accuracy": 0.380282,
+            "macro_f1": 0.363555,
+            "weighted_f1": 0.341513,
             "top2_accuracy": 0.600939,
             "top3_accuracy": 0.657277,
-            "mean_confidence": 0.428685,
-            "mean_entropy": 2.565956,
-            "mean_margin": 0.259361,
-            "ece": 0.109108,
-            "brier": 0.709792,
+            "mean_confidence": 0.402918,
+            "mean_entropy": 2.547929,
+            "mean_margin": 0.203544,
+            "ece": 0.079579,
+            "brier": 0.697284,
             "wrong_but_confident_rate": 0.00939,
             "per_department_recall": {
               "内分泌代谢科": 0.1,
@@ -1885,7 +1871,7 @@
               "感染性疾病科": 1.0,
               "普外科": 0.0,
               "泌尿外科": 0.0,
-              "消化内科": 0.333333,
+              "消化内科": 0.555556,
               "皮肤科": 0.132075,
               "神经内科": 0.4,
               "骨科": 0.4
@@ -1901,8 +1887,8 @@
                 "呼吸与危重症医学科": 6
               },
               "呼吸内科": {
-                "感染性疾病科": 11,
-                "呼吸与危重症医学科": 6,
+                "感染性疾病科": 13,
+                "呼吸与危重症医学科": 4,
                 "呼吸内科": 1
               },
               "心血管内科": {
@@ -1919,8 +1905,8 @@
                 "感染性疾病科": 11
               },
               "消化内科": {
-                "消化内科": 3,
-                "感染性疾病科": 6
+                "消化内科": 5,
+                "感染性疾病科": 4
               },
               "皮肤科": {
                 "皮肤科": 7,
@@ -1935,9 +1921,9 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.02861549996305257,
-            "model_size_chars": 9245715,
-            "temperature": 1.9
+            "inference_latency_s": 0.05330780000076629,
+            "model_size_chars": 9246371,
+            "temperature": 1.7
           },
           "three_state_lr": {
             "test_rows": 213,
@@ -2012,8 +1998,8 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0010106659610755742,
-            "model_size_chars": 1780562,
+            "inference_latency_s": 0.002132499997969717,
+            "model_size_chars": 1780567,
             "temperature": 1.0
           },
           "three_state_lr_temperature": {
@@ -2089,25 +2075,25 @@
                 "骨科": 8
               }
             },
-            "inference_latency_s": 0.0010106659610755742,
-            "model_size_chars": 1780562,
+            "inference_latency_s": 0.002132499997969717,
+            "model_size_chars": 1780567,
             "temperature": 1.6
           }
         },
         "fit_latency_s": {
-          "logistic_regression_binary": 0.42755541601218283,
-          "linear_svm_binary": 0.2014440830098465,
-          "tfidf_logistic_regression": 0.42537804204039276,
-          "char_ngram_tfidf_lr": 22.16742916603107,
-          "word_char_fusion_lr": 21.992624625039753,
-          "three_state_lr": 0.41902679100167006
+          "logistic_regression_binary": 0.7161220999842044,
+          "linear_svm_binary": 0.31102480000117794,
+          "tfidf_logistic_regression": 0.7121597999939695,
+          "char_ngram_tfidf_lr": 18.195759599999292,
+          "word_char_fusion_lr": 18.293439100001706,
+          "three_state_lr": 0.6840233000111766
         },
         "temperatures": {
           "logistic_regression_binary": 1.6,
           "linear_svm_binary": 0.5,
           "tfidf_logistic_regression": 1.9,
-          "char_ngram_tfidf_lr": 0.5,
-          "word_char_fusion_lr": 1.9,
+          "char_ngram_tfidf_lr": 0.7,
+          "word_char_fusion_lr": 1.7,
           "three_state_lr": 1.6
         },
         "split_meta": {
@@ -2199,7 +2185,7 @@
                 "感染性疾病科": 17
               }
             },
-            "inference_latency_s": 0.00202020799042657,
+            "inference_latency_s": 0.0036991999950259924,
             "model_size_chars": 13202,
             "temperature": 1.0
           },
@@ -2274,8 +2260,8 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010904580121859908,
-            "model_size_chars": 1732786,
+            "inference_latency_s": 0.0019842999754473567,
+            "model_size_chars": 1732788,
             "temperature": 1.0
           },
           "logistic_regression_binary_temperature": {
@@ -2349,8 +2335,8 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010904580121859908,
-            "model_size_chars": 1732786,
+            "inference_latency_s": 0.0019842999754473567,
+            "model_size_chars": 1732788,
             "temperature": 1.6
           },
           "linear_svm_binary": {
@@ -2426,7 +2412,7 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010621669935062528,
+            "inference_latency_s": 0.002185799996368587,
             "model_size_chars": 980493,
             "temperature": 1.0
           },
@@ -2503,7 +2489,7 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010621669935062528,
+            "inference_latency_s": 0.002185799996368587,
             "model_size_chars": 980493,
             "temperature": 0.3
           },
@@ -2582,8 +2568,8 @@
                 "感染性疾病科": 16
               }
             },
-            "inference_latency_s": 0.0009221660438925028,
-            "model_size_chars": 1735667,
+            "inference_latency_s": 0.0016856000002007931,
+            "model_size_chars": 1735792,
             "temperature": 1.0
           },
           "tfidf_logistic_regression_temperature": {
@@ -2661,189 +2647,189 @@
                 "感染性疾病科": 16
               }
             },
-            "inference_latency_s": 0.0009221660438925028,
-            "model_size_chars": 1735667,
+            "inference_latency_s": 0.0016856000002007931,
+            "model_size_chars": 1735792,
             "temperature": 1.7
           },
           "char_ngram_tfidf_lr": {
             "test_rows": 222,
-            "accuracy": 0.765766,
-            "macro_f1": 0.622664,
-            "weighted_f1": 0.719803,
-            "top2_accuracy": 0.864865,
-            "top3_accuracy": 0.959459,
-            "mean_confidence": 0.504986,
-            "mean_entropy": 2.360991,
-            "mean_margin": 0.351861,
-            "ece": 0.26078,
-            "brier": 0.399419,
+            "accuracy": 0.576577,
+            "macro_f1": 0.370577,
+            "weighted_f1": 0.522087,
+            "top2_accuracy": 0.743243,
+            "top3_accuracy": 0.95045,
+            "mean_confidence": 0.433228,
+            "mean_entropy": 2.576273,
+            "mean_margin": 0.243307,
+            "ece": 0.16506,
+            "brier": 0.556477,
             "wrong_but_confident_rate": 0.004505,
             "per_department_recall": {
               "内分泌代谢科": 0.1,
-              "呼吸与危重症医学科": 0.807692,
-              "呼吸内科": 0.1,
-              "心血管内科": 0.727273,
+              "呼吸与危重症医学科": 0.269231,
+              "呼吸内科": 0.0,
+              "心血管内科": 0.090909,
               "感染性疾病科": 0.95122,
-              "普外科": 0.4,
+              "普外科": 0.3,
               "泌尿外科": 0.0,
-              "消化内科": 0.777778,
-              "皮肤科": 1.0,
-              "神经内科": 0.6,
-              "骨科": 0.95
+              "消化内科": 0.111111,
+              "皮肤科": 0.90625,
+              "神经内科": 0.3,
+              "骨科": 0.75
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "皮肤科": 9,
+                "感染性疾病科": 2,
+                "皮肤科": 7,
                 "内分泌代谢科": 1
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 21,
-                "感染性疾病科": 5
+                "呼吸与危重症医学科": 7,
+                "感染性疾病科": 19
               },
               "呼吸内科": {
                 "皮肤科": 4,
-                "感染性疾病科": 4,
-                "呼吸内科": 1,
-                "呼吸与危重症医学科": 1
+                "感染性疾病科": 6
               },
               "心血管内科": {
-                "皮肤科": 2,
-                "心血管内科": 8,
-                "感染性疾病科": 1
+                "感染性疾病科": 10,
+                "心血管内科": 1
               },
               "感染性疾病科": {
                 "感染性疾病科": 39,
                 "皮肤科": 2
               },
               "普外科": {
-                "普外科": 4,
-                "皮肤科": 6
+                "普外科": 3,
+                "皮肤科": 4,
+                "感染性疾病科": 3
               },
               "泌尿外科": {
-                "皮肤科": 7,
-                "感染性疾病科": 4
+                "感染性疾病科": 8,
+                "皮肤科": 3
               },
               "消化内科": {
-                "消化内科": 7,
-                "感染性疾病科": 2
+                "消化内科": 1,
+                "感染性疾病科": 8
               },
               "皮肤科": {
-                "皮肤科": 64
+                "皮肤科": 58,
+                "感染性疾病科": 6
               },
               "神经内科": {
-                "皮肤科": 4,
-                "神经内科": 6
+                "感染性疾病科": 7,
+                "神经内科": 3
               },
               "骨科": {
-                "骨科": 19,
-                "皮肤科": 1
+                "骨科": 15,
+                "感染性疾病科": 5
               }
             },
-            "inference_latency_s": 0.03198304196121171,
-            "model_size_chars": 6586335,
+            "inference_latency_s": 0.06084700001520105,
+            "model_size_chars": 6638871,
             "temperature": 1.0
           },
           "char_ngram_tfidf_lr_temperature": {
             "test_rows": 222,
-            "accuracy": 0.765766,
-            "macro_f1": 0.622664,
-            "weighted_f1": 0.719803,
-            "top2_accuracy": 0.864865,
-            "top3_accuracy": 0.959459,
-            "mean_confidence": 0.826703,
-            "mean_entropy": 0.747109,
-            "mean_margin": 0.719884,
-            "ece": 0.064311,
-            "brier": 0.313807,
-            "wrong_but_confident_rate": 0.072072,
+            "accuracy": 0.576577,
+            "macro_f1": 0.370577,
+            "weighted_f1": 0.522087,
+            "top2_accuracy": 0.743243,
+            "top3_accuracy": 0.95045,
+            "mean_confidence": 0.634816,
+            "mean_entropy": 1.604348,
+            "mean_margin": 0.441502,
+            "ece": 0.092934,
+            "brier": 0.52705,
+            "wrong_but_confident_rate": 0.036036,
             "per_department_recall": {
               "内分泌代谢科": 0.1,
-              "呼吸与危重症医学科": 0.807692,
-              "呼吸内科": 0.1,
-              "心血管内科": 0.727273,
+              "呼吸与危重症医学科": 0.269231,
+              "呼吸内科": 0.0,
+              "心血管内科": 0.090909,
               "感染性疾病科": 0.95122,
-              "普外科": 0.4,
+              "普外科": 0.3,
               "泌尿外科": 0.0,
-              "消化内科": 0.777778,
-              "皮肤科": 1.0,
-              "神经内科": 0.6,
-              "骨科": 0.95
+              "消化内科": 0.111111,
+              "皮肤科": 0.90625,
+              "神经内科": 0.3,
+              "骨科": 0.75
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "皮肤科": 9,
+                "感染性疾病科": 2,
+                "皮肤科": 7,
                 "内分泌代谢科": 1
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 21,
-                "感染性疾病科": 5
+                "呼吸与危重症医学科": 7,
+                "感染性疾病科": 19
               },
               "呼吸内科": {
                 "皮肤科": 4,
-                "感染性疾病科": 4,
-                "呼吸内科": 1,
-                "呼吸与危重症医学科": 1
+                "感染性疾病科": 6
               },
               "心血管内科": {
-                "皮肤科": 2,
-                "心血管内科": 8,
-                "感染性疾病科": 1
+                "感染性疾病科": 10,
+                "心血管内科": 1
               },
               "感染性疾病科": {
                 "感染性疾病科": 39,
                 "皮肤科": 2
               },
               "普外科": {
-                "普外科": 4,
-                "皮肤科": 6
+                "普外科": 3,
+                "皮肤科": 4,
+                "感染性疾病科": 3
               },
               "泌尿外科": {
-                "皮肤科": 7,
-                "感染性疾病科": 4
+                "感染性疾病科": 8,
+                "皮肤科": 3
               },
               "消化内科": {
-                "消化内科": 7,
-                "感染性疾病科": 2
+                "消化内科": 1,
+                "感染性疾病科": 8
               },
               "皮肤科": {
-                "皮肤科": 64
+                "皮肤科": 58,
+                "感染性疾病科": 6
               },
               "神经内科": {
-                "皮肤科": 4,
-                "神经内科": 6
+                "感染性疾病科": 7,
+                "神经内科": 3
               },
               "骨科": {
-                "骨科": 19,
-                "皮肤科": 1
+                "骨科": 15,
+                "感染性疾病科": 5
               }
             },
-            "inference_latency_s": 0.03198304196121171,
-            "model_size_chars": 6586335,
-            "temperature": 0.4
+            "inference_latency_s": 0.06084700001520105,
+            "model_size_chars": 6638871,
+            "temperature": 0.6
           },
           "word_char_fusion_lr": {
             "test_rows": 222,
-            "accuracy": 0.328829,
-            "macro_f1": 0.315293,
-            "weighted_f1": 0.285244,
+            "accuracy": 0.351351,
+            "macro_f1": 0.336217,
+            "weighted_f1": 0.319229,
             "top2_accuracy": 0.621622,
             "top3_accuracy": 0.689189,
-            "mean_confidence": 0.646359,
-            "mean_entropy": 1.626275,
-            "mean_margin": 0.477994,
-            "ece": 0.322355,
-            "brier": 0.848602,
-            "wrong_but_confident_rate": 0.103604,
+            "mean_confidence": 0.550765,
+            "mean_entropy": 1.792566,
+            "mean_margin": 0.314915,
+            "ece": 0.210911,
+            "brier": 0.778749,
+            "wrong_but_confident_rate": 0.094595,
             "per_department_recall": {
               "内分泌代谢科": 0.0,
-              "呼吸与危重症医学科": 0.115385,
+              "呼吸与危重症医学科": 0.230769,
               "呼吸内科": 0.1,
               "心血管内科": 0.545455,
               "感染性疾病科": 0.95122,
               "普外科": 0.0,
               "泌尿外科": 0.0,
               "消化内科": 0.444444,
-              "皮肤科": 0.125,
+              "皮肤科": 0.15625,
               "神经内科": 0.8,
               "骨科": 0.2
             },
@@ -2854,8 +2840,8 @@
                 "皮肤科": 1
               },
               "呼吸与危重症医学科": {
-                "感染性疾病科": 23,
-                "呼吸与危重症医学科": 3
+                "感染性疾病科": 20,
+                "呼吸与危重症医学科": 6
               },
               "呼吸内科": {
                 "感染性疾病科": 8,
@@ -2883,9 +2869,8 @@
                 "感染性疾病科": 5
               },
               "皮肤科": {
-                "皮肤科": 8,
-                "呼吸内科": 1,
-                "感染性疾病科": 55
+                "皮肤科": 10,
+                "感染性疾病科": 54
               },
               "神经内科": {
                 "神经内科": 8,
@@ -2896,33 +2881,33 @@
                 "感染性疾病科": 16
               }
             },
-            "inference_latency_s": 0.029659958032425493,
-            "model_size_chars": 9031349,
+            "inference_latency_s": 0.054621600022073835,
+            "model_size_chars": 9032719,
             "temperature": 1.0
           },
           "word_char_fusion_lr_temperature": {
             "test_rows": 222,
-            "accuracy": 0.328829,
-            "macro_f1": 0.315293,
-            "weighted_f1": 0.285244,
+            "accuracy": 0.351351,
+            "macro_f1": 0.336217,
+            "weighted_f1": 0.319229,
             "top2_accuracy": 0.621622,
             "top3_accuracy": 0.689189,
-            "mean_confidence": 0.469559,
-            "mean_entropy": 2.405978,
-            "mean_margin": 0.314082,
-            "ece": 0.143152,
-            "brier": 0.76924,
+            "mean_confidence": 0.45116,
+            "mean_entropy": 2.350082,
+            "mean_margin": 0.258173,
+            "ece": 0.124253,
+            "brier": 0.746249,
             "wrong_but_confident_rate": 0.067568,
             "per_department_recall": {
               "内分泌代谢科": 0.0,
-              "呼吸与危重症医学科": 0.115385,
+              "呼吸与危重症医学科": 0.230769,
               "呼吸内科": 0.1,
               "心血管内科": 0.545455,
               "感染性疾病科": 0.95122,
               "普外科": 0.0,
               "泌尿外科": 0.0,
               "消化内科": 0.444444,
-              "皮肤科": 0.125,
+              "皮肤科": 0.15625,
               "神经内科": 0.8,
               "骨科": 0.2
             },
@@ -2933,8 +2918,8 @@
                 "皮肤科": 1
               },
               "呼吸与危重症医学科": {
-                "感染性疾病科": 23,
-                "呼吸与危重症医学科": 3
+                "感染性疾病科": 20,
+                "呼吸与危重症医学科": 6
               },
               "呼吸内科": {
                 "感染性疾病科": 8,
@@ -2962,9 +2947,8 @@
                 "感染性疾病科": 5
               },
               "皮肤科": {
-                "皮肤科": 8,
-                "呼吸内科": 1,
-                "感染性疾病科": 55
+                "皮肤科": 10,
+                "感染性疾病科": 54
               },
               "神经内科": {
                 "神经内科": 8,
@@ -2975,9 +2959,9 @@
                 "感染性疾病科": 16
               }
             },
-            "inference_latency_s": 0.029659958032425493,
-            "model_size_chars": 9031349,
-            "temperature": 1.7
+            "inference_latency_s": 0.054621600022073835,
+            "model_size_chars": 9032719,
+            "temperature": 1.5
           },
           "three_state_lr": {
             "test_rows": 222,
@@ -3050,8 +3034,8 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0011200419976375997,
-            "model_size_chars": 1732786,
+            "inference_latency_s": 0.001983399997698143,
+            "model_size_chars": 1732788,
             "temperature": 1.0
           },
           "three_state_lr_temperature": {
@@ -3125,25 +3109,25 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0011200419976375997,
-            "model_size_chars": 1732786,
+            "inference_latency_s": 0.001983399997698143,
+            "model_size_chars": 1732788,
             "temperature": 1.6
           }
         },
         "fit_latency_s": {
-          "logistic_regression_binary": 0.421985124994535,
-          "linear_svm_binary": 0.1976254999754019,
-          "tfidf_logistic_regression": 0.41961425001500174,
-          "char_ngram_tfidf_lr": 21.521527542034164,
-          "word_char_fusion_lr": 21.431470082956366,
-          "three_state_lr": 0.42134820797946304
+          "logistic_regression_binary": 0.7313768000167329,
+          "linear_svm_binary": 0.32515009999042377,
+          "tfidf_logistic_regression": 0.6878782999992836,
+          "char_ngram_tfidf_lr": 18.209381499997107,
+          "word_char_fusion_lr": 18.786424800025998,
+          "three_state_lr": 0.694441800005734
         },
         "temperatures": {
           "logistic_regression_binary": 1.6,
           "linear_svm_binary": 0.3,
           "tfidf_logistic_regression": 1.7,
-          "char_ngram_tfidf_lr": 0.4,
-          "word_char_fusion_lr": 1.7,
+          "char_ngram_tfidf_lr": 0.6,
+          "word_char_fusion_lr": 1.5,
           "three_state_lr": 1.6
         },
         "split_meta": {
@@ -3239,7 +3223,7 @@
                 "骨科": 3
               }
             },
-            "inference_latency_s": 0.0020859999931417406,
+            "inference_latency_s": 0.003821199992671609,
             "model_size_chars": 13609,
             "temperature": 1.0
           },
@@ -3318,8 +3302,8 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.001059125002939254,
-            "model_size_chars": 1888318,
+            "inference_latency_s": 0.002079300000332296,
+            "model_size_chars": 1888269,
             "temperature": 1.0
           },
           "logistic_regression_binary_temperature": {
@@ -3397,8 +3381,8 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.001059125002939254,
-            "model_size_chars": 1888318,
+            "inference_latency_s": 0.002079300000332296,
+            "model_size_chars": 1888269,
             "temperature": 1.5
           },
           "linear_svm_binary": {
@@ -3479,7 +3463,7 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010533330496400595,
+            "inference_latency_s": 0.001974499988136813,
             "model_size_chars": 1081476,
             "temperature": 1.0
           },
@@ -3561,7 +3545,7 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010533330496400595,
+            "inference_latency_s": 0.001974499988136813,
             "model_size_chars": 1081476,
             "temperature": 0.3
           },
@@ -3638,8 +3622,8 @@
                 "感染性疾病科": 16
               }
             },
-            "inference_latency_s": 0.000960666046012193,
-            "model_size_chars": 1892160,
+            "inference_latency_s": 0.0016636000073049217,
+            "model_size_chars": 1892082,
             "temperature": 1.0
           },
           "tfidf_logistic_regression_temperature": {
@@ -3715,325 +3699,329 @@
                 "感染性疾病科": 16
               }
             },
-            "inference_latency_s": 0.000960666046012193,
-            "model_size_chars": 1892160,
+            "inference_latency_s": 0.0016636000073049217,
+            "model_size_chars": 1892082,
             "temperature": 2.0
           },
           "char_ngram_tfidf_lr": {
             "test_rows": 218,
-            "accuracy": 0.729358,
-            "macro_f1": 0.626738,
-            "weighted_f1": 0.692399,
-            "top2_accuracy": 0.889908,
-            "top3_accuracy": 0.93578,
-            "mean_confidence": 0.477663,
-            "mean_entropy": 2.453752,
-            "mean_margin": 0.335671,
-            "ece": 0.263356,
-            "brier": 0.454913,
+            "accuracy": 0.582569,
+            "macro_f1": 0.369906,
+            "weighted_f1": 0.508173,
+            "top2_accuracy": 0.743119,
+            "top3_accuracy": 0.908257,
+            "mean_confidence": 0.444724,
+            "mean_entropy": 2.543625,
+            "mean_margin": 0.269939,
+            "ece": 0.166861,
+            "brier": 0.571326,
             "wrong_but_confident_rate": 0.004587,
             "per_department_recall": {
-              "内分泌代谢科": 0.7,
-              "呼吸与危重症医学科": 0.9,
+              "内分泌代谢科": 0.0,
+              "呼吸与危重症医学科": 0.75,
               "呼吸内科": 0.0,
-              "心血管内科": 0.545455,
-              "感染性疾病科": 0.926829,
-              "普外科": 0.5,
-              "泌尿外科": 0.363636,
-              "消化内科": 0.235294,
-              "皮肤科": 0.948276,
-              "神经内科": 0.3,
-              "骨科": 0.95
+              "心血管内科": 0.363636,
+              "感染性疾病科": 0.878049,
+              "普外科": 0.0,
+              "泌尿外科": 0.181818,
+              "消化内科": 0.117647,
+              "皮肤科": 0.982759,
+              "神经内科": 0.1,
+              "骨科": 0.5
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "皮肤科": 3,
-                "内分泌代谢科": 7
+                "皮肤科": 10
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 18,
-                "皮肤科": 2
+                "呼吸与危重症医学科": 15,
+                "皮肤科": 4,
+                "感染性疾病科": 1
               },
               "呼吸内科": {
                 "感染性疾病科": 2,
-                "呼吸与危重症医学科": 1,
-                "皮肤科": 7
+                "皮肤科": 8
               },
               "心血管内科": {
                 "呼吸与危重症医学科": 1,
-                "皮肤科": 4,
-                "心血管内科": 6
+                "皮肤科": 5,
+                "感染性疾病科": 1,
+                "心血管内科": 4
               },
               "感染性疾病科": {
-                "感染性疾病科": 38,
-                "皮肤科": 3
+                "感染性疾病科": 36,
+                "皮肤科": 5
               },
               "普外科": {
-                "皮肤科": 5,
-                "普外科": 5
+                "皮肤科": 10
               },
               "泌尿外科": {
-                "皮肤科": 4,
-                "感染性疾病科": 3,
-                "泌尿外科": 4
+                "皮肤科": 8,
+                "感染性疾病科": 1,
+                "泌尿外科": 2
               },
               "消化内科": {
-                "消化内科": 4,
-                "感染性疾病科": 13
+                "消化内科": 2,
+                "感染性疾病科": 15
               },
               "皮肤科": {
-                "皮肤科": 55,
-                "感染性疾病科": 2,
+                "皮肤科": 57,
                 "消化内科": 1
               },
               "神经内科": {
-                "皮肤科": 6,
-                "神经内科": 3,
-                "内分泌代谢科": 1
+                "皮肤科": 8,
+                "内分泌代谢科": 1,
+                "神经内科": 1
               },
               "骨科": {
-                "骨科": 19,
-                "皮肤科": 1
+                "骨科": 10,
+                "皮肤科": 9,
+                "呼吸与危重症医学科": 1
               }
             },
-            "inference_latency_s": 0.030681083037052304,
-            "model_size_chars": 6975331,
+            "inference_latency_s": 0.1508458000025712,
+            "model_size_chars": 7031388,
             "temperature": 1.0
           },
           "char_ngram_tfidf_lr_temperature": {
             "test_rows": 218,
-            "accuracy": 0.729358,
-            "macro_f1": 0.626738,
-            "weighted_f1": 0.692399,
-            "top2_accuracy": 0.889908,
-            "top3_accuracy": 0.93578,
-            "mean_confidence": 0.741682,
-            "mean_entropy": 1.177975,
-            "mean_margin": 0.622607,
-            "ece": 0.106055,
-            "brier": 0.360107,
-            "wrong_but_confident_rate": 0.059633,
+            "accuracy": 0.582569,
+            "macro_f1": 0.369906,
+            "weighted_f1": 0.508173,
+            "top2_accuracy": 0.743119,
+            "top3_accuracy": 0.908257,
+            "mean_confidence": 0.646866,
+            "mean_entropy": 1.58182,
+            "mean_margin": 0.474193,
+            "ece": 0.076966,
+            "brier": 0.554897,
+            "wrong_but_confident_rate": 0.077982,
             "per_department_recall": {
-              "内分泌代谢科": 0.7,
-              "呼吸与危重症医学科": 0.9,
+              "内分泌代谢科": 0.0,
+              "呼吸与危重症医学科": 0.75,
               "呼吸内科": 0.0,
-              "心血管内科": 0.545455,
-              "感染性疾病科": 0.926829,
-              "普外科": 0.5,
-              "泌尿外科": 0.363636,
-              "消化内科": 0.235294,
-              "皮肤科": 0.948276,
-              "神经内科": 0.3,
-              "骨科": 0.95
+              "心血管内科": 0.363636,
+              "感染性疾病科": 0.878049,
+              "普外科": 0.0,
+              "泌尿外科": 0.181818,
+              "消化内科": 0.117647,
+              "皮肤科": 0.982759,
+              "神经内科": 0.1,
+              "骨科": 0.5
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "皮肤科": 3,
-                "内分泌代谢科": 7
+                "皮肤科": 10
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 18,
-                "皮肤科": 2
+                "呼吸与危重症医学科": 15,
+                "皮肤科": 4,
+                "感染性疾病科": 1
               },
               "呼吸内科": {
                 "感染性疾病科": 2,
-                "呼吸与危重症医学科": 1,
-                "皮肤科": 7
+                "皮肤科": 8
               },
               "心血管内科": {
                 "呼吸与危重症医学科": 1,
-                "皮肤科": 4,
-                "心血管内科": 6
+                "皮肤科": 5,
+                "感染性疾病科": 1,
+                "心血管内科": 4
               },
               "感染性疾病科": {
-                "感染性疾病科": 38,
-                "皮肤科": 3
+                "感染性疾病科": 36,
+                "皮肤科": 5
               },
               "普外科": {
-                "皮肤科": 5,
-                "普外科": 5
+                "皮肤科": 10
               },
               "泌尿外科": {
-                "皮肤科": 4,
-                "感染性疾病科": 3,
-                "泌尿外科": 4
+                "皮肤科": 8,
+                "感染性疾病科": 1,
+                "泌尿外科": 2
               },
               "消化内科": {
-                "消化内科": 4,
-                "感染性疾病科": 13
+                "消化内科": 2,
+                "感染性疾病科": 15
               },
               "皮肤科": {
-                "皮肤科": 55,
-                "感染性疾病科": 2,
+                "皮肤科": 57,
                 "消化内科": 1
               },
               "神经内科": {
-                "皮肤科": 6,
-                "神经内科": 3,
-                "内分泌代谢科": 1
+                "皮肤科": 8,
+                "内分泌代谢科": 1,
+                "神经内科": 1
               },
               "骨科": {
-                "骨科": 19,
-                "皮肤科": 1
+                "骨科": 10,
+                "皮肤科": 9,
+                "呼吸与危重症医学科": 1
               }
             },
-            "inference_latency_s": 0.030681083037052304,
-            "model_size_chars": 6975331,
-            "temperature": 0.5
+            "inference_latency_s": 0.1508458000025712,
+            "model_size_chars": 7031388,
+            "temperature": 0.6
           },
           "word_char_fusion_lr": {
             "test_rows": 218,
-            "accuracy": 0.385321,
-            "macro_f1": 0.382781,
-            "weighted_f1": 0.367277,
-            "top2_accuracy": 0.62844,
+            "accuracy": 0.46789,
+            "macro_f1": 0.41514,
+            "weighted_f1": 0.438659,
+            "top2_accuracy": 0.633028,
             "top3_accuracy": 0.711009,
-            "mean_confidence": 0.667489,
-            "mean_entropy": 1.429588,
-            "mean_margin": 0.471078,
-            "ece": 0.282168,
-            "brier": 0.771054,
+            "mean_confidence": 0.591681,
+            "mean_entropy": 1.621146,
+            "mean_margin": 0.357307,
+            "ece": 0.145752,
+            "brier": 0.698976,
             "wrong_but_confident_rate": 0.059633,
             "per_department_recall": {
               "内分泌代谢科": 0.1,
               "呼吸与危重症医学科": 0.2,
               "呼吸内科": 0.1,
               "心血管内科": 0.545455,
-              "感染性疾病科": 0.97561,
+              "感染性疾病科": 0.390244,
               "普外科": 0.0,
               "泌尿外科": 0.454545,
-              "消化内科": 0.352941,
-              "皮肤科": 0.189655,
+              "消化内科": 0.411765,
+              "皮肤科": 0.896552,
               "神经内科": 0.6,
               "骨科": 0.2
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "内分泌代谢科": 1
               },
               "呼吸与危重症医学科": {
-                "感染性疾病科": 16,
-                "呼吸与危重症医学科": 4
+                "皮肤科": 15,
+                "呼吸与危重症医学科": 4,
+                "感染性疾病科": 1
               },
               "呼吸内科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "呼吸内科": 1
               },
               "心血管内科": {
                 "心血管内科": 6,
-                "感染性疾病科": 5
+                "皮肤科": 5
               },
               "感染性疾病科": {
-                "感染性疾病科": 40,
-                "皮肤科": 1
+                "感染性疾病科": 16,
+                "皮肤科": 25
               },
               "普外科": {
-                "感染性疾病科": 10
+                "皮肤科": 10
               },
               "泌尿外科": {
-                "感染性疾病科": 6,
+                "皮肤科": 6,
                 "泌尿外科": 5
               },
               "消化内科": {
-                "消化内科": 6,
-                "感染性疾病科": 11
+                "消化内科": 7,
+                "皮肤科": 3,
+                "感染性疾病科": 7
               },
               "皮肤科": {
-                "皮肤科": 11,
-                "感染性疾病科": 40,
+                "皮肤科": 52,
                 "内分泌代谢科": 1,
-                "消化内科": 6
+                "消化内科": 4,
+                "感染性疾病科": 1
               },
               "神经内科": {
                 "神经内科": 6,
-                "感染性疾病科": 4
+                "皮肤科": 3,
+                "感染性疾病科": 1
               },
               "骨科": {
                 "骨科": 4,
-                "感染性疾病科": 16
+                "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.03165249997982755,
-            "model_size_chars": 9608525,
+            "inference_latency_s": 0.06910500000230968,
+            "model_size_chars": 9608848,
             "temperature": 1.0
           },
           "word_char_fusion_lr_temperature": {
             "test_rows": 218,
-            "accuracy": 0.385321,
-            "macro_f1": 0.382781,
-            "weighted_f1": 0.367277,
-            "top2_accuracy": 0.62844,
+            "accuracy": 0.46789,
+            "macro_f1": 0.41514,
+            "weighted_f1": 0.438659,
+            "top2_accuracy": 0.633028,
             "top3_accuracy": 0.711009,
-            "mean_confidence": 0.464853,
-            "mean_entropy": 2.412654,
-            "mean_margin": 0.295117,
-            "ece": 0.097615,
-            "brier": 0.687466,
-            "wrong_but_confident_rate": 0.027523,
+            "mean_confidence": 0.452934,
+            "mean_entropy": 2.388987,
+            "mean_margin": 0.267715,
+            "ece": 0.037747,
+            "brier": 0.664758,
+            "wrong_but_confident_rate": 0.03211,
             "per_department_recall": {
               "内分泌代谢科": 0.1,
               "呼吸与危重症医学科": 0.2,
               "呼吸内科": 0.1,
               "心血管内科": 0.545455,
-              "感染性疾病科": 0.97561,
+              "感染性疾病科": 0.390244,
               "普外科": 0.0,
               "泌尿外科": 0.454545,
-              "消化内科": 0.352941,
-              "皮肤科": 0.189655,
+              "消化内科": 0.411765,
+              "皮肤科": 0.896552,
               "神经内科": 0.6,
               "骨科": 0.2
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "内分泌代谢科": 1
               },
               "呼吸与危重症医学科": {
-                "感染性疾病科": 16,
-                "呼吸与危重症医学科": 4
+                "皮肤科": 15,
+                "呼吸与危重症医学科": 4,
+                "感染性疾病科": 1
               },
               "呼吸内科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "呼吸内科": 1
               },
               "心血管内科": {
                 "心血管内科": 6,
-                "感染性疾病科": 5
+                "皮肤科": 5
               },
               "感染性疾病科": {
-                "感染性疾病科": 40,
-                "皮肤科": 1
+                "感染性疾病科": 16,
+                "皮肤科": 25
               },
               "普外科": {
-                "感染性疾病科": 10
+                "皮肤科": 10
               },
               "泌尿外科": {
-                "感染性疾病科": 6,
+                "皮肤科": 6,
                 "泌尿外科": 5
               },
               "消化内科": {
-                "消化内科": 6,
-                "感染性疾病科": 11
+                "消化内科": 7,
+                "皮肤科": 3,
+                "感染性疾病科": 7
               },
               "皮肤科": {
-                "皮肤科": 11,
-                "感染性疾病科": 40,
+                "皮肤科": 52,
                 "内分泌代谢科": 1,
-                "消化内科": 6
+                "消化内科": 4,
+                "感染性疾病科": 1
               },
               "神经内科": {
                 "神经内科": 6,
-                "感染性疾病科": 4
+                "皮肤科": 3,
+                "感染性疾病科": 1
               },
               "骨科": {
                 "骨科": 4,
-                "感染性疾病科": 16
+                "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.03165249997982755,
-            "model_size_chars": 9608525,
-            "temperature": 1.9
+            "inference_latency_s": 0.06910500000230968,
+            "model_size_chars": 9608848,
+            "temperature": 1.7
           },
           "three_state_lr": {
             "test_rows": 218,
@@ -4110,8 +4098,8 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010508339619264007,
-            "model_size_chars": 1888318,
+            "inference_latency_s": 0.0025877000007312745,
+            "model_size_chars": 1888269,
             "temperature": 1.0
           },
           "three_state_lr_temperature": {
@@ -4189,25 +4177,25 @@
                 "皮肤科": 16
               }
             },
-            "inference_latency_s": 0.0010508339619264007,
-            "model_size_chars": 1888318,
+            "inference_latency_s": 0.0025877000007312745,
+            "model_size_chars": 1888269,
             "temperature": 1.5
           }
         },
         "fit_latency_s": {
-          "logistic_regression_binary": 0.4427540829638019,
-          "linear_svm_binary": 0.2045561249833554,
-          "tfidf_logistic_regression": 0.4418274579802528,
-          "char_ngram_tfidf_lr": 21.780295208038297,
-          "word_char_fusion_lr": 22.463983583031222,
-          "three_state_lr": 0.4418822919833474
+          "logistic_regression_binary": 0.7297337999916635,
+          "linear_svm_binary": 0.32729260000633076,
+          "tfidf_logistic_regression": 0.7098184000060428,
+          "char_ngram_tfidf_lr": 22.2776268000016,
+          "word_char_fusion_lr": 23.90596399997594,
+          "three_state_lr": 0.8698746000009123
         },
         "temperatures": {
           "logistic_regression_binary": 1.5,
           "linear_svm_binary": 0.3,
           "tfidf_logistic_regression": 2.0,
-          "char_ngram_tfidf_lr": 0.5,
-          "word_char_fusion_lr": 1.9,
+          "char_ngram_tfidf_lr": 0.6,
+          "word_char_fusion_lr": 1.7,
           "three_state_lr": 1.5
         },
         "split_meta": {
@@ -4301,7 +4289,7 @@
                 "皮肤科": 1
               }
             },
-            "inference_latency_s": 0.0022426669602282345,
+            "inference_latency_s": 0.005257000011624768,
             "model_size_chars": 12797,
             "temperature": 1.0
           },
@@ -4384,8 +4372,8 @@
                 "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.0012743750121444464,
-            "model_size_chars": 1866644,
+            "inference_latency_s": 0.0025827999925240874,
+            "model_size_chars": 1866653,
             "temperature": 1.0
           },
           "logistic_regression_binary_temperature": {
@@ -4467,8 +4455,8 @@
                 "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.0012743750121444464,
-            "model_size_chars": 1866644,
+            "inference_latency_s": 0.0025827999925240874,
+            "model_size_chars": 1866653,
             "temperature": 1.6
           },
           "linear_svm_binary": {
@@ -4549,7 +4537,7 @@
                 "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.0012820420088246465,
+            "inference_latency_s": 0.002418999996734783,
             "model_size_chars": 1074140,
             "temperature": 1.0
           },
@@ -4631,7 +4619,7 @@
                 "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.0012820420088246465,
+            "inference_latency_s": 0.002418999996734783,
             "model_size_chars": 1074140,
             "temperature": 0.3
           },
@@ -4714,8 +4702,8 @@
                 "骨科": 12
               }
             },
-            "inference_latency_s": 0.0011016250355169177,
-            "model_size_chars": 1870171,
+            "inference_latency_s": 0.0030965999758336693,
+            "model_size_chars": 1870237,
             "temperature": 1.0
           },
           "tfidf_logistic_regression_temperature": {
@@ -4797,341 +4785,339 @@
                 "骨科": 12
               }
             },
-            "inference_latency_s": 0.0011016250355169177,
-            "model_size_chars": 1870171,
+            "inference_latency_s": 0.0030965999758336693,
+            "model_size_chars": 1870237,
             "temperature": 1.8
           },
           "char_ngram_tfidf_lr": {
             "test_rows": 241,
-            "accuracy": 0.73444,
-            "macro_f1": 0.609015,
-            "weighted_f1": 0.693005,
+            "accuracy": 0.66805,
+            "macro_f1": 0.499821,
+            "weighted_f1": 0.627635,
             "top2_accuracy": 0.86722,
-            "top3_accuracy": 0.929461,
-            "mean_confidence": 0.507447,
-            "mean_entropy": 2.311187,
-            "mean_margin": 0.364148,
-            "ece": 0.226993,
-            "brier": 0.432233,
-            "wrong_but_confident_rate": 0.004149,
+            "top3_accuracy": 0.921162,
+            "mean_confidence": 0.387449,
+            "mean_entropy": 2.795178,
+            "mean_margin": 0.242727,
+            "ece": 0.280601,
+            "brier": 0.529912,
+            "wrong_but_confident_rate": 0.0,
             "per_department_recall": {
-              "内分泌代谢科": 0.6,
-              "呼吸与危重症医学科": 0.730769,
+              "内分泌代谢科": 0.1,
+              "呼吸与危重症医学科": 0.846154,
               "呼吸内科": 0.0,
-              "心血管内科": 0.636364,
-              "感染性疾病科": 0.9,
-              "普外科": 0.764706,
+              "心血管内科": 0.272727,
+              "感染性疾病科": 0.94,
+              "普外科": 0.647059,
               "泌尿外科": 0.090909,
-              "消化内科": 0.888889,
-              "皮肤科": 0.962264,
-              "神经内科": 0.105263,
+              "消化内科": 0.333333,
+              "皮肤科": 0.849057,
+              "神经内科": 0.157895,
               "骨科": 1.0
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "内分泌代谢科": 6,
-                "皮肤科": 3,
-                "感染性疾病科": 1
+                "呼吸与危重症医学科": 1,
+                "皮肤科": 5,
+                "感染性疾病科": 3,
+                "内分泌代谢科": 1
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 19,
-                "感染性疾病科": 7
+                "呼吸与危重症医学科": 22,
+                "感染性疾病科": 4
               },
               "呼吸内科": {
-                "皮肤科": 4,
+                "皮肤科": 3,
                 "感染性疾病科": 4,
-                "呼吸与危重症医学科": 2
+                "呼吸与危重症医学科": 3
               },
               "心血管内科": {
-                "心血管内科": 7,
-                "皮肤科": 2,
-                "感染性疾病科": 2
-              },
-              "感染性疾病科": {
-                "感染性疾病科": 45,
-                "皮肤科": 4,
+                "呼吸与危重症医学科": 1,
+                "感染性疾病科": 6,
+                "心血管内科": 3,
                 "骨科": 1
               },
+              "感染性疾病科": {
+                "感染性疾病科": 47,
+                "皮肤科": 3
+              },
               "普外科": {
-                "皮肤科": 3,
-                "普外科": 13,
-                "感染性疾病科": 1
+                "皮肤科": 4,
+                "普外科": 11,
+                "感染性疾病科": 2
               },
               "泌尿外科": {
-                "感染性疾病科": 8,
-                "皮肤科": 2,
+                "感染性疾病科": 9,
+                "皮肤科": 1,
                 "泌尿外科": 1
               },
               "消化内科": {
-                "消化内科": 8,
-                "感染性疾病科": 1
+                "消化内科": 3,
+                "感染性疾病科": 6
               },
               "皮肤科": {
-                "皮肤科": 51,
-                "感染性疾病科": 2
+                "皮肤科": 45,
+                "感染性疾病科": 8
               },
               "神经内科": {
-                "神经内科": 2,
-                "皮肤科": 3,
-                "内分泌代谢科": 13,
-                "感染性疾病科": 1
+                "神经内科": 3,
+                "感染性疾病科": 4,
+                "内分泌代谢科": 12
               },
               "骨科": {
                 "骨科": 25
               }
             },
-            "inference_latency_s": 0.03525800001807511,
-            "model_size_chars": 6900238,
+            "inference_latency_s": 0.06425570001010783,
+            "model_size_chars": 6952325,
             "temperature": 1.0
           },
           "char_ngram_tfidf_lr_temperature": {
             "test_rows": 241,
-            "accuracy": 0.73444,
-            "macro_f1": 0.609015,
-            "weighted_f1": 0.693005,
+            "accuracy": 0.66805,
+            "macro_f1": 0.499821,
+            "weighted_f1": 0.627635,
             "top2_accuracy": 0.86722,
-            "top3_accuracy": 0.929461,
-            "mean_confidence": 0.811292,
-            "mean_entropy": 0.810984,
-            "mean_margin": 0.70613,
-            "ece": 0.087921,
-            "brier": 0.367091,
-            "wrong_but_confident_rate": 0.078838,
+            "top3_accuracy": 0.921162,
+            "mean_confidence": 0.791251,
+            "mean_entropy": 0.871419,
+            "mean_margin": 0.673355,
+            "ece": 0.123201,
+            "brier": 0.430303,
+            "wrong_but_confident_rate": 0.107884,
             "per_department_recall": {
-              "内分泌代谢科": 0.6,
-              "呼吸与危重症医学科": 0.730769,
+              "内分泌代谢科": 0.1,
+              "呼吸与危重症医学科": 0.846154,
               "呼吸内科": 0.0,
-              "心血管内科": 0.636364,
-              "感染性疾病科": 0.9,
-              "普外科": 0.764706,
+              "心血管内科": 0.272727,
+              "感染性疾病科": 0.94,
+              "普外科": 0.647059,
               "泌尿外科": 0.090909,
-              "消化内科": 0.888889,
-              "皮肤科": 0.962264,
-              "神经内科": 0.105263,
+              "消化内科": 0.333333,
+              "皮肤科": 0.849057,
+              "神经内科": 0.157895,
               "骨科": 1.0
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "内分泌代谢科": 6,
-                "皮肤科": 3,
-                "感染性疾病科": 1
+                "呼吸与危重症医学科": 1,
+                "皮肤科": 5,
+                "感染性疾病科": 3,
+                "内分泌代谢科": 1
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 19,
-                "感染性疾病科": 7
+                "呼吸与危重症医学科": 22,
+                "感染性疾病科": 4
               },
               "呼吸内科": {
-                "皮肤科": 4,
+                "皮肤科": 3,
                 "感染性疾病科": 4,
-                "呼吸与危重症医学科": 2
+                "呼吸与危重症医学科": 3
               },
               "心血管内科": {
-                "心血管内科": 7,
-                "皮肤科": 2,
-                "感染性疾病科": 2
-              },
-              "感染性疾病科": {
-                "感染性疾病科": 45,
-                "皮肤科": 4,
+                "呼吸与危重症医学科": 1,
+                "感染性疾病科": 6,
+                "心血管内科": 3,
                 "骨科": 1
               },
+              "感染性疾病科": {
+                "感染性疾病科": 47,
+                "皮肤科": 3
+              },
               "普外科": {
-                "皮肤科": 3,
-                "普外科": 13,
-                "感染性疾病科": 1
+                "皮肤科": 4,
+                "普外科": 11,
+                "感染性疾病科": 2
               },
               "泌尿外科": {
-                "感染性疾病科": 8,
-                "皮肤科": 2,
+                "感染性疾病科": 9,
+                "皮肤科": 1,
                 "泌尿外科": 1
               },
               "消化内科": {
-                "消化内科": 8,
-                "感染性疾病科": 1
+                "消化内科": 3,
+                "感染性疾病科": 6
               },
               "皮肤科": {
-                "皮肤科": 51,
-                "感染性疾病科": 2
+                "皮肤科": 45,
+                "感染性疾病科": 8
               },
               "神经内科": {
-                "神经内科": 2,
-                "皮肤科": 3,
-                "内分泌代谢科": 13,
-                "感染性疾病科": 1
+                "神经内科": 3,
+                "感染性疾病科": 4,
+                "内分泌代谢科": 12
               },
               "骨科": {
                 "骨科": 25
               }
             },
-            "inference_latency_s": 0.03525800001807511,
-            "model_size_chars": 6900238,
-            "temperature": 0.4
+            "inference_latency_s": 0.06425570001010783,
+            "model_size_chars": 6952325,
+            "temperature": 0.3
           },
           "word_char_fusion_lr": {
             "test_rows": 241,
-            "accuracy": 0.394191,
-            "macro_f1": 0.356069,
-            "weighted_f1": 0.3724,
-            "top2_accuracy": 0.639004,
+            "accuracy": 0.473029,
+            "macro_f1": 0.394233,
+            "weighted_f1": 0.446622,
+            "top2_accuracy": 0.655602,
             "top3_accuracy": 0.721992,
-            "mean_confidence": 0.617586,
-            "mean_entropy": 1.542777,
-            "mean_margin": 0.394873,
-            "ece": 0.224951,
-            "brier": 0.726508,
-            "wrong_but_confident_rate": 0.078838,
+            "mean_confidence": 0.618565,
+            "mean_entropy": 1.660591,
+            "mean_margin": 0.426878,
+            "ece": 0.148828,
+            "brier": 0.687317,
+            "wrong_but_confident_rate": 0.06639,
             "per_department_recall": {
               "内分泌代谢科": 0.2,
-              "呼吸与危重症医学科": 0.230769,
+              "呼吸与危重症医学科": 0.269231,
               "呼吸内科": 0.1,
               "心血管内科": 0.454545,
-              "感染性疾病科": 0.94,
+              "感染性疾病科": 0.42,
               "普外科": 0.0,
               "泌尿外科": 0.090909,
               "消化内科": 0.444444,
-              "皮肤科": 0.188679,
+              "皮肤科": 0.981132,
               "神经内科": 0.368421,
-              "骨科": 0.48
+              "骨科": 0.56
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "感染性疾病科": 8,
+                "皮肤科": 8,
                 "内分泌代谢科": 2
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 6,
-                "感染性疾病科": 20
+                "呼吸与危重症医学科": 7,
+                "感染性疾病科": 5,
+                "皮肤科": 14
               },
               "呼吸内科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "呼吸内科": 1
               },
               "心血管内科": {
                 "心血管内科": 5,
-                "感染性疾病科": 4,
+                "皮肤科": 4,
                 "神经内科": 2
               },
               "感染性疾病科": {
-                "感染性疾病科": 47,
-                "皮肤科": 1,
+                "感染性疾病科": 21,
+                "皮肤科": 27,
                 "心血管内科": 1,
                 "消化内科": 1
               },
               "普外科": {
-                "皮肤科": 1,
-                "感染性疾病科": 15,
-                "内分泌代谢科": 1
+                "皮肤科": 10,
+                "感染性疾病科": 7
               },
               "泌尿外科": {
-                "感染性疾病科": 10,
+                "皮肤科": 10,
                 "泌尿外科": 1
               },
               "消化内科": {
                 "消化内科": 4,
-                "感染性疾病科": 5
+                "皮肤科": 5
               },
               "皮肤科": {
-                "皮肤科": 10,
-                "感染性疾病科": 42,
+                "皮肤科": 52,
                 "普外科": 1
               },
               "神经内科": {
                 "神经内科": 7,
-                "感染性疾病科": 1,
+                "皮肤科": 1,
                 "内分泌代谢科": 11
               },
               "骨科": {
-                "感染性疾病科": 11,
-                "内分泌代谢科": 2,
-                "骨科": 12
+                "皮肤科": 10,
+                "骨科": 14,
+                "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.032655415998306125,
-            "model_size_chars": 9500894,
+            "inference_latency_s": 0.06872880001901649,
+            "model_size_chars": 9503717,
             "temperature": 1.0
           },
           "word_char_fusion_lr_temperature": {
             "test_rows": 241,
-            "accuracy": 0.394191,
-            "macro_f1": 0.356069,
-            "weighted_f1": 0.3724,
-            "top2_accuracy": 0.639004,
+            "accuracy": 0.473029,
+            "macro_f1": 0.394233,
+            "weighted_f1": 0.446622,
+            "top2_accuracy": 0.655602,
             "top3_accuracy": 0.721992,
-            "mean_confidence": 0.469323,
-            "mean_entropy": 2.326671,
-            "mean_margin": 0.285322,
-            "ece": 0.089532,
-            "brier": 0.680173,
-            "wrong_but_confident_rate": 0.041494,
+            "mean_confidence": 0.493361,
+            "mean_entropy": 2.265373,
+            "mean_margin": 0.320893,
+            "ece": 0.042751,
+            "brier": 0.661807,
+            "wrong_but_confident_rate": 0.049793,
             "per_department_recall": {
               "内分泌代谢科": 0.2,
-              "呼吸与危重症医学科": 0.230769,
+              "呼吸与危重症医学科": 0.269231,
               "呼吸内科": 0.1,
               "心血管内科": 0.454545,
-              "感染性疾病科": 0.94,
+              "感染性疾病科": 0.42,
               "普外科": 0.0,
               "泌尿外科": 0.090909,
               "消化内科": 0.444444,
-              "皮肤科": 0.188679,
+              "皮肤科": 0.981132,
               "神经内科": 0.368421,
-              "骨科": 0.48
+              "骨科": 0.56
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "感染性疾病科": 8,
+                "皮肤科": 8,
                 "内分泌代谢科": 2
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 6,
-                "感染性疾病科": 20
+                "呼吸与危重症医学科": 7,
+                "感染性疾病科": 5,
+                "皮肤科": 14
               },
               "呼吸内科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "呼吸内科": 1
               },
               "心血管内科": {
                 "心血管内科": 5,
-                "感染性疾病科": 4,
+                "皮肤科": 4,
                 "神经内科": 2
               },
               "感染性疾病科": {
-                "感染性疾病科": 47,
-                "皮肤科": 1,
+                "感染性疾病科": 21,
+                "皮肤科": 27,
                 "心血管内科": 1,
                 "消化内科": 1
               },
               "普外科": {
-                "皮肤科": 1,
-                "感染性疾病科": 15,
-                "内分泌代谢科": 1
+                "皮肤科": 10,
+                "感染性疾病科": 7
               },
               "泌尿外科": {
-                "感染性疾病科": 10,
+                "皮肤科": 10,
                 "泌尿外科": 1
               },
               "消化内科": {
                 "消化内科": 4,
-                "感染性疾病科": 5
+                "皮肤科": 5
               },
               "皮肤科": {
-                "皮肤科": 10,
-                "感染性疾病科": 42,
+                "皮肤科": 52,
                 "普外科": 1
               },
               "神经内科": {
                 "神经内科": 7,
-                "感染性疾病科": 1,
+                "皮肤科": 1,
                 "内分泌代谢科": 11
               },
               "骨科": {
-                "感染性疾病科": 11,
-                "内分泌代谢科": 2,
-                "骨科": 12
+                "皮肤科": 10,
+                "骨科": 14,
+                "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.032655415998306125,
-            "model_size_chars": 9500894,
-            "temperature": 1.7
+            "inference_latency_s": 0.06872880001901649,
+            "model_size_chars": 9503717,
+            "temperature": 1.5
           },
           "three_state_lr": {
             "test_rows": 241,
@@ -5212,8 +5198,8 @@
                 "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.0012365829898044467,
-            "model_size_chars": 1866644,
+            "inference_latency_s": 0.002125800005160272,
+            "model_size_chars": 1866653,
             "temperature": 1.0
           },
           "three_state_lr_temperature": {
@@ -5295,25 +5281,25 @@
                 "感染性疾病科": 1
               }
             },
-            "inference_latency_s": 0.0012365829898044467,
-            "model_size_chars": 1866644,
+            "inference_latency_s": 0.002125800005160272,
+            "model_size_chars": 1866653,
             "temperature": 1.6
           }
         },
         "fit_latency_s": {
-          "logistic_regression_binary": 0.4151432089856826,
-          "linear_svm_binary": 0.1941967920283787,
-          "tfidf_logistic_regression": 0.4108915419783443,
-          "char_ngram_tfidf_lr": 21.823638375033624,
-          "word_char_fusion_lr": 21.631362540996633,
-          "three_state_lr": 0.4136376659735106
+          "logistic_regression_binary": 0.7271181000105571,
+          "linear_svm_binary": 0.3398194999899715,
+          "tfidf_logistic_regression": 0.6993999000114854,
+          "char_ngram_tfidf_lr": 19.938878399989335,
+          "word_char_fusion_lr": 19.310658799979137,
+          "three_state_lr": 0.6770006999722682
         },
         "temperatures": {
           "logistic_regression_binary": 1.6,
           "linear_svm_binary": 0.3,
           "tfidf_logistic_regression": 1.8,
-          "char_ngram_tfidf_lr": 0.4,
-          "word_char_fusion_lr": 1.7,
+          "char_ngram_tfidf_lr": 0.3,
+          "word_char_fusion_lr": 1.5,
           "three_state_lr": 1.6
         },
         "split_meta": {
@@ -5404,7 +5390,7 @@
                 "皮肤科": 1
               }
             },
-            "inference_latency_s": 0.002026042027864605,
+            "inference_latency_s": 0.0040283999987877905,
             "model_size_chars": 12793,
             "temperature": 1.0
           },
@@ -5484,8 +5470,8 @@
                 "骨科": 7
               }
             },
-            "inference_latency_s": 0.001087374985218048,
-            "model_size_chars": 1893721,
+            "inference_latency_s": 0.0020944999996572733,
+            "model_size_chars": 1893697,
             "temperature": 1.0
           },
           "logistic_regression_binary_temperature": {
@@ -5564,8 +5550,8 @@
                 "骨科": 7
               }
             },
-            "inference_latency_s": 0.001087374985218048,
-            "model_size_chars": 1893721,
+            "inference_latency_s": 0.0020944999996572733,
+            "model_size_chars": 1893697,
             "temperature": 1.7
           },
           "linear_svm_binary": {
@@ -5647,7 +5633,7 @@
                 "骨科": 7
               }
             },
-            "inference_latency_s": 0.0011020830133929849,
+            "inference_latency_s": 0.001970799989067018,
             "model_size_chars": 1074259,
             "temperature": 1.0
           },
@@ -5730,7 +5716,7 @@
                 "骨科": 7
               }
             },
-            "inference_latency_s": 0.0011020830133929849,
+            "inference_latency_s": 0.001970799989067018,
             "model_size_chars": 1074259,
             "temperature": 0.4
           },
@@ -5807,8 +5793,8 @@
                 "皮肤科": 1
               }
             },
-            "inference_latency_s": 0.0009351670159958303,
-            "model_size_chars": 1896898,
+            "inference_latency_s": 0.0017345999949611723,
+            "model_size_chars": 1896888,
             "temperature": 1.0
           },
           "tfidf_logistic_regression_temperature": {
@@ -5884,315 +5870,317 @@
                 "皮肤科": 1
               }
             },
-            "inference_latency_s": 0.0009351670159958303,
-            "model_size_chars": 1896898,
+            "inference_latency_s": 0.0017345999949611723,
+            "model_size_chars": 1896888,
             "temperature": 1.9
           },
           "char_ngram_tfidf_lr": {
             "test_rows": 224,
-            "accuracy": 0.745536,
-            "macro_f1": 0.70845,
-            "weighted_f1": 0.735757,
-            "top2_accuracy": 0.915179,
-            "top3_accuracy": 0.955357,
-            "mean_confidence": 0.471168,
-            "mean_entropy": 2.472695,
-            "mean_margin": 0.311897,
-            "ece": 0.274368,
-            "brier": 0.453277,
+            "accuracy": 0.589286,
+            "macro_f1": 0.37587,
+            "weighted_f1": 0.514287,
+            "top2_accuracy": 0.736607,
+            "top3_accuracy": 0.785714,
+            "mean_confidence": 0.457064,
+            "mean_entropy": 2.483058,
+            "mean_margin": 0.282108,
+            "ece": 0.173846,
+            "brier": 0.572197,
             "wrong_but_confident_rate": 0.0,
             "per_department_recall": {
-              "内分泌代谢科": 0.333333,
-              "呼吸与危重症医学科": 0.884615,
-              "呼吸内科": 0.4,
-              "心血管内科": 0.363636,
-              "感染性疾病科": 0.731707,
-              "普外科": 0.6,
-              "泌尿外科": 0.454545,
-              "消化内科": 0.888889,
+              "内分泌代谢科": 0.0,
+              "呼吸与危重症医学科": 0.923077,
+              "呼吸内科": 0.0,
+              "心血管内科": 0.272727,
+              "感染性疾病科": 0.585366,
+              "普外科": 0.1,
+              "泌尿外科": 0.090909,
+              "消化内科": 0.111111,
               "皮肤科": 1.0,
-              "神经内科": 0.3,
+              "神经内科": 0.0,
               "骨科": 1.0
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "皮肤科": 12,
-                "内分泌代谢科": 6
+                "皮肤科": 18
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 23,
-                "感染性疾病科": 3
+                "呼吸与危重症医学科": 24,
+                "感染性疾病科": 2
               },
               "呼吸内科": {
-                "皮肤科": 4,
-                "呼吸内科": 4,
-                "感染性疾病科": 1,
-                "呼吸与危重症医学科": 1
+                "皮肤科": 6,
+                "呼吸与危重症医学科": 4
               },
               "心血管内科": {
-                "皮肤科": 7,
-                "心血管内科": 4
+                "皮肤科": 8,
+                "心血管内科": 3
               },
               "感染性疾病科": {
-                "感染性疾病科": 30,
-                "皮肤科": 11
+                "感染性疾病科": 24,
+                "皮肤科": 17
               },
               "普外科": {
-                "普外科": 6,
-                "皮肤科": 4
+                "皮肤科": 9,
+                "普外科": 1
               },
               "泌尿外科": {
-                "皮肤科": 6,
-                "泌尿外科": 5
+                "皮肤科": 10,
+                "泌尿外科": 1
               },
               "消化内科": {
-                "消化内科": 8,
-                "皮肤科": 1
+                "消化内科": 1,
+                "皮肤科": 6,
+                "感染性疾病科": 2
               },
               "皮肤科": {
                 "皮肤科": 58
               },
               "神经内科": {
-                "皮肤科": 7,
-                "神经内科": 3
+                "皮肤科": 9,
+                "感染性疾病科": 1
               },
               "骨科": {
                 "骨科": 20
               }
             },
-            "inference_latency_s": 0.03453741600969806,
-            "model_size_chars": 7010390,
+            "inference_latency_s": 0.08036589997936971,
+            "model_size_chars": 7063019,
             "temperature": 1.0
           },
           "char_ngram_tfidf_lr_temperature": {
             "test_rows": 224,
-            "accuracy": 0.745536,
-            "macro_f1": 0.70845,
-            "weighted_f1": 0.735757,
-            "top2_accuracy": 0.915179,
-            "top3_accuracy": 0.955357,
-            "mean_confidence": 0.797092,
-            "mean_entropy": 0.851193,
-            "mean_margin": 0.66515,
-            "ece": 0.071267,
-            "brier": 0.365464,
-            "wrong_but_confident_rate": 0.116071,
+            "accuracy": 0.589286,
+            "macro_f1": 0.37587,
+            "weighted_f1": 0.514287,
+            "top2_accuracy": 0.736607,
+            "top3_accuracy": 0.785714,
+            "mean_confidence": 0.66319,
+            "mean_entropy": 1.516905,
+            "mean_margin": 0.495706,
+            "ece": 0.075151,
+            "brier": 0.560091,
+            "wrong_but_confident_rate": 0.075893,
             "per_department_recall": {
-              "内分泌代谢科": 0.333333,
-              "呼吸与危重症医学科": 0.884615,
-              "呼吸内科": 0.4,
-              "心血管内科": 0.363636,
-              "感染性疾病科": 0.731707,
-              "普外科": 0.6,
-              "泌尿外科": 0.454545,
-              "消化内科": 0.888889,
+              "内分泌代谢科": 0.0,
+              "呼吸与危重症医学科": 0.923077,
+              "呼吸内科": 0.0,
+              "心血管内科": 0.272727,
+              "感染性疾病科": 0.585366,
+              "普外科": 0.1,
+              "泌尿外科": 0.090909,
+              "消化内科": 0.111111,
               "皮肤科": 1.0,
-              "神经内科": 0.3,
+              "神经内科": 0.0,
               "骨科": 1.0
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "皮肤科": 12,
-                "内分泌代谢科": 6
+                "皮肤科": 18
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 23,
-                "感染性疾病科": 3
+                "呼吸与危重症医学科": 24,
+                "感染性疾病科": 2
               },
               "呼吸内科": {
-                "皮肤科": 4,
-                "呼吸内科": 4,
-                "感染性疾病科": 1,
-                "呼吸与危重症医学科": 1
+                "皮肤科": 6,
+                "呼吸与危重症医学科": 4
               },
               "心血管内科": {
-                "皮肤科": 7,
-                "心血管内科": 4
+                "皮肤科": 8,
+                "心血管内科": 3
               },
               "感染性疾病科": {
-                "感染性疾病科": 30,
-                "皮肤科": 11
+                "感染性疾病科": 24,
+                "皮肤科": 17
               },
               "普外科": {
-                "普外科": 6,
-                "皮肤科": 4
+                "皮肤科": 9,
+                "普外科": 1
               },
               "泌尿外科": {
-                "皮肤科": 6,
-                "泌尿外科": 5
+                "皮肤科": 10,
+                "泌尿外科": 1
               },
               "消化内科": {
-                "消化内科": 8,
-                "皮肤科": 1
+                "消化内科": 1,
+                "皮肤科": 6,
+                "感染性疾病科": 2
               },
               "皮肤科": {
                 "皮肤科": 58
+              },
+              "神经内科": {
+                "皮肤科": 9,
+                "感染性疾病科": 1
+              },
+              "骨科": {
+                "骨科": 20
+              }
+            },
+            "inference_latency_s": 0.08036589997936971,
+            "model_size_chars": 7063019,
+            "temperature": 0.6
+          },
+          "word_char_fusion_lr": {
+            "test_rows": 224,
+            "accuracy": 0.482143,
+            "macro_f1": 0.448104,
+            "weighted_f1": 0.459915,
+            "top2_accuracy": 0.647321,
+            "top3_accuracy": 0.71875,
+            "mean_confidence": 0.590484,
+            "mean_entropy": 1.717248,
+            "mean_margin": 0.363541,
+            "ece": 0.13873,
+            "brier": 0.667481,
+            "wrong_but_confident_rate": 0.03125,
+            "per_department_recall": {
+              "内分泌代谢科": 0.5,
+              "呼吸与危重症医学科": 0.269231,
+              "呼吸内科": 0.1,
+              "心血管内科": 0.727273,
+              "感染性疾病科": 0.292683,
+              "普外科": 0.1,
+              "泌尿外科": 0.090909,
+              "消化内科": 0.444444,
+              "皮肤科": 0.948276,
+              "神经内科": 0.3,
+              "骨科": 0.35
+            },
+            "confusion_matrix": {
+              "内分泌代谢科": {
+                "皮肤科": 9,
+                "内分泌代谢科": 9
+              },
+              "呼吸与危重症医学科": {
+                "呼吸与危重症医学科": 7,
+                "感染性疾病科": 5,
+                "皮肤科": 14
+              },
+              "呼吸内科": {
+                "皮肤科": 9,
+                "呼吸内科": 1
+              },
+              "心血管内科": {
+                "感染性疾病科": 1,
+                "心血管内科": 8,
+                "皮肤科": 2
+              },
+              "感染性疾病科": {
+                "感染性疾病科": 12,
+                "皮肤科": 29
+              },
+              "普外科": {
+                "皮肤科": 9,
+                "普外科": 1
+              },
+              "泌尿外科": {
+                "皮肤科": 10,
+                "泌尿外科": 1
+              },
+              "消化内科": {
+                "消化内科": 4,
+                "皮肤科": 3,
+                "感染性疾病科": 2
+              },
+              "皮肤科": {
+                "皮肤科": 55,
+                "普外科": 1,
+                "感染性疾病科": 2
               },
               "神经内科": {
                 "皮肤科": 7,
                 "神经内科": 3
               },
               "骨科": {
-                "骨科": 20
+                "皮肤科": 13,
+                "骨科": 7
               }
             },
-            "inference_latency_s": 0.03453741600969806,
-            "model_size_chars": 7010390,
-            "temperature": 0.4
-          },
-          "word_char_fusion_lr": {
-            "test_rows": 224,
-            "accuracy": 0.410714,
-            "macro_f1": 0.434628,
-            "weighted_f1": 0.404574,
-            "top2_accuracy": 0.642857,
-            "top3_accuracy": 0.71875,
-            "mean_confidence": 0.577708,
-            "mean_entropy": 1.648332,
-            "mean_margin": 0.320961,
-            "ece": 0.17832,
-            "brier": 0.693009,
-            "wrong_but_confident_rate": 0.035714,
-            "per_department_recall": {
-              "内分泌代谢科": 0.5,
-              "呼吸与危重症医学科": 0.230769,
-              "呼吸内科": 0.1,
-              "心血管内科": 0.727273,
-              "感染性疾病科": 1.0,
-              "普外科": 0.1,
-              "泌尿外科": 0.090909,
-              "消化内科": 0.444444,
-              "皮肤科": 0.172414,
-              "神经内科": 0.4,
-              "骨科": 0.35
-            },
-            "confusion_matrix": {
-              "内分泌代谢科": {
-                "感染性疾病科": 9,
-                "内分泌代谢科": 9
-              },
-              "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 6,
-                "感染性疾病科": 20
-              },
-              "呼吸内科": {
-                "感染性疾病科": 9,
-                "呼吸内科": 1
-              },
-              "心血管内科": {
-                "感染性疾病科": 3,
-                "心血管内科": 8
-              },
-              "感染性疾病科": {
-                "感染性疾病科": 41
-              },
-              "普外科": {
-                "感染性疾病科": 9,
-                "普外科": 1
-              },
-              "泌尿外科": {
-                "感染性疾病科": 10,
-                "泌尿外科": 1
-              },
-              "消化内科": {
-                "消化内科": 4,
-                "感染性疾病科": 5
-              },
-              "皮肤科": {
-                "皮肤科": 10,
-                "感染性疾病科": 47,
-                "普外科": 1
-              },
-              "神经内科": {
-                "感染性疾病科": 6,
-                "神经内科": 4
-              },
-              "骨科": {
-                "感染性疾病科": 12,
-                "骨科": 7,
-                "皮肤科": 1
-              }
-            },
-            "inference_latency_s": 0.03439350001281127,
-            "model_size_chars": 9647095,
+            "inference_latency_s": 0.061995299998670816,
+            "model_size_chars": 9651163,
             "temperature": 1.0
           },
           "word_char_fusion_lr_temperature": {
             "test_rows": 224,
-            "accuracy": 0.410714,
-            "macro_f1": 0.434628,
-            "weighted_f1": 0.404574,
-            "top2_accuracy": 0.642857,
+            "accuracy": 0.482143,
+            "macro_f1": 0.448104,
+            "weighted_f1": 0.459915,
+            "top2_accuracy": 0.647321,
             "top3_accuracy": 0.71875,
-            "mean_confidence": 0.399902,
-            "mean_entropy": 2.611594,
-            "mean_margin": 0.206531,
-            "ece": 0.074303,
-            "brier": 0.669007,
-            "wrong_but_confident_rate": 0.017857,
+            "mean_confidence": 0.426033,
+            "mean_entropy": 2.539018,
+            "mean_margin": 0.237772,
+            "ece": 0.056651,
+            "brier": 0.652918,
+            "wrong_but_confident_rate": 0.013393,
             "per_department_recall": {
               "内分泌代谢科": 0.5,
-              "呼吸与危重症医学科": 0.230769,
+              "呼吸与危重症医学科": 0.269231,
               "呼吸内科": 0.1,
               "心血管内科": 0.727273,
-              "感染性疾病科": 1.0,
+              "感染性疾病科": 0.292683,
               "普外科": 0.1,
               "泌尿外科": 0.090909,
               "消化内科": 0.444444,
-              "皮肤科": 0.172414,
-              "神经内科": 0.4,
+              "皮肤科": 0.948276,
+              "神经内科": 0.3,
               "骨科": 0.35
             },
             "confusion_matrix": {
               "内分泌代谢科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "内分泌代谢科": 9
               },
               "呼吸与危重症医学科": {
-                "呼吸与危重症医学科": 6,
-                "感染性疾病科": 20
+                "呼吸与危重症医学科": 7,
+                "感染性疾病科": 5,
+                "皮肤科": 14
               },
               "呼吸内科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "呼吸内科": 1
               },
               "心血管内科": {
-                "感染性疾病科": 3,
-                "心血管内科": 8
+                "感染性疾病科": 1,
+                "心血管内科": 8,
+                "皮肤科": 2
               },
               "感染性疾病科": {
-                "感染性疾病科": 41
+                "感染性疾病科": 12,
+                "皮肤科": 29
               },
               "普外科": {
-                "感染性疾病科": 9,
+                "皮肤科": 9,
                 "普外科": 1
               },
               "泌尿外科": {
-                "感染性疾病科": 10,
+                "皮肤科": 10,
                 "泌尿外科": 1
               },
               "消化内科": {
                 "消化内科": 4,
-                "感染性疾病科": 5
+                "皮肤科": 3,
+                "感染性疾病科": 2
               },
               "皮肤科": {
-                "皮肤科": 10,
-                "感染性疾病科": 47,
-                "普外科": 1
+                "皮肤科": 55,
+                "普外科": 1,
+                "感染性疾病科": 2
               },
               "神经内科": {
-                "感染性疾病科": 6,
-                "神经内科": 4
+                "皮肤科": 7,
+                "神经内科": 3
               },
               "骨科": {
-                "感染性疾病科": 12,
-                "骨科": 7,
-                "皮肤科": 1
+                "皮肤科": 13,
+                "骨科": 7
               }
             },
-            "inference_latency_s": 0.03439350001281127,
-            "model_size_chars": 9647095,
-            "temperature": 1.9
+            "inference_latency_s": 0.061995299998670816,
+            "model_size_chars": 9651163,
+            "temperature": 1.7
           },
           "three_state_lr": {
             "test_rows": 224,
@@ -6270,8 +6258,8 @@
                 "骨科": 7
               }
             },
-            "inference_latency_s": 0.0011127920006401837,
-            "model_size_chars": 1893721,
+            "inference_latency_s": 0.002160599979106337,
+            "model_size_chars": 1893697,
             "temperature": 1.0
           },
           "three_state_lr_temperature": {
@@ -6350,25 +6338,25 @@
                 "骨科": 7
               }
             },
-            "inference_latency_s": 0.0011127920006401837,
-            "model_size_chars": 1893721,
+            "inference_latency_s": 0.002160599979106337,
+            "model_size_chars": 1893697,
             "temperature": 1.7
           }
         },
         "fit_latency_s": {
-          "logistic_regression_binary": 0.4206325829727575,
-          "linear_svm_binary": 0.19588779204059392,
-          "tfidf_logistic_regression": 0.42001133400481194,
-          "char_ngram_tfidf_lr": 21.993040624947753,
-          "word_char_fusion_lr": 22.22362850001082,
-          "three_state_lr": 0.4182211669976823
+          "logistic_regression_binary": 0.687856800010195,
+          "linear_svm_binary": 0.3130741000059061,
+          "tfidf_logistic_regression": 0.6811174000031315,
+          "char_ngram_tfidf_lr": 19.49872360000154,
+          "word_char_fusion_lr": 20.071449700015364,
+          "three_state_lr": 0.7487491000210866
         },
         "temperatures": {
           "logistic_regression_binary": 1.7,
           "linear_svm_binary": 0.4,
           "tfidf_logistic_regression": 1.9,
-          "char_ngram_tfidf_lr": 0.4,
-          "word_char_fusion_lr": 1.9,
+          "char_ngram_tfidf_lr": 0.6,
+          "word_char_fusion_lr": 1.7,
           "three_state_lr": 1.7
         },
         "split_meta": {
@@ -6387,6 +6375,8 @@
     "feature_key": "char_ngram_tfidf",
     "seed": 42,
     "temperature": 0.7,
+    "model_id": "f62c94a325c5f9636fac9d3653f06c259ed01d57ef40c93ace4df8a129509e6e",
+    "predictor_identity": "same model and training-fitted features on cal and test",
     "full_coverage": {
       "signal": "max_probability",
       "threshold": 0.0,
@@ -6407,86 +6397,86 @@
           {
             "target_coverage": 1.0,
             "signal": "max_probability",
-            "threshold": 0.23410102693172516,
-            "coverage": 0.995305,
-            "abstention_rate": 0.004695,
-            "retained_rows": 212,
-            "retained_accuracy": 0.627358,
-            "retained_macro_f1": 0.411241,
-            "retained_weighted_f1": 0.538371,
-            "retained_error_rate": 0.372642,
-            "retained_wrong_but_confident_rate": 0.004717,
-            "retained_ece": 0.107677
+            "threshold": 0.26777881969031864,
+            "coverage": 0.99061,
+            "abstention_rate": 0.00939,
+            "retained_rows": 211,
+            "retained_accuracy": 0.625592,
+            "retained_macro_f1": 0.408716,
+            "retained_weighted_f1": 0.53592,
+            "retained_error_rate": 0.374408,
+            "retained_wrong_but_confident_rate": 0.004739,
+            "retained_ece": 0.104711
           },
           {
             "target_coverage": 0.9,
             "signal": "max_probability",
-            "threshold": 0.3496169225185717,
-            "coverage": 0.877934,
-            "abstention_rate": 0.122066,
-            "retained_rows": 187,
-            "retained_accuracy": 0.663102,
-            "retained_macro_f1": 0.428081,
-            "retained_weighted_f1": 0.576511,
-            "retained_error_rate": 0.336898,
-            "retained_wrong_but_confident_rate": 0.005348,
-            "retained_ece": 0.1066
+            "threshold": 0.3374860418014916,
+            "coverage": 0.915493,
+            "abstention_rate": 0.084507,
+            "retained_rows": 195,
+            "retained_accuracy": 0.646154,
+            "retained_macro_f1": 0.424539,
+            "retained_weighted_f1": 0.554153,
+            "retained_error_rate": 0.353846,
+            "retained_wrong_but_confident_rate": 0.005128,
+            "retained_ece": 0.106012
           },
           {
             "target_coverage": 0.8,
             "signal": "max_probability",
-            "threshold": 0.43547434594941264,
-            "coverage": 0.657277,
-            "abstention_rate": 0.342723,
-            "retained_rows": 140,
-            "retained_accuracy": 0.807143,
-            "retained_macro_f1": 0.46965,
-            "retained_weighted_f1": 0.751415,
-            "retained_error_rate": 0.192857,
-            "retained_wrong_but_confident_rate": 0.007143,
-            "retained_ece": 0.125531
+            "threshold": 0.40272724213029704,
+            "coverage": 0.760563,
+            "abstention_rate": 0.239437,
+            "retained_rows": 162,
+            "retained_accuracy": 0.740741,
+            "retained_macro_f1": 0.460469,
+            "retained_weighted_f1": 0.665125,
+            "retained_error_rate": 0.259259,
+            "retained_wrong_but_confident_rate": 0.006173,
+            "retained_ece": 0.094793
           },
           {
             "target_coverage": 0.7,
             "signal": "max_probability",
-            "threshold": 0.4917913899559564,
-            "coverage": 0.549296,
-            "abstention_rate": 0.450704,
-            "retained_rows": 117,
-            "retained_accuracy": 0.837607,
-            "retained_macro_f1": 0.499536,
-            "retained_weighted_f1": 0.787435,
-            "retained_error_rate": 0.162393,
-            "retained_wrong_but_confident_rate": 0.008547,
-            "retained_ece": 0.129674
+            "threshold": 0.4532584348204879,
+            "coverage": 0.624413,
+            "abstention_rate": 0.375587,
+            "retained_rows": 133,
+            "retained_accuracy": 0.81203,
+            "retained_macro_f1": 0.469707,
+            "retained_weighted_f1": 0.75893,
+            "retained_error_rate": 0.18797,
+            "retained_wrong_but_confident_rate": 0.007519,
+            "retained_ece": 0.117918
           },
           {
             "target_coverage": 0.6,
             "signal": "max_probability",
-            "threshold": 0.5555622293507312,
-            "coverage": 0.478873,
-            "abstention_rate": 0.521127,
-            "retained_rows": 102,
-            "retained_accuracy": 0.872549,
-            "retained_macro_f1": 0.511077,
-            "retained_weighted_f1": 0.831853,
-            "retained_error_rate": 0.127451,
-            "retained_wrong_but_confident_rate": 0.009804,
-            "retained_ece": 0.120817
+            "threshold": 0.5068139167896643,
+            "coverage": 0.535211,
+            "abstention_rate": 0.464789,
+            "retained_rows": 114,
+            "retained_accuracy": 0.850877,
+            "retained_macro_f1": 0.50526,
+            "retained_weighted_f1": 0.801452,
+            "retained_error_rate": 0.149123,
+            "retained_wrong_but_confident_rate": 0.008772,
+            "retained_ece": 0.120024
           },
           {
             "target_coverage": 0.5,
             "signal": "max_probability",
-            "threshold": 0.635506971807458,
-            "coverage": 0.375587,
-            "abstention_rate": 0.624413,
-            "retained_rows": 80,
-            "retained_accuracy": 0.9375,
-            "retained_macro_f1": 0.695358,
-            "retained_weighted_f1": 0.924077,
-            "retained_error_rate": 0.0625,
-            "retained_wrong_but_confident_rate": 0.0125,
-            "retained_ece": 0.139122
+            "threshold": 0.5580460215135834,
+            "coverage": 0.474178,
+            "abstention_rate": 0.525822,
+            "retained_rows": 101,
+            "retained_accuracy": 0.881188,
+            "retained_macro_f1": 0.511908,
+            "retained_weighted_f1": 0.844038,
+            "retained_error_rate": 0.118812,
+            "retained_wrong_but_confident_rate": 0.009901,
+            "retained_ece": 0.124968
           }
         ]
       },
@@ -6496,7 +6486,7 @@
           {
             "target_coverage": 1.0,
             "signal": "neg_entropy",
-            "threshold": -3.059250791551358,
+            "threshold": -2.9190496008918383,
             "coverage": 1.0,
             "abstention_rate": 0.0,
             "retained_rows": 213,
@@ -6510,72 +6500,72 @@
           {
             "target_coverage": 0.9,
             "signal": "neg_entropy",
-            "threshold": -2.6614066882532774,
-            "coverage": 0.920188,
-            "abstention_rate": 0.079812,
-            "retained_rows": 196,
-            "retained_accuracy": 0.658163,
-            "retained_macro_f1": 0.420349,
-            "retained_weighted_f1": 0.57435,
-            "retained_error_rate": 0.341837,
-            "retained_wrong_but_confident_rate": 0.005102,
-            "retained_ece": 0.105518
+            "threshold": -2.633467655694077,
+            "coverage": 0.901408,
+            "abstention_rate": 0.098592,
+            "retained_rows": 192,
+            "retained_accuracy": 0.661458,
+            "retained_macro_f1": 0.411583,
+            "retained_weighted_f1": 0.575142,
+            "retained_error_rate": 0.338542,
+            "retained_wrong_but_confident_rate": 0.005208,
+            "retained_ece": 0.107766
           },
           {
             "target_coverage": 0.8,
             "signal": "neg_entropy",
-            "threshold": -2.3905175189510386,
-            "coverage": 0.666667,
-            "abstention_rate": 0.333333,
-            "retained_rows": 142,
-            "retained_accuracy": 0.788732,
-            "retained_macro_f1": 0.467168,
-            "retained_weighted_f1": 0.73509,
-            "retained_error_rate": 0.211268,
-            "retained_wrong_but_confident_rate": 0.007042,
-            "retained_ece": 0.130418
+            "threshold": -2.5073247257310283,
+            "coverage": 0.798122,
+            "abstention_rate": 0.201878,
+            "retained_rows": 170,
+            "retained_accuracy": 0.705882,
+            "retained_macro_f1": 0.407176,
+            "retained_weighted_f1": 0.626342,
+            "retained_error_rate": 0.294118,
+            "retained_wrong_but_confident_rate": 0.005882,
+            "retained_ece": 0.124737
           },
           {
             "target_coverage": 0.7,
             "signal": "neg_entropy",
-            "threshold": -2.1339100076049413,
-            "coverage": 0.511737,
-            "abstention_rate": 0.488263,
-            "retained_rows": 109,
-            "retained_accuracy": 0.87156,
-            "retained_macro_f1": 0.506744,
-            "retained_weighted_f1": 0.842298,
-            "retained_error_rate": 0.12844,
-            "retained_wrong_but_confident_rate": 0.009174,
-            "retained_ece": 0.137382
+            "threshold": -2.34498545962629,
+            "coverage": 0.638498,
+            "abstention_rate": 0.361502,
+            "retained_rows": 136,
+            "retained_accuracy": 0.801471,
+            "retained_macro_f1": 0.469831,
+            "retained_weighted_f1": 0.754341,
+            "retained_error_rate": 0.198529,
+            "retained_wrong_but_confident_rate": 0.007353,
+            "retained_ece": 0.127544
           },
           {
             "target_coverage": 0.6,
             "signal": "neg_entropy",
-            "threshold": -1.9443169891327736,
-            "coverage": 0.43662,
-            "abstention_rate": 0.56338,
-            "retained_rows": 93,
-            "retained_accuracy": 0.924731,
-            "retained_macro_f1": 0.614601,
-            "retained_weighted_f1": 0.908101,
-            "retained_error_rate": 0.075269,
-            "retained_wrong_but_confident_rate": 0.010753,
-            "retained_ece": 0.160106
+            "threshold": -2.2213628918421913,
+            "coverage": 0.577465,
+            "abstention_rate": 0.422535,
+            "retained_rows": 123,
+            "retained_accuracy": 0.845528,
+            "retained_macro_f1": 0.520084,
+            "retained_weighted_f1": 0.807811,
+            "retained_error_rate": 0.154472,
+            "retained_wrong_but_confident_rate": 0.00813,
+            "retained_ece": 0.13607
           },
           {
             "target_coverage": 0.5,
             "signal": "neg_entropy",
-            "threshold": -1.7207877699778924,
-            "coverage": 0.356808,
-            "abstention_rate": 0.643192,
-            "retained_rows": 76,
-            "retained_accuracy": 0.947368,
-            "retained_macro_f1": 0.812564,
-            "retained_weighted_f1": 0.940259,
-            "retained_error_rate": 0.052632,
-            "retained_wrong_but_confident_rate": 0.013158,
-            "retained_ece": 0.14838
+            "threshold": -2.0227034743087606,
+            "coverage": 0.464789,
+            "abstention_rate": 0.535211,
+            "retained_rows": 99,
+            "retained_accuracy": 0.909091,
+            "retained_macro_f1": 0.592436,
+            "retained_weighted_f1": 0.890972,
+            "retained_error_rate": 0.090909,
+            "retained_wrong_but_confident_rate": 0.010101,
+            "retained_ece": 0.158301
           }
         ]
       },
@@ -6585,86 +6575,86 @@
           {
             "target_coverage": 1.0,
             "signal": "margin",
-            "threshold": 0.010181517909607696,
-            "coverage": 0.967136,
-            "abstention_rate": 0.032864,
-            "retained_rows": 206,
-            "retained_accuracy": 0.635922,
-            "retained_macro_f1": 0.413157,
-            "retained_weighted_f1": 0.547087,
-            "retained_error_rate": 0.364078,
-            "retained_wrong_but_confident_rate": 0.004854,
-            "retained_ece": 0.100788
+            "threshold": 0.004232445209180702,
+            "coverage": 0.976526,
+            "abstention_rate": 0.023474,
+            "retained_rows": 208,
+            "retained_accuracy": 0.629808,
+            "retained_macro_f1": 0.41168,
+            "retained_weighted_f1": 0.541799,
+            "retained_error_rate": 0.370192,
+            "retained_wrong_but_confident_rate": 0.004808,
+            "retained_ece": 0.103392
           },
           {
             "target_coverage": 0.9,
             "signal": "margin",
-            "threshold": 0.050030856821190794,
-            "coverage": 0.887324,
-            "abstention_rate": 0.112676,
-            "retained_rows": 189,
-            "retained_accuracy": 0.671958,
-            "retained_macro_f1": 0.426959,
-            "retained_weighted_f1": 0.577787,
-            "retained_error_rate": 0.328042,
-            "retained_wrong_but_confident_rate": 0.005291,
-            "retained_ece": 0.087786
+            "threshold": 0.04732819324657067,
+            "coverage": 0.896714,
+            "abstention_rate": 0.103286,
+            "retained_rows": 191,
+            "retained_accuracy": 0.670157,
+            "retained_macro_f1": 0.426614,
+            "retained_weighted_f1": 0.575068,
+            "retained_error_rate": 0.329843,
+            "retained_wrong_but_confident_rate": 0.005236,
+            "retained_ece": 0.087002
           },
           {
             "target_coverage": 0.8,
             "signal": "margin",
-            "threshold": 0.14344087596904395,
-            "coverage": 0.732394,
-            "abstention_rate": 0.267606,
-            "retained_rows": 156,
-            "retained_accuracy": 0.737179,
-            "retained_macro_f1": 0.438685,
-            "retained_weighted_f1": 0.652138,
-            "retained_error_rate": 0.262821,
-            "retained_wrong_but_confident_rate": 0.00641,
-            "retained_ece": 0.094637
+            "threshold": 0.13413715767905054,
+            "coverage": 0.751174,
+            "abstention_rate": 0.248826,
+            "retained_rows": 160,
+            "retained_accuracy": 0.73125,
+            "retained_macro_f1": 0.43745,
+            "retained_weighted_f1": 0.643936,
+            "retained_error_rate": 0.26875,
+            "retained_wrong_but_confident_rate": 0.00625,
+            "retained_ece": 0.09111
           },
           {
             "target_coverage": 0.7,
             "signal": "margin",
-            "threshold": 0.2215848809443298,
-            "coverage": 0.605634,
-            "abstention_rate": 0.394366,
-            "retained_rows": 129,
-            "retained_accuracy": 0.79845,
-            "retained_macro_f1": 0.493475,
-            "retained_weighted_f1": 0.727663,
-            "retained_error_rate": 0.20155,
-            "retained_wrong_but_confident_rate": 0.007752,
-            "retained_ece": 0.100016
+            "threshold": 0.20710744447079785,
+            "coverage": 0.638498,
+            "abstention_rate": 0.361502,
+            "retained_rows": 136,
+            "retained_accuracy": 0.779412,
+            "retained_macro_f1": 0.446584,
+            "retained_weighted_f1": 0.702675,
+            "retained_error_rate": 0.220588,
+            "retained_wrong_but_confident_rate": 0.007353,
+            "retained_ece": 0.100307
           },
           {
             "target_coverage": 0.6,
             "signal": "margin",
-            "threshold": 0.3379241478207636,
-            "coverage": 0.488263,
-            "abstention_rate": 0.511737,
-            "retained_rows": 104,
-            "retained_accuracy": 0.836538,
-            "retained_macro_f1": 0.503478,
-            "retained_weighted_f1": 0.782488,
-            "retained_error_rate": 0.163462,
-            "retained_wrong_but_confident_rate": 0.009615,
-            "retained_ece": 0.138797
+            "threshold": 0.2740871824710074,
+            "coverage": 0.544601,
+            "abstention_rate": 0.455399,
+            "retained_rows": 116,
+            "retained_accuracy": 0.836207,
+            "retained_macro_f1": 0.500823,
+            "retained_weighted_f1": 0.781422,
+            "retained_error_rate": 0.163793,
+            "retained_wrong_but_confident_rate": 0.008621,
+            "retained_ece": 0.110636
           },
           {
             "target_coverage": 0.5,
             "signal": "margin",
-            "threshold": 0.47687858276153294,
-            "coverage": 0.356808,
-            "abstention_rate": 0.643192,
-            "retained_rows": 76,
-            "retained_accuracy": 0.934211,
-            "retained_macro_f1": 0.619803,
-            "retained_weighted_f1": 0.913916,
-            "retained_error_rate": 0.065789,
-            "retained_wrong_but_confident_rate": 0.013158,
-            "retained_ece": 0.128536
+            "threshold": 0.3604671060599761,
+            "coverage": 0.469484,
+            "abstention_rate": 0.530516,
+            "retained_rows": 100,
+            "retained_accuracy": 0.85,
+            "retained_macro_f1": 0.508291,
+            "retained_weighted_f1": 0.800851,
+            "retained_error_rate": 0.15,
+            "retained_wrong_but_confident_rate": 0.01,
+            "retained_ece": 0.134644
           }
         ]
       },
@@ -6674,137 +6664,137 @@
           {
             "target_coverage": 1.0,
             "signal": "combined",
-            "threshold": -0.1653240847722829,
-            "coverage": 0.995305,
-            "abstention_rate": 0.004695,
-            "retained_rows": 212,
-            "retained_accuracy": 0.627358,
-            "retained_macro_f1": 0.411241,
-            "retained_weighted_f1": 0.538371,
-            "retained_error_rate": 0.372642,
-            "retained_wrong_but_confident_rate": 0.004717,
-            "retained_ece": 0.107677
+            "threshold": -0.1324161635027472,
+            "coverage": 0.985915,
+            "abstention_rate": 0.014085,
+            "retained_rows": 210,
+            "retained_accuracy": 0.628571,
+            "retained_macro_f1": 0.409465,
+            "retained_weighted_f1": 0.540081,
+            "retained_error_rate": 0.371429,
+            "retained_wrong_but_confident_rate": 0.004762,
+            "retained_ece": 0.106582
           },
           {
             "target_coverage": 0.9,
             "signal": "combined",
-            "threshold": -0.04441848466280232,
-            "coverage": 0.859155,
-            "abstention_rate": 0.140845,
-            "retained_rows": 183,
-            "retained_accuracy": 0.688525,
-            "retained_macro_f1": 0.429152,
-            "retained_weighted_f1": 0.604172,
-            "retained_error_rate": 0.311475,
-            "retained_wrong_but_confident_rate": 0.005464,
-            "retained_ece": 0.089799
+            "threshold": -0.049829763466201604,
+            "coverage": 0.868545,
+            "abstention_rate": 0.131455,
+            "retained_rows": 185,
+            "retained_accuracy": 0.681081,
+            "retained_macro_f1": 0.427891,
+            "retained_weighted_f1": 0.594319,
+            "retained_error_rate": 0.318919,
+            "retained_wrong_but_confident_rate": 0.005405,
+            "retained_ece": 0.092698
           },
           {
             "target_coverage": 0.8,
             "signal": "combined",
-            "threshold": 0.06263594754359622,
-            "coverage": 0.676056,
-            "abstention_rate": 0.323944,
-            "retained_rows": 144,
-            "retained_accuracy": 0.791667,
-            "retained_macro_f1": 0.467302,
-            "retained_weighted_f1": 0.730662,
-            "retained_error_rate": 0.208333,
-            "retained_wrong_but_confident_rate": 0.006944,
-            "retained_ece": 0.117501
+            "threshold": 0.03901626920345064,
+            "coverage": 0.7277,
+            "abstention_rate": 0.2723,
+            "retained_rows": 155,
+            "retained_accuracy": 0.76129,
+            "retained_macro_f1": 0.463905,
+            "retained_weighted_f1": 0.689947,
+            "retained_error_rate": 0.23871,
+            "retained_wrong_but_confident_rate": 0.006452,
+            "retained_ece": 0.104814
           },
           {
             "target_coverage": 0.7,
             "signal": "combined",
-            "threshold": 0.14429223515928424,
-            "coverage": 0.558685,
-            "abstention_rate": 0.441315,
-            "retained_rows": 119,
-            "retained_accuracy": 0.848739,
-            "retained_macro_f1": 0.502176,
-            "retained_weighted_f1": 0.798386,
-            "retained_error_rate": 0.151261,
-            "retained_wrong_but_confident_rate": 0.008403,
-            "retained_ece": 0.127972
+            "threshold": 0.08861630072164522,
+            "coverage": 0.633803,
+            "abstention_rate": 0.366197,
+            "retained_rows": 135,
+            "retained_accuracy": 0.792593,
+            "retained_macro_f1": 0.458644,
+            "retained_weighted_f1": 0.730336,
+            "retained_error_rate": 0.207407,
+            "retained_wrong_but_confident_rate": 0.007407,
+            "retained_ece": 0.107464
           },
           {
             "target_coverage": 0.6,
             "signal": "combined",
-            "threshold": 0.24407532834168738,
-            "coverage": 0.483568,
-            "abstention_rate": 0.516432,
-            "retained_rows": 103,
-            "retained_accuracy": 0.873786,
-            "retained_macro_f1": 0.511077,
-            "retained_weighted_f1": 0.833486,
-            "retained_error_rate": 0.126214,
-            "retained_wrong_but_confident_rate": 0.009709,
-            "retained_ece": 0.121503
+            "threshold": 0.17086842225890586,
+            "coverage": 0.525822,
+            "abstention_rate": 0.474178,
+            "retained_rows": 112,
+            "retained_accuracy": 0.839286,
+            "retained_macro_f1": 0.501056,
+            "retained_weighted_f1": 0.785946,
+            "retained_error_rate": 0.160714,
+            "retained_wrong_but_confident_rate": 0.008929,
+            "retained_ece": 0.113567
           },
           {
             "target_coverage": 0.5,
             "signal": "combined",
-            "threshold": 0.3768503652409214,
-            "coverage": 0.366197,
-            "abstention_rate": 0.633803,
-            "retained_rows": 78,
-            "retained_accuracy": 0.935897,
-            "retained_macro_f1": 0.620384,
-            "retained_weighted_f1": 0.916157,
-            "retained_error_rate": 0.064103,
-            "retained_wrong_but_confident_rate": 0.012821,
-            "retained_ece": 0.133613
+            "threshold": 0.25915156346347734,
+            "coverage": 0.478873,
+            "abstention_rate": 0.521127,
+            "retained_rows": 102,
+            "retained_accuracy": 0.882353,
+            "retained_macro_f1": 0.511908,
+            "retained_weighted_f1": 0.845567,
+            "retained_error_rate": 0.117647,
+            "retained_wrong_but_confident_rate": 0.009804,
+            "retained_ece": 0.128168
           }
         ]
       }
     },
     "required_coverages_max_prob": {
       "100%": {
-        "retained_accuracy": 0.627358,
-        "coverage": 0.995305,
-        "abstention_rate": 0.004695,
-        "retained_macro_f1": 0.411241,
-        "wrong_but_confident_rate": 0.004717,
+        "retained_accuracy": 0.625592,
+        "coverage": 0.99061,
+        "abstention_rate": 0.00939,
+        "retained_macro_f1": 0.408716,
+        "wrong_but_confident_rate": 0.004739,
         "target_coverage": 1.0
       },
       "90%": {
-        "retained_accuracy": 0.663102,
-        "coverage": 0.877934,
-        "abstention_rate": 0.122066,
-        "retained_macro_f1": 0.428081,
-        "wrong_but_confident_rate": 0.005348,
+        "retained_accuracy": 0.646154,
+        "coverage": 0.915493,
+        "abstention_rate": 0.084507,
+        "retained_macro_f1": 0.424539,
+        "wrong_but_confident_rate": 0.005128,
         "target_coverage": 0.9
       },
       "80%": {
-        "retained_accuracy": 0.807143,
-        "coverage": 0.657277,
-        "abstention_rate": 0.342723,
-        "retained_macro_f1": 0.46965,
-        "wrong_but_confident_rate": 0.007143,
+        "retained_accuracy": 0.740741,
+        "coverage": 0.760563,
+        "abstention_rate": 0.239437,
+        "retained_macro_f1": 0.460469,
+        "wrong_but_confident_rate": 0.006173,
         "target_coverage": 0.8
       },
       "70%": {
-        "retained_accuracy": 0.837607,
-        "coverage": 0.549296,
-        "abstention_rate": 0.450704,
-        "retained_macro_f1": 0.499536,
-        "wrong_but_confident_rate": 0.008547,
+        "retained_accuracy": 0.81203,
+        "coverage": 0.624413,
+        "abstention_rate": 0.375587,
+        "retained_macro_f1": 0.469707,
+        "wrong_but_confident_rate": 0.007519,
         "target_coverage": 0.7
       },
       "60%": {
-        "retained_accuracy": 0.872549,
-        "coverage": 0.478873,
-        "abstention_rate": 0.521127,
-        "retained_macro_f1": 0.511077,
-        "wrong_but_confident_rate": 0.009804,
+        "retained_accuracy": 0.850877,
+        "coverage": 0.535211,
+        "abstention_rate": 0.464789,
+        "retained_macro_f1": 0.50526,
+        "wrong_but_confident_rate": 0.008772,
         "target_coverage": 0.6
       },
       "50%": {
-        "retained_accuracy": 0.9375,
-        "coverage": 0.375587,
-        "abstention_rate": 0.624413,
-        "retained_macro_f1": 0.695358,
-        "wrong_but_confident_rate": 0.0125,
+        "retained_accuracy": 0.881188,
+        "coverage": 0.474178,
+        "abstention_rate": 0.525822,
+        "retained_macro_f1": 0.511908,
+        "wrong_but_confident_rate": 0.009901,
         "target_coverage": 0.5
       }
     },
@@ -7201,35 +7191,35 @@
       ],
       "distinguishing_a": [
         {
-          "symptom": "i've_been_sneezing_a_lot",
-          "count": 2
-        },
-        {
           "symptom": "and_my_face_hurts._i've_been_coughing_up_phlegm",
           "count": 2
         },
         {
-          "symptom": "and_i've_been_coughing_up_a_lot_of_phlegm._my_lymph_nodes_are_also_swollen.",
+          "symptom": "i've_been_sneezing_a_lot",
+          "count": 2
+        },
+        {
+          "symptom": "i_have_a_really_bad_cold._my_nose_is_stuffy",
           "count": 1
         },
         {
-          "symptom": "i've_been_feeling_really_run_down_lately",
+          "symptom": "i've_been_feeling_really_sick_and_exhausted_lately._my_throat_is_scratchy",
           "count": 1
         },
         {
-          "symptom": "and_my_muscles_hurt._i_can't_smell_anything.",
+          "symptom": "i've_had_a_bad_cold_for_a_few_days._i've_been_coughing_up_phlegm_and_my_chest_hurts._i_can't_smell_anything_and_my_muscles_are_sore.",
           "count": 1
         },
         {
-          "symptom": "and_my_sinuses_are_completely_blocked._i_can't_smell_anything",
+          "symptom": "i've_been_coughing_a_lot_and_i'm_freezing._my_nose_is_stuffed_up_and_my_face_hurts._i've_also_been_coughing_up_some_nasty_stuff",
           "count": 1
         },
         {
-          "symptom": "i_have_a_really_bad_cold._i_can't_stop_coughing_and_my_sinuses_are_all_blocked._i_have_a_lot_of_mucus_and_my_chest_hurts._i_can't_smell_anything_and_my_muscles_are_really_sore.",
+          "symptom": "and_my_muscles_ache.",
           "count": 1
         },
         {
-          "symptom": "and_my_chest_feels_tight._i_can't_smell_anything",
+          "symptom": "and_i_feel_really_tired._i_have_a_lot_of_gunk_in_my_nose_and_throat",
           "count": 1
         }
       ],
@@ -7243,10 +7233,6 @@
           "count": 7
         },
         {
-          "symptom": "silver_like_dusting",
-          "count": 6
-        },
-        {
           "symptom": "small_dents_in_nails",
           "count": 6
         },
@@ -7255,7 +7241,7 @@
           "count": 6
         },
         {
-          "symptom": "joint_pain",
+          "symptom": "silver_like_dusting",
           "count": 6
         },
         {
@@ -7263,7 +7249,11 @@
           "count": 6
         },
         {
-          "symptom": "high_fever",
+          "symptom": "joint_pain",
+          "count": 6
+        },
+        {
+          "symptom": "burning_micturition",
           "count": 5
         }
       ],
@@ -7564,10 +7554,10 @@
             "logistic_regression_binary_macro_f1": 0.230169,
             "logistic_regression_binary_top2": 0.516432,
             "logistic_regression_binary_ece": 0.164558,
-            "char_ngram_tfidf_lr_accuracy": 0.399061,
-            "char_ngram_tfidf_lr_macro_f1": 0.214081,
-            "char_ngram_tfidf_lr_top2": 0.568075,
-            "char_ngram_tfidf_lr_ece": 0.117852
+            "char_ngram_tfidf_lr_accuracy": 0.201878,
+            "char_ngram_tfidf_lr_macro_f1": 0.05113,
+            "char_ngram_tfidf_lr_top2": 0.502347,
+            "char_ngram_tfidf_lr_ece": 0.240263
           },
           {
             "seed": 123,
@@ -7577,10 +7567,10 @@
             "logistic_regression_binary_macro_f1": 0.178423,
             "logistic_regression_binary_top2": 0.527027,
             "logistic_regression_binary_ece": 0.180737,
-            "char_ngram_tfidf_lr_accuracy": 0.513514,
-            "char_ngram_tfidf_lr_macro_f1": 0.283381,
-            "char_ngram_tfidf_lr_top2": 0.666667,
-            "char_ngram_tfidf_lr_ece": 0.217248
+            "char_ngram_tfidf_lr_accuracy": 0.207207,
+            "char_ngram_tfidf_lr_macro_f1": 0.071745,
+            "char_ngram_tfidf_lr_top2": 0.563063,
+            "char_ngram_tfidf_lr_ece": 0.23504
           },
           {
             "seed": 2026,
@@ -7590,10 +7580,10 @@
             "logistic_regression_binary_macro_f1": 0.214677,
             "logistic_regression_binary_top2": 0.568807,
             "logistic_regression_binary_ece": 0.192632,
-            "char_ngram_tfidf_lr_accuracy": 0.394495,
-            "char_ngram_tfidf_lr_macro_f1": 0.273377,
-            "char_ngram_tfidf_lr_top2": 0.674312,
-            "char_ngram_tfidf_lr_ece": 0.150038
+            "char_ngram_tfidf_lr_accuracy": 0.261468,
+            "char_ngram_tfidf_lr_macro_f1": 0.135087,
+            "char_ngram_tfidf_lr_top2": 0.366972,
+            "char_ngram_tfidf_lr_ece": 0.080689
           }
         ],
         "logistic_regression_binary": {
@@ -7616,20 +7606,20 @@
         },
         "char_ngram_tfidf_lr": {
           "accuracy": {
-            "mean": 0.43569,
-            "std": 0.055061
+            "mean": 0.223518,
+            "std": 0.026923
           },
           "macro_f1": {
-            "mean": 0.256946,
-            "std": 0.030584
+            "mean": 0.085987,
+            "std": 0.035724
           },
           "top2_accuracy": {
-            "mean": 0.636351,
-            "std": 0.048379
+            "mean": 0.477461,
+            "std": 0.081965
           },
           "ece": {
-            "mean": 0.161713,
-            "std": 0.041409
+            "mean": 0.185331,
+            "std": 0.074024
           }
         }
       },
@@ -7645,10 +7635,10 @@
             "logistic_regression_binary_macro_f1": 0.321671,
             "logistic_regression_binary_top2": 0.568075,
             "logistic_regression_binary_ece": 0.228214,
-            "char_ngram_tfidf_lr_accuracy": 0.511737,
-            "char_ngram_tfidf_lr_macro_f1": 0.298282,
-            "char_ngram_tfidf_lr_top2": 0.652582,
-            "char_ngram_tfidf_lr_ece": 0.178556
+            "char_ngram_tfidf_lr_accuracy": 0.455399,
+            "char_ngram_tfidf_lr_macro_f1": 0.245931,
+            "char_ngram_tfidf_lr_top2": 0.58216,
+            "char_ngram_tfidf_lr_ece": 0.144983
           },
           {
             "seed": 123,
@@ -7658,10 +7648,10 @@
             "logistic_regression_binary_macro_f1": 0.244889,
             "logistic_regression_binary_top2": 0.572072,
             "logistic_regression_binary_ece": 0.261599,
-            "char_ngram_tfidf_lr_accuracy": 0.576577,
-            "char_ngram_tfidf_lr_macro_f1": 0.348782,
-            "char_ngram_tfidf_lr_top2": 0.707207,
-            "char_ngram_tfidf_lr_ece": 0.242299
+            "char_ngram_tfidf_lr_accuracy": 0.436937,
+            "char_ngram_tfidf_lr_macro_f1": 0.239838,
+            "char_ngram_tfidf_lr_top2": 0.657658,
+            "char_ngram_tfidf_lr_ece": 0.134267
           },
           {
             "seed": 2026,
@@ -7671,10 +7661,10 @@
             "logistic_regression_binary_macro_f1": 0.266528,
             "logistic_regression_binary_top2": 0.573394,
             "logistic_regression_binary_ece": 0.180519,
-            "char_ngram_tfidf_lr_accuracy": 0.610092,
-            "char_ngram_tfidf_lr_macro_f1": 0.396321,
-            "char_ngram_tfidf_lr_top2": 0.715596,
-            "char_ngram_tfidf_lr_ece": 0.288925
+            "char_ngram_tfidf_lr_accuracy": 0.40367,
+            "char_ngram_tfidf_lr_macro_f1": 0.225812,
+            "char_ngram_tfidf_lr_top2": 0.674312,
+            "char_ngram_tfidf_lr_ece": 0.200128
           }
         ],
         "logistic_regression_binary": {
@@ -7697,20 +7687,20 @@
         },
         "char_ngram_tfidf_lr": {
           "accuracy": {
-            "mean": 0.566135,
-            "std": 0.040826
+            "mean": 0.432002,
+            "std": 0.021405
           },
           "macro_f1": {
-            "mean": 0.347795,
-            "std": 0.04003
+            "mean": 0.237194,
+            "std": 0.008424
           },
           "top2_accuracy": {
-            "mean": 0.691795,
-            "std": 0.027938
+            "mean": 0.638043,
+            "std": 0.040096
           },
           "ece": {
-            "mean": 0.236593,
-            "std": 0.045238
+            "mean": 0.159793,
+            "std": 0.028855
           }
         }
       },
@@ -7726,10 +7716,10 @@
             "logistic_regression_binary_macro_f1": 0.352284,
             "logistic_regression_binary_top2": 0.58216,
             "logistic_regression_binary_ece": 0.245642,
-            "char_ngram_tfidf_lr_accuracy": 0.535211,
-            "char_ngram_tfidf_lr_macro_f1": 0.404355,
+            "char_ngram_tfidf_lr_accuracy": 0.586854,
+            "char_ngram_tfidf_lr_macro_f1": 0.34476,
             "char_ngram_tfidf_lr_top2": 0.699531,
-            "char_ngram_tfidf_lr_ece": 0.097988
+            "char_ngram_tfidf_lr_ece": 0.276859
           },
           {
             "seed": 123,
@@ -7739,10 +7729,10 @@
             "logistic_regression_binary_macro_f1": 0.289113,
             "logistic_regression_binary_top2": 0.59009,
             "logistic_regression_binary_ece": 0.307522,
-            "char_ngram_tfidf_lr_accuracy": 0.72973,
-            "char_ngram_tfidf_lr_macro_f1": 0.516061,
-            "char_ngram_tfidf_lr_top2": 0.801802,
-            "char_ngram_tfidf_lr_ece": 0.337355
+            "char_ngram_tfidf_lr_accuracy": 0.418919,
+            "char_ngram_tfidf_lr_macro_f1": 0.183033,
+            "char_ngram_tfidf_lr_top2": 0.707207,
+            "char_ngram_tfidf_lr_ece": 0.152129
           },
           {
             "seed": 2026,
@@ -7752,10 +7742,10 @@
             "logistic_regression_binary_macro_f1": 0.340688,
             "logistic_regression_binary_top2": 0.605505,
             "logistic_regression_binary_ece": 0.228493,
-            "char_ngram_tfidf_lr_accuracy": 0.555046,
-            "char_ngram_tfidf_lr_macro_f1": 0.407043,
-            "char_ngram_tfidf_lr_top2": 0.761468,
-            "char_ngram_tfidf_lr_ece": 0.205287
+            "char_ngram_tfidf_lr_accuracy": 0.518349,
+            "char_ngram_tfidf_lr_macro_f1": 0.339456,
+            "char_ngram_tfidf_lr_top2": 0.752294,
+            "char_ngram_tfidf_lr_ece": 0.234952
           }
         ],
         "logistic_regression_binary": {
@@ -7778,20 +7768,20 @@
         },
         "char_ngram_tfidf_lr": {
           "accuracy": {
-            "mean": 0.606662,
-            "std": 0.087398
+            "mean": 0.508041,
+            "std": 0.068946
           },
           "macro_f1": {
-            "mean": 0.442486,
-            "std": 0.052037
+            "mean": 0.289083,
+            "std": 0.07502
           },
           "top2_accuracy": {
-            "mean": 0.754267,
-            "std": 0.042061
+            "mean": 0.719677,
+            "std": 0.023275
           },
           "ece": {
-            "mean": 0.213543,
-            "std": 0.097895
+            "mean": 0.221313,
+            "std": 0.051826
           }
         }
       },
@@ -7807,10 +7797,10 @@
             "logistic_regression_binary_macro_f1": 0.340454,
             "logistic_regression_binary_top2": 0.596244,
             "logistic_regression_binary_ece": 0.236304,
-            "char_ngram_tfidf_lr_accuracy": 0.746479,
-            "char_ngram_tfidf_lr_macro_f1": 0.654006,
-            "char_ngram_tfidf_lr_top2": 0.840376,
-            "char_ngram_tfidf_lr_ece": 0.31663
+            "char_ngram_tfidf_lr_accuracy": 0.643192,
+            "char_ngram_tfidf_lr_macro_f1": 0.446509,
+            "char_ngram_tfidf_lr_top2": 0.765258,
+            "char_ngram_tfidf_lr_ece": 0.298216
           },
           {
             "seed": 123,
@@ -7820,10 +7810,10 @@
             "logistic_regression_binary_macro_f1": 0.328472,
             "logistic_regression_binary_top2": 0.612613,
             "logistic_regression_binary_ece": 0.304779,
-            "char_ngram_tfidf_lr_accuracy": 0.648649,
-            "char_ngram_tfidf_lr_macro_f1": 0.478743,
-            "char_ngram_tfidf_lr_top2": 0.779279,
-            "char_ngram_tfidf_lr_ece": 0.164727
+            "char_ngram_tfidf_lr_accuracy": 0.684685,
+            "char_ngram_tfidf_lr_macro_f1": 0.472552,
+            "char_ngram_tfidf_lr_top2": 0.783784,
+            "char_ngram_tfidf_lr_ece": 0.304598
           },
           {
             "seed": 2026,
@@ -7833,10 +7823,10 @@
             "logistic_regression_binary_macro_f1": 0.398856,
             "logistic_regression_binary_top2": 0.62844,
             "logistic_regression_binary_ece": 0.234422,
-            "char_ngram_tfidf_lr_accuracy": 0.756881,
-            "char_ngram_tfidf_lr_macro_f1": 0.674065,
-            "char_ngram_tfidf_lr_top2": 0.908257,
-            "char_ngram_tfidf_lr_ece": 0.327187
+            "char_ngram_tfidf_lr_accuracy": 0.62844,
+            "char_ngram_tfidf_lr_macro_f1": 0.441986,
+            "char_ngram_tfidf_lr_top2": 0.747706,
+            "char_ngram_tfidf_lr_ece": 0.250221
           }
         ],
         "logistic_regression_binary": {
@@ -7859,20 +7849,20 @@
         },
         "char_ngram_tfidf_lr": {
           "accuracy": {
-            "mean": 0.717336,
-            "std": 0.048755
+            "mean": 0.652106,
+            "std": 0.023811
           },
           "macro_f1": {
-            "mean": 0.602271,
-            "std": 0.087731
+            "mean": 0.453682,
+            "std": 0.01347
           },
           "top2_accuracy": {
-            "mean": 0.842637,
-            "std": 0.052679
+            "mean": 0.765583,
+            "std": 0.014731
           },
           "ece": {
-            "mean": 0.269515,
-            "std": 0.074221
+            "mean": 0.284345,
+            "std": 0.02427
           }
         }
       },
@@ -7888,10 +7878,10 @@
             "logistic_regression_binary_macro_f1": 0.345476,
             "logistic_regression_binary_top2": 0.586854,
             "logistic_regression_binary_ece": 0.213964,
-            "char_ngram_tfidf_lr_accuracy": 0.737089,
-            "char_ngram_tfidf_lr_macro_f1": 0.641879,
-            "char_ngram_tfidf_lr_top2": 0.84507,
-            "char_ngram_tfidf_lr_ece": 0.268794
+            "char_ngram_tfidf_lr_accuracy": 0.624413,
+            "char_ngram_tfidf_lr_macro_f1": 0.408188,
+            "char_ngram_tfidf_lr_top2": 0.723005,
+            "char_ngram_tfidf_lr_ece": 0.192779
           },
           {
             "seed": 123,
@@ -7901,10 +7891,10 @@
             "logistic_regression_binary_macro_f1": 0.327492,
             "logistic_regression_binary_top2": 0.603604,
             "logistic_regression_binary_ece": 0.242454,
-            "char_ngram_tfidf_lr_accuracy": 0.765766,
-            "char_ngram_tfidf_lr_macro_f1": 0.622664,
-            "char_ngram_tfidf_lr_top2": 0.864865,
-            "char_ngram_tfidf_lr_ece": 0.26078
+            "char_ngram_tfidf_lr_accuracy": 0.576577,
+            "char_ngram_tfidf_lr_macro_f1": 0.370577,
+            "char_ngram_tfidf_lr_top2": 0.743243,
+            "char_ngram_tfidf_lr_ece": 0.16506
           },
           {
             "seed": 2026,
@@ -7914,10 +7904,10 @@
             "logistic_regression_binary_macro_f1": 0.425233,
             "logistic_regression_binary_top2": 0.637615,
             "logistic_regression_binary_ece": 0.210246,
-            "char_ngram_tfidf_lr_accuracy": 0.729358,
-            "char_ngram_tfidf_lr_macro_f1": 0.626738,
-            "char_ngram_tfidf_lr_top2": 0.889908,
-            "char_ngram_tfidf_lr_ece": 0.263356
+            "char_ngram_tfidf_lr_accuracy": 0.582569,
+            "char_ngram_tfidf_lr_macro_f1": 0.369906,
+            "char_ngram_tfidf_lr_top2": 0.743119,
+            "char_ngram_tfidf_lr_ece": 0.166861
           }
         ],
         "logistic_regression_binary": {
@@ -7940,20 +7930,20 @@
         },
         "char_ngram_tfidf_lr": {
           "accuracy": {
-            "mean": 0.744071,
-            "std": 0.015662
+            "mean": 0.59452,
+            "std": 0.021279
           },
           "macro_f1": {
-            "mean": 0.630427,
-            "std": 0.008267
+            "mean": 0.38289,
+            "std": 0.01789
           },
           "top2_accuracy": {
-            "mean": 0.866614,
-            "std": 0.018347
+            "mean": 0.736456,
+            "std": 0.009511
           },
           "ece": {
-            "mean": 0.26431,
-            "std": 0.003341
+            "mean": 0.1749,
+            "std": 0.012664
           }
         }
       }
@@ -8063,94 +8053,94 @@
       {
         "model": "char_ngram_tfidf_lr",
         "accuracy": {
-          "mean": 0.742438,
-          "std": 0.012786,
+          "mean": 0.608179,
+          "std": 0.034233,
           "values": [
-            0.737089,
-            0.765766,
-            0.729358,
-            0.73444,
-            0.745536
+            0.624413,
+            0.576577,
+            0.582569,
+            0.66805,
+            0.589286
           ]
         },
         "macro_f1": {
-          "mean": 0.641749,
-          "std": 0.034957,
+          "mean": 0.404872,
+          "std": 0.04953,
           "values": [
-            0.641879,
-            0.622664,
-            0.626738,
-            0.609015,
-            0.70845
+            0.408188,
+            0.370577,
+            0.369906,
+            0.499821,
+            0.37587
           ]
         },
         "top2_accuracy": {
-          "mean": 0.876448,
-          "std": 0.024022,
+          "mean": 0.762639,
+          "std": 0.052807,
           "values": [
-            0.84507,
-            0.864865,
-            0.889908,
+            0.723005,
+            0.743243,
+            0.743119,
             0.86722,
-            0.915179
+            0.736607
           ]
         },
         "ece": {
-          "mean": 0.258858,
-          "std": 0.016605,
+          "mean": 0.195829,
+          "std": 0.043508,
           "values": [
-            0.268794,
-            0.26078,
-            0.263356,
-            0.226993,
-            0.274368
+            0.192779,
+            0.16506,
+            0.166861,
+            0.280601,
+            0.173846
           ]
         }
       },
       {
         "model": "word_char_fusion_lr",
         "accuracy": {
-          "mean": 0.377989,
-          "std": 0.027764,
+          "mean": 0.430939,
+          "std": 0.054146,
           "values": [
-            0.370892,
-            0.328829,
-            0.385321,
-            0.394191,
-            0.410714
+            0.380282,
+            0.351351,
+            0.46789,
+            0.473029,
+            0.482143
           ]
         },
         "macro_f1": {
-          "mean": 0.366143,
-          "std": 0.040595,
+          "mean": 0.39145,
+          "std": 0.039006,
           "values": [
-            0.341942,
-            0.315293,
-            0.382781,
-            0.356069,
-            0.434628
+            0.363555,
+            0.336217,
+            0.41514,
+            0.394233,
+            0.448104
           ]
         },
         "top2_accuracy": {
-          "mean": 0.626572,
-          "std": 0.014865,
+          "mean": 0.631702,
+          "std": 0.019313,
           "values": [
             0.600939,
             0.621622,
-            0.62844,
-            0.639004,
-            0.642857
+            0.633028,
+            0.655602,
+            0.647321
           ]
         },
         "ece": {
-          "mean": 0.256765,
-          "std": 0.049968,
+          "mean": 0.174392,
+          "std": 0.037216,
           "values": [
-            0.276029,
-            0.322355,
-            0.282168,
-            0.224951,
-            0.17832
+            0.22774,
+            0.210911,
+            0.145752,
+            0.148828,
+            0.13873
           ]
         }
       },
@@ -8300,47 +8290,47 @@
       {
         "model": "char_ngram_tfidf_lr",
         "accuracy": {
-          "mean": 0.742438,
-          "std": 0.012786,
+          "mean": 0.608179,
+          "std": 0.034233,
           "values": [
-            0.737089,
-            0.765766,
-            0.729358,
-            0.73444,
-            0.745536
+            0.624413,
+            0.576577,
+            0.582569,
+            0.66805,
+            0.589286
           ]
         },
         "macro_f1": {
-          "mean": 0.641749,
-          "std": 0.034957,
+          "mean": 0.404872,
+          "std": 0.04953,
           "values": [
-            0.641879,
-            0.622664,
-            0.626738,
-            0.609015,
-            0.70845
+            0.408188,
+            0.370577,
+            0.369906,
+            0.499821,
+            0.37587
           ]
         },
         "top2_accuracy": {
-          "mean": 0.876448,
-          "std": 0.024022,
+          "mean": 0.762639,
+          "std": 0.052807,
           "values": [
-            0.84507,
-            0.864865,
-            0.889908,
+            0.723005,
+            0.743243,
+            0.743119,
             0.86722,
-            0.915179
+            0.736607
           ]
         },
         "ece": {
-          "mean": 0.258858,
-          "std": 0.016605,
+          "mean": 0.195829,
+          "std": 0.043508,
           "values": [
-            0.268794,
-            0.26078,
-            0.263356,
-            0.226993,
-            0.274368
+            0.192779,
+            0.16506,
+            0.166861,
+            0.280601,
+            0.173846
           ]
         }
       },
@@ -8439,6 +8429,53 @@
         }
       },
       {
+        "model": "word_char_fusion_lr",
+        "accuracy": {
+          "mean": 0.430939,
+          "std": 0.054146,
+          "values": [
+            0.380282,
+            0.351351,
+            0.46789,
+            0.473029,
+            0.482143
+          ]
+        },
+        "macro_f1": {
+          "mean": 0.39145,
+          "std": 0.039006,
+          "values": [
+            0.363555,
+            0.336217,
+            0.41514,
+            0.394233,
+            0.448104
+          ]
+        },
+        "top2_accuracy": {
+          "mean": 0.631702,
+          "std": 0.019313,
+          "values": [
+            0.600939,
+            0.621622,
+            0.633028,
+            0.655602,
+            0.647321
+          ]
+        },
+        "ece": {
+          "mean": 0.174392,
+          "std": 0.037216,
+          "values": [
+            0.22774,
+            0.210911,
+            0.145752,
+            0.148828,
+            0.13873
+          ]
+        }
+      },
+      {
         "model": "tfidf_logistic_regression",
         "accuracy": {
           "mean": 0.377989,
@@ -8484,53 +8521,6 @@
             0.178942
           ]
         }
-      },
-      {
-        "model": "word_char_fusion_lr",
-        "accuracy": {
-          "mean": 0.377989,
-          "std": 0.027764,
-          "values": [
-            0.370892,
-            0.328829,
-            0.385321,
-            0.394191,
-            0.410714
-          ]
-        },
-        "macro_f1": {
-          "mean": 0.366143,
-          "std": 0.040595,
-          "values": [
-            0.341942,
-            0.315293,
-            0.382781,
-            0.356069,
-            0.434628
-          ]
-        },
-        "top2_accuracy": {
-          "mean": 0.626572,
-          "std": 0.014865,
-          "values": [
-            0.600939,
-            0.621622,
-            0.62844,
-            0.639004,
-            0.642857
-          ]
-        },
-        "ece": {
-          "mean": 0.256765,
-          "std": 0.049968,
-          "values": [
-            0.276029,
-            0.322355,
-            0.282168,
-            0.224951,
-            0.17832
-          ]
-        }
       }
     ],
     "best_representation_under_lr": "char_ngram_tfidf_lr",
@@ -8542,60 +8532,85 @@
     "seed": 42,
     "model_name": "char_ngram_tfidf_lr",
     "feature_key": "char_ngram_tfidf",
+    "model_id": "f62c94a325c5f9636fac9d3653f06c259ed01d57ef40c93ace4df8a129509e6e",
     "target_coverage_from_cal": 0.8,
-    "threshold": 0.43547434594941264,
+    "threshold": 0.40272724213029704,
     "clean": {
       "signal": "max_probability",
-      "threshold": 0.43547434594941264,
-      "coverage": 0.657277,
-      "abstention_rate": 0.342723,
-      "retained_rows": 140,
-      "retained_accuracy": 0.807143,
-      "retained_macro_f1": 0.46965,
-      "retained_weighted_f1": 0.751415,
-      "retained_error_rate": 0.192857,
-      "retained_wrong_but_confident_rate": 0.007143,
-      "retained_ece": 0.125531
+      "threshold": 0.40272724213029704,
+      "coverage": 0.760563,
+      "abstention_rate": 0.239437,
+      "retained_rows": 162,
+      "retained_accuracy": 0.740741,
+      "retained_macro_f1": 0.460469,
+      "retained_weighted_f1": 0.665125,
+      "retained_error_rate": 0.259259,
+      "retained_wrong_but_confident_rate": 0.006173,
+      "retained_ece": 0.094793
     },
     "per_kind": {
+      "identity": {
+        "coverage": 0.760563,
+        "retained_accuracy": 0.740741,
+        "wrong_but_confident_rate": 0.006173,
+        "coverage_delta": 0.0,
+        "accuracy_delta": 0.0
+      },
+      "order_shuffle": {
+        "coverage": 0.760563,
+        "retained_accuracy": 0.740741,
+        "wrong_but_confident_rate": 0.006173,
+        "coverage_delta": 0.0,
+        "accuracy_delta": 0.0
+      },
       "synonym_swap": {
-        "coverage": 0.685446,
-        "retained_accuracy": 0.890411,
-        "wrong_but_confident_rate": 0.006849,
-        "coverage_delta": 0.028169,
-        "accuracy_delta": 0.083268
+        "coverage": 0.760563,
+        "retained_accuracy": 0.734568,
+        "wrong_but_confident_rate": 0.012346,
+        "coverage_delta": 0.0,
+        "accuracy_delta": -0.006173
       },
       "drop_noncritical": {
-        "coverage": 0.713615,
-        "retained_accuracy": 0.868421,
-        "wrong_but_confident_rate": 0.019737,
-        "coverage_delta": 0.056338,
-        "accuracy_delta": 0.061278
+        "coverage": 0.774648,
+        "retained_accuracy": 0.733333,
+        "wrong_but_confident_rate": 0.012121,
+        "coverage_delta": 0.014085,
+        "accuracy_delta": -0.007408
       },
       "add_filler": {
-        "coverage": 0.629108,
-        "retained_accuracy": 0.880597,
-        "wrong_but_confident_rate": 0.0,
-        "coverage_delta": -0.028169,
-        "accuracy_delta": 0.073454
+        "coverage": 0.694836,
+        "retained_accuracy": 0.75,
+        "wrong_but_confident_rate": 0.006757,
+        "coverage_delta": -0.065727,
+        "accuracy_delta": 0.009259
       },
       "colloquial_noise": {
-        "coverage": 0.680751,
-        "retained_accuracy": 0.889655,
-        "wrong_but_confident_rate": 0.006897,
-        "coverage_delta": 0.023474,
-        "accuracy_delta": 0.082512
+        "coverage": 0.746479,
+        "retained_accuracy": 0.742138,
+        "wrong_but_confident_rate": 0.0,
+        "coverage_delta": -0.014084,
+        "accuracy_delta": 0.001397
       }
     },
     "ideal_behavior_checks": [
       {
+        "kind": "identity",
+        "more_abstention": true,
+        "retained_acc_holds": true
+      },
+      {
+        "kind": "order_shuffle",
+        "more_abstention": true,
+        "retained_acc_holds": true
+      },
+      {
         "kind": "synonym_swap",
-        "more_abstention": false,
+        "more_abstention": true,
         "retained_acc_holds": true
       },
       {
         "kind": "drop_noncritical",
-        "more_abstention": false,
+        "more_abstention": true,
         "retained_acc_holds": true
       },
       {
@@ -8605,15 +8620,16 @@
       },
       {
         "kind": "colloquial_noise",
-        "more_abstention": false,
+        "more_abstention": true,
         "retained_acc_holds": true
       }
     ],
-    "note": "meaning-preserving perturbations only; Safety Gate unchanged"
+    "note": "input stress simulation; identity/order preserve symptom sets, other mutations may change medical meaning; Safety Gate unchanged",
+    "label_preservation_verified": false
   },
   "safety_check": {
     "pipeline": "Safety Gate → Direct Department → Selective Abstention → Care Routing",
-    "department_model_accuracy_for_context": 0.742438,
+    "department_model_accuracy_for_context": 0.608179,
     "invariants": [
       {
         "id": "emergency_never_rerouted_by_department",
@@ -8642,6 +8658,14 @@
       }
     ],
     "all_pass": true,
+    "safety_metrics_observed": {
+      "case_count": 142,
+      "red_flag_recall": 1.0,
+      "under_triage_rate": 0.0,
+      "over_triage_rate": 0.0,
+      "emergency_false_negative": 0
+    },
+    "verification_source": "evaluation.safety.evaluate_safety.evaluate_cases(load_cases()) executed",
     "disclaimer": "离线契约检查；不是临床 Safety 验证"
   },
   "readiness": {
@@ -8656,10 +8680,10 @@
       "department_coverage_ok": true
     },
     "evidence": [
-      "best=char_ngram_tfidf_lr acc=0.742438±0.012786 (Round3 direct was 0.450262)",
-      "retained acc @80/70/60% = 0.807143/0.837607/0.872549",
-      "wrong-but-confident @80% = 0.007143",
-      "ECE=0.258858",
+      "best=char_ngram_tfidf_lr acc=0.608179±0.034233 (Round3 direct was 0.450262)",
+      "retained acc @80/70/60% = 0.740741/0.81203/0.850877",
+      "wrong-but-confident @80% = 0.006173",
+      "ECE=0.195829",
       "test_departments=11",
       "safety_check=True"
     ],
@@ -8668,11 +8692,11 @@
   "eight_answers": {
     "1_best_direct_department_model": {
       "model": "char_ngram_tfidf_lr",
-      "accuracy": 0.742438,
+      "accuracy": 0.608179,
       "ranking": [
         [
           "char_ngram_tfidf_lr",
-          0.742438
+          0.608179
         ],
         [
           "linear_svm_binary",
@@ -8687,89 +8711,89 @@
           0.459129
         ],
         [
-          "tfidf_logistic_regression",
-          0.377989
+          "word_char_fusion_lr",
+          0.430939
         ]
       ]
     },
     "2_vs_round3_0_45": {
       "round3": 0.450262,
-      "round4": 0.742438,
-      "delta": 0.292176
+      "round4": 0.608179,
+      "delta": 0.157917
     },
     "3_risk_coverage": {
       "100%": {
-        "retained_accuracy": 0.627358,
-        "coverage": 0.995305,
-        "abstention_rate": 0.004695,
-        "retained_macro_f1": 0.411241,
-        "wrong_but_confident_rate": 0.004717,
+        "retained_accuracy": 0.625592,
+        "coverage": 0.99061,
+        "abstention_rate": 0.00939,
+        "retained_macro_f1": 0.408716,
+        "wrong_but_confident_rate": 0.004739,
         "target_coverage": 1.0
       },
       "90%": {
-        "retained_accuracy": 0.663102,
-        "coverage": 0.877934,
-        "abstention_rate": 0.122066,
-        "retained_macro_f1": 0.428081,
-        "wrong_but_confident_rate": 0.005348,
+        "retained_accuracy": 0.646154,
+        "coverage": 0.915493,
+        "abstention_rate": 0.084507,
+        "retained_macro_f1": 0.424539,
+        "wrong_but_confident_rate": 0.005128,
         "target_coverage": 0.9
       },
       "80%": {
-        "retained_accuracy": 0.807143,
-        "coverage": 0.657277,
-        "abstention_rate": 0.342723,
-        "retained_macro_f1": 0.46965,
-        "wrong_but_confident_rate": 0.007143,
+        "retained_accuracy": 0.740741,
+        "coverage": 0.760563,
+        "abstention_rate": 0.239437,
+        "retained_macro_f1": 0.460469,
+        "wrong_but_confident_rate": 0.006173,
         "target_coverage": 0.8
       },
       "70%": {
-        "retained_accuracy": 0.837607,
-        "coverage": 0.549296,
-        "abstention_rate": 0.450704,
-        "retained_macro_f1": 0.499536,
-        "wrong_but_confident_rate": 0.008547,
+        "retained_accuracy": 0.81203,
+        "coverage": 0.624413,
+        "abstention_rate": 0.375587,
+        "retained_macro_f1": 0.469707,
+        "wrong_but_confident_rate": 0.007519,
         "target_coverage": 0.7
       },
       "60%": {
-        "retained_accuracy": 0.872549,
-        "coverage": 0.478873,
-        "abstention_rate": 0.521127,
-        "retained_macro_f1": 0.511077,
-        "wrong_but_confident_rate": 0.009804,
+        "retained_accuracy": 0.850877,
+        "coverage": 0.535211,
+        "abstention_rate": 0.464789,
+        "retained_macro_f1": 0.50526,
+        "wrong_but_confident_rate": 0.008772,
         "target_coverage": 0.6
       },
       "50%": {
-        "retained_accuracy": 0.9375,
-        "coverage": 0.375587,
-        "abstention_rate": 0.624413,
-        "retained_macro_f1": 0.695358,
-        "wrong_but_confident_rate": 0.0125,
+        "retained_accuracy": 0.881188,
+        "coverage": 0.474178,
+        "abstention_rate": 0.525822,
+        "retained_macro_f1": 0.511908,
+        "wrong_but_confident_rate": 0.009901,
         "target_coverage": 0.5
       }
     },
     "4_accuracy_at_coverages": {
       "80%": {
-        "retained_accuracy": 0.807143,
-        "coverage": 0.657277,
-        "abstention_rate": 0.342723,
-        "retained_macro_f1": 0.46965,
-        "wrong_but_confident_rate": 0.007143,
+        "retained_accuracy": 0.740741,
+        "coverage": 0.760563,
+        "abstention_rate": 0.239437,
+        "retained_macro_f1": 0.460469,
+        "wrong_but_confident_rate": 0.006173,
         "target_coverage": 0.8
       },
       "70%": {
-        "retained_accuracy": 0.837607,
-        "coverage": 0.549296,
-        "abstention_rate": 0.450704,
-        "retained_macro_f1": 0.499536,
-        "wrong_but_confident_rate": 0.008547,
+        "retained_accuracy": 0.81203,
+        "coverage": 0.624413,
+        "abstention_rate": 0.375587,
+        "retained_macro_f1": 0.469707,
+        "wrong_but_confident_rate": 0.007519,
         "target_coverage": 0.7
       },
       "60%": {
-        "retained_accuracy": 0.872549,
-        "coverage": 0.478873,
-        "abstention_rate": 0.521127,
-        "retained_macro_f1": 0.511077,
-        "wrong_but_confident_rate": 0.009804,
+        "retained_accuracy": 0.850877,
+        "coverage": 0.535211,
+        "abstention_rate": 0.464789,
+        "retained_macro_f1": 0.50526,
+        "wrong_but_confident_rate": 0.008772,
         "target_coverage": 0.6
       }
     },
@@ -8828,47 +8852,47 @@
         {
           "model": "char_ngram_tfidf_lr",
           "accuracy": {
-            "mean": 0.742438,
-            "std": 0.012786,
+            "mean": 0.608179,
+            "std": 0.034233,
             "values": [
-              0.737089,
-              0.765766,
-              0.729358,
-              0.73444,
-              0.745536
+              0.624413,
+              0.576577,
+              0.582569,
+              0.66805,
+              0.589286
             ]
           },
           "macro_f1": {
-            "mean": 0.641749,
-            "std": 0.034957,
+            "mean": 0.404872,
+            "std": 0.04953,
             "values": [
-              0.641879,
-              0.622664,
-              0.626738,
-              0.609015,
-              0.70845
+              0.408188,
+              0.370577,
+              0.369906,
+              0.499821,
+              0.37587
             ]
           },
           "top2_accuracy": {
-            "mean": 0.876448,
-            "std": 0.024022,
+            "mean": 0.762639,
+            "std": 0.052807,
             "values": [
-              0.84507,
-              0.864865,
-              0.889908,
+              0.723005,
+              0.743243,
+              0.743119,
               0.86722,
-              0.915179
+              0.736607
             ]
           },
           "ece": {
-            "mean": 0.258858,
-            "std": 0.016605,
+            "mean": 0.195829,
+            "std": 0.043508,
             "values": [
-              0.268794,
-              0.26078,
-              0.263356,
-              0.226993,
-              0.274368
+              0.192779,
+              0.16506,
+              0.166861,
+              0.280601,
+              0.173846
             ]
           }
         },
@@ -8967,6 +8991,53 @@
           }
         },
         {
+          "model": "word_char_fusion_lr",
+          "accuracy": {
+            "mean": 0.430939,
+            "std": 0.054146,
+            "values": [
+              0.380282,
+              0.351351,
+              0.46789,
+              0.473029,
+              0.482143
+            ]
+          },
+          "macro_f1": {
+            "mean": 0.39145,
+            "std": 0.039006,
+            "values": [
+              0.363555,
+              0.336217,
+              0.41514,
+              0.394233,
+              0.448104
+            ]
+          },
+          "top2_accuracy": {
+            "mean": 0.631702,
+            "std": 0.019313,
+            "values": [
+              0.600939,
+              0.621622,
+              0.633028,
+              0.655602,
+              0.647321
+            ]
+          },
+          "ece": {
+            "mean": 0.174392,
+            "std": 0.037216,
+            "values": [
+              0.22774,
+              0.210911,
+              0.145752,
+              0.148828,
+              0.13873
+            ]
+          }
+        },
+        {
           "model": "tfidf_logistic_regression",
           "accuracy": {
             "mean": 0.377989,
@@ -9012,53 +9083,6 @@
               0.178942
             ]
           }
-        },
-        {
-          "model": "word_char_fusion_lr",
-          "accuracy": {
-            "mean": 0.377989,
-            "std": 0.027764,
-            "values": [
-              0.370892,
-              0.328829,
-              0.385321,
-              0.394191,
-              0.410714
-            ]
-          },
-          "macro_f1": {
-            "mean": 0.366143,
-            "std": 0.040595,
-            "values": [
-              0.341942,
-              0.315293,
-              0.382781,
-              0.356069,
-              0.434628
-            ]
-          },
-          "top2_accuracy": {
-            "mean": 0.626572,
-            "std": 0.014865,
-            "values": [
-              0.600939,
-              0.621622,
-              0.62844,
-              0.639004,
-              0.642857
-            ]
-          },
-          "ece": {
-            "mean": 0.256765,
-            "std": 0.049968,
-            "values": [
-              0.276029,
-              0.322355,
-              0.282168,
-              0.224951,
-              0.17832
-            ]
-          }
         }
       ]
     },
@@ -9074,10 +9098,10 @@
         "department_coverage_ok": true
       },
       "evidence": [
-        "best=char_ngram_tfidf_lr acc=0.742438±0.012786 (Round3 direct was 0.450262)",
-        "retained acc @80/70/60% = 0.807143/0.837607/0.872549",
-        "wrong-but-confident @80% = 0.007143",
-        "ECE=0.258858",
+        "best=char_ngram_tfidf_lr acc=0.608179±0.034233 (Round3 direct was 0.450262)",
+        "retained acc @80/70/60% = 0.740741/0.81203/0.850877",
+        "wrong-but-confident @80% = 0.006173",
+        "ECE=0.195829",
         "test_departments=11",
         "safety_check=True"
       ],

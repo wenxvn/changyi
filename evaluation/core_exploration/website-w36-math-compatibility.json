@@ -1,0 +1,20 @@
+{
+  "scope": "three_fixed_model_math_compatibility_controls_not_clinical_accuracy",
+  "weight_sha256": "a84c74f8927fe4fd7df33ee9f07177b70739bb8176b39b9745b39904794f1ba7",
+  "cli_source": "import json\nfrom pathlib import Path\nfrom inference import predict_with_details,load_symptom_alias_map,load_symptom_name_map\nfrom labels import load_disease_name_map\nmodel=json.loads(Path('models/symptom_disease_41_nb.json').read_text(encoding='utf-8'))\ncases=['cough','high_fever','cough;headache;nausea']\nprint(json.dumps([predict_with_details(model,x,disease_name_map=load_disease_name_map(),symptom_alias_map=load_symptom_alias_map(),symptom_name_map=load_symptom_name_map(),top_k=5) for x in cases],ensure_ascii=True))\n",
+  "rows": [
+    {
+      "input_codes": "cough",
+      "complete_result_equal": true
+    },
+    {
+      "input_codes": "high_fever",
+      "complete_result_equal": true
+    },
+    {
+      "input_codes": "cough;headache;nausea",
+      "complete_result_equal": true
+    }
+  ],
+  "failed": 0
+}

@@ -1,0 +1,61 @@
+{
+  "scope": "unresolved_exclusion_risk_policy_subset_not_completed_exclusion_or_clinical_validation",
+  "total": 6,
+  "failed": 4,
+  "rows": [
+    {
+      "text": "医生未能排除糖尿病",
+      "expected_state": "uncertain",
+      "state": "absent",
+      "expected_existing_status": null,
+      "status": "ROUTINE",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生尚未排除糖尿病",
+      "expected_state": "uncertain",
+      "state": "absent",
+      "expected_existing_status": null,
+      "status": "ROUTINE",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生未能排除心梗",
+      "expected_state": "uncertain",
+      "state": "absent",
+      "expected_existing_status": "EMERGENCY",
+      "status": "ROUTINE",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生尚未排除心梗",
+      "expected_state": "uncertain",
+      "state": "absent",
+      "expected_existing_status": "EMERGENCY",
+      "status": "ROUTINE",
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "医生不能排除心梗",
+      "expected_state": "uncertain",
+      "state": "uncertain",
+      "expected_existing_status": "EMERGENCY",
+      "status": "EMERGENCY",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有心梗",
+      "expected_state": "absent",
+      "state": "absent",
+      "expected_existing_status": "ROUTINE",
+      "status": "ROUTINE",
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

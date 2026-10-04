@@ -1,0 +1,61 @@
+{
+  "scope": "synthetic_input_scope_publication_not_unknown_symptom_detection",
+  "total": 6,
+  "failed": 6,
+  "rows": [
+    {
+      "text": "肚脐疼",
+      "expected_accepted": false,
+      "coverage": {},
+      "abstained": true,
+      "notice": "未获得可用于辅助疾病分析的明确症状，请补充描述。",
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "咳嗽和肚脐疼",
+      "expected_accepted": true,
+      "coverage": {},
+      "abstained": false,
+      "notice": null,
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "肚脐疼和咳嗽",
+      "expected_accepted": true,
+      "coverage": {},
+      "abstained": false,
+      "notice": null,
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "咳嗽",
+      "expected_accepted": true,
+      "coverage": {},
+      "abstained": false,
+      "notice": null,
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "cough",
+      "expected_accepted": true,
+      "coverage": {},
+      "abstained": false,
+      "notice": null,
+      "triage_status": "ROUTINE",
+      "pass": false
+    },
+    {
+      "text": "持续胸痛喘不上气，肚脐疼",
+      "expected_accepted": false,
+      "coverage": {},
+      "abstained": true,
+      "notice": "Safety Gate 优先处理当前风险，不展示疾病候选。",
+      "triage_status": "EMERGENCY",
+      "pass": false
+    }
+  ]
+}

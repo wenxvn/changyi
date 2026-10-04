@@ -1,0 +1,87 @@
+{
+  "scope": "bounded_self_report_safety_policy_not_clinical_validation",
+  "total": 10,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "现在咳嗽是不是，我喘不上气",
+      "expected_existing_emergency_priority": true,
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我喘不上气，咳嗽是不是",
+      "expected_existing_emergency_priority": true,
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "没有胸痛，我喘不上气",
+      "expected_existing_emergency_priority": true,
+      "triage_status": "EMERGENCY",
+      "matched_department": "全科医学科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽是不是，我现在喘不上气",
+      "expected_existing_emergency_priority": true,
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽是不是，如果我喘不上气",
+      "expected_existing_emergency_priority": false,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽是不是，我是否喘不上气",
+      "expected_existing_emergency_priority": false,
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "matched_department": null,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽是不是，我以前喘不上气",
+      "expected_existing_emergency_priority": false,
+      "triage_status": "URGENT",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽是不是，我没有喘不上气",
+      "expected_existing_emergency_priority": false,
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽是不是，我喘不上气是不是",
+      "expected_existing_emergency_priority": false,
+      "triage_status": "URGENT",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽是不是，我喘不上气已经好了",
+      "expected_existing_emergency_priority": false,
+      "triage_status": "URGENT",
+      "matched_department": "呼吸内科",
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

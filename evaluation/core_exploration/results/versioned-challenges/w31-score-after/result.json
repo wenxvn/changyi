@@ -1,0 +1,225 @@
+{
+  "scope": "synthetic_score_publication_contract_not_probability_calibration",
+  "total": 6,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "咳嗽",
+      "triage_status": "ROUTINE",
+      "candidate_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "relative_support_score",
+        "legacy_field": "probability",
+        "reference": "largest_score_in_current_top_candidates"
+      },
+      "prediction_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "uncalibrated_model_posterior",
+        "scope": "auxiliary_prototype_model"
+      },
+      "candidates": [
+        {
+          "name": "支气管炎/肺部感染",
+          "primary_category": "呼吸系统疾病",
+          "probability": 82,
+          "recommended_department": "呼吸内科",
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "secondary_category": "呼吸系统感染",
+          "source": "rule_engine"
+        },
+        {
+          "name": "肺炎",
+          "primary_category": "呼吸系统疾病",
+          "probability": 15,
+          "recommended_department": "呼吸与危重症医学科",
+          "relative_support_score": 15,
+          "score_kind": "relative_support_score",
+          "secondary_category": "模型预测疾病",
+          "source": "symptom_disease_model"
+        },
+        {
+          "name": "结核病",
+          "primary_category": "呼吸系统疾病",
+          "probability": 15,
+          "recommended_department": "呼吸与危重症医学科",
+          "relative_support_score": 15,
+          "score_kind": "relative_support_score",
+          "secondary_category": "模型预测疾病",
+          "source": "symptom_disease_model"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "text": "恶心",
+      "triage_status": "ROUTINE",
+      "candidate_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "relative_support_score",
+        "legacy_field": "probability",
+        "reference": "largest_score_in_current_top_candidates"
+      },
+      "prediction_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "uncalibrated_model_posterior",
+        "scope": "auxiliary_prototype_model"
+      },
+      "candidates": [
+        {
+          "name": "急性胃肠炎/脱水风险",
+          "primary_category": "消化系统疾病",
+          "probability": 82,
+          "recommended_department": "消化内科",
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "secondary_category": "消化系统感染类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "丁型肝炎",
+          "primary_category": "消化/感染相关疾病",
+          "probability": 29,
+          "recommended_department": "感染性疾病科",
+          "relative_support_score": 29,
+          "score_kind": "relative_support_score",
+          "secondary_category": "模型预测疾病",
+          "source": "symptom_disease_model"
+        },
+        {
+          "name": "登革热",
+          "primary_category": "感染性疾病",
+          "probability": 29,
+          "recommended_department": "感染性疾病科",
+          "relative_support_score": 29,
+          "score_kind": "relative_support_score",
+          "secondary_category": "模型预测疾病",
+          "source": "symptom_disease_model"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "text": "已确诊糖尿病",
+      "triage_status": "URGENT",
+      "candidate_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "relative_support_score",
+        "legacy_field": "probability",
+        "reference": "largest_score_in_current_top_candidates"
+      },
+      "prediction_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "uncalibrated_model_posterior",
+        "scope": "auxiliary_prototype_model"
+      },
+      "candidates": [
+        {
+          "name": "糖尿病",
+          "primary_category": "用户已知疾病",
+          "probability": 82,
+          "recommended_department": "内分泌代谢科",
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "secondary_category": "确诊/疑似疾病优先",
+          "source": "user_stated"
+        },
+        {
+          "name": "内分泌代谢慢病",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 58,
+          "recommended_department": "内分泌代谢科",
+          "relative_support_score": 58,
+          "score_kind": "relative_support_score",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        },
+        {
+          "name": "糖尿病/代谢异常",
+          "primary_category": "内分泌代谢疾病",
+          "probability": 52,
+          "recommended_department": "内分泌代谢科",
+          "relative_support_score": 52,
+          "score_kind": "relative_support_score",
+          "secondary_category": "慢病代谢类",
+          "source": "rule_engine"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "text": "假如咳嗽",
+      "triage_status": "ROUTINE",
+      "candidate_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "relative_support_score",
+        "legacy_field": "probability",
+        "reference": "largest_score_in_current_top_candidates"
+      },
+      "prediction_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "uncalibrated_model_posterior",
+        "scope": "auxiliary_prototype_model"
+      },
+      "candidates": [
+        {
+          "name": "待进一步门诊评估",
+          "primary_category": "未细分病类",
+          "probability": 82,
+          "recommended_department": "全科医学科",
+          "relative_support_score": 82,
+          "score_kind": "relative_support_score",
+          "secondary_category": "信息不足",
+          "source": "rule_engine"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "triage_status": "EMERGENCY",
+      "candidate_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "relative_support_score",
+        "legacy_field": "probability",
+        "reference": "largest_score_in_current_top_candidates"
+      },
+      "prediction_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "uncalibrated_model_posterior",
+        "scope": "auxiliary_prototype_model"
+      },
+      "candidates": [],
+      "pass": true
+    },
+    {
+      "text": "抽搐",
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "candidate_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "relative_support_score",
+        "legacy_field": "probability",
+        "reference": "largest_score_in_current_top_candidates"
+      },
+      "prediction_semantics": {
+        "calibrated": false,
+        "clinical_probability": false,
+        "kind": "uncalibrated_model_posterior",
+        "scope": "auxiliary_prototype_model"
+      },
+      "candidates": [],
+      "pass": true
+    }
+  ]
+}

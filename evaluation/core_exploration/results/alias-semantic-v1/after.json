@@ -1,0 +1,803 @@
+{
+  "scope": "structural_mapping_audit_and_synthetic_probe_not_clinical_validation",
+  "hashes": {
+    "data\\symptom_disease_model\\symptom_alias_zh.json": "1ccac55cfbf46315404d877227ba2bf0c93c2add7a36f72d81bc414691666061",
+    "data\\symptom_disease_model\\symptom_name_zh.json": "f6fd0584705646a94b0f621ec193c7a17684f95000624b16eac3cc325b5c249d",
+    "data\\symptom_disease_model\\models\\symptom_disease_41_nb.json": "a84c74f8927fe4fd7df33ee9f07177b70739bb8176b39b9745b39904794f1ba7"
+  },
+  "aliases": 98,
+  "unsupported_codes": [
+    "excessive_thirst",
+    "high_blood_pressure",
+    "spotting_ urination"
+  ],
+  "missing_names": [
+    "spotting_ urination"
+  ],
+  "rows": [
+    {
+      "alias": "一直打喷嚏",
+      "code": "continuous_sneezing",
+      "name": "连续打喷嚏",
+      "in_model": true
+    },
+    {
+      "alias": "乏力",
+      "code": "fatigue",
+      "name": "乏力",
+      "in_model": true
+    },
+    {
+      "alias": "低烧",
+      "code": "mild_fever",
+      "name": "低烧",
+      "in_model": true
+    },
+    {
+      "alias": "低热",
+      "code": "mild_fever",
+      "name": "低烧",
+      "in_model": true
+    },
+    {
+      "alias": "体重下降",
+      "code": "weight_loss",
+      "name": "体重下降",
+      "in_model": true
+    },
+    {
+      "alias": "便秘",
+      "code": "constipation",
+      "name": "便秘",
+      "in_model": true
+    },
+    {
+      "alias": "全身不适",
+      "code": "malaise",
+      "name": "全身不适",
+      "in_model": true
+    },
+    {
+      "alias": "关节疼",
+      "code": "joint_pain",
+      "name": "关节疼痛",
+      "in_model": true
+    },
+    {
+      "alias": "关节痛",
+      "code": "joint_pain",
+      "name": "关节疼痛",
+      "in_model": true
+    },
+    {
+      "alias": "出汗",
+      "code": "sweating",
+      "name": "出汗",
+      "in_model": true
+    },
+    {
+      "alias": "反酸",
+      "code": "acidity",
+      "name": "反酸",
+      "in_model": true
+    },
+    {
+      "alias": "发冷",
+      "code": "chills",
+      "name": "寒战",
+      "in_model": true
+    },
+    {
+      "alias": "发烧",
+      "code": "high_fever",
+      "name": "高烧",
+      "in_model": true
+    },
+    {
+      "alias": "发热",
+      "code": "high_fever",
+      "name": "高烧",
+      "in_model": true
+    },
+    {
+      "alias": "口渴",
+      "code": "excessive_thirst",
+      "name": "口渴明显",
+      "in_model": false
+    },
+    {
+      "alias": "吐了",
+      "code": "vomiting",
+      "name": "呕吐",
+      "in_model": true
+    },
+    {
+      "alias": "呕吐",
+      "code": "vomiting",
+      "name": "呕吐",
+      "in_model": true
+    },
+    {
+      "alias": "呼吸困难",
+      "code": "breathlessness",
+      "name": "呼吸困难",
+      "in_model": true
+    },
+    {
+      "alias": "咳嗽",
+      "code": "cough",
+      "name": "咳嗽",
+      "in_model": true
+    },
+    {
+      "alias": "咳痰",
+      "code": "phlegm",
+      "name": "有痰",
+      "in_model": true
+    },
+    {
+      "alias": "咽喉不适",
+      "code": "throat_irritation",
+      "name": "咽喉不适",
+      "in_model": true
+    },
+    {
+      "alias": "咽痛",
+      "code": "throat_irritation",
+      "name": "咽喉不适",
+      "in_model": true
+    },
+    {
+      "alias": "喉咙痛",
+      "code": "throat_irritation",
+      "name": "咽喉不适",
+      "in_model": true
+    },
+    {
+      "alias": "喘不上气",
+      "code": "breathlessness",
+      "name": "呼吸困难",
+      "in_model": true
+    },
+    {
+      "alias": "喷嚏",
+      "code": "continuous_sneezing",
+      "name": "连续打喷嚏",
+      "in_model": true
+    },
+    {
+      "alias": "嗅觉减退",
+      "code": "loss_of_smell",
+      "name": "嗅觉减退",
+      "in_model": true
+    },
+    {
+      "alias": "嗓子疼",
+      "code": "throat_irritation",
+      "name": "咽喉不适",
+      "in_model": true
+    },
+    {
+      "alias": "天旋地转",
+      "code": "spinning_movements",
+      "name": "眩晕",
+      "in_model": true
+    },
+    {
+      "alias": "头晕",
+      "code": "dizziness",
+      "name": "头晕",
+      "in_model": true
+    },
+    {
+      "alias": "头疼",
+      "code": "headache",
+      "name": "头痛",
+      "in_model": true
+    },
+    {
+      "alias": "头痛",
+      "code": "headache",
+      "name": "头痛",
+      "in_model": true
+    },
+    {
+      "alias": "寒战",
+      "code": "chills",
+      "name": "寒战",
+      "in_model": true
+    },
+    {
+      "alias": "小便疼",
+      "code": "burning_micturition",
+      "name": "尿痛",
+      "in_model": true
+    },
+    {
+      "alias": "尿多",
+      "code": "polyuria",
+      "name": "尿量增多",
+      "in_model": true
+    },
+    {
+      "alias": "尿急",
+      "code": "spotting_ urination",
+      "name": null,
+      "in_model": false
+    },
+    {
+      "alias": "尿痛",
+      "code": "burning_micturition",
+      "name": "尿痛",
+      "in_model": true
+    },
+    {
+      "alias": "尿频",
+      "code": "polyuria",
+      "name": "尿量增多",
+      "in_model": true
+    },
+    {
+      "alias": "尿黄",
+      "code": "dark_urine",
+      "name": "尿色深",
+      "in_model": true
+    },
+    {
+      "alias": "干咳",
+      "code": "cough",
+      "name": "咳嗽",
+      "in_model": true
+    },
+    {
+      "alias": "心慌",
+      "code": "palpitations",
+      "name": "心悸",
+      "in_model": true
+    },
+    {
+      "alias": "心跳快",
+      "code": "fast_heart_rate",
+      "name": "心跳加快",
+      "in_model": true
+    },
+    {
+      "alias": "恶心",
+      "code": "nausea",
+      "name": "恶心",
+      "in_model": true
+    },
+    {
+      "alias": "想吐",
+      "code": "nausea",
+      "name": "恶心",
+      "in_model": true
+    },
+    {
+      "alias": "意识模糊",
+      "code": "altered_sensorium",
+      "name": "意识异常",
+      "in_model": true
+    },
+    {
+      "alias": "打喷嚏",
+      "code": "continuous_sneezing",
+      "name": "连续打喷嚏",
+      "in_model": true
+    },
+    {
+      "alias": "抽搐",
+      "code": "muscle_pain",
+      "name": "肌肉疼痛",
+      "in_model": true
+    },
+    {
+      "alias": "拉肚子",
+      "code": "diarrhoea",
+      "name": "腹泻",
+      "in_model": true
+    },
+    {
+      "alias": "无力",
+      "code": "fatigue",
+      "name": "乏力",
+      "in_model": true
+    },
+    {
+      "alias": "有痰",
+      "code": "phlegm",
+      "name": "有痰",
+      "in_model": true
+    },
+    {
+      "alias": "气短",
+      "code": "breathlessness",
+      "name": "呼吸困难",
+      "in_model": true
+    },
+    {
+      "alias": "没力气",
+      "code": "fatigue",
+      "name": "乏力",
+      "in_model": true
+    },
+    {
+      "alias": "没胃口",
+      "code": "loss_of_appetite",
+      "name": "食欲下降",
+      "in_model": true
+    },
+    {
+      "alias": "流涕",
+      "code": "runny_nose",
+      "name": "流鼻涕",
+      "in_model": true
+    },
+    {
+      "alias": "流鼻涕",
+      "code": "runny_nose",
+      "name": "流鼻涕",
+      "in_model": true
+    },
+    {
+      "alias": "消化不良",
+      "code": "indigestion",
+      "name": "消化不良",
+      "in_model": true
+    },
+    {
+      "alias": "消瘦",
+      "code": "weight_loss",
+      "name": "体重下降",
+      "in_model": true
+    },
+    {
+      "alias": "烧心",
+      "code": "acidity",
+      "name": "反酸",
+      "in_model": true
+    },
+    {
+      "alias": "特别渴",
+      "code": "excessive_thirst",
+      "name": "口渴明显",
+      "in_model": false
+    },
+    {
+      "alias": "疲劳",
+      "code": "fatigue",
+      "name": "乏力",
+      "in_model": true
+    },
+    {
+      "alias": "痰多",
+      "code": "phlegm",
+      "name": "有痰",
+      "in_model": true
+    },
+    {
+      "alias": "瘙痒",
+      "code": "itching",
+      "name": "瘙痒",
+      "in_model": true
+    },
+    {
+      "alias": "皮疹",
+      "code": "skin_rash",
+      "name": "皮疹",
+      "in_model": true
+    },
+    {
+      "alias": "皮肤发黄",
+      "code": "yellowish_skin",
+      "name": "皮肤发黄",
+      "in_model": true
+    },
+    {
+      "alias": "皮肤痒",
+      "code": "itching",
+      "name": "瘙痒",
+      "in_model": true
+    },
+    {
+      "alias": "盗汗",
+      "code": "sweating",
+      "name": "出汗",
+      "in_model": true
+    },
+    {
+      "alias": "看不清",
+      "code": "blurred_and_distorted_vision",
+      "name": "视物模糊",
+      "in_model": true
+    },
+    {
+      "alias": "眩晕",
+      "code": "spinning_movements",
+      "name": "眩晕",
+      "in_model": true
+    },
+    {
+      "alias": "眼睛发黄",
+      "code": "yellowing_of_eyes",
+      "name": "眼睛发黄",
+      "in_model": true
+    },
+    {
+      "alias": "眼睛红",
+      "code": "redness_of_eyes",
+      "name": "眼睛发红",
+      "in_model": true
+    },
+    {
+      "alias": "眼红",
+      "code": "redness_of_eyes",
+      "name": "眼睛发红",
+      "in_model": true
+    },
+    {
+      "alias": "肌肉疼",
+      "code": "muscle_pain",
+      "name": "肌肉疼痛",
+      "in_model": true
+    },
+    {
+      "alias": "肌肉痛",
+      "code": "muscle_pain",
+      "name": "肌肉疼痛",
+      "in_model": true
+    },
+    {
+      "alias": "肚子疼",
+      "code": "abdominal_pain",
+      "name": "腹痛",
+      "in_model": true
+    },
+    {
+      "alias": "肚子痛",
+      "code": "abdominal_pain",
+      "name": "腹痛",
+      "in_model": true
+    },
+    {
+      "alias": "胃痛",
+      "code": "stomach_pain",
+      "name": "胃痛",
+      "in_model": true
+    },
+    {
+      "alias": "胃酸",
+      "code": "acidity",
+      "name": "反酸",
+      "in_model": true
+    },
+    {
+      "alias": "背痛",
+      "code": "back_pain",
+      "name": "背痛",
+      "in_model": true
+    },
+    {
+      "alias": "胸口痛",
+      "code": "chest_pain",
+      "name": "胸痛",
+      "in_model": true
+    },
+    {
+      "alias": "胸痛",
+      "code": "chest_pain",
+      "name": "胸痛",
+      "in_model": true
+    },
+    {
+      "alias": "胸闷",
+      "code": "breathlessness",
+      "name": "呼吸困难",
+      "in_model": true
+    },
+    {
+      "alias": "脖子疼",
+      "code": "neck_pain",
+      "name": "颈部疼痛",
+      "in_model": true
+    },
+    {
+      "alias": "腰痛",
+      "code": "back_pain",
+      "name": "背痛",
+      "in_model": true
+    },
+    {
+      "alias": "腹泻",
+      "code": "diarrhoea",
+      "name": "腹泻",
+      "in_model": true
+    },
+    {
+      "alias": "腹痛",
+      "code": "abdominal_pain",
+      "name": "腹痛",
+      "in_model": true
+    },
+    {
+      "alias": "血压高",
+      "code": "high_blood_pressure",
+      "name": "血压升高",
+      "in_model": false
+    },
+    {
+      "alias": "视物模糊",
+      "code": "blurred_and_distorted_vision",
+      "name": "视物模糊",
+      "in_model": true
+    },
+    {
+      "alias": "起疹子",
+      "code": "skin_rash",
+      "name": "皮疹",
+      "in_model": true
+    },
+    {
+      "alias": "连续打喷嚏",
+      "code": "continuous_sneezing",
+      "name": "连续打喷嚏",
+      "in_model": true
+    },
+    {
+      "alias": "闻不到味",
+      "code": "loss_of_smell",
+      "name": "嗅觉减退",
+      "in_model": true
+    },
+    {
+      "alias": "颈痛",
+      "code": "neck_pain",
+      "name": "颈部疼痛",
+      "in_model": true
+    },
+    {
+      "alias": "食欲差",
+      "code": "loss_of_appetite",
+      "name": "食欲下降",
+      "in_model": true
+    },
+    {
+      "alias": "高烧",
+      "code": "high_fever",
+      "name": "高烧",
+      "in_model": true
+    },
+    {
+      "alias": "高热",
+      "code": "high_fever",
+      "name": "高烧",
+      "in_model": true
+    },
+    {
+      "alias": "黄疸",
+      "code": "yellowish_skin",
+      "name": "皮肤发黄",
+      "in_model": true
+    },
+    {
+      "alias": "鼻塞",
+      "code": "congestion",
+      "name": "鼻塞",
+      "in_model": true
+    },
+    {
+      "alias": "鼻子堵",
+      "code": "congestion",
+      "name": "鼻塞",
+      "in_model": true
+    },
+    {
+      "alias": "鼻窦痛",
+      "code": "sinus_pressure",
+      "name": "鼻窦压痛",
+      "in_model": true
+    },
+    {
+      "alias": "鼻窦胀",
+      "code": "sinus_pressure",
+      "name": "鼻窦压痛",
+      "in_model": true
+    }
+  ],
+  "probes": [
+    {
+      "text": "抽搐",
+      "codes": [],
+      "disease": "",
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "抽搐",
+            "legacy_code": "muscle_pain",
+            "reason": "unverified_semantic_equivalence"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "抽搐和咳嗽",
+      "codes": [],
+      "disease": "",
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "抽搐",
+            "legacy_code": "muscle_pain",
+            "reason": "unverified_semantic_equivalence"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "肌肉痛",
+      "codes": [
+        "muscle_pain"
+      ],
+      "disease": "甲型肝炎",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [
+        {
+          "tag": "肌肉疼痛",
+          "standard_code": "muscle_pain",
+          "matched_terms": [
+            "肌肉痛"
+          ],
+          "body_system": "运动系统",
+          "red_flag_related": false,
+          "source": "symptom_disease_model"
+        }
+      ],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "没有抽搐但肌肉痛",
+      "codes": [
+        "muscle_pain"
+      ],
+      "disease": "甲型肝炎",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [
+        {
+          "tag": "肌肉疼痛",
+          "standard_code": "muscle_pain",
+          "matched_terms": [
+            "肌肉痛"
+          ],
+          "body_system": "运动系统",
+          "red_flag_related": false,
+          "source": "symptom_disease_model"
+        }
+      ],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "尿急和咳嗽",
+      "codes": [],
+      "disease": "",
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "尿急",
+            "legacy_code": "spotting_ urination",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "口渴和咳嗽",
+      "codes": [],
+      "disease": "",
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "口渴",
+            "legacy_code": "excessive_thirst",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "血压高和咳嗽",
+      "codes": [],
+      "disease": "",
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "血压高",
+            "legacy_code": "high_blood_pressure",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "发热",
+      "codes": [],
+      "disease": "",
+      "mapping_review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "发热",
+            "legacy_code": "high_fever",
+            "reason": "unsupported_model_feature"
+          }
+        ],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [],
+      "triage_status": "ROUTINE"
+    },
+    {
+      "text": "高烧",
+      "codes": [
+        "fever",
+        "high_fever"
+      ],
+      "disease": "水痘",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "tags": [
+        {
+          "tag": "高烧",
+          "standard_code": "fever",
+          "matched_terms": [
+            "高烧"
+          ],
+          "body_system": "感染/全身症状",
+          "red_flag_related": true,
+          "source": "symptom_disease_model"
+        },
+        {
+          "tag": "high_fever",
+          "standard_code": "high_fever",
+          "matched_terms": [
+            "高烧"
+          ],
+          "body_system": "感染/全身症状",
+          "red_flag_related": true,
+          "source": "symptom_disease_model"
+        }
+      ],
+      "triage_status": "URGENT"
+    }
+  ]
+}

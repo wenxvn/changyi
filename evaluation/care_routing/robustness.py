@@ -1,4 +1,4 @@
-"""Robustness simulation under meaning-preserving text/symptom perturbations.
+"""Input stress simulation under text/symptom perturbations.
 
 All perturbations are labeled ``robustness_simulation`` and never retrain on
 perturbed test items.
@@ -24,8 +24,8 @@ from .round3_split_audit import quota_split
 from .uncertainty import predict_distribution
 
 
-# Meaning-preserving synonym map on standard codes (not free text rewriting).
-# Used only to stress the classifier input representation.
+# Legacy code mutations, NOT synonyms or verified label-preserving changes.
+# Fever severity, headache/dizziness and pain locations have distinct meanings.
 SYNONYM_CODE_SWAPS: dict[str, list[str]] = {
     "high_fever": ["mild_fever"],
     "mild_fever": ["high_fever"],

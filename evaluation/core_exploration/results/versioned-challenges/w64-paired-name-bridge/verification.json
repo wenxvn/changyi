@@ -1,0 +1,8 @@
+{
+  "status": "PASSED_DECLARED_RESEARCH_EVIDENCE_CHECKS",
+  "result_sha256": "3c911adaf1dbafa9d876d7b5960f2e0ff4397fa5a60010393eaa7a5be3c42603",
+  "final_models": 30,
+  "model_hashes_and_finite_states": true,
+  "group_disjoint_and_full_case_partitions": true,
+  "clinical_validation": false
+}

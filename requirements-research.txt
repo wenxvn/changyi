@@ -1,0 +1,6 @@
+# Optional CPU-only research tools; formal Flask runtime does not depend on these.
+scikit-learn==1.9.1
+numpy==2.4.6
+scipy==1.17.1
+joblib==1.6.0
+threadpoolctl==3.7.0

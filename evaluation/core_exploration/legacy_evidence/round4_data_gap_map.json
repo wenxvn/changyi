@@ -1,0 +1,262 @@
+{
+  "threshold": 0.8,
+  "seed": 42,
+  "disclaimer": "模型数据优先级，不是医疗重要性排名",
+  "departments": [
+    {
+      "department": "呼吸内科",
+      "train_count": 31,
+      "component_count": 51,
+      "test_count": 18,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 14
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 4
+        }
+      ],
+      "unseen_symptom_ratio": 0.97037,
+      "learning_curve_slope": null,
+      "data_priority_score": 4.5,
+      "priority_rank": 1
+    },
+    {
+      "department": "泌尿外科",
+      "train_count": 32,
+      "component_count": 54,
+      "test_count": 11,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 11
+        }
+      ],
+      "unseen_symptom_ratio": 1.0,
+      "learning_curve_slope": null,
+      "data_priority_score": 4.1,
+      "priority_rank": 2
+    },
+    {
+      "department": "内分泌代谢科",
+      "train_count": 69,
+      "component_count": 58,
+      "test_count": 10,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 9
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ],
+      "unseen_symptom_ratio": 0.95,
+      "learning_curve_slope": null,
+      "data_priority_score": 4.0,
+      "priority_rank": 3
+    },
+    {
+      "department": "神经内科",
+      "train_count": 35,
+      "component_count": 49,
+      "test_count": 10,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 9
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ],
+      "unseen_symptom_ratio": 0.7,
+      "learning_curve_slope": null,
+      "data_priority_score": 4.0,
+      "priority_rank": 4
+    },
+    {
+      "department": "消化内科",
+      "train_count": 57,
+      "component_count": 49,
+      "test_count": 9,
+      "recall": 0.0,
+      "top_confusions": [
+        {
+          "pred": "感染性疾病科",
+          "count": 9
+        }
+      ],
+      "unseen_symptom_ratio": 0.712963,
+      "learning_curve_slope": null,
+      "data_priority_score": 3.9,
+      "priority_rank": 5
+    },
+    {
+      "department": "普外科",
+      "train_count": 39,
+      "component_count": 52,
+      "test_count": 10,
+      "recall": 0.3,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 7
+        }
+      ],
+      "unseen_symptom_ratio": 1.0,
+      "learning_curve_slope": null,
+      "data_priority_score": 2.8,
+      "priority_rank": 6
+    },
+    {
+      "department": "心血管内科",
+      "train_count": 40,
+      "component_count": 57,
+      "test_count": 11,
+      "recall": 0.636364,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 2
+        },
+        {
+          "pred": "呼吸与危重症医学科",
+          "count": 1
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ],
+      "unseen_symptom_ratio": 0.530303,
+      "learning_curve_slope": null,
+      "data_priority_score": 1.4909,
+      "priority_rank": 7
+    },
+    {
+      "department": "感染性疾病科",
+      "train_count": 205,
+      "component_count": 215,
+      "test_count": 41,
+      "recall": 0.804878,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 8
+        }
+      ],
+      "unseen_symptom_ratio": 0.832114,
+      "learning_curve_slope": null,
+      "data_priority_score": 1.3854,
+      "priority_rank": 8
+    },
+    {
+      "department": "肛肠科",
+      "train_count": 6,
+      "component_count": 1,
+      "test_count": 0,
+      "recall": null,
+      "top_confusions": [],
+      "unseen_symptom_ratio": null,
+      "learning_curve_slope": null,
+      "data_priority_score": 1.0,
+      "priority_rank": 9
+    },
+    {
+      "department": "骨科",
+      "train_count": 80,
+      "component_count": 104,
+      "test_count": 20,
+      "recall": 0.85,
+      "top_confusions": [
+        {
+          "pred": "皮肤科",
+          "count": 2
+        },
+        {
+          "pred": "感染性疾病科",
+          "count": 1
+        }
+      ],
+      "unseen_symptom_ratio": 0.804167,
+      "learning_curve_slope": null,
+      "data_priority_score": 0.75,
+      "priority_rank": 10
+    },
+    {
+      "department": "呼吸与危重症医学科",
+      "train_count": 69,
+      "component_count": 101,
+      "test_count": 20,
+      "recall": 1.0,
+      "top_confusions": [],
+      "unseen_symptom_ratio": 0.89,
+      "learning_curve_slope": null,
+      "data_priority_score": 0.0,
+      "priority_rank": 11
+    },
+    {
+      "department": "皮肤科",
+      "train_count": 177,
+      "component_count": 267,
+      "test_count": 53,
+      "recall": 1.0,
+      "top_confusions": [],
+      "unseen_symptom_ratio": 0.901258,
+      "learning_curve_slope": null,
+      "data_priority_score": 0.0,
+      "priority_rank": 12
+    }
+  ],
+  "top_n_to_collect": [
+    {
+      "department": "呼吸内科",
+      "reason": "recall=0.0, components=51, top_confusions=[{'pred': '皮肤科', 'count': 14}, {'pred': '感染性疾病科', 'count': 4}]"
+    },
+    {
+      "department": "泌尿外科",
+      "reason": "recall=0.0, components=54, top_confusions=[{'pred': '皮肤科', 'count': 11}]"
+    },
+    {
+      "department": "内分泌代谢科",
+      "reason": "recall=0.0, components=58, top_confusions=[{'pred': '皮肤科', 'count': 9}, {'pred': '感染性疾病科', 'count': 1}]"
+    },
+    {
+      "department": "神经内科",
+      "reason": "recall=0.0, components=49, top_confusions=[{'pred': '皮肤科', 'count': 9}, {'pred': '感染性疾病科', 'count': 1}]"
+    },
+    {
+      "department": "消化内科",
+      "reason": "recall=0.0, components=49, top_confusions=[{'pred': '感染性疾病科', 'count': 9}]"
+    },
+    {
+      "department": "普外科",
+      "reason": "recall=0.3, components=52, top_confusions=[{'pred': '皮肤科', 'count': 7}]"
+    },
+    {
+      "department": "心血管内科",
+      "reason": "recall=0.636364, components=57, top_confusions=[{'pred': '皮肤科', 'count': 2}, {'pred': '呼吸与危重症医学科', 'count': 1}]"
+    },
+    {
+      "department": "感染性疾病科",
+      "reason": "recall=0.804878, components=215, top_confusions=[{'pred': '皮肤科', 'count': 8}]"
+    },
+    {
+      "department": "肛肠科",
+      "reason": "recall=None, components=1, top_confusions=[]"
+    },
+    {
+      "department": "骨科",
+      "reason": "recall=0.85, components=104, top_confusions=[{'pred': '皮肤科', 'count': 2}, {'pred': '感染性疾病科', 'count': 1}]"
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "scope": "qualified_denial_layer_observation_no_clinical_oracle_no_runtime_change",
+  "total": 9,
+  "failed": 0,
+  "layer_disagreements": 1,
+  "clinical_verified_rows": 0,
+  "groups": {
+    "qualified_duration": 1,
+    "qualified_severity": 1,
+    "qualified_then_parent_report": 2,
+    "qualified_prominence": 1,
+    "clear_denial": 2,
+    "reported_emergency": 1,
+    "grade_control": 1
+  },
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "没有持续抽搐",
+      "target_word": "抽搐",
+      "legacy_code": "muscle_pain",
+      "group": "qualified_duration",
+      "rule_positive": false,
+      "aux_code_present": false,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "no_supported_symptoms",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科"
+    },
+    {
+      "text": "没有严重胸痛",
+      "target_word": "胸痛",
+      "legacy_code": "chest_pain",
+      "group": "qualified_severity",
+      "rule_positive": false,
+      "aux_code_present": true,
+      "layer_disagreement": true,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科"
+    },
+    {
+      "text": "我没有严重胸痛但有轻微胸痛",
+      "target_word": "胸痛",
+      "legacy_code": "chest_pain",
+      "group": "qualified_then_parent_report",
+      "rule_positive": true,
+      "aux_code_present": true,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "URGENT",
+      "matched_department": "心血管内科"
+    },
+    {
+      "text": "没有明显呼吸困难",
+      "target_word": "呼吸困难",
+      "legacy_code": "breathlessness",
+      "group": "qualified_prominence",
+      "rule_positive": false,
+      "aux_code_present": false,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [],
+        "absent": [
+          "breathlessness"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "no_supported_symptoms",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科"
+    },
+    {
+      "text": "没有持续咳嗽但偶尔咳嗽",
+      "target_word": "咳嗽",
+      "legacy_code": "cough",
+      "group": "qualified_then_parent_report",
+      "rule_positive": true,
+      "aux_code_present": true,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [
+          "cough"
+        ],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "contradictory_symptom_assertions",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科"
+    },
+    {
+      "text": "没有胸痛",
+      "target_word": "胸痛",
+      "legacy_code": "chest_pain",
+      "group": "clear_denial",
+      "rule_positive": false,
+      "aux_code_present": false,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "no_supported_symptoms",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科"
+    },
+    {
+      "text": "我有持续胸痛喘不上气",
+      "target_word": "胸痛",
+      "legacy_code": "chest_pain",
+      "group": "reported_emergency",
+      "rule_positive": true,
+      "aux_code_present": true,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [
+          "breathlessness",
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科"
+    },
+    {
+      "text": "没有咳嗽",
+      "target_word": "咳嗽",
+      "legacy_code": "cough",
+      "group": "clear_denial",
+      "rule_positive": false,
+      "aux_code_present": false,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": true,
+      "abstain_reason": "no_supported_symptoms",
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科"
+    },
+    {
+      "text": "没有高烧但有低烧",
+      "target_word": "高烧",
+      "legacy_code": "high_fever",
+      "group": "grade_control",
+      "rule_positive": false,
+      "aux_code_present": false,
+      "layer_disagreement": false,
+      "execution_valid": true,
+      "clinical_label_verified": false,
+      "assertions": {
+        "present": [
+          "fever",
+          "mild_fever"
+        ],
+        "absent": [
+          "high_fever"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "abstained": false,
+      "abstain_reason": null,
+      "mapping_review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_model_evidence_not_safety_gate"
+      },
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科"
+    }
+  ]
+}

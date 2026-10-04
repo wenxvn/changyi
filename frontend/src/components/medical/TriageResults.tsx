@@ -110,6 +110,8 @@ function CareResult({ result, onNavigate, pathUpdated }: TriageResultsProps) {
   const missing = (result.triage?.followup?.missing_slots ?? []).filter(Boolean).slice(0, 3);
   const abstainReason = typeof result.triage?.abstain_reason === "string" ? result.triage.abstain_reason : null;
   const uncertainty = typeof result.triage?.uncertainty_level === "string" ? result.triage.uncertainty_level : null;
+  const modelNotice = result.disease_prediction?.notice && result.disease_prediction.abstain_reason !== "safety_gate_priority"
+    ? result.disease_prediction.notice : null;
 
   return (
     <>
@@ -155,10 +157,14 @@ function CareResult({ result, onNavigate, pathUpdated }: TriageResultsProps) {
               {abstainReason ? <li key="abstain">拒答原因：{abstainReason}</li> : null}
               {uncertainty ? <li key="uncertainty">不确定性标记：{uncertainty}<small>（来自后端字段，非医学置信度）</small></li> : null}
               {reasons.map((reason) => <li key={reason}>{reason}</li>)}
-              {missing.length > 0 ? <li key="missing">还需补充：{missing.join("、")}</li> : <li key="nodanger">描述中未出现需要立即急诊的危险信号</li>}
+              {missing.length > 0 ? <li key="missing">还需补充：{missing.join("、")}</li> : !insufficient ? <li key="nodanger">当前描述尚未触发急症规则</li> : null}
             </ul>
           </div>
         ) : null}
+
+        {modelNotice ? <p className="care-result__reason" data-testid={result.disease_prediction?.abstained ? "model-abstention-notice" : "model-scope-notice"}>
+          {modelNotice} <small>此说明仅针对辅助疾病分析，不能用于判断就医是否安全。</small>
+        </p> : null}
 
         <ol className="care-result__steps" aria-label="就医路径进度">
           {steps.map((step, index) => (
@@ -193,19 +199,22 @@ export function CareActions({
   onLoadRecommendations,
   onNavigate,
 }: CareActionsProps) {
+  const routingDeferred = safety === "INSUFFICIENT_INFORMATION" && !direction;
   return (
     <section className="care-actions" aria-labelledby="care-actions-title">
       <div className="care-actions__heading">
         <h3 id="care-actions-title">下一步</h3>
-        <span>{recommendationsReady ? "资源路径已就绪" : recommendationsLoading ? "正在匹配常州资源…" : "按顺序完成即可"}</span>
+        <span>{routingDeferred ? "待补充与复核" : recommendationsReady ? "资源路径已就绪" : recommendationsLoading ? "正在匹配常州资源…" : "按顺序完成即可"}</span>
       </div>
       <ul className="care-actions__list">
         <li className={recommendationsReady ? "is-done" : "is-current"}>
           <MapPinned size={16} aria-hidden="true" />
           <div>
-            <strong>{recommendationsReady ? "已匹配医院与医生" : "匹配常州医院与医生"}</strong>
+            <strong>{routingDeferred ? "先确认危险信号" : recommendationsReady ? "已匹配医院与医生" : "匹配常州医院与医生"}</strong>
             <span>
-              {recommendationsReady
+              {routingDeferred
+                ? "请先补充信息并结合专业复核，再整理就医方向。"
+                : recommendationsReady
                 ? "资源路径来自公开资料；可直接打开导航。"
                 : recommendationsLoading
                   ? "正在按安全状态与科室方向读取公开资源。"
@@ -216,20 +225,22 @@ export function CareActions({
       </ul>
       <div className="care-actions__buttons">
         <Button
-          variant={recommendationsReady ? "secondary" : "primary"}
+          variant={routingDeferred || recommendationsReady ? "secondary" : "primary"}
           onClick={
-            recommendationsReady
+            routingDeferred
+              ? () => onNavigate(`/resources?${hospitalContextQuery(direction, safety)}`)
+              : recommendationsReady
               ? () => onNavigate(`/resources?${hospitalContextQuery(direction, safety)}`)
               : onLoadRecommendations
           }
           disabled={recommendationsLoading}
           icon={<ArrowRight size={16} aria-hidden="true" />}
         >
-          查看当前资源路径
+          {routingDeferred ? "浏览医疗资源目录" : "查看当前资源路径"}
         </Button>
-        <Button variant="ghost" onClick={onOpenPreferences} icon={<SlidersHorizontal size={15} aria-hidden="true" />}>
+        {!routingDeferred ? <Button variant="ghost" onClick={onOpenPreferences} icon={<SlidersHorizontal size={15} aria-hidden="true" />}>
           调整到院偏好
-        </Button>
+        </Button> : null}
       </div>
       {recommendationsError ? (
         <p className="care-actions__error" role="alert">

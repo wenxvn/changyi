@@ -1,0 +1,204 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "time_utc": "2026-10-03T14:43:32.457661+00:00",
+  "challenge": "risk_reconfirmation_audit",
+  "identity": {
+    "schema_version": 2,
+    "code": {
+      "app.py": "826cad26dd565e0bc6d0435a5fea0b8570bc7a221ffd72468157cd50aece9f2f",
+      "backend/app/__init__.py": "fcbb09b1ee3af3e15f05820201b5f865a2fe7b2e99f72ceeb6bdb449531bb8af",
+      "backend/app/api/__init__.py": "5b4e6e94dff279a07e12d98fc5239d8b61efd2a8ac57309414e10ecc6b38cbc1",
+      "backend/app/api/v1/__init__.py": "1d6be92a2f2582c7e268e11c8962929f8cdd6332a5df4e8e54ef0f7f0ea4c92d",
+      "backend/app/api/v1/response.py": "f4362fc75cdc6dcd52f134b7c53cbe271c34fa52687b53b86af618e06d74c0c1",
+      "backend/app/api/v1/routes.py": "79115b43e0e5d7d00cef40b183c76dde3c084910c7cc2e7bda55277ec5d9aa43",
+      "backend/app/api/v1/schemas/__init__.py": "cba5d47f83f0ef69f477057a4fc8c013c8420a74cf975176b0c92ec662428fca",
+      "backend/app/api/v1/schemas/recommendation.py": "962ca50f2f693a7aa1dcf890bc2b87de76e01fb5f684bbe6bde5893bf853d684",
+      "backend/app/application/__init__.py": "e66202397d609be583ce4a2cfe87983f1ba7f62c4b09b2898a6b6f6bcb8c3350",
+      "backend/app/application/evidence.py": "3ffc098a673c62ca646290857ddfebea81b1b135af4c35e3da89f99cc610d170",
+      "backend/app/application/map_view.py": "05b78230736ec5597f1fec9cb082f880528b0dcd6f3fbf6762ffc9caeeffde9e",
+      "backend/app/application/recommendation.py": "e68e7a30008e2139f1f9da94fef1080b784f8042b8a352e84f957ac7bfb42886",
+      "backend/app/application/regions.py": "d6aececcbb6e09d6be5c675456bde0dd2275a6ebd7aca004a5389299912e91fc",
+      "backend/app/application/resources.py": "236742a4e0a71dd6c8a0a81f777dc4a637b8abc32688a62cce8531bf9d0065e9",
+      "backend/app/application/summary.py": "ef868daa785a1219402073c6c3a4b5eebbacd44853fc79ce5d57571ae9f99ad2",
+      "backend/app/application/triage.py": "b9f8eaee74084710a420c16492370d3511ab2db0abed00dd8b53886b05bd4e0d",
+      "backend/app/composition.py": "65437898d9bad0c59a562a0adeb1a9e9dfb3e7374d6353d3a886c9d37d4aac03",
+      "backend/app/config.py": "add80619f7e42202e44adbf35e944bd11df0537bea3c49355647623bd36ba273",
+      "backend/app/domain/__init__.py": "4a51c84b398adb5791c2bb567c8dd2b80c7df29a78cc80103e7600cae084bab1",
+      "backend/app/domain/medical_input.py": "4724bbafad04314a8989b75d9b66145e500d26e8aff8ccecf70b09ac2fc4dbd6",
+      "backend/app/domain/recommendation/__init__.py": "20ac5b6a56ec299313a1926c379cc0288f580e04c994d8327c54717e42ebc582",
+      "backend/app/domain/recommendation/candidate.py": "4f721fbe945592c5d791a9982330485497377d1a9966fe5319204b408dd9c15f",
+      "backend/app/domain/recommendation/candidates.py": "5d575bbd3782f44875be42b4934953c234445ae9ceba143f48cedc156e59713c",
+      "backend/app/domain/recommendation/features.py": "fe1a851552ae4085239b99eb26a08d42cdf4cc9fadbf3641a21e263046f584b5",
+      "backend/app/domain/recommendation/pipeline.py": "2262dc1f40e6776ba819c6fa261f621aaf8164f5a36e005cc08c41766f0ddc54",
+      "backend/app/domain/recommendation/resource_policy.py": "ece31a61bd383bf529baa37f5a84c6219c99e80128d17608ff331cb5b464c3f2",
+      "backend/app/domain/recommendation/routing_preferences.py": "58ea1b671a0b1ff35a3056712b492515da7d3367c4208b99a970bbd380009935",
+      "backend/app/domain/recommendation/scoring.py": "fe09c6e7de45cd71a4a817c93f8c010add0b101770b329a81a73e684dcf7a154",
+      "backend/app/domain/recommendation/traffic.py": "cdecf28c29e8222a632193ab5bdf78e6324cf3bc3d781582472ed4799e47649b",
+      "backend/app/domain/recommendation/transit_quality.py": "1b2aea6b1fc72cce56ec58f098a713198d7729b45a9ae48b492d80c130be3458",
+      "backend/app/domain/recommendation/visit_intent.py": "8042f86f4a0f2e2c34b8ff0a2b3f1baf438ffac73a47c494f65093eb57ea0a3c",
+      "backend/app/domain/symptom_assertions.py": "24b5fe2c7a06e07d3e3b93e8c3933bc87cb11626ff007843d884f18abcce994d",
+      "backend/app/domain/triage/__init__.py": "86fd079388769ee9b0066eb0cfc6b10fb81d0495306af6547250be918bab3d42",
+      "backend/app/domain/triage/publication.py": "d458d2a334d0e05dcbe934ec7da958f27bc151c08ce00eb595126362eddb9fe0",
+      "backend/app/domain/triage/safety_gate.py": "aa2f2fe04bddadc9627b258800d4a92345338a7165a7f6bbfce87748bf62f423",
+      "backend/app/infrastructure/__init__.py": "9d0e80389d32318cf98071351a83945a9bfc69f7eb86d80ba1009f5c2d04d050",
+      "backend/app/infrastructure/data/__init__.py": "303a87f5752be2cc60183c8cb80ba927a28fe0f4b5dfe409ee1108973bb7824a",
+      "backend/app/infrastructure/data/import_pipeline.py": "c4d14530607a5534e42d07ad2f1fec86e09a02e3f43b872a7ffa5c5847d0ec7f",
+      "backend/app/infrastructure/data/loaders.py": "232196056cb4fe956db6d7d1c60e89c9c709280fb49363872ff00c36fb4b02cd",
+      "backend/app/infrastructure/models/__init__.py": "5f34b8f7ed01727246076eb378317affe2c8eb3fa16667543b2134120aeb71e5",
+      "backend/app/infrastructure/models/symptom_disease.py": "6f7e250869910dcc8f11f262de17ca92c6628da0de8fee369d212548e411c559",
+      "backend/app/infrastructure/regions/__init__.py": "2e2a8bf3cde64708d46eae0f9a3f444a223c7f3e5a9edfaba19bffb6016f635e",
+      "backend/app/infrastructure/regions/registry.py": "5d696aee9501b88fde3c45542ee41bcf97dd4133903f93ff2fa04c59c102bcde",
+      "backend/app/infrastructure/repositories/__init__.py": "2357282e364ec17f066e86e7e4db3f5da070375e007d3cbc6879833bffafa302",
+      "backend/app/infrastructure/repositories/doctor_repository.py": "739ffdb0cc9dc37c3829f93b46522fcc471157be28460d80114c0559186afefa",
+      "backend/app/infrastructure/repositories/hospital_repository.py": "155182ef2c0dd542ba6f6c5a1edd6e7a21e0ae1cf39326f1898018dbf199b669",
+      "backend/app/infrastructure/repositories/transit_repository.py": "26517477815e7e0147d2d8164e8fcc76fc2b21430b015b0ff09dc04dd293a6ae",
+      "data/symptom_disease_model/app.py": "9edf72357f72dc03ccb200a8b0c1c3e2e75ccc936328ff0609410fbbad570788",
+      "data/symptom_disease_model/inference.py": "4b72059fa50f393818dda1450250e7a05fc69ed535be0053778744a35fafa063",
+      "data/symptom_disease_model/labels.py": "6bb8849b6bfa6ff65cb5ddfd678967993151f09e7d54105bf9603f6d487d7d8d",
+      "data/symptom_disease_model/predict.py": "63a6f5dc9585f1d39d4b213e711f24caa01c71c6d6533efd118915400519869a",
+      "data/symptom_disease_model/train.py": "18968b813dce46147bb03180e91d511dc318eac08ae46be608c154ae1d6c1301",
+      "data_validation/__init__.py": "7969e46ad5dd56f1e2d18da145c8c6d03bd31cb4a188eb7509b19894c10d2963",
+      "data_validation/validate_datasets.py": "5af8755a65cb2bd5bedf7e737871275e739902506d22248f63d25f7ca222642b",
+      "evaluation/core_exploration/__init__.py": "f9198986b17aab7039b05c35066262e0084ce5fd16b4d87da694f4055e7ad822",
+      "evaluation/core_exploration/acceptance_inventory.py": "7a9064d9e08d7bec16ac8e04a0c20bc43377cfeaac111a88447f00e7388203e0",
+      "evaluation/core_exploration/adapter_unavailable_audit.py": "0c63c3422ab586893f013c95434ede54d354258f3f7f04c77a93466f8b81d159",
+      "evaluation/core_exploration/alias_scope_challenge.py": "6191dea611ae7829cde6b686752a8f226dfec3b98db18bb58df3515d819720dd",
+      "evaluation/core_exploration/alias_semantic_audit.py": "d67a9e265aec83b0c1a01a52bfef6d168f3143eddcfcddbc0e79e29805d3dd12",
+      "evaluation/core_exploration/assertion_challenge.py": "0f941c4b1fd0f4a7c9bc2063452215fd392065ceced1fc96ccf94408c7bc64eb",
+      "evaluation/core_exploration/auxiliary_route_counterfactual.py": "2a837f21a6515c9837a72c60f578e557b4c9e1d5bdbe5189d38c487a166a37eb",
+      "evaluation/core_exploration/bridge_study.py": "03b68c739864b31aec048ed0cd42e37491604f571afa1a1e7c6a3bf9ab5926b0",
+      "evaluation/core_exploration/candidate_evidence_audit.py": "b8da43f4b12a7e4e24d9b1cbc7907453abc1349ff24e2c0eead0c9d6bca0d5e0",
+      "evaluation/core_exploration/cause_uncertainty_audit.py": "6bd5054b24c94cac808d0a4c689e45e1b4f6d9ab9066810524bf9fb3f7ba59f7",
+      "evaluation/core_exploration/chest_alias_audit.py": "46debafb1dbd329fbdd96726ddb7c6b321084d88537de92397fa1cdfdc4ac5ea",
+      "evaluation/core_exploration/chinese_adaptation.py": "1268e9e29d4a3800772201f4c5ee0f94e7f630d0e89d82c9911b428e3e0c9817",
+      "evaluation/core_exploration/conditional_disease_audit.py": "672f0d495d7f863ef6d49ce31a35500266b4136c7327e28d349e98a75b544d1e",
+      "evaluation/core_exploration/copula_assertion_audit.py": "7ebe7b55b741f5d4a939524128851578d27838e8a5d604194968b4117cc7748e",
+      "evaluation/core_exploration/critical_context_audit.py": "1534f05aa7b7f17b738e3345136b559c135fd160ed328ba0f4c397dbdfa11be0",
+      "evaluation/core_exploration/data_audit.py": "2edc56cea25c736b6974782583744368c3337e4b920a95845d6ce83dde56fdf6",
+      "evaluation/core_exploration/disease_conflict_audit.py": "5faa7db74b297cbf38b18b75be91c0bcb69f97de844c23f82348b56d5c2b4406",
+      "evaluation/core_exploration/ensemble_learning.py": "3c28e2db3462ed0e394fd4f60ad12d4b9e1f69ddda5b82af86950cd6f3f3cb36",
+      "evaluation/core_exploration/fever_parent_audit.py": "7f962f8e4d31b875b3efe2ecbbce29fd606111a8d30d52c71d634fd7e07f44d0",
+      "evaluation/core_exploration/generalization.py": "ec5a2c12d46710418036f2885c877cea16fa1cbbc9329d0faa1b84806ba69dc7",
+      "evaluation/core_exploration/hypothetical_risk_audit.py": "0c85a46c8c3bb68693fd169fb61fce2058902866173ba2ac3c9cda5c0bfeec14",
+      "evaluation/core_exploration/hypothetical_symptom_audit.py": "88d60d9e533b1a4a5f921f86148b3a24de2123a685755cf2b39ebfd78a7bc868",
+      "evaluation/core_exploration/input_scope_audit.py": "a2a8d414cb42a64098954df078dd3d219e1c4ea0c298477bff2450fb1739befe",
+      "evaluation/core_exploration/inquiry_study.py": "bbcfabf5aa2b1a4079611e513f6689fa2ee1cba42a41ed76fa63fe08bbe4de02",
+      "evaluation/core_exploration/known_disease_audit.py": "d0fe44e48cc2be9f0d3c3c9b7719d0303ad5f109488d26fc9b0d2d8046ca6faa",
+      "evaluation/core_exploration/model_error_boundary_audit.py": "cfd88a2678b6a743ea3d5bf7a7c259a2bc58b073d126f5a4e84393e8aeb76ed4",
+      "evaluation/core_exploration/negated_denial_audit.py": "c7ab298618c080de0079628fd3d1f91d73971e708f2720b6fade415f6169bf4d",
+      "evaluation/core_exploration/persistence.py": "d3f8fa6f4b73781eb37ca9a2fd048b673992b7697dc0fb500d65816c19d981d1",
+      "evaluation/core_exploration/postposed_disease_audit.py": "8e3006f7db9229fdc34a008ee103f9ed023d60784294ea4ac76d2fb1f9fc651e",
+      "evaluation/core_exploration/qualified_chest_auxiliary_audit.py": "f51fc751ec228ffbd4b882ffa072fe3565b89c1bfb36c4db52a276710451e9bc",
+      "evaluation/core_exploration/qualified_denial_observation.py": "6a09c56cabacdfcfdc9f526c5ae8e4a6499f0e626adb7b7227982bff844d7208",
+      "evaluation/core_exploration/red_flag_question_priority_audit.py": "ae3e0fcb9f199261be188b67087447bd5f33cb84ef34f2ee3a86f10b7a84d0f9",
+      "evaluation/core_exploration/risk_reconfirmation_audit.py": "bfc9867842f7524742857c0d43fab535ea7e9498ad0ac24c2c8c0ca58f83470a",
+      "evaluation/core_exploration/router.py": "3bbcf6448264ba521f07e6635488055acb20db5c542c4f3d8fa25458cda246d8",
+      "evaluation/core_exploration/routing_topic_audit.py": "28b26bb014413c236b265082087b9d788cdb10075e269874dada01d0c62f8e82",
+      "evaluation/core_exploration/score_semantics_audit.py": "ee93ddc54a7c0ceda8e848e6ead174c95ae81b728074bf5fb950b342cd631e81",
+      "evaluation/core_exploration/semantic_bridge.py": "4f2c53f731728630b9c3d700d97b8298ed05c84ea58b67bf13dc73f66b229785",
+      "evaluation/core_exploration/serving_coverage_audit.py": "e9e31a2e773f9b764fc7ad6c9b796dd5cab85d55c28e22aeffb723addaab7b29",
+      "evaluation/core_exploration/study.py": "ac998da9c4bb5b39dc41efa9a5b6d5e715ebbdc9f6c77761c26ed90be2064111",
+      "evaluation/core_exploration/temporal_uncertainty_audit.py": "2ab9ccc8a230d1fd87ef65d229e063a145aaf8c8f6be72903fd47079d6b6154d",
+      "evaluation/core_exploration/uncertainty_overlap_audit.py": "2f405b664d6bd171b19a2f31bfd45757ac543a03e0aac26d3b2b24cabf3b75f9",
+      "evaluation/core_exploration/validation.py": "696a602dbfb333185fb5c4c856da128b5f4faa5d14b56bd9ec8a8b7370eb1f10",
+      "evaluation/core_exploration/versioned_challenge.py": "4e4c632d03e8b6315c9f9b92cab92951b363afb54f59948a65c26e09c4fbdf40",
+      "requirements-research.txt": "731cf0699eceb3df21eeb5151627717004c16afbbc2561acff03074c8717c4b3",
+      "requirements.txt": "9c5c32727c2e0a6741f1f6ad9834e16754f540b493e247d35ba904d870ef8547"
+    },
+    "json_csv_inputs": {
+      "data/bike_stations.json": "bc03dfae8936ad4d7eb310164b40639cfa5a0ff600dc46f84828740c78b1e316",
+      "data/bike_vehicles.json": "816ed8c1305985146938bf940bdbc027489f7120be54530e5be217a135de73ff",
+      "data/bus_routes.json": "0135aed277d7c054901621fb62a924ba5e8ca692f6367d3fd8788ea39dbfd115",
+      "data/bus_stations.json": "eabd6f6743996efdbbd5908502b39f21d9f6908049524198081e15aa273e80aa",
+      "data/doctors_h1.json": "22e4793257349fbec194132299d8090811e474362e4140463227850749a4ba63",
+      "data/doctors_h10.json": "06455b80cef8a8b7ea3bc40dde63aa91349d5259e66110dd9adeca521ab13ad5",
+      "data/doctors_h11.json": "8ce81c04e7e911523e8a20f50649c6419ec2651b8fd92cff707519d5ff33ceba",
+      "data/doctors_h14.json": "12c87bbc12bd6b8b70a41742f5fc77719155a0f4cc7ae20269ffce49c09cd842",
+      "data/doctors_h2.json": "4aabf998a0a3f88961710841daadbcde636d5e0bca7ff9e2c43ec4d7d5d60233",
+      "data/doctors_h3.json": "75f9ecdcd41da635fc4ae9792d056eb658f301cc05b2c85602d8f1bc9b2fa171",
+      "data/doctors_h4.json": "843d9226117328efa0e279ca915a2d91d6a9d394f57f95317db28d47a8dfa53d",
+      "data/doctors_h5.json": "3e0aa4c39ad98ba2d0fa0d13820bef021cd630b024e79b0578a1d685aefb02ad",
+      "data/doctors_h6.json": "3afe33b13d0d1a135c30f45d38de9c62651d7839777bf5beef419f839bcc4dbb",
+      "data/doctors_h7.json": "2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00",
+      "data/doctors_h8.json": "a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288",
+      "data/raw/README.json": "3f6c7da3f0c4cb16b4cb9551e20edf7f6bd1e2730cbc9de70701cdc50314c599",
+      "data/regions/320400/hospitals/catalog.json": "42a3bfbdf6fdfd36b74ab6faf9736caef35692533db83494de02330a93a4f5c1",
+      "data/regions/320400/manifest.json": "4252002c4286819e14bd90312f8646ff7f9f7831139b4daabeb254e2d140900c",
+      "data/resource_provenance/doctor_photos.json": "8bcd38982fe1d3e09f7551f4cc886d132163e90e598088aa52995f99a086e433",
+      "data/symptom_disease_model/data/disease_symptom_sources.json": "d361d97140b68706324933e4a086f714a0b74c8fe79a4b320b45297b3e6d4d8e",
+      "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
+      "data/symptom_disease_model/data/disease_symptom_training_long.csv": "8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497",
+      "data/symptom_disease_model/data/symptom_disease.csv": "13a1d184123a503047be4f91be1f2077908cd61816124a5e81b9cf1a35bdea9b",
+      "data/symptom_disease_model/disease_name_zh.json": "2fa5c2f82af49cdf5137beae624ddd932577607b65d1b89a0ddd4920f669575e",
+      "data/symptom_disease_model/models/symptom_disease_41_nb.json": "a84c74f8927fe4fd7df33ee9f07177b70739bb8176b39b9745b39904794f1ba7",
+      "data/symptom_disease_model/models/symptom_disease_full_nb.json": "34e9eae542f1648046d6d9679b2936dc67cf2ce387599d0b9b6c49699fd2f10c",
+      "data/symptom_disease_model/models/symptom_disease_nb.json": "fbef5f9e46764b7b85349fb3da3fa90b897321d39efbe29aa4a32493659614a5",
+      "data/symptom_disease_model/symptom_alias_zh.json": "1ccac55cfbf46315404d877227ba2bf0c93c2add7a36f72d81bc414691666061",
+      "data/symptom_disease_model/symptom_name_zh.json": "f6fd0584705646a94b0f621ec193c7a17684f95000624b16eac3cc325b5c249d",
+      "data/taxi_operations.json": "154ff257a6674186594af10014a449915439d77956d1dada6a743895232dc06b",
+      "data/transit/metadata.json": "650db3affc35c345770360c29070b1f4414ce6c0d3981aa7150f88cf9ee8766a"
+    },
+    "serving_model_inputs": {
+      "model_weights": {
+        "path": "data/symptom_disease_model/models/symptom_disease_41_nb.json",
+        "state": "present",
+        "sha256": "a84c74f8927fe4fd7df33ee9f07177b70739bb8176b39b9745b39904794f1ba7"
+      },
+      "symptom_aliases": {
+        "path": "data/symptom_disease_model/symptom_alias_zh.json",
+        "state": "present",
+        "sha256": "1ccac55cfbf46315404d877227ba2bf0c93c2add7a36f72d81bc414691666061"
+      },
+      "symptom_names": {
+        "path": "data/symptom_disease_model/symptom_name_zh.json",
+        "state": "present",
+        "sha256": "f6fd0584705646a94b0f621ec193c7a17684f95000624b16eac3cc325b5c249d"
+      },
+      "disease_names": {
+        "path": "data/symptom_disease_model/disease_name_zh.json",
+        "state": "present",
+        "sha256": "2fa5c2f82af49cdf5137beae624ddd932577607b65d1b89a0ddd4920f669575e"
+      }
+    },
+    "configuration_overrides": {
+      "CHANGYI_ENV": {
+        "state": "unset"
+      },
+      "CHANGYI_REGION_CODE": {
+        "state": "unset"
+      },
+      "CHANGYI_APP_VERSION": {
+        "state": "unset"
+      },
+      "CHANGYI_RANKING_VERSION": {
+        "state": "unset"
+      },
+      "CHANGYI_TRIAGE_RULES_VERSION": {
+        "state": "unset"
+      },
+      "CHANGYI_MODEL_VERSION": {
+        "state": "unset"
+      },
+      "CHANGYI_DATASET_VERSION": {
+        "state": "unset"
+      },
+      "CHANGYI_REGION_PACK_VERSION": {
+        "state": "unset"
+      },
+      "CHANGYI_CORS_ORIGINS": {
+        "state": "unset"
+      }
+    },
+    "software": {
+      "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "platform": "Windows-10-10.0.26100-SP0",
+      "Flask": "3.1.3",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.9.1"
+    },
+    "git_head": "e82447c8e6eef26eccaaf328e2c158d6f23472bf",
+    "scope": "declared_file_roots_and_configuration_allowlist_not_exhaustive_dynamic_dependencies"
+  },
+  "scope": "synthetic_engineering_not_clinical_validation"
+}

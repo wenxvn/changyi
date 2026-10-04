@@ -1,0 +1,66 @@
+{
+  "scope": "website_safety_publication_observation_not_clinical_department_labels",
+  "total": 4,
+  "failed": 0,
+  "emergency_general_department_rows": 1,
+  "emergency_doctors_published_rows": 3,
+  "clinical_accuracy": null,
+  "rows": [
+    {
+      "text": "我现在喘不上气",
+      "expected_existing_policy_status": "EMERGENCY",
+      "triage_status": "EMERGENCY",
+      "recommendation_status": "EMERGENCY",
+      "triage_department": "呼吸与危重症医学科",
+      "recommendation_department": "呼吸与危重症医学科",
+      "hospital_count": 5,
+      "doctor_count": 8,
+      "emergency_general_department": false,
+      "emergency_doctors_published": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否喘不上气，我喘不上气",
+      "expected_existing_policy_status": "EMERGENCY",
+      "triage_status": "EMERGENCY",
+      "recommendation_status": "EMERGENCY",
+      "triage_department": "全科医学科",
+      "recommendation_department": "全科医学科",
+      "hospital_count": 5,
+      "doctor_count": 6,
+      "emergency_general_department": true,
+      "emergency_doctors_published": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "现在咳嗽是不是，我喘不上气",
+      "expected_existing_policy_status": "EMERGENCY",
+      "triage_status": "EMERGENCY",
+      "recommendation_status": "EMERGENCY",
+      "triage_department": "呼吸与危重症医学科",
+      "recommendation_department": "呼吸与危重症医学科",
+      "hospital_count": 5,
+      "doctor_count": 8,
+      "emergency_general_department": false,
+      "emergency_doctors_published": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我现在是否喘不上气",
+      "expected_existing_policy_status": "INSUFFICIENT_INFORMATION",
+      "triage_status": "INSUFFICIENT_INFORMATION",
+      "recommendation_status": "INSUFFICIENT_INFORMATION",
+      "triage_department": null,
+      "recommendation_department": null,
+      "hospital_count": 0,
+      "doctor_count": 0,
+      "emergency_general_department": false,
+      "emergency_doctors_published": false,
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

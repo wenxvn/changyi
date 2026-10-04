@@ -1,0 +1,7 @@
+frontend/**/*.html text eol=lf
+frontend/**/*.css text eol=lf
+frontend/**/*.js text eol=lf
+frontend/**/*.mjs text eol=lf
+frontend/**/*.ts text eol=lf
+frontend/**/*.tsx text eol=lf
+frontend/**/*.json text eol=lf

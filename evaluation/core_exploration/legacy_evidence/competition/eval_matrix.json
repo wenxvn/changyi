@@ -1,0 +1,657 @@
+{
+  "schema_version": "competition-eval-matrix/v1",
+  "pipeline": "Safety Gate → Direct Department → Selective Abstention → Care Routing",
+  "dataset": {
+    "structured_path": "data/symptom_disease_model/data/disease_symptom_structured_41diseases_long.csv",
+    "structured_sha256": "86e68befe00e7b611bb4c19c405aa7c488c8ce97554225d71a5bbc6f574771fb",
+    "long_path": "data/symptom_disease_model/data/disease_symptom_training_long.csv",
+    "long_sha256": "8128f60e72ca7af30133e0aea4243bb906103fd3ed4a571ffb84a8b80f8b8497",
+    "row_count": 1289,
+    "extra_rows": 985,
+    "disease_count": 41,
+    "provenance": {
+      "shanover_disease_symptoms_prec_full": {
+        "url": "https://huggingface.co/datasets/shanover/disease_symptoms_prec_full",
+        "license": "MIT (per Hugging Face dataset tags)",
+        "file": "shanover_disease_sympts_prec_full.csv"
+      },
+      "fhai50032_symptoms_to_disease_7k": {
+        "url": "https://huggingface.co/datasets/fhai50032/Symptoms_to_disease_7k",
+        "license": "Apache-2.0 (per Hugging Face dataset tags)",
+        "file": "fhai_symptoms_to_disease_7k.json"
+      }
+    },
+    "note": "expanded public-text set for the 41 prototype labels; not clinical cases"
+  },
+  "split_meta_seed42": {
+    "threshold": 0.8,
+    "seed": 42,
+    "train_rows": 840,
+    "cal_rows": 236,
+    "test_rows": 213,
+    "test_disease_count": 25,
+    "train_disease_count": 41,
+    "excluded_from_test": [
+      "(vertigo) Paroymsal Positional Vertigo",
+      "Alcoholic hepatitis",
+      "Chronic cholestasis",
+      "Dimorphic hemmorhoids(piles)",
+      "GERD",
+      "Hepatitis B",
+      "Hepatitis C",
+      "Hepatitis D",
+      "Hepatitis E",
+      "Hyperthyroidism",
+      "Hypoglycemia",
+      "Hypothyroidism",
+      "Osteoarthristis",
+      "Peptic ulcer diseae",
+      "Tuberculosis",
+      "hepatitis A"
+    ],
+    "component_stats": {
+      "mode": "same_label",
+      "jaccard_threshold": 0.8,
+      "sample_count": 1289,
+      "component_count": 1058,
+      "largest_component_size": 10,
+      "edge_count": 604,
+      "cross_label_edge_count": 0,
+      "singleton_count": 1025
+    },
+    "per_disease": [
+      {
+        "disease": "(vertigo) Paroymsal Positional Vertigo",
+        "department": "神经内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "AIDS",
+        "department": "感染性疾病科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Acne",
+        "department": "皮肤科",
+        "components": 6,
+        "train_components": 4,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Alcoholic hepatitis",
+        "department": "消化内科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Allergy",
+        "department": "皮肤科",
+        "components": 55,
+        "train_components": 33,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "Arthritis",
+        "department": "骨科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Bronchial Asthma",
+        "department": "呼吸与危重症医学科",
+        "components": 50,
+        "train_components": 30,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Cervical spondylosis",
+        "department": "骨科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Chicken pox",
+        "department": "感染性疾病科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Chronic cholestasis",
+        "department": "消化内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Common Cold",
+        "department": "呼吸内科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Dengue",
+        "department": "感染性疾病科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Diabetes",
+        "department": "内分泌代谢科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Dimorphic hemmorhoids(piles)",
+        "department": "肛肠科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Drug Reaction",
+        "department": "皮肤科",
+        "components": 49,
+        "train_components": 29,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Fungal infection",
+        "department": "皮肤科",
+        "components": 53,
+        "train_components": 31,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "GERD",
+        "department": "消化内科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Gastroenteritis",
+        "department": "消化内科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Heart attack",
+        "department": "心血管内科",
+        "components": 6,
+        "train_components": 4,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Hepatitis B",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis C",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis D",
+        "department": "感染性疾病科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hepatitis E",
+        "department": "感染性疾病科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypertension",
+        "department": "心血管内科",
+        "components": 51,
+        "train_components": 31,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Hyperthyroidism",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypoglycemia",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Hypothyroidism",
+        "department": "内分泌代谢科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Impetigo",
+        "department": "皮肤科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Jaundice",
+        "department": "消化内科",
+        "components": 38,
+        "train_components": 22,
+        "cal_components": 8,
+        "test_components": 8,
+        "split": "quota"
+      },
+      {
+        "disease": "Malaria",
+        "department": "感染性疾病科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Migraine",
+        "department": "神经内科",
+        "components": 43,
+        "train_components": 25,
+        "cal_components": 9,
+        "test_components": 9,
+        "split": "quota"
+      },
+      {
+        "disease": "Osteoarthristis",
+        "department": "骨科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Paralysis (brain hemorrhage)",
+        "department": "神经内科",
+        "components": 5,
+        "train_components": 3,
+        "cal_components": 1,
+        "test_components": 1,
+        "split": "quota"
+      },
+      {
+        "disease": "Peptic ulcer diseae",
+        "department": "消化内科",
+        "components": 1,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Pneumonia",
+        "department": "呼吸与危重症医学科",
+        "components": 49,
+        "train_components": 29,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Psoriasis",
+        "department": "皮肤科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Tuberculosis",
+        "department": "呼吸与危重症医学科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      },
+      {
+        "disease": "Typhoid",
+        "department": "感染性疾病科",
+        "components": 48,
+        "train_components": 28,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "Urinary tract infection",
+        "department": "泌尿外科",
+        "components": 54,
+        "train_components": 32,
+        "cal_components": 11,
+        "test_components": 11,
+        "split": "quota"
+      },
+      {
+        "disease": "Varicose veins",
+        "department": "普外科",
+        "components": 52,
+        "train_components": 32,
+        "cal_components": 10,
+        "test_components": 10,
+        "split": "quota"
+      },
+      {
+        "disease": "hepatitis A",
+        "department": "感染性疾病科",
+        "components": 2,
+        "split": "train_only",
+        "reason": "components<3"
+      }
+    ]
+  },
+  "threshold_policy": "selective thresholds fit on calibration only; test never tunes coverage",
+  "rows": [
+    {
+      "track": "legacy_disease_first",
+      "metric": "department_accuracy",
+      "value": 0.290794,
+      "std": 0.026104,
+      "seeds": [
+        42,
+        123,
+        2026
+      ],
+      "source": "evaluation/care_routing/results/round3_hierarchical.json"
+    },
+    {
+      "track": "legacy_disease_first",
+      "metric": "disease_accuracy",
+      "value": 0.265103,
+      "std": 0.026146,
+      "source": "evaluation/care_routing/results/round3_hierarchical.json"
+    },
+    {
+      "track": "direct_department_binary_lr",
+      "metric": "accuracy",
+      "value": 0.450262,
+      "std": 0.025686,
+      "source": "evaluation/care_routing/results/round3_hierarchical.json"
+    },
+    {
+      "track": "direct_department_char_ngram_lr",
+      "metric": "accuracy",
+      "value": 0.742438,
+      "std": "best=char_ngram_tfidf_lr acc=0.742438±0.012786 (Round3 direct was 0.450262)",
+      "seeds": [
+        42,
+        123,
+        2026,
+        3407,
+        7777
+      ],
+      "source": "evaluation/care_routing/results/round4_report.json"
+    },
+    {
+      "track": "calibration_before",
+      "metric": "ece",
+      "value": 0.268794,
+      "source": "evaluation/care_routing/results/round4_direct_department_matrix.json"
+    },
+    {
+      "track": "calibration_after_temperature",
+      "metric": "ece",
+      "value": 0.061294,
+      "temperature": 0.5,
+      "accuracy_unchanged": 0.737089,
+      "source": "evaluation/care_routing/results/round4_direct_department_matrix.json"
+    },
+    {
+      "track": "selective_abstention",
+      "metric": "retained_accuracy",
+      "points": {
+        "100%": {
+          "retained_accuracy": 0.627358,
+          "coverage": 0.995305,
+          "abstention_rate": 0.004695,
+          "retained_macro_f1": 0.411241,
+          "wrong_but_confident_rate": 0.004717,
+          "target_coverage": 1.0
+        },
+        "90%": {
+          "retained_accuracy": 0.663102,
+          "coverage": 0.877934,
+          "abstention_rate": 0.122066,
+          "retained_macro_f1": 0.428081,
+          "wrong_but_confident_rate": 0.005348,
+          "target_coverage": 0.9
+        },
+        "80%": {
+          "retained_accuracy": 0.807143,
+          "coverage": 0.657277,
+          "abstention_rate": 0.342723,
+          "retained_macro_f1": 0.46965,
+          "wrong_but_confident_rate": 0.007143,
+          "target_coverage": 0.8
+        },
+        "70%": {
+          "retained_accuracy": 0.837607,
+          "coverage": 0.549296,
+          "abstention_rate": 0.450704,
+          "retained_macro_f1": 0.499536,
+          "wrong_but_confident_rate": 0.008547,
+          "target_coverage": 0.7
+        },
+        "60%": {
+          "retained_accuracy": 0.872549,
+          "coverage": 0.478873,
+          "abstention_rate": 0.521127,
+          "retained_macro_f1": 0.511077,
+          "wrong_but_confident_rate": 0.009804,
+          "target_coverage": 0.6
+        },
+        "50%": {
+          "retained_accuracy": 0.9375,
+          "coverage": 0.375587,
+          "abstention_rate": 0.624413,
+          "retained_macro_f1": 0.695358,
+          "wrong_but_confident_rate": 0.0125,
+          "target_coverage": 0.5
+        }
+      },
+      "source": "evaluation/care_routing/results/round4_selective_routing.json"
+    },
+    {
+      "track": "adaptive_inquiry_simulation",
+      "metric": "ig_minus_random",
+      "value": -0.0625,
+      "note": "oracle 为 held-out 症状集合的三态模拟，不是真实患者。",
+      "source": "evaluation/care_routing/results/round2_inquiry.json"
+    },
+    {
+      "track": "care_routing_multi_objective",
+      "metric": "rule_consistency_ablation",
+      "value": {
+        "schema_version": "care-routing-ablation/v1",
+        "claim_scope": "rule/feature consistency checks, not clinical effectiveness",
+        "feature_weight_ablation": {
+          "base_score": 76.6,
+          "leave_one_out": {
+            "clinical": {
+              "score": 67.7,
+              "delta": -8.9
+            },
+            "availability": {
+              "score": 75.8,
+              "delta": -0.8
+            },
+            "accessibility": {
+              "score": 78.2,
+              "delta": 1.6
+            },
+            "continuity": {
+              "score": 78.4,
+              "delta": 1.8
+            },
+            "quality": {
+              "score": 78.0,
+              "delta": 1.4
+            },
+            "fairness": {
+              "score": 77.4,
+              "delta": 0.8
+            },
+            "emergency": {
+              "score": 77.6,
+              "delta": 1.0
+            }
+          }
+        },
+        "missing_position_rebalance": {
+          "unavailable": [
+            "accessibility"
+          ],
+          "rebalanced": {
+            "clinical": 0.5,
+            "availability": 0.25,
+            "accessibility": 0.0,
+            "continuity": 0.125,
+            "quality": 0.0625,
+            "fairness": 0.0375,
+            "emergency": 0.025
+          }
+        },
+        "distance_vs_specialty_rank_flip": {
+          "distance_profile": {
+            "near_low_fit": 72.0,
+            "far_high_fit": 49.8
+          },
+          "specialty_profile": {
+            "near_low_fit": 58.5,
+            "far_high_fit": 67.8
+          },
+          "flip_observed": true
+        },
+        "emergency_rerank_bypass": {
+          "emergency_adjustments": [
+            0,
+            0,
+            0
+          ],
+          "routine_adjustments": [
+            0,
+            0,
+            -3.5
+          ],
+          "emergency_risk_penalty_no_flag": 0.44999999999999996,
+          "emergency_risk_penalty_with_flag": 0.1
+        },
+        "continuity_preference_gate": {
+          "followup_text_score": 0.82,
+          "first_visit_text_score": 0.55
+        },
+        "missing_or_untrusted_fields": {
+          "availability_missing": {
+            "data_available": false,
+            "score": 0.0
+          },
+          "availability_present": {
+            "data_available": true,
+            "score": 0.97
+          },
+          "academic_weight_production_zero": true,
+          "provisional_capability_scores_ignored_for_ranking": true
+        }
+      },
+      "claim_scope": "feature/weight rule consistency, not clinical effectiveness"
+    },
+    {
+      "track": "full_pipeline_safety",
+      "metric": "safety_evaluation",
+      "value": {
+        "cases": 142,
+        "red_flag_recall": 1.0,
+        "under_triage_rate": 0.0,
+        "over_triage_rate": 0.0,
+        "emergency_false_negative": 0
+      },
+      "source": "evaluation/safety/evaluate_safety"
+    }
+  ],
+  "readiness": {
+    "decision": "RESEARCH_ONLY",
+    "conditions": {
+      "better_than_round3_direct": true,
+      "multi_seed_stable": true,
+      "risk_coverage_retained_acc_ok": true,
+      "wrong_but_confident_ok": true,
+      "calibration_ok": false,
+      "safety_regression_unchanged": true,
+      "department_coverage_ok": true
+    },
+    "evidence": [
+      "best=char_ngram_tfidf_lr acc=0.742438±0.012786 (Round3 direct was 0.450262)",
+      "retained acc @80/70/60% = 0.807143/0.837607/0.872549",
+      "wrong-but-confident @80% = 0.007143",
+      "ECE=0.258858",
+      "test_departments=11",
+      "safety_check=True"
+    ],
+    "note": "即使 CANDIDATE_FOR_SHADOW_MODE 也不替换生产模型"
+  },
+  "limitations": [
+    "expanded_41 为公开文本，不是常州就诊分布",
+    "char n-gram 作用在症状码拼接文本，不是原始中文口语全文",
+    "Selective 阈值仅来自 calibration；test 未调参",
+    "数据优先级不是医疗重要性排名"
+  ]
+}

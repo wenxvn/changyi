@@ -31,9 +31,19 @@ from backend.app.domain.medical_input import (
     COLLOQUIAL_SYMPTOM_ALIASES,
     KNOWN_DISEASE_PATTERNS,
     contains_positive as _contains_positive,
+    contains_positive_known_disease,
+    known_disease_mention_state,
+    qualified_chest_presence_pending,
+    is_non_disease_routing_term,
+    consultation_route_scope,
+    contains_current_safety_signal,
     followup_answer_map,
     is_general_question_or_history as _is_general_question_or_history,
     normalize_patient_expression,
+    uncertain_signal_mentions,
+    seizure_review_mentions,
+    uncertain_seizure_mentions,
+    seizure_current_emergency_report,
 )
 from backend.app.domain.triage.safety_gate import (
     evaluate_safety_gate,
@@ -129,13 +139,13 @@ def predict_disease_name(condition, details=False):
 
 def _model_standard_symptom_tags(condition):
     """Convert patient wording into model-backed standard symptom tags."""
-    normalized_condition, _ = normalize_patient_expression(condition)
-    details = predict_disease_name(normalized_condition, details=True)
+    details = predict_disease_name(condition, details=True)
     if not details.get("available") or not details.get("normalized_symptoms"):
         return [], details
 
     known_labels = details.get("known_symptoms", [])
-    normalized_codes = details.get("normalized_symptoms", [])
+    unknown_codes = set(details.get("unknown_symptoms", []))
+    normalized_codes = [code for code in details.get("normalized_symptoms", []) if code not in unknown_codes]
     aliases = details.get("aliases", {})
     tags = []
     seen = set()
@@ -188,7 +198,11 @@ def _is_model_symptom_red_flag(code, label):
 
 
 def detect_known_disease(condition):
-    text = condition or ""
+    scope = consultation_route_scope(condition or "")
+    text = scope["routing_text"]
+    background = {}
+    if scope["explicit_self"]:
+        background = {"consultation_subject": "self", "background_mentions": sorted({name for name, dept in DISEASE_DEPT_MAP.items() if name in scope["background_text"] and not is_non_disease_routing_term(name, dept) and known_disease_mention_state(scope["background_text"], name) != "absent"})}
     has_known_context = any(token in text for token in KNOWN_DISEASE_PATTERNS)
     matches = []
     symptom_like_terms = {
@@ -200,27 +214,34 @@ def detect_known_disease(condition):
         "右下腹痛", "右下腹部痛", "右下部腹痛", "右下腹", "右下部",
     }
     for disease, dept in DISEASE_DEPT_MAP.items():
-        if len(disease) < 2:
+        if len(disease) < 2 or is_non_disease_routing_term(disease, dept):
             continue
-        if disease in text and (has_known_context or disease not in symptom_like_terms):
-            matches.append((len(disease), disease, dept))
+        state = known_disease_mention_state(text, disease) if disease in text else "absent"
+        if state != "absent" and (has_known_context or disease not in symptom_like_terms):
+            matches.append((state == "asserted", len(disease), 2, disease, dept, state))
     for rule in DISEASE_DIRECT_RULES:
-        if rule["name"] in text:
-            matches.append((len(rule["name"]), rule["name"], rule["dept"]))
+        state = known_disease_mention_state(text, rule["name"]) if rule["name"] in text else "absent"
+        if state != "absent" and not is_non_disease_routing_term(rule["name"], rule["dept"]):
+            matches.append((state == "asserted", len(rule["name"]), 2, rule["name"], rule["dept"], state))
         elif has_known_context:
             for alias in rule["aliases"]:
-                if alias in text and alias not in symptom_like_terms:
-                    matches.append((len(alias), rule["name"], rule["dept"]))
+                state = known_disease_mention_state(text, alias) if alias in text else "absent"
+                if state != "absent" and alias not in symptom_like_terms and not is_non_disease_routing_term(alias, rule["dept"]):
+                    matches.append((state == "asserted", len(alias), 1, rule["name"], rule["dept"], state))
     if not matches:
-        return {"has_known_disease": False, "disease": "", "department": "", "confidence": 0.0, "source": ""}
+        return {"has_known_disease": False, "disease": "", "department": "", "confidence": 0.0, "source": "", **background}
     matches.sort(reverse=True)
-    _, disease, dept = matches[0]
+    _, _, _, disease, dept, state = matches[0]
+    if state in {"uncertain", "conflicting"}:
+        return {"has_known_disease": False, "disease": disease, "department": dept,
+                "confidence": 0.0, "source": "conflicting_mentions" if state == "conflicting" else "unconfirmed_mention", "assertion_status": state, **background}
     return {
         "has_known_disease": bool(has_known_context or disease in text),
         "disease": disease,
         "department": dept,
         "confidence": 0.92 if has_known_context else 0.74,
         "source": "user_stated" if has_known_context else "disease_keyword",
+        **background,
     }
 
 
@@ -252,6 +273,7 @@ def build_candidate_comparison(disease_candidates):
 
 
 _FOLLOWUP_OPTION_VALUES = {
+    "known_disease_status": {"已确诊/复诊": "confirmed", "报告提示但未确诊": "report_unconfirmed", "自己怀疑": "self_suspected"},
     "red_flag_check": {"没有": "none", "有其中一种": "present", "不确定": "unknown"},
     "duration": {"1天内": "lt_1_day", "1周以内": "lt_1_week", "1-4周": "1_4_weeks", "1个月以上": "gte_1_month"},
     "severity": {"轻微": "mild", "中等": "moderate", "明显影响": "significant", "非常严重": "severe"},
@@ -278,7 +300,10 @@ def build_followup_questions(condition, analysis, triage=None, followup_answers=
     symptom_tags = analysis.get("symptom_tags", [])
     disease_candidates = analysis.get("disease_candidates", [])
     known_disease = analysis.get("known_disease", {})
-    answered_ids = set(followup_answer_map(followup_answers))
+    answered_facts = followup_answer_map(followup_answers)
+    answered_ids = set(answered_facts)
+    if answered_facts.get("red_flag_check") == "unknown":
+        answered_ids.discard("red_flag_check")
     questions = []
     missing = []
 
@@ -294,7 +319,7 @@ def build_followup_questions(condition, analysis, triage=None, followup_answers=
             "reason": reason,
         })
 
-    if known_disease.get("has_known_disease"):
+    if known_disease.get("has_known_disease") or known_disease.get("assertion_status") in {"uncertain", "conflicting"}:
         add("known_disease_status", f"您提到可能是“{known_disease.get('disease')}”，这是已确诊、复诊，还是自己判断？", ["已确诊/复诊", "报告提示但未确诊", "自己怀疑"], "用户已提供疾病名，需要确认置信来源")
         add("known_disease_evidence", "有没有检查报告、影像结果、病理结果或正在用药的信息？", ["有检查/报告", "有用药或治疗史", "暂时没有"], "已知疾病场景优先补充证据和治疗阶段")
         add("known_disease_goal", "这次主要想解决什么问题？", ["复诊开药", "看检查报告", "进一步治疗", "确认挂哪个科"], "明确已知疾病场景下的就诊目的")
@@ -322,8 +347,18 @@ def build_followup_questions(condition, analysis, triage=None, followup_answers=
 
     red_flag_negative = any(k in text for k in ("没有危险信号", "无危险信号", "没有胸痛", "无胸痛", "没有呼吸困难", "无呼吸困难", "没有一侧无力", "无一侧无力", "没有意识异常", "无意识异常"))
     structured_red_flag = followup_answer_map(followup_answers).get("red_flag_check")
-    if not red_flag_negative and structured_red_flag not in {"none", "present", "unknown"} and not _contains_positive(text, TRIAGE_CRITICAL_SINGLE_KEYWORDS):
-        add("red_flag_check", "是否伴有胸痛、呼吸困难、意识异常、大出血、一侧肢体无力等危险信号？", ["没有", "有其中一种", "不确定"], "补充急诊红旗规则")
+    risk_terms = list(TRIAGE_CRITICAL_SINGLE_KEYWORDS) + list(TRIAGE_URGENT_KEYWORDS)
+    risk_terms += [word for rule in TRIAGE_RED_FLAGS for word in rule["keywords"]]
+    seizure_signals = seizure_review_mentions(text)
+    chest_presence_pending = qualified_chest_presence_pending(text)
+    uncertainty_pending = bool(uncertain_signal_mentions(text, risk_terms) or seizure_signals or chest_presence_pending) and structured_red_flag not in {"none", "present", "unknown"}
+    if structured_red_flag == "unknown" or uncertainty_pending or (not red_flag_negative and structured_red_flag not in {"none", "present", "unknown"} and not _contains_positive(text, TRIAGE_CRITICAL_SINGLE_KEYWORDS)):
+        question = "抽搐或惊厥是否首次发生、持续超过5分钟、短时间再次发生，或伴呼吸困难、意识未恢复、受伤、怀孕等危险情况？" if seizure_signals else "是否伴有胸痛、呼吸困难、意识异常、大出血、一侧肢体无力等危险信号？"
+        if chest_presence_pending:
+            question = "请确认目前是否有任何程度的胸痛（包括轻微疼痛），或呼吸困难、意识异常等危险信号？"
+        add("red_flag_check", question, ["没有", "有其中一种", "不确定"], "补充急诊红旗规则")
+    if any(question["id"] == "red_flag_check" for question in questions):
+        questions.sort(key=lambda question: question["id"] != "red_flag_check")
 
     compare = build_candidate_comparison(disease_candidates)
     for q in compare.get("distinguish_questions", []):
@@ -1205,7 +1240,12 @@ def _contains_any(text, words):
     return any(w and w in text for w in words)
 
 
-HTRIAGE_NOTICE = "疾病候选与病类判断仅用于就医推荐参考，不作为诊断结果。"
+HTRIAGE_NOTICE = "疾病候选与病类判断仅用于就医推荐参考，不作为诊断结果。候选分值是本次结果内的相对支持度，未经临床校准，不能当作患病概率。"
+CANDIDATE_SCORE_SEMANTICS = {
+    "kind": "relative_support_score", "calibrated": False,
+    "clinical_probability": False, "legacy_field": "probability",
+    "reference": "largest_score_in_current_top_candidates",
+}
 
 STANDARD_SYMPTOM_RULES = [
     {"tag": "胸痛/胸闷", "aliases": ["胸痛", "胸闷", "心前区痛", "压榨感", "胸口痛", "胸口压榨样疼痛", "压榨样胸痛", "压榨性胸痛", "胸口压着"], "system": "心血管系统", "disease": "心绞痛/急性冠脉综合征风险", "primary": "心血管疾病", "secondary": "心血管急症风险", "dept": "心血管内科", "score": 0.88, "red": True},
@@ -1259,18 +1299,27 @@ DISEASE_DIRECT_RULES.extend([
 
 
 
+def _has_asserted_rule_alias(condition, alias):
+    if not _contains_positive(condition, [alias]) or known_disease_mention_state(condition, alias) != "asserted":
+        return False
+    if alias == "咳嗽":
+        from .domain.symptom_assertions import has_asserted_cough_route_evidence
+        return has_asserted_cough_route_evidence(condition)
+    return True
+
+
 def extract_standard_symptom_tags(condition):
-    text = condition or ""
+    text = consultation_route_scope(condition or "")["routing_text"]
     tags = []
     seen = set()
-    model_tags, _ = _model_standard_symptom_tags(text)
+    model_tags, _ = _model_standard_symptom_tags(condition or "")
     for item in model_tags:
         code = item.get("standard_code") or item.get("tag")
         if code and code not in seen:
             seen.add(code)
             tags.append(item)
     for rule in STANDARD_SYMPTOM_RULES:
-        hits = [alias for alias in rule["aliases"] if _contains_positive(text, [alias])]
+        hits = [alias for alias in rule["aliases"] if _has_asserted_rule_alias(text, alias)]
         if hits and rule["tag"] not in seen:
             seen.add(rule["tag"])
             tags.append({
@@ -1311,6 +1360,7 @@ def _model_disease_meta(disease):
 
 def build_htriage_analysis(condition, followup_answers=None):
     raw_text = condition or ""
+    routing_text = consultation_route_scope(raw_text)["routing_text"]
     text, colloquial_replacements = normalize_patient_expression(raw_text)
     structured_facts = followup_answer_map(followup_answers)
     # Keep rule matching on the user's original wording. Appending canonical
@@ -1324,6 +1374,14 @@ def build_htriage_analysis(condition, followup_answers=None):
             symptom_tags.append(item)
             seen_tag_names.add(item.get("tag"))
     known_disease = detect_known_disease(raw_text)
+    disease_status_answer = structured_facts.get("known_disease_status")
+    if known_disease.get("disease") and disease_status_answer in {"confirmed", "option_1", "report_unconfirmed", "option_2", "self_suspected", "option_3"}:
+        confirmed = disease_status_answer in {"confirmed", "option_1"}
+        known_disease = dict(known_disease, has_known_disease=confirmed,
+                             assertion_status="user_reported" if confirmed else "uncertain",
+                             confidence=0.92 if confirmed else 0.0,
+                             source="user_stated" if confirmed else "unconfirmed_mention",
+                             evidence_source="structured_followup")
     disease_scores = {}
     disease_meta = {}
 
@@ -1338,12 +1396,14 @@ def build_htriage_analysis(condition, followup_answers=None):
         }
 
     for rule in STANDARD_SYMPTOM_RULES:
-        hit_count = sum(1 for alias in rule["aliases"] if _contains_positive(raw_text, [alias]))
+        hit_count = sum(1 for alias in rule["aliases"]
+                        if _has_asserted_rule_alias(routing_text, alias))
         if hit_count:
             add_disease(rule["disease"], rule["score"] + min(0.18, hit_count * 0.04), rule)
 
     for rule in DISEASE_DIRECT_RULES:
-        hit_count = sum(1 for alias in rule["aliases"] if _contains_positive(raw_text, [alias]))
+        hit_count = sum(1 for alias in rule["aliases"]
+                        if _has_asserted_rule_alias(routing_text, alias))
         if hit_count:
             add_disease(rule["name"], rule["score"] + min(0.16, hit_count * 0.04), rule)
 
@@ -1369,10 +1429,12 @@ def build_htriage_analysis(condition, followup_answers=None):
             },
         )
 
-    if not disease_scores and text:
+    # Auxiliary-only candidates must not erase the ordinary rule fallback.
+    if not any(meta["secondary"] != "模型预测疾病" for meta in disease_meta.values()) and text:
         matched_dept = None
         for key, dept in DISEASE_DEPT_MAP.items():
-            if key in text:
+            if (key in routing_text and _has_asserted_rule_alias(routing_text, key)
+                    and not is_non_disease_routing_term(key, dept)):
                 matched_dept = dept
                 add_disease(key, 0.46, {"primary": "未细分病类", "secondary": "待门诊评估", "dept": dept})
                 break
@@ -1397,6 +1459,8 @@ def build_htriage_analysis(condition, followup_answers=None):
         disease_candidates.append({
             "name": name,
             "probability": probability,
+            "relative_support_score": probability,
+            "score_kind": "relative_support_score",
             "primary_category": primary,
             "secondary_category": secondary,
             "recommended_department": dept,
@@ -1423,6 +1487,7 @@ def build_htriage_analysis(condition, followup_answers=None):
     analysis = {
         "model": RANKING_MODEL_VERSION,
         "notice": HTRIAGE_NOTICE,
+        "candidate_score_semantics": dict(CANDIDATE_SCORE_SEMANTICS),
         "raw_condition": raw_text,
         "original_condition": raw_text,
         "normalized_condition": text,
@@ -1451,6 +1516,7 @@ def _attach_htriage_fields(payload, analysis):
     payload["known_disease"] = analysis.get("known_disease", {})
     payload["symptom_tags"] = analysis.get("symptom_tags", [])
     payload["disease_candidates"] = analysis.get("disease_candidates", [])
+    payload["candidate_score_semantics"] = analysis.get("candidate_score_semantics", dict(CANDIDATE_SCORE_SEMANTICS))
     payload["disease_categories"] = analysis.get("disease_categories", [])
     payload["department_candidates"] = analysis.get("department_candidates", [])
     payload["model_standard_symptoms"] = analysis.get("model_standard_symptoms", [])
@@ -1477,6 +1543,7 @@ def _htriage_public_payload(triage):
         "symptom_tags": triage.get("symptom_tags", []),
         "model_standard_symptoms": triage.get("model_standard_symptoms", []),
         "disease_candidates": triage.get("disease_candidates", []),
+        "candidate_score_semantics": triage.get("candidate_score_semantics", dict(CANDIDATE_SCORE_SEMANTICS)),
         "disease_categories": triage.get("disease_categories", []),
         "department_candidates": triage.get("department_candidates", []),
         "model_disease_prediction": triage.get("model_disease_prediction", {}),
@@ -1502,8 +1569,15 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
     # General question/history context must not escalate critical keywords to
     # Emergency; first-person current symptoms still escalate.
     question_or_history = _is_general_question_or_history(text)
+    # A current bystander report is not an educational/history question.
+    # The dedicated review helper excludes denied/resolved/conditional mentions;
+    # existing emergency keywords still decide escalation, never the model.
+    seizure_emergency = seizure_current_emergency_report(text)
+    if seizure_emergency or (seizure_review_mentions(text) and any(marker in text for marker in ("现在", "目前", "正在", "刚刚"))):
+        question_or_history = False
 
     red_flag_answer = structured_facts.get("red_flag_check")
+    emergency_department = matched_dept if matched_dept not in (None, "全科医学科") else "急诊医学科"
     if red_flag_answer == "present":
         return _attach_htriage_fields({
             "level": "emergency",
@@ -1513,27 +1587,13 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
             "care_level": "建议立即急诊/急救评估",
             "recommended_scenario": "surgery",
             "matched_rule": "结构化红旗回答为 present",
-            "matched_department": matched_dept or "急诊医学科",
+            "matched_department": emergency_department,
             "red_flag_tags": ["结构化回答：存在危险信号"],
             "reasons": ["您在补充信息中标记了危险信号，请优先拨打 120 或前往就近急诊。"],
             "disclaimer": "本系统仅做分诊辅助；如症状明显、持续加重或出现意识/呼吸/胸痛等风险，请及时拨打 120 或前往急诊。",
         }, htriage)
-    if red_flag_answer == "unknown":
-        return _attach_htriage_fields({
-            "level": "routine",
-            "label": "需要人工/专业复核",
-            "severity_bucket": "信息不足",
-            "severity_score": 50,
-            "care_level": "无法确认危险信号，请尽快由专业人员复核",
-            "recommended_scenario": "first_visit",
-            "matched_rule": "结构化红旗回答为 unknown",
-            "matched_department": matched_dept,
-            "reasons": ["危险信号回答为不确定，不能按“没有危险信号”处理；如有明显不适请优先线下评估。"],
-            "disclaimer": "本系统仅做分诊辅助；信息不足时不会排除急症，请结合专业医疗意见。",
-        }, htriage)
-
-    critical_hits = [w for w in TRIAGE_CRITICAL_SINGLE_KEYWORDS if _contains_positive(text, [w])]
-    if critical_hits and not question_or_history:
+    critical_hits = [w for w in TRIAGE_CRITICAL_SINGLE_KEYWORDS if contains_current_safety_signal(text, [w]) and (not any(signal in w for signal in ("抽搐", "惊厥")) or seizure_emergency)]
+    if critical_hits and (not question_or_history or contains_current_safety_signal(text, critical_hits, require_current=True)):
         return _attach_htriage_fields({
             "level": "emergency",
             "label": "疑似急症",
@@ -1542,23 +1602,24 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
             "care_level": "建议立即急诊/急救评估",
             "recommended_scenario": "surgery",
             "matched_rule": "命中危急强信号",
-            "matched_department": matched_dept or "急诊医学科",
+            "matched_department": emergency_department,
             "reasons": ["命中危急症状信号：" + "、".join(critical_hits[:4]) + "。请优先拨打 120 或前往就近急诊。"],
             "disclaimer": "本系统仅做分诊辅助；如症状明显、持续加重或出现意识/呼吸/胸痛等风险，请及时拨打 120 或前往急诊。",
         }, htriage)
 
     for rule in TRIAGE_RED_FLAGS:
-        if question_or_history:
+        rule_keywords = [word for word in rule["keywords"] if not any(signal in word for signal in ("抽搐", "惊厥")) or seizure_emergency]
+        if question_or_history and not contains_current_safety_signal(text, rule_keywords, require_current=True):
             continue
-        hit_main = _contains_positive(text, rule["keywords"])
+        hit_main = contains_current_safety_signal(text, rule_keywords)
         hit_context = (
             not rule["with_any"] or
-            _contains_positive(text, rule["with_any"]) or
-            (hit_main and _contains_positive(text, TRIAGE_SEVERE_MODIFIERS))
+            contains_current_safety_signal(text, rule["with_any"]) or
+            (hit_main and contains_current_safety_signal(text, TRIAGE_SEVERE_MODIFIERS))
         )
         if hit_main and hit_context:
             rule_dept = rule["dept"]
-            triage_dept = matched_dept if matched_dept and matched_dept != "急诊医学科" else rule_dept
+            triage_dept = matched_dept if matched_dept not in (None, "全科医学科", "急诊医学科") else rule_dept
             return _attach_htriage_fields({
                 "level": "emergency",
                 "label": "疑似急症",
@@ -1571,6 +1632,42 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
                 "reasons": [rule["advice"]],
                 "disclaimer": "本系统仅做分诊辅助；如症状明显、持续加重或出现意识/呼吸/胸痛等风险，请及时拨打 120 或前往急诊。",
             }, htriage)
+
+    # Confirmed emergency rules above always precede an uncertain answer.
+    existing_risk_words = list(TRIAGE_CRITICAL_SINGLE_KEYWORDS) + list(TRIAGE_URGENT_KEYWORDS)
+    existing_risk_words += [word for rule in TRIAGE_RED_FLAGS for word in rule["keywords"]]
+    uncertain_signals = uncertain_signal_mentions(text, existing_risk_words) if red_flag_answer != "none" else []
+    seizure_signals = seizure_review_mentions(text)
+    if red_flag_answer == "unknown" or uncertain_signals or uncertain_seizure_mentions(text) or (seizure_signals and red_flag_answer != "none") or (qualified_chest_presence_pending(text) and red_flag_answer != "none"):
+        return _attach_htriage_fields({
+            "level": "routine",
+            "label": "需要人工/专业复核",
+            "severity_bucket": "信息不足",
+            "severity_score": 50,
+            "care_level": "无法确认危险信号，请尽快由专业人员复核",
+            "recommended_scenario": "first_visit",
+            "matched_rule": "危险信号回答为不确定" if red_flag_answer == "unknown" else "自由文本危险信号尚未确认",
+            "matched_department": None,
+            "defer_resource_routing": True,
+            "reasons": ["危险信号尚未确认，不能按“没有危险信号”处理；请先补充信息并结合专业复核。"],
+            "disclaimer": "信息不足不能排除急症；如出现明显胸痛、呼吸困难、意识异常等危险表现，请优先急诊或拨打120。",
+        }, htriage)
+
+    clarified_disease = htriage.get("known_disease") or {}
+    if (matched_dept in (None, "全科医学科") and clarified_disease.get("has_known_disease")
+            and clarified_disease.get("evidence_source") == "structured_followup"):
+        matched_dept = clarified_disease.get("department") or matched_dept
+
+    if seizure_signals:
+        return _attach_htriage_fields({
+            "level": "urgent", "label": "需尽快专业评估",
+            "severity_bucket": "专科病情/需评估", "severity_score": 64,
+            "care_level": "已报告抽搐或惊厥，即使未确认上述危险条件，也请尽快由专业人员评估",
+            "recommended_scenario": "complex", "matched_rule": "抽搐风险确认后的专业评估",
+            "matched_department": "神经内科",
+            "reasons": ["危险条件的否认不等于症状无风险，也不代表已确认病因。"],
+            "disclaimer": "本系统不诊断癫痫；若持续不缓解、再次发生或出现呼吸/意识异常，请优先急诊或拨打120。",
+        }, htriage)
 
     urgent_hits = [w for w in TRIAGE_URGENT_KEYWORDS if _contains_positive(text, [w])]
     mild_hits = [w for w in TRIAGE_MILD_KEYWORDS if w in text]
@@ -1669,12 +1766,16 @@ def haversine(lat1, lng1, lat2, lng2):
 
 def match_department(condition):
     """根据病情匹配对应科室"""
-    condition = condition.strip()
+    condition = consultation_route_scope(condition.strip())["routing_text"]
     if condition in DISEASE_DEPT_MAP:
         return DISEASE_DEPT_MAP[condition]
 
     matched = []
     for index, (key, dept) in enumerate(DISEASE_DEPT_MAP.items()):
+        if key == "咳嗽":
+            from .domain.symptom_assertions import has_asserted_cough_route_evidence
+            if not has_asserted_cough_route_evidence(condition):
+                continue
         if key in condition and _contains_positive(condition, [key]):
             matched.append((len(key), -index, dept))
         elif condition in key:

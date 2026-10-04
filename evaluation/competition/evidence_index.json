@@ -1,7 +1,7 @@
 {
   "schema_version": "competition-algorithm-evidence-index/v1",
   "disclaimer": "offline research evidence / not clinical validation",
-  "generated_from": "existing evaluation artifacts + live gate runs",
+  "generated_from": "2026-10-02 corrected Round4 live rerun and core_exploration; prior evidence archived",
   "pipeline": "Safety Gate → Direct Department → Selective Abstention → Care Routing",
   "dataset": {
     "expanded_41_rows": 1289,
@@ -37,8 +37,15 @@
   "direct_department_round4": {
     "best_model": "char_ngram_tfidf_lr",
     "accuracy": {
-      "mean": 0.742438,
-      "std": 0.012786,
+      "mean": 0.608179,
+      "std": 0.034233,
+      "values": [
+        0.624413,
+        0.576577,
+        0.582569,
+        0.66805,
+        0.589286
+      ],
       "seeds": [
         42,
         123,
@@ -48,69 +55,142 @@
       ]
     },
     "macro_f1": {
-      "mean": 0.641749,
-      "std": 0.034957
+      "mean": 0.404872,
+      "std": 0.04953,
+      "values": [
+        0.408188,
+        0.370577,
+        0.369906,
+        0.499821,
+        0.37587
+      ]
     },
     "top2_accuracy": {
-      "mean": 0.876448,
-      "std": 0.024022
+      "mean": 0.762639,
+      "std": 0.052807,
+      "values": [
+        0.723005,
+        0.743243,
+        0.743119,
+        0.86722,
+        0.736607
+      ]
     },
     "ece_uncalibrated": {
-      "mean": 0.258858,
-      "std": 0.016605
+      "mean": 0.195829,
+      "std": 0.043508,
+      "values": [
+        0.192779,
+        0.16506,
+        0.166861,
+        0.280601,
+        0.173846
+      ]
     },
     "wrong_but_confident_rate": {
-      "mean": 0.002648,
-      "std": 0.002167
+      "mean": 0.001818,
+      "std": 0.002227,
+      "values": [
+        0.0,
+        0.004505,
+        0.004587,
+        0.0,
+        0.0
+      ]
     }
   },
   "calibration": {
     "temperature_on_char_lr_seed42": {
-      "temperature": 0.5,
-      "ece_before": 0.268794,
-      "ece_after": 0.061294,
-      "accuracy_unchanged": 0.737089
+      "temperature": 0.7,
+      "ece_before": 0.192779,
+      "ece_after": 0.106119,
+      "accuracy_unchanged": 0.624413
     },
-    "note": "temperature fit uses calibration split; headline readiness still uses uncalibrated ECE≈0.26 gate and remains RESEARCH_ONLY"
+    "note": "Observed corrected Round4 metrics; readiness remains research-only and does not establish Chinese clinical confidence."
   },
   "selective_abstention": {
-    "threshold_source": "calibration-only quantile; test never tunes coverage",
+    "threshold_source": "calibration only; same fitted predictor on cal/test",
+    "model_id": "f62c94a325c5f9636fac9d3653f06c259ed01d57ef40c93ace4df8a129509e6e",
+    "full_coverage": {
+      "signal": "max_probability",
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "abstention_rate": 0.0,
+      "retained_rows": 213,
+      "retained_accuracy": 0.624413,
+      "retained_macro_f1": 0.408188,
+      "retained_weighted_f1": 0.53633,
+      "retained_error_rate": 0.375587,
+      "retained_wrong_but_confident_rate": 0.004695,
+      "retained_ece": 0.106119
+    },
     "points": {
-      "target_0.8": {
-        "coverage": 0.657277,
-        "retained_accuracy": 0.807143,
-        "wrong_but_confident_rate": 0.007143
+      "100%": {
+        "retained_accuracy": 0.625592,
+        "coverage": 0.99061,
+        "abstention_rate": 0.00939,
+        "retained_macro_f1": 0.408716,
+        "wrong_but_confident_rate": 0.004739,
+        "target_coverage": 1.0
       },
-      "target_0.7": {
-        "coverage": 0.549296,
-        "retained_accuracy": 0.837607,
-        "wrong_but_confident_rate": 0.008547
+      "90%": {
+        "retained_accuracy": 0.646154,
+        "coverage": 0.915493,
+        "abstention_rate": 0.084507,
+        "retained_macro_f1": 0.424539,
+        "wrong_but_confident_rate": 0.005128,
+        "target_coverage": 0.9
       },
-      "target_0.6": {
-        "coverage": 0.478873,
-        "retained_accuracy": 0.872549,
-        "wrong_but_confident_rate": 0.009804
+      "80%": {
+        "retained_accuracy": 0.740741,
+        "coverage": 0.760563,
+        "abstention_rate": 0.239437,
+        "retained_macro_f1": 0.460469,
+        "wrong_but_confident_rate": 0.006173,
+        "target_coverage": 0.8
       },
-      "target_1.0": {
-        "coverage": 0.995305,
-        "retained_accuracy": 0.627358,
-        "wrong_but_confident_rate": 0.004717
+      "70%": {
+        "retained_accuracy": 0.81203,
+        "coverage": 0.624413,
+        "abstention_rate": 0.375587,
+        "retained_macro_f1": 0.469707,
+        "wrong_but_confident_rate": 0.007519,
+        "target_coverage": 0.7
+      },
+      "60%": {
+        "retained_accuracy": 0.850877,
+        "coverage": 0.535211,
+        "abstention_rate": 0.464789,
+        "retained_macro_f1": 0.50526,
+        "wrong_but_confident_rate": 0.008772,
+        "target_coverage": 0.6
+      },
+      "50%": {
+        "retained_accuracy": 0.881188,
+        "coverage": 0.474178,
+        "abstention_rate": 0.525822,
+        "retained_macro_f1": 0.511908,
+        "wrong_but_confident_rate": 0.009901,
+        "target_coverage": 0.5
       }
     }
   },
   "representation_ablation_under_lr": {
-    "char_ngram_tfidf_lr": 0.742438,
+    "char_ngram_tfidf_lr": 0.608179,
     "logistic_regression_binary": 0.459129,
+    "multinomial_nb": 0.326695,
+    "tfidf_logistic_regression": 0.377989,
     "three_state_lr": 0.459129,
-    "tfidf_word_lr": 0.377989,
-    "word_char_fusion_lr": 0.377989
+    "word_char_fusion_lr": 0.430939
   },
   "adaptive_inquiry": {
-    "protocol": "three_state_simulation / synthetic oracle",
-    "honest_near_dup_ig_minus_random": -0.0625,
-    "random_split_ig_delta_acc": 0.108108,
-    "negation_unit": "10/10",
-    "claim_limit": "simulation only; not real multi-turn patients"
+    "protocol": "closed-world public symptom oracle, simulation only",
+    "result_source": "evaluation/core_exploration/results/summary.json",
+    "direct_department_record_ig_3q_mean": 0.3434795002787238,
+    "direct_department_record_random_3q_mean": 0.26264457623672,
+    "direct_department_record_frequency_3q_mean": 0.33914706901588226,
+    "clinical_negatives_observed": false,
+    "legacy_round2_reference": "evaluation/core_exploration/legacy_evidence/competition/evidence_index.json"
   },
   "safety": {
     "case_count": 142,
@@ -118,7 +198,7 @@
     "under_triage_rate": 0.0,
     "over_triage_rate": 0.0,
     "emergency_false_negative": 0,
-    "gate_priority": "Safety Gate always precedes learning models and care routing"
+    "gate_priority": "Safety always precedes learning"
   },
   "data_quality": {
     "datasets_scanned": 31,
@@ -143,9 +223,9 @@
     }
   },
   "tests": {
-    "pytest_collected": 215,
+    "pytest_collected": 239,
     "frontend_boundary": 17,
-    "playwright_claimed_in_docs": 20,
+    "playwright_claimed_in_docs": 26,
     "competition_additions": 9
   },
   "readiness": "RESEARCH_ONLY",
@@ -267,5 +347,16 @@
     "vague_insufficient_followup_reroute": true,
     "emergency_short_circuit_safety_exit": true,
     "tests": "tests/test_competition_golden_e2e.py (4) + tests/test_competition_care_routing_ablation.py (5)"
+  },
+  "core_exploration": {
+    "summary": "evaluation/core_exploration/results/summary.json",
+    "scope": "internal public-text nested research, not clinical Chinese validation",
+    "readiness": "RESEARCH_ONLY",
+    "corrected_legacy_accuracy": 0.608179,
+    "old_headline_reproducible": false,
+    "original_git_head_seed42_accuracy": 0.624413,
+    "new_internal_accuracy_mean": 0.9425326683906959,
+    "new_internal_ece_mean": 0.03208174227402982,
+    "structured_full_group_cv_accuracy": 0.6151315789473685
   }
 }

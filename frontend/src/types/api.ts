@@ -77,7 +77,13 @@ export interface TriagePayload {
     [key: string]: unknown;
   };
   htriage_analysis?: Record<string, unknown>;
-  disease_prediction?: unknown;
+  disease_prediction?: {
+    available?: boolean;
+    abstained?: boolean;
+    abstain_reason?: string;
+    notice?: string;
+    [key: string]: unknown;
+  };
 }
 
 export interface FollowupResponse {

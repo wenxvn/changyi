@@ -148,11 +148,11 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
               <EvidenceMetric label="训练样本" value={formatCount(evidence.model.training_rows)} />
               <EvidenceMetric label="测试样本" value={formatCount(evidence.model.test_rows)} />
             </div>
-            <p className="evidence-panel__footnote">当前为离线样本切分评估，仅用于研究与演示。类别 {formatCount(evidence.model.class_count)} 个，词表 {formatCount(evidence.model.vocabulary_size)} 个。</p>
+            <p className="evidence-panel__footnote">{evidence.model.label.includes("随机切分基线") ? "随机切分参考可能受近重复样本影响；" : "保存指标的切分来源仍需核对；"}当前为症状—疾病离线样本评估，不能换算为中文主诉的就医科室准确率。类别 {formatCount(evidence.model.class_count)} 个，词表 {formatCount(evidence.model.vocabulary_size)} 个。</p>
           </article>
           <article className="evidence-panel">
             <div className="evidence-panel__topline"><Database size={19} aria-hidden="true" /><span>数据范围与来源</span></div>
-            <p className="evidence-panel__plain-copy">评估使用已接入的常州公开医疗与交通资源。医院和医生资料会显示来源状态与更新时间，具体使用前请以机构公开信息为准。</p>
+            <p className="evidence-panel__plain-copy">模型评估使用症状—疾病离线样本，不是常州患者的中文临床评测。常州医院、医生与交通资料用于资源目录与排序；使用前仍需核验机构公开信息。</p>
             {evidence.hospital_data ? (
               <div className="evidence-panel__footnote">
                 医院目录：{evidence.hospital_data.status} · {evidence.hospital_data.record_count} 条 · 派生能力字段 {Object.keys(evidence.hospital_data.derived_fields).length} 项 · 未支持字段 {evidence.hospital_data.unsupported_fields.join("、") || "无"}。

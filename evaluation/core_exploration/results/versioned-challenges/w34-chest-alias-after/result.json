@@ -1,0 +1,139 @@
+{
+  "scope": "synthetic_unverified_alias_isolation_not_medical_equivalence_certification",
+  "total": 8,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "胸闷",
+      "expected_accepted": false,
+      "expected_quarantine": true,
+      "abstained": true,
+      "abstain_reason": "unverified_semantic_equivalence",
+      "codes": [],
+      "mapping_issues": [
+        {
+          "alias": "胸闷",
+          "legacy_code": "breathlessness",
+          "reason": "unverified_semantic_equivalence"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "心血管内科",
+      "pass": true
+    },
+    {
+      "text": "胸闷和咳嗽",
+      "expected_accepted": false,
+      "expected_quarantine": true,
+      "abstained": true,
+      "abstain_reason": "unverified_semantic_equivalence",
+      "codes": [],
+      "mapping_issues": [
+        {
+          "alias": "胸闷",
+          "legacy_code": "breathlessness",
+          "reason": "unverified_semantic_equivalence"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "心血管内科",
+      "pass": true
+    },
+    {
+      "text": "没有胸闷但咳嗽",
+      "expected_accepted": true,
+      "expected_quarantine": false,
+      "abstained": false,
+      "abstain_reason": null,
+      "codes": [
+        "cough"
+      ],
+      "mapping_issues": [],
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "没有胸闷但呼吸困难",
+      "expected_accepted": true,
+      "expected_quarantine": false,
+      "abstained": false,
+      "abstain_reason": null,
+      "codes": [
+        "breathlessness"
+      ],
+      "mapping_issues": [],
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "text": "呼吸困难",
+      "expected_accepted": true,
+      "expected_quarantine": false,
+      "abstained": false,
+      "abstain_reason": null,
+      "codes": [
+        "breathlessness"
+      ],
+      "mapping_issues": [],
+      "triage_status": "EMERGENCY",
+      "matched_department": "呼吸与危重症医学科",
+      "pass": true
+    },
+    {
+      "text": "胸闷和呼吸困难",
+      "expected_accepted": false,
+      "expected_quarantine": true,
+      "abstained": true,
+      "abstain_reason": "unverified_semantic_equivalence",
+      "codes": [],
+      "mapping_issues": [
+        {
+          "alias": "胸闷",
+          "legacy_code": "breathlessness",
+          "reason": "unverified_semantic_equivalence"
+        }
+      ],
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": true
+    },
+    {
+      "text": "假如胸闷",
+      "expected_accepted": false,
+      "expected_quarantine": true,
+      "abstained": true,
+      "abstain_reason": "unverified_semantic_equivalence",
+      "codes": [],
+      "mapping_issues": [
+        {
+          "alias": "胸闷",
+          "legacy_code": "breathlessness",
+          "reason": "unverified_semantic_equivalence"
+        }
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "心血管内科",
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气，胸闷",
+      "expected_accepted": false,
+      "expected_quarantine": true,
+      "abstained": true,
+      "abstain_reason": "unverified_semantic_equivalence",
+      "codes": [],
+      "mapping_issues": [
+        {
+          "alias": "胸闷",
+          "legacy_code": "breathlessness",
+          "reason": "unverified_semantic_equivalence"
+        }
+      ],
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": true
+    }
+  ]
+}

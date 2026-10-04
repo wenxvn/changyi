@@ -1,0 +1,27 @@
+{
+  "scope": "synthetic Chinese engineering proxy, not clinical validation",
+  "job_count": 45,
+  "representations": {
+    "char24": {
+      "jobs": 15,
+      "raw_cases_across_3_repeats": 912,
+      "accuracy": 0.45997807017543857,
+      "unseen_department_rendered_rows": 164,
+      "group_disjoint_all": true
+    },
+    "char13": {
+      "jobs": 15,
+      "raw_cases_across_3_repeats": 912,
+      "accuracy": 0.4764254385964912,
+      "unseen_department_rendered_rows": 164,
+      "group_disjoint_all": true
+    },
+    "asserted_binary": {
+      "jobs": 15,
+      "raw_cases_across_3_repeats": 912,
+      "accuracy": 0.4682017543859649,
+      "unseen_department_rendered_rows": 164,
+      "group_disjoint_all": true
+    }
+  }
+}

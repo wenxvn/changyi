@@ -1,0 +1,236 @@
+{
+  "scope": "synthetic_auxiliary_qualified_chest_review_not_clinical_severity_validation",
+  "total": 7,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "没有严重胸痛",
+      "review_expected": true,
+      "expected_present": [],
+      "expected_unknown": [
+        "chest_pain"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "胸痛",
+            "code": "chest_pain",
+            "qualifier": "严重",
+            "start": 4,
+            "end": 6
+          }
+        ],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstain_reason": "qualified_negation_scope_unverified",
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "pass": true
+    },
+    {
+      "text": "我没有严重胸痛但有轻微胸痛",
+      "review_expected": true,
+      "expected_present": [
+        "chest_pain"
+      ],
+      "expected_unknown": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "胸痛",
+            "code": "chest_pain",
+            "qualifier": "严重",
+            "start": 5,
+            "end": 7
+          }
+        ],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstain_reason": "qualified_negation_scope_unverified",
+      "triage_status": "URGENT",
+      "matched_department": "心血管内科",
+      "pass": true
+    },
+    {
+      "text": "没有剧烈胸痛但咳嗽",
+      "review_expected": true,
+      "expected_present": [
+        "cough"
+      ],
+      "expected_unknown": [
+        "chest_pain"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "胸痛",
+            "code": "chest_pain",
+            "qualifier": "剧烈",
+            "start": 4,
+            "end": 6
+          }
+        ],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstain_reason": "qualified_negation_scope_unverified",
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "没有胸痛",
+      "review_expected": false,
+      "expected_present": [],
+      "expected_unknown": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [
+          "chest_pain"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstain_reason": "no_supported_symptoms",
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "pass": true
+    },
+    {
+      "text": "我有轻微胸痛",
+      "review_expected": false,
+      "expected_present": [
+        "chest_pain"
+      ],
+      "expected_unknown": [],
+      "expected_accepted": true,
+      "assertions": {
+        "present": [
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstain_reason": null,
+      "triage_status": "URGENT",
+      "matched_department": "心血管内科",
+      "pass": true
+    },
+    {
+      "text": "是不是严重胸痛",
+      "review_expected": false,
+      "expected_present": [],
+      "expected_unknown": [
+        "chest_pain"
+      ],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [],
+        "absent": [],
+        "unknown": [
+          "chest_pain"
+        ],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstain_reason": "symptom_assertion_uncertain",
+      "triage_status": "URGENT",
+      "matched_department": "心血管内科",
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气，没有严重胸痛",
+      "review_expected": true,
+      "expected_present": null,
+      "expected_unknown": [],
+      "expected_accepted": false,
+      "assertions": {
+        "present": [
+          "breathlessness",
+          "chest_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": true,
+        "issues": [
+          {
+            "alias": "胸痛",
+            "code": "chest_pain",
+            "qualifier": "严重",
+            "start": 13,
+            "end": 15
+          }
+        ],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstain_reason": "qualified_negation_scope_unverified",
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": true
+    }
+  ]
+}

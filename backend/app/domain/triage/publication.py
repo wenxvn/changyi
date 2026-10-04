@@ -18,6 +18,8 @@ SAFETY_GATE_NOTICE = "Safety Gate 优先处理当前风险，不展示疾病候�
 
 def safety_first_prediction(prediction: Mapping[str, Any] | None) -> dict[str, Any]:
     safe_prediction = dict(prediction or {})
+    if safe_prediction.get("abstain_reason") and safe_prediction["abstain_reason"] != "safety_gate_priority":
+        safe_prediction["auxiliary_abstain_reason"] = safe_prediction["abstain_reason"]
     safe_prediction.update({
         "disease": "",
         "predictions": [],
@@ -48,6 +50,7 @@ def safety_first_triage(
 
     public_triage["disease_candidates"] = []
     public_triage["disease_categories"] = []
+    public_triage["department_candidates"] = []
     public_triage["model_disease_prediction"] = safety_first_prediction(
         public_triage.get("model_disease_prediction")
     )
@@ -66,6 +69,7 @@ def safety_first_htriage_payload(
         return public_htriage
 
     public_htriage["disease_candidates"] = []
+    public_htriage["department_candidates"] = []
     public_htriage["disease_categories"] = []
     public_htriage["model_disease_prediction"] = safety_first_prediction(
         public_htriage.get("model_disease_prediction")

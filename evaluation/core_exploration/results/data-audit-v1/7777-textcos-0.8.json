@@ -1,0 +1,130 @@
+{
+  "status": "complete",
+  "frozen_config": {
+    "family": "lr",
+    "C": 100.0,
+    "balanced": true
+  },
+  "representation": "concat_char",
+  "temperature": 0.6159215129914316,
+  "metrics": {
+    "n": 238,
+    "accuracy": 0.9411764705882353,
+    "macro_f1": 0.9508015802274876,
+    "nll": 0.2122296590498319,
+    "brier": 0.08959836719212683,
+    "ece": 0.04252025255334034,
+    "wrong_confident_07": 0.025210084033613446,
+    "per_department": {
+      "内分泌代谢科": {
+        "support": 10,
+        "recall": 1.0
+      },
+      "呼吸与危重症医学科": {
+        "support": 28,
+        "recall": 0.6785714285714286
+      },
+      "呼吸内科": {
+        "support": 10,
+        "recall": 1.0
+      },
+      "心血管内科": {
+        "support": 11,
+        "recall": 1.0
+      },
+      "感染性疾病科": {
+        "support": 49,
+        "recall": 0.9795918367346939
+      },
+      "普外科": {
+        "support": 17,
+        "recall": 1.0
+      },
+      "泌尿外科": {
+        "support": 10,
+        "recall": 1.0
+      },
+      "消化内科": {
+        "support": 11,
+        "recall": 0.9090909090909091
+      },
+      "皮肤科": {
+        "support": 56,
+        "recall": 0.9642857142857143
+      },
+      "神经内科": {
+        "support": 9,
+        "recall": 0.8888888888888888
+      },
+      "肛肠科": {
+        "support": 0,
+        "recall": null
+      },
+      "骨科": {
+        "support": 27,
+        "recall": 1.0
+      }
+    },
+    "reliability": [
+      {
+        "bin": 3,
+        "n": 2,
+        "confidence": 0.3941120738718912,
+        "accuracy": 0.5
+      },
+      {
+        "bin": 4,
+        "n": 6,
+        "confidence": 0.45494210314768924,
+        "accuracy": 0.16666666666666666
+      },
+      {
+        "bin": 5,
+        "n": 5,
+        "confidence": 0.535217992735156,
+        "accuracy": 0.6
+      },
+      {
+        "bin": 6,
+        "n": 5,
+        "confidence": 0.642632805777802,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 7,
+        "n": 6,
+        "confidence": 0.7361013515362963,
+        "accuracy": 0.16666666666666666
+      },
+      {
+        "bin": 8,
+        "n": 8,
+        "confidence": 0.8484409965895604,
+        "accuracy": 1.0
+      },
+      {
+        "bin": 9,
+        "n": 206,
+        "confidence": 0.9881623034339022,
+        "accuracy": 0.9951456310679612
+      }
+    ],
+    "accuracy_row_bootstrap_95ci": [
+      0.9117647058823529,
+      0.9663865546218487
+    ],
+    "ci_limitation": "row bootstrap, dependent template rows may narrow interval"
+  },
+  "seed": 7777,
+  "threshold": 0.8,
+  "sizes": {
+    "train": 810,
+    "cal": 241,
+    "test": 238
+  },
+  "component_count": 993,
+  "largest_component": 43,
+  "max_cross_split_cosine": 0.787948593350678,
+  "guard_pass": true,
+  "scope": "label-masked text-template sensitivity; no clinical semantics guarantee"
+}

@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit",
     "test": "node --experimental-strip-types --test test/*.test.mjs",
-    "e2e": "NO_PROXY=127.0.0.1,localhost no_proxy=127.0.0.1,localhost playwright test"
+    "e2e": "node scripts/e2e.mjs",
+    "e2e:hooks": "node scripts/e2e.mjs --config playwright.hooks.config.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.21.0",

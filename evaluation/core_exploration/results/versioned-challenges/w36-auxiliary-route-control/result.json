@@ -1,0 +1,440 @@
+{
+  "scope": "controlled_htriage_helper_counterfactual_not_full_adapter_failure_or_clinical_validation",
+  "baseline_inputs": 8,
+  "modes": [
+    "unavailable",
+    "unrelated_high",
+    "unrelated_low"
+  ],
+  "total": 24,
+  "failed": 0,
+  "dependency_restored": true,
+  "baselines": [
+    {
+      "text": "低烧",
+      "signature": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      }
+    },
+    {
+      "text": "cough",
+      "signature": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      }
+    },
+    {
+      "text": "头昏",
+      "signature": {
+        "triage_status": "ROUTINE",
+        "matched_department": "神经内科",
+        "defer_resource_routing": false
+      }
+    },
+    {
+      "text": "鼻塞",
+      "signature": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      }
+    },
+    {
+      "text": "已确诊糖尿病",
+      "signature": {
+        "triage_status": "URGENT",
+        "matched_department": "内分泌代谢科",
+        "defer_resource_routing": false
+      }
+    },
+    {
+      "text": "假如咳嗽",
+      "signature": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      }
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "signature": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      }
+    },
+    {
+      "text": "抽搐",
+      "signature": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      }
+    }
+  ],
+  "rows": [
+    {
+      "text": "低烧",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "低烧",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "低烧",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "cough",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "cough",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "cough",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "全科医学科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "头昏",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "神经内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "神经内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "头昏",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "神经内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "神经内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "头昏",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "神经内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "神经内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "鼻塞",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "鼻塞",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "鼻塞",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "已确诊糖尿病",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "URGENT",
+        "matched_department": "内分泌代谢科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "URGENT",
+        "matched_department": "内分泌代谢科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "已确诊糖尿病",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "URGENT",
+        "matched_department": "内分泌代谢科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "URGENT",
+        "matched_department": "内分泌代谢科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "已确诊糖尿病",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "URGENT",
+        "matched_department": "内分泌代谢科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "URGENT",
+        "matched_department": "内分泌代谢科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "假如咳嗽",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "假如咳嗽",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "假如咳嗽",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "ROUTINE",
+        "matched_department": "呼吸内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "observed": {
+        "triage_status": "EMERGENCY",
+        "matched_department": "心血管内科",
+        "defer_resource_routing": false
+      },
+      "pass": true
+    },
+    {
+      "text": "抽搐",
+      "mode": "unavailable",
+      "baseline": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "observed": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "pass": true
+    },
+    {
+      "text": "抽搐",
+      "mode": "unrelated_high",
+      "baseline": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "observed": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "pass": true
+    },
+    {
+      "text": "抽搐",
+      "mode": "unrelated_low",
+      "baseline": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "observed": {
+        "triage_status": "INSUFFICIENT_INFORMATION",
+        "matched_department": null,
+        "defer_resource_routing": true
+      },
+      "pass": true
+    }
+  ]
+}

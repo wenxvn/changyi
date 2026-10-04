@@ -1,0 +1,33 @@
+{
+  "pipeline": "Safety Gate → Direct Department → Selective Abstention → Care Routing",
+  "department_model_accuracy_for_context": 0.742438,
+  "invariants": [
+    {
+      "id": "emergency_never_rerouted_by_department",
+      "status": "enforced_by_architecture",
+      "detail": "Direct Department 仅在 Safety Gate 非 EMERGENCY 后作为研究路由；实验包不调用生产 Safety 作为覆盖"
+    },
+    {
+      "id": "department_does_not_override_safety",
+      "status": "enforced_by_architecture",
+      "detail": "未改 Safety Gate / 红旗规则 / 生产 API"
+    },
+    {
+      "id": "abstention_does_not_lower_red_flag_priority",
+      "status": "enforced_by_architecture",
+      "detail": "拒答只作用于科室候选，不作用于 EMERGENCY 状态"
+    },
+    {
+      "id": "safety_evaluation_unchanged",
+      "status": "pass",
+      "detail": {
+        "cases": 142,
+        "recall": 1.0,
+        "under_triage": 0.0,
+        "emergency_fn": 0
+      }
+    }
+  ],
+  "all_pass": true,
+  "disclaimer": "离线契约检查；不是临床 Safety 验证"
+}

@@ -1,0 +1,85 @@
+{
+  "scope": "synthetic_risk_question_priority_contract_not_clinical_validation",
+  "total": 5,
+  "failed": 3,
+  "rows": [
+    {
+      "text": "没有严重胸痛",
+      "answer": null,
+      "expected_priority": true,
+      "question_ids": [
+        "main_symptom_more",
+        "duration",
+        "onset_pattern",
+        "symptom_location",
+        "companion_symptoms",
+        "trigger_factor",
+        "history_medicine",
+        "visit_goal"
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "全科医学科",
+      "pass": false
+    },
+    {
+      "text": "咳嗽",
+      "answer": null,
+      "expected_priority": true,
+      "question_ids": [
+        "duration",
+        "severity",
+        "onset_pattern",
+        "symptom_location",
+        "companion_symptoms",
+        "trigger_factor",
+        "history_medicine",
+        "visit_goal"
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": false
+    },
+    {
+      "text": "已确诊糖尿病",
+      "answer": null,
+      "expected_priority": true,
+      "question_ids": [
+        "known_disease_status",
+        "known_disease_evidence",
+        "known_disease_goal",
+        "red_flag_check",
+        "topk_detail"
+      ],
+      "triage_status": "URGENT",
+      "matched_department": "内分泌代谢科",
+      "pass": false
+    },
+    {
+      "text": "咳嗽",
+      "answer": "none",
+      "expected_priority": false,
+      "question_ids": [
+        "duration",
+        "severity",
+        "onset_pattern",
+        "symptom_location",
+        "companion_symptoms",
+        "trigger_factor",
+        "history_medicine",
+        "visit_goal"
+      ],
+      "triage_status": "ROUTINE",
+      "matched_department": "呼吸内科",
+      "pass": true
+    },
+    {
+      "text": "持续胸痛喘不上气",
+      "answer": null,
+      "expected_priority": false,
+      "question_ids": [],
+      "triage_status": "EMERGENCY",
+      "matched_department": "心血管内科",
+      "pass": true
+    }
+  ]
+}
