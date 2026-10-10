@@ -71,7 +71,7 @@ def parse_asserted_symptoms(text: str, aliases: Mapping[str, str], vocabulary=()
             resolved = bool(re.fullmatch(r"(?:已经|已|现在)?(?:好了|消失(?:了)?|痊愈(?:了)?)", suffix))
             mention_noncurrent = document_noncurrent or historical or resolved
             noncurrent = noncurrent or mention_noncurrent
-            if not absent and re.search(r"[、和及与]$", prefix):
+            if not absent and re.search(r"[、和及与或]$", prefix):
                 denial = list(re.finditer(r"(?:没有|没|无|未见|未|否认|不伴|不出现)(?:有|出现)?", clause_prefix))
                 if denial:
                     after_denial = clause_prefix[denial[-1].end():]

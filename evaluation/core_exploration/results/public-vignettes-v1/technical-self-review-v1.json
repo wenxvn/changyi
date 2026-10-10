@@ -1,0 +1,231 @@
+{
+  "review_date": "2026-10-04",
+  "reviewer": "Codex agent, explicitly authorized by user",
+  "review_type": "technical_translation_and_literature_review",
+  "independent_medical_reviewer": false,
+  "clinical_validation": false,
+  "source_sha256": "3f300d6e2c994aa12a86b46272f31c2ad500b9b6a0115a9aa09b50ac5827a8b6",
+  "translations_sha256": "83cc7da70b52799698866ba5aaee66b69186a2924b23b963a84c48ea5717601d",
+  "all_27_retained": true,
+  "source_or_translation_changed": false,
+  "clinical_department_labels_created": false,
+  "new_model_fits": 0,
+  "rows": [
+    {
+      "case_id": "F1",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "1f332ba64d6462ddebc90312bd77cd3ba61526459713c78b75cf1766cc4bde1f",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F2",
+      "source_gold_unchanged": "B/C",
+      "source_and_translation_sha256": "935d56970bb614cdf4022ad54b238d3373165d0ba50c50daef7052b4ea5b1c0a",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F3",
+      "source_gold_unchanged": "C",
+      "source_and_translation_sha256": "8d22c798e4a3caa29c98a9e3f0a6d7a9d8e92dc03b4b75491c2f6d0c2e435488",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F4",
+      "source_gold_unchanged": "C",
+      "source_and_translation_sha256": "633fc750c2cb06ae0d15262dced8eed14d83ace60d3b385c190ba851c6fe3ab7",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F5",
+      "source_gold_unchanged": "A",
+      "source_and_translation_sha256": "664b88bc643fcad48ca778e9b8bf596c01ac8799bccc125fd2e3110f9b12f915",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F6",
+      "source_gold_unchanged": "B/C",
+      "source_and_translation_sha256": "ae49e7568f53b6868eb34326c469723a34c6ad116228ede6067c8a96931581c4",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F7",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "eea2757d0b3bff80c678c750f92dff9564fa2bd1919a380fa0ae70b48d5b00bc",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F8",
+      "source_gold_unchanged": "A",
+      "source_and_translation_sha256": "5f89703f5e8a66fcde791721ea87a16ce565ee2dbec66e1df37de32b32fbd3fe",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F9",
+      "source_gold_unchanged": "D",
+      "source_and_translation_sha256": "d9c36a375e8e54660ea9c39abee22e8e7be018e5ec4ab10c749d4c9b0d52ec8f",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "4次使用不等于个人最大剂量；能完整讲话不排除危险。源D保留，当前INFO不算匹配。"
+    },
+    {
+      "case_id": "F10",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "1052f8ea12d650efdba45ae8daee0811d07fc07f0ed66bf3220476dfcfb8fd8e",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "原F输入没有检验值；不补入E版血钾、肌酐或体征。源C/D的输入充分性另记。"
+    },
+    {
+      "case_id": "F11",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "634224d663037ab513f73681a33941bb21d23c1a6c47f24aadd49d20112bda47",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "lightheadedness译为头昏；没有意识混乱或抽搐为否认，不可改阳性。原F无血钠。"
+    },
+    {
+      "case_id": "F12",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "1f2fe58536cd5b4efaa45f3d008b03ad96dac1df20cb50209fd20cb4091f6f6b",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F13",
+      "source_gold_unchanged": "D",
+      "source_and_translation_sha256": "836fef70f6c0eaf95b633ead2c329ae2dee4c7bbddde63176e1069c620872735",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "urinating a lot译为排尿很多；不等价于只尿频，不补酮体或血糖。"
+    },
+    {
+      "case_id": "F14",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "6d6a53d153e835ff4655130dc850ba8717570df1cfbe99680cf48f81e3dfb7af",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F15",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "50451eeff9cff37516630c20b31b2c6bf5dc036b5bc0add4c523a9235d8c1514",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "very high血压无数值；不从E版补196/112。"
+    },
+    {
+      "case_id": "F16",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "ce092a90871479c076c6ecaa765a7a1baba7ff15b41a6e394b4616f6dae0791a",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F17",
+      "source_gold_unchanged": "A",
+      "source_and_translation_sha256": "42b1a4de8b2d2d6df40f8c8dfee47c7d437a07612cd14a72ebd30a17dd5042ba",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "原F没有尿检数值。无可见血尿保持。"
+    },
+    {
+      "case_id": "F18",
+      "source_gold_unchanged": "B",
+      "source_and_translation_sha256": "2afc679bc2defe71ef98b4126af4f0f5801c210a5df453c47ff3fdaa7fb8c4fe",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "原F没有甲状腺化验值。"
+    },
+    {
+      "case_id": "F19",
+      "source_gold_unchanged": "B",
+      "source_and_translation_sha256": "a090b1bdb08d8177a02a27a432f164b2fb96185ac1c1bb649f46aa9a80063240",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "原F没有血小板数值。"
+    },
+    {
+      "case_id": "F20",
+      "source_gold_unchanged": "A",
+      "source_and_translation_sha256": "d6b89b3630afbec6f763a97878841210dd0d956827284c52a7c0647f62d54318",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F21",
+      "source_gold_unchanged": "B",
+      "source_and_translation_sha256": "42b31d343185628fb02636231c34a06b7c3f173d6fdf5257e77cec7ee758c132",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F22",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "e8516c83d5b6ed030a424643cf4be424548f245af82645ea9ff32cdc037cb211",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "29岁与原F一致；点状皮损不添加确诊名称或血小板值。"
+    },
+    {
+      "case_id": "F23",
+      "source_gold_unchanged": "A/B",
+      "source_and_translation_sha256": "1f79e3b52fb0426017e3badd44458dee764b80ca46dfa16ea020b17c221c5dcc",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "原F已恢复，E版仍疲劳不可替换。"
+    },
+    {
+      "case_id": "F24",
+      "source_gold_unchanged": "B",
+      "source_and_translation_sha256": "489fc92bf6d34e5b5a808428d139af2995081cc07e90f66ae89e908e87e75f84",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "原源有编码损坏1�C2，译为1至2，范围解释记录，不静默改源。"
+    },
+    {
+      "case_id": "F25",
+      "source_gold_unchanged": "C",
+      "source_and_translation_sha256": "6be244d33019da3f1ad0cda11b2b6eddba8c5e6730c262461da69346f72c05f3",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F26",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "229419a271476e4217c731e72469b2f2d6cc34d1a3cf217767a3b7dcacde8aad",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "症状程度、否认、持续时间、恢复状态及病史与原F核对；未新增诊断/体征/标签。"
+    },
+    {
+      "case_id": "F27",
+      "source_gold_unchanged": "C/D",
+      "source_and_translation_sha256": "3fc1fd2a48f7cbedde0f8d921900cd368cea801926b346ddbff4b3d069f23c63",
+      "age_gender_verified": true,
+      "manual_semantic_comparison": "no_material_omission_or_addition_identified",
+      "note": "源同时写low-grade fever和99.5F，保留两项，不自行改临床阈值。"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "source_commit": "60f6f3012c30fd72c6917e2fdce9b37821faa546",
+  "source_url": "https://raw.githubusercontent.com/Medical-AI-Learning/MedJourney/60f6f3012c30fd72c6917e2fdce9b37821faa546/data/basic/dr.json",
+  "source_sha256": "7ea640389edea6cac2f34b3a3801bc1e26d111f50f758e1229cb78bfde38dace",
+  "source_bytes": 150335,
+  "source_license": "unspecified_in_public_repository_not_an_open_license_claim",
+  "analysis_basis": "author_paper_checklist5_open_access_data_and_code_for_reproducing_experiments_page22",
+  "source_paper": "https://papers.nips.cc/paper_files/paper/2024/file/9f80af32390984cb709cdeb014d0df41-Paper-Datasets_and_Benchmarks_Track.pdf",
+  "origin": "DR_physician_authored_fictional_complaints_A2_1_page14",
+  "raw_data_persisted": false,
+  "predictions": 0,
+  "fits": 0,
+  "parser": "ndjson_not_single_json_document",
+  "initial_single_json_parser_failed_before_prediction": true,
+  "root_count": 500,
+  "fields": {
+    "prompt": "str",
+    "target": "str",
+    "keyentity": "str"
+  },
+  "label_counts": {},
+  "scope": "local_read_only_structure_review_no_training_redistribution_or_clinical_validation"
+}

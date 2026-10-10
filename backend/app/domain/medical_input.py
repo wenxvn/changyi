@@ -169,6 +169,12 @@ def _seizure_report_contexts(text):
         if re.search(r"曾经|以前|小时候|去年|历史", prefix) and not current:
             continue
         denial = re.search(r"(?:没有|没|否认(?:有)?|未(?:见|出现)?|不伴)(?:明显的?)?(?:持续|一直(?:在)?)?$", prefix)
+        if not denial:
+            # Only registered risk terms in an explicit negative list; do not
+            # treat denial of another unrelated fact as denial of this report.
+            member = r"(?:意识混乱|意识不清|意识异常|呼吸困难|胸痛|抽搐|惊厥)"
+            denial = re.search(r"(?:没有|没|无|否认(?:有)?|未见|未出现|不伴(?:有)?)"
+                               + member + r"(?:[、和及与或]" + member + r")*[、和及与或]$", prefix)
         negated_denial = bool(denial and denial.group().startswith("否认") and denial.start() > 0 and prefix[denial.start() - 1] == "不")
         if not uncertain and denial and not negated_denial:
             continue
@@ -271,7 +277,7 @@ def has_explicit_hypothetical_prefix(prefix):
     ))
 
 
-UNRESOLVED_EXCLUSION_ACTION = r"(?:未(?:能(?:够)?)?|不能(?:够)?|无法)\s*(?:明确|完全)?\s*排除"
+UNRESOLVED_EXCLUSION_ACTION = r"(?:未(?:能(?:够)?)?|不能(?:够)?|无法|没(?:有|能(?:够)?)?)\s*(?:明确|完全)?\s*排除"
 
 
 def has_unresolved_exclusion_action(prefix, *, starts_at_token=False):
@@ -410,21 +416,25 @@ def contains_positive(text, words):
             idx = prefix.rfind(mark)
             if idx != -1:
                 prefix = prefix[idx + 1:]
-        if any(marker in prefix for marker in double_neg_markers):
-            return False
+        double_spans = [match.span() for marker in double_neg_markers
+                        for match in re.finditer(re.escape(marker), prefix)]
         negations = [(match.start(), neg) for neg in neg_prefixes for match in re.finditer(re.escape(neg), prefix)
-                     if not (neg == "未" and has_unresolved_exclusion_action(prefix[match.start():], starts_at_token=True))
+                     if not any(left <= match.start() < right for left, right in double_spans)
+                     if not (neg in {"未", "无", "没", "没有"} and has_unresolved_exclusion_action(prefix[match.start():]))
                      if not (match.start() > 0 and ((neg == "不是" and prefix[match.start() - 1] == "是")
                                                     or (neg == "否认" and prefix[match.start() - 1] == "不")))]
         if not negations:
             return False
         neg_pos, neg_word = max(negations)
-        tail = prefix[neg_pos:]
+        # A negated predicate (不伴/未出现) is not a new positive clause.
+        # Breakers only act after the negative token and its direct predicate.
+        tail = prefix[neg_pos + len(neg_word):]
+        tail = re.sub(r"^(?:(?:有|出现|伴有|伴随)\s*)+", "", tail)
         if neg_word == "不是" and any(bridge in tail for bridge in ("引起", "导致", "造成")):
             return False
         if any(br in tail for br in neg_breakers):
             return False
-        return len(tail) <= 14
+        return len(prefix[neg_pos:]) <= 14
 
     for word in words:
         if not word:

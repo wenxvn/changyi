@@ -1,0 +1,226 @@
+{
+  "source_sha256": "3f300d6e2c994aa12a86b46272f31c2ad500b9b6a0115a9aa09b50ac5827a8b6",
+  "source_commit": "217352f4a5144390f2af30042e208167b14b9268",
+  "scope": "agent_translated_clinician_authored_fictional_vignettes_not_native_chinese_validation",
+  "translation_medically_reviewed": false,
+  "label_input_allowed": false,
+  "model_fitting": false,
+  "cases": [
+    {
+      "case_id": "F1",
+      "base_case_id": "Case1",
+      "domain": "Neuro",
+      "condition_en": "I'm a 45-year-old man.\n\nMy situation:\n- Symptoms: This week I've had two episodes where my entire left arm went numb and tingly for\nabout 15 minutes, then completely resolved. No weakness, no facial droop, and no speech\nproblems. I feel normal right now.\n- History: I don't smoke and I don't have diabetes or high blood pressure. I'm not on blood\nthinners.",
+      "source_gold": "C/D",
+      "condition_zh": "我45岁，男性。本周整个左臂有过两次麻木和刺痛，每次约15分钟，随后完全恢复。没有无力、面部下垂或说话问题。我现在感觉正常。不吸烟，没有糖尿病或高血压，也没有服用抗凝药。"
+    },
+    {
+      "case_id": "F2",
+      "base_case_id": "Case2",
+      "domain": "Urology",
+      "condition_en": "I'm a 58-year-old man.\n\nMy situation:\n- Symptoms: This morning I urinated and the toilet water was pink-red. There was no pain at all\n(no burning, no back/flank pain). I urinated twice since and it looks normal now. I feel fine\notherwise.\n- History: I used to smoke (quit 10 years ago, about 20 pack-years). I take lisinopril for blood\npressure.",
+      "source_gold": "B/C",
+      "condition_zh": "我58岁，男性。今天早晨小便时马桶里的水呈粉红色到红色，完全没有疼痛，没有尿痛或背部、腰侧疼痛。之后又排尿两次，颜色现在看起来正常，其他方面感觉良好。以前吸烟，10年前戒烟，约20包年。我服用赖诺普利来控制血压。"
+    },
+    {
+      "case_id": "F3",
+      "base_case_id": "Case3",
+      "domain": "Cardiac",
+      "condition_en": "I'm a 62-year-old man.\n\nMy situation:\n- Symptoms: For about a week, I've noticed a pressure feeling in my chest when I walk up a hill.\nIt goes away after I rest for a few minutes. It has never happened at rest. Right now I feel fine\nand have no chest pain.\n- History: I have type 2 diabetes, high blood pressure, and high cholesterol (metformin, lisinopril,\natorvastatin). No jaw/arm pain, nausea, or sweating.",
+      "source_gold": "C",
+      "condition_zh": "我62岁，男性。大约一周以来，上坡走路时胸部有压迫感，休息几分钟就消失，从未在休息时出现。我现在感觉良好，没有胸痛。我有2型糖尿病、高血压和高胆固醇，服用二甲双胍、赖诺普利和阿托伐他汀。没有下颌或手臂疼痛、恶心或出汗。"
+    },
+    {
+      "case_id": "F4",
+      "base_case_id": "Case4",
+      "domain": "Onc/MSK",
+      "condition_en": "I'm a 52-year-old man.\n\nMy situation:\n- Symptoms: My lower back has been aching for about 2 weeks. It's worse at night and\nsometimes wakes me up. I've also had night sweats and I've lost about 8 pounds without trying.\nNo injury. No leg weakness or numbness.\n- History: I used to smoke but quit 5 years ago. No bowel/bladder problems.",
+      "source_gold": "C",
+      "condition_zh": "我52岁，男性。下背部酸痛约两周，晚上更严重，有时会痛醒。同时有盗汗，体重在没有刻意减重的情况下下降约8磅。没有受伤，没有腿部无力或麻木。以前吸烟，5年前戒烟。没有排便或排尿方面的问题。"
+    },
+    {
+      "case_id": "F5",
+      "base_case_id": "Case5",
+      "domain": "ID",
+      "condition_en": "I'm a 24-year-old man.\n\nMy situation:\n- Symptoms: I've had a sore throat for 3 days with a mild fever around 99.5F. It hurts to swallow but I can still eat and drink. I can breathe fine and my voice is normal. No rash or stiff neck.\n- History: No major medical problems.",
+      "source_gold": "A",
+      "condition_zh": "我24岁，男性。喉咙痛三天，伴轻度发热，体温约99.5华氏度。吞咽会痛，但仍能吃喝，呼吸正常，声音也正常。没有皮疹或颈部僵硬。没有重要的既往疾病。"
+    },
+    {
+      "case_id": "F6",
+      "base_case_id": "Case6",
+      "domain": "Neuro",
+      "condition_en": "I'm a 35-year-old man.\n\nMy situation:\n- Symptoms: I woke up with a headache this morning and it's been about 8 hours. It feels like pressure all around my head, like a tight band. It came on gradually over the first hour. This is the worst headache I've ever had, but I don't usually get headaches. No fever, stiff neck, vision changes, weakness, numbness, or vomiting.\n- History: No known medical problems.",
+      "source_gold": "B/C",
+      "condition_zh": "我35岁，男性。今天早晨醒来后头痛，已持续约8小时，整个头部像被紧箍带压住。疼痛在最初一小时内逐渐出现。这是我经历过最严重的头痛，不过平时通常不头痛。没有发热、颈部僵硬、视力变化、无力、麻木或呕吐。没有已知疾病。"
+    },
+    {
+      "case_id": "F7",
+      "base_case_id": "Case7",
+      "domain": "Surgery",
+      "condition_en": "I'm a 22-year-old man.\n\nMy situation:\n- Symptoms: I've had pain in my right lower belly since yesterday. It's a dull ache around 5/10. I feel a little nauseous but haven't vomited and I have less appetite. I had a stomach bug last week that's mostly better now.\n- History: No urinary burning. No prior surgeries.",
+      "source_gold": "C/D",
+      "condition_zh": "我22岁，男性。从昨天起右下腹疼痛，是大约5分、满分10分的钝痛。有点恶心，但没有呕吐，食欲减退。上周患过胃肠道感染，现在基本好转。没有尿痛，以前没有做过手术。"
+    },
+    {
+      "case_id": "F8",
+      "base_case_id": "Case8",
+      "domain": "Cardiac",
+      "condition_en": "I'm a 31-year-old man.\n\nMy situation:\n- Symptoms: For 2 weeks I've noticed my heart \"skipping beats\" a few times a day. It feels like a flutter or a thump and then it goes back to normal. It lasts a second or two. No chest pain, no shortness of breath, and I've never passed out.\n- History: It seems more noticeable after coffee (about 4 cups/day). No family history of sudden cardiac death.",
+      "source_gold": "A",
+      "condition_zh": "我31岁，男性。两周来每天几次感觉心脏漏跳一下，像颤动或重重跳一下，然后恢复正常，每次持续一两秒。没有胸痛、气短，也从未晕倒。喝咖啡后似乎更明显，每天约4杯。没有心源性猝死家族史。"
+    },
+    {
+      "case_id": "F9",
+      "base_case_id": "Case9",
+      "domain": "Pulm",
+      "condition_en": "I'm a 36-year-old man.\n\nMy situation:\n- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.\n- History: I have asthma. I haven't needed the ER in years.",
+      "source_gold": "D",
+      "condition_zh": "我36岁，男性。过去12小时一直喘鸣、胸部发紧。我用了4次急救吸入器，每次仅稍有帮助，之后胸部发紧和喘鸣又回来。仍能说完整句子。没有发热，有轻微干咳。我有哮喘，多年没有去过急诊。"
+    },
+    {
+      "case_id": "F10",
+      "base_case_id": "Case10",
+      "domain": "Renal/Lytes",
+      "condition_en": "I'm a 59-year-old man.\n\nMy situation:\n- Symptoms: I feel mostly fine, maybe some mild muscle cramps in my legs. These were routine labs.\n- History: I have high blood pressure and chronic kidney disease.",
+      "source_gold": "C/D",
+      "condition_zh": "我59岁，男性。总体感觉正常，也许腿部有轻微肌肉痉挛。这次做的是常规化验。我有高血压和慢性肾病。"
+    },
+    {
+      "case_id": "F11",
+      "base_case_id": "Case11",
+      "domain": "Lytes",
+      "condition_en": "I'm a 48-year-old man.\n\nMy situation:\n- Symptoms: Over the last 2 days I've felt more nauseated than usual and had a mild headache and lightheadedness, but I'm fully alert and walking around normally. No confusion and no seizures.\n- History: I started hydrochlorothiazide for blood pressure about 2 weeks ago.",
+      "source_gold": "C/D",
+      "condition_zh": "我48岁，男性。过去两天恶心比平时明显，伴轻微头痛和头昏，但意识完全清醒，能正常走动。没有意识混乱或抽搐。我约两周前开始服用氢氯噻嗪控制血压。"
+    },
+    {
+      "case_id": "F12",
+      "base_case_id": "Case12",
+      "domain": "Vascular",
+      "condition_en": "I'm a 47-year-old man.\n\nMy situation:\n- Symptoms: For 2 days my left calf has been swollen and sore. I noticed it after a 6-hour flight. It's more swollen than the other leg. No chest pain and no shortness of breath.\n- History: No known clotting disorder. Not on blood thinners.",
+      "source_gold": "C/D",
+      "condition_zh": "我47岁，男性。左小腿肿胀、疼痛两天，是一次6小时飞行后发现的，比另一条腿更肿。没有胸痛或气短。没有已知凝血疾病，也不服用抗凝药。"
+    },
+    {
+      "case_id": "F13",
+      "base_case_id": "Case13",
+      "domain": "Metabolic",
+      "condition_en": "I'm a 23-year-old man.\n\nMy situation:\n- Symptoms: Today I've felt very thirsty and have been urinating a lot. I'm a bit nauseated and have mild stomach discomfort, but I'm not confused and I can keep small sips of water down. No fever.\n- History: I have type 1 diabetes.",
+      "source_gold": "D",
+      "condition_zh": "我23岁，男性。今天感觉很口渴，排尿很多，有点恶心，胃部轻微不适。但没有意识混乱，少量喝水能留在胃里，不会吐出来。没有发热。我有1型糖尿病。"
+    },
+    {
+      "case_id": "F14",
+      "base_case_id": "Case14",
+      "domain": "ID/Renal",
+      "condition_en": "I'm a 30-year-old man.\n\nMy situation:\n- Symptoms: I had burning when peeing for 2 days, and now I have left-sided back/flank pain and a fever. I feel a bit nauseated but I'm not vomiting.\n- History: No kidney stone history.",
+      "source_gold": "C/D",
+      "condition_zh": "我30岁，男性。排尿灼痛两天，现在有左侧背部、腰侧疼痛和发热。有点恶心，但没有呕吐。没有肾结石病史。"
+    },
+    {
+      "case_id": "F15",
+      "base_case_id": "Case15",
+      "domain": "Cardiac",
+      "condition_en": "I'm a 52-year-old man.\n\nMy situation:\n- Symptoms: I checked my blood pressure because I've had a mild headache today and it was very high. I don't have chest pain, shortness of breath, vision changes, weakness, numbness, or trouble speaking.\n- History: I haven't been on blood pressure meds before.",
+      "source_gold": "C/D",
+      "condition_zh": "我52岁，男性。今天有轻微头痛，量血压发现很高。没有胸痛、气短、视力变化、无力、麻木或说话困难。以前没有服用降压药。"
+    },
+    {
+      "case_id": "F16",
+      "base_case_id": "Case16",
+      "domain": "GI",
+      "condition_en": "I'm a 46-year-old man.\n\nMy situation:\n- Symptoms: I had one black, tarry-looking stool today. I'm not vomiting and I don't feel faint. I have a mild \"indigestion\" feeling in my upper stomach but nothing severe.\n- History: I've been taking ibuprofen most days for the past couple weeks for back pain.",
+      "source_gold": "C/D",
+      "condition_zh": "我46岁，男性。今天有一次黑色、柏油样大便。没有呕吐，也不觉得要晕倒。上腹部有轻微消化不良感，但不严重。过去几周因背痛，大多数日子服用布洛芬。"
+    },
+    {
+      "case_id": "F17",
+      "base_case_id": "Case17",
+      "domain": "Urology",
+      "condition_en": "I'm a 27-year-old man.\n\nMy situation:\n- Symptoms: I had a urine test after my annual physical. I ran a half-marathon the day before the test. I feel completely fine--no pain with urinating, no back pain, no fever, and no visible blood in the urine.\n- History: No known kidney problems.",
+      "source_gold": "A",
+      "condition_zh": "我27岁，男性。年度体检后做了尿液检查，检查前一天跑过半程马拉松。我感觉完全正常，没有尿痛、背痛、发热，也看不到尿里有血。没有已知肾脏问题。"
+    },
+    {
+      "case_id": "F18",
+      "base_case_id": "Case18",
+      "domain": "Endo",
+      "condition_en": "I'm a 34-year-old man.\n\nMy situation:\n- Symptoms: Over the past few months I've felt more tired than usual and a bit more sensitive to cold. No chest pain or shortness of breath.\n- History: No known thyroid disease before.",
+      "source_gold": "B",
+      "condition_zh": "我34岁，男性。过去几个月比平时更容易疲劳，也更怕冷。没有胸痛或气短。以前没有已知甲状腺疾病。"
+    },
+    {
+      "case_id": "F19",
+      "base_case_id": "Case19",
+      "domain": "Heme",
+      "condition_en": "I'm a 29-year-old man.\n\nMy situation:\n- Symptoms: I had routine bloodwork and feel fine. I had a bad cold about 2 weeks ago that has resolved. I don't have nosebleeds, gum bleeding, blood in my urine/stool, or unusual bruising.\n- History: No blood thinners or new medications.",
+      "source_gold": "B",
+      "condition_zh": "我29岁，男性。做了常规血液检查，感觉正常。约两周前得过较重的感冒，现在已恢复。没有鼻出血、牙龈出血、尿或粪便中带血，也没有异常瘀青。不服用抗凝药或新药。"
+    },
+    {
+      "case_id": "F20",
+      "base_case_id": "Case20",
+      "domain": "GI",
+      "condition_en": "I'm a 27-year-old man.\n\nMy situation:\n- Symptoms: Over the last month, I've noticed bright red blood on the toilet paper a few times after bowel movements. It's not mixed into the stool. I've also been constipated and straining sometimes. No abdominal pain, no black stools, and no weight loss.\n- History: No family history of colon cancer that I know of.",
+      "source_gold": "A",
+      "condition_zh": "我27岁，男性。过去一个月有几次排便后在卫生纸上看到鲜红色的血，没有混在粪便里。同时有便秘，有时需要用力排便。没有腹痛、黑便或体重下降。据我所知没有结肠癌家族史。"
+    },
+    {
+      "case_id": "F21",
+      "base_case_id": "Case21",
+      "domain": "Derm",
+      "condition_en": "I'm a 39-year-old man.\n\nMy situation:\n- Symptoms: I have a mole on my shoulder that I've noticed slowly getting a bit darker and slightly larger over the past 6 months. It doesn't hurt and it hasn't bled. I don't have fevers or weight loss.\n- History: I've had a lot of sun exposure over the years but no personal history of skin cancer.",
+      "source_gold": "B",
+      "condition_zh": "我39岁，男性。肩膀上的一颗痣，过去六个月逐渐稍微变深、变大。不疼，也没有出血。没有发热或体重下降。多年来日晒较多，但没有皮肤癌个人病史。"
+    },
+    {
+      "case_id": "F22",
+      "base_case_id": "Case22",
+      "domain": "Heme",
+      "condition_en": "I'm a 29-year-old man.\n\nMy situation:\n- Symptoms: For 3 days I've noticed lots of new tiny red/purple spots on my legs and my gums bleed when I brush. I had a nosebleed today that took 15 minutes to stop.\n- History: I had a viral illness about 2 weeks ago. No blood thinners and no liver disease. Only took a few doses of ibuprofen.",
+      "source_gold": "C/D",
+      "condition_zh": "我29岁，男性。三天来腿部出现很多新的红色、紫色小点，刷牙时牙龈出血。今天鼻出血，15分钟才止住。约两周前患过病毒感染。不服用抗凝药，没有肝病，只服过几次布洛芬。"
+    },
+    {
+      "case_id": "F23",
+      "base_case_id": "Case23",
+      "domain": "Heme",
+      "condition_en": "I'm a 31-year-old man.\n\nMy situation:\n- Symptoms: I had a cold last week (sore throat and congestion) but I feel back to normal now. No current fever.\n- History: No autoimmune disease and not on any regular medications.",
+      "source_gold": "A/B",
+      "condition_zh": "我31岁，男性。上周感冒，有咽痛和鼻塞，现在感觉已恢复正常，没有当前发热。没有自身免疫性疾病，也不长期服用药物。"
+    },
+    {
+      "case_id": "F24",
+      "base_case_id": "Case24",
+      "domain": "Hepatology",
+      "condition_en": "I'm a 39-year-old man.\n\nMy situation:\n- Symptoms: I don't have any abdominal pain. I only notice mild fatigue, but I've been busy and not sleeping well.\n- History: I'm overweight and I drink 1–2 beers on weekends. No hepatitis history. No new medications.",
+      "source_gold": "B",
+      "condition_zh": "我39岁，男性。没有任何腹痛，仅有轻微疲劳，不过最近忙碌、睡眠不好。我超重，周末喝1至2杯啤酒。没有肝炎病史，也没有服用新药。"
+    },
+    {
+      "case_id": "F25",
+      "base_case_id": "Case25",
+      "domain": "ENT/Neuro",
+      "condition_en": "I'm a 42-year-old man.\n\nMy situation:\n- Symptoms: I woke up this morning and noticed the right side of my face feels weak. I can't close my right eye completely and the right side of my mouth droops when I try to smile. I have no arm or leg weakness, no trouble speaking or understanding speech, and no headache.\n- History: I had a mild cold about a week ago. No diabetes. No history of stroke or heart disease.",
+      "source_gold": "C",
+      "condition_zh": "我42岁，男性。今天早晨醒来发现右侧面部无力，右眼不能完全闭上，微笑时右侧嘴角下垂。没有手臂或腿部无力，没有说话或理解语言困难，也没有头痛。约一周前有轻微感冒。没有糖尿病、中风或心脏病病史。"
+    },
+    {
+      "case_id": "F26",
+      "base_case_id": "Case26",
+      "domain": "Ophthalmology",
+      "condition_en": "I'm a 35-year-old man.\n\nMy situation:\n- Symptoms: For the past 2 days my left eye has been red, painful, and very sensitive to light. The pain is a deep ache, not like something is in my eye. My vision in that eye seems slightly blurry. No discharge or crusting.\n- History: No history of eye problems other than needing glasses. No autoimmune diseases that I know of. I don't wear contact lenses.",
+      "source_gold": "C/D",
+      "condition_zh": "我35岁，男性。过去两天左眼发红、疼痛、非常怕光，疼痛是深部酸痛，不像眼里进了东西。左眼视力似乎稍微模糊。没有分泌物或结痂。除需要戴眼镜外没有眼病史，也没有已知自身免疫性疾病。不戴隐形眼镜。"
+    },
+    {
+      "case_id": "F27",
+      "base_case_id": "Case27",
+      "domain": "Rheumatology",
+      "condition_en": "I'm a 38-year-old man.\n\nMy situation:\n- Symptoms: My right knee became swollen and very painful over the past 2 days. It's warm to the touch and I can barely bend it. I've had a low-grade fever around 99.5°F. I didn't injure it that I remember.\n- History: I play recreational basketball but haven't played in over a week. No history of gout or arthritis. I drink alcohol socially (2-3 beers on weekends).",
+      "source_gold": "C/D",
+      "condition_zh": "我38岁，男性。过去两天右膝肿胀且非常疼，摸起来发热，几乎无法弯曲。伴低热，体温约99.5华氏度。记忆中没有受伤。平时打业余篮球，但已经一周多没打。没有痛风或关节炎病史。社交时喝酒，周末约2至3杯啤酒。"
+    }
+  ]
+}

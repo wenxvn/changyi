@@ -1,5 +1,21 @@
 # UI Registry
 
+## 2026-10-11 Ambient intelligence layer (CSS-only)
+
+全站环境层：`body::before`三色 mesh aurora（青/蓝/紫，均为 accent 系低透明）+46s 缓慢漂移，`body::after`蓝图网格（顶部径向渐隐）；hero `h1 em`渐变墨字；主按钮 hover 流光（复用空闲 `::after`，子元素提 `z-index:1` 保文字在上）；hero 视觉卡细指针悬停 3D 微倾（2.5°/-3°）；首页在线圆点 2.6s 呼吸；分组卡片 stagger 入场（90ms 步进）；证据数字 tabular-nums。全部 transform/opacity 合成动画，无新依赖；全局 reduced-motion 块自动兜底；未改任何文案/选择器/分支逻辑。
+
+## 2026-10-10 Followup slot linkage (read-only)
+
+`FollowupPrompt`直接展示服务端`missing_slots[0]`为“本题主要补充”，并说明回答后证据卡同步更新。复用`followup-prompt__reason`既有样式，无新token/颜色；空状态不渲染；不改变追问逻辑与Safety。
+
+## 2026-10-10 Followup evidence diff (read-only)
+
+`TriagePage`在追问重算前快照上一轮`symptom_tags/department_candidates/matched_department`（`previousTags/previousDepts/previousDept`），仅用于展示差异，不参与任何医学判断，服务端每次全量重算。新条目用既有`small`文字标注“补充后新增”，科室变化标注“补充后更新：A → B”；首轮（快照为空）不标注，避免误导。复用`context-card__tags`/`care-result__why`既有样式，无新颜色/动画；空状态不渲染，急症分支不走此路径。
+
+## 2026-10-10 Triage evidence read-only cards
+
+`CurrentUnderstanding`新增`understanding-symptoms`症状证据卡，`TriageResults`新增`result-dept-evidence`科室依据卡。复用`context-card__tags`/`care-result__why`/`eyebrow`既有样式与token，不新增颜色/圆角/间距；静态只读列表，无交互、无动画，`prefers-reduced-motion`不受影响；空状态不渲染（长度门控），Safety出口仍优先，`population_context/score0`仅标人群入口，不标疾病概率。源`frontend/src/api/schemas.ts`对象解析、`frontend/src/types/api.ts`结构类型。
+
 ## 2026-10-03 Unresolved risk reconfirmation
 
 W48保留未确认红旗原选项，unknown不算完成一步；同qid新答案替换旧答案，避免API拒重复ID。复用FollowupPrompt和既有按钮/focus/token，无新颜色布局；后续present用既有ER 120界面，none仍原政策，未知不当安全确认。源TriagePage与本次dist哈希独立记录，不能把Python实验身份当UI源码证明。

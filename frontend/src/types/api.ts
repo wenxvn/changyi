@@ -56,6 +56,31 @@ export interface FollowupPayload {
   };
 }
 
+export interface SymptomTag {
+  tag: string;
+  matched_terms?: string[];
+  body_system?: string;
+  red_flag_related?: boolean;
+  source?: string;
+  standard_code?: string;
+}
+
+export interface DepartmentCandidate {
+  department: string;
+  score?: number | null;
+  source?: string;
+}
+
+export interface HtriageAnalysis {
+  original_condition?: string;
+  normalized_condition?: string;
+  notice?: string;
+  symptom_tags?: SymptomTag[];
+  department_candidates?: DepartmentCandidate[];
+  candidate_score_semantics?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 export interface TriagePayload {
   condition: string;
   original_condition?: string;
@@ -73,10 +98,10 @@ export interface TriagePayload {
     abstain_reason?: string;
     uncertainty_level?: string;
     should_clarify?: boolean;
-    symptom_tags?: string[];
+    symptom_tags?: SymptomTag[];
     [key: string]: unknown;
   };
-  htriage_analysis?: Record<string, unknown>;
+  htriage_analysis?: HtriageAnalysis;
   disease_prediction?: {
     available?: boolean;
     abstained?: boolean;
@@ -95,7 +120,7 @@ export interface FollowupResponse {
   triage_label?: string | null;
   followup: FollowupPayload;
   known_disease?: Record<string, unknown>;
-  htriage_analysis?: Record<string, unknown>;
+  htriage_analysis?: HtriageAnalysis;
 }
 
 export interface HospitalRecord {

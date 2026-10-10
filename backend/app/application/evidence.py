@@ -6,8 +6,34 @@ from collections.abc import Callable, Mapping
 import json
 import hashlib
 import math
+import threading
 from pathlib import Path
 from typing import Any
+
+
+# Files read on every evidence build. The safety re-evaluation (142 cases) is
+# the expensive part; payloads are cached per process and invalidated when any
+# of these sources or the version inputs change. This changes no numbers, only
+# how often they are recomputed.
+_EVIDENCE_SOURCE_FILES = (
+    Path("data_validation/data_quality_report.json"),
+    Path("data/symptom_disease_model/models/symptom_disease_41_nb.json"),
+    Path("evaluation/model/grouped_split_report.json"),
+    Path("data/regions/320400/hospitals/catalog.json"),
+    Path("evaluation/safety/safety_cases.json"),
+)
+
+
+def _source_fingerprint(project_root: Path) -> tuple:
+    marks = []
+    for relative in _EVIDENCE_SOURCE_FILES:
+        try:
+            stat = (project_root / relative).stat()
+        except OSError:
+            marks.append(None)
+        else:
+            marks.append((stat.st_size, stat.st_mtime_ns))
+    return tuple(marks)
 
 
 def _read_json(path: Path) -> dict[str, Any] | None:
@@ -239,6 +265,8 @@ class EvidenceApplicationService:
     def __init__(self, project_root: Path, triage_fn: Callable[[str], Mapping[str, Any]]) -> None:
         self._project_root = project_root
         self._triage_fn = triage_fn
+        self._lock = threading.Lock()
+        self._payload_cache: dict[tuple, dict[str, Any]] = {}
 
     def build(
         self,
@@ -251,14 +279,29 @@ class EvidenceApplicationService:
         region_pack_version: str,
         region_code: str,
     ) -> dict[str, Any]:
-        return build_evidence_payload(
-            self._project_root,
-            app_version=app_version,
-            ranking_version=ranking_version,
-            triage_rules_version=triage_rules_version,
-            model_version=model_version,
-            dataset_version=dataset_version,
-            region_pack_version=region_pack_version,
-            region_code=region_code,
-            triage_fn=self._triage_fn,
+        key = (
+            app_version,
+            ranking_version,
+            triage_rules_version,
+            model_version,
+            dataset_version,
+            region_pack_version,
+            region_code,
+            _source_fingerprint(self._project_root),
         )
+        with self._lock:
+            cached = self._payload_cache.get(key)
+            if cached is None:
+                cached = build_evidence_payload(
+                    self._project_root,
+                    app_version=app_version,
+                    ranking_version=ranking_version,
+                    triage_rules_version=triage_rules_version,
+                    model_version=model_version,
+                    dataset_version=dataset_version,
+                    region_pack_version=region_pack_version,
+                    region_code=region_code,
+                    triage_fn=self._triage_fn,
+                )
+                self._payload_cache[key] = cached
+            return cached

@@ -1,0 +1,1032 @@
+{
+  "source_sha256": "7ea640389edea6cac2f34b3a3801bc1e26d111f50f758e1229cb78bfde38dace",
+  "model": "BAAI/bge-small-zh-v1.5",
+  "revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "label_names": [
+    "中医科",
+    "乳腺外科",
+    "乳腺肿瘤科",
+    "产前诊断科",
+    "产科",
+    "传染病科",
+    "体检科",
+    "儿科",
+    "儿童保健科",
+    "儿童口腔科",
+    "关节外科",
+    "内分泌科",
+    "创伤骨科",
+    "口腔综合科",
+    "口腔颌面外科",
+    "口腔黏膜科",
+    "呼吸内科",
+    "头颈外科",
+    "头颈肿瘤科",
+    "妇科",
+    "妇科内分泌科",
+    "妇科肿瘤科",
+    "小儿乳腺外科",
+    "小儿关节外科",
+    "小儿内分泌科",
+    "小儿内科",
+    "小儿创伤骨科",
+    "小儿口腔颌面外科",
+    "小儿口腔黏膜科",
+    "小儿呼吸内科",
+    "小儿外科",
+    "小儿头颈外科",
+    "小儿妇科",
+    "小儿屈光科",
+    "小儿康复科",
+    "小儿心理科",
+    "小儿心血管内科",
+    "小儿感染科",
+    "小儿手外科",
+    "小儿普外科",
+    "小儿泌尿科",
+    "小儿消化科",
+    "小儿牙体牙髓科",
+    "小儿牙周病科",
+    "小儿男科",
+    "小儿皮肤科",
+    "小儿眼科",
+    "小儿矫形骨科",
+    "小儿神经内科",
+    "小儿神经外科",
+    "小儿精神科",
+    "小儿耳鼻喉科",
+    "小儿肛肠外科",
+    "小儿肾内科",
+    "小儿胃肠外科",
+    "小儿胸外科",
+    "小儿脊柱外科",
+    "小儿营养科",
+    "小儿血液科",
+    "小儿足踝外科",
+    "小儿过敏反应科",
+    "小儿风湿免疫科",
+    "小儿骨科",
+    "屈光科",
+    "心理科",
+    "心血管内科",
+    "心血管外科",
+    "急诊科",
+    "性病科",
+    "感染科",
+    "整形外科",
+    "新生儿科",
+    "普外科",
+    "泌尿外科",
+    "消化内科",
+    "烧伤科",
+    "牙体牙髓科",
+    "牙周病科",
+    "生殖医学科",
+    "甲状腺外科",
+    "男科",
+    "疼痛科",
+    "皮肤科",
+    "眼底病科",
+    "眼科",
+    "神经内科",
+    "神经外科",
+    "精神科",
+    "综合内科",
+    "耳鼻喉科",
+    "肛肠外科",
+    "肝病科",
+    "肝胆胰外科",
+    "肾内科",
+    "肿瘤外科",
+    "肿瘤科",
+    "胃肠外科",
+    "胃肠肿瘤科",
+    "胸外科",
+    "胸部肿瘤科",
+    "脊柱外科",
+    "药剂科",
+    "血液科",
+    "血管外科",
+    "超声科",
+    "足踝外科",
+    "过敏反应科",
+    "运动医学科",
+    "风湿免疫科",
+    "骨与软组织肿瘤科",
+    "骨科"
+  ],
+  "resource_files_sha256": {
+    "doctors_h1.json": "22e4793257349fbec194132299d8090811e474362e4140463227850749a4ba63",
+    "doctors_h10.json": "06455b80cef8a8b7ea3bc40dde63aa91349d5259e66110dd9adeca521ab13ad5",
+    "doctors_h11.json": "8ce81c04e7e911523e8a20f50649c6419ec2651b8fd92cff707519d5ff33ceba",
+    "doctors_h14.json": "12c87bbc12bd6b8b70a41742f5fc77719155a0f4cc7ae20269ffce49c09cd842",
+    "doctors_h2.json": "4aabf998a0a3f88961710841daadbcde636d5e0bca7ff9e2c43ec4d7d5d60233",
+    "doctors_h3.json": "75f9ecdcd41da635fc4ae9792d056eb658f301cc05b2c85602d8f1bc9b2fa171",
+    "doctors_h4.json": "843d9226117328efa0e279ca915a2d91d6a9d394f57f95317db28d47a8dfa53d",
+    "doctors_h5.json": "3e0aa4c39ad98ba2d0fa0d13820bef021cd630b024e79b0578a1d685aefb02ad",
+    "doctors_h6.json": "3afe33b13d0d1a135c30f45d38de9c62651d7839777bf5beef419f839bcc4dbb",
+    "doctors_h7.json": "2cb860b85725a3d31471b7caded94a603d60dc8061167f736cf57fb19fa67f00",
+    "doctors_h8.json": "a9e761cdb8beb9ea4167dc6e3c33f779c7535563fea324f76668dbffc94e9288"
+  },
+  "documents": [
+    {
+      "label": "中医科",
+      "distinct_resource_texts": 36,
+      "full_chars": 2627,
+      "used_chars": 800,
+      "document_sha256": "c90c776092ef9c02d81d2198fcb23b4b30d589e8676418c944f46f408329240c",
+      "character_truncated": true
+    },
+    {
+      "label": "乳腺外科",
+      "distinct_resource_texts": 24,
+      "full_chars": 1768,
+      "used_chars": 800,
+      "document_sha256": "80e774847314d18b8bafd84ccb23e01979fc023d71df6c0f913a653549b5a12a",
+      "character_truncated": true
+    },
+    {
+      "label": "乳腺肿瘤科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "f80e1cd3615e887df013b63c2893be5f37ef26f7314ff3bdd37edcf3fb7a82eb",
+      "character_truncated": false
+    },
+    {
+      "label": "产前诊断科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "826f7db329701543091920bc91adda4f5086b65b488615900acdcf1363fa7e8b",
+      "character_truncated": false
+    },
+    {
+      "label": "产科",
+      "distinct_resource_texts": 31,
+      "full_chars": 2609,
+      "used_chars": 800,
+      "document_sha256": "b5ea672a4eea464a7ebc6dcc050671cf46b7ba5469acd939475543e7e9184188",
+      "character_truncated": true
+    },
+    {
+      "label": "传染病科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "9aae0a77ce5926ba98a7d744643fccf704ef8252451c8d0aabb6aaddf4842ae1",
+      "character_truncated": false
+    },
+    {
+      "label": "体检科",
+      "distinct_resource_texts": 0,
+      "full_chars": 3,
+      "used_chars": 3,
+      "document_sha256": "e416ec0306d2315f26cefd9cbcbe490e0b1e5fb06cc955987478aa0a971f8eb2",
+      "character_truncated": false
+    },
+    {
+      "label": "儿科",
+      "distinct_resource_texts": 60,
+      "full_chars": 3371,
+      "used_chars": 800,
+      "document_sha256": "22a446bbb03bf11998df023748b0cc170b71f0e7cf1d8a712a564f7cbe28f33a",
+      "character_truncated": true
+    },
+    {
+      "label": "儿童保健科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "c541d6616886e88afba639a05083b65f93d870cb307d71068bc3215a1d3e5d5b",
+      "character_truncated": false
+    },
+    {
+      "label": "儿童口腔科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "698fc6633267bac9faccf4edbe4ff8c1b3b9c94375e6a4f568f67f5cc3444d84",
+      "character_truncated": false
+    },
+    {
+      "label": "关节外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "82f9c266fda9d3eb944cdb01d38f510051994ec8bfedfee6a426540ed164e494",
+      "character_truncated": false
+    },
+    {
+      "label": "内分泌科",
+      "distinct_resource_texts": 31,
+      "full_chars": 1579,
+      "used_chars": 800,
+      "document_sha256": "93b0aeba6ab63142c1e0f023345958632f54caa1ea90c9c19e3aed97203e4db4",
+      "character_truncated": true
+    },
+    {
+      "label": "创伤骨科",
+      "distinct_resource_texts": 11,
+      "full_chars": 440,
+      "used_chars": 440,
+      "document_sha256": "827fad31565c651c1b29ddd8b95ad1099e4111c959792d7d95a717b72761267c",
+      "character_truncated": false
+    },
+    {
+      "label": "口腔综合科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "d192ab5be6b6d38c669fb8e5b081f5c5a710a9b2d66877aa4f961d712e5cd301",
+      "character_truncated": false
+    },
+    {
+      "label": "口腔颌面外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "c2951231f5665d31f4068d547aee362e36059d0228fa90e70b9ddde14d7cfa39",
+      "character_truncated": false
+    },
+    {
+      "label": "口腔黏膜科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "33315d6416bd527c830109be91ec342c5d52bfe512e1f612852e423d15682a91",
+      "character_truncated": false
+    },
+    {
+      "label": "呼吸内科",
+      "distinct_resource_texts": 8,
+      "full_chars": 297,
+      "used_chars": 297,
+      "document_sha256": "b2759fe9b2e53e078d06ccdc10fc87a7af7c6d5ea5f451496504cb956c2cae54",
+      "character_truncated": false
+    },
+    {
+      "label": "头颈外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "56f6ec05a1fda6d044c04baecba5babd86de4070df9b1992dedbbdb8636fc6cd",
+      "character_truncated": false
+    },
+    {
+      "label": "头颈肿瘤科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "9f8d7f47087bfbf52d22deaa468223fc7e9d9dbdd62084ea4bd01549e5fed868",
+      "character_truncated": false
+    },
+    {
+      "label": "妇科",
+      "distinct_resource_texts": 13,
+      "full_chars": 602,
+      "used_chars": 602,
+      "document_sha256": "a2ac2ccbcf7260e0894312c7fa6eac60bdc7a1d94c3c23142d329ef08d5950f7",
+      "character_truncated": false
+    },
+    {
+      "label": "妇科内分泌科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "32a723c6c85ae815e34a5a3dc5d4e12d804b2e01959c5e7fe68f87a36ce234fa",
+      "character_truncated": false
+    },
+    {
+      "label": "妇科肿瘤科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "bfbd39e051a23f279b676b6075b68a0382fc4b076ed648a92b2aa71b5a8f3621",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿乳腺外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "a960762f44fdbb89cbe32d7cb976f2ed2af20ab4048079b96e2a9f9425ccbf29",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿关节外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "f606d4b348782ad2ab8aaa891a8c2c3c831c5e2654461037a8d178e39512de99",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿内分泌科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "11e7cbb8f5325267d85e9cf28ca6c37fbffb852a1c6be49c8ad959baaf3d493d",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿内科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "a752b25a5b85f350eafc834136cf7ad0930903243233f28b52e588ae2494fd5d",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿创伤骨科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "978538fe23a52009f200e310d21c74d17f655637befcd4576ddd9008a44e40c0",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿口腔颌面外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 8,
+      "used_chars": 8,
+      "document_sha256": "24fd40a9d39171690d34be34ac2fa0721bd75129e26d39b00ea0273b52cd2fa1",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿口腔黏膜科",
+      "distinct_resource_texts": 0,
+      "full_chars": 7,
+      "used_chars": 7,
+      "document_sha256": "0758d48e95e3eb16c1afff691922036afcc1ecefac82a002406e96df4f2b827d",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿呼吸内科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "7895a93f1cb4d500a29e769a16224fbedc5b0438e737424ad6e148a97a22dbee",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "28bb4ca3ebf8f7eaa22e6be9f90d104ef2c723d76c1be63220ee6cb7d3a27cf4",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿头颈外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "04442a055d3d0e6bc06122be0d747d13ce3d307087f4616c4bd76719b6ea40cf",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿妇科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "976eade2e714983e93f29bbec921d50b8a6b8b7d0d22ed70d2132b3aa048bdd4",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿屈光科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "e4bdd5ab3f9f38572139913c6f3615641b1bafa8af75d0e808429f7ea420d851",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿康复科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "56911631c6d4992d27fc0862c23f61eba66fac045e2e6e3d316ccc96c1389ffe",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿心理科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "3a2008edb1c136d16746f5ee3746a26ac124997b995c5e307353b3d568854f6e",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿心血管内科",
+      "distinct_resource_texts": 0,
+      "full_chars": 7,
+      "used_chars": 7,
+      "document_sha256": "889aa06b4159479c019937edf9f4678d20f3f076959f309b1a9a43d153604549",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿感染科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "f0ebd8d55692e31790d32e2f399203823d2d8be58f766c63768acbeb38f7bd8b",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿手外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "d89b86a598c5ea9f1b63406dec99c0192d9b404f2f5effa5ee7d8853f91ab8ce",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿普外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "5d72c8ad8aa79e3294851fffcbd4879ce7c1a188d36d4b046bc601ad9aecf72a",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿泌尿科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "014bb951ee036e24e30f9f52a9fc397938719cc6857c4c4d2ef28aacdf34f25f",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿消化科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "f121d486636535915acb8149621d38609770ed7ba366aa35789bb64d9c36c48c",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿牙体牙髓科",
+      "distinct_resource_texts": 0,
+      "full_chars": 7,
+      "used_chars": 7,
+      "document_sha256": "7e1fa79ab0ef668956ef1792defa1b5f2c01a3dea8245944fb8fdbed0f25ca3d",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿牙周病科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "4a5c4fc1ce2abc07d1f5e85b218e99fc8ab23cf54d0698634224f9600d1bb29c",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿男科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "e00833498f09439a8eb292b2f5b4edd15408309373ca3dd4b893349fda1f1428",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿皮肤科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "39bc505efb7e388fb09434193fc46ffa4d7b97697fd350a98c7b2e36992a5cf1",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿眼科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "162c3693180faf93c566769054041061fc91a877983d4be0b32aa97dc5a29ac2",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿矫形骨科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "4fc5804d40e99a1979dec50376edaba09b576c0e94b0554d6b8c564e3858c797",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿神经内科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "97bb8b3497b4e878ee3c173382df637182236b7f8e3ce1c8ede06b533859d8b0",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿神经外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "d18200a4095b4861537a943b21d5a8c5a93ba708402661f8a2122af66a94bbc1",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿精神科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "98a83ce10356c9b7cf2bb556f5925622f5fc310292e1c4a32bc0c992fe655d1b",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿耳鼻喉科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "e317271a2d14d321800de2b98d1f0059aab6a3d7d6801a1f2d3b65de095f191f",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿肛肠外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "3c31f55891ddb02868e6396399c587bdc6f9ae672b8a38f8784bc8a2b15ae933",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿肾内科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "bd703a98178f259566580e43832f286f84adfe05639c1cb899b92374b786e03d",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿胃肠外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "da19bb977ac0527b035ba2970ad6d6ddcd442db383a63804191b2cd3ab1ba4c0",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿胸外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "0a7b9afeac19c73b00ae5ece481000d3c0baa030e5dff7e8596f3f6268c15d67",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿脊柱外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "72e25648a8db5d43ad47703356a48108ae2c789436adf1861b18be398acada9c",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿营养科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "05b989db52d4f251719acef5deb3145f14a9d3b0cf9e6896eb72a1a2b53eb048",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿血液科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "1fa7dc96a641db75722ea8aee25f5458eb7c800bb88060a8a6b65a3cf398fef6",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿足踝外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 6,
+      "used_chars": 6,
+      "document_sha256": "fa6c2d93833d6fa2c6fd363ac0df609ff6ad0690e584d78bf344aaca3060c582",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿过敏反应科",
+      "distinct_resource_texts": 0,
+      "full_chars": 7,
+      "used_chars": 7,
+      "document_sha256": "5bdd1e419991c97e98118f5e6d355f06fff012c6d6fc16cb1c52606da1edde95",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿风湿免疫科",
+      "distinct_resource_texts": 0,
+      "full_chars": 7,
+      "used_chars": 7,
+      "document_sha256": "e9611b395b4dc971a961faae9adef231f1ccf358b5b7dc76843109e7e2162975",
+      "character_truncated": false
+    },
+    {
+      "label": "小儿骨科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "cbaa436265040a644541a2b56f5cb03a2c0b521b90bf09d7241e0d2f53889b9a",
+      "character_truncated": false
+    },
+    {
+      "label": "屈光科",
+      "distinct_resource_texts": 0,
+      "full_chars": 3,
+      "used_chars": 3,
+      "document_sha256": "4115f5eafa9eae10b439ac8751c5d8c2cebb7d091f151ee1fc0e1e69774ce601",
+      "character_truncated": false
+    },
+    {
+      "label": "心理科",
+      "distinct_resource_texts": 0,
+      "full_chars": 3,
+      "used_chars": 3,
+      "document_sha256": "6b94e9fa03dd4d72a9db504c204e2172c6dc6f39ca083ce0af1d52b36284c048",
+      "character_truncated": false
+    },
+    {
+      "label": "心血管内科",
+      "distinct_resource_texts": 62,
+      "full_chars": 3348,
+      "used_chars": 800,
+      "document_sha256": "354a57467c274793d7d9de461717d443aa19f0e746cd3cfeeeabe05d2cf3884c",
+      "character_truncated": true
+    },
+    {
+      "label": "心血管外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "3b228278c3c3dfd9282797feb2ab29e5ff4bbd362bd5dd45df3a6507dd45adfb",
+      "character_truncated": false
+    },
+    {
+      "label": "急诊科",
+      "distinct_resource_texts": 38,
+      "full_chars": 1857,
+      "used_chars": 800,
+      "document_sha256": "cf1e6196feb99db4958b2a0a98c12e9133036a57eaf76977aaed0dbefb465696",
+      "character_truncated": true
+    },
+    {
+      "label": "性病科",
+      "distinct_resource_texts": 0,
+      "full_chars": 3,
+      "used_chars": 3,
+      "document_sha256": "d043b88c78443980f0b79a71b8e394774769cfcb374faf9a0b79d469554f9a76",
+      "character_truncated": false
+    },
+    {
+      "label": "感染科",
+      "distinct_resource_texts": 10,
+      "full_chars": 454,
+      "used_chars": 454,
+      "document_sha256": "bc9cc142046defece56dce8cdd3bbf62e78d69db739e3c45d60600ba8ca63a42",
+      "character_truncated": false
+    },
+    {
+      "label": "整形外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "0443b746286d5d6b1cde89dcbd65240263f0d95f32cd894e2d1c3848a17ed635",
+      "character_truncated": false
+    },
+    {
+      "label": "新生儿科",
+      "distinct_resource_texts": 7,
+      "full_chars": 240,
+      "used_chars": 240,
+      "document_sha256": "0e10f04c4c9ba9388e9313cdafa302970c750cef8e08c5bbb8f0a4ec9766f8e0",
+      "character_truncated": false
+    },
+    {
+      "label": "普外科",
+      "distinct_resource_texts": 1,
+      "full_chars": 19,
+      "used_chars": 19,
+      "document_sha256": "3666bbb6cf0ec73ae5ab7d4032634b625016c3ca7c5f7ab6374eb3239ad4ef91",
+      "character_truncated": false
+    },
+    {
+      "label": "泌尿外科",
+      "distinct_resource_texts": 48,
+      "full_chars": 2347,
+      "used_chars": 800,
+      "document_sha256": "5094b01bb7444cc25497da6a90bb93b02ad976ed50a76117da65b70f9c6407f8",
+      "character_truncated": true
+    },
+    {
+      "label": "消化内科",
+      "distinct_resource_texts": 42,
+      "full_chars": 3997,
+      "used_chars": 800,
+      "document_sha256": "ccca5c540d39bc07c64e6ef1cfecefd258e4c584be42e02ffb52c966f65c40a0",
+      "character_truncated": true
+    },
+    {
+      "label": "烧伤科",
+      "distinct_resource_texts": 1,
+      "full_chars": 91,
+      "used_chars": 91,
+      "document_sha256": "204efb7737315cfdc8731e1ad04952dfe102b2d0d05c83bc7ab0bb4ccfcd5cd5",
+      "character_truncated": false
+    },
+    {
+      "label": "牙体牙髓科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "eab3d53ba074bad8b146cd5c0015e500369d0224733ddb6071817175713eb9d2",
+      "character_truncated": false
+    },
+    {
+      "label": "牙周病科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "e7178e4eff837be651dd71b636621d7ca2188d202154cec5c8fec240995ba3b4",
+      "character_truncated": false
+    },
+    {
+      "label": "生殖医学科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "efeea5b0812f5ae4c8db9739eac52b842631101be4e227ce964d19f822c090c8",
+      "character_truncated": false
+    },
+    {
+      "label": "甲状腺外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "4aa66a484af65f2be2252e08adedb902012b3907773ffd670cdfbad10c4f7b4f",
+      "character_truncated": false
+    },
+    {
+      "label": "男科",
+      "distinct_resource_texts": 3,
+      "full_chars": 113,
+      "used_chars": 113,
+      "document_sha256": "91f759a2e0cbac5680718c1e0a950cab27fba38a97dc6f358f3405810d811867",
+      "character_truncated": false
+    },
+    {
+      "label": "疼痛科",
+      "distinct_resource_texts": 5,
+      "full_chars": 346,
+      "used_chars": 346,
+      "document_sha256": "60610d2c09a209729a863191f4f52d88f1d04d316bb9bc77fdd0ef8fa6fe2a40",
+      "character_truncated": false
+    },
+    {
+      "label": "皮肤科",
+      "distinct_resource_texts": 32,
+      "full_chars": 1831,
+      "used_chars": 800,
+      "document_sha256": "9b343f8585bf37aaaa9691c10beb74ef12d37e1ee36b8683ac945cd05b203857",
+      "character_truncated": true
+    },
+    {
+      "label": "眼底病科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "fc5de9a3f0133e1af20c9a5182726b8e3765a4d434e77b1de931ac0dc5ff252d",
+      "character_truncated": false
+    },
+    {
+      "label": "眼科",
+      "distinct_resource_texts": 27,
+      "full_chars": 1601,
+      "used_chars": 800,
+      "document_sha256": "ca5f4662d466c8ce3a64590d2ce32b343d5baa2c5a7e22d898bfccc72465b7a9",
+      "character_truncated": true
+    },
+    {
+      "label": "神经内科",
+      "distinct_resource_texts": 48,
+      "full_chars": 2840,
+      "used_chars": 800,
+      "document_sha256": "dd97aabf814a41727ae9ac50f333eaaeff24287460b1377e395e70fc43b38de8",
+      "character_truncated": true
+    },
+    {
+      "label": "神经外科",
+      "distinct_resource_texts": 39,
+      "full_chars": 1767,
+      "used_chars": 800,
+      "document_sha256": "ce0b2e1880453d08cfe0ab9efa1312baccc02c3ea323f6ff661eb96a39c7f8e0",
+      "character_truncated": true
+    },
+    {
+      "label": "精神科",
+      "distinct_resource_texts": 10,
+      "full_chars": 926,
+      "used_chars": 800,
+      "document_sha256": "7bc091e89a2bec2f796e5bd278b464458fbad0b3fb3c115c3eac36e487a52f5f",
+      "character_truncated": true
+    },
+    {
+      "label": "综合内科",
+      "distinct_resource_texts": 2,
+      "full_chars": 124,
+      "used_chars": 124,
+      "document_sha256": "d2fa368a9591ed7c9ce8d816ef843da204f4fa36e1be990a92eb9c22e18d0ea8",
+      "character_truncated": false
+    },
+    {
+      "label": "耳鼻喉科",
+      "distinct_resource_texts": 33,
+      "full_chars": 2275,
+      "used_chars": 800,
+      "document_sha256": "20bcd95eb3b8c3a34d1ffb10740858391aa0821f6a648a5db7127410e6d3ab8b",
+      "character_truncated": true
+    },
+    {
+      "label": "肛肠外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "5581e5ea5f28c1037e71d769c65e92e5d8c6b7a390d627e836f5aa8b8815f83b",
+      "character_truncated": false
+    },
+    {
+      "label": "肝病科",
+      "distinct_resource_texts": 0,
+      "full_chars": 3,
+      "used_chars": 3,
+      "document_sha256": "d8fa7ba944ddb789dce1175d8b0fe6a533ed248548d31f3abb35e7ab27204f84",
+      "character_truncated": false
+    },
+    {
+      "label": "肝胆胰外科",
+      "distinct_resource_texts": 10,
+      "full_chars": 502,
+      "used_chars": 502,
+      "document_sha256": "244effd32467d0b8d31ce568400a609c2a40c1329d5fb1621aa304eca547815b",
+      "character_truncated": false
+    },
+    {
+      "label": "肾内科",
+      "distinct_resource_texts": 19,
+      "full_chars": 984,
+      "used_chars": 800,
+      "document_sha256": "e18763cb36ee200ea49df202b2120b0f3ef441b50491d5bd552bbd859eade307",
+      "character_truncated": true
+    },
+    {
+      "label": "肿瘤外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "f9ff47fa7784b51bda4149723b00bccaadae33d2493857f85f59ea0fea4d590d",
+      "character_truncated": false
+    },
+    {
+      "label": "肿瘤科",
+      "distinct_resource_texts": 44,
+      "full_chars": 1662,
+      "used_chars": 800,
+      "document_sha256": "39e61b99eafb918bb5029bf4bf51a0edd480e8e955343503e590fd4ce5c7f71a",
+      "character_truncated": true
+    },
+    {
+      "label": "胃肠外科",
+      "distinct_resource_texts": 7,
+      "full_chars": 705,
+      "used_chars": 705,
+      "document_sha256": "59498c63b1d09d12609b75ce9b6a2694441e3cf558fa117a6b9206da78b82fb8",
+      "character_truncated": false
+    },
+    {
+      "label": "胃肠肿瘤科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "068c2dd34ca68d773340b4848c059d4ea92cdfc96fedac4239a927f2980a989f",
+      "character_truncated": false
+    },
+    {
+      "label": "胸外科",
+      "distinct_resource_texts": 8,
+      "full_chars": 387,
+      "used_chars": 387,
+      "document_sha256": "43fda1f9dc525c29f01a8d2a5b24c1b062a247740384cdd8a75c32ae844b7171",
+      "character_truncated": false
+    },
+    {
+      "label": "胸部肿瘤科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "760d2693c6a3c47476b00a2875907a3884da62b6f728c72949c1f7425e13944c",
+      "character_truncated": false
+    },
+    {
+      "label": "脊柱外科",
+      "distinct_resource_texts": 15,
+      "full_chars": 765,
+      "used_chars": 765,
+      "document_sha256": "7270dad421e8b3fd506c4d3d7103549a56a52a42a835fab83fd5525e181234d5",
+      "character_truncated": false
+    },
+    {
+      "label": "药剂科",
+      "distinct_resource_texts": 0,
+      "full_chars": 3,
+      "used_chars": 3,
+      "document_sha256": "7595ba798ef51504bc5edc86b1232c6d9a4dd0675f93a566f42d38c4633fedfe",
+      "character_truncated": false
+    },
+    {
+      "label": "血液科",
+      "distinct_resource_texts": 18,
+      "full_chars": 758,
+      "used_chars": 758,
+      "document_sha256": "5272a45891d79f36bcdab7ea6253425bd5e124ac07f88080d7a465cdaf871775",
+      "character_truncated": false
+    },
+    {
+      "label": "血管外科",
+      "distinct_resource_texts": 5,
+      "full_chars": 426,
+      "used_chars": 426,
+      "document_sha256": "a34cd9dd0bab82e5917356cc9607b9f2ff74f5cc5dfc98206fe36049d19f9add",
+      "character_truncated": false
+    },
+    {
+      "label": "超声科",
+      "distinct_resource_texts": 16,
+      "full_chars": 443,
+      "used_chars": 443,
+      "document_sha256": "1a814d205a9ea5ac8e752d8adfea5c787202e845bcafe722ca120b215fd3b055",
+      "character_truncated": false
+    },
+    {
+      "label": "足踝外科",
+      "distinct_resource_texts": 0,
+      "full_chars": 4,
+      "used_chars": 4,
+      "document_sha256": "8aab889c12e6b78e37aad9a9a241c901f2af9da0343ca149fca4eca9b7e24f64",
+      "character_truncated": false
+    },
+    {
+      "label": "过敏反应科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "09a7926a6df1e837fdc542ec3408d80f7843f3d8ec300b95cc164f021893866e",
+      "character_truncated": false
+    },
+    {
+      "label": "运动医学科",
+      "distinct_resource_texts": 0,
+      "full_chars": 5,
+      "used_chars": 5,
+      "document_sha256": "05d6949881477a8dee38171e6448b84a75d33ae9af076d2dd28461393eaeddb4",
+      "character_truncated": false
+    },
+    {
+      "label": "风湿免疫科",
+      "distinct_resource_texts": 13,
+      "full_chars": 904,
+      "used_chars": 800,
+      "document_sha256": "44074c4eeaa5732404fd27d14f098647b4693b754c821dedf33fa275279dffb4",
+      "character_truncated": true
+    },
+    {
+      "label": "骨与软组织肿瘤科",
+      "distinct_resource_texts": 0,
+      "full_chars": 8,
+      "used_chars": 8,
+      "document_sha256": "fe1d37ef2b2f70d2ed1e3d6087becfc5c7c33e1918009b2a83c082c0ecbed18d",
+      "character_truncated": false
+    },
+    {
+      "label": "骨科",
+      "distinct_resource_texts": 50,
+      "full_chars": 3280,
+      "used_chars": 800,
+      "document_sha256": "3f3abdf9c63b13f2fce8d36c4dc88f4499e43070634bb4c2ca419660d2beedcc",
+      "character_truncated": true
+    }
+  ],
+  "lookup": "existing_four_aliases_then_exact_department",
+  "maximum_document_chars": 800,
+  "encoder_max_length": 256,
+  "views": [
+    "source_body",
+    "complaint_only"
+  ],
+  "source_case_training": false,
+  "resource_texts_are_unverified_claims_not_service_guarantees": true,
+  "source_exposure": "used_for_development",
+  "clinical_validation": false
+}

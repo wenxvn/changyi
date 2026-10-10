@@ -1,0 +1,132 @@
+{
+  "review_date": "2026-10-04",
+  "reviewer": "user_authorized_Codex_technical_and_literature_review",
+  "clinical_validation": false,
+  "preflight_sha256": "000b0c35adc296d6f06a725a7c309c645a4b03f7a63c2f12ac10151eca47e254",
+  "full_source_rows": 6811,
+  "heuristic_clinical_shape_rows": 1377,
+  "manual_review_rows": 16,
+  "direct_initial_triage_gold_supported_in_review": 0,
+  "source_annotation_task": "question_relevance_using_question_and_options_not_initial_department",
+  "paper_evidence": "NeurIPS2023 CMExam section3 and appendix A2 Figure5 page16",
+  "decision": "do_not_train_or_validate_initial_department_calibration_with_these_exam_relevance_labels",
+  "subset_generalization_claim": false,
+  "risk_labels_provided": false,
+  "new_model_fits": 0,
+  "predictions": 0,
+  "runtime_identity_unchanged": true,
+  "rows": [
+    {
+      "row_index": 3587,
+      "question_sha256": "00da6bde7a32710355a0089dc78e245b2bc78e859f8a1440c2fe23bb5b7dc639",
+      "source_department": "内科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "已有心电图确诊，问特征性实验室改变；内科粗类不是初诊或急诊处置标签。"
+    },
+    {
+      "row_index": 5442,
+      "question_sha256": "016eae322673a2811ccb5a72fc9f8cd817378d9cd8973d95dff91c53d500d647",
+      "source_department": "内科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "既有病史/治疗与已发现疾病，问健康教育错误项。"
+    },
+    {
+      "row_index": 3821,
+      "question_sha256": "001023b41659469c833b470ff36ee08d3b83f79c32720e4988dc5707c2e7aef8",
+      "source_department": "外科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "已急诊检查并决定手术，问切除范围；外科不是危险主诉初诊金标准。"
+    },
+    {
+      "row_index": 4523,
+      "question_sha256": "00f1d10bc4a07726c55dfba23ef2f63476ca35b1dedd95344f0a7c64c6af8cb8",
+      "source_department": "外科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "已清创与皮试，问注射选择。"
+    },
+    {
+      "row_index": 4019,
+      "question_sha256": "0539fb822c616a3cf3e4805dc2246237e8002804b253e6481d3605f93547f44b",
+      "source_department": "儿科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "详细查体/影像与病程，问变化的疾病机制。"
+    },
+    {
+      "row_index": 5992,
+      "question_sha256": "0567f3e1a7b808a05d46c9f97a9e5dbc68c554d987721efe78cf3f32ba1643fc",
+      "source_department": "儿科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "儿科辨证问题，非首次就医科室问题。"
+    },
+    {
+      "row_index": 3582,
+      "question_sha256": "001ba9903048d5ac3617f230cc644b09389a98a8fc4d784a56226d702dee1e4d",
+      "source_department": "妇产科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "手术过程出现并发症，问诊断。"
+    },
+    {
+      "row_index": 5038,
+      "question_sha256": "0028925feebdf5699c4893a0f015604f1040064ad7d94d5efd5daf34dc72f365",
+      "source_department": "妇产科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "孕期已尝试治疗，问治疗方案。"
+    },
+    {
+      "row_index": 2912,
+      "question_sha256": "017dea33184b5ecc9a6efa650cd440899d5e1e398d51ce9eba8fbd167d391b56",
+      "source_department": "口腔科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "已确定口腔操作，问局麻药选择。"
+    },
+    {
+      "row_index": 6255,
+      "question_sha256": "01bf6aa376527d2cd12852f229c09f6cd5875d0b97f41541b54c025f350ee7b9",
+      "source_department": "口腔科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "已有专科体征/检查，问辅助诊断方法。"
+    },
+    {
+      "row_index": 5881,
+      "question_sha256": "5db19a5927775635edb472b1efc8835dd6a5d5137236600f3859d0bfa8049560",
+      "source_department": "眼科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "解剖反射知识题，启发式误纳为临床形态，不是完整就医情境。"
+    },
+    {
+      "row_index": 2783,
+      "question_sha256": "5e9bcd4af4125ee5069b4b7070f87c7578571c998296b77e71296877f0100a47",
+      "source_department": "眼科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "问药物选择，初诊方向没有独立标注。"
+    },
+    {
+      "row_index": 913,
+      "question_sha256": "077a7e3d68014f3eae908c34403ea0fa086fe410d56bedfc778d3e0d95212c78",
+      "source_department": "精神科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "病程/精神查体与既往治疗，问有意义的检查；精神科题目标签不等神经/急症风险处置。"
+    },
+    {
+      "row_index": 1412,
+      "question_sha256": "08472beacb2539bd77e7ac2c87030c19185ed0091dc0c800bdf577f385570564",
+      "source_department": "精神科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "问精神症状分类，不问就医科室。"
+    },
+    {
+      "row_index": 2943,
+      "question_sha256": "0a283dd170b87490f8c5d9934e55d3831ca30aa888726d23447c1d587f7287cf",
+      "source_department": "急诊医学科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "治疗方案知识题含患者词，启发式误纳；非主诉情境。"
+    },
+    {
+      "row_index": 1524,
+      "question_sha256": "0a75fed7823218a4ffc789bc20f05508483af05f5be7ffc15f0718b60853a8b3",
+      "source_department": "急诊医学科",
+      "direct_initial_triage_gold_supported": false,
+      "review_reason": "已确诊/治疗后过敏性休克，问抢救药物；非初诊金标准。"
+    }
+  ]
+}

@@ -1,8 +1,14 @@
 from pathlib import Path
+import os
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def run_script(script, cwd):
+    return subprocess.run([sys.executable, "-c", script], cwd=cwd, capture_output=True,
+                          encoding="utf-8", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
 
 
 def test_model_load_cannot_shadow_root_app_or_mutate_search_path():
@@ -19,7 +25,7 @@ assert Path(app.__file__).resolve() == Path('app.py').resolve()
 assert hasattr(app, 'SYMPTOM_DISEASE_MODEL_PATH')
 assert not any(name in sys.modules for name in ('inference', 'labels', 'train'))
 """
-    result = subprocess.run([sys.executable, "-c", script], cwd=ROOT, capture_output=True, text=True)
+    result = run_script(script, ROOT)
     assert result.returncode == 0, result.stderr
 
 
@@ -29,5 +35,5 @@ def test_model_cli_and_package_keep_symptom_parser_contract():
         ("from data.symptom_disease_model.inference import normalize_symptoms", ROOT),
     ):
         script = statement + "\nassert normalize_symptoms('cough')[0] == ['cough']"
-        result = subprocess.run([sys.executable, "-c", script], cwd=cwd, capture_output=True, text=True)
+        result = run_script(script, cwd)
         assert result.returncode == 0, result.stderr

@@ -19,6 +19,7 @@ from ...domain.medical_input import COLLOQUIAL_SYMPTOM_ALIASES
 SEMANTIC_ALIAS_QUARANTINE = {
     "抽搐": "unverified_semantic_equivalence",
     "胸闷": "unverified_semantic_equivalence",
+    "尿频": "unverified_semantic_equivalence",
 }
 PROBABILITY_SEMANTICS = {
     "kind": "uncalibrated_model_posterior", "calibrated": False,
@@ -35,23 +36,22 @@ ABSTENTION_NOTICES = {
 }
 
 
-def qualified_chest_negation_spans(text, aliases):
-    """Only explicit severity-denial clauses for the existing generic code."""
+def qualified_symptom_negation_spans(text, aliases):
+    """A denied degree/duration does not assert or deny the parent symptom."""
     issues = []
     for alias, code in sorted(aliases.items(), key=lambda item: len(item[0]), reverse=True):
-        if code != "chest_pain":
-            continue
         for match in re.finditer(re.escape(alias), text):
             if any(item["start"] <= match.start() and match.end() <= item["end"] for item in issues):
                 continue
             prefix = re.split(r"[，,。；;！？\n]|但是|不过|但|而是", text[:match.start()])[-1]
-            denial = re.search(r"(?P<neg>没有|没|否认|不是)\s*(?:有|出现)?\s*(?P<degree>严重|剧烈)\s*(?:的)?\s*$", prefix)
+            denial = re.search(r"(?P<neg>没有|没|否认|不是)\s*(?:有|出现)?\s*(?P<degree>严重|剧烈|明显|持续)\s*(?:的)?\s*$", prefix)
             if not denial:
                 continue
             previous = prefix[denial.start() - 1] if denial.start() else ""
             if (denial["neg"] in {"没有", "没"} and previous == "有") or (denial["neg"] == "否认" and previous == "不") or (denial["neg"] == "不是" and previous == "是"):
                 continue
-            issues.append({"alias": alias, "code": code, "qualifier": denial["degree"], "start": match.start(), "end": match.end()})
+            parent_code = "fever" if alias in {"发热", "发烧"} else code
+            issues.append({"alias": alias, "code": parent_code, "qualifier": denial["degree"], "start": match.start(), "end": match.end()})
     return issues
 
 
@@ -158,14 +158,15 @@ class SymptomDiseaseModelAdapter:
                     mapping_issues.append({"alias": item["alias"], "legacy_code": runtime["symptom_alias_map"][item["alias"]], "reason": reason})
             approved_aliases = {alias: code for alias, code in runtime["symptom_alias_map"].items() if alias not in SEMANTIC_ALIAS_QUARANTINE}
             assertions = parse_asserted_symptoms(assertion_text, approved_aliases, vocabulary)
-            scope_issues = qualified_chest_negation_spans(assertion_text, approved_aliases)
+            scope_issues = qualified_symptom_negation_spans(assertion_text, approved_aliases)
             if scope_issues:
                 masked = list(assertion_text)
                 for issue in scope_issues:
                     masked[issue["start"]:issue["end"]] = " " * (issue["end"] - issue["start"])
                 assertions = parse_asserted_symptoms("".join(masked), approved_aliases, vocabulary)
-                if "chest_pain" not in assertions["present"] and "chest_pain" not in assertions["absent"]:
-                    assertions["unknown"] = sorted(set(assertions["unknown"]) | {"chest_pain"})
+                for code in {issue["code"] for issue in scope_issues}:
+                    if code not in assertions["present"] and code not in assertions["absent"]:
+                        assertions["unknown"] = sorted(set(assertions["unknown"]) | {code})
                 assertions["needs_clarification"] = True
             model_input = assertions["present"]
             if mapping_issues or scope_issues or assertions["unknown"] or assertions["uncertainty_conflicts"] or assertions["contradiction"] or assertions["noncurrent_context"]:

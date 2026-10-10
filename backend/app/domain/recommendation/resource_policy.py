@@ -27,6 +27,14 @@ def resource_strategy(triage: dict[str, Any] | None, expert_preference: str | No
             "notice": "当前命中急症红旗，系统不按专家号偏好排序，优先推荐最近急诊能力与120处置。",
         }
     if level == "urgent":
+        if triage.get("severity_bucket") == "复合症状/需及时评估":
+            return {
+                "code": "urgent_assessment", "title": "需尽快线下评估",
+                "visit_path": "及时到医院评估，不能等待普通预约",
+                "expert_preference": preference, "expert_enabled": False,
+                "top_expert_allowed": False,
+                "notice": "本次优先及时线下评估，不按专家号偏好进行普通医生排序；医院目录仅供了解，不代表实时接诊或预约保证。",
+            }
         is_specialty_followup = triage.get("severity_bucket") == "专科病情/需评估" or triage.get("matched_rule") in ("心血管专科病情", "慢病专科随访")
         return {
             "code": "specialty_followup" if is_specialty_followup else "specialty_priority",

@@ -95,6 +95,8 @@ CHALLENGES = {name: f"evaluation.core_exploration.{name}" for name in (
     "completed_exclusion_fact_audit",
     "qualified_unresolved_exclusion_audit",
     "inability_exclusion_token_audit",
+    "qualified_symptom_input_audit",
+    "negative_predicate_scope_audit",
 )}
 
 

@@ -275,6 +275,7 @@ def build_candidate_comparison(disease_candidates):
 _FOLLOWUP_OPTION_VALUES = {
     "known_disease_status": {"已确诊/复诊": "confirmed", "报告提示但未确诊": "report_unconfirmed", "自己怀疑": "self_suspected"},
     "red_flag_check": {"没有": "none", "有其中一种": "present", "不确定": "unknown"},
+    "asthma_rescue_check": {"有上述危险情况": "present", "没有上述情况但仍不舒服": "none", "不确定": "unknown"},
     "duration": {"1天内": "lt_1_day", "1周以内": "lt_1_week", "1-4周": "1_4_weeks", "1个月以上": "gte_1_month"},
     "severity": {"轻微": "mild", "中等": "moderate", "明显影响": "significant", "非常严重": "severe"},
 }
@@ -304,6 +305,8 @@ def build_followup_questions(condition, analysis, triage=None, followup_answers=
     answered_ids = set(answered_facts)
     if answered_facts.get("red_flag_check") == "unknown":
         answered_ids.discard("red_flag_check")
+    if answered_facts.get("asthma_rescue_check") not in {"present", "none"}:
+        answered_ids.discard("asthma_rescue_check")
     questions = []
     missing = []
 
@@ -357,8 +360,11 @@ def build_followup_questions(condition, analysis, triage=None, followup_answers=
         if chest_presence_pending:
             question = "请确认目前是否有任何程度的胸痛（包括轻微疼痛），或呼吸困难、意识异常等危险信号？"
         add("red_flag_check", question, ["没有", "有其中一种", "不确定"], "补充急诊红旗规则")
-    if any(question["id"] == "red_flag_check" for question in questions):
-        questions.sort(key=lambda question: question["id"] != "red_flag_check")
+    from .domain.triage.asthma_review import asthma_rescue_context
+    if asthma_rescue_context(text):
+        add("asthma_rescue_check", "目前是否症状加重、按个人处置方案达到最大救援量后仍不改善，或没有可用救援药？",
+            ["有上述危险情况", "没有上述情况但仍不舒服", "不确定"], "确认当前哮喘治疗反应，不能由使用次数判断剂量")
+    questions.sort(key=lambda question: {"asthma_rescue_check": 0, "red_flag_check": 1}.get(question["id"], 2))
 
     compare = build_candidate_comparison(disease_candidates)
     for q in compare.get("distinguish_questions", []):
@@ -1262,7 +1268,7 @@ STANDARD_SYMPTOM_RULES = [
     {"tag": "关节/骨骼疼痛", "aliases": ["骨折", "关节痛", "腰痛", "腰疼", "背痛", "膝盖痛", "颈椎痛", "腿痛"], "system": "运动系统", "disease": "骨关节疾病/外伤", "primary": "骨科疾病", "secondary": "骨关节疼痛类", "dept": "骨科", "score": 0.68},
     {"tag": "皮疹瘙痒", "aliases": ["皮疹", "皮肤瘙痒", "过敏", "湿疹", "红疹", "风团", "痘痘", "痤疮"], "system": "皮肤系统", "disease": "皮炎湿疹/过敏反应", "primary": "皮肤免疫疾病", "secondary": "皮肤普通病", "dept": "皮肤科", "score": 0.62},
     {"tag": "孕产异常", "aliases": ["怀孕", "孕期", "孕妇", "孕期出血", "胎动减少", "破水", "产后"], "system": "妇产系统", "disease": "妊娠相关风险", "primary": "妇产科疾病", "secondary": "孕产风险类", "dept": "产科", "score": 0.82, "red": True},
-    {"tag": "儿童症状", "aliases": ["儿童", "小儿", "婴儿", "新生儿", "小孩", "宝宝"], "system": "儿科系统", "disease": "儿童常见病/儿童急症风险", "primary": "儿科疾病", "secondary": "儿童专科病类", "dept": "儿科", "score": 0.76},
+    {"population_only": True, "aliases": ["儿童", "小儿", "婴儿", "新生儿", "小孩", "宝宝"], "dept": "儿科"},
     {"tag": "肿瘤相关", "aliases": ["肿瘤", "癌", "癌症", "放疗", "化疗", "占位"], "system": "肿瘤系统", "disease": "肿瘤相关疾病", "primary": "肿瘤疾病", "secondary": "肿瘤专科病类", "dept": "肿瘤科", "score": 0.84},
     {"tag": "泌尿症状", "aliases": ["尿痛", "尿频", "尿急", "血尿", "尿不出", "肾结石", "前列腺"], "system": "泌尿系统", "disease": "泌尿系统感染/结石", "primary": "泌尿系统疾病", "secondary": "泌尿系统常见病", "dept": "泌尿外科", "score": 0.66},
     {"tag": "代谢异常", "aliases": ["糖尿病", "血糖高", "甲亢", "痛风", "尿酸高", "肥胖"], "system": "内分泌代谢系统", "disease": "糖尿病/代谢异常", "primary": "内分泌代谢疾病", "secondary": "慢病代谢类", "dept": "内分泌代谢科", "score": 0.64},
@@ -1319,6 +1325,8 @@ def extract_standard_symptom_tags(condition):
             seen.add(code)
             tags.append(item)
     for rule in STANDARD_SYMPTOM_RULES:
+        if rule.get("population_only"):
+            continue
         hits = [alias for alias in rule["aliases"] if _has_asserted_rule_alias(text, alias)]
         if hits and rule["tag"] not in seen:
             seen.add(rule["tag"])
@@ -1396,6 +1404,8 @@ def build_htriage_analysis(condition, followup_answers=None):
         }
 
     for rule in STANDARD_SYMPTOM_RULES:
+        if rule.get("population_only"):
+            continue
         hit_count = sum(1 for alias in rule["aliases"]
                         if _has_asserted_rule_alias(routing_text, alias))
         if hit_count:
@@ -1483,6 +1493,21 @@ def build_htriage_analysis(condition, followup_answers=None):
         {"department": dept, "score": score, "source": dept_sources.get(dept, "rule_engine")}
         for dept, score in sorted(dept_scores.items(), key=lambda item: item[1], reverse=True)
     ]
+    # Population can retain a broad entry when there is no specific rule
+    # evidence, but it is neither a symptom nor a scored disease hypothesis.
+    specific_rule_evidence = any(
+        meta["secondary"] != "模型预测疾病" and name != "待进一步门诊评估"
+        for name, meta in disease_meta.items()
+    )
+    if not specific_rule_evidence:
+        for rule in STANDARD_SYMPTOM_RULES:
+            if rule.get("population_only") and any(
+                _has_asserted_rule_alias(routing_text, alias) for alias in rule["aliases"]
+            ):
+                department_candidates.insert(0, {
+                    "department": rule["dept"], "score": 0, "source": "population_context",
+                })
+                break
     red_flags = [item["tag"] for item in symptom_tags if item.get("red_flag_related")]
     analysis = {
         "model": RANKING_MODEL_VERSION,
@@ -1503,6 +1528,10 @@ def build_htriage_analysis(condition, followup_answers=None):
         "model_disease_prediction": model_prediction,
         "red_flag_tags": red_flags,
     }
+    from .domain.triage.input_adequacy import demographic_only_description
+    if demographic_only_description(raw_text):
+        analysis.update(symptom_tags=[], disease_candidates=[], disease_categories=[], department_candidates=[],
+                        model_standard_symptoms=[], red_flag_tags=[])
     analysis["followup"] = build_followup_questions(raw_text, analysis, followup_answers=followup_answers)
     return analysis
 
@@ -1633,24 +1662,122 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
                 "disclaimer": "本系统仅做分诊辅助；如症状明显、持续加重或出现意识/呼吸/胸痛等风险，请及时拨打 120 或前往急诊。",
             }, htriage)
 
+    from .domain.triage.input_adequacy import demographic_only_description
+    if demographic_only_description(text):
+        return _attach_htriage_fields({
+            "level": "routine", "label": "需要补充信息",
+            "severity_bucket": "信息不足", "severity_score": 50,
+            "care_level": "请补充症状或就医目的，年龄和性别本身不能判断病情",
+            "recommended_scenario": "first_visit", "matched_rule": "仅有人口信息，缺少医学主诉",
+            "matched_department": None, "defer_resource_routing": True,
+            "reasons": ["当前只提供了年龄、人群或性别，不能据此生成疾病候选或确定普通就医方向。请补充症状或就医目的。"],
+            "disclaimer": "本系统仅提供分诊辅助；如有当前危险症状请优先急诊或拨打120。",
+        }, htriage)
+
+    from .domain.triage.blood_pressure_assessment import blood_pressure_assessment
+    pressure_risk = blood_pressure_assessment(text)
+    if pressure_risk and pressure_risk["level"] == "emergency":
+        return _attach_htriage_fields({
+            "level": "emergency", "label": "需急诊专业评估",
+            "severity_bucket": "大病/重症风险", "severity_score": 95,
+            "care_level": "当前血压读数合并危险表现，需要优先急诊专业评估",
+            "recommended_scenario": "surgery", "matched_rule": pressure_risk["name"],
+            "matched_department": pressure_risk["department"], "reasons": [pressure_risk["reason"]],
+            "disclaimer": "本系统仅做分诊辅助，不诊断高血压危象或提供降压药量；请优先急诊或拨打120。",
+        }, htriage)
+
+    from .domain.triage.eye_joint_assessment import eye_emergency_assessment
+    from .domain.triage.recent_neurological_assessment import recent_arm_assessment
+    recent_arm_risk = recent_arm_assessment(text)
+    if recent_arm_risk and recent_arm_risk["level"] == "emergency":
+        return _attach_htriage_fields({
+            "level": "emergency", "label": "需急诊专业评估",
+            "severity_bucket": "大病/重症风险", "severity_score": 95,
+            "care_level": "当前突然整侧手臂麻木，需要优先急诊专业评估",
+            "recommended_scenario": "surgery", "matched_rule": recent_arm_risk["name"],
+            "matched_department": recent_arm_risk["department"], "reasons": [recent_arm_risk["reason"]],
+            "disclaimer": "本系统仅做分诊辅助，不诊断脑血管疾病；请优先急诊或拨打120。",
+        }, htriage)
+
+    eye_risk = eye_emergency_assessment(text)
+    if eye_risk:
+        return _attach_htriage_fields({
+            "level": "emergency", "label": "需急诊专业评估",
+            "severity_bucket": "大病/重症风险", "severity_score": 95,
+            "care_level": "当前红眼伴危险表现，需要优先急诊专业评估",
+            "recommended_scenario": "surgery", "matched_rule": eye_risk["name"],
+            "matched_department": eye_risk["department"], "reasons": [eye_risk["reason"]],
+            "disclaimer": "本系统仅做分诊辅助，不诊断眼病或提供治疗指令；请优先急诊专业评估。",
+        }, htriage)
+
+    from .domain.triage.metabolic_risk import metabolic_emergency_assessment
+    metabolic_risk = metabolic_emergency_assessment(text)
+    if metabolic_risk:
+        return _attach_htriage_fields({
+            "level": "emergency", "label": "需急诊专业评估",
+            "severity_bucket": "大病/重症风险", "severity_score": 95,
+            "care_level": "请优先急诊专业评估，不能仅按慢病复诊安排",
+            "recommended_scenario": "surgery", "matched_rule": metabolic_risk["name"],
+            "matched_department": metabolic_risk["department"],
+            "reasons": [metabolic_risk["reason"]],
+            "disclaimer": "本系统仅做分诊辅助，不诊断代谢急症或提供用药指令；请优先急诊评估，情况加重时拨打120。",
+        }, htriage)
+
+    from .domain.triage.asthma_review import asthma_rescue_context
+    asthma_context = asthma_rescue_context(text)
+    asthma_answer = structured_facts.get("asthma_rescue_check")
+    if asthma_context and (asthma_context["explicit_maximum_failure"] or asthma_answer == "present"):
+        return _attach_htriage_fields({
+            "level": "emergency", "label": "需急诊专业评估",
+            "severity_bucket": "大病/重症风险", "severity_score": 95,
+            "care_level": "当前哮喘危险情况需优先急诊或急救评估",
+            "recommended_scenario": "surgery", "matched_rule": "当前哮喘危险情况已报告",
+            "matched_department": "急诊医学科",
+            "reasons": ["当前症状及救援治疗反应提示需要急诊专业评估；本系统不提供吸入药物剂量或处置方案。"],
+            "disclaimer": "症状加重或呼吸困难时请优先拨打120或前往急诊，不等待普通预约。",
+        }, htriage)
+
+    if pressure_risk and pressure_risk["level"] == "pending":
+        return _attach_htriage_fields({
+            "level": "routine", "label": "需要人工/专业复核",
+            "severity_bucket": "信息不足", "severity_score": 50,
+            "care_level": "请补充实际血压读数、单位、测量时间和年龄，并及时专业复核",
+            "recommended_scenario": "first_visit", "matched_rule": pressure_risk["name"],
+            "matched_department": None, "defer_resource_routing": True,
+            "reasons": [pressure_risk["reason"]],
+            "disclaimer": "信息不足不能排除危险；如伴胸痛、呼吸困难、意识异常等表现，请优先急诊或拨打120，不自行调整降压药。",
+        }, htriage)
+
     # Confirmed emergency rules above always precede an uncertain answer.
     existing_risk_words = list(TRIAGE_CRITICAL_SINGLE_KEYWORDS) + list(TRIAGE_URGENT_KEYWORDS)
     existing_risk_words += [word for rule in TRIAGE_RED_FLAGS for word in rule["keywords"]]
     uncertain_signals = uncertain_signal_mentions(text, existing_risk_words) if red_flag_answer != "none" else []
     seizure_signals = seizure_review_mentions(text)
-    if red_flag_answer == "unknown" or uncertain_signals or uncertain_seizure_mentions(text) or (seizure_signals and red_flag_answer != "none") or (qualified_chest_presence_pending(text) and red_flag_answer != "none"):
+    asthma_pending = bool(asthma_context and asthma_answer not in {"present", "none"})
+    if asthma_pending or red_flag_answer == "unknown" or uncertain_signals or uncertain_seizure_mentions(text) or (seizure_signals and red_flag_answer != "none") or (qualified_chest_presence_pending(text) and red_flag_answer != "none"):
         return _attach_htriage_fields({
             "level": "routine",
             "label": "需要人工/专业复核",
             "severity_bucket": "信息不足",
             "severity_score": 50,
-            "care_level": "无法确认危险信号，请尽快由专业人员复核",
+            "care_level": "哮喘症状持续或反复，治疗反应与呼吸风险尚需确认，请及时专业复核" if asthma_pending else "无法确认危险信号，请尽快由专业人员复核",
             "recommended_scenario": "first_visit",
-            "matched_rule": "危险信号回答为不确定" if red_flag_answer == "unknown" else "自由文本危险信号尚未确认",
+            "matched_rule": "当前哮喘治疗反应尚未确认" if asthma_pending else "危险信号回答为不确定" if red_flag_answer == "unknown" else "自由文本危险信号尚未确认",
             "matched_department": None,
             "defer_resource_routing": True,
-            "reasons": ["危险信号尚未确认，不能按“没有危险信号”处理；请先补充信息并结合专业复核。"],
+            "reasons": ["当前哮喘症状持续或反复，不能由能完整讲话或吸入器使用次数排除危险；请先确认治疗反应并及时专业复核。" if asthma_pending else "危险信号尚未确认，不能按“没有危险信号”处理；请先补充信息并结合专业复核。"],
             "disclaimer": "信息不足不能排除急症；如出现明显胸痛、呼吸困难、意识异常等危险表现，请优先急诊或拨打120。",
+        }, htriage)
+
+    if asthma_context and asthma_answer == "none":
+        return _attach_htriage_fields({
+            "level": "urgent", "label": "需尽快线下评估",
+            "severity_bucket": "复合症状/需及时评估", "severity_score": 65,
+            "care_level": "当前哮喘症状仍持续或反复，需要尽快线下评估",
+            "recommended_scenario": "complex", "matched_rule": "当前哮喘治疗反应需及时评估",
+            "matched_department": "急诊医学科",
+            "reasons": ["未报告上述危险情况不等于当前症状无风险，仍需及时专业评估，不等待普通专家预约。"],
+            "disclaimer": "症状加重或呼吸困难时请优先急诊或拨打120，本系统不提供用药指令。",
         }, htriage)
 
     clarified_disease = htriage.get("known_disease") or {}
@@ -1667,6 +1794,20 @@ def analyze_medical_triage(condition, scenario="common", followup_answers=None):
             "matched_department": "神经内科",
             "reasons": ["危险条件的否认不等于症状无风险，也不代表已确认病因。"],
             "disclaimer": "本系统不诊断癫痫；若持续不缓解、再次发生或出现呼吸/意识异常，请优先急诊或拨打120。",
+        }, htriage)
+
+    from .domain.triage.contextual_urgency import contextual_urgent_assessment
+    from .domain.triage.eye_joint_assessment import joint_urgent_assessment
+    contextual_risk = contextual_urgent_assessment(text) or joint_urgent_assessment(text) or recent_arm_risk or pressure_risk
+    if contextual_risk:
+        return _attach_htriage_fields({
+            "level": "urgent", "label": "需尽快线下评估",
+            "severity_bucket": "复合症状/需及时评估", "severity_score": 65,
+            "care_level": "需要尽快到医院线下评估，不能等待普通预约",
+            "recommended_scenario": "complex", "matched_rule": contextual_risk["name"],
+            "matched_department": contextual_risk["department"],
+            "reasons": [contextual_risk["reason"]],
+            "disclaimer": "本系统不判断具体病因；如伴胸痛、呼吸困难、意识异常等危险表现，请优先急诊或拨打120。",
         }, htriage)
 
     urgent_hits = [w for w in TRIAGE_URGENT_KEYWORDS if _contains_positive(text, [w])]
@@ -2032,6 +2173,28 @@ EVIDENCE_APPLICATION_SERVICE = EvidenceApplicationService(
     Path(BASE_DIR),
     analyze_medical_triage,
 )
+
+
+def prewarm_evidence() -> dict:
+    """Compute the Trust Center evidence once at server boot.
+
+    The 142-case safety re-evaluation dominates the first evidence request and
+    exceeds the frontend 10s client timeout on a cold process. Warming the
+    service cache before ``app.run`` keeps every request instant. Numbers are
+    identical to a cold request; the cache invalidates on version or source
+    file changes. Import-safe: call only from the server entry point, never
+    from tests.
+    """
+
+    return EVIDENCE_APPLICATION_SERVICE.build(
+        app_version=app.config.get("APP_VERSION", "unknown"),
+        ranking_version=app.config.get("RANKING_VERSION", RANKING_MODEL_VERSION),
+        triage_rules_version=app.config.get("TRIAGE_RULES_VERSION", "unknown"),
+        model_version=app.config.get("MODEL_VERSION", "unknown"),
+        dataset_version=app.config.get("DATASET_VERSION", "unknown"),
+        region_pack_version=app.config.get("REGION_PACK_VERSION", "unknown"),
+        region_code=app.config.get("REGION_CODE", "320400"),
+    )
 
 
 MAP_VIEW_APPLICATION_SERVICE = MapViewApplicationService(

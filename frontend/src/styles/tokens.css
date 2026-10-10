@@ -1,49 +1,66 @@
 :root {
   color-scheme: light;
 
-  /* Surfaces — cool medical product neutrals */
-  --surface-base: #f3f5f6;
+  /* Surfaces — elevated bright layers */
+  --surface-base: linear-gradient(180deg, #f8fafb 0%, #f0f4f7 100%);
+  --surface-base-solid: #f5f8fa;
   --surface-raised: #ffffff;
   --surface-elevated: #ffffff;
-  --surface-subtle: #e9eef1;
-  --surface-tinted: #e4eef0;
+  --surface-subtle: #e9eef2;
+  --surface-tinted: #e8f2f4;
   --surface-sage: #dce6e8;
   --surface-sage-soft: #e3ebed;
   --surface-sage-wash: #edf2f4;
   --surface-inverse: #0f1a1f;
   --surface-dark: #121f26;
+  --surface-glass: rgba(255, 255, 255, 0.85);
+  --surface-glass-strong: rgba(255, 255, 255, 0.95);
 
   /* Ink */
-  --text-primary: #0b1418;
-  --text-secondary: #54616a;
-  --text-muted: #87939b;
+  --text-primary: #0a1419;
+  --text-secondary: #4e5a64;
+  --text-muted: #7d8892;
   --text-inverse: #f5f7f8;
   --text-on-accent: #ffffff;
 
   /* Borders */
-  --border-subtle: #e3e8eb;
-  --border-default: #cfd8dd;
-  --border-strong: #9aabB4;
-  --border-focus: #0b6e6a;
+  --border-subtle: #e5eaee;
+  --border-default: #d0d7dd;
+  --border-strong: #9aabb4;
+  --border-focus: #0d7a75;
+  --border-glass: rgba(255, 255, 255, 0.6);
 
-  /* Accent — medical teal */
-  --accent-primary: #0b6e6a;
-  --accent-primary-hover: #095e5b;
-  --accent-primary-active: #074e4c;
-  --accent-secondary: #1f4f8f;
-  --accent-soft: #dff0ee;
+  /* Accent — vibrant teal with depth */
+  --accent-primary: #0d7a75;
+  --accent-primary-hover: #0a6762;
+  --accent-primary-active: #085550;
+  --accent-secondary: #2563eb;
+  --accent-tertiary: #6d58f6;
+  --accent-soft: #d4f1ef;
   --accent-ink: #063f3d;
-  --accent-glow: color-mix(in srgb, var(--accent-primary) 18%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent-primary) 22%, transparent);
+  --accent-gradient: linear-gradient(135deg, #0d7a75 0%, #0ea89d 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #0a6762 0%, #0c8f85 100%);
+
+  /* Ambient intelligence layer — mesh aurora washes, blueprint grid, CTA shine.
+     All hues derive from the accent family (teal/blue/violet); opacities stay
+     low so clinical content keeps full contrast on the light theme. */
+  --aurora-teal: rgba(13, 122, 117, 0.10);
+  --aurora-blue: rgba(37, 99, 235, 0.08);
+  --aurora-violet: rgba(109, 88, 246, 0.07);
+  --grid-line: rgba(13, 122, 117, 0.08);
+  --text-gradient: linear-gradient(115deg, #0a6762 5%, #0d7a75 35%, #2563eb 70%, #6d58f6 100%);
+  --shine-sweep: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.55) 50%, transparent 58%);
 
   /* Semantic states */
-  --state-success: #2f7a5c;
-  --state-warning: #9a6b12;
-  --state-danger: #c23b36;
-  --state-info: #1f4f8f;
-  --state-success-soft: #e5f2eb;
-  --state-warning-soft: #f7edd8;
-  --state-danger-soft: #f8e6e4;
-  --state-info-soft: #e4edf8;
+  --state-success: #059669;
+  --state-warning: #d97706;
+  --state-danger: #dc2626;
+  --state-info: #2563eb;
+  --state-success-soft: #d1fae5;
+  --state-warning-soft: #fef3c7;
+  --state-danger-soft: #fee2e2;
+  --state-info-soft: #dbeafe;
 
   /* Radius — tighter product feel */
   --radius-xs: 4px;
@@ -53,15 +70,22 @@
   --radius-xl: 20px;
   --radius-pill: 999px;
 
-  /* Shadows — light, product-like */
-  --shadow-xs: 0 1px 2px color-mix(in srgb, var(--text-primary) 5%, transparent);
-  --shadow-sm: 0 1px 3px color-mix(in srgb, var(--text-primary) 7%, transparent),
-    0 4px 12px color-mix(in srgb, var(--text-primary) 4%, transparent);
-  --shadow-md: 0 2px 6px color-mix(in srgb, var(--text-primary) 8%, transparent),
-    0 12px 28px color-mix(in srgb, var(--text-primary) 6%, transparent);
-  --shadow-soft: 0 8px 24px color-mix(in srgb, var(--text-primary) 8%, transparent);
-  --shadow-float: 0 16px 40px color-mix(in srgb, var(--text-primary) 12%, transparent);
-  --shadow-inset: inset 0 1px 0 color-mix(in srgb, white 80%, transparent);
+  /* Shadows — 3D layered depth */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+  --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04),
+    0 1px 2px rgba(15, 23, 42, 0.02);
+  --shadow-md: 0 4px 8px rgba(15, 23, 42, 0.08), 0 12px 32px rgba(15, 23, 42, 0.06),
+    0 2px 4px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 8px 16px rgba(15, 23, 42, 0.1), 0 20px 48px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 16px 32px rgba(15, 23, 42, 0.12), 0 32px 64px rgba(15, 23, 42, 0.1),
+    0 4px 8px rgba(15, 23, 42, 0.05);
+  --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.08), 0 16px 48px rgba(15, 23, 42, 0.06);
+  --shadow-float: 0 20px 40px rgba(15, 23, 42, 0.14), 0 40px 80px rgba(15, 23, 42, 0.12);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+  --shadow-inner: inset 0 2px 6px rgba(15, 23, 42, 0.06);
+  --shadow-accent: 0 4px 16px rgba(13, 122, 117, 0.2), 0 8px 32px rgba(13, 122, 117, 0.12);
+  --shadow-accent-hover: 0 8px 24px rgba(13, 122, 117, 0.28), 0 16px 48px rgba(13, 122, 117, 0.18);
 
   /* Spacing scale */
   --space-1: 4px;

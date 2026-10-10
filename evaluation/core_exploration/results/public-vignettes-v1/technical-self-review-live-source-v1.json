@@ -1,0 +1,8 @@
+{
+  "review_date": "2026-10-04",
+  "source_url": "https://raw.githubusercontent.com/ashwinra-code/gpt-health-eval/217352f4a5144390f2af30042e208167b14b9268/data/DataOriginal_FINAL.csv",
+  "source_csv_sha256": "1e2b26096da9e6f2af1cdd0d9deebc85167d77350d535a72f7f06080db76e1bb",
+  "live_frozen_source_equal": true,
+  "full_27_input_gold_pair_bindings_verified": true,
+  "raw_answers_persisted": false
+}

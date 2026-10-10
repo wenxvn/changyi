@@ -63,6 +63,9 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const [error, setError] = useState<ApiError | null>(null);
   const [followupAnswers, setFollowupAnswers] = useState<FollowupAnswer[]>([]);
   const [pathUpdated, setPathUpdated] = useState(false);
+  const [previousTags, setPreviousTags] = useState<string[]>([]);
+  const [previousDepts, setPreviousDepts] = useState<string[]>([]);
+  const [previousDept, setPreviousDept] = useState<string | null>(null);
   const [expertPreference, setExpertPreference] = useState<ExpertPreference>("system");
   const [visitIntent, setVisitIntent] = useState<VisitIntent | "">("");
   const [preferencesOpen, setPreferencesOpen] = useState(false);
@@ -117,6 +120,23 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     const nextCondition = value.trim();
     if (!nextCondition || loading) return;
     const nextAnswers = options.followupAnswers ?? [];
+    // Snapshot previous-round evidence for read-only diff highlight only.
+    // This never drives triage logic; the server recomputes everything.
+    if (nextAnswers.length > 0 && result) {
+      setPreviousTags((result.triage?.symptom_tags ?? []).map((item) => item.tag));
+      setPreviousDepts(
+        Array.isArray(result.htriage_analysis?.department_candidates)
+          ? result.htriage_analysis.department_candidates
+              .filter((item) => item && typeof item.department === "string")
+              .map((item) => (item as { department: string }).department)
+          : [],
+      );
+      setPreviousDept(result.matched_department ?? null);
+    } else if (nextAnswers.length === 0) {
+      setPreviousTags([]);
+      setPreviousDepts([]);
+      setPreviousDept(null);
+    }
     triageController.current?.abort();
     const controller = new AbortController();
     triageController.current = controller;
@@ -446,7 +466,14 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
           <div className={`triage-care${isEmergency ? " triage-care--emergency" : ""}`}>
             <div className="triage-care__main">
               <div className="triage-page__results">
-                <TriageResults result={result as TriagePayload} onNavigate={onNavigate} pathUpdated={pathUpdated} />
+                <TriageResults
+                  result={result as TriagePayload}
+                  onNavigate={onNavigate}
+                  pathUpdated={pathUpdated}
+                  previousTags={previousTags}
+                  previousDepts={previousDepts}
+                  previousDept={previousDept}
+                />
               </div>
 
               {!isEmergency ? (
@@ -511,7 +538,12 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
               {isEmergency ? <EmergencyFacilities onNavigate={onNavigate} /> : null}
               {!isEmergency ? (
                 <>
-                  <CurrentUnderstanding condition={submittedCondition} result={result as TriagePayload} />
+                  <CurrentUnderstanding
+                    condition={submittedCondition}
+                    result={result as TriagePayload}
+                    previousTags={previousTags}
+                    pathUpdated={pathUpdated}
+                  />
                   <CareActions
                     direction={result?.matched_department ?? null}
                     safety={result?.triage_status ?? "ROUTINE"}

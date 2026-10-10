@@ -5,6 +5,9 @@ import type { TriagePayload } from "../../types/api";
 interface CurrentUnderstandingProps {
   condition: string;
   result: TriagePayload;
+  /** Tags from the previous round; used only for read-only new-item highlight. */
+  previousTags?: string[];
+  pathUpdated?: boolean;
 }
 
 const STATUS_TONE: Record<TriagePayload["triage_status"], "neutral" | "success" | "warning" | "danger"> = {
@@ -26,11 +29,13 @@ const STATUS_LABEL: Record<TriagePayload["triage_status"], string> = {
  * only shows key signals that the backend already returned. No clinical
  * confidence is invented here.
  */
-export function CurrentUnderstanding({ condition, result }: CurrentUnderstandingProps) {
+export function CurrentUnderstanding({ condition, result, previousTags, pathUpdated }: CurrentUnderstandingProps) {
   const status = result.triage_status;
   const tags = (result.triage?.red_flag_tags ?? []).filter(Boolean).filter((tag, index, all) => all.indexOf(tag) === index).slice(0, 6);
   const missing = (result.triage?.followup?.missing_slots ?? []).filter(Boolean).slice(0, 4);
   const answers = result.followup_answers ?? [];
+  const symptomTags = (result.triage?.symptom_tags ?? []).filter((item) => item && typeof item.tag === "string").slice(0, 6);
+  const prevTagSet = new Set(previousTags ?? []);
 
   return (
     <aside className="context-card" aria-labelledby="understanding-title">
@@ -46,6 +51,24 @@ export function CurrentUnderstanding({ condition, result }: CurrentUnderstanding
           <ul>
             {tags.map((tag) => <li key={tag}>{tag}</li>)}
           </ul>
+        </div>
+      ) : null}
+
+      {symptomTags.length > 0 ? (
+        <div className="context-card__tags" data-testid="understanding-symptoms">
+          <span className="eyebrow eyebrow--muted"><Tags size={12} aria-hidden="true" /> 识别到的症状词</span>
+          <ul>
+            {symptomTags.map((item) => (
+              <li key={item.tag}>
+                {item.tag}
+                {pathUpdated && !prevTagSet.has(item.tag) && (previousTags?.length ?? 0) > 0 ? <small data-testid="evidence-diff">（补充后新增）</small> : null}
+                {item.matched_terms && item.matched_terms.length > 0 ? (
+                  <small>（匹配：{item.matched_terms.slice(0, 5).join("、")}）</small>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+          <small>仅展示服务端已识别的原文证据；人口词不计为症状，未经临床校准。</small>
         </div>
       ) : null}
 

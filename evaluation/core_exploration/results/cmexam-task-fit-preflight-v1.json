@@ -1,0 +1,126 @@
+{
+  "schema": "cmexam-task-fit-preflight/v1",
+  "source_commit": "fadb22c89beb1b7115dc36460ba792eb96b7b972",
+  "source_csv_sha256": "e998f69b3f8108bf08bcb8cc9a2a6ed276afeabde6ba3caa3015789b1f6fd407",
+  "full_rows": 6811,
+  "clinical_shape_heuristic_total": 1377,
+  "clinical_shape_heuristic_department_counts": {
+    "急诊医学科": 32,
+    "内科": 416,
+    "妇产科": 89,
+    "口腔科": 73,
+    "结核病科": 5,
+    "精神科": 65,
+    "外科": 219,
+    "中医科": 205,
+    "传染科": 55,
+    "不符合": 93,
+    "肿瘤科": 36,
+    "儿科": 56,
+    "病理科": 2,
+    "儿童外科": 1,
+    "全科医疗": 2,
+    "职业病科": 3,
+    "医学影像科": 3,
+    "临床营养科": 3,
+    "皮肤科": 6,
+    "眼科": 2,
+    "地方病科": 1,
+    "疼痛科": 1,
+    "中西医结合科": 1,
+    "麻醉科": 2,
+    "妇女保健": 1,
+    "临终关怀科": 1,
+    "重症医学科": 2,
+    "预防保健科": 1,
+    "医学检验科": 1
+  },
+  "source_label_task": "exam_question_relevance_not_initial_department",
+  "selection": "predeclared_eight_classes_two_smallest_question_sha256_each_with_clinical_shape_heuristic",
+  "selected_rows": [
+    {
+      "row_index": 3587,
+      "question_sha256": "00da6bde7a32710355a0089dc78e245b2bc78e859f8a1440c2fe23bb5b7dc639",
+      "source_department": "内科"
+    },
+    {
+      "row_index": 5442,
+      "question_sha256": "016eae322673a2811ccb5a72fc9f8cd817378d9cd8973d95dff91c53d500d647",
+      "source_department": "内科"
+    },
+    {
+      "row_index": 3821,
+      "question_sha256": "001023b41659469c833b470ff36ee08d3b83f79c32720e4988dc5707c2e7aef8",
+      "source_department": "外科"
+    },
+    {
+      "row_index": 4523,
+      "question_sha256": "00f1d10bc4a07726c55dfba23ef2f63476ca35b1dedd95344f0a7c64c6af8cb8",
+      "source_department": "外科"
+    },
+    {
+      "row_index": 4019,
+      "question_sha256": "0539fb822c616a3cf3e4805dc2246237e8002804b253e6481d3605f93547f44b",
+      "source_department": "儿科"
+    },
+    {
+      "row_index": 5992,
+      "question_sha256": "0567f3e1a7b808a05d46c9f97a9e5dbc68c554d987721efe78cf3f32ba1643fc",
+      "source_department": "儿科"
+    },
+    {
+      "row_index": 3582,
+      "question_sha256": "001ba9903048d5ac3617f230cc644b09389a98a8fc4d784a56226d702dee1e4d",
+      "source_department": "妇产科"
+    },
+    {
+      "row_index": 5038,
+      "question_sha256": "0028925feebdf5699c4893a0f015604f1040064ad7d94d5efd5daf34dc72f365",
+      "source_department": "妇产科"
+    },
+    {
+      "row_index": 2912,
+      "question_sha256": "017dea33184b5ecc9a6efa650cd440899d5e1e398d51ce9eba8fbd167d391b56",
+      "source_department": "口腔科"
+    },
+    {
+      "row_index": 6255,
+      "question_sha256": "01bf6aa376527d2cd12852f229c09f6cd5875d0b97f41541b54c025f350ee7b9",
+      "source_department": "口腔科"
+    },
+    {
+      "row_index": 5881,
+      "question_sha256": "5db19a5927775635edb472b1efc8835dd6a5d5137236600f3859d0bfa8049560",
+      "source_department": "眼科"
+    },
+    {
+      "row_index": 2783,
+      "question_sha256": "5e9bcd4af4125ee5069b4b7070f87c7578571c998296b77e71296877f0100a47",
+      "source_department": "眼科"
+    },
+    {
+      "row_index": 913,
+      "question_sha256": "077a7e3d68014f3eae908c34403ea0fa086fe410d56bedfc778d3e0d95212c78",
+      "source_department": "精神科"
+    },
+    {
+      "row_index": 1412,
+      "question_sha256": "08472beacb2539bd77e7ac2c87030c19185ed0091dc0c800bdf577f385570564",
+      "source_department": "精神科"
+    },
+    {
+      "row_index": 2943,
+      "question_sha256": "0a283dd170b87490f8c5d9934e55d3831ca30aa888726d23447c1d587f7287cf",
+      "source_department": "急诊医学科"
+    },
+    {
+      "row_index": 1524,
+      "question_sha256": "0a75fed7823218a4ffc789bc20f05508483af05f5be7ffc15f0718b60853a8b3",
+      "source_department": "急诊医学科"
+    }
+  ],
+  "predictions": 0,
+  "fits": 0,
+  "options_answers_explanations_or_question_text_persisted": false,
+  "clinical_validation": false
+}

@@ -123,6 +123,51 @@ export function parseFollowup(value: unknown, field = "followup"): FollowupPaylo
   };
 }
 
+function parseSymptomTag(value: unknown): { tag: string; matched_terms?: string[]; body_system?: string; red_flag_related?: boolean; source?: string; standard_code?: string } | null {
+  if (typeof value === "string") {
+    const tag = value.trim();
+    return tag ? { tag } : null;
+  }
+  if (!isRecord(value) || typeof value.tag !== "string" || !value.tag.trim()) {
+    return null;
+  }
+  return {
+    tag: value.tag,
+    ...(Array.isArray(value.matched_terms)
+      ? { matched_terms: value.matched_terms.filter((item): item is string => typeof item === "string").slice(0, 5) }
+      : {}),
+    ...(typeof value.body_system === "string" ? { body_system: value.body_system } : {}),
+    ...(typeof value.red_flag_related === "boolean" ? { red_flag_related: value.red_flag_related } : {}),
+    ...(typeof value.source === "string" ? { source: value.source } : {}),
+    ...(typeof value.standard_code === "string" ? { standard_code: value.standard_code } : {}),
+  };
+}
+
+function parseSymptomTags(value: unknown): { tag: string; matched_terms?: string[]; body_system?: string; red_flag_related?: boolean; source?: string; standard_code?: string }[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const parsed = value.map(parseSymptomTag).filter((item): item is NonNullable<typeof item> => item !== null);
+  return parsed;
+}
+
+function parseHtriageAnalysis(value: unknown): Record<string, unknown> | undefined {
+  if (!isRecord(value)) return undefined;
+  const out: Record<string, unknown> = { ...value };
+  if ("symptom_tags" in value) {
+    out.symptom_tags = parseSymptomTags(value.symptom_tags) ?? [];
+  }
+  if (Array.isArray(value.department_candidates)) {
+    out.department_candidates = value.department_candidates
+      .filter(isRecord)
+      .filter((item) => typeof item.department === "string")
+      .map((item) => ({
+        department: item.department as string,
+        ...(typeof item.score === "number" && Number.isFinite(item.score) ? { score: item.score as number } : {}),
+        ...(typeof item.source === "string" ? { source: item.source as string } : {}),
+      }));
+  }
+  return out;
+}
+
 export function parseTriagePayload(value: unknown): TriagePayload {
   if (!isRecord(value)) {
     throw new ApiError("INVALID_RESPONSE", "分诊响应格式无法识别。");
@@ -153,14 +198,10 @@ export function parseTriagePayload(value: unknown): TriagePayload {
           abstain_reason: optionalString(value.triage.abstain_reason),
           uncertainty_level: optionalString(value.triage.uncertainty_level),
           should_clarify: value.triage.should_clarify === true ? true : value.triage.should_clarify === false ? false : undefined,
-          symptom_tags: Array.isArray(value.triage.symptom_tags)
-            ? value.triage.symptom_tags.filter((tag): tag is string => typeof tag === "string")
-            : undefined,
+          symptom_tags: parseSymptomTags(value.triage.symptom_tags),
         }
       : undefined,
-    htriage_analysis: isRecord(value.htriage_analysis)
-      ? value.htriage_analysis
-      : undefined,
+    htriage_analysis: parseHtriageAnalysis(value.htriage_analysis),
     disease_prediction: isRecord(value.disease_prediction) ? {
       ...value.disease_prediction,
       available: typeof value.disease_prediction.available === "boolean" ? value.disease_prediction.available : undefined,
@@ -188,7 +229,7 @@ export function parseFollowupResponse(value: unknown): FollowupResponse {
     triage_label: optionalString(value.triage_label),
     followup: parseFollowup(value.followup),
     known_disease: isRecord(value.known_disease) ? value.known_disease : undefined,
-    htriage_analysis: isRecord(value.htriage_analysis) ? value.htriage_analysis : undefined,
+    htriage_analysis: parseHtriageAnalysis(value.htriage_analysis),
   };
 }
 

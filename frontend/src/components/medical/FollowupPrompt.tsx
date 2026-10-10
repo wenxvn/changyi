@@ -32,6 +32,7 @@ export function FollowupPrompt({
   const submitFreeText = () => {
     if (freeText.trim() && !disabled) onAnswer(question, { question_id: question.id, text_answer: freeText.trim() });
   };
+  const primarySlot = (followup.missing_slots ?? []).filter(Boolean)[0] ?? null;
 
   return (
     <section className="followup-prompt" aria-labelledby="followup-title" data-testid="followup-prompt">
@@ -45,6 +46,11 @@ export function FollowupPrompt({
       </p>
       <h2 id="followup-title">{question.question}</h2>
       {question.reason ? <p className="followup-prompt__reason">{question.reason}</p> : null}
+      {primarySlot ? (
+        <p className="followup-prompt__reason" data-testid="followup-slot-link">
+          <small>本题主要补充：{primarySlot}；回答后症状证据与科室依据会同步更新。</small>
+        </p>
+      ) : null}
 
       {question.options.length > 0 ? (
         <div className="followup-prompt__options" role="group" aria-label="追问选项">

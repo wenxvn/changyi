@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *.so
 .venv/
+.venv-core-embedding/
+evaluation/core_exploration/embedding_cache/
 venv/
 env/
 .env

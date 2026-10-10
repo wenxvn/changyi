@@ -17,8 +17,8 @@ class AppSettings:
     region_code: str = "320400"
     app_version: str = "0.3.0-competition-foundation"
     ranking_version: str = "h_triagerank_v1_symptom_disease_penalty"
-    triage_rules_version: str = "legacy-2026.09-qualified-exclusion-scope-v6.7"
-    model_version: str = "symptom-nb-v1-asserted-input-v3.8"
+    triage_rules_version: str = "legacy-2026.10-population-evidence-separation-v7.7"
+    model_version: str = "symptom-nb-v1-negative-coordination-v4.0"
     dataset_version: str = "changzhou-data-baseline-2026.09"
     region_pack_version: str = "320400-2026.09-draft"
     cors_origins: tuple[str, ...] = ("http://127.0.0.1:5002", "http://localhost:5002")

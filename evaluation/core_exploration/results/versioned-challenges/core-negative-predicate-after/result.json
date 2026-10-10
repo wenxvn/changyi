@@ -1,0 +1,107 @@
+{
+  "scope": "negative_predicate_grammar_controls_not_clinical_validation",
+  "total": 12,
+  "failed": 0,
+  "rows": [
+    {
+      "text": "我不伴胸痛",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我不伴呼吸困难",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我未出现呼吸困难",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有出现呼吸困难",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我不伴有呼吸困难",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我不是没有咳嗽，但没有呼吸困难",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有意识混乱或抽搐",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有意识混乱和抽搐",
+      "status": "ROUTINE",
+      "seizure_review": [],
+      "expected_emergency": false,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我不伴胸痛，但呼吸困难",
+      "status": "EMERGENCY",
+      "seizure_review": [],
+      "expected_emergency": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有意识混乱，但持续抽搐",
+      "status": "EMERGENCY",
+      "seizure_review": [
+        "抽搐"
+      ],
+      "expected_emergency": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我不是没有呼吸困难",
+      "status": "EMERGENCY",
+      "seizure_review": [],
+      "expected_emergency": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "我没有严重抽搐",
+      "status": "INSUFFICIENT_INFORMATION",
+      "seizure_review": [
+        "抽搐"
+      ],
+      "expected_emergency": null,
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

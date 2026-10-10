@@ -1,0 +1,50 @@
+{
+  "input_sha256": {
+    "source_body": "620f82ee6e3499b41cc8aff918de42a98f76dd8ed1ced169cf5c323156d38caa",
+    "complaint_only": "35494cb401cefadb991fb368208f228faa4c2c18d4adee426a2ac5982cfa00b3"
+  },
+  "seeds": [
+    42,
+    7,
+    13,
+    23,
+    101
+  ],
+  "cal_fraction_groups": 0.4,
+  "features": [
+    "similarity",
+    "margin"
+  ],
+  "score_kind": "sigmoid_reranker_logit_not_clinical_probability",
+  "target": 0.8,
+  "threshold_grid": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95,
+    1.0
+  ],
+  "minimum_rows": 10,
+  "minimum_text_groups": 5,
+  "calibrator": "group_weighted_scaler_LR_C1_no_class_balancing",
+  "encoder_fits": 0,
+  "source_exposure": "used_for_development",
+  "clinical_validation": false,
+  "text_groups_not_certified_symptom_diversity": true
+}

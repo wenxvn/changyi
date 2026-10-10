@@ -89,6 +89,34 @@ def test_evidence_service_delegates_with_fixed_project_and_triage_dependency(tmp
     )
 
 
+def test_evidence_service_caches_safety_across_builds(tmp_path):
+    calls = []
+
+    def triage_fn(condition):
+        calls.append(condition)
+        return {"condition": condition}
+
+    service = EvidenceApplicationService(tmp_path, triage_fn)
+    kwargs = dict(
+        app_version="app",
+        ranking_version="ranking",
+        triage_rules_version="triage",
+        model_version="model",
+        dataset_version="dataset",
+        region_pack_version="region",
+        region_code="320400",
+    )
+
+    first = service.build(**kwargs)
+    calls_after_first = len(calls)
+    assert calls_after_first > 0
+
+    second = service.build(**kwargs)
+
+    assert second == first
+    assert len(calls) == calls_after_first
+
+
 def test_map_service_uses_active_region_and_hospital_supplier():
     region = SimpleNamespace(name="测试市", version="pack-test")
     service = MapViewApplicationService(

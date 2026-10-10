@@ -1,0 +1,198 @@
+{
+  "scope": "auxiliary_qualified_negation_input_not_clinical_validation",
+  "total": 9,
+  "failed": 7,
+  "rows": [
+    {
+      "text": "没有严重咳嗽",
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有严重头痛",
+      "assertions": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有剧烈腹痛",
+      "assertions": {
+        "present": [
+          "abdominal_pain"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有明显咳嗽",
+      "assertions": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": true,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有持续咳嗽",
+      "assertions": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": true,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有严重头痛，但我确实头痛",
+      "assertions": {
+        "present": [
+          "headache"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有明显咳嗽，但我有头痛",
+      "assertions": {
+        "present": [
+          "headache"
+        ],
+        "absent": [
+          "cough"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": false,
+      "clinical_label_verified": false,
+      "pass": false
+    },
+    {
+      "text": "没有咳嗽",
+      "assertions": {
+        "present": [],
+        "absent": [
+          "cough"
+        ],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": true,
+      "clinical_label_verified": false,
+      "pass": true
+    },
+    {
+      "text": "咳嗽不严重",
+      "assertions": {
+        "present": [
+          "cough"
+        ],
+        "absent": [],
+        "unknown": [],
+        "contradiction": [],
+        "uncertainty_conflicts": [],
+        "noncurrent_context": false
+      },
+      "review": {
+        "required": false,
+        "issues": [],
+        "scope": "auxiliary_severity_denial_not_clinical_judgement"
+      },
+      "abstained": false,
+      "clinical_label_verified": false,
+      "pass": true
+    }
+  ]
+}

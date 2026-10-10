@@ -1,0 +1,774 @@
+{
+  "new_fits": 0,
+  "test_subset_did_not_affect_selection": true,
+  "results": [
+    {
+      "view": "source_body",
+      "seed": 42,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 228,
+        "groups": 228,
+        "retained": 0,
+        "rejected": 228,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.2133521169597295,
+        "nll": 0.6186622473517793,
+        "ece_compatibility": 0.0606019629374756,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 4,
+            "weight": 0.017543859649122806,
+            "predicted_compatibility": 0.08216202950665896,
+            "observed_compatibility": 0.5
+          },
+          {
+            "lower": 0.1,
+            "rows": 37,
+            "weight": 0.16228070175438597,
+            "predicted_compatibility": 0.16517806621252853,
+            "observed_compatibility": 0.16216216216216217
+          },
+          {
+            "lower": 0.2,
+            "rows": 85,
+            "weight": 0.37280701754385964,
+            "predicted_compatibility": 0.24618080862189126,
+            "observed_compatibility": 0.27058823529411763
+          },
+          {
+            "lower": 0.3,
+            "rows": 41,
+            "weight": 0.17982456140350878,
+            "predicted_compatibility": 0.34373924007504836,
+            "observed_compatibility": 0.43902439024390244
+          },
+          {
+            "lower": 0.4,
+            "rows": 36,
+            "weight": 0.15789473684210525,
+            "predicted_compatibility": 0.45064891749566105,
+            "observed_compatibility": 0.5277777777777778
+          },
+          {
+            "lower": 0.5,
+            "rows": 15,
+            "weight": 0.06578947368421052,
+            "predicted_compatibility": 0.5537481933076396,
+            "observed_compatibility": 0.4
+          },
+          {
+            "lower": 0.6,
+            "rows": 4,
+            "weight": 0.017543859649122806,
+            "predicted_compatibility": 0.6431839434849284,
+            "observed_compatibility": 0.5
+          },
+          {
+            "lower": 0.7,
+            "rows": 5,
+            "weight": 0.021929824561403508,
+            "predicted_compatibility": 0.7425373294576462,
+            "observed_compatibility": 0.8
+          },
+          {
+            "lower": 0.8,
+            "rows": 1,
+            "weight": 0.0043859649122807015,
+            "predicted_compatibility": 0.8899262025770212,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "source_body",
+      "seed": 7,
+      "frozen_threshold": 0.6,
+      "test_without_suffix": {
+        "total_rows": 222,
+        "groups": 222,
+        "retained": 11,
+        "rejected": 211,
+        "coverage": 0.04954954954954955,
+        "retained_precision": 0.5454545454545454,
+        "brier": 0.2112833604426126,
+        "nll": 0.6127600108994601,
+        "ece_compatibility": 0.10749688551598655,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 3,
+            "weight": 0.013513513513513514,
+            "predicted_compatibility": 0.08450067759865788,
+            "observed_compatibility": 0.3333333333333333
+          },
+          {
+            "lower": 0.1,
+            "rows": 36,
+            "weight": 0.16216216216216217,
+            "predicted_compatibility": 0.1694484394919834,
+            "observed_compatibility": 0.16666666666666666
+          },
+          {
+            "lower": 0.2,
+            "rows": 74,
+            "weight": 0.3333333333333333,
+            "predicted_compatibility": 0.2514827258735943,
+            "observed_compatibility": 0.1891891891891892
+          },
+          {
+            "lower": 0.3,
+            "rows": 51,
+            "weight": 0.22972972972972974,
+            "predicted_compatibility": 0.342775725114781,
+            "observed_compatibility": 0.5686274509803921
+          },
+          {
+            "lower": 0.4,
+            "rows": 32,
+            "weight": 0.14414414414414414,
+            "predicted_compatibility": 0.44809626671095837,
+            "observed_compatibility": 0.34375
+          },
+          {
+            "lower": 0.5,
+            "rows": 15,
+            "weight": 0.06756756756756757,
+            "predicted_compatibility": 0.5555722675596961,
+            "observed_compatibility": 0.6666666666666666
+          },
+          {
+            "lower": 0.6,
+            "rows": 7,
+            "weight": 0.03153153153153153,
+            "predicted_compatibility": 0.6533616467331811,
+            "observed_compatibility": 0.42857142857142855
+          },
+          {
+            "lower": 0.7,
+            "rows": 3,
+            "weight": 0.013513513513513514,
+            "predicted_compatibility": 0.7340154316063693,
+            "observed_compatibility": 0.6666666666666666
+          },
+          {
+            "lower": 0.8,
+            "rows": 1,
+            "weight": 0.0045045045045045045,
+            "predicted_compatibility": 0.8915672814651668,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "source_body",
+      "seed": 13,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 231,
+        "groups": 231,
+        "retained": 0,
+        "rejected": 231,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.20666778742020456,
+        "nll": 0.6027596146442814,
+        "ece_compatibility": 0.05492867470961531,
+        "reliability_bins": [
+          {
+            "lower": 0.1,
+            "rows": 5,
+            "weight": 0.021645021645021644,
+            "predicted_compatibility": 0.1844514487271819,
+            "observed_compatibility": 0.4
+          },
+          {
+            "lower": 0.2,
+            "rows": 66,
+            "weight": 0.2857142857142857,
+            "predicted_compatibility": 0.26130882649875237,
+            "observed_compatibility": 0.18181818181818182
+          },
+          {
+            "lower": 0.3,
+            "rows": 93,
+            "weight": 0.4025974025974026,
+            "predicted_compatibility": 0.34320568816762637,
+            "observed_compatibility": 0.34408602150537637
+          },
+          {
+            "lower": 0.4,
+            "rows": 47,
+            "weight": 0.20346320346320346,
+            "predicted_compatibility": 0.4403540890494146,
+            "observed_compatibility": 0.3404255319148936
+          },
+          {
+            "lower": 0.5,
+            "rows": 14,
+            "weight": 0.06060606060606061,
+            "predicted_compatibility": 0.5522597472923236,
+            "observed_compatibility": 0.6428571428571429
+          },
+          {
+            "lower": 0.6,
+            "rows": 5,
+            "weight": 0.021645021645021644,
+            "predicted_compatibility": 0.6227883503221718,
+            "observed_compatibility": 0.6
+          },
+          {
+            "lower": 0.7,
+            "rows": 1,
+            "weight": 0.004329004329004329,
+            "predicted_compatibility": 0.7964199226121754,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "source_body",
+      "seed": 23,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 223,
+        "groups": 223,
+        "retained": 0,
+        "rejected": 223,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.19480271182323391,
+        "nll": 0.5737654028817976,
+        "ece_compatibility": 0.07981647727135537,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 1,
+            "weight": 0.004484304932735426,
+            "predicted_compatibility": 0.08641791803077095,
+            "observed_compatibility": 0.0
+          },
+          {
+            "lower": 0.1,
+            "rows": 24,
+            "weight": 0.10762331838565023,
+            "predicted_compatibility": 0.16823497739290674,
+            "observed_compatibility": 0.125
+          },
+          {
+            "lower": 0.2,
+            "rows": 78,
+            "weight": 0.34977578475336324,
+            "predicted_compatibility": 0.2533468573332313,
+            "observed_compatibility": 0.1794871794871795
+          },
+          {
+            "lower": 0.3,
+            "rows": 56,
+            "weight": 0.25112107623318386,
+            "predicted_compatibility": 0.3369668156471689,
+            "observed_compatibility": 0.4107142857142857
+          },
+          {
+            "lower": 0.4,
+            "rows": 35,
+            "weight": 0.15695067264573992,
+            "predicted_compatibility": 0.4557257428488772,
+            "observed_compatibility": 0.3142857142857143
+          },
+          {
+            "lower": 0.5,
+            "rows": 20,
+            "weight": 0.08968609865470852,
+            "predicted_compatibility": 0.5374560928982195,
+            "observed_compatibility": 0.5
+          },
+          {
+            "lower": 0.6,
+            "rows": 7,
+            "weight": 0.03139013452914798,
+            "predicted_compatibility": 0.6406584043783824,
+            "observed_compatibility": 0.7142857142857143
+          },
+          {
+            "lower": 0.7,
+            "rows": 2,
+            "weight": 0.008968609865470852,
+            "predicted_compatibility": 0.7154050833626431,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "source_body",
+      "seed": 101,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 219,
+        "groups": 219,
+        "retained": 0,
+        "rejected": 219,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.19942956819662652,
+        "nll": 0.586208267511951,
+        "ece_compatibility": 0.084992033036459,
+        "reliability_bins": [
+          {
+            "lower": 0.1,
+            "rows": 3,
+            "weight": 0.0136986301369863,
+            "predicted_compatibility": 0.1757175825924043,
+            "observed_compatibility": 0.3333333333333333
+          },
+          {
+            "lower": 0.2,
+            "rows": 77,
+            "weight": 0.3515981735159817,
+            "predicted_compatibility": 0.2601790840705895,
+            "observed_compatibility": 0.11688311688311688
+          },
+          {
+            "lower": 0.3,
+            "rows": 78,
+            "weight": 0.3561643835616438,
+            "predicted_compatibility": 0.3378278859569719,
+            "observed_compatibility": 0.38461538461538464
+          },
+          {
+            "lower": 0.4,
+            "rows": 47,
+            "weight": 0.2146118721461187,
+            "predicted_compatibility": 0.44187141507907396,
+            "observed_compatibility": 0.48936170212765956
+          },
+          {
+            "lower": 0.5,
+            "rows": 12,
+            "weight": 0.0547945205479452,
+            "predicted_compatibility": 0.5441209797025838,
+            "observed_compatibility": 0.5
+          },
+          {
+            "lower": 0.6,
+            "rows": 2,
+            "weight": 0.0091324200913242,
+            "predicted_compatibility": 0.6521508168721908,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "complaint_only",
+      "seed": 42,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 228,
+        "groups": 228,
+        "retained": 0,
+        "rejected": 228,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.21570893532343705,
+        "nll": 0.6276917569068108,
+        "ece_compatibility": 0.08152340262244541,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 7,
+            "weight": 0.03070175438596491,
+            "predicted_compatibility": 0.06511193943343006,
+            "observed_compatibility": 0.2857142857142857
+          },
+          {
+            "lower": 0.1,
+            "rows": 72,
+            "weight": 0.3157894736842105,
+            "predicted_compatibility": 0.15707160313681823,
+            "observed_compatibility": 0.2222222222222222
+          },
+          {
+            "lower": 0.2,
+            "rows": 57,
+            "weight": 0.25,
+            "predicted_compatibility": 0.24271025408406444,
+            "observed_compatibility": 0.2982456140350877
+          },
+          {
+            "lower": 0.3,
+            "rows": 30,
+            "weight": 0.13157894736842105,
+            "predicted_compatibility": 0.34480875092388374,
+            "observed_compatibility": 0.43333333333333335
+          },
+          {
+            "lower": 0.4,
+            "rows": 30,
+            "weight": 0.13157894736842105,
+            "predicted_compatibility": 0.44973406403344574,
+            "observed_compatibility": 0.5333333333333333
+          },
+          {
+            "lower": 0.5,
+            "rows": 16,
+            "weight": 0.07017543859649122,
+            "predicted_compatibility": 0.5397586241879853,
+            "observed_compatibility": 0.375
+          },
+          {
+            "lower": 0.6,
+            "rows": 8,
+            "weight": 0.03508771929824561,
+            "predicted_compatibility": 0.6482434039899729,
+            "observed_compatibility": 0.625
+          },
+          {
+            "lower": 0.7,
+            "rows": 5,
+            "weight": 0.021929824561403508,
+            "predicted_compatibility": 0.7640606836210952,
+            "observed_compatibility": 0.6
+          },
+          {
+            "lower": 0.8,
+            "rows": 2,
+            "weight": 0.008771929824561403,
+            "predicted_compatibility": 0.8442566501196063,
+            "observed_compatibility": 1.0
+          },
+          {
+            "lower": 0.9,
+            "rows": 1,
+            "weight": 0.0043859649122807015,
+            "predicted_compatibility": 0.9308316054797736,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "complaint_only",
+      "seed": 7,
+      "frozen_threshold": 0.6,
+      "test_without_suffix": {
+        "total_rows": 222,
+        "groups": 222,
+        "retained": 21,
+        "rejected": 201,
+        "coverage": 0.0945945945945946,
+        "retained_precision": 0.6190476190476191,
+        "brier": 0.21503033456896536,
+        "nll": 0.6252642665459712,
+        "ece_compatibility": 0.0913360311689152,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 9,
+            "weight": 0.04054054054054054,
+            "predicted_compatibility": 0.07269697581945667,
+            "observed_compatibility": 0.2222222222222222
+          },
+          {
+            "lower": 0.1,
+            "rows": 69,
+            "weight": 0.3108108108108108,
+            "predicted_compatibility": 0.15297877696241804,
+            "observed_compatibility": 0.15942028985507245
+          },
+          {
+            "lower": 0.2,
+            "rows": 54,
+            "weight": 0.24324324324324326,
+            "predicted_compatibility": 0.24925766198283736,
+            "observed_compatibility": 0.37037037037037035
+          },
+          {
+            "lower": 0.3,
+            "rows": 30,
+            "weight": 0.13513513513513514,
+            "predicted_compatibility": 0.34494546668975495,
+            "observed_compatibility": 0.5333333333333333
+          },
+          {
+            "lower": 0.4,
+            "rows": 24,
+            "weight": 0.10810810810810811,
+            "predicted_compatibility": 0.45168305811291526,
+            "observed_compatibility": 0.375
+          },
+          {
+            "lower": 0.5,
+            "rows": 15,
+            "weight": 0.06756756756756757,
+            "predicted_compatibility": 0.5331262536104101,
+            "observed_compatibility": 0.4
+          },
+          {
+            "lower": 0.6,
+            "rows": 12,
+            "weight": 0.05405405405405406,
+            "predicted_compatibility": 0.6544608577982365,
+            "observed_compatibility": 0.6666666666666666
+          },
+          {
+            "lower": 0.7,
+            "rows": 5,
+            "weight": 0.02252252252252252,
+            "predicted_compatibility": 0.7531328332525196,
+            "observed_compatibility": 0.4
+          },
+          {
+            "lower": 0.8,
+            "rows": 3,
+            "weight": 0.013513513513513514,
+            "predicted_compatibility": 0.8326643143235106,
+            "observed_compatibility": 0.6666666666666666
+          },
+          {
+            "lower": 0.9,
+            "rows": 1,
+            "weight": 0.0045045045045045045,
+            "predicted_compatibility": 0.9527289544734068,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "complaint_only",
+      "seed": 13,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 231,
+        "groups": 231,
+        "retained": 0,
+        "rejected": 231,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.19747319016862802,
+        "nll": 0.5815285571454392,
+        "ece_compatibility": 0.04579551854751268,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 1,
+            "weight": 0.004329004329004329,
+            "predicted_compatibility": 0.0935696725202262,
+            "observed_compatibility": 0.0
+          },
+          {
+            "lower": 0.1,
+            "rows": 19,
+            "weight": 0.08225108225108226,
+            "predicted_compatibility": 0.1771072026636154,
+            "observed_compatibility": 0.15789473684210525
+          },
+          {
+            "lower": 0.2,
+            "rows": 79,
+            "weight": 0.341991341991342,
+            "predicted_compatibility": 0.25371634583093505,
+            "observed_compatibility": 0.189873417721519
+          },
+          {
+            "lower": 0.3,
+            "rows": 70,
+            "weight": 0.30303030303030304,
+            "predicted_compatibility": 0.3411550667075281,
+            "observed_compatibility": 0.35714285714285715
+          },
+          {
+            "lower": 0.4,
+            "rows": 33,
+            "weight": 0.14285714285714285,
+            "predicted_compatibility": 0.4449921524315681,
+            "observed_compatibility": 0.3939393939393939
+          },
+          {
+            "lower": 0.5,
+            "rows": 19,
+            "weight": 0.08225108225108226,
+            "predicted_compatibility": 0.5318584801053681,
+            "observed_compatibility": 0.631578947368421
+          },
+          {
+            "lower": 0.6,
+            "rows": 9,
+            "weight": 0.03896103896103896,
+            "predicted_compatibility": 0.6414667157992562,
+            "observed_compatibility": 0.6666666666666666
+          },
+          {
+            "lower": 0.8,
+            "rows": 1,
+            "weight": 0.004329004329004329,
+            "predicted_compatibility": 0.848807855816839,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "complaint_only",
+      "seed": 23,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 223,
+        "groups": 223,
+        "retained": 0,
+        "rejected": 223,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.1948908807818675,
+        "nll": 0.5734952388494878,
+        "ece_compatibility": 0.054888751801582626,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 1,
+            "weight": 0.004484304932735426,
+            "predicted_compatibility": 0.08138201966796403,
+            "observed_compatibility": 0.0
+          },
+          {
+            "lower": 0.1,
+            "rows": 28,
+            "weight": 0.12556053811659193,
+            "predicted_compatibility": 0.16643441482851662,
+            "observed_compatibility": 0.10714285714285714
+          },
+          {
+            "lower": 0.2,
+            "rows": 83,
+            "weight": 0.3721973094170404,
+            "predicted_compatibility": 0.25669411836235123,
+            "observed_compatibility": 0.2289156626506024
+          },
+          {
+            "lower": 0.3,
+            "rows": 43,
+            "weight": 0.19282511210762332,
+            "predicted_compatibility": 0.3352183039473303,
+            "observed_compatibility": 0.37209302325581395
+          },
+          {
+            "lower": 0.4,
+            "rows": 37,
+            "weight": 0.16591928251121077,
+            "predicted_compatibility": 0.4553711692236431,
+            "observed_compatibility": 0.35135135135135137
+          },
+          {
+            "lower": 0.5,
+            "rows": 20,
+            "weight": 0.08968609865470852,
+            "predicted_compatibility": 0.5409876859825651,
+            "observed_compatibility": 0.45
+          },
+          {
+            "lower": 0.6,
+            "rows": 8,
+            "weight": 0.03587443946188341,
+            "predicted_compatibility": 0.6420976119226549,
+            "observed_compatibility": 0.625
+          },
+          {
+            "lower": 0.7,
+            "rows": 3,
+            "weight": 0.013452914798206279,
+            "predicted_compatibility": 0.732615537920263,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "view": "complaint_only",
+      "seed": 101,
+      "frozen_threshold": null,
+      "test_without_suffix": {
+        "total_rows": 219,
+        "groups": 219,
+        "retained": 0,
+        "rejected": 219,
+        "coverage": 0.0,
+        "retained_precision": null,
+        "brier": 0.19681652240780229,
+        "nll": 0.5792056251526675,
+        "ece_compatibility": 0.05461982000705879,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "rows": 1,
+            "weight": 0.0045662100456621,
+            "predicted_compatibility": 0.08538022663717791,
+            "observed_compatibility": 1.0
+          },
+          {
+            "lower": 0.1,
+            "rows": 33,
+            "weight": 0.1506849315068493,
+            "predicted_compatibility": 0.1716104393824605,
+            "observed_compatibility": 0.15151515151515152
+          },
+          {
+            "lower": 0.2,
+            "rows": 87,
+            "weight": 0.3972602739726027,
+            "predicted_compatibility": 0.24730711647804193,
+            "observed_compatibility": 0.21839080459770116
+          },
+          {
+            "lower": 0.3,
+            "rows": 36,
+            "weight": 0.1643835616438356,
+            "predicted_compatibility": 0.34234670347821033,
+            "observed_compatibility": 0.4722222222222222
+          },
+          {
+            "lower": 0.4,
+            "rows": 37,
+            "weight": 0.1689497716894977,
+            "predicted_compatibility": 0.44826572251522256,
+            "observed_compatibility": 0.40540540540540543
+          },
+          {
+            "lower": 0.5,
+            "rows": 17,
+            "weight": 0.0776255707762557,
+            "predicted_compatibility": 0.5343699286779621,
+            "observed_compatibility": 0.47058823529411764
+          },
+          {
+            "lower": 0.6,
+            "rows": 6,
+            "weight": 0.0273972602739726,
+            "predicted_compatibility": 0.6566179925638674,
+            "observed_compatibility": 0.6666666666666666
+          },
+          {
+            "lower": 0.7,
+            "rows": 1,
+            "weight": 0.0045662100456621,
+            "predicted_compatibility": 0.7238621460619841,
+            "observed_compatibility": 1.0
+          },
+          {
+            "lower": 0.8,
+            "rows": 1,
+            "weight": 0.0045662100456621,
+            "predicted_compatibility": 0.8138119189556186,
+            "observed_compatibility": 1.0
+          }
+        ]
+      }
+    }
+  ]
+}

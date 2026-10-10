@@ -1,0 +1,10 @@
+{
+  "full_rows_per_view": 500,
+  "top_k": 10,
+  "candidate_sha256": "2dd95843909686e5b376a7e8722678ad5280b83341b2a85097d8aee1704c3f30",
+  "source_label_recalled": {
+    "source_body": 392,
+    "complaint_only": 376
+  },
+  "target_was_not_used_to_generate_candidates": true
+}

@@ -70,6 +70,7 @@ class RecommendationApplicationService:
         resource_strategy = self.resource_strategy(triage, context.expert_preference)
         routing_deferred = bool(triage.get("defer_resource_routing"))
         emergency = triage_status_from_legacy(triage) is TriageStatus.EMERGENCY
+        urgent_assessment = resource_strategy.get("code") == "urgent_assessment"
         # District preference participates only when a usable district exists.
         district_usable = bool(context.district) and context.location_source in ("district", "geolocation")
         hospitals = [] if routing_deferred else self.recommend_hospitals(
@@ -80,7 +81,7 @@ class RecommendationApplicationService:
             district_preference=preferences["district_preference"] if district_usable else "any_district",
             user_district=context.district if district_usable else None,
         )
-        if routing_deferred or emergency:
+        if routing_deferred or emergency or urgent_assessment:
             doctors = []
         elif enhanced or self.has_real_doctors:
             doctors = self.enhanced_recommend_doctors(
@@ -177,6 +178,11 @@ class RecommendationApplicationService:
                 "ranking_notice": "危险信号尚未确认，本次暂不进行医院或医生排序；请先补充信息并结合专业复核。",
                 "weights_used": {}, "hospital_weights_used": {},
                 "feature_availability": {"location": context.user_lat is not None and context.user_lng is not None, "distance": False, "transit": False},
+            })
+        elif urgent_assessment:
+            result.update({
+                "recommended_doctors": [], "weights_used": {},
+                "ranking_notice": "当前复合症状需要尽快线下评估，本次不进行普通医生排序；医院仅为目录参考，不能等待普通预约，也不代表实时接诊保证。",
             })
         elif emergency:
             result.update({

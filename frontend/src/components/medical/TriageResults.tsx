@@ -9,6 +9,10 @@ interface TriageResultsProps {
   onNavigate: (path: string) => void;
   /** True after follow-up answers were applied so the UI can show path refresh. */
   pathUpdated?: boolean;
+  /** Read-only snapshot of the previous round for diff highlight; never drives logic. */
+  previousTags?: string[];
+  previousDepts?: string[];
+  previousDept?: string | null;
 }
 
 interface CareActionsProps {
@@ -99,7 +103,7 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
   );
 }
 
-function CareResult({ result, onNavigate, pathUpdated }: TriageResultsProps) {
+function CareResult({ result, onNavigate, pathUpdated, previousTags, previousDepts, previousDept }: TriageResultsProps) {
   const status = result.triage_status;
   const copy = STATUS_COPY[status];
   const insufficient = status === "INSUFFICIENT_INFORMATION";
@@ -112,6 +116,11 @@ function CareResult({ result, onNavigate, pathUpdated }: TriageResultsProps) {
   const uncertainty = typeof result.triage?.uncertainty_level === "string" ? result.triage.uncertainty_level : null;
   const modelNotice = result.disease_prediction?.notice && result.disease_prediction.abstain_reason !== "safety_gate_priority"
     ? result.disease_prediction.notice : null;
+  const deptCandidates = Array.isArray(result.htriage_analysis?.department_candidates)
+    ? result.htriage_analysis.department_candidates.filter((item) => item && typeof item.department === "string").slice(0, 3)
+    : [];
+  const prevDeptSet = new Set(previousDepts ?? []);
+  const deptChanged = Boolean(pathUpdated && previousDept && contextDirection && previousDept !== contextDirection);
 
   return (
     <>
@@ -147,6 +156,7 @@ function CareResult({ result, onNavigate, pathUpdated }: TriageResultsProps) {
             <Stethoscope size={15} aria-hidden="true" /> {insufficient ? "当前一般性方向" : "建议先了解"}
           </span>
           <strong>{insufficient && !contextDirection ? "暂不强行给出科室方向" : contextDirection ?? "继续整理科室方向"}</strong>
+          {deptChanged ? <small data-testid="evidence-diff">补充后更新：{previousDept} → {contextDirection}</small> : null}
           {insufficient ? <small>为什么现在不能确定：信息不足时方向会偏保守，补充后可进一步收窄。</small> : null}
         </div>
 
@@ -165,6 +175,22 @@ function CareResult({ result, onNavigate, pathUpdated }: TriageResultsProps) {
         {modelNotice ? <p className="care-result__reason" data-testid={result.disease_prediction?.abstained ? "model-abstention-notice" : "model-scope-notice"}>
           {modelNotice} <small>此说明仅针对辅助疾病分析，不能用于判断就医是否安全。</small>
         </p> : null}
+
+        {deptCandidates.length > 0 ? (
+          <div className="care-result__why" data-testid="result-dept-evidence">
+            <span className="eyebrow eyebrow--muted">科室依据（只读）</span>
+            <ul>
+              {deptCandidates.map((item) => (
+                <li key={item.department}>
+                  {item.department}
+                  {pathUpdated && !prevDeptSet.has(item.department) && (previousDepts?.length ?? 0) > 0 ? <small data-testid="evidence-diff">（补充后新增）</small> : null}
+                  {item.source === "population_context" ? <small>（人群适用入口，非疾病判断）</small> : item.source ? <small>（来源：{item.source}）</small> : null}
+                </li>
+              ))}
+            </ul>
+            <small>相对支持度未经临床校准，不代表患病概率；最终以医生面诊为准。</small>
+          </div>
+        ) : null}
 
         <ol className="care-result__steps" aria-label="就医路径进度">
           {steps.map((step, index) => (

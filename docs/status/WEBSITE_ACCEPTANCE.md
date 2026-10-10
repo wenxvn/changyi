@@ -1,5 +1,15 @@
 # 常医网站验收入口（W50，2026-10-03）
 
+2026-10-04当前goal已BLOCKED、整体核心未完成：工程v7.2/aux4.0、930/88/142已验；独立中文科室/校准有效性与医学审核条件仍缺，用户暂无审核者。当前控制状态以current/CORE_COMPLETION_CURRENT为准，下方active历史不触发恢复。
+
+继续轮4当前v7.2/aux4.0，930pytest/88browser/142固定集通过；代谢组合与哮喘治疗反应确认/不普通排行闭环已验。原生中文科室与校准有效性仍未达，27已看开发代理15相容、D1仍INFO不匹配；不能称临床完成。当前PUBLIC_VIGNETTE_REVIEW/core-context-rescue-verification，以下旧数字均历史。
+
+继续轮3当前v7.0/aux4.0，898pytest/86browser/固定142通过。急性复合当前风险及时评估与urgent_assessment资源策略已接入，不被普通症状/慢病专家预约方向覆盖。外部已看27开发代理14相容，严格D2仍未ER，整个核心未完成。最新PUBLIC_VIGNETTE_REVIEW与core-compound-urgency-verification.json；下方旧版本数字为历史。
+
+继续轮2当前v6.9/aux4.0，865pytest/85browser/固定142通过、另3外部来源测试通过。公开CC0医师虚构情境27的首评和开发复验揭示2严格D仍未ER、代理等级12/27，未关闭核心有效性。当前来源与未修医学上下文见docs/algorithm/PUBLIC_VIGNETTE_REVIEW.md；下方v6.8与更早数字为历史。goal仍active，不自行恢复旧automation。
+
+2026-10-04用户恢复核心算法持续工作。当前v6.8/aux3.9，846pytest/84browser/固定142、前端17/typecheck/build及31/186数据校验通过；详见docs/algorithm/CORE_COMPLETION_CURRENT.md。整体独立中文与校准拒答有效性未完成。下方W83及ACTIVE/停止描述是历史阶段；当前goal active，旧automation仍暂停，不据文稿自行恢复。
+
 范围仅本地网站与算法，不含PPT、Word、演示视频或部署。核心算法仍最高P0；下面工程验证不能替代临床有效性。
 
 W66拒答负结果：仅cal选择的经验80%目标未迁移test，桥接保留Accuracy56.94%、coverage30.81%。目标失败与执行成功分开披露，见`docs/algorithm/CAL_SELECTED_REFUSAL.md`；此研究没有接入网站，也不作为临床策略。
@@ -95,3 +105,11 @@ W50 Flask client六入口均200，HTML/JSON类型正确；快照`evaluation/core
 | P2 | 更广交互/性能与恢复覆盖 | 已有推荐请求生命周期、重试、刷新、移动布局、照片降载证据；更多设备/低带宽与长期运行不等于当前全部覆盖 |
 
 研究历史见`docs/algorithm/CORE_EXPLORATION_REPORT.md`；当前变更与未闭风险以`docs/status/current.md`、`docs/risks/register.md`、`docs/algorithm/WEBSITE_CONTINUATION.md`为准。自动任务仍15分钟ACTIVE，直到用户验收或明确停止，不能因一个批次完成自行暂停。
+
+2026-10-04继续轮5：用户授权自行审核，外部医师非原型继续前置条件。27源/译文逐条技术比对并在线核验原CSV SHA与所有病例/标签对应，不改原标签或称独立临床认证。v7.3/aux4.0当前红眼+怕光/视力变化ER、同膝关节肿痛+局部热/活动受限URGENT及时评估且禁普通排行；有限scope控制，近期已恢复2误触发修复。最终954pytest165.48s/90browser46.5s/固定142/前端17/typecheck/build通过，数据31/186与权重词典同。首次浏览器ER页错用普通卡定位1失败原件保留，最终定位急诊alert。27开发复验17相容、D尚1INFO/C-D范围外3，不算独立准确率，中文科室/校准目标仍开放。proof core-eye-joint-verification.json及PUBLIC_VIGNETTE_REVIEW。goal ACTIVE，无发送邮件/推送部署。
+
+2026-10-04继续轮6最新v7.4/aux4.0：近期整侧手臂麻木恢复后仍URGENT及时评估/无普通排行，当前突然发作ER；同侧后来复发不借前次恢复降级。新18单元/104关联，修前5行为失败与10因模块缺失不能执行分开；后2部位scope/1复发失败已修并保before日志，正则调用错误已纠正。972pytest89.33s/92browser45.0s/142固定/前端17/typecheck/build过；数据31/186，正式JSONCSV/模型同。27开发18相容、严格D1INFO/C-D范围外2，非独立准确率。identity core-recent-arm-verification.json。新增CMExam元数据核验6811题/4965科室标签、36值含未定义1846，原生中文且专家复核，但为考试题学科标注非初诊GT；没有持久化题干/答案或拟合。不自动把内科泛类/题目类别映射为产品细科室。goal ACTIVE；下一未量化很高血压的缺信息处理/科室校准域，F4源差异按文献另审，不为分数一律ER。无邮件/推送/部署。
+
+2026-10-04继续轮7最新v7.5/aux4.0：当前很高血压缺读数/单位/适用范围INFO/null/defer，明确成年非妊娠单主体完整严重升高mmHg读数URGENT及时评估、当前危险表现ER；不诊断/调药，通用none不能补数值。新28单元/132关联通过，主体混杂1与附加不确定/单位2失配已修。最终1000pytest88.28s/95browser43.4s/142固定/前端17/typecheck/build过，源JSONCSV/权重同、数据31/186。首browser94+1/定向2+1为新测试文案与编辑按钮定位错，失败原件保存，修定位真实INFO→补读数→URGENT通过1后全量95。27开发18相容、INFO2、D1INFO/C-D范围外2，不算独立准确率。proof core-blood-pressure-verification.json。CURRENT已整理成唯一现状，旧全文CORE_COMPLETION_HISTORY保留。中文科室/校准目标开放，下一评估CMExam临床情境子集的标签适用性，不直接套考试学科标签或降低80%目标；goal ACTIVE，无邮件/推送部署。
+
+2026-10-04继续轮10最新v7.6/aux4.0：仅登记年龄/性别/人群而无医学主诉或就医目的→INFO/null/defer，清htriage症状/疾病/科候选；真实症状/体检接种挂号等目的不误删，旧ER优先。新11单元修前5行为失配/5模块未建控制不可执行、1原ER过；修后46关联与1018全pytest108.98s过、96browser2workers全量1.2min/142/前端17/typecheck/build/31-186过；首95+1跨页30s总预算timeout原件保留、隔离1过10.7s，不改时限或称根因修复。模型/词典/源JSONCSV同，500开发复验仍49/47相容，不能用此输入修复美化精细路由。根因审计：静态方向可表达源153/500（条件结构上限非所有将来接口）；儿童meta164病例133输出儿科，其中遮蔽年龄98变向，非语义不变/不可部署消融；全科184均只有固定回退病候选。源adultmeta5项儿科为照护孩子真实主诉，不能误当错年龄。证据demographic-only-verification与route-root-causes。下一L4中文检索模型研究，BGE MIT固定revision，独立CPU环境安装进行中，尚未下载/推理/达标或接网站；goal ACTIVE，无推送部署。
