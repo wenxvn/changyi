@@ -1,0 +1,161 @@
+{
+  "capturedAt": "2026-10-13T11:48:58.694Z",
+  "viewports": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "documentWidth": 1440,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 503,
+      "ctaBottom": 561,
+      "agentCanvasVisible": true,
+      "agentSvgVisible": false,
+      "navigation": {
+        "domInteractiveMs": 262,
+        "loadEventEndMs": 286
+      },
+      "browserAnimationFrameHz": 60,
+      "agentSceneResource": {
+        "durationMs": 9,
+        "transferSize": 537752,
+        "encodedBodySize": 537452
+      },
+      "route": "home"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "documentWidth": 1440,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 515,
+      "ctaBottom": 573,
+      "route": "triage"
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "documentWidth": 1280,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 503,
+      "ctaBottom": 561,
+      "agentCanvasVisible": true,
+      "agentSvgVisible": false,
+      "navigation": {
+        "domInteractiveMs": 7,
+        "loadEventEndMs": 29
+      },
+      "route": "home"
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "documentWidth": 1280,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 515,
+      "ctaBottom": 573,
+      "route": "triage"
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "documentWidth": 768,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 489,
+      "ctaBottom": 547,
+      "agentCanvasVisible": true,
+      "agentSvgVisible": false,
+      "navigation": {
+        "domInteractiveMs": 7,
+        "loadEventEndMs": 30
+      },
+      "route": "home"
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "documentWidth": 768,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 507,
+      "ctaBottom": 565,
+      "route": "triage"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentWidth": 390,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 507,
+      "ctaBottom": 565,
+      "agentCanvasVisible": false,
+      "agentSvgVisible": true,
+      "navigation": {
+        "domInteractiveMs": 6,
+        "loadEventEndMs": 27
+      },
+      "route": "home"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentWidth": 390,
+      "horizontalOverflow": false,
+      "ctaHeight": 58,
+      "ctaVisibleWithoutScroll": true,
+      "ctaTop": 541,
+      "ctaBottom": 599,
+      "route": "triage"
+    }
+  ],
+  "agentChunkRequestedOnHome": true,
+  "bundles": [
+    {
+      "file": "AgentScene-Ch9uLTFN.js",
+      "rawBytes": 537452,
+      "gzipBytes": 132827
+    },
+    {
+      "file": "doctor-photo-variants-A92ZcSRK.js",
+      "rawBytes": 172641,
+      "gzipBytes": 52341
+    },
+    {
+      "file": "index-DBvKGaGO.js",
+      "rawBytes": 375848,
+      "gzipBytes": 111118
+    }
+  ],
+  "playwright": {
+    "webgl2AvailableInHeadlessBrowser": true,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36"
+  }
+}

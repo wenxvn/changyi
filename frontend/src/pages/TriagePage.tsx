@@ -1,10 +1,9 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, CircleAlert, LoaderCircle, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CircleAlert, LoaderCircle, ShieldCheck } from "lucide-react";
 import { ApiError } from "../api/client";
 import { getFollowups, startTriage } from "../api/triage";
 import type { ExpertPreference, VisitIntent, RoutingPreferences } from "../api/recommendations";
 import { useFavoriteDoctors } from "../state/favoriteDoctors";
-import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
 import { CurrentUnderstanding } from "../components/medical/CurrentUnderstanding";
 import { FollowupPrompt } from "../components/medical/FollowupPrompt";
@@ -13,8 +12,10 @@ import { EmergencyFacilities } from "../components/medical/EmergencyFacilities";
 import { ResourcePreview } from "../components/medical/ResourcePreview";
 import { CareActions, TriageResults } from "../components/medical/TriageResults";
 import { ExampleSymptomChips, type ExampleSymptom } from "../components/medical/ExampleSymptomChips";
+import { SymptomComposer } from "../components/medical/SymptomComposer";
+import { CareAgent } from "../components/agent/CareAgent";
+import type { AgentStage } from "../components/agent/types";
 import { LocationSelector } from "../components/ui/LocationSelector";
-import { SpeechInput } from "../components/ui/SpeechInput";
 import { useRecommendations } from "../hooks/useRecommendations";
 import { recordAnalysis } from "../state/demoProfile";
 import { useLocationContext } from "../state/locationContext";
@@ -51,9 +52,15 @@ function stepIndexFor(hasResult: boolean, hasFollowup: boolean, hasRecommendatio
   return 3;
 }
 
-export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void }) {
-  const initialCondition = new URLSearchParams(window.location.search).get("condition") ?? "";
-  const [condition, setCondition] = useState(initialCondition);
+export function TriagePage({
+  onNavigate,
+  initialSubmission,
+}: {
+  onNavigate: (path: string) => void;
+  initialSubmission: { id: number; condition: string } | null;
+}) {
+  const [condition, setCondition] = useState(initialSubmission?.condition ?? "");
+  const [agentStage, setAgentStage] = useState<AgentStage>(initialSubmission ? "submitting" : "idle");
   const [submittedCondition, setSubmittedCondition] = useState("");
   const [editingCondition, setEditingCondition] = useState(false);
   const [result, setResult] = useState<TriagePayload | null>(null);
@@ -77,16 +84,35 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const { favoriteDoctorIds } = useFavoriteDoctors();
   const { location } = useLocationContext();
   const triageController = useRef<AbortController | null>(null);
+  const requestPending = useRef(false);
+  const requestSequence = useRef(0);
+  const activeRequestId = useRef(0);
+  const initialEntryStarted = useRef<number | null>(null);
+  const lifecycleLease = useRef(0);
   const preferencesRef = useRef<HTMLDetailsElement | null>(null);
 
   useEffect(() => {
-    if (initialCondition.trim()) void submitCondition(initialCondition);
+    const lease = ++lifecycleLease.current;
     return () => {
-      triageController.current?.abort();
+      queueMicrotask(() => {
+        if (lifecycleLease.current === lease) triageController.current?.abort();
+      });
     };
-    // The initial URL condition is intentionally submitted once when the page opens.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!initialSubmission?.condition.trim()) return;
+    let active = true;
+    const { id, condition: initialValue } = initialSubmission;
+    // Deferring only the dispatch to a microtask lets StrictMode's effect replay
+    // discard its first setup without firing a duplicate network request.
+    queueMicrotask(() => {
+      if (!active || initialEntryStarted.current === id) return;
+      initialEntryStarted.current = id;
+      void submitCondition(initialValue);
+    });
+    return () => { active = false; };
+  }, [initialSubmission?.id]);
 
   // Emergency short-circuit: ordinary resource recommendations are never requested
   // or rendered for an emergency result.
@@ -118,7 +144,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     options: { preserveFollowupStep?: boolean; followupAnswers?: FollowupAnswer[] } = {},
   ) {
     const nextCondition = value.trim();
-    if (!nextCondition || loading) return;
+    if (!nextCondition || requestPending.current) return;
     const nextAnswers = options.followupAnswers ?? [];
     // Snapshot previous-round evidence for read-only diff highlight only.
     // This never drives triage logic; the server recomputes everything.
@@ -139,6 +165,9 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     }
     triageController.current?.abort();
     const controller = new AbortController();
+    const requestId = ++requestSequence.current;
+    activeRequestId.current = requestId;
+    requestPending.current = true;
     triageController.current = controller;
     setLoading(true);
     setError(null);
@@ -146,7 +175,15 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
     setFollowupAnswers(nextAnswers);
     setVisitIntent("");
     setPathUpdated(nextAnswers.length > 0);
+    setAgentStage("submitting");
+    if (nextAnswers.length === 0) setResult(null);
     if (!options.preserveFollowupStep) setFollowupStep(1);
+    let triageSettled = false;
+    const waitingFrame = window.requestAnimationFrame(() => {
+      if (!triageSettled && !controller.signal.aborted && activeRequestId.current === requestId) {
+        setAgentStage("waiting");
+      }
+    });
     try {
       const request = {
         condition: nextCondition,
@@ -155,30 +192,46 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
         followup_answers: nextAnswers,
       };
       const nextResult = await startTriage(request, controller.signal);
-      if (controller.signal.aborted) return;
+      triageSettled = true;
+      window.cancelAnimationFrame(waitingFrame);
+      if (controller.signal.aborted || activeRequestId.current !== requestId) return;
       setCondition(nextCondition);
       setSubmittedCondition(nextCondition);
       setResult(nextResult);
       setEditingCondition(false);
       const nextFollowup = followupFrom(nextResult);
       setFollowup(nextFollowup);
+      setAgentStage(nextResult.triage_status === "EMERGENCY"
+        ? "emergency"
+        : nextFollowup ? "needs_followup" : "result_ready");
       if (!nextFollowup) recordAnalysis(nextResult);
 
       if (nextFollowup) {
         try {
           const followupResponse = await getFollowups(request, controller.signal);
-          if (!controller.signal.aborted) setFollowup(followupResponse.followup);
+          if (!controller.signal.aborted && activeRequestId.current === requestId) {
+            setFollowup(followupResponse.followup);
+            if (!followupResponse.followup.needed) setAgentStage("result_ready");
+          }
         } catch {
           // Keep the follow-up embedded in the successful triage response.
         }
       }
     } catch (reason) {
-      if (!controller.signal.aborted) {
+      triageSettled = true;
+      window.cancelAnimationFrame(waitingFrame);
+      if (!controller.signal.aborted && activeRequestId.current === requestId) {
         setError(errorFor(reason, "分诊服务暂时无法连接。"));
         setResult(null);
+        setAgentStage("error");
       }
     } finally {
-      if (!controller.signal.aborted) setLoading(false);
+      triageSettled = true;
+      window.cancelAnimationFrame(waitingFrame);
+      if (activeRequestId.current === requestId) {
+        requestPending.current = false;
+        if (!controller.signal.aborted) setLoading(false);
+      }
     }
   }
 
@@ -205,6 +258,7 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
 
   function handleSkipFollowup() {
     setFollowup(null);
+    setAgentStage("result_ready");
     if (result) recordAnalysis(result);
   }
 
@@ -241,13 +295,11 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
   const analysisStages = useMemo<ProgressiveStage[]>(() => {
     // Stages map the real algorithm chain. Status is request/result-driven,
     // not a decorative timer.
-    if (loading && !result) {
+    if (loading) {
       return [
-        { id: "read", label: "读取症状描述", status: "active", hint: "整理你输入的文字" },
-        { id: "safety", label: "Safety Gate", status: "pending", hint: "优先识别危险信号" },
-        { id: "direction", label: "就医方向路由", status: "pending", hint: "Direct Department" },
-        { id: "inquiry", label: "自适应追问", status: "pending", hint: "信息不足时才追问" },
-        { id: "resources", label: "多目标资源路由", status: "pending" },
+        { id: "request", label: "等待系统响应", status: "active", hint: followupAnswers.length > 0
+          ? "补充信息已随请求发送；这里不展示实时分析进度。"
+          : "请求已发送；这里不展示实时分析进度。" },
       ];
     }
     if (!result) {
@@ -336,69 +388,44 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
       </div>
 
       {!hasAnalysis ? (
-        <div className="triage-page__intro-grid">
+        <>
           <div className="triage-page__intro">
             <div className="hero__eyebrow">
               <span className="eyebrow">智能就医 · 从描述开始</span>
               <StatusPill><ShieldCheck size={14} aria-hidden="true" /> 先看安全信号</StatusPill>
             </div>
-            <h1>先说说，<em>现在有什么不舒服？</em></h1>
-            <p>用自己的话描述即可。常医智导会先整理安全信号，再决定是否需要更多信息和就医资源。</p>
-            <div className="triage-page__note">
-              <ShieldCheck size={16} aria-hidden="true" />
-              <span>这里的结果是辅助信息，不替代医生诊断。急症信号会优先提示急救出口。</span>
-            </div>
-            <ul className="triage-page__outcomes">
-              <li><strong>安全状态</strong><span>是否需要优先急诊或尽快评估</span></li>
-              <li><strong>就医方向</strong><span>建议首先了解的科室方向</span></li>
-              <li><strong>资源路径</strong><span>常州医院、公开医生与导航入口</span></li>
-            </ul>
-            <div className="triage-page__algorithm-chain" aria-label="算法处理链路">
-              <span className="eyebrow eyebrow--muted">算法链路可见</span>
-              <p>Safety Gate → Direct Department → Selective Abstention → Adaptive Inquiry → Multi-objective Care Routing</p>
-            </div>
+            <h1>现在有什么不舒服？</h1>
+            <p>用自己的话说说即可。系统返回后，再查看安全状态和适合的下一步。</p>
           </div>
-          <div className="triage-workspace" id="triage-workspace">
-            <form className="symptom-composer symptom-composer--large" onSubmit={handleSubmit}>
-              <label htmlFor="triage-condition" className="symptom-composer__label">你的描述</label>
-              <textarea
+          <div className="triage-entry-grid" id="triage-workspace">
+            <div className="triage-workspace">
+              <SymptomComposer
                 id="triage-condition"
                 value={condition}
-                onChange={(event) => setCondition(event.target.value)}
-                placeholder="例如：最近总是头晕，大概有几天了。"
-                rows={5}
-                maxLength={2000}
-                disabled={loading}
+                onChange={setCondition}
+                onSubmit={handleSubmit}
+                label="你的描述"
+                submitLabel="查看安全状态"
+                busyLabel="正在等待系统响应"
+                loading={loading}
+                rows={4}
+                variant="workspace"
+                onFocusChange={(focused) => {
+                  if (!loading && !hasAnalysis) setAgentStage(focused ? "composing" : "idle");
+                }}
               />
-              <div className="symptom-composer__footer">
-                <div className="symptom-composer__tools">
-                  <SpeechInput
-                    disabled={loading}
-                    onTranscript={(text) => setCondition((value) => (value ? `${value}${value.endsWith("。") ? "" : "。"}${text}` : text))}
-                  />
-                  <span className="character-count">{condition.length} / 2000</span>
-                </div>
-                <Button type="submit" disabled={!condition.trim() || loading} icon={loading ? <LoaderCircle className="spin" size={17} aria-hidden="true" /> : <ArrowRight size={17} aria-hidden="true" />}>
-                  {loading ? "正在分析" : "查看安全状态"}
-                </Button>
-              </div>
-            </form>
-            <ExampleSymptomChips onSelect={handleExample} disabled={loading} />
+              <ExampleSymptomChips onSelect={handleExample} disabled={loading} />
             {loading ? (
-              <div className="triage-progress-panel is-loading">
-                <ProgressiveStatus stages={analysisStages} label="分析进度" />
-                <p className="triage-loading" aria-live="polite"><LoaderCircle className="spin" size={16} aria-hidden="true" /> 安全门正在读取这段描述…</p>
+              <div className="triage-progress-panel is-loading" role="status" data-testid="triage-waiting">
+                <LoaderCircle className="spin" size={17} aria-hidden="true" /> 请求已发出，正在等待系统响应。
               </div>
             ) : (
               <div className="triage-empty">
                 <div className="triage-empty__line" />
                 <strong>提交后会在这里呈现安全状态和下一步</strong>
-                <span>先用一句话描述不适；系统会先过安全门，再给科室方向与常州资源。</span>
+                <span>如信息不足，系统会先询问补充内容，不强行给出科室方向。</span>
               </div>
             )}
-            <div className="triage-controls-panel triage-controls-panel--idle">
-              <LocationSelector />
-            </div>
             {error ? (
               <div className="inline-error" role="alert">
                 <CircleAlert size={18} aria-hidden="true" />
@@ -409,48 +436,67 @@ export function TriagePage({ onNavigate }: { onNavigate: (path: string) => void 
                 <button type="button" onClick={() => void submitCondition(condition)}>重试</button>
               </div>
             ) : null}
+            </div>
+            <aside className="triage-entry-aside" aria-label="助手状态与使用说明">
+              <CareAgent stage={agentStage} />
+              <div className="triage-page__note">
+                <ShieldCheck size={16} aria-hidden="true" />
+                <span>结果仅供就医方向参考，不替代医生诊断；急症信息会优先显示安全行动。</span>
+              </div>
+              <details className="triage-entry-details">
+                <summary>这项辅助服务会提供什么？</summary>
+                <ul className="triage-page__outcomes">
+                  <li><strong>安全状态</strong><span>是否需要优先急诊或尽快评估</span></li>
+                  <li><strong>就医方向</strong><span>有依据时展示建议了解的科室方向</span></li>
+                  <li><strong>资源路径</strong><span>常州医院、公开医生资料与导航入口</span></li>
+                </ul>
+              </details>
+              <div className="triage-controls-panel triage-controls-panel--idle">
+                <LocationSelector />
+              </div>
+            </aside>
           </div>
-        </div>
+        </>
       ) : (
         <>
-          <div className="triage-submitted-summary">
-            <div>
-              <span className="eyebrow eyebrow--muted">你的描述</span>
-              <p>“{submittedCondition}”</p>
-            </div>
-            <button type="button" onClick={() => setEditingCondition(true)} disabled={loading}>修改</button>
-          </div>
-
-          {editingCondition ? (
-            <form className="symptom-composer symptom-composer--large" onSubmit={handleSubmit}>
-              <label htmlFor="triage-condition" className="symptom-composer__label">你的描述</label>
-              <textarea
-                id="triage-condition"
-                value={condition}
-                onChange={(event) => setCondition(event.target.value)}
-                placeholder="例如：最近总是头晕，大概有几天了。"
-                rows={3}
-                maxLength={2000}
-                disabled={loading}
-              />
-              <div className="symptom-composer__footer">
-                <div className="symptom-composer__tools">
-                  <SpeechInput
-                    disabled={loading}
-                    onTranscript={(text) => setCondition((value) => (value ? `${value}${value.endsWith("。") ? "" : "。"}${text}` : text))}
-                  />
-                  <span className="character-count">{condition.length} / 2000</span>
+          {!isEmergency ? (
+            <>
+              <div className="triage-submitted-summary">
+                <div>
+                  <span className="eyebrow eyebrow--muted">你的描述</span>
+                  <p>“{submittedCondition}”</p>
                 </div>
-                <Button type="submit" disabled={!condition.trim() || loading} icon={loading ? <LoaderCircle className="spin" size={17} aria-hidden="true" /> : <ArrowRight size={17} aria-hidden="true" />}>
-                  {loading ? "正在分析" : "重新分析"}
-                </Button>
+                <button type="button" onClick={() => setEditingCondition(true)} disabled={loading}>修改</button>
               </div>
-            </form>
+              <div className="triage-agent-result">
+                <CareAgent stage={agentStage} compact />
+              </div>
+            </>
           ) : null}
 
-          <div className="triage-progress-panel" data-testid="algorithm-stages">
-            <ProgressiveStatus stages={analysisStages} label="分析进度" />
-          </div>
+          {editingCondition && !isEmergency ? (
+            <SymptomComposer
+              id="triage-condition"
+              value={condition}
+              onChange={setCondition}
+              onSubmit={handleSubmit}
+              label="你的描述"
+              submitLabel="重新分析"
+              busyLabel="正在等待系统响应"
+              loading={loading}
+              rows={3}
+              variant="workspace"
+              onFocusChange={(focused) => {
+                if (!loading) setAgentStage(focused ? "composing" : result ? "result_ready" : "idle");
+              }}
+            />
+          ) : null}
+
+          {!isEmergency ? (
+            <div className="triage-progress-panel" data-testid="algorithm-stages">
+              <ProgressiveStatus stages={analysisStages} label="已返回的分诊与路径状态" />
+            </div>
+          ) : null}
 
           {error ? (
             <div className="inline-error" role="alert">

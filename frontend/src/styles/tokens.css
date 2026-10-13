@@ -42,6 +42,11 @@
   --accent-gradient: linear-gradient(135deg, #0d7a75 0%, #0ea89d 100%);
   --accent-gradient-hover: linear-gradient(135deg, #0a6762 0%, #0c8f85 100%);
 
+  /* Shared CareAgent identity: used by both the WebGL scene and SVG fallback. */
+  --agent-core: #69c7b8;
+  --agent-highlight: #e4fff8;
+  --agent-orbit: #4d9fba;
+
   /* Ambient intelligence layer — mesh aurora washes, blueprint grid, CTA shine.
      All hues derive from the accent family (teal/blue/violet); opacities stay
      low so clinical content keeps full contrast on the light theme. */

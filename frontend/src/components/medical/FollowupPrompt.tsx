@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, CircleHelp, History } from "lucide-react";
 import { Button } from "../ui/Button";
+import { AgentFallback } from "../agent/AgentFallback";
 import type { FollowupAnswer, FollowupPayload, FollowupQuestion } from "../../types/api";
 
 interface FollowupPromptProps {
@@ -40,9 +41,18 @@ export function FollowupPrompt({
         <span className="eyebrow"><CircleHelp size={14} aria-hidden="true" /> 自适应追问 · <span>需要补充信息</span></span>
         <span className="followup-prompt__step">第 {stepNumber} 问 / 共 {Math.max(followup.questions.length, stepNumber)} 问</span>
       </div>
+      <div className="followup-prompt__agent">
+        <span className="followup-prompt__agent-mark" aria-hidden="true">
+          <AgentFallback stage="needs_followup" isStatic />
+        </span>
+        <div>
+          <strong>常医智导助手</strong>
+          <p>为了更准确地给出就医方向，我还需要了解这一项信息。</p>
+        </div>
+      </div>
       <p className="followup-prompt__why">
         <History size={14} aria-hidden="true" />
-        为什么现在问：当前信息不足以稳定给出科室方向，补充后路径会重新计算。
+        这道问题由系统根据本次输入返回；回答后会重新请求并更新路径。
       </p>
       <h2 id="followup-title">{question.question}</h2>
       {question.reason ? <p className="followup-prompt__reason">{question.reason}</p> : null}

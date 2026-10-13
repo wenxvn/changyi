@@ -59,6 +59,7 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
   const [profile, setProfile] = useState<DemoProfile>(() => readDemoProfile());
   const [history, setHistory] = useState<DemoHistoryItem[]>(() => readHistory());
   const [clearPending, setClearPending] = useState(false);
+  const [preferenceSaved, setPreferenceSaved] = useState(false);
 
   useEffect(() => {
     const refresh = () => {
@@ -72,6 +73,7 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
 
   function handleToggle(enabled: boolean) {
     setProfile(setHistoryEnabled(enabled));
+    setPreferenceSaved(true);
   }
 
   function handleClear() {
@@ -119,6 +121,9 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
             <span><strong>记录最近分析</strong><small>最多保留 8 条分诊状态摘要，不包含原始输入。</small></span>
             <input type="checkbox" checked={profile.historyEnabled} onChange={(event) => handleToggle(event.target.checked)} />
           </label>
+          <p className="profile-preference-status" role="status" aria-live="polite">
+            {preferenceSaved ? "偏好已保存到当前浏览器。" : "更改会保存在当前浏览器，不会创建云端账号。"}
+          </p>
           <p className="profile-card__footnote">关闭后不会新增记录；已有摘要会保留到你手动清除，或由浏览器清理。</p>
         </section>
 

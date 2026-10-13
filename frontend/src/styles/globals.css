@@ -729,12 +729,12 @@ a:focus-visible,
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  padding: var(--space-4);
+  padding: var(--space-5);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   background: var(--surface-raised);
   box-shadow: var(--shadow-md);
-  transition: all var(--duration-normal) var(--ease-out);
+  transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
   position: relative;
 }
 
@@ -743,7 +743,7 @@ a:focus-visible,
   position: absolute;
   pointer-events: none;
   inset: -1px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 1px;
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -754,28 +754,23 @@ a:focus-visible,
 }
 
 .symptom-composer:focus-within {
-  border-color: transparent;
-  box-shadow: var(--shadow-lg), 0 0 0 4px rgba(13, 122, 117, 0.12);
-  transform: translateY(-2px);
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-lg), 0 0 0 3px var(--accent-glow);
 }
 
 .symptom-composer:focus-within::after {
   opacity: 1;
 }
 
-.symptom-composer--large {
-  padding: var(--space-5);
-}
-
 .symptom-composer__label {
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: 650;
   color: var(--text-secondary);
 }
 
 .symptom-composer textarea {
   width: 100%;
-  min-height: 88px;
+  min-height: 92px;
   padding: 0;
   border: 0;
   resize: vertical;
@@ -789,6 +784,12 @@ a:focus-visible,
   min-height: 140px;
 }
 
+.symptom-composer__hint {
+  color: var(--text-muted);
+  font-size: var(--text-2xs);
+  line-height: 1.45;
+}
+
 .symptom-composer textarea::placeholder {
   color: var(--text-muted);
 }
@@ -799,16 +800,33 @@ a:focus-visible,
 
 .symptom-composer__footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
   gap: var(--space-3);
-  flex-wrap: wrap;
 }
 
 .symptom-composer__tools {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: var(--space-2);
+}
+
+.symptom-composer__submit {
+  width: 100%;
+  min-height: 58px;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-size: var(--text-body-lg);
+  font-weight: 650;
+}
+
+.symptom-composer__submit:disabled {
+  opacity: 1;
+  background: color-mix(in srgb, var(--accent-primary) 58%, var(--surface-subtle));
+  color: var(--text-inverse);
+  box-shadow: none;
 }
 
 .character-count {
@@ -1278,16 +1296,16 @@ a:focus-visible,
 /* ========== HOME ========== */
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.85fr);
-  gap: var(--space-7);
-  align-items: start;
-  padding: var(--space-8) 0 var(--space-7);
+  grid-template-columns: minmax(0, 1.18fr) minmax(250px, 0.68fr);
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-6) 0 var(--space-5);
 }
 
 .hero__copy {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .hero__eyebrow {
@@ -1348,34 +1366,26 @@ a:focus-visible,
 
 .hero .symptom-composer {
   position: relative;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, rgba(13, 122, 117, 0.3), rgba(37, 99, 235, 0.2)) border-box;
-  box-shadow: var(--shadow-lg), 0 8px 32px rgba(13, 122, 117, 0.12);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 36%, var(--border-default));
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-lg), 0 8px 32px var(--accent-glow);
 }
 
 .hero .symptom-composer::before {
   content: "";
   position: absolute;
-  inset: -2px -2px auto -2px;
-  height: 4px;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  background: linear-gradient(90deg,
-    var(--accent-primary) 0%,
-    rgba(13, 122, 117, 0.6) 50%,
-    var(--accent-secondary) 100%
-  );
+  inset: -1px -1px auto -1px;
+  height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: var(--accent-gradient);
 }
 
 .hero .symptom-composer .button--primary {
-  min-height: 44px;
-  padding-inline: var(--space-5);
-  font-size: var(--text-body);
+  min-height: 58px;
 }
 
 .hero .symptom-composer textarea {
-  min-height: 104px;
+  min-height: 88px;
 }
 
 .hero__visual {
@@ -1410,6 +1420,225 @@ a:focus-visible,
   color: var(--text-muted);
   font-size: var(--text-xs);
   line-height: 1.5;
+}
+
+.care-agent {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(150px, 196px) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 22% 20%, color-mix(in srgb, var(--agent-core) 12%, transparent), transparent 58%),
+    color-mix(in srgb, var(--surface-raised) 92%, transparent);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+  overflow: hidden;
+}
+
+.care-agent__visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 0;
+}
+
+.care-agent__canvas,
+.care-agent__fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.care-agent__canvas {
+  pointer-events: none;
+}
+
+.care-agent__fallback {
+  overflow: visible;
+}
+
+.care-agent__orb {
+  transform-origin: 120px 120px;
+  animation: care-agent-breathe 4.8s ease-in-out infinite;
+}
+
+.care-agent__orb-glint {
+  animation: care-agent-glint 5s ease-in-out infinite;
+}
+
+.care-agent__orbit--back {
+  transform-origin: 120px 120px;
+  animation: care-agent-orbit 18s linear infinite;
+  opacity: 0.6;
+}
+
+.care-agent__orbit--front {
+  transform-origin: 120px 120px;
+  animation: care-agent-orbit-reverse 24s linear infinite;
+  opacity: 0.72;
+}
+
+.care-agent__orbit ellipse {
+  stroke-width: 1.4;
+  stroke-dasharray: 2 3;
+}
+
+.care-agent__particle {
+  fill: var(--agent-orbit);
+  opacity: 0.8;
+}
+
+.care-agent--submitting .care-agent__particle,
+.care-agent--waiting .care-agent__particle {
+  animation: care-agent-gather 520ms var(--ease-out) both;
+}
+
+.care-agent--submitting .care-agent__particle--two,
+.care-agent--waiting .care-agent__particle--two {
+  animation-delay: 50ms;
+}
+
+.care-agent--submitting .care-agent__particle--three,
+.care-agent--waiting .care-agent__particle--three {
+  animation-delay: 90ms;
+}
+
+.care-agent__fallback--static .care-agent__orb,
+.care-agent__fallback--static .care-agent__orb-glint,
+.care-agent__fallback--static .care-agent__orbit--back,
+.care-agent__fallback--static .care-agent__orbit--front,
+.care-agent__fallback--static .care-agent__particle {
+  animation: none;
+}
+
+.care-agent__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.care-agent__eyebrow {
+  color: var(--accent-primary);
+  font-size: var(--text-2xs);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.care-agent__copy strong {
+  color: var(--text-primary);
+  font-size: var(--text-body-lg);
+  line-height: 1.4;
+}
+
+.care-agent__disclaimer {
+  color: var(--text-muted);
+  font-size: var(--text-2xs);
+  line-height: 1.5;
+}
+
+.care-agent__skip {
+  grid-column: 1 / -1;
+  justify-self: end;
+  min-height: 44px;
+  padding-inline: var(--space-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}
+
+.care-agent--compact {
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.care-agent--compact .care-agent__visual {
+  width: 44px;
+  height: 44px;
+}
+
+.care-agent--compact .care-agent__copy {
+  gap: 2px;
+}
+
+.care-agent--compact .care-agent__copy strong {
+  font-size: var(--text-xs);
+}
+
+.care-agent--compact .care-agent__disclaimer {
+  display: none;
+}
+
+@keyframes care-agent-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+}
+
+@keyframes care-agent-glint {
+  0%, 100% { opacity: 0.24; }
+  50% { opacity: 0.48; }
+}
+
+@keyframes care-agent-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes care-agent-orbit-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes care-agent-gather {
+  to { opacity: 0.28; transform: scale(0.72); }
+}
+
+.home-process {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.42fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.home-process__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.home-process__intro h2 {
+  margin: 0;
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+}
+
+.home-process__intro p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+.home-process .care-path {
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm), var(--shadow-inset);
+}
+
+.home-process .care-path__stage {
+  min-height: 220px;
+  transform: none;
 }
 
 /* Philosophy — compact, not magazine */
@@ -2117,7 +2346,53 @@ a:focus-visible,
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  padding-top: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-1);
+}
+
+.triage-entry-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(280px, 0.72fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.triage-entry-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.triage-entry-aside .care-agent {
+  grid-template-columns: minmax(110px, 148px) minmax(0, 1fr);
+  padding: var(--space-3);
+}
+
+.triage-entry-details {
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+}
+
+.triage-entry-details > summary {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: var(--text-xs);
+  font-weight: 620;
+}
+
+.triage-entry-details .triage-page__outcomes {
+  margin: 0 0 var(--space-3);
+  border-radius: var(--radius-sm);
+}
+
+.triage-agent-result {
+  margin: 0 0 var(--space-3);
 }
 
 /* Active state: decision column beside the context rail. */
@@ -2176,6 +2451,10 @@ a:focus-visible,
   color: var(--accent-ink);
   font-size: var(--text-xs);
   line-height: 1.5;
+}
+
+.triage-entry-aside .triage-page__note {
+  margin-top: 0;
 }
 
 .triage-page__outcomes {
@@ -2507,6 +2786,36 @@ a:focus-visible,
   flex-wrap: wrap;
 }
 
+.followup-prompt__agent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 16%, var(--border-subtle));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--accent-soft) 42%, var(--surface-raised));
+}
+
+.followup-prompt__agent-mark {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+}
+
+.followup-prompt__agent strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--text-primary);
+  font-size: var(--text-xs);
+}
+
+.followup-prompt__agent p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
 .followup-prompt h3 {
   margin: 0;
   font-size: var(--text-h3);
@@ -2520,6 +2829,7 @@ a:focus-visible,
 }
 
 .followup-prompt__options button {
+  min-height: 44px;
   padding: 8px 14px;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-pill);
@@ -2527,6 +2837,13 @@ a:focus-visible,
   color: var(--text-primary);
   font-size: var(--text-sm);
   transition: border-color var(--duration-fast), background var(--duration-fast), transform var(--duration-fast);
+}
+
+.followup-prompt__options button:focus-visible,
+.followup-prompt__skip:focus-visible,
+.care-agent__skip:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent-primary) 32%, transparent);
+  outline-offset: 2px;
 }
 
 .followup-prompt__options button:hover:not(:disabled) {
@@ -2559,8 +2876,7 @@ a:focus-visible,
 }
 
 .care-result:hover {
-  box-shadow: var(--shadow-xl), inset 0 1px 2px rgba(255, 255, 255, 0.9);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), inset 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .care-result__rail {
@@ -5033,6 +5349,13 @@ a:focus-visible,
   line-height: 1.45;
 }
 
+.profile-preference-status {
+  margin: calc(var(--space-2) * -1) 0 0;
+  color: var(--accent-primary);
+  font-size: var(--text-xs);
+  line-height: 1.45;
+}
+
 .profile-history {
   display: flex;
   flex-direction: column;
@@ -5158,11 +5481,13 @@ a:focus-visible,
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .hero,
+  .home-process,
   .philosophy__grid,
   .journey__intro,
   .journey__stage,
   .city-layer__content,
   .triage-page__intro-grid,
+  .triage-entry-grid,
   .triage-care,
   .map-workbench,
   .trust-limitations {
@@ -5189,6 +5514,10 @@ a:focus-visible,
 
   .hero {
     padding-top: var(--space-6);
+  }
+
+  .home-process {
+    grid-template-columns: 1fr;
   }
 
   .map-canvas {
@@ -5255,7 +5584,33 @@ a:focus-visible,
 
   .hero {
     padding: var(--space-5) 0 var(--space-4);
-    gap: var(--space-5);
+    gap: var(--space-3);
+  }
+
+  .hero h1 {
+    font-size: clamp(1.85rem, 7vw, 2.5rem);
+  }
+
+  .hero__visual {
+    padding-top: 0;
+  }
+
+  .care-agent {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+
+  .care-agent__copy strong {
+    font-size: var(--text-sm);
+  }
+
+  .care-agent__skip {
+    min-height: 44px;
+  }
+
+  .hero__visual-note {
+    display: none;
   }
 
   .care-path__stage {
@@ -5361,10 +5716,6 @@ a:focus-visible,
 }
 
 @media (max-width: 430px) {
-  .hero h1 {
-    font-size: 1.75rem;
-  }
-
   .symptom-composer__footer {
     flex-direction: column;
     align-items: stretch;
@@ -5372,6 +5723,23 @@ a:focus-visible,
 
   .symptom-composer__footer .button {
     width: 100%;
+  }
+
+  .symptom-composer__submit {
+    min-height: 58px;
+  }
+
+  .triage-page__topline {
+    align-items: flex-start;
+    margin-bottom: var(--space-3);
+  }
+
+  .triage-page__intro {
+    margin-bottom: var(--space-3);
+  }
+
+  .triage-entry-aside .care-agent {
+    grid-template-columns: 80px minmax(0, 1fr);
   }
 
   .journey__controls button span:last-child {

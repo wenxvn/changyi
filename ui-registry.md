@@ -1,5 +1,15 @@
 # UI Registry
 
+## 2026-10-13 Frontend 2.0 interaction layer
+
+`SymptomComposer`统一首页与分诊工作台：多行输入、2000 字边界、语音能力降级、字数提示、Ctrl/⌘+Enter、58px 主操作按钮和身份信息提示。首页示例只预填描述并继续走真实 API；CarePath移至输入区下方的流程解释。
+
+`CareAgent`使用同一抽象光球视觉 DNA：桌面 WebGL2 场景由 Three.js 0.186.1按可见性懒加载，DPR≤1.5、15个非语义粒子、目标帧率≤30fps、页面隐藏时停帧并在卸载时释放资源；降低动态偏好、低资源设备、WebGL不可用/失败时静态 SVG 降级。阶段文案只由输入焦点、真实请求生命周期和真实接口结果驱动；等待只表示“请求已发送/等待系统响应”。急症分支不渲染 3D 智能体。Three.js为MIT许可，未引入模型、音频或第三方遥测。
+
+首页到分诊以 App 内存传递主诉，不写入 URL/浏览器存储；兼容旧 `condition` 查询入口在绘制前与返回导航时移除。分诊请求仍由页面唯一持有 AbortController，显示真实错误/重试；结构化 `followup_answers` 与现有 Safety/API契约不变。
+
+`FollowupPrompt`以静态助手标识引导服务端实际返回的首个问题、原因和选项；保留跳过/不确定、重新请求及既有证据差异。资源目录与地图继续复用现有真实数据、来源、分页、筛选、收藏、Amap导航和同步选中医院/地图点/资料预览。Profile切换后增加当前浏览器内保存反馈。新增 `--agent-core`、`--agent-highlight`、`--agent-orbit` 三个集中颜色 token；无新增未经解释的风险色。
+
 ## 2026-10-11 Ambient intelligence layer (CSS-only)
 
 全站环境层：`body::before`三色 mesh aurora（青/蓝/紫，均为 accent 系低透明）+46s 缓慢漂移，`body::after`蓝图网格（顶部径向渐隐）；hero `h1 em`渐变墨字；主按钮 hover 流光（复用空闲 `::after`，子元素提 `z-index:1` 保文字在上）；hero 视觉卡细指针悬停 3D 微倾（2.5°/-3°）；首页在线圆点 2.6s 呼吸；分组卡片 stagger 入场（90ms 步进）；证据数字 tabular-nums。全部 transform/opacity 合成动画，无新依赖；全局 reduced-motion 块自动兜底；未改任何文案/选择器/分支逻辑。

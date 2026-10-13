@@ -1,3 +1,5 @@
+2026-10-13前端 2.0 完成：共享症状输入、首页首屏 CTA、App 内存路由传递与旧 URL 隐私清理、真实 Three.js CareAgent/静态降级、后端驱动状态、追问提示、profile本地保存反馈；地图列表/点位联动与现有安全结果/资源合同复用。无后端、Safety、模型、数据或 API 改动。前端 typecheck/build、21 tests、E2E104、hooks4，pytest1043，Safety142 recall1.0/under0/over0/FN0。四视口CTA58px且首屏可见、无横向溢出；动态3D chunk 537452 raw/132827 gzip，主体 JS gzip比基线+2526 bytes。真实 3D 及 SVG 降级截图和测量见 `docs/competition/2026-ai-medical/FRONTEND_2_0_IMPLEMENTATION.md` 与 `evidence/frontend-2.0/after/`。目标是工程 UI 交付，不构成临床有效性验证；in-place `npm ci`因现存Vite占用Rolldown binding报EPERM，隔离目录同锁文件安装成功。未推送。
+
 # 当前项目状态
 
 2026-10-10核心算法收敛L2：前端只读展示已接通，后端医学规则未改。`triage.symptom_tags`对象解析（兼容旧字符串），`htriage_analysis.department_candidates[].source`只读显示，`population_context/score0`仅人群入口。`CurrentUnderstanding`新增症状证据卡，`TriageResults`新增科室依据卡，均不触发推荐、不标临床概率。验证：前端typecheck/17test/build过，Safety142 recall1/under0/over0/FN0不变，diff-check过。研究侧冻结：已曝光500不再调参，BGE/重排/增强负结果保留，独立验证入口`independent_validation`待新匹配数据。PPT/视频/报告仍最后再写。

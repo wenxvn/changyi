@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import {
   ArrowRight,
   CircleUserRound,
@@ -39,6 +39,15 @@ function routeFromLocation(): AppRoute {
 
 function pathForRoute(route: AppRoute): string {
   return route === "home" ? "/" : `/${route}`;
+}
+
+function scrubConditionFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("condition")) return;
+  params.delete("condition");
+  const query = params.toString();
+  const safePath = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+  window.history.replaceState(window.history.state, "", safePath);
 }
 
 function AppShell({
@@ -139,27 +148,43 @@ function AppShell({
 
 export function App() {
   const [route, setRoute] = useState<AppRoute>(routeFromLocation);
+  const [initialSubmission, setInitialSubmission] = useState<{ id: number; condition: string } | null>(null);
+  const submissionSequence = useRef(0);
 
   useEffect(() => {
-    const handlePopState = () => setRoute(routeFromLocation());
+    const handlePopState = () => {
+      scrubConditionFromUrl();
+      setInitialSubmission(null);
+      setRoute(routeFromLocation());
+    };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  useLayoutEffect(() => { scrubConditionFromUrl(); }, []);
+
   const navigate = (path: string) => {
+    if (!path.startsWith("/triage")) setInitialSubmission(null);
     window.history.pushState({}, "", path);
     setRoute(routeFromLocation());
     const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
     window.scrollTo({ top: 0, behavior });
   };
 
+  const startTriageFromHome = (condition: string) => {
+    setInitialSubmission({ id: ++submissionSequence.current, condition });
+    window.history.pushState({}, "", "/triage");
+    setRoute("triage");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
   const content = route === "home" ? (
     <HomePage
-      onStart={(condition) => navigate(`/triage?condition=${encodeURIComponent(condition)}`)}
+      onStart={startTriageFromHome}
       onNavigate={navigate}
     />
   ) : route === "triage" ? (
-    <TriagePage onNavigate={navigate} />
+    <TriagePage onNavigate={navigate} initialSubmission={initialSubmission} />
   ) : route === "resources" ? (
     <ResourcesPage onNavigate={navigate} />
   ) : route === "trust" ? (

@@ -3,8 +3,11 @@ import { test, expect } from "@playwright/test";
 test.describe("mobile product smoke", () => {
   test("home keeps primary composer and navigation usable", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: /把症状/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: "开始分析" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /哪里不舒服/ })).toBeVisible();
+    const primaryAction = page.getByRole("button", { name: "开始智能分析" });
+    await expect(primaryAction).toBeVisible();
+    await expect(primaryAction).toBeInViewport();
+    expect((await primaryAction.boundingBox())?.height).toBeGreaterThanOrEqual(56);
     // Unsupported browsers show an explicit fallback; supported ones show the control.
     await expect(page.getByText(/语音输入|当前浏览器不支持语音输入/).first()).toBeVisible();
     await page.screenshot({ path: test.info().outputPath("mobile-home.png"), fullPage: true });
@@ -13,7 +16,10 @@ test.describe("mobile product smoke", () => {
   test("triage keeps the primary action and navigation usable", async ({ page }) => {
     await page.goto("/triage");
     await expect(page.getByRole("heading", { name: /现在有什么不舒服/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: "查看安全状态" })).toBeVisible();
+    const primaryAction = page.getByRole("button", { name: "查看安全状态" });
+    await expect(primaryAction).toBeVisible();
+    await expect(primaryAction).toBeInViewport();
+    expect((await primaryAction.boundingBox())?.height).toBeGreaterThanOrEqual(56);
     await page.screenshot({ path: test.info().outputPath("mobile-triage-initial.png"), fullPage: true });
 
     await page.getByRole("button", { name: "打开导航" }).click();

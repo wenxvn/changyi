@@ -44,7 +44,7 @@ test("vague example shows abstention, inquiry, and path refresh after answers", 
   await expect(page.getByText("暂不强行给出", { exact: false })).toBeVisible();
   await expect(page.getByTestId("result-why")).toBeVisible();
   await expect(page.getByTestId("followup-prompt")).toBeVisible();
-  await expect(page.getByText("为什么现在问")).toBeVisible();
+  await expect(page.getByText("这道问题由系统根据本次输入返回；回答后会重新请求并更新路径。")).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("algorithm-vague-before.png"), fullPage: true });
 
   const option = page.locator(".followup-option").first();

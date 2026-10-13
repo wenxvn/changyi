@@ -32,7 +32,11 @@ async function submitTriage(page, condition) {
 
 test("home and core resource pages render with actionable navigation", async ({ page }, testInfo) => {
   await page.goto("/");
-  await page.getByRole("heading", { name: /把症状/ }).waitFor();
+  await page.getByRole("heading", { name: /哪里不舒服/ }).waitFor();
+  const homeAction = page.getByRole("button", { name: "开始智能分析" });
+  await expect(homeAction).toBeVisible();
+  await expect(homeAction).toBeInViewport();
+  expect((await homeAction.boundingBox())?.height).toBeGreaterThanOrEqual(56);
   await page.screenshot({ path: testInfo.outputPath("home-desktop.png"), fullPage: true });
   await page.getByRole("button", { name: "开始智能分诊" }).click();
   await page.waitForURL("**/triage");

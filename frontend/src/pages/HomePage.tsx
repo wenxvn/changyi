@@ -12,10 +12,12 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/Button";
 import { StatusPill } from "../components/ui/StatusPill";
-import { SpeechInput } from "../components/ui/SpeechInput";
 import { CarePath } from "../components/visualization/CarePath";
 import { JourneyPreview, journeySteps } from "../components/visualization/JourneyPreview";
 import { ExampleSymptomChips, type ExampleSymptom } from "../components/medical/ExampleSymptomChips";
+import { SymptomComposer } from "../components/medical/SymptomComposer";
+import { CareAgent } from "../components/agent/CareAgent";
+import type { AgentStage } from "../components/agent/types";
 import { useCitySummary } from "../hooks/useCitySummary";
 
 interface HomePageProps {
@@ -47,20 +49,26 @@ function formatMetric(value: number): string {
 
 export function HomePage({ onStart, onNavigate }: HomePageProps) {
   const [condition, setCondition] = useState("");
+  const [agentStage, setAgentStage] = useState<AgentStage>("idle");
   const [journeyIndex, setJourneyIndex] = useState(0);
   const journeyTabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const submitStarted = useRef(false);
   const summary = useCitySummary();
 
-  // Submit goes straight to the real triage workspace. No decorative timer
-  // pretends to run the algorithm on the home page.
+  // The app carries this value in memory into the real triage workspace.
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const next = condition.trim();
-    if (!next) return;
+    if (!next || submitStarted.current) return;
+    submitStarted.current = true;
+    setAgentStage("submitting");
     onStart(next);
   };
 
   const handleExample = (example: ExampleSymptom) => {
+    if (submitStarted.current) return;
+    submitStarted.current = true;
+    setAgentStage("submitting");
     setCondition(example.condition);
     onStart(example.condition);
   };
@@ -93,41 +101,23 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
             <span className="eyebrow">可信智能就医 · {cityName} 示范区</span>
             <StatusPill tone="success"><span className="status-dot" /> 系统在线</StatusPill>
           </div>
-          <h1>
-            把症状，
-            <br className="hero-break" />
-            <em>变成一条更清晰的</em>
-            就医路径。
-          </h1>
+          <h1>哪里不舒服？<br /><em>用一句话说说症状。</em></h1>
           <p className="hero__lede">
-            从危险信号识别，到科室、医院、医生与实际到院路径，让每一步推荐都有依据。
+            先查看安全状态；如有需要，再了解就医方向、常州资源与到院导航。
           </p>
 
-          <form className="symptom-composer" onSubmit={handleSubmit}>
-            <label htmlFor="symptom-input" className="symptom-composer__label">从这里开始</label>
-            <textarea
-              id="symptom-input"
-              value={condition}
-              onChange={(event) => setCondition(event.target.value)}
-              placeholder={"现在有什么不舒服？\n例如：昨天晚上开始右下腹疼，今天越来越明显，还有一点恶心。"}
-              rows={3}
-              maxLength={2000}
-            />
-            <div className="symptom-composer__footer">
-              <div className="symptom-composer__tools">
-                <SpeechInput
-                  onTranscript={(text) => setCondition((value) => (value ? `${value}${value.endsWith("。") ? "" : "。"}${text}` : text))}
-                />
-              </div>
-              <Button
-                type="submit"
-                disabled={!condition.trim()}
-                icon={<ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />}
-              >
-                开始分析
-              </Button>
-            </div>
-          </form>
+          <SymptomComposer
+            id="symptom-input"
+            value={condition}
+            onChange={(value) => { submitStarted.current = false; setCondition(value); }}
+            onSubmit={handleSubmit}
+            label="描述你现在的不适"
+            placeholder="例如：今天上午开始头晕，持续了几个小时。"
+            submitLabel="开始智能分析"
+            variant="home"
+            rows={3}
+            onFocusChange={(focused) => setAgentStage(focused ? "composing" : "idle")}
+          />
 
           <ExampleSymptomChips onSelect={handleExample} />
 
@@ -138,14 +128,21 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
           </div>
         </div>
         <div className="hero__visual">
-          <CarePath phase="idle" statusLabel="算法链路示意 · 真实进度在工作台按请求状态展示" />
+          <CareAgent stage={agentStage} />
           <div className="hero__visual-note">
-            <span>01</span>
-            <p>
-              Safety Gate → 就医方向 → 选择性拒答 → 自适应追问 → 多目标资源路由。悬停节点可查看每一步含义。
-            </p>
+            <span aria-hidden="true">●</span>
+            <p>抽象状态视觉；安全状态和就医方向以系统实际返回为准。</p>
           </div>
         </div>
+      </section>
+
+      <section className="home-process page-container" aria-labelledby="home-process-title">
+        <div className="home-process__intro">
+          <span className="eyebrow eyebrow--muted">清晰的下一步</span>
+          <h2 id="home-process-title">从症状描述，走到实际行动。</h2>
+          <p>路径节点是产品流程示意；结果页只展示本次请求实际返回的信息。</p>
+        </div>
+        <CarePath phase="idle" statusLabel="就医路径示意 · 不代表本次分析进度" />
       </section>
 
       <section className="philosophy page-container section-block">
