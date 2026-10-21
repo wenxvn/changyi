@@ -31,7 +31,7 @@ export function doctorReasons(item: RecommendedDoctor, limit = 2): string[] {
 
 export function resourceSourceLabel(source: string | undefined): string {
   if (source === "real" || source === "real_data") return "常州公开资源";
-  if (source === "mock") return "演示资源";
+  if (source === "mock") return "示例资源";
   return "公开资源";
 }
 

@@ -16,6 +16,7 @@ import { MapPage } from "../pages/MapPage";
 import { ProfilePage } from "../pages/ProfilePage";
 import { BrandMark } from "../components/ui/BrandMark";
 import { Button } from "../components/ui/Button";
+import { CoverScreen } from "../components/cover/CoverScreen";
 import { LocationProvider } from "../state/locationContext";
 
 type AppRoute = "home" | "triage" | "resources" | "map" | "trust" | "profile";
@@ -54,10 +55,12 @@ function AppShell({
   route,
   onNavigate,
   children,
+  inert = false,
 }: {
   route: AppRoute;
   onNavigate: (path: string) => void;
   children: ReactNode;
+  inert?: boolean;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -67,7 +70,7 @@ function AppShell({
   };
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" inert={inert || undefined}>
       <a className="skip-link" href="#main-content">跳转到主要内容</a>
       <header className="site-header">
         <button className="brand-lockup" type="button" onClick={() => navigate("/")} aria-label="返回常医智导首页">
@@ -140,7 +143,7 @@ function AppShell({
             <button type="button" onClick={() => navigate("/map")}><MapPinned size={14} aria-hidden="true" /> 就医地图</button>
           </div>
         </div>
-        <small>面向常州示范区的就医方向与资源信息参考，不替代医生诊断、急救或处方。</small>
+        <small>面向常州服务区域的就医方向与资源信息参考，不替代医生诊断、急救或处方。</small>
       </footer>
     </div>
   );
@@ -149,7 +152,23 @@ function AppShell({
 export function App() {
   const [route, setRoute] = useState<AppRoute>(routeFromLocation);
   const [initialSubmission, setInitialSubmission] = useState<{ id: number; condition: string } | null>(null);
+  const [cover, setCover] = useState<"open" | "leaving" | "closed">(() =>
+    routeFromLocation() === "home" ? "open" : "closed",
+  );
   const submissionSequence = useRef(0);
+
+  // The cover only exists for the first paint of "/": leaving it is a one-way
+  // transition, and an in-app return to home never replays it.
+  const dismissCover = () => setCover((current) => (current === "open" ? "leaving" : current));
+
+  useEffect(() => {
+    if (cover !== "leaving") return;
+    const timer = window.setTimeout(() => {
+      setCover("closed");
+      document.getElementById("main-content")?.focus({ preventScroll: true });
+    }, 460);
+    return () => window.clearTimeout(timer);
+  }, [cover]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -195,5 +214,16 @@ export function App() {
     <ProfilePage onNavigate={navigate} />
   ) : null;
 
-  return <LocationProvider><AppShell route={route} onNavigate={navigate}>{content}</AppShell></LocationProvider>;
+  const coverOpen = cover !== "closed";
+
+  return (
+    <LocationProvider>
+      <AppShell route={route} onNavigate={navigate} inert={coverOpen}>
+        {content}
+      </AppShell>
+      {coverOpen ? (
+        <CoverScreen leaving={cover === "leaving"} onEnter={dismissCover} />
+      ) : null}
+    </LocationProvider>
+  );
 }

@@ -14,7 +14,7 @@ import {
 
 function formatTime(value: string): string {
   const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "时间未登记";
+  if (Number.isNaN(date.getTime())) return "时间未知";
   return new Intl.DateTimeFormat("zh-CN", {
     month: "numeric",
     day: "numeric",
@@ -95,8 +95,8 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
       <div className="profile-page__hero">
         <div>
           <span className="eyebrow">本地偏好 · 最近分析</span>
-          <h1>把这次体验，<em>留在你的浏览器里。</em></h1>
-          <p>这里可以管理常州示范区的本地偏好与最近分析，不需要登录，也不建立真实用户身份。</p>
+          <h1>你的偏好与最近分析，<em>只保存在本机。</em></h1>
+          <p>这里管理常州服务区域的本地偏好与最近分析，不需要登录，也不建立真实用户身份。</p>
         </div>
         <div className="profile-page__identity" aria-label="本地偏好">
           <div className="profile-page__identity-icon"><CircleUserRound size={22} strokeWidth={1.5} aria-hidden="true" /></div>
@@ -148,7 +148,7 @@ export function ProfilePage({ onNavigate }: { onNavigate: (path: string) => void
               <History size={20} aria-hidden="true" />
               <strong>还没有本地分析摘要</strong>
               <span>开启上方开关并完成一次分析后，这里只会显示状态级摘要。</span>
-              <Button variant="secondary" onClick={() => onNavigate("/triage")} icon={<ArrowLeft size={15} aria-hidden="true" />}>去体验智能就医</Button>
+              <Button variant="secondary" onClick={() => onNavigate("/triage")} icon={<ArrowLeft size={15} aria-hidden="true" />}>开始一次分析</Button>
             </div>
           )}
         </section>

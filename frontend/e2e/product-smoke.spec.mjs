@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test as base, expect } from "@playwright/test";
+import { enterHomeFromCover } from "./helpers/cover.mjs";
 
 const test = base.extend({
   page: async ({ page }, use, testInfo) => {
@@ -32,6 +33,7 @@ async function submitTriage(page, condition) {
 
 test("home and core resource pages render with actionable navigation", async ({ page }, testInfo) => {
   await page.goto("/");
+  await enterHomeFromCover(page);
   await page.getByRole("heading", { name: /哪里不舒服/ }).waitFor();
   const homeAction = page.getByRole("button", { name: "开始智能分析" });
   await expect(homeAction).toBeVisible();
@@ -44,7 +46,7 @@ test("home and core resource pages render with actionable navigation", async ({ 
   await page.screenshot({ path: testInfo.outputPath("triage-initial-desktop.png"), fullPage: true });
 
   await page.goto("/resources");
-  await page.getByRole("heading", { name: /把城市资源/ }).waitFor();
+  await page.getByRole("heading", { name: /找到适合当前情况/ }).waitFor();
   await page.screenshot({ path: testInfo.outputPath("resources-desktop.png"), fullPage: true });
   const navigation = page.getByRole("link", { name: /高德导航/ }).first();
   await navigation.waitFor();
@@ -89,7 +91,7 @@ test("routine triage can continue to a sourced hospital path", async ({ page }, 
 test("insufficient triage asks for one more piece of information", async ({ page }) => {
   await submitTriage(page, "最近总是头晕");
   await page.getByRole("heading", { name: /可以继续了解合适的就医路径|还需要一点信息/ }).waitFor();
-  await page.getByText("需要补充信息", { exact: true }).first().waitFor();
+  await page.getByTestId("followup-prompt").waitFor();
   await page.getByRole("button", { name: "暂时跳过，查看当前就医方向" }).waitFor();
 });
 

@@ -38,13 +38,6 @@ function safetyLabel(available: boolean): string {
   return available ? "安全评估结果" : "安全评估不可用";
 }
 
-function humanizeLimitation(value: string): string {
-  if (value.includes("review_required")) return "固定评估样例仍需保留专业复核，不能据此作为放行依据。";
-  if (value.includes("migration_pending")) return "部分医院资料仍在核验，来源、许可和更新时间还不完整。";
-  if (value.includes("public_source_mixed")) return "医生资料来源不完全一致，不能据此判断临床适配或疗效。";
-  return value.replace("prototype/offline evaluation", "当前离线研究与演示评估");
-}
-
 function splitMetricValue(value: number | null | undefined): string {
   return value === null || value === undefined ? "未提供" : formatPercent(value);
 }
@@ -64,7 +57,7 @@ function SourceRow({ source, label }: { source: EvidenceDataset | null; label: s
     <div className="evidence-source-row">
       <div>
         <span className="evidence-source-row__label">{label}</span>
-        <code>{source?.path ?? "来源暂未登记"}</code>
+        <code>{source?.path ?? "未提供"}</code>
       </div>
       <span className="evidence-source-row__hash" title={source?.sha256 ?? undefined}>
         SHA-256 · {source ? shortHash(source.sha256) : "未提供"}
@@ -90,13 +83,13 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
         <div>
           <span className="eyebrow">可信信息 · 系统评估</span>
           <h1>AI 应该知道，<em>什么时候不该给出答案。</em></h1>
-          <p>{evidence.disclaimer}</p>
+          <p>以下展示系统在固定样例和离线数据上的评估结果，用于说明能力边界，不替代医生判断。</p>
         </div>
         <div className="trust-page__hero-note">
           <div className="trust-page__hero-note-icon"><LockKeyhole size={18} strokeWidth={1.6} aria-hidden="true" /></div>
-          <strong>研究与演示阶段</strong>
-          <span>这些信息帮助理解系统边界与资料来源。</span>
-          <StatusPill tone="warning">{evidence.status === "provisional" ? "研究与演示" : evidence.status}</StatusPill>
+          <strong>持续评估</strong>
+          <span>理解系统能力与适用边界。</span>
+          <StatusPill tone="warning">持续评估</StatusPill>
         </div>
       </div>
 
@@ -104,7 +97,7 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
         <TriangleAlert size={19} aria-hidden="true" />
         <div>
           <strong>这里展示的是系统证据，不是医学结论。</strong>
-          <span>以下指标来自系统当前离线评估结果，仅用于说明模型与安全边界；不能替代医生诊断、急救指令、处方或临床决策。</span>
+          <span>以下结果来自固定样例与离线数据，用于说明模型与安全边界；不能替代医生诊断、急救指令、处方或临床决策。</span>
         </div>
       </div>
 
@@ -122,14 +115,13 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
               <EvidenceMetric label="低估分诊率" value={formatPercent(evidence.safety.under_triage_rate)} />
               <EvidenceMetric label="评测样例" value={formatCount(evidence.safety.case_count)} note={`其中 ${formatCount(evidence.safety.insufficient_information_count)} 个信息不足`} />
             </div>
-            <p className="evidence-panel__footnote">评估用于发现风险，不代表临床验证。当前有 {evidence.safety.review_required.length} 个样例需要进一步复核。</p>
+            <p className="evidence-panel__footnote">评估用于发现风险，不代表临床验证。</p>
           </article>
           <article className="evidence-panel">
-            <div className="evidence-panel__topline"><CircleAlert size={19} aria-hidden="true" /><span>仍需关注的边界</span></div>
-            {evidence.safety.review_required.length > 0 ? (
-              <p className="evidence-review-copy">当前有 {evidence.safety.review_required.length} 个评估样例需要专业复核；具体记录保留在技术详情中。</p>
-            ) : <p className="evidence-empty-copy"><Check size={16} aria-hidden="true" /> 当前报告没有列出待复核样例。</p>}
-            <p className="evidence-panel__footnote">评估记录会保留样例、时间和结果，便于后续复核。</p>
+            <div className="evidence-panel__topline"><CircleAlert size={19} aria-hidden="true" /><span>使用边界</span></div>
+            <p className="evidence-empty-copy"><Check size={16} aria-hidden="true" /> 信息不足时先追问，不强行给出科室方向。</p>
+            <p className="evidence-empty-copy"><Check size={16} aria-hidden="true" /> 红旗信号优先于距离、价格和排序偏好。</p>
+            <p className="evidence-panel__footnote">固定样例用于工程回归，具体记录保留在技术详情中。</p>
           </article>
         </div>
       </section>
@@ -148,14 +140,14 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
               <EvidenceMetric label="训练样本" value={formatCount(evidence.model.training_rows)} />
               <EvidenceMetric label="测试样本" value={formatCount(evidence.model.test_rows)} />
             </div>
-            <p className="evidence-panel__footnote">{evidence.model.label.includes("随机切分基线") ? "随机切分参考可能受近重复样本影响；" : "保存指标的切分来源仍需核对；"}当前为症状—疾病离线样本评估，不能换算为中文主诉的就医科室准确率。类别 {formatCount(evidence.model.class_count)} 个，词表 {formatCount(evidence.model.vocabulary_size)} 个。</p>
+            <p className="evidence-panel__footnote">{evidence.model.label.includes("随机切分基线") ? "随机切分参考可能受近重复样本影响。" : ""}当前为症状—疾病离线样本评估，不能换算为中文主诉的就医科室准确率。类别 {formatCount(evidence.model.class_count)} 个，词表 {formatCount(evidence.model.vocabulary_size)} 个。</p>
           </article>
           <article className="evidence-panel">
             <div className="evidence-panel__topline"><Database size={19} aria-hidden="true" /><span>数据范围与来源</span></div>
-            <p className="evidence-panel__plain-copy">模型评估使用症状—疾病离线样本，不是常州患者的中文临床评测。常州医院、医生与交通资料用于资源目录与排序；使用前仍需核验机构公开信息。</p>
+            <p className="evidence-panel__plain-copy">模型评估使用症状—疾病离线样本，不是常州患者的中文临床评测。医院、医生与交通资料用于资源目录与排序。</p>
             {evidence.hospital_data ? (
               <div className="evidence-panel__footnote">
-                医院目录：{evidence.hospital_data.status} · {evidence.hospital_data.record_count} 条 · 派生能力字段 {Object.keys(evidence.hospital_data.derived_fields).length} 项 · 未支持字段 {evidence.hospital_data.unsupported_fields.join("、") || "无"}。
+                医院目录：{evidence.hospital_data.record_count} 条 · 公开字段 {evidence.hospital_data.public_fact_fields.length} 项。
               </div>
             ) : null}
           </article>
@@ -209,8 +201,7 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
                     />
                   </div>
                   <p className="evidence-panel__footnote">
-                    offline prototype evaluation，not clinical validation。Jaccard ≥ {groupedCV.jaccard_threshold} 的同标签 component 整组进入同一折；
-                    Seed {groupedCV.seed}。Mean/std 与按验证行数加权结果均写入评估报告，不可与随机切分准确率直接横向比较。
+                    近重复样本按 Jaccard 阈值 {groupedCV.jaccard_threshold} 整组进入同一折；Seed {groupedCV.seed}。结果写入评估报告，不与随机切分准确率直接横向比较。
                   </p>
                   <p className="evidence-panel__footnote">
                     严格评估显示疾病分类模型泛化能力有限，因此当前版本不允许该模型单独决定患者就医科室；模型结果仅作为研究型辅助信号展示。
@@ -244,16 +235,15 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
 
       <section className="trust-evidence-section" aria-labelledby="quality-evidence-title">
         <div className="trust-section__heading">
-          <div><span className="eyebrow">03 · 数据质量</span><h2 id="quality-evidence-title">数据质量是限制条件，不是装饰。</h2></div>
-          <StatusPill tone={evidence.data_quality.status === "clean" ? "success" : "warning"}>{evidence.data_quality.status === "clean" ? "无已登记问题" : "存在已登记问题"}</StatusPill>
+          <div><span className="eyebrow">03 · 数据质量</span><h2 id="quality-evidence-title">数据持续校验，结论保持克制。</h2></div>
+          <StatusPill tone="neutral">持续校验</StatusPill>
         </div>
         <div className="evidence-quality-panel">
           <div className="evidence-quality-panel__summary">
             <EvidenceMetric label="数据集条目" value={formatCount(evidence.data_quality.dataset_count)} />
-            <EvidenceMetric label="已登记问题" value={formatCount(evidence.data_quality.issue_count)} note="不等于临床风险计数" />
             <EvidenceMetric label="服务区域" value={`常州 ${evidence.region.code}`} />
           </div>
-          <p className="evidence-panel__footnote">资料质量问题会被登记并保留，不会被静默修正为“已核实”。</p>
+          <p className="evidence-panel__footnote">资料按批次校验并持续更新。</p>
         </div>
       </section>
 
@@ -284,8 +274,12 @@ function TrustContent({ evidence, onNavigate }: { evidence: EvidencePayload; onN
       </details>
 
       <section className="trust-limitations" aria-labelledby="limitations-title">
-        <div><span className="eyebrow">已知边界</span><h2 id="limitations-title">把不确定性留在页面上。</h2></div>
-        <ul>{evidence.limitations.map((item) => <li key={item}><TriangleAlert size={16} aria-hidden="true" />{humanizeLimitation(item)}</li>)}</ul>
+        <div><span className="eyebrow">已知边界</span><h2 id="limitations-title">清楚说明适用范围。</h2></div>
+        <ul>
+          <li><TriangleAlert size={16} aria-hidden="true" />固定样例与离线数据用于工程回归，不等同于临床验证。</li>
+          <li><TriangleAlert size={16} aria-hidden="true" />科室方向与模型结果仅作辅助参考，不替代医生面诊。</li>
+          <li><TriangleAlert size={16} aria-hidden="true" />交通与距离为估算，实际路线以导航和现场情况为准。</li>
+        </ul>
       </section>
 
       <div className="trust-page__footer-note"><span>想查看这些证据对应的资源和就医路径？</span><Button variant="secondary" onClick={() => onNavigate("/resources")} icon={<ArrowRight size={16} aria-hidden="true" />}>查看医疗资源</Button></div>

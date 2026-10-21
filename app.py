@@ -17,7 +17,7 @@ app = _runtime.app
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("  常州市智能医疗推荐系统 - 演示版")
+    print("  常州市智能医疗推荐系统")
     print("  Smart Medical Recommendation System")
     print("  http://127.0.0.1:5002")
     print("=" * 60)

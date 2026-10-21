@@ -23,6 +23,7 @@ test("pages and components do not own direct fetch or legacy global state", asyn
     "components/medical/FollowupPrompt.tsx",
     "components/medical/TriageResults.tsx",
     "components/medical/ExampleSymptomChips.tsx",
+    "components/cover/CoverScreen.tsx",
   ];
   const contents = await Promise.all(files.map(source));
   for (const content of contents) {
@@ -43,7 +44,7 @@ test("resource browsing stays on versioned read-only endpoints and exposes navig
   assert.match(page, /资料详情/);
   assert.match(page, /AmapNavigationLink/);
   assert.match(navigation, /高德导航/);
-  assert.match(page, /资料核验中/);
+  assert.match(page, /医院公开资料/);
   assert.match(page, /打开医院地图/);
 });
 
@@ -53,7 +54,7 @@ test("Trust Center presents evidence in user-facing language with technical deta
   assert.doesNotMatch(page, /fetch\(/);
   assert.match(api, /\/api\/v1\/evidence/);
   assert.match(page, /可信信息 · 系统评估/);
-  assert.match(page, /研究与演示阶段/);
+  assert.match(page, /持续评估/);
   assert.match(page, /不代表临床验证/);
   assert.match(page, /技术详情/);
 });
@@ -118,6 +119,22 @@ test("profile history is opt-in, local-only, and redacted", async () => {
   assert.match(state, /historyEnabled/);
   assert.match(state, /MAX_HISTORY_ITEMS = 8/);
   assert.doesNotMatch(state, /condition|symptoms|patient|phone|contact/i);
+});
+
+test("the big-screen cover stays presentation-only, dismissable, and bounded by the safety notice", async () => {
+  const cover = await source("components/cover/CoverScreen.tsx");
+  const app = await source("app/App.tsx");
+  const styles = await source("styles/globals.css");
+
+  assert.doesNotMatch(cover, /fetch\(/);
+  assert.doesNotMatch(cover, /api\/v1/);
+  assert.doesNotMatch(cover, /localStorage|sessionStorage/);
+  assert.match(cover, /onClick=\{enter\}/);
+  assert.match(cover, /不替代医生诊断、急救或处方/);
+  assert.match(app, /CoverScreen/);
+  assert.match(app, /routeFromLocation\(\) === "home" \? "open" : "closed"/);
+  assert.match(styles, /\.cover--leaving/);
+  assert.match(styles, /\.cover__enter:focus-visible/);
 });
 
 test("the app shell exposes keyboard landmarks and reduced-motion navigation", async () => {

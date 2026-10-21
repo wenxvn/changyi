@@ -100,7 +100,7 @@ export function CurrentUnderstanding({ condition, result, previousTags, pathUpda
         {missing.length > 0 ? (
           <div>
             <dt>待补充</dt>
-            <dd>{missing.join("、")}</dd>
+            <dd>{missing.map((slot) => slot.replace(/^缺少/, "")).join("、")}</dd>
           </div>
         ) : null}
       </dl>

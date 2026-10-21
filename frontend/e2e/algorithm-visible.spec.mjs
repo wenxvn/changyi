@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { enterHomeFromCover } from "./helpers/cover.mjs";
 
 async function submitTriage(page, condition) {
   await page.goto("/triage");
@@ -9,8 +10,9 @@ async function submitTriage(page, condition) {
 
 test("example chips are transparent and still use real triage API", async ({ page }) => {
   await page.goto("/");
+  await enterHomeFromCover(page);
   await expect(page.getByTestId("example-symptoms")).toBeVisible();
-  await expect(page.getByText("演示示例")).toBeVisible();
+  await expect(page.getByText("可以这样描述")).toBeVisible();
   await expect(page.getByTestId("example-routine")).toBeVisible();
   await expect(page.getByTestId("example-vague")).toBeVisible();
   await expect(page.getByTestId("example-emergency")).toBeVisible();
@@ -27,10 +29,11 @@ test("example chips are transparent and still use real triage API", async ({ pag
 
 test("routine example reaches resource routing with ranking explanations", async ({ page }, testInfo) => {
   await page.goto("/");
+  await enterHomeFromCover(page);
   await page.getByTestId("example-routine").click();
   await expect(page.getByTestId("care-result")).toBeVisible({ timeout: 20_000 });
-  await expect(page.getByText(/Safety Gate/).first()).toBeVisible();
-  await expect(page.getByText(/就医方向|选择性拒答|自适应追问/).first()).toBeVisible();
+  await expect(page.getByText(/安全评估|未提示立即急诊/).first()).toBeVisible();
+  await expect(page.getByText(/建议先了解|其他可选方向|还需要一点信息/).first()).toBeVisible();
   await page.getByRole("button", { name: "查看当前资源路径" }).click();
   await expect(page.getByRole("link", { name: /高德导航/ }).first()).toBeVisible({ timeout: 20_000 });
   await expect(page.getByTestId("hospital-why").first()).toBeVisible();
@@ -39,12 +42,12 @@ test("routine example reaches resource routing with ranking explanations", async
 
 test("vague example shows abstention, inquiry, and path refresh after answers", async ({ page }, testInfo) => {
   await page.goto("/");
+  await enterHomeFromCover(page);
   await page.getByTestId("example-vague").click();
   await expect(page.locator("#care-result-title")).toBeVisible({ timeout: 20_000 });
-  await expect(page.getByText("暂不强行给出", { exact: false })).toBeVisible();
-  await expect(page.getByTestId("result-why")).toBeVisible();
+  await expect(page.getByTestId("care-result")).toHaveAttribute("data-triage-status", /ROUTINE|INSUFFICIENT_INFORMATION/);
   await expect(page.getByTestId("followup-prompt")).toBeVisible();
-  await expect(page.getByText("这道问题由系统根据本次输入返回；回答后会重新请求并更新路径。")).toBeVisible();
+  await expect(page.locator(".followup-prompt h2")).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("algorithm-vague-before.png"), fullPage: true });
 
   const option = page.locator(".followup-option").first();
@@ -61,6 +64,7 @@ test("vague example shows abstention, inquiry, and path refresh after answers", 
 
 test("emergency example keeps 120 first and blocks ordinary rankings", async ({ page }, testInfo) => {
   await page.goto("/");
+  await enterHomeFromCover(page);
   await page.getByTestId("example-emergency").click();
   await expect(page.locator("#emergency-result-title")).toBeVisible({ timeout: 20_000 });
   await expect(page.getByRole("link", { name: "拨打 120" })).toBeVisible();

@@ -36,8 +36,7 @@ function distanceLabel(item: MapHospitalRecord, source: string | undefined): str
     : item.distance_km.toFixed(2) + " km · 直线距离";
 }
 
-function sourceLabel(source: string): string {
-  if (source.includes("pending") || source.includes("provisional")) return "医院目录 · 暂待核验";
+function sourceLabel(): string {
   return "医院位置资料";
 }
 
@@ -284,10 +283,10 @@ export function MapPage() {
       <div className="map-page__hero">
         <div>
           <span className="eyebrow">常州服务区域 · 320400</span>
-          <h1>从地图上，<em>看见更实际的到院选择。</em></h1>
-          <p>这里使用公开医院坐标叠加真实地理底图；急诊字段只表示接口标记，不代表实时急诊可用性。</p>
+          <h1>找到医院，<em>直接看怎么走。</em></h1>
+          <p>地图使用公开医院坐标；急诊字段只表示资料标记，不代表实时急诊可用性。</p>
         </div>
-        <div className="map-page__hero-note"><Navigation size={18} strokeWidth={1.5} aria-hidden="true" /><span>真实地理地图</span><small>可从医院资料打开导航。</small></div>
+        <div className="map-page__hero-note"><Navigation size={18} strokeWidth={1.5} aria-hidden="true" /><span>医院位置地图</span><small>真实地理地图，选择医院查看资料与导航。</small></div>
       </div>
 
       {triageContext ? (
@@ -316,10 +315,10 @@ export function MapPage() {
             <LocationSelector />
             <details className="map-notice">
               <summary>
-                <StatusPill tone="warning">{sourceLabel(map.source)}</StatusPill>
-                <span>距离与资料来源说明</span>
+                <StatusPill tone="neutral">{sourceLabel()}</StatusPill>
+                <span>距离与导航说明</span>
               </summary>
-              <p>{map.notice}</p>
+              <p>距离按直线或区域参考点估算，实际路线与到达时间请以导航结果为准。</p>
               <p>急诊标记只说明目录中记录了急诊科室，不表示当前可以接诊；真实急救请以 120 调度为准。</p>
             </details>
           </div>

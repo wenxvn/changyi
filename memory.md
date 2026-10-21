@@ -1,5 +1,7 @@
 # Memory — Core Algorithm Exploration
 
+2026-10-21 大屏开始界面（L2 纯前端展示）：新增 `frontend/src/components/cover/CoverScreen.tsx`，仅首次加载 `/` 时全视口出现，点击任意处/Enter/Space/Escape/进入按钮淡出回原首页；其它路由不出现、站内返回首页不重放、刷新重放。覆盖期间 `.app-shell` 为 `inert`，退出焦点回 `#main-content`；零接口/存储/URL/医学状态改动，保留免责提示。token 新增 `--cover-*`，reduced-motion 兜底，ui-registry 已登记。验证：typecheck/build 过；前端 21/22、E2E 96 过/11 失败，失败全部来自用户未提交的 3.0 `TriageResults.tsx`（移除 `result-why`/`result-dept-evidence`/改文案），本轮未碰该文件、不代为修复；新增 `cover-screen.spec.mjs` 3/3 过，E2E 辅助函数 `e2e/helpers/cover.mjs`。未推送。
+
 2026-10-10夜间收敛 checkpoint（用户已睡）：前端只读证据卡+追问差异/槽位联动已接通（L2，不改医学规则）；evidence 端点进程缓存+启动预热，Trust 冷加载超时修复；data_validation 污染已还原。冻结门禁：pytest 1043/1043、E2E 96/96、前端21/21、e2e:hooks 4/4、Safety142（1.0/0/0/0）、数据31/186。医学规则/权重/正式数据零改动，未推送。下一轮：按官方模板写技术报告/PPT/佐证（用户要求最后再写）；独立中文验收数据仍缺，不碰已曝光500。
 
 2026-10-11前端科技感升级 checkpoint：ambient 层（mesh aurora + 蓝图网格）+ 渐变标题 + 按钮流光 + 3D 微倾 + stagger 入场，纯 CSS，token 已文档化（ui-registry），reduced-motion 兜底。验证：typecheck/21/build、全量E2E 96/96（57.6s）通过，截图目检正常。未推送。

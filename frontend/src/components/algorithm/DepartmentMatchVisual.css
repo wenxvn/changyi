@@ -1,0 +1,114 @@
+/* Department directions: quiet ranked list, no percentage bars. */
+.department-match-visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-base-solid);
+}
+
+.department-match-visual__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.department-match-visual__header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: 650;
+}
+
+.department-match-visual__basis {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-2xs);
+}
+
+.department-match-visual__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.department-match-visual__item {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  overflow: hidden;
+}
+
+.department-match-visual__item--primary {
+  border-color: color-mix(in srgb, var(--accent-primary) 34%, var(--border-subtle));
+}
+
+.department-match-visual__item-header {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.department-match-visual__item-header:hover {
+  background: var(--surface-subtle);
+}
+
+.department-match-visual__item-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.department-match-visual__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.department-match-visual__badge--muted {
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+}
+
+.department-match-visual__item-details {
+  padding: 0 12px 12px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+}
+
+.department-match-visual__item-details p,
+.department-match-visual__item-details ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+}
+
+.department-match-visual__item-details li + li {
+  margin-top: 4px;
+}

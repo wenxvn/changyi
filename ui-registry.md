@@ -1,5 +1,38 @@
 # UI Registry
 
+## 2026-10-22 Presentation cleanup and visual polish
+
+公开界面不再展示内部数据治理状态：资源详情的 `ResourceProvenanceNote`（迁移说明、更新时间、许可状态）已删除，派生能力区改为“相关科室方向”，医生照片状态行删除；`sourceLabel` 统一为“医院公开资料 / 医生公开资料”，首页指标统一为“公开来源”，地图与资源页不再出现“暂待核验 / 资料核验中 / 来源混合 / 资料来源待补齐”。Trust 页不再直接渲染后端 `limitations` 原文，改为三条面向用户的适用范围说明，并移除“已登记问题”计数与“来源暂未登记”。
+
+首页首屏改为双栏：左侧标题、说明与 `SymptomComposer`，右侧 `CareAgent`；`hero--simplified` 在 ≥980px 使用 `1.08fr / 0.92fr`，移动端仍把输入放在助手视觉之前。资源/地图/Trust/Profile 的 hero 统一为 `--radius-xl` 面板（径向 accent 光 + 白色渐变 + 阴影）；资源页搜索与筛选包进 `.resources-controls` 单卡；资源卡 CTA 行加上分隔线，详情事实表改为虚线行。全部复用现有 token，无新颜色；`prefers-reduced-motion` 未变。
+
+## 2026-10-21 Product polish: follow-up first, resource overlay, copy pass
+
+`TriagePage` 将 `FollowupPrompt` 移到结果卡之前（提交摘要之后）：需要补充信息时它是首屏主操作，不再要求先滚过结果与资源面板。结果页移除重复的 compact `CareAgent`；系统处理步骤收进结果卡下方的 `triage-technical` `<details>`。`FollowupPrompt` 删除“常医智导助手”提示块与解释性小字，只保留补充目标、问题、选项与跳过；`data-testid="followup-prompt"`、`followup-slot-link`、`.followup-option` 契约保持不变。
+
+`TriageResults` 的 Safety 区改为紧凑状态条 `SafetyGateVisual`（图标 + 状态 + 红旗词），移除了未校准的“置信度百分比”与装饰球体。科室方向固定用 `.care-result__direction` 展示主方向，`DepartmentMatchVisual` 只列“其他可选方向”，不再把相对候选分显示成百分比。结果卡新增 `result-why`（为什么这样判断，仅用服务端 reasons）与 `result-dept-evidence` 折叠证据（含“未经临床校准”、`population_context` 说明）。
+
+`ResourcesPage` 的 `.resource-detail` 改为 `createPortal(..., document.body)` 的全屏 overlay：背景 `rgba(15,26,31,.42)` + blur，面板 `--radius-xl`/`--shadow-xl`，淡入 + 18px 上浮；点击遮罩或面板空白处、Esc、关闭按钮均可关闭，链接/按钮正常交互；打开时 `body.has-resource-detail` 锁定滚动，焦点进入关闭按钮，关闭后回到触发卡片。移动端（≤560px）为底部抽屉式面板。卡片上的“查看公开资料 / 查看中”和 URL `?hospital=`/`?doctor=` 参数保持不变。
+
+**Copy policy:** 正式界面不再出现“比赛/参赛/演示系统/演示示例/常州示范区”等说法，统一为“常州服务区域 / 公开资料 / 可以这样描述”；`TrustPage` 使用“研究与评估阶段”。不新增颜色 token，全部复用现有 surface/border/text/accent 家族；动画仅 transform/opacity，reduced-motion 兜底。
+
+## 2026-10-21 Big-screen start cover
+
+`CoverScreen`（`frontend/src/components/cover/CoverScreen.tsx`）是首页的一次性开场层：`App` 在首次加载且路由为 `home` 时渲染它，点击任意处/Enter/Space/Escape/「点击任意处进入」按钮后 420ms 淡出并卸载，焦点移回 `#main-content`；其它路由、站内返回首页都不出现，只有刷新才重放。它不请求任何接口、不写 URL 或浏览器存储、不读写分诊与医学状态。
+
+| Property | Class/value |
+| --- | --- |
+| Background | `--cover-bg-mid` → `--cover-bg-bottom` 竖向渐变 + `--cover-bg-top` 顶部径向光；aurora 层用 `--cover-glow-teal/-blue/-violet` |
+| Border | 卡片与药丸用 `--cover-line`；进入按钮与 eyebrow 用 `--cover-line-strong` |
+| Border radius | 卡片 `--radius-md`；进入按钮 `--radius-pill` |
+| Text — primary | 标题 `--cover-title-gradient` 渐变墨字；正文 `--cover-text-soft`；强调词 `--cover-emphasis` |
+| Text — secondary | `--cover-text-muted`（支柱说明、免责提示、品牌副标） |
+| Spacing | 帧宽 `min(100% - 40px, 1240px)`，`clamp()` 控制 18–34px 上下留白；支柱 3 列 → 900px 以下单列 |
+| Hover/focus | 进入按钮 hover 提亮 + 1px 上浮；`:focus-visible` 用 `--agent-highlight` 2px outline + 4px offset |
+| Motion | aurora 30s 漂移、扫描线 11s、圆环 2.8s、圆点 2.4s；仅 transform/opacity，全局 reduced-motion 块兜底 |
+
+**Pattern notes:** 开场层是纯展示入口，不是第二套导航，也不承担安全结论；免责提示（不替代医生诊断、急救或处方）随层显示。覆盖期间 `.app-shell` 设 `inert`，因此底下的首页对键盘与读屏不可达；退出后焦点显式回到主内容。新增 `--cover-*` token 全部由 inverse/dark 家族派生，未引入产品页使用的新颜色。
+
 ## 2026-10-13 Frontend 2.0 interaction layer
 
 `SymptomComposer`统一首页与分诊工作台：多行输入、2000 字边界、语音能力降级、字数提示、Ctrl/⌘+Enter、58px 主操作按钮和身份信息提示。首页示例只预填描述并继续走真实 API；CarePath移至输入区下方的流程解释。

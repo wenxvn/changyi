@@ -14,6 +14,7 @@ import {
   Stethoscope,
   X,
 } from "lucide-react";
+import { createPortal } from "react-dom";
 import { ApiError } from "../api/client";
 import { getDoctorDetail, getDoctors, getHospitalDetail, getHospitals } from "../api/resources";
 import { Button } from "../components/ui/Button";
@@ -34,11 +35,8 @@ function errorFor(reason: unknown, fallback: string): ApiError {
   return reason instanceof ApiError ? reason : new ApiError("NETWORK_ERROR", fallback);
 }
 
-function sourceLabel(source: string): string {
-  if (source.includes("provisional")) return "医院目录 · 暂待核验";
-  if (source.includes("pending")) return "医院目录 · 资料核验中";
-  if (source.includes("public")) return "公开资料 · 来源混合";
-  return "资料来源待补齐";
+function sourceLabel(kind: "hospital" | "doctor"): string {
+  return kind === "doctor" ? "医生公开资料" : "医院公开资料";
 }
 
 function includesQuery(values: Array<string | undefined>, query: string): boolean {
@@ -73,14 +71,14 @@ function HospitalCard({
         <div className="resource-index-card__heading">
           <h3>{hospital.name ?? "未命名医院"}</h3>
           {meta.length > 0 ? <p className="resource-index-card__subline">{meta.join(" · ")}</p> : null}
-          {hospital.emergency ? <p className="resource-index-card__flag-note">目录记录含急诊字段</p> : null}
+          {hospital.emergency ? <p className="resource-index-card__flag-note">设有急诊科</p> : null}
         </div>
         {selected ? <span className="resource-index-card__current">查看中</span> : null}
       </header>
       {directionMatch ? (
         <div className="resource-index-card__flags">
           <span className="resource-index-card__flag resource-index-card__flag--match">
-            <Sparkles size={11} aria-hidden="true" /> 公开科室匹配
+            <Sparkles size={11} aria-hidden="true" /> 科室方向匹配
           </span>
         </div>
       ) : null}
@@ -135,11 +133,11 @@ function DoctorCard({
         ) : null}
       </header>
       <p className="resource-index-card__address"><Hospital size={12} aria-hidden="true" />{doctor.hospital_name ?? "所属医院未提供"}</p>
-      {doctor.outpatient_time ? <p className="resource-index-card__flag-note">有门诊字段</p> : null}
+      {doctor.outpatient_time ? <p className="resource-index-card__flag-note">有门诊时间</p> : null}
       {directionMatch ? (
         <div className="resource-index-card__flags">
           <span className="resource-index-card__flag resource-index-card__flag--match">
-            <Sparkles size={11} aria-hidden="true" /> 公开科室匹配
+            <Sparkles size={11} aria-hidden="true" /> 科室方向匹配
           </span>
         </div>
       ) : null}
@@ -192,20 +190,8 @@ function ResourceContextBar({
       </div>
       <small className="resource-context-bar__note">
         {direction
-          ? "列表会把公开科室字段包含当前方向的医院提前展示；这不改变服务端推荐排序，也不改变安全分诊。"
-          : "排序仍依据公开资料与服务端匹配，不改变安全分诊。"}
-      </small>
-    </div>
-  );
-}
-
-function ResourceProvenanceNote({ detail }: { detail: ResourceDetailPayload }) {
-  return (
-    <div className="resource-detail__provenance">
-      <StatusPill tone="warning">{sourceLabel(detail.provenance.source_class)}</StatusPill>
-      <span>{detail.provenance.notice}</span>
-      <small>
-        更新时间：{detail.provenance.last_updated ?? "未登记"} · 许可状态：{detail.provenance.license_status === "not_recorded" ? "未登记" : detail.provenance.license_status}
+          ? "列表会优先展示包含当前科室方向的医院。"
+          : "排序依据公开资料与服务端匹配。"}
       </small>
     </div>
   );
@@ -234,9 +220,29 @@ function ResourceDetail({
   onToggleFavorite: (doctorId: number) => void;
   containerRef: (node: HTMLElement | null) => void;
 }) {
-  return (
-    <aside className="resource-detail" aria-labelledby="resource-detail-title" ref={containerRef}>
-      <div className="resource-detail__topline"><span className="eyebrow">资料详情</span><button type="button" onClick={onClose} aria-label="关闭资料详情"><X size={18} aria-hidden="true" /></button></div>
+  return createPortal(
+    <div className="resource-detail-overlay" data-testid="resource-detail-overlay" onClick={onClose}>
+      <aside
+        className="resource-detail"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resource-detail-title"
+        ref={containerRef}
+        onClick={(event) => {
+          // Clicking blank space inside the sheet also dismisses it, while
+          // links and controls keep working normally.
+          if ((event.target as HTMLElement).closest("a, button, input, textarea, select, label")) {
+            event.stopPropagation();
+            return;
+          }
+          onClose();
+        }}
+      >
+        <div className="resource-detail__topline">
+          <span className="eyebrow">公开资料详情</span>
+          <span className="resource-detail__close-hint">点击任意位置关闭</span>
+          <button type="button" onClick={onClose} aria-label="关闭公开资料"><X size={18} aria-hidden="true" /></button>
+        </div>
       {loading ? <div className="resource-detail__state" aria-live="polite"><LoaderCircle className="spin" size={18} aria-hidden="true" /> 正在读取详情…</div> : null}
       {!loading && error ? <div className="resource-detail__state resource-detail__state--error" role="alert"><CircleAlert size={18} aria-hidden="true" /><span>{error.message}</span><button type="button" onClick={onRetry}>重试</button></div> : null}
       {!loading && !error && detail?.resource_type === "hospital" ? (() => {
@@ -247,19 +253,18 @@ function ResourceDetail({
               <HospitalLogo hospitalId={typeof hospital.id === "number" ? hospital.id : undefined} size="preview" />
               <div><h2 id="resource-detail-title">{hospital.name ?? "未命名医院"}</h2><p>{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "公开机构资料"}</p></div>
             </div>
-            <p className="resource-detail__lede">当前展示公开机构字段与派生能力线索；不构成官方排名、疗效或临床质量结论。</p>
+            <p className="resource-detail__lede">机构公开信息与科室方向参考。</p>
             <dl className="resource-detail__facts">
               <div><dt>机构类型</dt><dd>{[hospital.level, hospital.type].filter((value): value is string => Boolean(value)).join(" · ") || "未提供"}</dd></div>
               <div><dt>地址</dt><dd>{hospital.address ?? "未提供"}</dd></div>
-              <div><dt>区域</dt><dd>{hospital.district ?? "公开资料未可靠标注行政区"}</dd></div>
+              <div><dt>区域</dt><dd>{hospital.district ?? "未标注"}</dd></div>
               <div><dt>电话</dt><dd>{hospital.phone ?? "未提供"}</dd></div>
-              <div><dt>急诊字段</dt><dd>{hospital.emergency === true ? "资料显示设有急诊（非实时接诊能力）" : "资料未标记急诊"}</dd></div>
+              <div><dt>急诊字段</dt><dd>{hospital.emergency === true ? "设有急诊科" : "未标注"}</dd></div>
               <div><dt>关联医生</dt><dd>{detail.related.doctor_count} 条公开索引</dd></div>
             </dl>
-            {detail.derived_capability?.areas.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">派生能力线索 · {detail.derived_capability.status}</span><p>{detail.derived_capability.areas.slice(0, 8).join(" · ")}</p><small>{detail.derived_capability.notice} 公式版本：{detail.derived_capability.formula_version}</small></div> : null}
+            {detail.derived_capability?.areas.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">相关科室方向</span><p>{detail.derived_capability.areas.slice(0, 8).join(" · ")}</p></div> : null}
             {detail.related.doctors?.length ? <div className="resource-detail__section"><span className="eyebrow eyebrow--muted">关联公开医生</span><div className="resource-detail__related-list">{detail.related.doctors.slice(0, 8).map((doctor) => <button type="button" key={String(doctor.id ?? doctor.name)} onClick={() => typeof doctor.id === "number" && onNavigate("/resources?doctor=" + doctor.id)}><strong>{doctor.name ?? "公开医生资料"}</strong><span>{[doctor.title, doctor.department].filter((value): value is string => Boolean(value)).join(" · ") || "公开资料"}</span></button>)}</div></div> : null}
             <AmapNavigationLink target={hospital} className="resource-detail__navigation" />
-            <ResourceProvenanceNote detail={detail} />
           </>
         );
       })() : null}
@@ -285,7 +290,7 @@ function ResourceDetail({
               <div><dt>所属医院</dt><dd>{doctor.hospital_name ?? "未提供"}</dd></div>
               <div><dt>公开专长</dt><dd>{doctor.specialties?.slice(0, 6).join(" · ") || doctor.specialty || "未提供"}</dd></div>
               <div><dt>门诊字段</dt><dd>{doctor.outpatient_time ?? "未提供"}</dd></div>
-              <div><dt>关联医院详情</dt><dd>{detail.related.hospital?.name ?? "未关联"}</dd></div>
+              <div><dt>所属医院</dt><dd>{detail.related.hospital?.name ?? doctor.hospital_name ?? "未提供"}</dd></div>
               <div>
                 <dt>资料来源</dt>
                 <dd>
@@ -296,19 +301,20 @@ function ResourceDetail({
                   ) : (
                     "公开资料索引"
                   )}
-                  {doctor.photo_provenance_status ? ` · 照片状态 ${doctor.photo_provenance_status}` : ""}
+
                 </dd>
               </div>
             </dl>
-            <p className="resource-detail__lede">公开科研与资料信息不等于临床 patient-fit，不作为主要推荐依据。</p>
+            <p className="resource-detail__lede">公开资料，供就医方向参考。</p>
             {detail.related.hospital ? <AmapNavigationLink target={detail.related.hospital} label="导航到所属医院" className="resource-detail__navigation" /> : null}
-            <ResourceProvenanceNote detail={detail} />
           </>
         );
       })() : null}
       {!loading && !error && !detail ? <div className="resource-detail__state" role="status">暂未收到详情数据，请重试。</div> : null}
-      {!loading && !error && detail && detail.resource_type !== selection.kind ? <div className="resource-detail__state resource-detail__state--error" role="alert">详情类型与当前选择不一致，请重试。</div> : null}
-    </aside>
+      {!loading && !error && detail && detail.resource_type !== selection.kind ? <div className="resource-detail__state resource-detail__state--error" role="alert">资料类型与当前选择不一致，请重试。</div> : null}
+      </aside>
+    </div>,
+    document.body,
   );
 }
 
@@ -363,6 +369,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   const [detailError, setDetailError] = useState<ApiError | null>(null);
   const [detailAttempt, setDetailAttempt] = useState(0);
   const detailRef = useRef<HTMLElement | null>(null);
+  const detailTriggerRef = useRef<HTMLElement | null>(null);
   const setDetailNode = (node: HTMLElement | null) => { detailRef.current = node; };
 
   useEffect(() => {
@@ -444,11 +451,19 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
 
   useEffect(() => {
     if (!selection) return;
+    document.body.classList.add("has-resource-detail");
+    const frame = window.requestAnimationFrame(() => {
+      detailRef.current?.querySelector<HTMLElement>(".resource-detail__topline button")?.focus({ preventScroll: true });
+    });
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setSelection(null);
     };
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.classList.remove("has-resource-detail");
+    };
   }, [selection]);
 
   useEffect(() => {
@@ -629,18 +644,16 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     window.history.replaceState(null, "", next);
   }, [activeTab, query, hospitalLevel, hospitalType, hospitalDistrict, hospitalEmergency, doctorHospital, doctorDepartment, doctorTitle, selection, triageContext, initialParams]);
 
-  /** Selecting a card opens the detail panel below the list and brings it into view. */
+  /** Selecting a card opens the public-profile overlay above the list. */
   function selectResource(next: Selection) {
+    detailTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setSelection(next);
-    window.requestAnimationFrame(() => {
-      const panel = detailRef.current;
-      if (!panel) return;
-      panel.scrollIntoView({
-        block: "start",
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-      });
-      panel.querySelector<HTMLElement>("button, a")?.focus({ preventScroll: true });
-    });
+  }
+
+  /** Closing returns focus to the card that opened the overlay. */
+  function closeDetail() {
+    setSelection(null);
+    window.requestAnimationFrame(() => detailTriggerRef.current?.focus({ preventScroll: true }));
   }
 
   function resetFilters() {
@@ -688,10 +701,10 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       <div className="resources-page__hero">
         <div>
           <span className="eyebrow">常州医疗资源 · 320400</span>
-          <h1>把城市资源，<em>放回你的就医路径。</em></h1>
-          <p>搜索医院、科室或医生，先从公开资料了解可用资源。个性化推荐仍以问诊结果和服务端解释为准。</p>
+          <h1>找到适合当前情况的<em>医院与医生。</em></h1>
+          <p>按科室方向、区域和公开资料筛选；排序说明来自服务端，不改变安全分诊。</p>
         </div>
-        <div className="resources-page__hero-note"><Stethoscope size={18} strokeWidth={1.5} aria-hidden="true" /><span>公开资料索引</span><small>不是诊断，也不是官方排名。</small></div>
+        <div className="resources-page__hero-note"><Stethoscope size={18} strokeWidth={1.5} aria-hidden="true" /><span>公开资料索引</span><small>医院、医生与科室方向。</small></div>
       </div>
 
       {triageContext ? (
@@ -702,12 +715,13 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         />
       ) : null}
 
-      <div className="resources-toolbar">
-        <label className="resources-search"><Search size={18} aria-hidden="true" /><span className="sr-only">搜索医疗资源</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索医院、科室或医生" /></label>
-        <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>打开医院地图</Button>
-      </div>
+      <div className="resources-controls">
+        <div className="resources-toolbar">
+          <label className="resources-search"><Search size={18} aria-hidden="true" /><span className="sr-only">搜索医疗资源</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索医院、科室或医生" /></label>
+          <Button variant="secondary" onClick={() => onNavigate("/map")} icon={<MapPinned size={16} aria-hidden="true" />}>打开医院地图</Button>
+        </div>
 
-      <div className="resources-filters" aria-label={activeTab === "doctors" ? "医生筛选" : "医院筛选"}>
+        <div className="resources-filters" aria-label={activeTab === "doctors" ? "医生筛选" : "医院筛选"}>
         <span className="resources-filters__label"><Filter size={14} aria-hidden="true" /> 筛选</span>
         {activeTab !== "doctors" ? (
           <>
@@ -737,7 +751,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
               <select value={hospitalEmergency} onChange={(event) => setHospitalEmergency(event.target.value)} data-testid="filter-hospital-emergency">
                 <option value="">急诊字段不限</option>
                 <option value="yes">资料显示设有急诊</option>
-                <option value="no">资料未标记急诊</option>
+                <option value="no">未标注</option>
               </select>
             </label>
           </>
@@ -771,6 +785,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
             <RotateCcw size={13} aria-hidden="true" /> 重置
           </button>
         ) : null}
+        </div>
       </div>
 
       <div className="resources-tabs" role="tablist" aria-label="医疗资源类型">
@@ -785,8 +800,8 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
       </div>
 
       <div className="resources-source-row">
-        <StatusPill tone={hospitalSource.includes("pending") ? "warning" : "neutral"}>{sourceLabel(showingDoctors ? doctorSource : hospitalSource)}</StatusPill>
-        <span>筛选只改变当前列表展示，不会改变个性化推荐结果。</span>
+        <StatusPill tone="neutral">{sourceLabel(showingDoctors ? "doctor" : "hospital")}</StatusPill>
+        <span>筛选只改变当前列表展示，不会改变推荐结果。</span>
       </div>
 
       <div id="resource-results-panel" role="tabpanel" aria-labelledby={`resource-tab-${activeTab}`} tabIndex={-1}>
@@ -827,7 +842,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
           </div>
         ) : null}
 
-        {showingHospitals && selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} containerRef={setDetailNode} /> : null}
+        {showingHospitals && selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={closeDetail} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} containerRef={setDetailNode} /> : null}
 
         {showingDoctors && !doctorLoading && !doctorError && visibleDoctors.length > 0 ? (
           <div className="resource-index-layout">
@@ -866,7 +881,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
           </div>
         ) : null}
 
-        {showingDoctors && selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={() => setSelection(null)} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} containerRef={setDetailNode} /> : null}
+        {showingDoctors && selection ? <ResourceDetail selection={selection} detail={detail} loading={detailLoading} error={detailError} onRetry={() => setDetailAttempt((value) => value + 1)} onClose={closeDetail} onNavigate={onNavigate} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} containerRef={setDetailNode} /> : null}
       </div>
 
       <div className="resources-page__footer-note"><ArrowRight size={15} aria-hidden="true" /><span>需要根据当前症状寻找路径？</span><button type="button" onClick={() => onNavigate("/triage")}>开始智能分诊</button></div>

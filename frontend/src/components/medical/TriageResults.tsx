@@ -1,6 +1,8 @@
-import { ArrowRight, Check, CircleAlert, CircleDot, MapPinned, PhoneCall, ShieldAlert, SlidersHorizontal, Sparkles, Stethoscope } from "lucide-react";
+import { ArrowRight, Check, CircleAlert, MapPinned, PhoneCall, ShieldAlert, SlidersHorizontal, Stethoscope } from "lucide-react";
 import { Button } from "../ui/Button";
 import { StatusPill } from "../ui/StatusPill";
+import { SafetyGateVisual } from "../algorithm/SafetyGateVisual";
+import { DepartmentMatchVisual } from "../algorithm/DepartmentMatchVisual";
 import type { TriagePayload } from "../../types/api";
 import { hospitalContextQuery } from "./recommendationDisplay";
 
@@ -34,23 +36,23 @@ const STATUS_COPY: Record<TriagePayload["triage_status"], { label: string; headl
   },
   URGENT: {
     label: "建议尽快评估",
-    headline: "建议尽快进行医疗评估",
+    headline: "建议尽快安排医疗评估",
     plain: "当前描述提示需要在较短时间内获得专业评估。",
   },
   ROUTINE: {
-    label: "可继续了解路径",
+    label: "未提示立即急诊",
     headline: "可以继续了解合适的就医路径",
     plain: "当前描述未提示需要立即急诊；这不是诊断结论。",
   },
   INSUFFICIENT_INFORMATION: {
     label: "需要补充信息",
     headline: "还需要一点信息，才能继续",
-    plain: "当前描述不足以判断就医方向，系统先给出一般性建议。",
+    plain: "当前描述还不足以判断就医方向，系统先给出一般性建议。",
   },
 };
 
 function careSteps(status: TriagePayload["triage_status"]) {
-  const safety = { label: "安全门", detail: status === "ROUTINE" ? "未提示立即急诊" : status === "URGENT" ? "建议尽快评估" : "已优先处理", done: true };
+  const safety = { label: "安全评估", detail: status === "ROUTINE" ? "未提示立即急诊" : status === "URGENT" ? "建议尽快评估" : "已优先处理", done: true };
   if (status === "EMERGENCY") {
     return [safety, { label: "急诊出口", detail: "不再推荐普通就医路径", done: false }];
   }
@@ -68,11 +70,11 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
       <div className="care-result__rail" aria-hidden="true" />
       <div className="care-result__status">
         <StatusPill tone="danger"><ShieldAlert size={13} aria-hidden="true" /> {STATUS_COPY.EMERGENCY.label}</StatusPill>
-        <span className="care-result__status-note">高风险 · 安全优先，普通资源推荐已停止</span>
+        <span className="care-result__status-note">普通资源推荐已停止</span>
       </div>
       <h2 id="emergency-result-title">{STATUS_COPY.EMERGENCY.headline}</h2>
       <p className="care-result__lede">
-        不要继续等待在线推荐结果。如果当前情况紧急、持续加重或有人意识、呼吸异常，请立即联系当地急救服务。
+        请不要继续等待在线推荐。如果情况紧急、持续加重，或有人意识、呼吸异常，请立即拨打 120。
       </p>
       <div className="care-result__actions care-result__actions--emergency">
         <a className="button button--danger button--large" href="tel:120">
@@ -85,7 +87,7 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
           onClick={() => onNavigate(`/map?${hospitalContextQuery(null, "EMERGENCY")}`)}
           icon={<MapPinned size={17} aria-hidden="true" />}
         >
-          查看急诊资源
+          查看附近急诊资源
         </Button>
       </div>
       {tags.length > 0 ? (
@@ -96,7 +98,7 @@ function EmergencyResult({ result, onNavigate }: Pick<TriageResultsProps, "resul
       ) : null}
       {reasons.length > 0 ? <p className="care-result__reason">{reasons.join(" ")}</p> : null}
       <p className="care-result__emergency-notice">
-        目录存在急诊字段 ≠ 当前可接诊。真实急救以 120 调度为准。
+        目录存在急诊字段 ≠ 当前可以接诊。真实急救以 120 调度为准。
       </p>
       <p className="care-result__disclaimer">系统只提供辅助分流信息，不替代急救指令、医生诊断或处方。</p>
     </article>
@@ -112,85 +114,104 @@ function CareResult({ result, onNavigate, pathUpdated, previousTags, previousDep
   const contextDirection = result.matched_department ?? null;
   const reasons = (result.triage?.reasons ?? []).filter(Boolean).slice(0, 2);
   const missing = (result.triage?.followup?.missing_slots ?? []).filter(Boolean).slice(0, 3);
-  const abstainReason = typeof result.triage?.abstain_reason === "string" ? result.triage.abstain_reason : null;
-  const uncertainty = typeof result.triage?.uncertainty_level === "string" ? result.triage.uncertainty_level : null;
   const modelNotice = result.disease_prediction?.notice && result.disease_prediction.abstain_reason !== "safety_gate_priority"
     ? result.disease_prediction.notice : null;
   const deptCandidates = Array.isArray(result.htriage_analysis?.department_candidates)
     ? result.htriage_analysis.department_candidates.filter((item) => item && typeof item.department === "string").slice(0, 3)
     : [];
-  const prevDeptSet = new Set(previousDepts ?? []);
+  const previousDeptSet = new Set(previousDepts ?? []);
   const deptChanged = Boolean(pathUpdated && previousDept && contextDirection && previousDept !== contextDirection);
+  const populationEntry = deptCandidates.some((item) => item.source === "population_context");
+  const symptomTags = (result.triage?.symptom_tags ?? []).map((tag) => tag.tag).filter(Boolean);
 
   return (
     <>
       <article
-        className={`care-result care-result--${insufficient ? "insufficient" : urgent ? "urgent" : "routine"}`}
+        className={`care-result care-result--${insufficient ? "insufficient" : urgent ? "urgent" : "routine"} care-result--enhanced`}
         aria-labelledby="care-result-title"
         data-testid="care-result"
         data-triage-status={status}
       >
+        <SafetyGateVisual
+          status={status}
+          redFlags={(result.triage?.red_flag_tags ?? []).filter(Boolean)}
+        />
+
         <div className="care-result__rail" aria-hidden="true" />
-        <div className="care-result__status">
-          <StatusPill tone={insufficient ? "neutral" : urgent ? "warning" : "success"}>
-            {insufficient ? <CircleDot size={13} aria-hidden="true" /> : <Sparkles size={13} aria-hidden="true" />} <span>{copy.label}</span>
-          </StatusPill>
-          <span className="care-result__status-note">{copy.plain}</span>
-        </div>
+
         {pathUpdated ? (
           <p className="care-result__updated" data-testid="path-updated" role="status">
-            <Check size={14} aria-hidden="true" /> 信息补充后，路径已重新计算
+            <Check size={14} aria-hidden="true" /> 信息补充后，路径已更新
           </p>
         ) : null}
-        <h2 id="care-result-title">{copy.headline}</h2>
+
+        <h2 id="care-result-title" className="care-result__headline">{copy.headline}</h2>
         <p className="care-result__lede">
           {insufficient
-            ? "暂不强行给出确定科室方向。先补充下面的关键信息，系统会重新整理一次；也可以先按当前一般性方向了解资源。"
+            ? "暂不强行给出科室方向。先补充关键信息，系统会重新整理一次。"
             : urgent
               ? "请尽快安排专业医疗评估；如果症状加重或出现新的危险信号，请优先急诊。"
               : "可以按下面的方向先去了解科室与常州资源；最终判断以医生面诊为准。"}
         </p>
 
-        <div className="care-result__direction">
-          <span className="care-result__direction-label">
-            <Stethoscope size={15} aria-hidden="true" /> {insufficient ? "当前一般性方向" : "建议先了解"}
-          </span>
-          <strong>{insufficient && !contextDirection ? "暂不强行给出科室方向" : contextDirection ?? "继续整理科室方向"}</strong>
-          {deptChanged ? <small data-testid="evidence-diff">补充后更新：{previousDept} → {contextDirection}</small> : null}
-          {insufficient ? <small>为什么现在不能确定：信息不足时方向会偏保守，补充后可进一步收窄。</small> : null}
-        </div>
-
-        {(reasons.length > 0 || missing.length > 0 || abstainReason || uncertainty) ? (
-          <div className="care-result__why" data-testid="result-why">
-            <span className="eyebrow eyebrow--muted">为什么这样判断</span>
-            <ul>
-              {abstainReason ? <li key="abstain">拒答原因：{abstainReason}</li> : null}
-              {uncertainty ? <li key="uncertainty">不确定性标记：{uncertainty}<small>（来自后端字段，非医学置信度）</small></li> : null}
-              {reasons.map((reason) => <li key={reason}>{reason}</li>)}
-              {missing.length > 0 ? <li key="missing">还需补充：{missing.join("、")}</li> : !insufficient ? <li key="nodanger">当前描述尚未触发急症规则</li> : null}
-            </ul>
+        {contextDirection ? (
+          <div className="care-result__direction">
+            <span className="care-result__direction-label">
+              <Stethoscope size={15} aria-hidden="true" /> {insufficient ? "当前一般性方向" : "建议先了解"}
+            </span>
+            <strong>{contextDirection}</strong>
+            {deptChanged ? <small data-testid="evidence-diff">补充后更新：{previousDept} → {contextDirection}</small> : null}
+            {insufficient ? <small>信息不足时方向会偏保守，补充后可进一步收窄。</small> : null}
           </div>
         ) : null}
+
+        {!insufficient && deptCandidates.filter((item) => item.department !== contextDirection).length > 0 ? (
+          <DepartmentMatchVisual
+            candidates={deptCandidates
+              .filter((item) => item.department !== contextDirection)
+              .map((item) => ({
+                name: item.department,
+                score: (item.score ?? 0) * 100,
+                reasoning: [],
+              }))}
+            symptomTags={symptomTags}
+            title="其他可选方向"
+            highlightPrimary={false}
+          />
+        ) : null}
+
+        {reasons.length > 0 ? (
+          <p className="care-result__why" data-testid="result-why">
+            <span className="eyebrow eyebrow--muted">为什么这样判断</span>
+            {reasons.join(" ")}
+          </p>
+        ) : null}
+
+        <details className="care-result__evidence" data-testid="result-dept-evidence">
+          <summary>科室依据 <small>未经临床校准</small></summary>
+          <ul>
+            {contextDirection ? <li>当前方向：{contextDirection}</li> : <li>当前没有确定的科室方向。</li>}
+            {symptomTags.length > 0 ? <li>识别到的症状词：{symptomTags.slice(0, 6).join("、")}</li> : null}
+            {deptCandidates.length > 0 ? (
+              <li>
+                候选方向：
+                {deptCandidates.map((item, index) => (
+                  <span key={item.department}>
+                    {index > 0 ? "、" : ""}
+                    {item.department}
+                    {previousDeptSet.has(item.department) ? "" : pathUpdated ? "（本轮新增）" : ""}
+                  </span>
+                ))}
+              </li>
+            ) : null}
+            {populationEntry ? <li>人口词仅作为人群入口（population_context），不作为疾病概率或确诊依据。</li> : null}
+            <li>科室候选分只是相对排序，未经临床校准，也不是患病概率。</li>
+          </ul>
+        </details>
 
         {modelNotice ? <p className="care-result__reason" data-testid={result.disease_prediction?.abstained ? "model-abstention-notice" : "model-scope-notice"}>
           {modelNotice} <small>此说明仅针对辅助疾病分析，不能用于判断就医是否安全。</small>
         </p> : null}
-
-        {deptCandidates.length > 0 ? (
-          <div className="care-result__why" data-testid="result-dept-evidence">
-            <span className="eyebrow eyebrow--muted">科室依据（只读）</span>
-            <ul>
-              {deptCandidates.map((item) => (
-                <li key={item.department}>
-                  {item.department}
-                  {pathUpdated && !prevDeptSet.has(item.department) && (previousDepts?.length ?? 0) > 0 ? <small data-testid="evidence-diff">（补充后新增）</small> : null}
-                  {item.source === "population_context" ? <small>（人群适用入口，非疾病判断）</small> : item.source ? <small>（来源：{item.source}）</small> : null}
-                </li>
-              ))}
-            </ul>
-            <small>相对支持度未经临床校准，不代表患病概率；最终以医生面诊为准。</small>
-          </div>
-        ) : null}
 
         <ol className="care-result__steps" aria-label="就医路径进度">
           {steps.map((step, index) => (

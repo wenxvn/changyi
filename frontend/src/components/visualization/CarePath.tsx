@@ -37,7 +37,7 @@ interface CarePathProps {
 }
 
 const phaseFooter: Record<CarePathPhase, string> = {
-  idle: "产品路径示意 · 悬停查看每一步",
+  idle: "路径示意 · 悬停查看每一步",
   analysing: "正在建立就医路径…",
   ready: "路径已就绪 · 即将进入工作台",
 };

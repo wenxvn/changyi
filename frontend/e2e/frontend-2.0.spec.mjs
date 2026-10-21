@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { enterHomeFromCover } from "./helpers/cover.mjs";
 
 const privateMarker = "synthetic-private-marker-7c91";
 
@@ -13,6 +14,7 @@ test("home transfers multiline input in memory, sends one real request, and keep
   });
 
   await page.goto("/");
+  await enterHomeFromCover(page);
   const composer = page.getByTestId("symptom-composer").first();
   const input = composer.getByTestId("symptom-input");
   const submit = page.getByRole("button", { name: "开始智能分析" });
@@ -95,6 +97,7 @@ test("503 shows an actionable error, and retry makes a fresh request", async ({ 
 test("reduced motion and unavailable WebGL retain the same static agent fallback", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
+  await enterHomeFromCover(page);
   const agent = page.getByTestId("care-agent").first();
   await expect(agent.locator("svg.care-agent__fallback")).toBeVisible();
   await expect(agent.locator("canvas.care-agent__canvas")).toHaveCount(0);

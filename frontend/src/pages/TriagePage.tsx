@@ -468,9 +468,6 @@ export function TriagePage({
                 </div>
                 <button type="button" onClick={() => setEditingCondition(true)} disabled={loading}>修改</button>
               </div>
-              <div className="triage-agent-result">
-                <CareAgent stage={agentStage} compact />
-              </div>
             </>
           ) : null}
 
@@ -492,9 +489,16 @@ export function TriagePage({
             />
           ) : null}
 
-          {!isEmergency ? (
-            <div className="triage-progress-panel" data-testid="algorithm-stages">
-              <ProgressiveStatus stages={analysisStages} label="已返回的分诊与路径状态" />
+          {!isEmergency && hasFollowup ? (
+            <div className="triage-followup-lead">
+              <FollowupPrompt
+                followup={followup as FollowupPayload}
+                stepNumber={followupStep}
+                disabled={loading}
+                directionDeferred={result?.triage_status === "INSUFFICIENT_INFORMATION" && !result.matched_department}
+                onAnswer={handleAnswer}
+                onSkip={handleSkipFollowup}
+              />
             </div>
           ) : null}
 
@@ -523,18 +527,16 @@ export function TriagePage({
               </div>
 
               {!isEmergency ? (
-                <>
-                  {hasFollowup ? (
-                    <FollowupPrompt
-                      followup={followup as FollowupPayload}
-                      stepNumber={followupStep}
-                      disabled={loading}
-                      directionDeferred={result?.triage_status === "INSUFFICIENT_INFORMATION" && !result.matched_department}
-                      onAnswer={handleAnswer}
-                      onSkip={handleSkipFollowup}
-                    />
-                  ) : null}
+                <details className="triage-technical">
+                  <summary>查看系统如何得到这个结果</summary>
+                  <div className="triage-progress-panel" data-testid="algorithm-stages">
+                    <ProgressiveStatus stages={analysisStages} label="系统处理步骤" />
+                  </div>
+                </details>
+              ) : null}
 
+              {!isEmergency ? (
+                <>
                   <section className="path-panel" aria-labelledby="path-panel-title">
                     <div className="path-panel__heading">
                       <h3 id="path-panel-title">{recommendationsReady ? "常州资源路径" : "资源路径"}</h3>

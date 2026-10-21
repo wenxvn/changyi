@@ -5,9 +5,7 @@ import {
   ChevronRight,
   CircleAlert,
   Database,
-  MapPinned,
   MoveUpRight,
-  Network,
   ShieldCheck,
 } from "lucide-react";
 import { Button } from "../components/ui/Button";
@@ -95,15 +93,19 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
 
   return (
     <>
-      <section className="hero page-container">
-        <div className="hero__copy">
+      <section className="hero page-container hero--simplified">
+        <div className="hero__visual hero__visual--centered">
+          <CareAgent stage={agentStage} />
+        </div>
+
+        <div className="hero__copy hero__copy--centered">
           <div className="hero__eyebrow">
-            <span className="eyebrow">可信智能就医 · {cityName} 示范区</span>
+            <span className="eyebrow">可信智能就医 · {cityName} 服务区域</span>
             <StatusPill tone="success"><span className="status-dot" /> 系统在线</StatusPill>
           </div>
-          <h1>哪里不舒服？<br /><em>用一句话说说症状。</em></h1>
+          <h1>哪里不舒服？</h1>
           <p className="hero__lede">
-            先查看安全状态；如有需要，再了解就医方向、常州资源与到院导航。
+            用一句话说说症状，查看安全状态和就医方向。
           </p>
 
           <SymptomComposer
@@ -120,27 +122,13 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
           />
 
           <ExampleSymptomChips onSelect={handleExample} />
-
-          <div className="hero__promise">
-            <div><ShieldCheck size={15} aria-hidden="true" /><span>先安全，后推荐</span></div>
-            <div><Network size={15} aria-hidden="true" /><span>解释每一步依据</span></div>
-            <div><MapPinned size={15} aria-hidden="true" /><span>理解你所在的城市</span></div>
-          </div>
-        </div>
-        <div className="hero__visual">
-          <CareAgent stage={agentStage} />
-          <div className="hero__visual-note">
-            <span aria-hidden="true">●</span>
-            <p>抽象状态视觉；安全状态和就医方向以系统实际返回为准。</p>
-          </div>
         </div>
       </section>
 
       <section className="home-process page-container" aria-labelledby="home-process-title">
-        <div className="home-process__intro">
+        <div className="home-process__intro home-process__intro--compact">
           <span className="eyebrow eyebrow--muted">清晰的下一步</span>
-          <h2 id="home-process-title">从症状描述，走到实际行动。</h2>
-          <p>路径节点是产品流程示意；结果页只展示本次请求实际返回的信息。</p>
+          <h2 id="home-process-title">从症状描述，走到实际行动</h2>
         </div>
         <CarePath phase="idle" statusLabel="就医路径示意 · 不代表本次分析进度" />
       </section>
@@ -148,7 +136,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
       <section className="philosophy page-container section-block">
         <div className="section-kicker"><span>01</span><span>我们的方式</span></div>
         <div className="philosophy__grid">
-          <h2>不是寻找<br /><em>“最好的医院”</em>，<br />而是更适合当前情况的就医路径。</h2>
+          <h2>不是寻找<br /><em>“最好的医院”</em>，<br />而是更适合当前情况的就医方向。</h2>
           <div className="principles-list">
             {principles.map((principle, index) => (
               <article className="principle" key={principle.label}>
@@ -225,8 +213,8 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
         <div className="section-kicker"><span>03</span><span>常州资源图景</span></div>
         <div className="city-layer__heading">
           <div>
-            <h2>AI 不只理解病情，<em>还理解你所在的城市。</em></h2>
-            <p>以常州为示范区，把医疗资源和到院路径放进同一张可解释的城市图景里。</p>
+            <h2>把医院、医生与<em>到院路径放在一起看。</em></h2>
+            <p>以常州为服务区域，把公开医疗资源和到院路径放进同一张城市图景里。</p>
           </div>
           <span className="city-layer__code">服务区域<br /><strong>{summary.data?.region.code ?? "320400"}</strong></span>
         </div>
@@ -265,7 +253,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
                   <div className="metric" key={metric.label}>
                     <strong>{formatMetric(metric.value)}</strong>
                     <span>{metric.label}</span>
-                    <small>{metric.status === "migration_pending" || metric.status === "provisional" ? "资料核验中" : "公开来源"}</small>
+                    <small>公开来源</small>
                   </div>
                 ))
               ) : (
@@ -316,7 +304,7 @@ export function HomePage({ onStart, onNavigate }: HomePageProps) {
       <section className="home-cta page-container">
         <div>
           <span className="eyebrow eyebrow--muted">随时开始</span>
-          <h2>从一句话开始，<em>让下一步更清楚。</em></h2>
+          <h2>还有不清楚的地方，<em>从一句话开始。</em></h2>
         </div>
         <Button onClick={() => document.getElementById("symptom-input")?.focus()} icon={<ArrowRight size={17} aria-hidden="true" />}>
           描述现在的不适

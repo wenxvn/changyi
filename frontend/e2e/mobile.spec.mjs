@@ -1,8 +1,15 @@
 import { test, expect } from "@playwright/test";
+import { enterHomeFromCover } from "./helpers/cover.mjs";
 
 test.describe("mobile product smoke", () => {
   test("home keeps primary composer and navigation usable", async ({ page }) => {
     await page.goto("/");
+    const cover = page.getByTestId("cover-screen");
+    await expect(cover).toBeVisible();
+    const coverOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+    expect(coverOverflow).toBe(false);
+    await page.screenshot({ path: test.info().outputPath("mobile-cover.png") });
+    await enterHomeFromCover(page);
     await expect(page.getByRole("heading", { name: /哪里不舒服/ })).toBeVisible();
     const primaryAction = page.getByRole("button", { name: "开始智能分析" });
     await expect(primaryAction).toBeVisible();
@@ -40,7 +47,7 @@ test.describe("mobile product smoke", () => {
 
   test("resources filters and doctor list stay usable", async ({ page }) => {
     await page.goto("/resources?type=doctor");
-    await expect(page.getByRole("heading", { name: /把城市资源/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /找到适合当前情况/ })).toBeVisible();
     await expect(page.getByTestId("filter-doctor-hospital")).toBeVisible();
     await expect(page.getByTestId("filter-doctor-department")).toBeVisible();
     await expect(page.getByTestId("filter-doctor-title")).toBeVisible();

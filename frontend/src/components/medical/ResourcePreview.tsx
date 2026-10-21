@@ -218,9 +218,6 @@ export function ResourcePreview({
         </Button>
       </div>
 
-      <p className="path-resources__disclaimer">
-        推荐分只用于资源排序，不代表诊断概率或治疗效果概率。来源与更新时间以资源详情为准。
-      </p>
     </div>
   );
 }
