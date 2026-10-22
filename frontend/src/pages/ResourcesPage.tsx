@@ -370,6 +370,14 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   const [detailAttempt, setDetailAttempt] = useState(0);
   const detailRef = useRef<HTMLElement | null>(null);
   const detailTriggerRef = useRef<HTMLElement | null>(null);
+  const deepLinkConsumed = useRef(false);
+  const initialDeepLink = useMemo(() => {
+    const hospitalId = Number(initialParams.get("hospital"));
+    if (Number.isInteger(hospitalId) && hospitalId > 0) return { kind: "hospital" as const, id: hospitalId };
+    const doctorId = Number(initialParams.get("doctor"));
+    if (Number.isInteger(doctorId) && doctorId > 0) return { kind: "doctor" as const, id: doctorId };
+    return null;
+  }, [initialParams]);
   const setDetailNode = (node: HTMLElement | null) => { detailRef.current = node; };
 
   useEffect(() => {
@@ -466,36 +474,31 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     };
   }, [selection]);
 
+  /**
+   * Apply a deep link exactly once, from the URL captured at mount. Catalog
+   * responses (including the doctors tab loading after a tab switch) must not
+   * re-open a hospital/doctor sheet the user has already left.
+   */
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const hospitalId = Number(params.get("hospital"));
-    if (Number.isInteger(hospitalId) && hospitalId > 0 && hospitals.length > 0) {
-      const hospital = hospitals.find((item) => item.id === hospitalId);
+    if (!initialDeepLink || deepLinkConsumed.current) return;
+    if (initialDeepLink.kind === "hospital") {
+      if (hospitals.length === 0) return;
+      deepLinkConsumed.current = true;
+      const hospital = hospitals.find((item) => item.id === initialDeepLink.id);
       if (hospital) {
         setActiveTab("hospitals");
         setSelection({ kind: "hospital", item: hospital });
-        return;
       }
-    }
-    const doctorId = Number(params.get("doctor"));
-    if (!Number.isInteger(doctorId) || doctorId <= 0) return;
-    setActiveTab("doctors");
-    const cached = doctors.find((item) => item.id === doctorId);
-    if (cached) {
-      setSelection({ kind: "doctor", item: cached });
       return;
     }
-    const controller = new AbortController();
-    getDoctorDetail(doctorId, controller.signal).then((payload) => {
-      if (controller.signal.aborted) return;
-      setSelection({ kind: "doctor", item: payload.resource });
-    }).catch(() => {
-      if (!controller.signal.aborted) {
-        setDoctorError(new ApiError("RESOURCE_NOT_FOUND", "该医生资料暂时无法载入。"));
-      }
-    });
-    return () => controller.abort();
-  }, [hospitals, doctors]);
+    // Set a minimal selection immediately; the detail effect below performs the
+    // single read and replaces it with the full record. This survives
+    // StrictMode's effect replay without issuing a duplicate detail request.
+    deepLinkConsumed.current = true;
+    setActiveTab("doctors");
+    const cached = doctors.find((item) => item.id === initialDeepLink.id);
+    setSelection({ kind: "doctor", item: cached ?? { id: initialDeepLink.id } });
+  }, [initialDeepLink, hospitals, doctors]);
 
   const selectedResourceKind = selection?.kind;
   const selectedResourceId = selection?.item.id;
@@ -612,6 +615,9 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
   const hasActiveFilters = Boolean(hospitalLevel || hospitalType || hospitalDistrict || hospitalEmergency || doctorHospital || doctorDepartment || doctorTitle);
 
   useEffect(() => {
+    // Keep the incoming deep link intact until it has been applied; after that,
+    // the URL mirrors the current selection only.
+    if (!deepLinkConsumed.current && initialDeepLink) return;
     const params = new URLSearchParams();
     if (triageContext) {
       params.set("from", "triage");
@@ -631,13 +637,9 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
     if (doctorTitle) params.set("title", doctorTitle);
     if (selection?.kind === "hospital" && typeof selection.item.id === "number") {
       params.set("hospital", String(selection.item.id));
-    } else if (!selection && initialParams.get("hospital")) {
-      params.set("hospital", initialParams.get("hospital") as string);
     }
     if (selection?.kind === "doctor" && typeof selection.item.id === "number") {
       params.set("doctor", String(selection.item.id));
-    } else if (!selection && initialParams.get("doctor")) {
-      params.set("doctor", initialParams.get("doctor") as string);
     }
     const search = params.toString();
     const next = search ? `?${search}` : window.location.pathname;
@@ -792,7 +794,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate: (path: string) => vo
         {([[
           "overview", "资源总览",
         ], ["hospitals", "医院"], ["doctors", "医生"]] as Array<[ResourceTab, string]>).map(([tab, label]) => (
-          <button key={tab} id={`resource-tab-${tab}`} type="button" role="tab" aria-controls="resource-results-panel" aria-selected={activeTab === tab} tabIndex={activeTab === tab ? 0 : -1} className={activeTab === tab ? "is-active" : ""} onClick={() => { setActiveTab(tab); setSelection(null); }}>
+          <button key={tab} id={`resource-tab-${tab}`} type="button" role="tab" aria-controls="resource-results-panel" aria-selected={activeTab === tab} tabIndex={activeTab === tab ? 0 : -1} className={activeTab === tab ? "is-active" : ""} onClick={() => { deepLinkConsumed.current = true; setActiveTab(tab); setSelection(null); }}>
             {label}
           </button>
         ))}
