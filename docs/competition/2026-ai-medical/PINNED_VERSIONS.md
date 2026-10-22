@@ -15,4 +15,4 @@
 | Vite | 8.2.2（见 `frontend/package.json`） |
 | Playwright | 1.63.0（dev，见 `frontend/package.json`） |
 
-本机验证：pytest 1043/1043、前端 21/21 + typecheck + build、浏览器 E2E 96/96 + hooks 4/4、Safety142（recall1.0/under0/over0/FN0）、数据扫描 31/186。`requirements.txt` 仅设下界，评审若装出其他版本且回归数字变化，以本表为准报漂移，不静默接受。
+本机验证（2026-10-22 复跑）：pytest 1043 collected、前端 22/22 + typecheck + build、浏览器 E2E 108/108 + hooks 4/4、Safety142（recall1.0/under0/over0/FN0）、数据扫描 31/186。`requirements.txt` 仅设下界，评审若装出其他版本且回归数字变化，以本表为准报漂移，不静默接受。

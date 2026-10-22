@@ -59,7 +59,7 @@
 | P0-4 | **答辩 PPT 过期且含高风险表述** | `ppt_build_tmp/医疗推荐系统_高端版_流程图优化.pptx`（2026-08-25） | 按当前 P4 产品重做：Safety-first、142-case、Grouped CV、模型 secondary evidence；删除无 provenance 的「1.93 万床位 / 6.7 万日均门诊」等派生数字；弱化或删除已不作为主路径的「反馈学习/优推/复选」叙事；导出 PDF |
 | P0-5 | **公平性（匿名）未门禁** | 无检查清单与扫描记录 | 对 PPT/视频字幕与画面/截图/网盘文件名/台本做关键词与人工目检：学校名、LOGO、导师、学号、班级；写入检查记录 |
 | P0-6 | **无 LICENSE / 数据许可文件** | 根目录无 `LICENSE*`；数据许可散落文档 | 增加代码 LICENSE；数据来源/许可/限制汇总进技术方案附录与 `DATA_PROVENANCE.md` 可引用段落 |
-| P0-7 | **关键数字漂移** | `README.md` 仍写 135 cases / Over-triage 0.0312；`MODEL_CARD.md` 仍写未做 fingerprint 分组；`SCORECARD.md` 仍写 108 pytest / 5 Playwright | 提交前全量对齐：142 cases、Over-triage 0、pytest 169、Playwright 20、grouped CV 证据以 `evaluation/model/grouped_split_report.json` 为准 |
+| P0-7 | **关键数字漂移**（2026-10-22 已对齐） | 曾出现 `README.md` 135 cases / Over-triage 0.0312、`MODEL_CARD.md` 未做 fingerprint、`SCORECARD.md` 108 pytest 等旧数 | 现状：README/SAFETY_CARD/SCORECARD/MODEL_CARD/PINNED_VERSIONS/memory 已统一为 Safety 142 / Over-triage 0 / pytest 1043 collected / 前端 22 / E2E 108；算法数字以 `docs/evaluation/COMPETITION_ALGORITHM_EVIDENCE.md` §0 与 `evidence_index.json` 为唯一口径。提交前仍需重跑一次全量确认 |
 
 ## P1 — 显著影响得分，复赛前应闭环
 

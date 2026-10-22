@@ -223,10 +223,13 @@
     }
   },
   "tests": {
-    "pytest_collected": 239,
-    "frontend_boundary": 17,
-    "playwright_claimed_in_docs": 26,
-    "competition_additions": 9
+    "pytest": 1043,
+    "pytest_status": "1043 passed（2026-10-22 全量复跑）",
+    "frontend_boundary": 22,
+    "playwright": 108,
+    "competition_additions": 9,
+    "measured_at": "2026-10-22",
+    "note": "旧值 pytest_collected 239 / frontend_boundary 17 / playwright_claimed_in_docs 26 为 2026-09-16 快照"
   },
   "readiness": "RESEARCH_ONLY",
   "reproduce": [
@@ -305,8 +308,9 @@
           "神经内科": 0.3
         },
         "macro_f1_vs_acc": {
-          "acc": 0.742438,
-          "macro_f1": 0.641749
+          "acc": 0.608179,
+          "macro_f1": 0.404872,
+          "corrected": "2026-10-22 对齐 P0-01 修复后的同一预测器口径（原 0.742438/0.641749 为旧模型版本）"
         }
       },
       "robustness_not_overclaimed": {

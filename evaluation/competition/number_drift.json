@@ -1,5 +1,7 @@
 {
   "schema_version": "evidence-number-drift/v1",
+  "snapshot_date": "2026-09-16",
+  "note": "历史快照：记录当时各文档与实跑值的差异，用于回归漂移检测。当前权威值以 evaluation/competition/evidence_index.json 为准；所列文档数字已于 2026-10-22 对齐，本文件内 sources 字段不再代表现状。",
   "authoritative_index": "evaluation/competition/evidence_index.json",
   "items": [
     {

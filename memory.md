@@ -196,11 +196,11 @@ Last updated: 2026-10-03
 ### Round4
 - Report: `evaluation/care_routing/ROUND4_REPORT.md`
 - Reproduce: `run_round4 --write` or `run_round4_refresh` for selective-only refresh
-- Best Direct Dept: **char n-gram TF-IDF + LR = 0.742±0.013** (vs Round3 0.450)
-- Selective: target 80% → retained Acc **0.807**, wrong-conf <1%
+- Best Direct Dept（2026-10-02 P0-01 修复后口径）: **char n-gram TF-IDF + LR = 0.608179**（5 seeds，vs Round3 0.450）。旧 `0.742±0.013` 无法从当前源码复现，已作废。
+- Selective: 目标 80% → 实际 coverage **0.760563**、retained Acc **0.740741**（目标未达成，如实保留）；wrong-conf <1%
 - Hardest confusions: many depts → 皮肤科; data gaps: 呼吸内科/泌尿外科/内分泌代谢科
 - Representation ablation: char n-gram ≫ binary/word/fusion under same LR
-- Shadow Mode still `RESEARCH_ONLY` because ECE≈0.26
+- Shadow Mode still `RESEARCH_ONLY`（未校准 ECE≈0.196 未过 0.15 门槛；温度校准 T=0.7 后 seed42 0.106，仍不作临床置信度）
 - Skeleton: `Safety Gate → Direct Department → Selective Abstention → Care Routing`
 
 

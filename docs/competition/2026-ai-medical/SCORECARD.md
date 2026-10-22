@@ -1,6 +1,6 @@
-# 竞赛评分卡（2026-10-10 冻结基线）
+# 竞赛评分卡（2026-10-10 冻结基线，2026-10-22 复核）
 
-更新时间：2026-10-10
+更新时间：2026-10-10；2026-10-22 复核工程计数（前端 22 / E2E 108）与 Safety 142 例，算法口径见 `docs/algorithm/CORE_EXPLORATION_REPORT.md`。
 
 本文件记录当前可复现的工程基线；医学规则、模型文件、推荐权重和数据口径以正文数字为准，均为固定样例与离线原型上的工程回归结果，不是临床验证。旧 2026-09-11 基线数字已过期，不再引用。
 
@@ -11,7 +11,7 @@
 | 推荐质量 | 推荐 application/domain/infrastructure 边界和 canonical v1 输出已建立 | 排序质量、交通新鲜度和逐字段 provenance 仍需独立产品/数据切片 | 工程收口 |
 | 数据可信度 | 数据加载、来源字段、质量扫描和 Trust evidence 接口可复现 | 数据质量扫描 31 个数据集、186 个已知异常（`PLACEHOLDER_TIMESTAMP` / `TIME_ORDER`），只登记不静默修复 | 基线冻结 |
 | 产品体验 | React/Vite 已成为 Flask 默认前端；Triage、Resources、Map、Trust、Profile/History 页面可运行，恢复高德导航 URI；算法证据只读卡（症状词/科室依据/追问差异） | 急症与信息不足出口优先；相对分数未经临床校准，不标患病概率 | P0 回归通过 |
-| 工程交付 | 1043 个 pytest、前端 typecheck/21 个 boundary tests/build、96 个浏览器 E2E + 4 个 hooks、Safety142、数据扫描和 canonical snapshot 均可本地运行 | 证据端点进程缓存 + 启动预热（数字不变）；Windows 本机复现通过 | P0 回归通过 |
+| 工程交付 | 1043 个 pytest（collected）、前端 typecheck/22 个 boundary tests/build、108 个浏览器 E2E + 4 个 hooks、Safety142、数据扫描和 canonical snapshot 均可本地运行 | 证据端点进程缓存 + 启动预热（数字不变）；Windows 本机复现通过 | P0 回归通过 |
 
 ## 当前入口
 
