@@ -1,0 +1,59 @@
+[
+  {
+    "path": "/api/v1/health",
+    "status": 200
+  },
+  {
+    "path": "/api/v1/ready",
+    "status": 200
+  },
+  {
+    "path": "/",
+    "status": 200
+  },
+  {
+    "path": "/triage",
+    "status": 200
+  },
+  {
+    "path": "/resources",
+    "status": 200
+  },
+  {
+    "path": "/map",
+    "status": 200
+  },
+  {
+    "path": "/trust",
+    "status": 200
+  },
+  {
+    "path": "/profile",
+    "status": 200
+  },
+  {
+    "case": "ordinary",
+    "status": 200,
+    "triage_status": "ROUTINE",
+    "matched_department": "呼吸内科",
+    "model_abstained": null
+  },
+  {
+    "case": "vague",
+    "status": 200,
+    "triage_status": "INSUFFICIENT_INFORMATION",
+    "matched_department": "全科医学科",
+    "model_abstained": true
+  },
+  {
+    "case": "emergency",
+    "status": 200,
+    "triage_status": "EMERGENCY",
+    "matched_department": "心血管内科",
+    "model_abstained": true
+  },
+  {
+    "case": "empty_input",
+    "status": 400
+  }
+]

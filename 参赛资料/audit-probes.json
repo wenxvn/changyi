@@ -1,0 +1,36 @@
+{
+  "selective_training_config_probe": {
+    "direct_matrix_char_model": {
+      "epochs": 35,
+      "lr": 0.35,
+      "seed": 42
+    },
+    "selective_cal_model": {
+      "epochs": 70,
+      "lr": 0.4,
+      "seed": 42
+    }
+  },
+  "committed_evidence_mismatch": {
+    "direct_char_seed42_accuracy": 0.737089,
+    "temperature_accuracy": 0.737089,
+    "selective_full_accuracy": 0.624413,
+    "direct_temperature": 0.5,
+    "selective_temperature": 0.7
+  },
+  "matrix_std_field": {
+    "value": "best=char_ngram_tfidf_lr acc=0.742438±0.012786 (Round3 direct was 0.450262)",
+    "is_numeric": false
+  },
+  "photo_provenance": {
+    "entries": 275,
+    "license_missing": 275,
+    "source_url_missing": 275
+  },
+  "image_assets": {
+    "files": 2090,
+    "MiB": 609.9,
+    "largest": "static\\images\\doctors\\czsyy\\124_健康管理（体检）中心_钱梅云.jpg",
+    "largest_MiB": 13.1
+  }
+}
