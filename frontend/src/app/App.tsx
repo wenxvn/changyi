@@ -54,11 +54,13 @@ function scrubConditionFromUrl() {
 function AppShell({
   route,
   onNavigate,
+  onReturnHome,
   children,
   inert = false,
 }: {
   route: AppRoute;
   onNavigate: (path: string) => void;
+  onReturnHome: () => void;
   children: ReactNode;
   inert?: boolean;
 }) {
@@ -73,7 +75,15 @@ function AppShell({
     <div className="app-shell" inert={inert || undefined}>
       <a className="skip-link" href="#main-content">跳转到主要内容</a>
       <header className="site-header">
-        <button className="brand-lockup" type="button" onClick={() => navigate("/")} aria-label="返回常医智导首页">
+        <button
+          className="brand-lockup"
+          type="button"
+          onClick={() => {
+            setMobileOpen(false);
+            onReturnHome();
+          }}
+          aria-label="返回常医智导首页"
+        >
           <BrandMark />
           <span className="brand-lockup__copy">
             <strong>常医智导</strong>
@@ -157,8 +167,8 @@ export function App() {
   );
   const submissionSequence = useRef(0);
 
-  // The cover only exists for the first paint of "/": leaving it is a one-way
-  // transition, and an in-app return to home never replays it.
+  // The cover opens on the first paint of "/", can be re-opened from the brand
+  // lockup, and dismissing it is a one-way transition until it is asked for again.
   const dismissCover = () => setCover((current) => (current === "open" ? "leaving" : current));
 
   useEffect(() => {
@@ -175,6 +185,7 @@ export function App() {
       scrubConditionFromUrl();
       setInitialSubmission(null);
       setRoute(routeFromLocation());
+      setCover((current) => (current === "open" ? "closed" : current));
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
@@ -188,6 +199,17 @@ export function App() {
     setRoute(routeFromLocation());
     const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
     window.scrollTo({ top: 0, behavior });
+  };
+
+  // Brand lockup click: go back home and replay the dark entry cover.
+  const returnToCover = () => {
+    setInitialSubmission(null);
+    if (window.location.pathname !== "/") {
+      window.history.pushState({}, "", "/");
+    }
+    setRoute("home");
+    setCover("open");
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
   const startTriageFromHome = (condition: string) => {
@@ -218,7 +240,7 @@ export function App() {
 
   return (
     <LocationProvider>
-      <AppShell route={route} onNavigate={navigate} inert={coverOpen}>
+      <AppShell route={route} onNavigate={navigate} onReturnHome={returnToCover} inert={coverOpen}>
         {content}
       </AppShell>
       {coverOpen ? (
